@@ -6,7 +6,7 @@ from bpy.props import EnumProperty
 def super_quick_switch(keys_combination, context):
     # Ctrl + 鼠标滚轮向下的操作
     if keys_combination == 'CTRL_WHEEL_DOWN':
-        bpy.ops.mode.normal_up_to_down()
+        bpy.ops.mode.menu_switch()
 
     # Ctrl + 鼠标滚轮向上的操作
     elif keys_combination == 'CTRL_WHEEL_UP':
@@ -85,4 +85,3 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
 
         return {'PASS_THROUGH'}
 
-# 移除了register/unregister函数，统一在__init__.py中注册

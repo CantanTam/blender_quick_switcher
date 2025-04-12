@@ -16,6 +16,9 @@ from .operators import (
 from .operator_mode_switch_normal_uptodown import MODE_NORMAL_UPDOWN_OT_Switch
 from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
 from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
+from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
+
+
 from . import keymap
 
 def register():
@@ -24,6 +27,7 @@ def register():
     bpy.utils.register_class(MODE_NORMAL_DOWNUP_OT_Switch)
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
     bpy.utils.register_class(VERTEX_EDGE_FACE_OT_Switch)
+    bpy.utils.register_class(MODE_MENU_OT_Switch)
     
     # 注册键位映射
     keymap.register()
@@ -34,6 +38,7 @@ def unregister():
     bpy.utils.unregister_class(CSAWHEEL_OT_ModeSwitchOperator)
     bpy.utils.unregister_class(MODE_NORMAL_DOWNUP_OT_Switch)
     bpy.utils.unregister_class(MODE_NORMAL_UPDOWN_OT_Switch)
+    bpy.utils.unregister_class(MODE_MENU_OT_Switch)
     
     # 注销键位映射
     keymap.unregister()
