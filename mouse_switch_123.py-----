@@ -1,0 +1,330 @@
+#这段代码针对的是选择多个对象的情况：
+
+bl_info = {
+    "name": "AA_切换",
+    "author": "Your Name",
+    "version": (1, 1),
+    "blender": (3, 6, 0),
+    "location": "View3D",
+    "description": "增强模式切换功能（带安全检查）",
+    "category": "3D View"
+}
+
+import bpy
+from bpy.types import Operator
+from bpy.props import EnumProperty
+
+# 模式切换处理（添加物体检查）
+def super_quick_switch(keys_combination, context):
+    # Ctrl + 鼠标滚轮向下的操作
+    # ------------------------------------------------------
+    if keys_combination == 'CTRL_WHEEL_DOWN':
+        bpy.ops.mode.normal_up_to_down()
+
+    # Ctrl + 鼠标滚轮向上的操作
+    # ------------------------------------------------------
+    elif keys_combination == 'CTRL_WHEEL_UP':
+        bpy.ops.mode.normal_down_to_up()
+
+    elif keys_combination == 'CTRL_SHIFT_WHEEL_UP':
+        bpy.ops.switch.vertex_edge_face()
+
+    #测试命令：
+    elif keys_combination == 'ALT_MOUSE_RIGHT':
+        bpy.ops.wm.toolbar()
+        #bpy.ops.wm.tool_set_by_id(name="builtin.select_box")
+
+    return False
+
+# 主操作符（添加前置检查）
+class CSAWHEEL_OT_ModeSwitchOperator(Operator):
+    bl_idname = "csawheel.mode_switch"
+    bl_label = "Advanced Mode Switch"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    direction: EnumProperty(
+        items=[
+            ('CTRL_WHEEL_UP', 'CTRL_WHEEL_UP', ''),
+            ('CTRL_WHEEL_DOWN', 'CTRL_WHEEL_DOWN', ''),
+            ('CTRL_ALT_WHEEL_UP', 'CTRL_ALT_WHEEL_UP', ''),
+            ('CTRL_ALT_WHEEL_DOWN', 'CTRL_ALT_WHEEL_DOWN', ''),
+            ('SHIFT_WHEEL_UP', 'SHIFT_WHEEL_UP', ''),
+            ('SHIFT_WHEEL_DOWN', 'SHIFT_WHEEL_DOWN', ''),
+            ('CTRL_SHIFT_WHEEL_UP', 'CTRL_SHIFT_WHEEL_UP', ''),
+            ('CTRL_SHIFT_WHEEL_DOWN', 'CTRL_SHIFT_WHEEL_DOWN', ''),
+            ('ALT_MOUSE_RIGHT', 'ALT_MOUSE_RIGHT', ''),
+            ('CTRL_ALT_MOUSE_RIGHT', 'CTRL_ALT_MOUSE_RIGHT', ''),
+            ('SHIFT_ALT_MOUSE_RIGHT', 'SHIFT_ALT_MOUSE_RIGHT', '')
+        ],
+        default='CTRL_WHEEL_UP'
+    )
+
+    @classmethod
+    def poll(cls, context):
+        return context.area.type == 'VIEW_3D'
+
+    def invoke(self, context, event):
+        # 通过poll方法自动过滤无效状态
+        if not self.poll(context):
+            return {'PASS_THROUGH'}
+
+        keys_combination = None
+
+        # 检查各种组合键+滚轮
+        if event.type in {'WHEELUPMOUSE', 'WHEELDOWNMOUSE'}:
+            if event.ctrl and event.alt:
+                keys_combination = 'CTRL_ALT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'CTRL_ALT_WHEEL_DOWN'
+            elif event.ctrl and event.shift:
+                keys_combination = 'CTRL_SHIFT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'CTRL_SHIFT_WHEEL_DOWN'
+            elif event.shift:
+                keys_combination = 'SHIFT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'SHIFT_WHEEL_DOWN'
+            elif event.ctrl:
+                keys_combination = 'CTRL_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'CTRL_WHEEL_DOWN'
+
+        # 检查鼠标右键组合键
+        elif event.type == 'RIGHTMOUSE':
+            if event.ctrl and event.alt:
+                keys_combination = 'CTRL_ALT_MOUSE_RIGHT'
+            elif event.alt and event.shift:
+                keys_combination = 'SHIFT_ALT_MOUSE_RIGHT'
+            elif event.alt:
+                keys_combination = 'ALT_MOUSE_RIGHT'
+
+        if not keys_combination:
+            return {'PASS_THROUGH'}
+
+        # 功能3：在动画编辑器中保留原始功能
+        if context.area.type != 'VIEW_3D':
+            return {'PASS_THROUGH'}
+
+        # 执行自定义处理
+        if super_quick_switch(keys_combination, context):
+            return {'FINISHED'}
+
+        return {'PASS_THROUGH'}
+
+# -----------↓↓↓↓ MESH类型对象，编辑模式切换顶点/边/面，方向：点 ← 边 ← 面  ↓↓↓↓----------------
+class VERTEX_EDGE_FACE_OT_Switch(bpy.types.Operator):
+    bl_idname = "switch.vertex_edge_face"
+    bl_label = "切换点/线/面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self,context):
+        if bpy.context.active_object.type and context.mode == 'EDIT_MESH' :
+            select_mode = context.tool_settings.mesh_select_mode
+            if select_mode[2]:  # 面模式 -> 边模式
+                context.tool_settings.mesh_select_mode = (False, True, False)
+            elif select_mode[1]:  # 边模式 -> 顶点模式
+                context.tool_settings.mesh_select_mode = (True, False, False)
+            else:  # 顶点模式 -> 面模式
+                context.tool_settings.mesh_select_mode = (False, False, True)
+            return {'FINISHED'}
+        return {'CANCELLED'}
+# -----------↑↑↑↑ MESH类型对象，编辑模式切换顶点/边/面，方向：点 ← 边 ← 面  ↑↑↑↑----------------
+
+
+# -----------↓↓↓↓ 切换编辑模式，方向：上 → 下  ↓↓↓↓----------------
+class MODE_NORMAL_UPDOWN_OT_Switch(bpy.types.Operator):
+    bl_idname = "mode.normal_up_to_down"
+    bl_label = "上下方向切换编辑模式"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        if context.active_object.type in {'GPENCIL','GREASEPENCIL'}:
+            # Blender终端查询编辑模式的语句 bpy.context.object.mode
+            # 不同 Blender 的 GREASEPENCIL 可能会发生变化，但 GREASEPENCIL 的编辑模式数量是固定的，可以根据不同版本，定义多个字典，通过选择字典来切换调用，方便维护
+            # 4.2或以下 版本字典
+            greasepencil_mode_360 ={
+                "OBJECT":"EDIT_GPENCIL",
+                "EDIT_GPENCIL":"SCULPT_GPENCIL",
+                "SCULPT_GPENCIL":"PAINT_GPENCIL",
+                "PAINT_GPENCIL":"WEIGHT_GPENCIL",
+                "WEIGHT_GPENCIL":"VERTEX_GPENCIL",
+                "VERTEX_GPENCIL":"OBJECT"
+            }
+
+            # 4.3或以上 版本字典
+            greasepencil_mode_400 ={
+                "OBJECT":"EDIT",
+                "EDIT_GREASE_PENCIL":"SCULPT_GREASE_PENCIL",
+                "SCULPT_GREASE_PENCIL":"PAINT_GREASE_PENCIL",
+                "PAINT_GREASE_PENCIL":"WEIGHT_GREASE_PENCIL",
+                "WEIGHT_GREASE_PENCIL":"VERTEX_GREASE_PENCIL",
+                "VERTEX_GREASE_PENCIL":"OBJECT"
+            }
+
+            if bpy.app.version < (4,3,0):
+                greasepencil_mode = greasepencil_mode_360
+            else:
+                greasepencil_mode = greasepencil_mode_400
+
+            current_mode = context.mode
+
+            if current_mode in greasepencil_mode:
+                new_mode = greasepencil_mode[current_mode]
+                bpy.ops.object.mode_set(mode=new_mode)
+    
+        elif bpy.context.active_object.type == 'ARMATURE':
+            if context.mode == 'OBJECT':
+                bpy.ops.object.mode_set(mode='EDIT')
+            elif context.mode == 'EDIT_ARMATURE':
+                bpy.ops.object.mode_set(mode='POSE')
+            else:
+                bpy.ops.object.mode_set(mode='OBJECT')
+
+        elif bpy.context.active_object.type == 'MESH':
+            mesh_mode ={
+                "OBJECT":"EDIT",
+                "EDIT_MESH":"SCULPT",
+                "SCULPT":"VERTEX_PAINT",
+                "PAINT_VERTEX":"WEIGHT_PAINT",
+                "PAINT_WEIGHT":"TEXTURE_PAINT",
+                "PAINT_TEXTURE":"OBJECT"
+            }
+            
+            current_mesh_mode = context.mode
+
+            if current_mesh_mode in mesh_mode:
+                new_mesh_mode = mesh_mode[current_mesh_mode]
+                bpy.ops.object.mode_set(mode=new_mesh_mode)
+
+        elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
+            bpy.ops.object.editmode_toggle() # Tab 切换的功能
+
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+# -----------↑↑↑↑ 切换编辑模式，方向：上 → 下  ↑↑↑↑----------------
+
+
+# -----------↓↓↓↓ 切换编辑模式，方向：下 → 上  ↓↓↓↓----------------
+class MODE_NORMAL_DOWNUP_OT_Switch(bpy.types.Operator):
+    bl_idname = "mode.normal_down_to_up"
+    bl_label = "下上方向切换编辑模式"
+    bl_options = {'REGISTER', 'UNDO'}  
+
+    def execute(self, context):
+        if context.active_object.type in {'GPENCIL','GREASEPENCIL'}:
+            # Blender终端查询编辑模式的语句 bpy.context.object.mode
+            # 不同 Blender 的 GREASEPENCIL 可能会发生变化，但 GREASEPENCIL 的编辑模式数量是固定的，可以根据不同版本，定义多个字典，通过选择字典来切换调用，方便维护
+            # 4.2以下 版本字典
+            greasepencil_mode_360 ={
+            "OBJECT":"VERTEX_GPENCIL",
+            "EDIT_GPENCIL":"OBJECT",
+            "SCULPT_GPENCIL":"EDIT_GPENCIL",
+            "PAINT_GPENCIL":"SCULPT_GPENCIL",
+            "WEIGHT_GPENCIL":"PAINT_GPENCIL",
+            "VERTEX_GPENCIL":"WEIGHT_GPENCIL"
+        }
+
+            # 4.3或以上 版本字典
+            greasepencil_mode_400 ={
+                "OBJECT":"VERTEX_GREASE_PENCIL",
+                "EDIT_GREASE_PENCIL":"OBJECT",
+                "SCULPT_GREASE_PENCIL":"EDIT",
+                "PAINT_GREASE_PENCIL":"SCULPT_GREASE_PENCIL",
+                "WEIGHT_GREASE_PENCIL":"PAINT_GREASE_PENCIL",
+                "VERTEX_GREASE_PENCIL":"WEIGHT_GREASE_PENCIL"
+            }
+
+            if bpy.app.version < (4,3,0):
+                greasepencil_mode = greasepencil_mode_360
+            else:
+                greasepencil_mode = greasepencil_mode_400
+
+            current_mode = context.mode
+
+            if current_mode in greasepencil_mode:
+                new_mode = greasepencil_mode[current_mode]
+                bpy.ops.object.mode_set(mode=new_mode)
+    
+        elif bpy.context.active_object.type == 'ARMATURE':
+            if context.mode == 'OBJECT':
+                bpy.ops.object.mode_set(mode='POSE')
+            elif context.mode == 'EDIT_ARMATURE':
+                bpy.ops.object.mode_set(mode='OBJECT')
+            else:
+                bpy.ops.object.mode_set(mode='EDIT')
+
+        elif bpy.context.active_object.type == 'MESH':
+            mesh_mode ={
+                "OBJECT":"TEXTURE_PAINT",
+                "EDIT_MESH":"OBJECT",
+                "SCULPT":"EDIT",
+                "PAINT_VERTEX":"SCULPT",
+                "PAINT_WEIGHT":"VERTEX_PAINT",
+                "PAINT_TEXTURE":"WEIGHT_PAINT"
+            }
+            
+            current_mesh_mode = context.mode
+
+            if current_mesh_mode in mesh_mode:
+                new_mesh_mode = mesh_mode[current_mesh_mode]
+                bpy.ops.object.mode_set(mode=new_mesh_mode)
+
+        elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
+            bpy.ops.object.editmode_toggle() # Tab 切换的功能
+            
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+# -----------↑↑↑↑ 切换编辑模式，方向：下 → 上  ↑↑↑↑----------------
+
+
+
+# 键映射
+wheel_shortcut_keymaps = []
+
+def register():
+    bpy.utils.register_class(MODE_NORMAL_UPDOWN_OT_Switch)
+    bpy.utils.register_class(MODE_NORMAL_DOWNUP_OT_Switch)
+    bpy.utils.register_class(VERTEX_EDGE_FACE_OT_Switch)
+    bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
+
+    # 设置键映射
+    csawheel_wm = bpy.context.window_manager
+    ctrl_kc = csawheel_wm.keyconfigs.addon
+    ctrl_km = ctrl_kc.keymaps.new(name='3D View', space_type='VIEW_3D')
+
+    # 添加各种组合键映射
+    key_combinations = [
+        # (direction, key, ctrl, alt, shift)
+        ('CTRL_WHEEL_UP', 'WHEELUPMOUSE', True, False, False),
+        ('CTRL_WHEEL_DOWN', 'WHEELDOWNMOUSE', True, False, False),
+        ('CTRL_ALT_WHEEL_UP', 'WHEELUPMOUSE', True, True, False),
+        ('CTRL_ALT_WHEEL_DOWN', 'WHEELDOWNMOUSE', True, True, False),
+        ('SHIFT_WHEEL_UP', 'WHEELUPMOUSE', False, False, True),
+        ('SHIFT_WHEEL_DOWN', 'WHEELDOWNMOUSE', False, False, True),
+        ('CTRL_SHIFT_WHEEL_UP', 'WHEELUPMOUSE', True, False, True),
+        ('CTRL_SHIFT_WHEEL_DOWN', 'WHEELDOWNMOUSE', True, False, True),
+        ('ALT_MOUSE_RIGHT', 'RIGHTMOUSE', False, True, False),
+        ('CTRL_ALT_MOUSE_RIGHT', 'RIGHTMOUSE', True, True, False),
+        ('SHIFT_ALT_MOUSE_RIGHT', 'RIGHTMOUSE', False, True, True)
+    ]
+
+    for direction, key, ctrl, alt, shift in key_combinations:
+        kmi = ctrl_km.keymap_items.new(
+            "csawheel.mode_switch",
+            key,
+            'PRESS',
+            ctrl=ctrl,
+            alt=alt,
+            shift=shift
+        )
+        kmi.properties.direction = direction
+
+    wheel_shortcut_keymaps.append(ctrl_km)
+
+
+def unregister():
+    for ctrl_km in wheel_shortcut_keymaps:
+        bpy.context.window_manager.keyconfigs.addon.keymaps.remove(ctrl_km)
+    wheel_shortcut_keymaps.clear()
+
+    bpy.utils.unregister_class(VERTEX_EDGE_FACE_OT_Switch)
+    bpy.utils.unregister_class(CSAWHEEL_OT_ModeSwitchOperator)
+    bpy.utils.unregister_class(MODE_NORMAL_UPDOWN_OT_Switch)
+    bpy.utils.unregister_class(MODE_NORMAL_DOWNUP_OT_Switch)
+
+if __name__ == "__main__":
+    register()
