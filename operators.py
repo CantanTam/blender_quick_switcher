@@ -10,7 +10,7 @@ def super_quick_switch(keys_combination, context):
 
     # Ctrl + 鼠标滚轮向上的操作
     elif keys_combination == 'CTRL_WHEEL_UP':
-        bpy.ops.mode.normal_down_to_up()
+        bpy.ops.mode.normal_up_to_down()
 
     elif keys_combination == 'CTRL_SHIFT_WHEEL_UP':
         bpy.ops.switch.vertex_edge_face()
