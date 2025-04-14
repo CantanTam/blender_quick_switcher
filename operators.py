@@ -2,11 +2,16 @@ import bpy
 from bpy.types import Operator
 from bpy.props import EnumProperty
 
+#使用全局变量，跟踪对象变化前后的名称/格式变化/编辑模式
+object_current_name = "NONE"
+object_prev_typeandmode = "NONE"
+object_current_typeandmode = "NONE"
+
 # 模式切换处理（添加物体检查）
 def super_quick_switch(keys_combination, context):
     # Ctrl + 鼠标滚轮向下的操作
     if keys_combination == 'CTRL_WHEEL_DOWN':
-        bpy.ops.mode.menu_switch()
+        bpy.ops.mode.tab_switch()
 
     # Ctrl + 鼠标滚轮向上的操作
     elif keys_combination == 'CTRL_WHEEL_UP':

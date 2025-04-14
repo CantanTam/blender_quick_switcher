@@ -45,7 +45,7 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
             if bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
                 bpy.ops.object.editmode_toggle()
 
-            elif bpy.context.active_object.type in type_mode_maps:
+            elif bpy.context.active_object.type+bpy.context.mode in type_mode_maps:
                 bpy.ops.mode.menu_switch()
 
             else:
