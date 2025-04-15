@@ -10,32 +10,35 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
     bl_options = {"REGISTER",'UNDO'}
 
     def execute(self, context):
-        # 为保证 4.2 版本与 4.3 版本同时可用，利用 bpy.context.active_object.type+bpy.context.mode，生成唯一键的字典，然后再调用 值 作为切换模式
+        # 为保证 4.2 版本与 4.3 版本同时可用，利用 bpy.context.active_object.type+bpy.active_object.mode，生成唯一键的字典，然后再调用 值 作为切换模式
         type_mode_maps = {
+            # Mesh 类型（两个版本保持一致）
             'MESHOBJECT': 'OBJECT',
-            'MESHEDIT_MESH': 'EDIT',
-            'MESHSCULPT': 'SCULPT',
-            'MESHPAINT_VERTEX': 'VERTEX_PAINT',
-            'MESHPAINT_WEIGHT': 'WEIGHT_PAINT',
-            'MESHPAINT_TEXTURE': 'TEXTURE_PAINT',
             'MESHEDIT': 'EDIT',
+            'MESHSCULPT': 'SCULPT',
             'MESHVERTEX_PAINT': 'VERTEX_PAINT',
             'MESHWEIGHT_PAINT': 'WEIGHT_PAINT',
             'MESHTEXTURE_PAINT': 'TEXTURE_PAINT',
+
+            # Grease Pencil 类型（4.2 版本）
             'GPENCILOBJECT': 'OBJECT',
             'GPENCILEDIT_GPENCIL': 'EDIT_GPENCIL',
             'GPENCILSCULPT_GPENCIL': 'SCULPT_GPENCIL',
             'GPENCILPAINT_GPENCIL': 'PAINT_GPENCIL',
             'GPENCILWEIGHT_GPENCIL': 'WEIGHT_GPENCIL',
             'GPENCILVERTEX_GPENCIL': 'VERTEX_GPENCIL',
+
+            # Grease Pencil 类型（4.3 版本）
             'GREASEPENCILOBJECT': 'OBJECT',
-            'GREASEPENCILEDIT_GREASE_PENCIL': 'EDIT',
+            'GREASEPENCILEDIT': 'EDIT',
             'GREASEPENCILSCULPT_GREASE_PENCIL': 'SCULPT_GREASE_PENCIL',
             'GREASEPENCILPAINT_GREASE_PENCIL': 'PAINT_GREASE_PENCIL',
             'GREASEPENCILWEIGHT_GREASE_PENCIL': 'WEIGHT_GREASE_PENCIL',
             'GREASEPENCILVERTEX_GREASE_PENCIL': 'VERTEX_GREASE_PENCIL',
+
+            # Armature 类型（两个版本保持一致）
             'ARMATUREOBJECT': 'OBJECT',
-            'ARMATUREEDIT_ARMATURE': 'EDIT',
+            'ARMATUREEDIT': 'EDIT',
             'ARMATUREPOSE': 'POSE'
         }
 
@@ -46,9 +49,10 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
             if bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
                 bpy.ops.object.editmode_toggle()
 
-            elif bpy.context.active_object.type+bpy.context.mode in type_mode_maps:
+            elif bpy.context.active_object.type+bpy.context.active_object.mode in type_mode_maps:
                 if typeandmode_name["object_prev_name"] == "NONE" or \
-                    typeandmode_name["object_prev_name"] != bpy.context.active_object.name:
+                    typeandmode_name["object_prev_name"] != bpy.context.active_object.name or \
+                    typeandmode_name["object_prev_type"] != bpy.context.active_object.type:
     
                     bpy.ops.mode.menu_switch()
                 else:

@@ -22,7 +22,8 @@ def super_quick_switch(keys_combination, context):
 
     #测试命令：
     elif keys_combination == 'ALT_MOUSE_RIGHT':
-        bpy.ops.wm.toolbar()
+        bpy.ops.mode.menu_switch()
+        #bpy.ops.wm.toolbar()
 
     return False
 
