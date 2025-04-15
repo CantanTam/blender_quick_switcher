@@ -1,6 +1,7 @@
 import bpy
 
 from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
+from .operator_typeandmode_name_mode import typeandmode_name # 导入字典用于比较 typeandmode 变化
 
 # 模拟原生 tab 切换编辑模式
 class MODE_TAB_OT_Switch(bpy.types.Operator):
@@ -46,7 +47,14 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
                 bpy.ops.object.editmode_toggle()
 
             elif bpy.context.active_object.type+bpy.context.mode in type_mode_maps:
-                bpy.ops.mode.menu_switch()
+                if typeandmode_name["object_prev_name"] == "NONE" or \
+                    typeandmode_name["object_prev_name"] != bpy.context.active_object.name:
+    
+                    bpy.ops.mode.menu_switch()
+                else:
+                    # 先用 typeandmode_name 字典 获得原来的 object_prev_typeandmode 状态，例如 MESHEDIT_MESH
+                    # 再用字典 types_mode_maps 把 MESHEDIT_MESH 转换为 EDIT 的切换模式。
+                    bpy.ops.object.mode_set(mode=type_mode_maps[typeandmode_name["object_prev_typeandmode"]])
 
             else:
                 return {'CANCELLED'}
