@@ -1,31 +1,38 @@
 import bpy
 from bpy.types import Operator
 from bpy.props import EnumProperty
+from .preference import QuickSwitchAddonPreferences
 
 # 模式切换处理（添加物体检查）
 def super_quick_switch(keys_combination, context):
-    # Ctrl + 鼠标滚轮向下的操作
-    if keys_combination == 'CTRL_WHEEL_DOWN':
-        bpy.ops.mode.tab_switch()
+    # 定义direction到prefs属性的映射
+    direction_to_pref = {
+        'CTRL_WHEEL_UP': 'ctrl_wheel_up',
+        'CTRL_WHEEL_DOWN': 'ctrl_wheel_down',
+        'CTRL_ALT_WHEEL_UP': 'ctrl_alt_wheel_up',
+        'CTRL_ALT_WHEEL_DOWN': 'ctrl_alt_wheel_down',
+        'SHIFT_WHEEL_UP': 'shift_wheel_up',
+        'SHIFT_WHEEL_DOWN': 'shift_wheel_down',
+        'CTRL_SHIFT_WHEEL_UP': 'ctrl_shift_wheel_up',
+        'CTRL_SHIFT_WHEEL_DOWN': 'ctrl_shift_wheel_down',
+        'ALT_MOUSE_RIGHT': 'alt_mouse_right',
+        'CTRL_ALT_MOUSE_RIGHT': 'ctrl_alt_mouse_right',
+        'SHIFT_ALT_MOUSE_RIGHT': 'shift_alt_mouse_right',
+        'SHIFT_ALT_WHEEL_UP': 'shift_alt_wheel_up',
+        'SHIFT_ALT_WHEEL_DOWN': 'shift_alt_wheel_down'
+    }
 
-    # Ctrl + 鼠标滚轮向上的操作
-    elif keys_combination == 'CTRL_WHEEL_UP':
-        bpy.ops.mode.normal_up_to_down()
-
-    elif keys_combination == 'CTRL_SHIFT_WHEEL_UP':
-        bpy.ops.switch.vertex_edge_face()
-
-    #测试命令：
-    elif keys_combination == 'CTRL_ALT_MOUSE_RIGHT':
-        bpy.ops.mode.menu_switch()
-        #bpy.ops.wm.toolbar()
-
-    elif keys_combination == 'ALT_MOUSE_RIGHT':
-        bpy.ops.wm.toolbar()
-
-    elif keys_combination == 'SHIFT_ALT_WHEEL_DOWN':
-        bpy.ops.wm.toolbar()
-
+    prefs = context.preferences.addons[__package__].preferences
+    pref_name = direction_to_pref.get(keys_combination)
+    
+    if pref_name:
+        op = getattr(prefs, pref_name)
+        if op != 'NONE':
+            try:
+                exec(f'bpy.ops.{op}()')  # 自动添加bpy.ops.前缀和()后缀
+            except Exception as e:
+                print(f"执行操作失败: bpy.ops.{op}(), 错误: {e}")
+    
     return True
 
 # 主操作符（添加前置检查）
@@ -49,7 +56,7 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
             ('SHIFT_ALT_MOUSE_RIGHT', 'SHIFT_ALT_MOUSE_RIGHT', ''),
             # 添加 shift alt 滚轮向上快捷键
             ('SHIFT_ALT_WHEEL_UP', 'SHIFT_ALT_WHEEL_UP', ''),
-            ('SHIFT_ALT_WHEEL_UP', 'SHIFT_ALT_WHEEL_UP', '')
+            ('SHIFT_ALT_WHEEL_DOWN', 'SHIFT_ALT_WHEEL_DOWN', '')
         ],
         default='CTRL_WHEEL_UP'
     )
@@ -98,4 +105,3 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
             return {'FINISHED'}
 
         return {'PASS_THROUGH'}
-

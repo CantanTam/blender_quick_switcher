@@ -1,5 +1,7 @@
 import bpy
 
+from .preference import QuickSwitchAddonPreferences
+
 bl_info = {
     "name": "AA_切换",
     "author": "Your Name",
@@ -21,6 +23,9 @@ from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
 
 def register():
+    # 注册插件偏好设置
+    bpy.utils.register_class(QuickSwitchAddonPreferences)
+    
     # 注册模式监测功能
     register_mode_handler()
     
@@ -36,6 +41,9 @@ def register():
     keymap.register()
 
 def unregister():
+    # 注销插件偏好设置
+    bpy.utils.unregister_class(QuickSwitchAddonPreferences)
+    
     # 注销模式监测功能
     unregister_mode_handler()
     
