@@ -2,11 +2,6 @@ import bpy
 from bpy.types import Operator
 from bpy.props import EnumProperty
 
-#使用全局变量，跟踪对象变化前后的名称/格式变化/编辑模式
-object_current_name = "NONE"
-object_prev_typeandmode = "NONE"
-object_current_typeandmode = "NONE"
-
 # 模式切换处理（添加物体检查）
 def super_quick_switch(keys_combination, context):
     # Ctrl + 鼠标滚轮向下的操作
@@ -21,11 +16,17 @@ def super_quick_switch(keys_combination, context):
         bpy.ops.switch.vertex_edge_face()
 
     #测试命令：
-    elif keys_combination == 'ALT_MOUSE_RIGHT':
+    elif keys_combination == 'CTRL_ALT_MOUSE_RIGHT':
         bpy.ops.mode.menu_switch()
         #bpy.ops.wm.toolbar()
 
-    return False
+    elif keys_combination == 'ALT_MOUSE_RIGHT':
+        bpy.ops.wm.toolbar()
+
+    elif keys_combination == 'SHIFT_ALT_WHEEL_DOWN':
+        bpy.ops.wm.toolbar()
+
+    return True
 
 # 主操作符（添加前置检查）
 class CSAWHEEL_OT_ModeSwitchOperator(Operator):
@@ -45,7 +46,10 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
             ('CTRL_SHIFT_WHEEL_DOWN', 'CTRL_SHIFT_WHEEL_DOWN', ''),
             ('ALT_MOUSE_RIGHT', 'ALT_MOUSE_RIGHT', ''),
             ('CTRL_ALT_MOUSE_RIGHT', 'CTRL_ALT_MOUSE_RIGHT', ''),
-            ('SHIFT_ALT_MOUSE_RIGHT', 'SHIFT_ALT_MOUSE_RIGHT', '')
+            ('SHIFT_ALT_MOUSE_RIGHT', 'SHIFT_ALT_MOUSE_RIGHT', ''),
+            # 添加 shift alt 滚轮向上快捷键
+            ('SHIFT_ALT_WHEEL_UP', 'SHIFT_ALT_WHEEL_UP', ''),
+            ('SHIFT_ALT_WHEEL_UP', 'SHIFT_ALT_WHEEL_UP', '')
         ],
         default='CTRL_WHEEL_UP'
     )
@@ -66,6 +70,8 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
                 keys_combination = 'CTRL_ALT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'CTRL_ALT_WHEEL_DOWN'
             elif event.ctrl and event.shift:
                 keys_combination = 'CTRL_SHIFT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'CTRL_SHIFT_WHEEL_DOWN'
+            elif event.shift and event.alt:
+                keys_combination = 'SHIFT_ALT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'SHIFT_ALT_WHEEL_DOWN'
             elif event.shift:
                 keys_combination = 'SHIFT_WHEEL_UP' if event.type == 'WHEELUPMOUSE' else 'SHIFT_WHEEL_DOWN'
             elif event.ctrl:
@@ -73,7 +79,9 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
 
         # 检查鼠标右键组合键
         elif event.type == 'RIGHTMOUSE':
-            if event.ctrl and event.alt:
+            if event.ctrl and event.shift and event.alt:
+                keys_combination = 'CTRL_SHIFT_ALT_MOUSE_RIGHT'
+            elif event.ctrl and event.alt:
                 keys_combination = 'CTRL_ALT_MOUSE_RIGHT'
             elif event.alt and event.shift:
                 keys_combination = 'SHIFT_ALT_MOUSE_RIGHT'
