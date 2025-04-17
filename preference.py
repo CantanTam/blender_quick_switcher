@@ -18,91 +18,91 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     
     ctrl_wheel_up: EnumProperty(
         name="Ctrl+鼠标上滚",
-        description="选择Ctrl+鼠标上滚切换功能",
+        description="选择Ctrl+鼠标上滚快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()',
+        default='switch.vertex_edge_face()',
     )
     
     ctrl_wheel_down: EnumProperty(
         name="Ctrl+鼠标下滚", 
-        description="选择Ctrl+鼠标下滚切换功能",
+        description="选择Ctrl+鼠标下滚快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()'
+        default='mode.tab_switch()'
     )
 
     ctrl_alt_wheel_up: EnumProperty(
-        name="Ctrl + Alt + 鼠标上滚", 
-        description="BBBB",
+        name="Ctrl+Alt+鼠标上滚", 
+        description="选择Ctrl+Alt+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     ctrl_alt_wheel_down: EnumProperty(
-        name="Ctrl + Alt + 鼠标下滚", 
-        description="BBBB",
+        name="Ctrl+Alt+鼠标下滚", 
+        description="选择Ctrl+Alt+鼠标下滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     shift_wheel_up: EnumProperty(
-        name="Shift +鼠标上滚", 
-        description="BBBB",
+        name="Shift+鼠标上滚", 
+        description="选择Shift+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     shift_wheel_down: EnumProperty(
-        name="Shift +鼠标下滚", 
-        description="BBBB",
+        name="Shift+鼠标下滚", 
+        description="选择Shift+鼠标下滚快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()'
+        default='wm.toolbar()'
     )
 
     ctrl_shift_wheel_up: EnumProperty(
-        name="Ctrl + Shift +鼠标上滚", 
-        description="BBBB",
+        name="Ctrl+Shift+鼠标上滚", 
+        description="选择Ctrl+Shift+鼠标上滚快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()'
+        default='mode.normal_down_to_up()'
     )
 
     ctrl_shift_wheel_down: EnumProperty(
-        name="Ctrl + Shift +鼠标下滚", 
-        description="BBBB",
+        name="Ctrl+Shift+鼠标下滚", 
+        description="选择Ctrl+Shift+鼠标下滚快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()'
+        default='mode.normal_up_to_down()'
     )
 
     shift_alt_wheel_up: EnumProperty(
-        name="Shift + Alt + 鼠标上滚", 
-        description="BBBB",
+        name="Shift+Alt+鼠标上滚", 
+        description="选择Shift+Alt+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     shift_alt_wheel_down: EnumProperty(
-        name="Shift + Alt + 鼠标下滚", 
-        description="BBBB",
+        name="Shift+Alt+鼠标下滚", 
+        description="选择Shift+Alt+鼠标下滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     alt_mouse_right: EnumProperty(
-        name="Alt + 右击", 
-        description="BBBB",
+        name="Alt+鼠标右键", 
+        description="选择Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     ctrl_alt_mouse_right: EnumProperty(
-        name="Ctrl + Alt + 右击", 
-        description="BBBB",
+        name="Ctrl+Alt+鼠标右键", 
+        description="选择Ctrl+Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
 
     shift_alt_mouse_right: EnumProperty(
-        name="Shift + Alt + 右击", 
-        description="BBBB",
+        name="Shift+Alt+鼠标右键", 
+        description="选择Shift+Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()'
     )
