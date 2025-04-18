@@ -4,6 +4,7 @@ import bpy
 class MODE_MENU_OT_Switch(bpy.types.Operator):
     bl_idname = "mode.menu_switch"
     bl_label = "选择编辑模式菜单"
+    bl_description = "类似系统自带的切换编辑模式菜单"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):

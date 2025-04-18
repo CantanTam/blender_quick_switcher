@@ -7,6 +7,7 @@ from .operator_typeandmode_name_mode import typeandmode_name # 导入字典用�
 class MODE_TAB_OT_Switch(bpy.types.Operator):
     bl_idname = "mode.tab_switch"
     bl_label = "tab模式切换编辑模式"
+    bl_description = "在最近的两种编辑模式之间进行切换"
     bl_options = {"REGISTER",'UNDO'}
 
     def execute(self, context):

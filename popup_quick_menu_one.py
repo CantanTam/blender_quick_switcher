@@ -1,8 +1,10 @@
 import bpy
 
+from .button_operator_dict import button_press_function
+
 class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
     bl_idname = "popup.quick_menu_one"
-    bl_label = "两列菜单"
+    bl_label = "极速菜单1"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -23,6 +25,8 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
     def draw(self, context):
         layout = self.layout
 
+        # 利用typeandmode 和
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
         # 创建两列布局
         row = layout.row()
         prefs = context.preferences.addons[__package__].preferences
@@ -44,12 +48,37 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
             col1.label(text=prefs.panel_one_col1_title, icon='PRESET')
             col1.separator()
             # 第一列菜单项
-            col1.operator("mode.menu_switch", text="模式切换1", icon='OBJECT_DATA')
-            col1.operator("mode.menu_switch", text="模式切换2", icon='EDITMODE_HLT')
-            col1.operator("mode.menu_switch", text="模式切换3", icon='MODIFIER')
+            
+            # 我在设置preference的时候，已经为 panel1_col1_button1 在下拉菜单选定了值，例如
+            # teston，现在是需要用用 'testone' 这个值在 button_press_function 当中寻找
+            # ("mode.tab_switch","智能切换","CUBE","MESH") 这个元组当中的 'mode.tab_switch'
+            # "智能切换","CUBE"这些值
+            temp_col1_button1 = button_press_function.get(prefs.panel1_col1_button1)
+            if prefs.panel1_col1_button1 != 'NO_BUTTON' and typeandmode in temp_col1_button1:
+                if prefs.panel1_col1_button1 != 'SEPARATOR':
+                    col1.operator(temp_col1_button1[0], text=temp_col1_button1[1], icon=temp_col1_button1[2])
+                else: 
+                    col1.separator()
+
+            temp_col1_button2 = button_press_function.get(prefs.panel1_col1_button2)
+            if prefs.panel1_col1_button2 != 'NO_BUTTON' and typeandmode in temp_col1_button2:
+                if prefs.panel1_col1_button2 != 'SEPARATOR':
+                    col1.operator(temp_col1_button2[0], text=temp_col1_button2[1], icon=temp_col1_button2[2])
+                else: 
+                    col1.separator()
+            
+            temp_col1_button3 = button_press_function.get(prefs.panel1_col1_button3)
+            if prefs.panel1_col1_button3 != 'NO_BUTTON' and typeandmode in temp_col1_button3:
+                if prefs.panel1_col1_button3 != 'SEPARATOR':
+                    col1.operator(temp_col1_button3[0], text=temp_col1_button3[1], icon=temp_col1_button3[2])
+                else: 
+                    col1.separator()
+
+            #col1.operator("mode.menu_switch", text="模式切换2", icon='EDITMODE_HLT')
+            #col1.operator("mode.menu_switch", text="模式切换3", icon='MODIFIER')
 
         if prefs.panel_one_col2_title and prefs.panel_one_col2_title.strip():
-            col2.label(text=prefs.panel_one_col2_title, icon='MENU_PANEL')
+            col2.label(text=prefs.panel_one_col2_title, icon='PRESET')
             col2.separator()
             # 第二列菜单项
             col2.operator("mode.menu_switch", text="模式切换4", icon='RESTRICT_SELECT_OFF')
@@ -57,11 +86,12 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
             col2.operator("mode.menu_switch", text="模式切换6", icon='HIDE_OFF')
 
         if prefs.panel_one_col3_title and prefs.panel_one_col3_title.strip():
-            col3.label(text=prefs.panel_one_col3_title, icon='MENU_PANEL')
+            col3.label(text=prefs.panel_one_col3_title, icon='PRESET')
             col3.separator()
             # 第三列菜单项
-            col3.operator("mode.menu_switch", text="模式切换7", icon='MODIFIER_DATA')
-            col3.operator("mode.menu_switch", text="模式切换8", icon='MODIFIER_ON')
+            col3.operator("switch.vertex_edge_face", text="模式切换7", icon='MODIFIER_DATA')
+            col3.operator("mode.menu_switch", text="")
             col3.operator("mode.menu_switch", text="模式切换9", icon='MODIFIER_OFF')
+
 
 # 需要另外写一个 call.popup_menu_one 函数来调用这个类函数

@@ -2,6 +2,7 @@ import bpy
 import webbrowser
 from bpy.types import AddonPreferences, Operator
 from bpy.props import BoolProperty, EnumProperty
+from .button_operator_dict import button_options_list
 
 class QuickSwitchAddonPreferences(AddonPreferences):
     bl_idname = __package__  # 使用当前包名作为标识符
@@ -13,16 +14,12 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         ('mode.normal_down_to_up()', '下上方向快速切换编辑模式', '不弹出菜单，直接以从下到上的顺序切换编辑模式'), 
         ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
         ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
-        ('call.popup_menu_one()','超级菜单1','超级菜单1'),
+        ('call.popup_menu_one()','极速菜单1','超级菜单1'),
         ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
     ]
 
-    button_press_function = [
-        ('wm.toolbar()','菜单功能1','测试菜单功能1'),
-        ('mode.menu_switch()', '菜单功能2', '测试菜单功能2'),
-        ('SEPARATOR', '[ 分隔符 ]', '测试分隔符功能'),
-        ('NONE', '[ 无功能 ]', '测试按钮留空功能')
-    ]
+
+
 
 
     
@@ -124,6 +121,18 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
     
 
+# 设置一个空按钮，如果按钮功能不适用当前模式，变成一个空白按钮
+# 这个选项不在 def draw 中显示
+    blank_button: EnumProperty(
+        name="菜单1列1按钮1",
+        description="菜单1列1按钮1功能测试",
+        items=button_options_list,
+        default='EMPTY_BUTTON',
+    )
+
+
+
+
 # --------↓↓↓↓ panel one 相关设置 ↓↓↓↓---------
     expand_quick_panel_one:BoolProperty(
         name="极速菜单1",
@@ -150,15 +159,29 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panel1_col1_button1: EnumProperty(
         name="菜单1列1按钮1",
         description="菜单1列1按钮1功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='NO_BUTTON',
     )
 
     panel1_col1_button2: EnumProperty(
         name="菜单1列1按钮2",
         description="菜单1列1按钮2功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button3: EnumProperty(
+        name="菜单1列1按钮3",
+        description="菜单1列1按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    # 添加搜索属性
+    search_filter: bpy.props.StringProperty(
+        name="搜索",
+        description="输入搜索内容",
+        default="搜索框测试"  # 设置默认值作为placeholder
     )
 
     panel_one_col2_title: bpy.props.StringProperty(
@@ -180,15 +203,15 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panel1_col2_button1: EnumProperty(
         name="菜单1列2按钮1",
         description="菜单1列2按钮1功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='EMPTY_BUTTON',
     )
 
     panel1_col2_button2: EnumProperty(
         name="菜单1列2按钮2",
         description="菜单1列2按钮2功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='EMPTY_BUTTON',
     )
 
     panel_one_col3_title: bpy.props.StringProperty(
@@ -210,15 +233,15 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panel1_col3_button1: EnumProperty(
         name="菜单1列3按钮1",
         description="菜单1列3按钮1功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='EMPTY_BUTTON',
     )
 
     panel1_col3_button2: EnumProperty(
         name="菜单1列3按钮2",
         description="菜单1列3按钮2功能测试",
-        items=button_press_function,
-        default='wm.toolbar()',
+        items=button_options_list,
+        default='EMPTY_BUTTON',
     )
 
 
@@ -237,7 +260,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon="TRIA_DOWN" if self.show_shortcut_options else "TRIA_RIGHT",
                 icon_only=True, 
                 emboss=False)
-        row.label(text="选择快捷键功能：")
+        row.label(text="选择快捷键功能", icon="MODIFIER")
         
         if self.show_shortcut_options:
             # 选项内容区域
@@ -278,7 +301,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon="TRIA_DOWN" if self.expand_quick_panel_one else "TRIA_RIGHT",
                 icon_only=True, 
                 emboss=False)
-        row.label(text="极速菜单1：")
+        row.label(text="极速菜单1",icon='COLLECTION_COLOR_01')
             
         if self.expand_quick_panel_one:
 
@@ -288,10 +311,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col1_title", text="",icon="TOPBAR")
             row.prop(self, "panel_one_col1_width", text="第一列宽度")
 
-            row = top_box.row()
+            content_box = top_box.box()
+            row = content_box.row()
             row.prop(self, "panel1_col1_button1")
-            row = top_box.row()
+            row.prop(self, "search_filter", text="", icon="VIEWZOOM")  # 搜索功能后面再开发
+            row = content_box.row()
             row.prop(self, "panel1_col1_button2")
+            row = content_box.row()
+            row.prop(self, "panel1_col1_button3")
 
             # 第二列设置项：
             top_box = box.box()
@@ -305,7 +332,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row = content_box.row()
             row.prop(self, "panel1_col2_button2")
 
-            # 第二列设置项：
+            # 第三列设置项：
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_one_col3_title", text="",icon="TOPBAR")
@@ -316,14 +343,3 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel1_col3_button1")
             row = content_box.row()
             row.prop(self, "panel1_col3_button2")
-
-
-
-
-
-
-def register():
-    bpy.utils.register_class(QuickSwitchAddonPreferences)
-
-def unregister():
-    bpy.utils.unregister_class(QuickSwitchAddonPreferences)

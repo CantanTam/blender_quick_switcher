@@ -3,6 +3,7 @@ import bpy
 class VERTEX_EDGE_FACE_OT_Switch(bpy.types.Operator):
     bl_idname = "switch.vertex_edge_face"
     bl_label = "切换点/线/面"
+    bl_description = "面→线→点方向快速切换"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
