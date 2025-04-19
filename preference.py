@@ -27,7 +27,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="Ctrl+鼠标上滚",
         description="选择Ctrl+鼠标上滚快捷键功能",
         items=keys_combination_functions,
-        default='switch.vertex_edge_face()',
+        default='call.popup_menu_one()',
     )
     
     ctrl_wheel_down: EnumProperty(
@@ -127,7 +127,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="菜单1列1按钮1",
         description="菜单1列1按钮1功能测试",
         items=button_options_list,
-        default='EMPTY_BUTTON',
+        default='NO_BUTTON',
     )
 
 
@@ -177,7 +177,56 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         default='NO_BUTTON',
     )
 
-    # 添加搜索属性
+    panel1_col1_button4: EnumProperty(
+        name="菜单1列1按钮4",
+        description="菜单1列1按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button5: EnumProperty(
+        name="菜单1列1按钮5",
+        description="菜单1列1按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button6: EnumProperty(
+        name="菜单1列1按钮6",
+        description="菜单1列1按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button7: EnumProperty(
+        name="菜单1列1按钮7",
+        description="菜单1列1按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button8: EnumProperty(
+        name="菜单1列1按钮8",
+        description="菜单1列1按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button9: EnumProperty(
+        name="菜单1列1按钮9",
+        description="菜单1列1按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    panel1_col1_button10: EnumProperty(
+        name="菜单1列1按钮10",
+        description="菜单1列1按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+    )
+
+    # 后期添加搜索框功能
     search_filter: bpy.props.StringProperty(
         name="搜索",
         description="输入搜索内容",
@@ -204,14 +253,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="菜单1列2按钮1",
         description="菜单1列2按钮1功能测试",
         items=button_options_list,
-        default='EMPTY_BUTTON',
+        default='NO_BUTTON',
     )
 
     panel1_col2_button2: EnumProperty(
         name="菜单1列2按钮2",
         description="菜单1列2按钮2功能测试",
         items=button_options_list,
-        default='EMPTY_BUTTON',
+        default='NO_BUTTON',
     )
 
     panel_one_col3_title: bpy.props.StringProperty(
@@ -234,14 +283,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="菜单1列3按钮1",
         description="菜单1列3按钮1功能测试",
         items=button_options_list,
-        default='EMPTY_BUTTON',
+        default='NO_BUTTON',
     )
 
     panel1_col3_button2: EnumProperty(
         name="菜单1列3按钮2",
         description="菜单1列3按钮2功能测试",
         items=button_options_list,
-        default='EMPTY_BUTTON',
+        default='NO_BUTTON',
     )
 
 
@@ -314,7 +363,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             content_box = top_box.box()
             row = content_box.row()
             row.prop(self, "panel1_col1_button1")
-            row.prop(self, "search_filter", text="", icon="VIEWZOOM")  # 搜索功能后面再开发
+            #row.prop(self, "search_filter", text="", icon="VIEWZOOM")  # 搜索功能后面再开发
             row = content_box.row()
             row.prop(self, "panel1_col1_button2")
             row = content_box.row()
