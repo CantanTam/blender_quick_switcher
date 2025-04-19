@@ -1,7 +1,6 @@
 
 button_options_list = [
     ('NO_BUTTON',"[ 无按钮 ]","默认不显示按钮"),
-    ('SEPARATOR',"[ 分隔符 ]","分隔上下按钮，但第一行按钮不能为分隔符"),
     ('testone','菜单功能1','测试菜单功能1'),
     ('testtwo', '菜单功能2', '测试菜单功能2'),
     #('EMPTY_BUTTON', '[ 无功能 ]', '测试按钮留空功能'),
@@ -9,9 +8,6 @@ button_options_list = [
 
 # [0]调用的函数id；[1]按钮名称；[2]按钮图标；[3][4][…]typeandmode包含在其中才显示按钮
 button_press_function = {
-    # SEPARATOR 这里，需要把所有的 typeandmode 都填写进行，才能在所有的场景平常分隔
-    'SEPARATOR':("MESHEDIT","MESHOBJECT"),
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
     'testtwo':("wm.toolbar","系统快捷键","BOOKMARKS","OBJCET","GREASEPENCILOBJECT","MESHEDIT","MESHOBJECT"),
-    #'EMPTY_BUTTON':("button.function_no_action","","")
 }

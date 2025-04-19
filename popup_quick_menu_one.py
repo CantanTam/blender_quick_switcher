@@ -110,31 +110,20 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
             # "智能切换","CUBE"这些值
             temp_col1_button1 = button_press_function.get(prefs.panel1_col1_button1)
             if prefs.panel1_col1_button1 != 'NO_BUTTON' and typeandmode in temp_col1_button1:
-                if prefs.panel1_col1_button1 != 'SEPARATOR':
-                    col1.operator(temp_col1_button1[0], text=temp_col1_button1[1], icon=temp_col1_button1[2])
-                else: 
-                    col1.separator()
+                col1.operator(temp_col1_button1[0], text=temp_col1_button1[1], icon=temp_col1_button1[2])
 
             temp_col1_button2 = button_press_function.get(prefs.panel1_col1_button2)
             if prefs.panel1_col1_button2 != 'NO_BUTTON' and typeandmode in temp_col1_button2:
-                if prefs.panel1_col1_button2 != 'SEPARATOR':
-                    col1.operator(temp_col1_button2[0], text=temp_col1_button2[1], icon=temp_col1_button2[2])
-                else:
-                    col1.separator()
+                col1.operator(temp_col1_button2[0], text=temp_col1_button2[1], icon=temp_col1_button2[2])
             
             temp_col1_button3 = button_press_function.get(prefs.panel1_col1_button3)
             if prefs.panel1_col1_button3 != 'NO_BUTTON' and typeandmode in temp_col1_button3:
-                if prefs.panel1_col1_button3 != 'SEPARATOR':
-                    col1.operator(temp_col1_button3[0], text=temp_col1_button3[1], icon=temp_col1_button3[2])
-                else: 
-                    col1.separator()
+                col1.operator(temp_col1_button3[0], text=temp_col1_button3[1], icon=temp_col1_button3[2])
 
             temp_col1_button4 = button_press_function.get(prefs.panel1_col1_button4)
             if prefs.panel1_col1_button4 != 'NO_BUTTON' and typeandmode in temp_col1_button4:
-                if prefs.panel1_col1_button4 != 'SEPARATOR':
-                    col1.operator(temp_col1_button4[0], text=temp_col1_button4[1], icon=temp_col1_button4[2])
-                else: 
-                    col1.separator()
+                col1.operator(temp_col1_button4[0], text=temp_col1_button4[1], icon=temp_col1_button4[2])
+
 
             #col1.operator("mode.menu_switch", text="模式切换2", icon='EDITMODE_HLT')
             #col1.operator("mode.menu_switch", text="模式切换3", icon='MODIFIER')
