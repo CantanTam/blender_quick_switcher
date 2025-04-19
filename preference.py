@@ -368,6 +368,8 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel1_col1_button2")
             row = content_box.row()
             row.prop(self, "panel1_col1_button3")
+            row = content_box.row()
+            row.prop(self, "panel1_col1_button4")
 
             # 第二列设置项：
             top_box = box.box()

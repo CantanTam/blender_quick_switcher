@@ -40,7 +40,7 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
             button_press_function.get(prefs.panel1_col1_button10, ())
         )
 
-        col1_width = prefs.panel_one_col1_width+10 if prefs.panel_one_col1_title.strip() != "" and bybutton_show_col1 == 1 and typeandmode in col1_tuples else 0
+        col1_width = prefs.panel_one_col1_width+10 if prefs.panel_one_col1_title.strip() != "" and bybutton_show_col1 != 0 and typeandmode in col1_tuples else 0
         # ---------------↑↑↑↑ 计算第 col1 的宽度 ↑↑↑↑-----------------------
 
 
@@ -119,13 +119,20 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
             if prefs.panel1_col1_button2 != 'NO_BUTTON' and typeandmode in temp_col1_button2:
                 if prefs.panel1_col1_button2 != 'SEPARATOR':
                     col1.operator(temp_col1_button2[0], text=temp_col1_button2[1], icon=temp_col1_button2[2])
-                else: 
+                else:
                     col1.separator()
             
             temp_col1_button3 = button_press_function.get(prefs.panel1_col1_button3)
             if prefs.panel1_col1_button3 != 'NO_BUTTON' and typeandmode in temp_col1_button3:
                 if prefs.panel1_col1_button3 != 'SEPARATOR':
                     col1.operator(temp_col1_button3[0], text=temp_col1_button3[1], icon=temp_col1_button3[2])
+                else: 
+                    col1.separator()
+
+            temp_col1_button4 = button_press_function.get(prefs.panel1_col1_button4)
+            if prefs.panel1_col1_button4 != 'NO_BUTTON' and typeandmode in temp_col1_button4:
+                if prefs.panel1_col1_button4 != 'SEPARATOR':
+                    col1.operator(temp_col1_button4[0], text=temp_col1_button4[1], icon=temp_col1_button4[2])
                 else: 
                     col1.separator()
 

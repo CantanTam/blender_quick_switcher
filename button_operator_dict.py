@@ -9,8 +9,8 @@ button_options_list = [
 
 # [0]调用的函数id；[1]按钮名称；[2]按钮图标；[3][4][…]typeandmode包含在其中才显示按钮
 button_press_function = {
-    'SEPARATOR':(),
+    'SEPARATOR':("MESHEDIT","MESHOBJECT"),
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
-    'testtwo':("switch.vertex_edge_face","切换点线面","BOOKMARKS","OBJCET","GREASEPENCILOBJECT","MESHEDIT"),
+    'testtwo':("wm.toolbar","系统快捷键","BOOKMARKS","OBJCET","GREASEPENCILOBJECT","MESHEDIT","MESHOBJECT"),
     #'EMPTY_BUTTON':("button.function_no_action","","")
 }
