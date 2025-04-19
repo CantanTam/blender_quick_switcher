@@ -9,6 +9,7 @@ button_options_list = [
 
 # [0]调用的函数id；[1]按钮名称；[2]按钮图标；[3][4][…]typeandmode包含在其中才显示按钮
 button_press_function = {
+    # SEPARATOR 这里，需要把所有的 typeandmode 都填写进行，才能在所有的场景平常分隔
     'SEPARATOR':("MESHEDIT","MESHOBJECT"),
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
     'testtwo':("wm.toolbar","系统快捷键","BOOKMARKS","OBJCET","GREASEPENCILOBJECT","MESHEDIT","MESHOBJECT"),
