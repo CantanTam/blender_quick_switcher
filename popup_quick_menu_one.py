@@ -46,9 +46,17 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
         for i in range(1, 11):
             col6_tuples += button_press_function.get(getattr(prefs, f"panel1_col6_button{i}"), ())
 
+        col7_tuples = ()
+        for i in range(1, 11):
+            col7_tuples += button_press_function.get(getattr(prefs, f"panel1_col7_button{i}"), ())
+
+        col8_tuples = ()
+        for i in range(1, 11):
+            col8_tuples += button_press_function.get(getattr(prefs, f"panel1_col8_button{i}"), ())
+
         # 计算各列宽度
         col_widths = []
-        for i in range(1, 7):
+        for i in range(1, 9):
             col_title = getattr(prefs, f"panel_one_col{i}_title").strip()
             col_tuples = locals()[f"col{i}_tuples"]
             if col_title != "" and typeandmode in col_tuples:
@@ -95,17 +103,27 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
         for i in range(1, 11):
             col6_tuples += button_press_function.get(getattr(prefs, f"panel1_col6_button{i}"), ())
 
+        col7_tuples = ()
+        for i in range(1, 11):
+            col7_tuples += button_press_function.get(getattr(prefs, f"panel1_col7_button{i}"), ())
+
+        col8_tuples = ()
+        for i in range(1, 11):
+            col8_tuples += button_press_function.get(getattr(prefs, f"panel1_col8_button{i}"), ())
+
         col1_width = prefs.panel_one_col1_width if prefs.panel_one_col1_title.strip() != "" and typeandmode in col1_tuples else 0
         col2_width = prefs.panel_one_col2_width if prefs.panel_one_col2_title.strip() != "" and typeandmode in col2_tuples else 0
         col3_width = prefs.panel_one_col3_width if prefs.panel_one_col3_title.strip() != "" and typeandmode in col3_tuples else 0
         col4_width = prefs.panel_one_col4_width if prefs.panel_one_col4_title.strip() != "" and typeandmode in col4_tuples else 0
         col5_width = prefs.panel_one_col5_width if prefs.panel_one_col5_title.strip() != "" and typeandmode in col5_tuples else 0
         col6_width = prefs.panel_one_col6_width if prefs.panel_one_col6_title.strip() != "" and typeandmode in col6_tuples else 0
+        col7_width = prefs.panel_one_col7_width if prefs.panel_one_col7_title.strip() != "" and typeandmode in col7_tuples else 0
+        col8_width = prefs.panel_one_col8_width if prefs.panel_one_col8_title.strip() != "" and typeandmode in col8_tuples else 0
 
         # ---------------↑↑↑↑ 再计算一次第 col1 的宽度 ↑↑↑↑-----------------------
 
 
-        total_col_width = col1_width + col2_width + col3_width + col4_width + col5_width + col6_width
+        total_col_width = col1_width + col2_width + col3_width + col4_width + col5_width + col6_width + col7_width + col8_width
 
 
         # ------------创建十列布局-------------------------
@@ -131,6 +149,12 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
         if prefs.panel_one_col6_title.strip() != "" and typeandmode in col6_tuples:
             col6 = row.column(align=True)
             col6.scale_x = col6_width  / total_col_width  # 设置第六列宽度比例
+        if prefs.panel_one_col7_title.strip() != "" and typeandmode in col7_tuples:
+            col7 = row.column(align=True)
+            col7.scale_x = col7_width  / total_col_width  # 设置第七列宽度比例
+        if prefs.panel_one_col8_title.strip() != "" and typeandmode in col8_tuples:
+            col8 = row.column(align=True)
+            col8.scale_x = col8_width  / total_col_width  # 设置第八列宽度比例
 
         # 第一列菜单项
         if prefs.panel_one_col1_title.strip() != "" and typeandmode in col1_tuples:
@@ -212,5 +236,31 @@ class QUICK_POPUP_MENU_OT_one(bpy.types.Operator):
                     col6.separator()
                 elif temp_col6_button and typeandmode in temp_col6_button:
                     col6.operator(temp_col6_button[0], text=temp_col6_button[1], icon=temp_col6_button[2])
+
+        # 第七列菜单项
+        if prefs.panel_one_col7_title.strip() != "" and typeandmode in col7_tuples:
+            col7.label(text=prefs.panel_one_col7_title, icon='PRESET')
+            col7.separator()
+
+            for i in range(1, 11):
+                col7_button_value = getattr(prefs, f"panel1_col7_button{i}")
+                temp_col7_button = button_press_function.get(col7_button_value)
+                if col7_button_value == 'SEPARATOR':
+                    col7.separator()
+                elif temp_col7_button and typeandmode in temp_col7_button:
+                    col7.operator(temp_col7_button[0], text=temp_col7_button[1], icon=temp_col7_button[2])
+
+        # 第八列菜单项
+        if prefs.panel_one_col8_title.strip() != "" and typeandmode in col8_tuples:
+            col8.label(text=prefs.panel_one_col8_title, icon='PRESET')
+            col8.separator()
+
+            for i in range(1, 11):
+                col8_button_value = getattr(prefs, f"panel1_col8_button{i}")
+                temp_col8_button = button_press_function.get(col8_button_value)
+                if col8_button_value == 'SEPARATOR':
+                    col8.separator()
+                elif temp_col8_button and typeandmode in temp_col8_button:
+                    col8.operator(temp_col8_button[0], text=temp_col8_button[1], icon=temp_col8_button[2])
 
 # 需要另外写一个 call.popup_menu_one 函数来调用这个类函数
