@@ -19,7 +19,6 @@ from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_mode_switch_tab import MODE_TAB_OT_Switch
 from .popup_quick_menu_one import QUICK_POPUP_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
-from .search_operator import SEARCH_OT_quick_search
 from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
@@ -46,7 +45,6 @@ def register():
     bpy.utils.register_class(MODE_TAB_OT_Switch)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_one)
-    bpy.utils.register_class(SEARCH_OT_quick_search)
     
     # 注册键位映射
     keymap.register()
@@ -59,7 +57,6 @@ def unregister():
     unregister_buttons()  
     
     # 注销所有Operator类
-    bpy.utils.unregister_class(SEARCH_OT_quick_search)
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_one)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one)
     bpy.utils.unregister_class(MODE_TAB_OT_Switch)
