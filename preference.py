@@ -62,6 +62,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
         ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
         ('call.popup_menu_one()','极速菜单1','超级菜单1'),
+        ('call.popup_menu_two()','极速菜单2','超级菜单2'),
         ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
     ]
 
@@ -186,12 +187,16 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 # 设置一个空按钮，如果按钮功能不适用当前模式，变成一个空白按钮
 # 这个选项不在 def draw 中显示
     blank_button: EnumProperty(
-        name="菜单1列1按钮1",
-        description="菜单1列1按钮1功能测试",
+        name="空白按钮",
+        description="用于不显示按钮",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
     )
+
+
+
+
 
 
 
@@ -909,40 +914,40 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col8_button1: EnumProperty(
-        name="菜单1列7按钮1",
-        description="菜单1列7按钮1功能测试",
+        name="菜单1列8按钮1",
+        description="菜单1列8按钮1功能测试",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
     )
 
     panel1_col8_button2: EnumProperty(
-        name="菜单1列7按钮2",
-        description="菜单1列7按钮2功能测试",
+        name="菜单1列8按钮2",
+        description="菜单1列8按钮2功能测试",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
     )
 
     panel1_col8_button3: EnumProperty(
-        name="菜单1列7按钮3",
-        description="菜单1列7按钮3功能测试",
+        name="菜单1列8按钮3",
+        description="菜单1列8按钮3功能测试",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
     )
 
     panel1_col8_button4: EnumProperty(
-        name="菜单1列7按钮4",
-        description="菜单1列7按钮4功能测试",
+        name="菜单1列8按钮4",
+        description="菜单1列8按钮4功能测试",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
     )
 
     panel1_col8_button5: EnumProperty(
-        name="菜单1列7按钮5",
-        description="菜单1列7按钮5功能测试",
+        name="菜单1列8按钮5",
+        description="菜单1列8按钮5功能测试",
         items=button_options_list,
         default='NO_BUTTON',
         update=update_preferences
@@ -1003,10 +1008,808 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 # --------↓↓↓↓ panel two 相关设置 ↓↓↓↓---------
+    expand_quick_panel_two:BoolProperty(
+        name="极速菜单2",
+        description="展开/折叠极速菜单2",
+        default=True,
+        update=update_preferences
+    )
+    
+    panel_two_col1_title: bpy.props.StringProperty(
+        name="第一列标题",
+        description="留空不显示该列",
+        default="第一列标题",
+        update=update_preferences
+    )
 
+    panel_two_col1_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第一列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
 
+    panel2_col1_button1: EnumProperty(
+        name="菜单2列1按钮1",
+        description="菜单2列1按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
 
+    panel2_col1_button2: EnumProperty(
+        name="菜单2列1按钮2",
+        description="菜单2列1按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button3: EnumProperty(
+        name="菜单2列1按钮3",
+        description="菜单2列1按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button4: EnumProperty(
+        name="菜单2列1按钮4",
+        description="菜单2列1按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button5: EnumProperty(
+        name="菜单2列1按钮5",
+        description="菜单2列1按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button6: EnumProperty(
+        name="菜单2列1按钮6",
+        description="菜单2列1按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button7: EnumProperty(
+        name="菜单2列1按钮7",
+        description="菜单2列1按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button8: EnumProperty(
+        name="菜单2列1按钮8",
+        description="菜单2列1按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button9: EnumProperty(
+        name="菜单2列1按钮9",
+        description="菜单2列1按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col1_button10: EnumProperty(
+        name="菜单2列1按钮10",
+        description="菜单2列1按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col2_title: bpy.props.StringProperty(
+        name="第二列标题",
+        description="留空不显示该列",
+        default="第二列标题",
+        update=update_preferences
+    )
+
+    panel_two_col2_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第二列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col2_button1: EnumProperty(
+        name="菜单2列2按钮1",
+        description="菜单2列2按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button2: EnumProperty(
+        name="菜单2列2按钮2",
+        description="菜单2列2按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button3: EnumProperty(
+        name="菜单2列2按钮3",
+        description="菜单2列2按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button4: EnumProperty(
+        name="菜单2列2按钮4",
+        description="菜单2列2按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button5: EnumProperty(
+        name="菜单2列2按钮5",
+        description="菜单2列2按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button6: EnumProperty(
+        name="菜单2列2按钮6",
+        description="菜单2列2按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button7: EnumProperty(
+        name="菜单2列2按钮7",
+        description="菜单2列2按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button8: EnumProperty(
+        name="菜单2列2按钮8",
+        description="菜单2列2按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button9: EnumProperty(
+        name="菜单2列2按钮9",
+        description="菜单2列2按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col2_button10: EnumProperty(
+        name="菜单2列2按钮10",
+        description="菜单2列2按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col3_title: bpy.props.StringProperty(
+        name="第三列标题",
+        description="留空不显示该列",
+        default="第三列标题",
+        update=update_preferences
+    )
+
+    panel_two_col3_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第三列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col3_button1: EnumProperty(
+        name="菜单2列3按钮1",
+        description="菜单2列3按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button2: EnumProperty(
+        name="菜单2列3按钮2",
+        description="菜单2列3按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button3: EnumProperty(
+        name="菜单2列3按钮3",
+        description="菜单2列3按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button4: EnumProperty(
+        name="菜单2列3按钮4",
+        description="菜单2列3按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button5: EnumProperty(
+        name="菜单2列3按钮5",
+        description="菜单2列3按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button6: EnumProperty(
+        name="菜单2列3按钮6",
+        description="菜单2列3按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button7: EnumProperty(
+        name="菜单2列3按钮7",
+        description="菜单2列3按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button8: EnumProperty(
+        name="菜单2列3按钮8",
+        description="菜单2列3按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button9: EnumProperty(
+        name="菜单2列3按钮9",
+        description="菜单2列3按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col3_button10: EnumProperty(
+        name="菜单2列3按钮10",
+        description="菜单2列3按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col4_title: bpy.props.StringProperty(
+        name="第四列标题",
+        description="留空不显示该列",
+        default="第四列标题",
+        update=update_preferences
+    )
+
+    panel_two_col4_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第四列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col4_button1: EnumProperty(
+        name="菜单2列4按钮1",
+        description="菜单2列4按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button2: EnumProperty(
+        name="菜单2列4按钮2",
+        description="菜单2列4按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button3: EnumProperty(
+        name="菜单2列4按钮3",
+        description="菜单2列4按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button4: EnumProperty(
+        name="菜单2列4按钮4",
+        description="菜单2列4按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button5: EnumProperty(
+        name="菜单2列4按钮5",
+        description="菜单2列4按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button6: EnumProperty(
+        name="菜单2列4按钮6",
+        description="菜单2列4按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button7: EnumProperty(
+        name="菜单2列4按钮7",
+        description="菜单2列4按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button8: EnumProperty(
+        name="菜单2列4按钮8",
+        description="菜单2列4按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button9: EnumProperty(
+        name="菜单2列4按钮9",
+        description="菜单2列4按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col4_button10: EnumProperty(
+        name="菜单2列4按钮10",
+        description="菜单2列4按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col5_title: bpy.props.StringProperty(
+        name="第五列标题",
+        description="留空不显示该列",
+        default="第五列标题",
+        update=update_preferences
+    )
+
+    panel_two_col5_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第五列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col5_button1: EnumProperty(
+        name="菜单2列5按钮1",
+        description="菜单2列5按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button2: EnumProperty(
+        name="菜单2列5按钮2",
+        description="菜单2列5按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button3: EnumProperty(
+        name="菜单2列5按钮3",
+        description="菜单2列5按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button4: EnumProperty(
+        name="菜单2列5按钮4",
+        description="菜单2列5按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button5: EnumProperty(
+        name="菜单2列5按钮5",
+        description="菜单2列5按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button6: EnumProperty(
+        name="菜单2列5按钮6",
+        description="菜单2列5按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button7: EnumProperty(
+        name="菜单2列5按钮7",
+        description="菜单2列5按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button8: EnumProperty(
+        name="菜单2列5按钮8",
+        description="菜单2列5按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button9: EnumProperty(
+        name="菜单2列5按钮9",
+        description="菜单2列5按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col5_button10: EnumProperty(
+        name="菜单2列5按钮10",
+        description="菜单2列5按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col6_title: bpy.props.StringProperty(
+        name="第六列标题",
+        description="留空不显示该列",
+        default="第六列标题",
+        update=update_preferences
+    )
+
+    panel_two_col6_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第六列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col6_button1: EnumProperty(
+        name="菜单2列6按钮1",
+        description="菜单2列6按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button2: EnumProperty(
+        name="菜单2列6按钮2",
+        description="菜单2列6按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button3: EnumProperty(
+        name="菜单2列6按钮3",
+        description="菜单2列6按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button4: EnumProperty(
+        name="菜单2列6按钮4",
+        description="菜单2列6按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button5: EnumProperty(
+        name="菜单2列6按钮5",
+        description="菜单2列6按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button6: EnumProperty(
+        name="菜单2列6按钮6",
+        description="菜单2列6按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button7: EnumProperty(
+        name="菜单2列6按钮7",
+        description="菜单2列6按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button8: EnumProperty(
+        name="菜单2列6按钮8",
+        description="菜单2列6按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button9: EnumProperty(
+        name="菜单2列6按钮9",
+        description="菜单2列6按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col6_button10: EnumProperty(
+        name="菜单2列6按钮10",
+        description="菜单2列6按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col7_title: bpy.props.StringProperty(
+        name="第七列标题",
+        description="留空不显示该列",
+        default="第七列标题",
+        update=update_preferences
+    )
+
+    panel_two_col7_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第七列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col7_button1: EnumProperty(
+        name="菜单2列7按钮1",
+        description="菜单2列7按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button2: EnumProperty(
+        name="菜单2列7按钮2",
+        description="菜单2列7按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button3: EnumProperty(
+        name="菜单2列7按钮3",
+        description="菜单2列7按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button4: EnumProperty(
+        name="菜单2列7按钮4",
+        description="菜单2列7按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button5: EnumProperty(
+        name="菜单2列7按钮5",
+        description="菜单2列7按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button6: EnumProperty(
+        name="菜单2列7按钮6",
+        description="菜单2列7按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button7: EnumProperty(
+        name="菜单2列7按钮7",
+        description="菜单2列7按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button8: EnumProperty(
+        name="菜单2列7按钮8",
+        description="菜单2列7按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button9: EnumProperty(
+        name="菜单2列7按钮9",
+        description="菜单2列7按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col7_button10: EnumProperty(
+        name="菜单2列7按钮10",
+        description="菜单2列7按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_two_col8_title: bpy.props.StringProperty(
+        name="第八列标题",
+        description="留空不显示该列",
+        default="第八列标题",
+        update=update_preferences
+    )
+
+    panel_two_col8_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第八列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel2_col8_button1: EnumProperty(
+        name="菜单2列7按钮1",
+        description="菜单2列7按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button2: EnumProperty(
+        name="菜单2列8按钮2",
+        description="菜单2列8按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button3: EnumProperty(
+        name="菜单2列8按钮3",
+        description="菜单2列8按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button4: EnumProperty(
+        name="菜单2列8按钮4",
+        description="菜单2列8按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button5: EnumProperty(
+        name="菜单2列8按钮5",
+        description="菜单2列8按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button6: EnumProperty(
+        name="菜单2列8按钮6",
+        description="菜单2列8按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button7: EnumProperty(
+        name="菜单2列8按钮7",
+        description="菜单2列8按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button8: EnumProperty(
+        name="菜单2列8按钮8",
+        description="菜单2列8按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button9: EnumProperty(
+        name="菜单2列8按钮9",
+        description="菜单2列8按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel2_col8_button10: EnumProperty(
+        name="菜单2列8按钮10",
+        description="菜单2列8按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
 # --------↑↑↑↑ panel two 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+
 
     # 绘制插件设置页选项菜单函数
     def draw(self, context):
@@ -1165,6 +1968,118 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel1_col8_button{i}")
+
+
+
+
+
+        # -----------------------------------------------
+        # 极速菜单2 设置项 BOX框
+        box = layout.box()
+        row = box.row()
+        row.prop(self, "expand_quick_panel_two", 
+                icon="TRIA_DOWN" if self.expand_quick_panel_two else "TRIA_RIGHT",
+                icon_only=True, 
+                emboss=False)
+        row.label(text="极速菜单2",icon='COLLECTION_COLOR_02')
+            
+        if self.expand_quick_panel_two:
+
+            # 第一列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col1_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col1_width", text="第一列宽度")
+
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col1_button{i}")
+
+            # 第二列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col2_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col2_width", text="第二列宽度")
+            
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col2_button{i}")
+
+            # 第三列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col3_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col3_width", text="第三列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col3_button{i}")
+
+            # 第四列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col4_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col4_width", text="第四列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col4_button{i}")
+
+            # 第五列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col5_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col5_width", text="第五列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col5_button{i}")
+
+            # 第六列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col6_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col6_width", text="第六列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col6_button{i}")
+
+            # 第七列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col7_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col7_width", text="第七列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col7_button{i}")
+
+            # 第八列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_two_col8_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_two_col8_width", text="第八列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel2_col8_button{i}")
+
+
 
 
     def load_from_file(self):
