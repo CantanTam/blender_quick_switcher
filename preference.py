@@ -302,14 +302,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    # 后期添加搜索框功能
-    search_filter: bpy.props.StringProperty(
-        name="搜索",
-        description="输入搜索内容",
-        default="搜索框测试",  # 设置默认值作为placeholder
-        update=update_preferences
-    )
-
     panel_one_col2_title: bpy.props.StringProperty(
         name="第二列标题",
         description="留空不显示该列",
@@ -456,7 +448,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             content_box = top_box.box()
             row = content_box.row()
             row.prop(self, "panel1_col1_button1")
-            #row.prop(self, "search_filter", text="", icon="VIEWZOOM")  # 搜索功能后面再开发
             row = content_box.row()
             row.prop(self, "panel1_col1_button2")
             row = content_box.row()

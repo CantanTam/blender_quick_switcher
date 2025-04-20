@@ -23,17 +23,11 @@ from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
 
-from .quick_menu_button_functions.button_no_action import (
-    register as register_buttons,
-    unregister as unregister_buttons
-    )
 
 def register():    
     # 注册模式监测功能
     register_mode_handler()
 
-    # 一键注册所有按钮功能
-    register_buttons()
     
     # 注册所有Operator类
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
@@ -53,8 +47,6 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
-    # 一键注销所有按钮功能
-    unregister_buttons()  
     
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_one)
