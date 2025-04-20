@@ -596,6 +596,202 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+    panel_one_col5_title: bpy.props.StringProperty(
+        name="第五列标题",
+        description="留空不显示该列",
+        default="第五列标题",
+        update=update_preferences
+    )
+
+    panel_one_col5_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第五列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel1_col5_button1: EnumProperty(
+        name="菜单1列5按钮1",
+        description="菜单1列5按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button2: EnumProperty(
+        name="菜单1列5按钮2",
+        description="菜单1列5按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button3: EnumProperty(
+        name="菜单1列5按钮3",
+        description="菜单1列5按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button4: EnumProperty(
+        name="菜单1列5按钮4",
+        description="菜单1列5按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button5: EnumProperty(
+        name="菜单1列5按钮5",
+        description="菜单1列5按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button6: EnumProperty(
+        name="菜单1列5按钮6",
+        description="菜单1列5按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button7: EnumProperty(
+        name="菜单1列5按钮7",
+        description="菜单1列5按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button8: EnumProperty(
+        name="菜单1列5按钮8",
+        description="菜单1列5按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button9: EnumProperty(
+        name="菜单1列5按钮9",
+        description="菜单1列5按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col5_button10: EnumProperty(
+        name="菜单1列5按钮10",
+        description="菜单1列5按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel_one_col6_title: bpy.props.StringProperty(
+        name="第六列标题",
+        description="留空不显示该列",
+        default="第六列标题",
+        update=update_preferences
+    )
+
+    panel_one_col6_width: bpy.props.IntProperty(
+        name="面板宽度",
+        description="第六列宽度",
+        default=80,
+        min=55,  # 最小值
+        max=150,  # 最大值
+        soft_min=55,  # 拖动时的最小限制
+        soft_max=150,  # 拖动时的最大限制
+        update=update_preferences
+    )
+
+    panel1_col6_button1: EnumProperty(
+        name="菜单1列6按钮1",
+        description="菜单1列6按钮1功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button2: EnumProperty(
+        name="菜单1列6按钮2",
+        description="菜单1列6按钮2功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button3: EnumProperty(
+        name="菜单1列6按钮3",
+        description="菜单1列6按钮3功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button4: EnumProperty(
+        name="菜单1列6按钮4",
+        description="菜单1列6按钮4功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button5: EnumProperty(
+        name="菜单1列6按钮5",
+        description="菜单1列6按钮5功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button6: EnumProperty(
+        name="菜单1列6按钮6",
+        description="菜单1列6按钮6功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button7: EnumProperty(
+        name="菜单1列6按钮7",
+        description="菜单1列6按钮7功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button8: EnumProperty(
+        name="菜单1列6按钮8",
+        description="菜单1列6按钮8功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button9: EnumProperty(
+        name="菜单1列6按钮9",
+        description="菜单1列6按钮9功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panel1_col6_button10: EnumProperty(
+        name="菜单1列6按钮10",
+        description="菜单1列6按钮10功能测试",
+        items=button_options_list,
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
 
 # --------↑↑↑↑ panel one 相关设置 ↑↑↑↑---------
 
@@ -691,7 +887,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_one_col3_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col3_width", text="第四列宽度")
+            row.prop(self, "panel_one_col3_width", text="第三列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -699,10 +895,41 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 row = content_box.row()
                 row.prop(self, f"panel1_col3_button{i}")
 
+            # 第四列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_one_col4_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_one_col4_width", text="第四列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel1_col4_button{i}")
 
+            # 第五列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_one_col5_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_one_col5_width", text="第五列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel1_col5_button{i}")
 
-
-
+            # 第六列设置项：
+            top_box = box.box()
+            row = top_box.row()
+            row.prop(self, "panel_one_col6_title", text="",icon="TOPBAR")
+            row.prop(self, "panel_one_col6_width", text="第六列宽度")
+            
+            content_box = top_box.box()
+            content_box = top_box.box()
+            for i in range(1, 11):
+                row = content_box.row()
+                row.prop(self, f"panel1_col6_button{i}")
 
 
     def load_from_file(self):
