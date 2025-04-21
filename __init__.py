@@ -25,6 +25,9 @@ from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
 
+# 所有按钮操作符的导入：
+from .quick_menu_button_functions.grab_button_action import BUTTON_ACTION_OT_grab
+
 
 def register():    
     # 注册模式监测功能
@@ -43,6 +46,9 @@ def register():
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_two)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_one)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_two)
+
+    # 所有按钮操作符的注册
+    bpy.utils.register_class(BUTTON_ACTION_OT_grab)
     
     # 注册键位映射
     keymap.register()
@@ -52,6 +58,9 @@ def unregister():
     unregister_mode_handler()
 
     
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_grab)
+    # 所有按钮操作符的注销
+
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_two)
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_one)

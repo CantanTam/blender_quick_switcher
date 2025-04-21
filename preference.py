@@ -68,8 +68,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 
-
-
     
     ctrl_wheel_up: EnumProperty(
         name="Ctrl+鼠标上滚",
