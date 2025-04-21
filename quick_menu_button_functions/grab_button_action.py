@@ -6,6 +6,6 @@ class BUTTON_ACTION_OT_grab(bpy.types.Operator):
     bl_description = "移动"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def invoke(self, context, event):
+    def execute(self, context):
         bpy.ops.transform.translate('INVOKE_DEFAULT')
         return {'FINISHED'}

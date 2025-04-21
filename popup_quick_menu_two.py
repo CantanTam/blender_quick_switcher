@@ -2,72 +2,13 @@ import bpy
 
 from .button_operator_dict import button_press_function
 
-class QUICK_POPUP_MENU_OT_two(bpy.types.Operator):
+class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
     bl_idname = "popup.quick_menu_two"
-    bl_label = "极速菜单2"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        return {'FINISHED'}
-
-    def invoke(self, context, event):
-        # 使用invoke_popup并设置动态宽度
-        prefs = context.preferences.addons[__package__].preferences
+    bl_label = ""
 
 
-        # ---------------↓↓↓↓ 计算第 col1 的宽度 ↓↓↓↓-----------------------
-        # range(1, 4) 表示从 1 开始到 4 之前。如果 col? 列全部按钮全部为 NO_BUTTON 则直接隐藏这一列
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        # 获取 col1 所有按钮对应的设置值（也就是“键”）的对应的元组，单个元组是指这个按钮可以作用的 typeandmode
-        # ，当 col1 所有按钮的所有元组的所有元素，也就是所有支持的 typeandmode ，都不和当前的 typeandmode 对应
-        # ，则直接隐藏这一行，下面一样。
-        col1_tuples = ()
-        for i in range(1, 11):
-            col1_tuples += button_press_function.get(getattr(prefs, f"panel2_col1_button{i}"), ())
-
-        col2_tuples = ()
-        for i in range(1, 11):
-            col2_tuples += button_press_function.get(getattr(prefs, f"panel2_col2_button{i}"), ())
-
-        col3_tuples = ()
-        for i in range(1, 11):
-            col3_tuples += button_press_function.get(getattr(prefs, f"panel2_col3_button{i}"), ())
-
-        col4_tuples = ()
-        for i in range(1, 11):
-            col4_tuples += button_press_function.get(getattr(prefs, f"panel2_col4_button{i}"), ())
-
-        col5_tuples = ()
-        for i in range(1, 11):
-            col5_tuples += button_press_function.get(getattr(prefs, f"panel2_col5_button{i}"), ())
-
-        col6_tuples = ()
-        for i in range(1, 11):
-            col6_tuples += button_press_function.get(getattr(prefs, f"panel2_col6_button{i}"), ())
-
-        col7_tuples = ()
-        for i in range(1, 11):
-            col7_tuples += button_press_function.get(getattr(prefs, f"panel2_col7_button{i}"), ())
-
-        col8_tuples = ()
-        for i in range(1, 11):
-            col8_tuples += button_press_function.get(getattr(prefs, f"panel2_col8_button{i}"), ())
-
-        # 计算各列宽度
-        col_widths = []
-        for i in range(1, 9):
-            col_title = getattr(prefs, f"panel_two_col{i}_title").strip()
-            col_tuples = locals()[f"col{i}_tuples"]
-            if col_title != "" and typeandmode in col_tuples:
-                col_widths.append(getattr(prefs, f"panel_two_col{i}_width") )
-            else:
-                col_widths.append(0)
-        
-        # 计算总宽度
-        total_col_width = sum(col_widths)
-        
-        return context.window_manager.invoke_popup(self, width=total_col_width)
+    #def invoke(self, context, event):
+    #    return context.window_manager.invoke_popup(self, width=640)
 
 
 
@@ -111,19 +52,9 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Operator):
         for i in range(1, 11):
             col8_tuples += button_press_function.get(getattr(prefs, f"panel2_col8_button{i}"), ())
 
-        col1_width = prefs.panel_two_col1_width if prefs.panel_two_col1_title.strip() != "" and typeandmode in col1_tuples else 0
-        col2_width = prefs.panel_two_col2_width if prefs.panel_two_col2_title.strip() != "" and typeandmode in col2_tuples else 0
-        col3_width = prefs.panel_two_col3_width if prefs.panel_two_col3_title.strip() != "" and typeandmode in col3_tuples else 0
-        col4_width = prefs.panel_two_col4_width if prefs.panel_two_col4_title.strip() != "" and typeandmode in col4_tuples else 0
-        col5_width = prefs.panel_two_col5_width if prefs.panel_two_col5_title.strip() != "" and typeandmode in col5_tuples else 0
-        col6_width = prefs.panel_two_col6_width if prefs.panel_two_col6_title.strip() != "" and typeandmode in col6_tuples else 0
-        col7_width = prefs.panel_two_col7_width if prefs.panel_two_col7_title.strip() != "" and typeandmode in col7_tuples else 0
-        col8_width = prefs.panel_two_col8_width if prefs.panel_two_col8_title.strip() != "" and typeandmode in col8_tuples else 0
 
         # ---------------↑↑↑↑ 再计算一次第 col1 的宽度 ↑↑↑↑-----------------------
 
-
-        total_col_width = col1_width + col2_width + col3_width + col4_width + col5_width + col6_width + col7_width + col8_width
 
 
         # ------------创建十列布局-------------------------
@@ -133,28 +64,20 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Operator):
 
         if prefs.panel_two_col1_title.strip() != "" and typeandmode in col1_tuples:
             col1 = row.column(align=True)
-            col1.scale_x = col1_width  / total_col_width  # 设置第一列宽度比例
         if prefs.panel_two_col2_title.strip() != "" and typeandmode in col2_tuples:
             col2 = row.column(align=True)
-            col2.scale_x = col2_width  / total_col_width  # 设置第二列宽度比例
         if prefs.panel_two_col3_title.strip() != "" and typeandmode in col3_tuples:
             col3 = row.column(align=True)
-            col3.scale_x = col3_width  / total_col_width  # 设置第三列宽度比例
         if prefs.panel_two_col4_title.strip() != "" and typeandmode in col4_tuples:
             col4 = row.column(align=True)
-            col4.scale_x = col4_width  / total_col_width  # 设置第四列宽度比例
         if prefs.panel_two_col5_title.strip() != "" and typeandmode in col5_tuples:
             col5 = row.column(align=True)
-            col5.scale_x = col5_width  / total_col_width  # 设置第五列宽度比例
         if prefs.panel_two_col6_title.strip() != "" and typeandmode in col6_tuples:
             col6 = row.column(align=True)
-            col6.scale_x = col6_width  / total_col_width  # 设置第六列宽度比例
         if prefs.panel_two_col7_title.strip() != "" and typeandmode in col7_tuples:
             col7 = row.column(align=True)
-            col7.scale_x = col7_width  / total_col_width  # 设置第七列宽度比例
         if prefs.panel_two_col8_title.strip() != "" and typeandmode in col8_tuples:
             col8 = row.column(align=True)
-            col8.scale_x = col8_width  / total_col_width  # 设置第八列宽度比例
 
         # 第一列菜单项
         if prefs.panel_two_col1_title.strip() != "" and typeandmode in col1_tuples:
