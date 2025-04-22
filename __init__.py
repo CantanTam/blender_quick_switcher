@@ -32,6 +32,16 @@ from .quick_menu_button_functions.button_actions_grab_scale_rotate import (
     BUTTON_ACTION_OT_rotate
 )
 
+from .quick_menu_button_functions.button_actions_switch_orientation_slots import (
+    BUTTON_ACTION_OT_orientation_to_global,
+    BUTTON_ACTION_OT_orientation_to_local,
+    BUTTON_ACTION_OT_orientation_to_normal,
+    BUTTON_ACTION_OT_orientation_to_gimbal,
+    BUTTON_ACTION_OT_orientation_to_view,
+    BUTTON_ACTION_OT_orientation_to_cursor,
+    BUTTON_ACTION_OT_orientation_to_parent
+)
+
 
 def register():    
     # 注册模式监测功能
@@ -55,6 +65,15 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_grab)
     bpy.utils.register_class(BUTTON_ACTION_OT_scale)
     bpy.utils.register_class(BUTTON_ACTION_OT_rotate)
+
+    # 变换坐标系类
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_local)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_normal)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_gimbal)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_view)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_cursor)
+    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_parent)
     
     # 注册键位映射
     keymap.register()
@@ -63,10 +82,19 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
+    # 变换坐标系类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_parent)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_cursor)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_view)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_gimbal)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_normal)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_local)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
+
+    # 移动/缩放/旋转操作类
     bpy.utils.unregister_class(BUTTON_ACTION_OT_rotate)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_scale)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_grab)
-    # 所有按钮操作符的注销
 
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_two)
