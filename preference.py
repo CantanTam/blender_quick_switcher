@@ -1020,17 +1020,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col1_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第一列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel2_col1_button1: EnumProperty(
         name="菜单2列1按钮1",
         description="菜单2列1按钮1功能测试",
@@ -1115,17 +1104,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第二列标题",
         description="留空不显示该列",
         default="第二列标题",
-        update=update_preferences
-    )
-
-    panel_two_col2_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第二列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -1216,17 +1194,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col3_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第三列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel2_col3_button1: EnumProperty(
         name="菜单2列3按钮1",
         description="菜单2列3按钮1功能测试",
@@ -1311,17 +1278,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第四列标题",
         description="留空不显示该列",
         default="第四列标题",
-        update=update_preferences
-    )
-
-    panel_two_col4_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第四列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -1412,17 +1368,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col5_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第五列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel2_col5_button1: EnumProperty(
         name="菜单2列5按钮1",
         description="菜单2列5按钮1功能测试",
@@ -1507,17 +1452,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第六列标题",
         description="留空不显示该列",
         default="第六列标题",
-        update=update_preferences
-    )
-
-    panel_two_col6_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第六列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -1608,17 +1542,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col7_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第七列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel2_col7_button1: EnumProperty(
         name="菜单2列7按钮1",
         description="菜单2列7按钮1功能测试",
@@ -1703,17 +1626,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第八列标题",
         description="留空不显示该列",
         default="第八列标题",
-        update=update_preferences
-    )
-
-    panel_two_col8_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第八列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -1902,7 +1814,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col3_width", text="第三列宽度")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel1_col3_button{i}")
@@ -1913,7 +1824,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col4_title", text="",icon="TOPBAR")
             row.prop(self, "panel_one_col4_width", text="第四列宽度")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
@@ -1926,7 +1836,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col5_width", text="第五列宽度")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel1_col5_button{i}")
@@ -1937,7 +1846,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col6_title", text="",icon="TOPBAR")
             row.prop(self, "panel_one_col6_width", text="第六列宽度")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
@@ -1950,7 +1858,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col7_width", text="第七列宽度")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel1_col7_button{i}")
@@ -1961,7 +1868,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_one_col8_title", text="",icon="TOPBAR")
             row.prop(self, "panel_one_col8_width", text="第八列宽度")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
@@ -1987,7 +1893,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col1_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col1_width", text="第一列宽度")
 
             content_box = top_box.box()
             for i in range(1, 11):
@@ -1998,7 +1903,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col2_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col2_width", text="第二列宽度")
             
             content_box = top_box.box()
             for i in range(1, 11):
@@ -2009,7 +1913,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col3_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col3_width", text="第三列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -2021,7 +1924,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col4_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col4_width", text="第四列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -2033,7 +1935,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col5_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col5_width", text="第五列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -2045,7 +1946,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col6_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col6_width", text="第六列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -2057,7 +1957,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col7_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col7_width", text="第七列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()
@@ -2069,7 +1968,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             row = top_box.row()
             row.prop(self, "panel_two_col8_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_two_col8_width", text="第八列宽度")
             
             content_box = top_box.box()
             content_box = top_box.box()

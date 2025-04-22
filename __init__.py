@@ -28,7 +28,8 @@ from . import keymap
 # 所有按钮操作符的导入：
 from .quick_menu_button_functions.button_actions_grab_scale_rotate import (
     BUTTON_ACTION_OT_grab,
-    BUTTON_ACTION_OT_scale
+    BUTTON_ACTION_OT_scale,
+    BUTTON_ACTION_OT_rotate
 )
 
 
@@ -53,6 +54,7 @@ def register():
     # 所有按钮操作符的注册
     bpy.utils.register_class(BUTTON_ACTION_OT_grab)
     bpy.utils.register_class(BUTTON_ACTION_OT_scale)
+    bpy.utils.register_class(BUTTON_ACTION_OT_rotate)
     
     # 注册键位映射
     keymap.register()
@@ -61,7 +63,7 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
-    
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_rotate)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_scale)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_grab)
     # 所有按钮操作符的注销
