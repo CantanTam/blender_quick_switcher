@@ -27,6 +27,17 @@ button_options_list = [
     ('button_action_pivot_to_median_point','质心点','质心点'),
     ('button_action_pivot_to_active_element','活动元素','活动元素'),
 
+    # “视图”菜单
+    ('NO_BUTTON',"←视图菜单→",""),
+    ('button.action_view_selected_use_all_regions_false','框显所选','快捷键(.)'),
+    ('button.action_view_all_center_false','框显全部','快捷键(Home)'),
+    ('button.action_view_persportho','透视/正交','快捷键(Num_5)'),
+    ('button.action_view3d_localview','局部视图','快捷键(/)'),
+    ('button.action_view3d_localview_remove_from','从局部视图中移除','快捷键(Alt+/)'),
+    ('button.action_view3d_object_as_camera','设置活动物体为摄像机','快捷键(Ctrl+Num_0)'),
+    ('button.action_view3d_view_camera','活动摄像机','快捷键(Num_0)'),
+    ('button.action_view3d_view_center_camera','摄像机边界框','快捷键(Home)'),
+    ('button.action_view3d_call_menu_view_axis','切换视图',''),
 
     ('testone','菜单功能1','测试菜单功能1'),
     ('testtwo', '菜单功能2', '测试菜单功能2'),
@@ -91,10 +102,6 @@ button_press_function = {
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
 
-
-
-
-
     # 切换轴心点
         'button_action_pivot_to_bounding_box_center':(
         "button.action_pivot_to_bounding_box_center","边界框中心","PIVOT_BOUNDBOX",
@@ -103,8 +110,6 @@ button_press_function = {
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-
-
         'button_action_pivot_to_cursor':(
         "button.action_pivot_to_cursor","3D 游标","PIVOT_CURSOR",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
@@ -112,8 +117,6 @@ button_press_function = {
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-
-
         'button_action_pivot_to_individual_origins':(
         "button.action_pivot_to_individual_origins","各自的原点","PIVOT_INDIVIDUAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
@@ -121,8 +124,6 @@ button_press_function = {
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-
-
         'button_action_pivot_to_median_point':(
         "button.action_pivot_to_median_point","质心点","PIVOT_MEDIAN",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
@@ -130,8 +131,6 @@ button_press_function = {
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-
-
         'button_action_pivot_to_active_element':(
         "button.action_pivot_to_active_element","活动元素","PIVOT_ACTIVE",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
@@ -140,10 +139,34 @@ button_press_function = {
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
 
-
-
-
-
+    # “视图”菜单
+        'button.action_view_selected_use_all_regions_false':(
+        "button.action_view_selected_use_all_regions_false","框显所选","DOT","all",
+    ),
+        'button.action_view_all_center_false':(
+        "button.action_view_all_center_false","框显全部","HOME","all",
+    ),
+        'button.action_view_persportho':(
+        "button.action_view_persportho","透视/正交","EVENT_NDOF_BUTTON_5","all",
+    ),
+        'button.action_view3d_localview':(
+        "button.action_view3d_localview","局部视图","EVENT_SLASH","all",
+    ),
+        'button.action_view3d_localview_remove_from':(
+        "button.action_view3d_localview_remove_from","从局部视图中移除","RECORD_OFF","all",
+    ),
+        'button.action_view3d_object_as_camera':(
+        "button.action_view3d_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
+    ),
+        'button.action_view3d_view_camera':(
+        "button.action_view3d_view_camera","摄像机","VIEW_CAMERA_UNSELECTED","all",
+    ),
+        'button.action_view3d_view_center_camera':(
+        "button.action_view3d_view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
+    ),
+        'button.action_view3d_call_menu_view_axis':(
+        "button.action_view3d_call_menu_view_axis","切换视图","COLLAPSEMENU","all",
+    ),
 
 
 

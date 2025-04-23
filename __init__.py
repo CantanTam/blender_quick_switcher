@@ -39,17 +39,29 @@ from .quick_menu_button_functions.button_actions_switch_orientation_slots import
     BUTTON_ACTION_OT_orientation_to_gimbal,
     BUTTON_ACTION_OT_orientation_to_view,
     BUTTON_ACTION_OT_orientation_to_cursor,
-    BUTTON_ACTION_OT_orientation_to_parent
+    BUTTON_ACTION_OT_orientation_to_parent,
 )
-
+# 切换轴心点
 from .quick_menu_button_functions.button_actions_switch_pivot_points import (
     BUTTON_ACTION_OT_pivot_to_bounding_box_center,
     BUTTON_ACTION_OT_pivot_to_cursor,
     BUTTON_ACTION_OT_pivot_to_individual_origins,
     BUTTON_ACTION_OT_pivot_to_median_point,
-    BUTTON_ACTION_OT_pivot_to_active_element
+    BUTTON_ACTION_OT_pivot_to_active_element,
 )
-
+# “视图”菜单
+from .quick_menu_button_functions.button_actions_switch_views import (
+    BUTTON_ACTION_OT_view_selected_use_all_regions_false,
+    BUTTON_ACTION_OT_view_all_center_false,
+    BUTTON_ACTION_OT_view_persportho,
+    BUTTON_ACTION_OT_view3d_localview,
+    BUTTON_ACTION_OT_view3d_localview_remove_from,
+    BUTTON_ACTION_OT_view3d_object_as_camera,
+    BUTTON_ACTION_OT_view3d_view_camera,
+    BUTTON_ACTION_OT_view3d_view_center_camera,
+    VIEW3D_MT_view_axis_menu,
+    BUTTON_ACTION_OT_view3d_call_menu_view_axis,
+)
 
 def register():    
     # 注册模式监测功能
@@ -83,13 +95,25 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_cursor)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_parent)
 
-    # 枢轴点类
+    # 切换轴心点
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_cursor)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_median_point)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_active_element)
-    
+
+    # "视图"菜单功能项
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_selected_use_all_regions_false)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_all_center_false)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_persportho)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_localview)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_localview_remove_from)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_object_as_camera)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_camera)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_center_camera)
+    bpy.utils.register_class(VIEW3D_MT_view_axis_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
+
     # 注册键位映射
     keymap.register()
 
@@ -97,7 +121,19 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
-    # 枢轴点类
+    # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
+    bpy.utils.unregister_class(VIEW3D_MT_view_axis_menu)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_center_camera)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_camera)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_object_as_camera)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_localview_remove_from)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_localview)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_persportho)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_all_center_false)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_selected_use_all_regions_false)
+
+    # 切换轴心点
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_active_element)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_median_point)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_individual_origins)

@@ -1915,7 +1915,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_two_col3_title", text="",icon="TOPBAR")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel2_col3_button{i}")
@@ -1925,7 +1924,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row = top_box.row()
             row.prop(self, "panel_two_col4_title", text="",icon="TOPBAR")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
@@ -1937,7 +1935,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_two_col5_title", text="",icon="TOPBAR")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel2_col5_button{i}")
@@ -1947,7 +1944,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row = top_box.row()
             row.prop(self, "panel_two_col6_title", text="",icon="TOPBAR")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
@@ -1959,7 +1955,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel_two_col7_title", text="",icon="TOPBAR")
             
             content_box = top_box.box()
-            content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
                 row.prop(self, f"panel2_col7_button{i}")
@@ -1969,7 +1964,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row = top_box.row()
             row.prop(self, "panel_two_col8_title", text="",icon="TOPBAR")
             
-            content_box = top_box.box()
             content_box = top_box.box()
             for i in range(1, 11):
                 row = content_box.row()
