@@ -42,6 +42,14 @@ from .quick_menu_button_functions.button_actions_switch_orientation_slots import
     BUTTON_ACTION_OT_orientation_to_parent
 )
 
+from .quick_menu_button_functions.button_actions_switch_pivot_points import (
+    BUTTON_ACTION_OT_pivot_to_bounding_box_center,
+    BUTTON_ACTION_OT_pivot_to_cursor,
+    BUTTON_ACTION_OT_pivot_to_individual_origins,
+    BUTTON_ACTION_OT_pivot_to_median_point,
+    BUTTON_ACTION_OT_pivot_to_active_element
+)
+
 
 def register():    
     # 注册模式监测功能
@@ -74,6 +82,13 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_view)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_cursor)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_parent)
+
+    # 枢轴点类
+    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
+    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_cursor)
+    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
+    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_median_point)
+    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_active_element)
     
     # 注册键位映射
     keymap.register()
@@ -81,6 +96,13 @@ def register():
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    # 枢轴点类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_active_element)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_median_point)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_cursor)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
 
     # 变换坐标系类
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_parent)

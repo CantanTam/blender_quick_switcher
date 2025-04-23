@@ -19,6 +19,15 @@ button_options_list = [
     ('button_action_orientation_to_cursor','游标','游标坐标系'),
     ('button_action_orientation_to_parent','父级','父级坐标系'),
 
+    # 切换轴心点
+    ('NO_BUTTON',"←切换轴心点→",""),
+    ('button_action_pivot_to_bounding_box_center','边界框中心','边界框中心'),
+    ('button_action_pivot_to_cursor','3D 游标','3D 游标'),
+    ('button_action_pivot_to_individual_origins','各自的原点','各自的原点'),
+    ('button_action_pivot_to_median_point','质心点','质心点'),
+    ('button_action_pivot_to_active_element','活动元素','活动元素'),
+
+
     ('testone','菜单功能1','测试菜单功能1'),
     ('testtwo', '菜单功能2', '测试菜单功能2'),
     
@@ -76,6 +85,55 @@ button_press_function = {
     ),
     'button_action_orientation_to_parent':(
         "button.action_orientation_to_parent","父级","ORIENTATION_PARENT",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+
+
+
+
+    # 切换轴心点
+        'button_action_pivot_to_bounding_box_center':(
+        "button.action_pivot_to_bounding_box_center","边界框中心","PIVOT_BOUNDBOX",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+
+        'button_action_pivot_to_cursor':(
+        "button.action_pivot_to_cursor","3D 游标","PIVOT_CURSOR",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+
+        'button_action_pivot_to_individual_origins':(
+        "button.action_pivot_to_individual_origins","各自的原点","PIVOT_INDIVIDUAL",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+
+        'button_action_pivot_to_median_point':(
+        "button.action_pivot_to_median_point","质心点","PIVOT_MEDIAN",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+
+        'button_action_pivot_to_active_element':(
+        "button.action_pivot_to_active_element","活动元素","PIVOT_ACTIVE",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
