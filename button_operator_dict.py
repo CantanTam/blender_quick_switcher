@@ -37,7 +37,11 @@ button_options_list = [
     ('button.action_view3d_object_as_camera','设置活动物体为摄像机','快捷键(Ctrl+Num_0)'),
     ('button.action_view3d_view_camera','活动摄像机','快捷键(Num_0)'),
     ('button.action_view3d_view_center_camera','摄像机边界框','快捷键(Home)'),
-    ('button.action_view3d_call_menu_view_axis','切换视图',''),
+    ('button.action_view3d_call_menu_view_axis','视图(菜单)',''),
+    ('button.action_view3d_call_menu_view_switch_axis','视图切换(菜单)',''),
+    ('button.action_view3d_zoom_border','视图切换—框选放大','快捷键(Shift+B)'),
+    ('button.action_view3d_fly','视图切换—飞行漫步',''),
+    ('button.action_view3d_walk','视图切换—行走漫步',''),
 
     ('testone','菜单功能1','测试菜单功能1'),
     ('testtwo', '菜单功能2', '测试菜单功能2'),
@@ -165,9 +169,20 @@ button_press_function = {
         "button.action_view3d_view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
     ),
         'button.action_view3d_call_menu_view_axis':(
-        "button.action_view3d_call_menu_view_axis","切换视图","COLLAPSEMENU","all",
+        "button.action_view3d_call_menu_view_axis","视图","COLLAPSEMENU","all",
     ),
-
+        'button.action_view3d_call_menu_view_switch_axis':(
+        "button.action_view3d_call_menu_view_switch_axis","视图切换","COLLAPSEMENU","all",
+    ),
+        'button.action_view3d_zoom_border':(
+        "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
+    ),
+        'button.action_view3d_fly':(
+        "button.action_view3d_fly","飞行漫步","RECORD_OFF","all",
+    ),
+        'button.action_view3d_walk':(
+        "button.action_view3d_walk","行走漫步","RECORD_OFF","all",
+    ),
 
 
 

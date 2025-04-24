@@ -61,6 +61,15 @@ from .quick_menu_button_functions.button_actions_switch_views import (
     BUTTON_ACTION_OT_view3d_view_center_camera,
     VIEW3D_MT_view_axis_menu,
     BUTTON_ACTION_OT_view3d_call_menu_view_axis,
+    VIEW3D_MT_view_switch_axis_menu,
+    BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis,
+    BUTTON_ACTION_OT_view3d_zoom_border,
+    BUTTON_ACTION_OT_view_pan_left,
+    BUTTON_ACTION_OT_view_pan_right,
+    BUTTON_ACTION_OT_view_pan_up,
+    BUTTON_ACTION_OT_view_pan_down,
+    BUTTON_ACTION_OT_view3d_fly,
+    BUTTON_ACTION_OT_view3d_walk,
 )
 
 def register():    
@@ -113,6 +122,15 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_center_camera)
     bpy.utils.register_class(VIEW3D_MT_view_axis_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
+    bpy.utils.register_class(VIEW3D_MT_view_switch_axis_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_zoom_border)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_left)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_right)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_up)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_down)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_fly)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_walk)
 
     # 注册键位映射
     keymap.register()
@@ -122,6 +140,15 @@ def unregister():
     unregister_mode_handler()
 
     # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_walk)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_fly)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_zoom_border)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_down)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_up)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_right)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_left)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis)
+    bpy.utils.unregister_class(VIEW3D_MT_view_switch_axis_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
     bpy.utils.unregister_class(VIEW3D_MT_view_axis_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_center_camera)
