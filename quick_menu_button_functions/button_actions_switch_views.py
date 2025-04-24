@@ -188,7 +188,7 @@ class BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis(bpy.types.Operator):
 
     def execute(self, context):
         bpy.ops.wm.call_menu(name="view3d.mt_view_switch_axis_menu")
-        return {'CANCELLED'}
+        return {'FINISHED'}
     
 # 自定义“框选放大”操作类
 class BUTTON_ACTION_OT_view3d_zoom_border(bpy.types.Operator):
@@ -255,3 +255,78 @@ class BUTTON_ACTION_OT_view_pan_down(bpy.types.Operator):
 
     def execute(self, context):
         return bpy.ops.view3d.view_pan('INVOKE_DEFAULT', type='PANDOWN')
+    
+# 自定义“对齐视图”菜单
+class VIEW3D_MT_view_align_menu(bpy.types.Menu):
+    bl_label = ""
+    bl_idname = "view3d.mt_view_align_menu"
+
+    def draw(self, context):
+        layout = self.layout
+        
+        layout.operator("view3d.camera_to_view", text="活动摄像机对齐当前视角", icon="VIEW_CAMERA_UNSELECTED")
+        layout.operator("view3d.camera_to_view_selected", text="活动摄像机对齐选中的物体", icon="VIEW_CAMERA_UNSELECTED")
+        layout.separator()
+        layout.operator("view3d.view_all", text="游标居中并查看全部", icon="PIVOT_CURSOR").center=True
+        layout.operator("view3d.view_center_cursor", text="视图中心对齐游标", icon="PIVOT_CURSOR")
+        layout.separator()
+        layout.operator("view3d.view_lock_to_active", text="锁定视图至活动物体",icon="VIEW_LOCKED")
+        layout.operator("view3d.view_lock_clear", text="消除视图锁定", icon="VIEW_UNLOCKED")
+
+
+
+# 弹出“对齐视图”菜单
+class BUTTON_ACTION_OT_view3d_call_menu_view_align(bpy.types.Operator):
+    bl_idname = "button.action_view3d_call_menu_view_align"
+    bl_label = "对齐视图"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="view3d.mt_view_align_menu")
+        return {'FINISHED'}
+    
+
+# 自定义“视图框”菜单
+class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
+    bl_label = ""
+    bl_idname = "view3d.mt_view_regions_menu"
+
+    def draw(self, context):
+        layout = self.layout
+        
+        layout.operator("button.action_view3d_clip_border", text="裁剪框")
+        layout.operator("button.action_view3d_render_border", text="渲染框")
+        layout.separator()
+        layout.operator("view3d.clear_render_border", text="清除渲染框")
+
+# 自定义“裁剪框”操作类
+class BUTTON_ACTION_OT_view3d_clip_border(bpy.types.Operator):
+    bl_idname = "button.action_view3d_clip_border"
+    bl_label = "裁剪框"
+    bl_description = "快捷键 Alt B"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.view3d.clip_border('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+# 自定义“渲染框”操作类
+class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
+    bl_idname = "button.action_view3d_render_border"
+    bl_label = "渲染框"
+    bl_description = "快捷键 Ctrl B"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.view3d.render_border('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+# 弹出“视图框”菜单
+class BUTTON_ACTION_OT_view3d_call_menu_view_regions(bpy.types.Operator):
+    bl_idname = "button.action_view3d_call_menu_view_regions"
+    bl_label = "视图框"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="view3d.mt_view_regions_menu")
+        return {'FINISHED'}

@@ -70,6 +70,13 @@ from .quick_menu_button_functions.button_actions_switch_views import (
     BUTTON_ACTION_OT_view_pan_down,
     BUTTON_ACTION_OT_view3d_fly,
     BUTTON_ACTION_OT_view3d_walk,
+    VIEW3D_MT_view_align_menu,
+    BUTTON_ACTION_OT_view3d_call_menu_view_align,
+    VIEW3D_MT_view_regions_menu,
+    BUTTON_ACTION_OT_view3d_call_menu_view_regions,
+    BUTTON_ACTION_OT_view3d_clip_border,
+    BUTTON_ACTION_OT_view3d_render_border,
+
 )
 
 def register():    
@@ -131,6 +138,12 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_down)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_fly)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_walk)
+    bpy.utils.register_class(VIEW3D_MT_view_align_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_align)
+    bpy.utils.register_class(VIEW3D_MT_view_regions_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_clip_border)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
 
     # 注册键位映射
     keymap.register()
@@ -140,6 +153,12 @@ def unregister():
     unregister_mode_handler()
 
     # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_render_border)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_clip_border)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
+    bpy.utils.unregister_class(VIEW3D_MT_view_regions_menu)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_align)
+    bpy.utils.unregister_class(VIEW3D_MT_view_align_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_walk)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_fly)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_zoom_border)

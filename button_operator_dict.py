@@ -41,7 +41,20 @@ button_options_list = [
     ('button.action_view3d_call_menu_view_switch_axis','视图切换(菜单)',''),
     ('button.action_view3d_zoom_border','视图切换—框选放大','快捷键(Shift+B)'),
     ('button.action_view3d_fly','视图切换—飞行漫步',''),
-    ('button.action_view3d_walk','视图切换—行走漫步',''),
+    ('button.action_view3d_walk','视图切换—行走漫步','快捷键(Shift+`)'),
+    ('button.action_view3d_call_menu_view_align','对齐视图(菜单)',''),
+    ('view3d.camera_to_view','对齐视图—活动摄像机对齐当前视角','快捷键(Ctrl+Alt+Num_0)'),
+    ('view3d.camera_to_view_selected','对齐视图—活动摄像机对齐选中的物体',''),
+    ('view3d.view_lock_to_active','对齐视图—锁定视图至活动物体',''),
+    ('view3d.view_lock_clear','对齐视图—消除视图锁定',''),
+    ('button.action_view3d_call_menu_view_regions','视图框(菜单)',''),
+    ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),
+    ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
+    ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
+
+
+
+
 
     ('testone','菜单功能1','测试菜单功能1'),
     ('testtwo', '菜单功能2', '测试菜单功能2'),
@@ -182,6 +195,33 @@ button_press_function = {
     ),
         'button.action_view3d_walk':(
         "button.action_view3d_walk","行走漫步","RECORD_OFF","all",
+    ),
+        'button.action_view3d_call_menu_view_align':(
+        "button.action_view3d_call_menu_view_align","对齐视图","COLLAPSEMENU","all",
+    ),
+        'view3d.camera_to_view':(
+        "view3d.camera_to_view","活动摄像机对齐当前视角","OUTLINER_DATA_CAMERA","all",
+    ),
+        'view3d.camera_to_view_selected':(
+        "view3d.camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_DATA_CAMERA","all",
+    ),
+        'view3d.view_lock_to_active':(
+        "view3d.view_lock_to_active","锁定视图至活动物体","VIEW_LOCKED","all",
+    ),
+        'view3d.view_lock_clear':(
+        "view3d.view_lock_clear","消除视图锁定","VIEW_UNLOCKED","all",
+    ),
+        'button.action_view3d_call_menu_view_regions':(
+        "button.action_view3d_call_menu_view_regions","视图框","COLLAPSEMENU","all",
+    ),
+        'button.action_view3d_clip_border':(
+        "button.action_view3d_clip_border","裁剪框","CLIPUV_DEHLT","all",
+    ),
+        'button.action_view3d_render_border':(
+        "button.action_view3d_render_border","渲染框","RECORD_OFF","all",
+    ),
+        'view3d.clear_render_border':(
+        "view3d.clear_render_border","清除渲染框","RECORD_OFF","all",
     ),
 
 
