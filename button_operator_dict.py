@@ -45,8 +45,7 @@ button_options_list = [
     ('button.action_view3d_call_menu_view_align','对齐视图(菜单)',''),
     ('view3d.camera_to_view','对齐视图—活动摄像机对齐当前视角','快捷键(Ctrl+Alt+Num_0)'),
     ('view3d.camera_to_view_selected','对齐视图—活动摄像机对齐选中的物体',''),
-    ('view3d.view_lock_to_active','对齐视图—锁定视图至活动物体',''),
-    ('view3d.view_lock_clear','对齐视图—消除视图锁定',''),
+    ('button.action_view3d_lock_to_active_or_lock_clear','对齐视图—锁定/解锁视图',''),
     ('button.action_view3d_call_menu_view_regions','视图框(菜单)',''),
     ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),
     ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
@@ -205,11 +204,8 @@ button_press_function = {
         'view3d.camera_to_view_selected':(
         "view3d.camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_DATA_CAMERA","all",
     ),
-        'view3d.view_lock_to_active':(
-        "view3d.view_lock_to_active","锁定视图至活动物体","LOCKED","all",
-    ),
-        'view3d.view_lock_clear':(
-        "view3d.view_lock_clear","消除视图锁定","UNLOCKED","all",
+        'button.action_view3d_lock_to_active_or_lock_clear':(
+        "button.action_view3d_lock_to_active_or_lock_clear","锁定/解锁视图","CON_CAMERASOLVER","all",
     ),
         'button.action_view3d_call_menu_view_regions':(
         "button.action_view3d_call_menu_view_regions","视图框","COLLAPSEMENU","all",

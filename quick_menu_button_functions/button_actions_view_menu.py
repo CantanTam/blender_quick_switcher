@@ -208,13 +208,8 @@ class BUTTON_ACTION_OT_view3d_fly(bpy.types.Operator):
     bl_description = ""
     bl_options = {'REGISTER', 'UNDO'}
 
-    #@classmethod
-    #def poll(cls, context):
-        # 检查是否有物体处于被锁定状态：
-    #    return (bpy.context.area.type == 'VIEW_3D' and 
-    #            bpy.context.space_data.lock_object is None)
-    
     def execute(self, context):
+        # 防止有物体被锁定，所以先执行一次解锁
         bpy.ops.view3d.view_lock_clear()
         bpy.ops.view3d.fly('INVOKE_DEFAULT')
         return {'FINISHED'}
@@ -227,6 +222,7 @@ class BUTTON_ACTION_OT_view3d_walk(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
+        bpy.ops.view3d.view_lock_clear()
         bpy.ops.view3d.walk('INVOKE_DEFAULT')
         return {'FINISHED'}
 
@@ -280,7 +276,19 @@ class VIEW3D_MT_view_align_menu(bpy.types.Menu):
         layout.operator("view3d.view_lock_to_active", text="锁定视图至活动物体",icon="LOCKED")
         layout.operator("view3d.view_lock_clear", text="消除视图锁定", icon="UNLOCKED")
 
+# 自定义“锁定/解锁视图至活动物体”按钮类
+class BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear(bpy.types.Operator):
+    bl_idname = "button.action_view3d_lock_to_active_or_lock_clear"
+    bl_label = "锁定/解锁视图"
+    bl_description = "锁定视图至活动物体/消除视图锁定"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        if bpy.context.space_data.lock_object is None:
+            bpy.ops.view3d.view_lock_to_active()
+        else:
+            bpy.ops.view3d.view_lock_clear()
+        return {'FINISHED'}
 
 # 弹出“对齐视图”菜单
 class BUTTON_ACTION_OT_view3d_call_menu_view_align(bpy.types.Operator):

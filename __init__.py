@@ -76,6 +76,7 @@ from .quick_menu_button_functions.button_actions_view_menu import (
     BUTTON_ACTION_OT_view3d_call_menu_view_regions,
     BUTTON_ACTION_OT_view3d_clip_border,
     BUTTON_ACTION_OT_view3d_render_border,
+    BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
 
 )
 
@@ -144,6 +145,7 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_clip_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
 
     # 注册键位映射
     keymap.register()
@@ -153,6 +155,7 @@ def unregister():
     unregister_mode_handler()
 
     # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_render_border)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_clip_border)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
