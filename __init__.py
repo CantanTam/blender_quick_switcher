@@ -50,7 +50,7 @@ from .quick_menu_button_functions.button_actions_switch_pivot_points import (
     BUTTON_ACTION_OT_pivot_to_active_element,
 )
 # “视图”菜单
-from .quick_menu_button_functions.button_actions_switch_views import (
+from .quick_menu_button_functions.button_actions_view_menu import (
     BUTTON_ACTION_OT_view_selected_use_all_regions_false,
     BUTTON_ACTION_OT_view_all_center_false,
     BUTTON_ACTION_OT_view_persportho,

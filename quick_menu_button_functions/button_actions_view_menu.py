@@ -207,8 +207,15 @@ class BUTTON_ACTION_OT_view3d_fly(bpy.types.Operator):
     bl_label = "飞行漫步"
     bl_description = ""
     bl_options = {'REGISTER', 'UNDO'}
+
+    #@classmethod
+    #def poll(cls, context):
+        # 检查是否有物体处于被锁定状态：
+    #    return (bpy.context.area.type == 'VIEW_3D' and 
+    #            bpy.context.space_data.lock_object is None)
     
     def execute(self, context):
+        bpy.ops.view3d.view_lock_clear()
         bpy.ops.view3d.fly('INVOKE_DEFAULT')
         return {'FINISHED'}
     
@@ -264,14 +271,14 @@ class VIEW3D_MT_view_align_menu(bpy.types.Menu):
     def draw(self, context):
         layout = self.layout
         
-        layout.operator("view3d.camera_to_view", text="活动摄像机对齐当前视角", icon="VIEW_CAMERA_UNSELECTED")
-        layout.operator("view3d.camera_to_view_selected", text="活动摄像机对齐选中的物体", icon="VIEW_CAMERA_UNSELECTED")
+        layout.operator("view3d.camera_to_view", text="活动摄像机对齐当前视角", icon="CON_CAMERASOLVER")
+        layout.operator("view3d.camera_to_view_selected", text="活动摄像机对齐选中的物体", icon="CON_CAMERASOLVER")
         layout.separator()
         layout.operator("view3d.view_all", text="游标居中并查看全部", icon="PIVOT_CURSOR").center=True
         layout.operator("view3d.view_center_cursor", text="视图中心对齐游标", icon="PIVOT_CURSOR")
         layout.separator()
-        layout.operator("view3d.view_lock_to_active", text="锁定视图至活动物体",icon="VIEW_LOCKED")
-        layout.operator("view3d.view_lock_clear", text="消除视图锁定", icon="VIEW_UNLOCKED")
+        layout.operator("view3d.view_lock_to_active", text="锁定视图至活动物体",icon="LOCKED")
+        layout.operator("view3d.view_lock_clear", text="消除视图锁定", icon="UNLOCKED")
 
 
 

@@ -164,19 +164,19 @@ button_press_function = {
         "button.action_view_all_center_false","框显全部","HOME","all",
     ),
         'button.action_view_persportho':(
-        "button.action_view_persportho","透视/正交","EVENT_NDOF_BUTTON_5","all",
+        "button.action_view_persportho","透视/正交","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_localview':(
-        "button.action_view3d_localview","局部视图","EVENT_SLASH","all",
+        "button.action_view3d_localview","局部视图","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_localview_remove_from':(
-        "button.action_view3d_localview_remove_from","从局部视图中移除","RECORD_OFF","all",
+        "button.action_view3d_localview_remove_from","从局部视图中移除","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_object_as_camera':(
         "button.action_view3d_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
     ),
         'button.action_view3d_view_camera':(
-        "button.action_view3d_view_camera","摄像机","VIEW_CAMERA_UNSELECTED","all",
+        "button.action_view3d_view_camera","摄像机","CAMERA_DATA","all",
     ),
         'button.action_view3d_view_center_camera':(
         "button.action_view3d_view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
@@ -191,10 +191,10 @@ button_press_function = {
         "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
     ),
         'button.action_view3d_fly':(
-        "button.action_view3d_fly","飞行漫步","RECORD_OFF","all",
+        "button.action_view3d_fly","飞行漫步","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_walk':(
-        "button.action_view3d_walk","行走漫步","RECORD_OFF","all",
+        "button.action_view3d_walk","行走漫步","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_call_menu_view_align':(
         "button.action_view3d_call_menu_view_align","对齐视图","COLLAPSEMENU","all",
@@ -206,10 +206,10 @@ button_press_function = {
         "view3d.camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_DATA_CAMERA","all",
     ),
         'view3d.view_lock_to_active':(
-        "view3d.view_lock_to_active","锁定视图至活动物体","VIEW_LOCKED","all",
+        "view3d.view_lock_to_active","锁定视图至活动物体","LOCKED","all",
     ),
         'view3d.view_lock_clear':(
-        "view3d.view_lock_clear","消除视图锁定","VIEW_UNLOCKED","all",
+        "view3d.view_lock_clear","消除视图锁定","UNLOCKED","all",
     ),
         'button.action_view3d_call_menu_view_regions':(
         "button.action_view3d_call_menu_view_regions","视图框","COLLAPSEMENU","all",
@@ -218,10 +218,10 @@ button_press_function = {
         "button.action_view3d_clip_border","裁剪框","CLIPUV_DEHLT","all",
     ),
         'button.action_view3d_render_border':(
-        "button.action_view3d_render_border","渲染框","RECORD_OFF","all",
+        "button.action_view3d_render_border","渲染框","RADIOBUT_OFF","all",
     ),
         'view3d.clear_render_border':(
-        "view3d.clear_render_border","清除渲染框","RECORD_OFF","all",
+        "view3d.clear_render_border","清除渲染框","RADIOBUT_OFF","all",
     ),
 
 
