@@ -47,7 +47,7 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
             return {'CANCELLED'}
         
         else:
-            if bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
+            if bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT','LATTICE'}:
                 bpy.ops.object.editmode_toggle()
 
             elif bpy.context.active_object.type+bpy.context.active_object.mode in type_mode_maps:

@@ -51,7 +51,11 @@ button_options_list = [
     ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
     ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
 
-
+    # “选择”菜单
+    ('NO_BUTTON',"←选择菜单→",""),
+    ('button.action_select_select_all','全选','快捷键(A)'),
+    ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
+    ('button.action_select_select_circle','刷选','快捷键(C)'),
 
 
 
@@ -220,6 +224,33 @@ button_press_function = {
         "view3d.clear_render_border","清除渲染框","RADIOBUT_OFF","all",
     ),
 
+    # “选择”菜单
+        'button.action_select_select_all':(
+        "button.action_select_select_all","全选","EVENT_A",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
+        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_select_select_invert':(
+        "button.action_select_select_invert","反选","RADIOBUT_OFF",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
+        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_select_select_circle':(
+        "button.action_select_select_circle","刷选","EVENT_C",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
 
 
     # 测试功能

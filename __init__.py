@@ -77,6 +77,13 @@ from .quick_menu_button_functions.button_actions_view_menu import (
     BUTTON_ACTION_OT_view3d_clip_border,
     BUTTON_ACTION_OT_view3d_render_border,
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
+)
+
+from .quick_menu_button_functions.button_actions_select_menu import (
+    BUTTON_ACTION_OT_select_select_all,
+    BUTTON_ACTION_OT_select_select_invert,
+    BUTTON_ACTION_OT_select_select_circle,
+    BUTTON_ACTION_OT_select_select_mirror,
 
 )
 
@@ -146,6 +153,13 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_clip_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
+    
+    # “选择”菜单功能项
+    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_all)
+    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_invert)
+    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_circle)
+    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
+
 
     # 注册键位映射
     keymap.register()
@@ -153,6 +167,12 @@ def register():
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    # “选择”菜单功能项
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_circle)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_invert)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_all)
 
     # “视图”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
