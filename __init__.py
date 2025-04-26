@@ -86,6 +86,7 @@ from .quick_menu_button_functions.button_actions_select_menu import (
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
     BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu,
+    BUTTON_ACTION_OT_select_select_random,
 
 )
 
@@ -163,6 +164,7 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
     bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_random)
 
 
     # 注册键位映射
@@ -173,6 +175,7 @@ def unregister():
     unregister_mode_handler()
 
     # “选择”菜单功能项
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_random)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)

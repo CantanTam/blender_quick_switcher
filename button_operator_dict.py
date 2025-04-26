@@ -58,8 +58,8 @@ button_options_list = [
     ('button.action_select_select_circle','刷选','快捷键(C)'),
     ('button.action_view3d_call_select_select_by_type_menu','按类型选择(菜单)','此按钮只在“物体”模式下出现'),
     ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
-
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
+    ('button.action_select_select_random','随机选择',''),
 
 
     ('testone','菜单功能1','测试菜单功能1'),
@@ -268,12 +268,19 @@ button_press_function = {
     ),
         'button.action_select_select_mirror':(
         "button.action_select_select_mirror","选择镜像","MOD_MIRROR",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LATTICEEDIT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_select_select_random':(
+        "button.action_select_select_random","随机选择","RADIOBUT_OFF",
         "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
-        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
-        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+        "GREASEPENCILVERTEX_GREASE_PENCIL", "ARMATUREOBJECT",
     ),
+
 
     # 测试功能
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
