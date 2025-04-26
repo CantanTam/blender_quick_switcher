@@ -128,7 +128,7 @@
     "panel2_col2_button1": "button_action_scale",
     "panel2_col2_button2": "button.action_select_select_mirror",
     "panel2_col2_button3": "button.action_view3d_call_select_select_by_type_menu",
-    "panel2_col2_button4": "NO_BUTTON",
+    "panel2_col2_button4": "object.select_camera",
     "panel2_col2_button5": "NO_BUTTON",
     "panel2_col2_button6": "NO_BUTTON",
     "panel2_col2_button7": "NO_BUTTON",

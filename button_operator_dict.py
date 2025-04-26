@@ -57,6 +57,8 @@ button_options_list = [
     ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
     ('button.action_select_select_circle','刷选','快捷键(C)'),
     ('button.action_view3d_call_select_select_by_type_menu','按类型选择(菜单)','此按钮只在“物体”模式下出现'),
+    ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
+
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
 
 
@@ -254,6 +256,12 @@ button_press_function = {
     ),
         'button.action_view3d_call_select_select_by_type_menu':(
         "button.action_view3d_call_select_select_by_type_menu","按类型选择","COLLAPSEMENU",
+        "CURVEOBJECT",  "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT",
+    ),
+        'object.select_camera':(
+        "object.select_camera","选择活动摄像机","CAMERA_DATA",
         "CURVEOBJECT",  "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT",

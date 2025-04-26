@@ -67,7 +67,7 @@ class MODE_NORMAL_UPDOWN_OT_Switch(bpy.types.Operator):
                     new_mesh_mode = mesh_mode[current_mesh_mode]
                     bpy.ops.object.mode_set(mode=new_mesh_mode)
 
-            elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
+            elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT','LATTICE'}:
                 bpy.ops.object.editmode_toggle()
 
             else:

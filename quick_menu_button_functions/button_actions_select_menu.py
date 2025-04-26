@@ -100,11 +100,7 @@ class VIEW3D_MT_select_select_by_type_menu(bpy.types.Menu):
         layout.separator()
         layout.operator("object.select_by_type", text="扬声器", icon="OUTLINER_OB_SPEAKER").type='SPEAKER'
 
-
-
-
-
-# 弹出“对齐视图”菜单
+# 弹出“按类型全选”菜单
 class BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu(bpy.types.Operator):
     bl_idname = "button.action_view3d_call_select_select_by_type_menu"
     bl_label = "按类型全选"
@@ -113,34 +109,6 @@ class BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu(bpy.types.Operator
     def execute(self, context):
         bpy.ops.wm.call_menu(name="view3d.mt_select_select_by_type_menu")
         return {'FINISHED'}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 刷选
 class BUTTON_ACTION_OT_select_select_circle(bpy.types.Operator):
@@ -196,6 +164,14 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
         update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
     )
 
+    # 针对骨骼的选项
+    only_active: bpy.props.BoolProperty(
+        name="仅激活",
+        default=False,
+        description="仅操作活动的骨骼",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
     def invoke(self, context, event):
         if bpy.context.mode == 'EDIT_MESH':
             # 在编辑模式下，返回FINISHED直接让update回调调用execute
@@ -203,6 +179,8 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
         return self.execute(context)
 
     def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
         layout = self.layout
         #row = layout.row()
         split = layout.row().split(factor=0.4)
@@ -210,40 +188,31 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
         # 左侧列 - 标签
         col_left = split.column()
         col_left.alignment = 'RIGHT'
-        col_left.label(text="轴向")
+        if typeandmode == "MESHEDIT":
+            col_left.label(text="轴向")
         
         # 右侧列 - 垂直排列的单选按钮
         col_right = split.column()
-        col_right.prop(self, "axis", expand=True)
-        layout.separator()
+        if typeandmode in {"MESHEDIT","LATTICEEDIT"}:
+            col_right.prop(self, "axis", expand=True)
+        if typeandmode in {"ARMATUREEDIT","ARMATUREPOSE"}:
+            col_right.prop(self, "only_active")
         col_right.prop(self, "extend")
 
     def execute(self, context):
         typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
 
         if bpy.context.mode == 'OBJECT':
-            # 对象模式下通过 tool_settings 设置参数
-            context.scene.tool_settings.mirror_axis = self.axis
-            bpy.ops.object.select_mirror()
-        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
-            bpy.ops.curve.select_all(action='INVERT')
-        elif typeandmode == "METAEDIT":
-            bpy.ops.mball.select_all(action='INVERT')
-        elif typeandmode == "FONTEDIT":
-            bpy.ops.font.select_all()
+            bpy.ops.object.select_mirror(extend=self.extend)
         elif typeandmode == "LATTICEEDIT":
-            bpy.ops.lattice.select_all(action='INVERT')
+            bpy.ops.lattice.select_mirror(axis={self.axis}, extend=self.extend)
         elif typeandmode == "MESHEDIT":
             # 在编辑模式下直接将轴参数传给操作符
             bpy.ops.mesh.select_mirror(axis={self.axis}, extend=self.extend)
-        elif typeandmode in {"GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL"}:
-            bpy.ops.gpencil.select_all(action='INVERT')
-        elif typeandmode in {"GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL"}:
-            bpy.ops.grease_pencil.select_all(action='INVERT')
         elif typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.select_all(action='INVERT')
+            bpy.ops.armature.select_mirror(only_active=self.only_active, extend=self.extend)
         elif typeandmode == "ARMATUREPOSE":
-            bpy.ops.pose.select_all(action='INVERT')
+            bpy.ops.pose.select_mirror(only_active=self.only_active, extend=self.extend)
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
