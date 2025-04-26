@@ -56,7 +56,8 @@ button_options_list = [
     ('button.action_select_select_all','全选','快捷键(A)'),
     ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
     ('button.action_select_select_circle','刷选','快捷键(C)'),
-
+    ('button.action_view3d_call_select_select_by_type_menu','按类型选择(菜单)','此按钮只在“物体”模式下出现'),
+    ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
 
 
     ('testone','菜单功能1','测试菜单功能1'),
@@ -251,7 +252,20 @@ button_press_function = {
         "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
         "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
     ),
-
+        'button.action_view3d_call_select_select_by_type_menu':(
+        "button.action_view3d_call_select_select_by_type_menu","按类型选择","COLLAPSEMENU",
+        "CURVEOBJECT",  "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT",
+    ),
+        'button.action_select_select_mirror':(
+        "button.action_select_select_mirror","选择镜像","MOD_MIRROR",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
 
     # 测试功能
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),

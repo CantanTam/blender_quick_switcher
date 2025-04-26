@@ -67,6 +67,81 @@ class BUTTON_ACTION_OT_select_select_invert(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
     
+class VIEW3D_MT_select_select_by_type_menu(bpy.types.Menu):
+    bl_label = ""
+    bl_idname = "view3d.mt_select_select_by_type_menu"
+
+    def draw(self, context):
+        layout = self.layout
+        
+        layout.operator("object.select_by_type", text="网格", icon="OUTLINER_OB_MESH").type='MESH'
+        layout.operator("object.select_by_type", text="曲线", icon="OUTLINER_OB_CURVE").type='CURVE'
+        layout.operator("object.select_by_type", text="表面", icon="OUTLINER_OB_SURFACE").type='SURFACE'
+        layout.operator("object.select_by_type", text="元球", icon="OUTLINER_OB_META").type='META'
+        layout.operator("object.select_by_type", text="文本", icon="OUTLINER_OB_FONT").type='FONT'
+        layout.operator("object.select_by_type", text="毛发曲线", icon="OUTLINER_OB_CURVES").type='CURVES'
+        layout.operator("object.select_by_type", text="点云", icon="OUTLINER_OB_POINTCLOUD").type='POINTCLOUD'
+        layout.operator("object.select_by_type", text="体积", icon="OUTLINER_OB_VOLUME").type='VOLUME'
+        if bpy.app.version >= (4,3,0):
+            layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
+            layout.operator("object.select_by_type", text="蜡笔V3版", icon="OUTLINER_OB_GREASEPENCIL").type='GREASEPENCIL'
+        else:
+            layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
+        layout.separator()
+        layout.operator("object.select_by_type", text="骨骼", icon="OUTLINER_OB_ARMATURE").type='ARMATURE'
+        layout.operator("object.select_by_type", text="晶格", icon="OUTLINER_OB_LATTICE").type='LATTICE'
+        layout.separator()
+        layout.operator("object.select_by_type", text="空物体", icon="OUTLINER_OB_EMPTY").type='EMPTY'
+        layout.separator()
+        layout.operator("object.select_by_type", text="灯光", icon="OUTLINER_OB_LIGHT").type='LIGHT'
+        layout.operator("object.select_by_type", text="光照探头", icon="OUTLINER_OB_LIGHTPROBE").type='LIGHT_PROBE'
+        layout.separator()
+        layout.operator("object.select_by_type", text="摄像机", icon="OUTLINER_OB_CAMERA").type='CAMERA'
+        layout.separator()
+        layout.operator("object.select_by_type", text="扬声器", icon="OUTLINER_OB_SPEAKER").type='SPEAKER'
+
+
+
+
+
+# 弹出“对齐视图”菜单
+class BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu(bpy.types.Operator):
+    bl_idname = "button.action_view3d_call_select_select_by_type_menu"
+    bl_label = "按类型全选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="view3d.mt_select_select_by_type_menu")
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 刷选
 class BUTTON_ACTION_OT_select_select_circle(bpy.types.Operator):
     bl_idname = "button.action_select_select_circle"
@@ -111,14 +186,14 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
             ('Z', "Z轴", ""),
         ],
         default='X',
-        update=lambda self, context: self.execute(context) if bpy.context.mode == 'EDIT_MESH' else None
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
     )
     
     extend: bpy.props.BoolProperty(
         name="扩展",
         default=False,
-        description="扩展而不是替换当前选择",
-        update=lambda self, context: self.execute(context) if bpy.context.mode == 'EDIT_MESH' else None
+        description="扩展选择，而不是先取消选择",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
     )
 
     def invoke(self, context, event):
@@ -133,16 +208,14 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
         split = layout.row().split(factor=0.4)
         
         # 左侧列 - 标签
-        #col_left = row.column()
         col_left = split.column()
         col_left.alignment = 'RIGHT'
         col_left.label(text="轴向")
         
         # 右侧列 - 垂直排列的单选按钮
-        #col_right = row.column()
         col_right = split.column()
         col_right.prop(self, "axis", expand=True)
-        #layout.separator()
+        layout.separator()
         col_right.prop(self, "extend")
 
     def execute(self, context):
