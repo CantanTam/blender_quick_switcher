@@ -56,7 +56,7 @@ button_options_list = [
     ('button.action_select_select_all','全选','快捷键(A)'),
     ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
     ('button.action_select_select_circle','刷选','快捷键(C)'),
-    ('button.action_view3d_call_select_select_by_type_menu','按类型选择(菜单)','此按钮只在“物体”模式下出现'),
+    ('button.action_view3d_call_select_select_by_type_menu','按类型全选(菜单)','此按钮只在“物体”模式下出现'),
     ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
     ('button.action_select_select_random','随机选择',''),
@@ -64,6 +64,7 @@ button_options_list = [
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
     ('button.action_object_select_less','减选','快捷键(Ctrl Num_-)'),
     ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),
+    ('button.action_call_select_select_grouped_menu','按组/相似选择(菜单)','快捷键(Shift G)'),
 
 
 
@@ -316,7 +317,14 @@ button_press_function = {
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT","ARMATUREPOSE",
     ),
-
+        'button.action_call_select_select_grouped_menu':(
+        "button.action_call_select_select_grouped_menu","按组/相似选择","GROUP",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT","MESHEDIT","GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "GREASEPENCILEDIT",
+        "GREASEPENCILVERTEX_GREASE_PENCIL", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
+        "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT",
+        "ARMATUREPOSE","CURVEEDIT","SURFACEEDIT","METAEDIT",
+    ),
 
     # 测试功能
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
