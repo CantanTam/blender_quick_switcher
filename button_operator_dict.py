@@ -52,7 +52,7 @@ button_options_list = [
     ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
 
     # “选择”菜单
-    ('NO_BUTTON',"←选择菜单→",""),
+    ('NO_BUTTON',"←物体模式-选择菜单→",""),
     ('button.action_select_select_all','全选','快捷键(A)'),
     ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
     ('button.action_select_select_circle','刷选','快捷键(C)'),
@@ -60,6 +60,12 @@ button_options_list = [
     ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
     ('button.action_select_select_random','随机选择',''),
+    ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
+    ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
+    ('button.action_object_select_less','减选','快捷键(Ctrl Num_-)'),
+    ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),
+
+
 
 
     ('testone','菜单功能1','测试菜单功能1'),
@@ -279,6 +285,36 @@ button_press_function = {
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
         "GREASEPENCILVERTEX_GREASE_PENCIL", "ARMATUREOBJECT",
+    ),
+        'button.action_call_object_select_more_or_less_menu':(
+        "button.action_call_object_select_more_or_less_menu","加选/减选","COLLAPSEMENU",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_object_select_more':(
+        "button.action_object_select_more","加选","ADD",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
+        "ARMATUREOBJECT", "ARMATUREEDIT",
+    ),
+        'button.action_object_select_less':(
+        "button.action_object_select_less","减选","REMOVE",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
+        "ARMATUREOBJECT", "ARMATUREEDIT",
+    ),
+        'button.action_object_select_hierarchy_parent_child':(
+        "button.action_object_select_hierarchy_parent_child","父级/子级","ORIENTATION_PARENT",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT","ARMATUREPOSE",
     ),
 
 

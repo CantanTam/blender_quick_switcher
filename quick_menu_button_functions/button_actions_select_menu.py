@@ -214,24 +214,6 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 随机选择
 class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
     bl_idname = "button.action_select_select_random"
@@ -316,6 +298,253 @@ class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
             bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends) # 4.2 版本
         elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL"}:
             bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action) # 4.3 版本
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+# ”加选/减选“菜单
+class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Menu):
+    bl_label = ""
+    bl_idname = "view3d.mt_object_select_more_or_less_menu"
+
+    def draw(self, context):
+        layout = self.layout
+
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == "OBJECT":
+        # 调用 view_axis 操作符，并传入对应的 type 参数
+            layout.operator("object.select_more", text="扩展选区")
+            layout.operator("object.select_less", text="缩减选区")
+            layout.separator()
+            op = layout.operator("object.select_hierarchy", text="父级")
+            op.direction='PARENT'
+            op.extend=False
+            op = layout.operator("object.select_hierarchy", text="子级")
+            op.direction='CHILD'
+            op.extend=False
+            layout.separator()
+            op = layout.operator("object.select_hierarchy", text="扩展父级")
+            op.direction='PARENT'
+            op.extend=True        
+            op = layout.operator("object.select_hierarchy", text="扩展子级")
+            op.direction='CHILD'
+            op.extend=True
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            layout.operator("curve.select_more", text="扩展选择")
+            layout.operator("curve.select_less", text="缩减选择")
+        elif typeandmode == "MESHEDIT":
+            layout.operator("mesh.select_more", text="扩展选区")
+            layout.operator("mesh.select_less", text="缩减选区")
+            layout.separator()
+            layout.operator("mesh.select_next_item", text="下一个活动元素")
+            layout.operator("mesh.select_prev_item", text="上一个活动元素")
+        elif typeandmode == "ARMATUREEDIT":
+            layout.operator("armature.select_more", text="扩展选区")
+            layout.operator("armature.select_less", text="缩减选区")
+            layout.separator()
+            op = layout.operator("armature.select_hierarchy", text="父级")
+            op.direction='PARENT'
+            op.extend=False
+            op = layout.operator("armature.select_hierarchy", text="子级")
+            op.direction='CHILD'
+            op.extend=False
+            layout.separator()
+            op = layout.operator("armature.select_hierarchy", text="扩展父级")
+            op.direction='PARENT'
+            op.extend=True        
+            op = layout.operator("armature.select_hierarchy", text="扩展子级")
+            op.direction='CHILD'
+            op.extend=True
+        elif typeandmode == "ARMATUREPOSE":
+            op = layout.operator("pose.select_hierarchy", text="父级")
+            op.direction='PARENT'
+            op.extend=False
+            op = layout.operator("pose.select_hierarchy", text="子级")
+            op.direction='CHILD'
+            op.extend=False
+            layout.separator()
+            op = layout.operator("pose.select_hierarchy", text="扩展父级")
+            op.direction='PARENT'
+            op.extend=True        
+            op = layout.operator("pose.select_hierarchy", text="扩展子级")
+            op.direction='CHILD'
+            op.extend=True
+        elif typeandmode == "LATTICEEDIT":
+            layout.operator("lattice.select_more", text="扩展选区")
+            layout.operator("lattice.select_less", text="缩减选区")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_object_select_more_or_less_menu"
+    bl_label = "加选/减选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="view3d.mt_object_select_more_or_less_menu")
+        return {'FINISHED'}
+    
+# 加选    
+class BUTTON_ACTION_OT_object_select_more(bpy.types.Operator):
+    bl_idname = "button.action_object_select_more"
+    bl_label = "加选"
+    bl_description = "快捷键 Ctrl Num_+"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_face_step: bpy.props.BoolProperty(
+        name="面步长",            
+        description="相连的面(而非边)", 
+        default=True,
+        update=lambda self, context: self.execute(context)
+    )    
+
+    def invoke(self, context, event):
+        return self.execute(context)
+    
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        if typeandmode == "MESHEDIT":
+
+            layout = self.layout
+            #row = layout.row()
+            split = layout.row().split(factor=0.4)
+            
+            # 左侧列 - 标签
+            col_left = split.column()
+            col_left.label(text="")
+            
+            # 右侧列 - 垂直排列的单选按钮
+            col_right = split.column()
+            col_right.prop(self, "use_face_step")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_more()
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT",}:
+            bpy.ops.curve.select_more()
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_more(use_face_step=self.use_face_step)
+        elif typeandmode == "GPENCILEDIT_GPENCIL": # 4.2 版本
+            bpy.ops.gpencil.select_more()
+        elif typeandmode == "GREASEPENCILEDIT": # 4.3 版本
+            bpy.ops.grease_pencil.select_more()
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_more()
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_more()
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+    
+# 减选    
+class BUTTON_ACTION_OT_object_select_less(bpy.types.Operator):
+    bl_idname = "button.action_object_select_less"
+    bl_label = "减选"
+    bl_description = "快捷键 Ctrl Num_-"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_face_step: bpy.props.BoolProperty(
+        name="面步长",            
+        description="相连的面(而非边)", 
+        default=True,
+        update=lambda self, context: self.execute(context)
+    )    
+
+    def invoke(self, context, event):
+        return self.execute(context)
+    
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        if typeandmode == "MESHEDIT":
+
+            layout = self.layout
+            #row = layout.row()
+            split = layout.row().split(factor=0.4)
+            
+            # 左侧列 - 标签
+            col_left = split.column()
+            col_left.label(text="")
+            
+            # 右侧列 - 垂直排列的单选按钮
+            col_right = split.column()
+            col_right.prop(self, "use_face_step")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_less()
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT",}:
+            bpy.ops.curve.select_less()
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_less(use_face_step=self.use_face_step)
+        elif typeandmode == "GPENCILEDIT_GPENCIL": # 4.2 版本
+            bpy.ops.gpencil.select_less()
+        elif typeandmode == "GREASEPENCILEDIT": # 4.3 版本
+            bpy.ops.grease_pencil.select_less()
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_less()
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_less()
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+    
+# 父级/子级/扩展父级/扩展子级 功能四合一   
+class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
+    bl_idname = "button.action_object_select_hierarchy_parent_child"
+    bl_label = "父级/子级/扩展父级/扩展子级"
+    bl_description = "父级/子级/扩展父级/扩展子级功能集合"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    direction: bpy.props.EnumProperty(
+        name="选择动作",  # 显示在UI中的标签名称
+        items=[
+            ('PARENT', "父级", ""),
+            ('CHILD', "子级", ""), 
+        ],
+        #default='PARENT',
+        update=lambda self, context: self.execute(context)
+    )
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",            
+        description="", 
+        default=False,
+        update=lambda self, context: self.execute(context)
+    ) 
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        #row = layout.row()
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="方向")
+        
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        col_right.prop(self, "direction", expand=True)
+        col_right.prop(self, "extend")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_hierarchy(direction=self.direction, extend=self.extend)
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_hierarchy(direction=self.direction, extend=self.extend)
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_hierarchy(direction=self.direction, extend=self.extend)
         else:
             return {'CANCELLED'}
         return {'FINISHED'}

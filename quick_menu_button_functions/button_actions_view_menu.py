@@ -345,3 +345,10 @@ class BUTTON_ACTION_OT_view3d_call_menu_view_regions(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.wm.call_menu(name="view3d.mt_view_regions_menu")
         return {'FINISHED'}
+    
+
+
+
+
+
+
