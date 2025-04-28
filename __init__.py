@@ -94,6 +94,8 @@ from .quick_menu_button_functions.button_actions_select_menu import (
     BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
     VIEW3D_MT_select_select_grouped_menu,
     BUTTON_ACTION_OT_call_select_select_grouped_menu,
+    VIEW3D_MT_select_select_linked_menu,
+    BUTTON_ACTION_OT_call_select_select_linked_menu,
 
 )
 
@@ -179,6 +181,8 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_object_select_hierarchy_parent_child)
     bpy.utils.register_class(VIEW3D_MT_select_select_grouped_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_grouped_menu)
+    bpy.utils.register_class(VIEW3D_MT_select_select_linked_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
 
 
     # 注册键位映射
@@ -189,6 +193,8 @@ def unregister():
     unregister_mode_handler()
 
     # “选择”菜单功能项
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
+    bpy.utils.unregister_class(VIEW3D_MT_select_select_linked_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_grouped_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_grouped_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_object_select_hierarchy_parent_child)

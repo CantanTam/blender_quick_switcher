@@ -66,7 +66,8 @@ class BUTTON_ACTION_OT_select_select_invert(bpy.types.Operator):
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
-    
+
+# “按类型选择”菜单
 class VIEW3D_MT_select_select_by_type_menu(bpy.types.Menu):
     bl_label = ""
     bl_idname = "view3d.mt_select_select_by_type_menu"
@@ -571,7 +572,7 @@ class VIEW3D_MT_select_select_grouped_menu(bpy.types.Menu):
             layout.operator("object.select_grouped", text="颜色").type='COLOR'
             layout.operator("object.select_grouped", text="插帧集").type='KEYINGSET'
             layout.operator("object.select_grouped", text="灯光类型").type='LIGHT_TYPE'
-        elif typeandmode == "MESHEDIT":
+        elif typeandmode == "MESHEDIT" and bpy.app.version < (4, 2, 0) :
             layout.operator("mesh.select_similar", text="法向").type='NORMAL'
             layout.operator("mesh.select_similar", text="相邻面数量").type='FACE'
             layout.operator("mesh.select_similar", text="顶点组").type='VGROUP'
@@ -579,6 +580,14 @@ class VIEW3D_MT_select_select_grouped_menu(bpy.types.Menu):
             layout.operator("mesh.select_similar", text="顶点折痕").type='VCREASE'
             layout.separator()
             layout.operator("mesh.select_similar_region", text="面区域")
+        elif typeandmode == "MESHEDIT" and bpy.app.version >= (4, 2, 0) :
+            layout.operator("mesh.select_similar", text="法向").type='VERT_NORMAL'
+            layout.operator("mesh.select_similar", text="相邻面数量").type='VERT_FACES'
+            layout.operator("mesh.select_similar", text="顶点组").type='VERT_GROUPS'
+            layout.operator("mesh.select_similar", text="连接边数量").type='VERT_EDGES'
+            layout.operator("mesh.select_similar", text="顶点折痕").type='VERT_CREASE'
+            layout.separator()
+            layout.operator("mesh.select_similar_region", text="面区域")         
         elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
             layout.operator("gpencil.select_grouped", text="层").type='LAYER'
             layout.operator("gpencil.select_grouped", text="材质").type='MATERIAL'
@@ -641,3 +650,55 @@ class BUTTON_ACTION_OT_call_select_select_grouped_menu(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="view3d.mt_select_select_grouped_menu")
         return {'FINISHED'}
 
+# 选择相连项（菜单）
+class VIEW3D_MT_select_select_linked_menu(bpy.types.Menu):
+    bl_label = ""
+    bl_idname = "view3d.mt_select_select_linked_menu"
+
+    def draw(self, context):
+        layout = self.layout
+
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == "OBJECT":
+            layout.operator("object.select_linked", text="物体数据").type='OBDATA'
+            layout.operator("object.select_linked", text="材质").type='MATERIAL'
+            layout.operator("object.select_linked", text="实例集合").type='DUPGROUP'
+            layout.operator("object.select_linked", text="粒子系统").type='PARTICLE'
+            layout.operator("object.select_linked", text="库").type='LIBRARY'
+            layout.operator("object.select_linked", text="库(物体数据)").type='LIBRARY_OBDATA'
+        elif typeandmode == "MESHEDIT":
+            layout.operator("mesh.select_linked", text="关联项")
+            layout.operator("mesh.shortest_path_select", text="最短路径")
+            layout.operator("mesh.faces_select_linked_flat", text="相连的平民面")
+
+# 调出“选择相连项”菜单
+class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_select_select_linked_menu"
+    bl_label = "选择相连元素"
+    bl_description = "不同编辑模式有不同功能"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.select_linked()
+            return {'FINISHED'}
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_linked()
+            return {'FINISHED'}
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.select_linked()
+            return {'FINISHED'}
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_linked()
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_linked()
+        elif bpy.context.mode == "OBJECT" or typeandmode == "MESHEDIT":
+            bpy.ops.wm.call_menu(name="view3d.mt_select_select_linked_menu")
+        return {'FINISHED'}
+    
+
+    
+    
