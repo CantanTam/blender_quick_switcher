@@ -26,7 +26,7 @@ from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
 
 # 所有按钮操作符的导入：
-from .quick_menu_button_functions.button_actions_grab_scale_rotate import (
+from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_grab,
     BUTTON_ACTION_OT_scale,
     BUTTON_ACTION_OT_rotate
@@ -96,7 +96,10 @@ from .quick_menu_button_functions.button_actions_select_menu import (
     BUTTON_ACTION_OT_call_select_select_grouped_menu,
     VIEW3D_MT_select_select_linked_menu,
     BUTTON_ACTION_OT_call_select_select_linked_menu,
+)
 
+from .quick_menu_button_functions.button_actions_add_menu import (
+    BUTTON_ACTION_OT_add,
 )
 
 def register():    
@@ -184,6 +187,8 @@ def register():
     bpy.utils.register_class(VIEW3D_MT_select_select_linked_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
 
+    # “添加”菜单功能
+    bpy.utils.register_class(BUTTON_ACTION_OT_add)
 
     # 注册键位映射
     keymap.register()
@@ -191,6 +196,9 @@ def register():
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    # "添加"菜单功能
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_add)
 
     # “选择”菜单功能项
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_linked_menu)

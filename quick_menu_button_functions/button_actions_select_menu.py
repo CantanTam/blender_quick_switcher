@@ -698,7 +698,3 @@ class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
         elif bpy.context.mode == "OBJECT" or typeandmode == "MESHEDIT":
             bpy.ops.wm.call_menu(name="view3d.mt_select_select_linked_menu")
         return {'FINISHED'}
-    
-
-    
-    

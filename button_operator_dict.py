@@ -3,8 +3,8 @@ button_options_list = [
     ('NO_BUTTON',"○无按钮○","默认不显示按钮"),
     ('SEPARATOR', '◂◂◂间隔▸▸▸', '弹出菜单间隔符'),
 
-    # 常用功能 G S R
-    ('NO_BUTTON',"←常用功能G/S/R→",""),
+    # 全局通用操作：
+    ('NO_BUTTON',"←全局通用操作→",""),
     ('button_action_grab','移动','移动'),
     ('button_action_scale','缩放','缩放'),
     ('button_action_rotate','旋转','旋转'),
@@ -27,7 +27,7 @@ button_options_list = [
     ('button_action_pivot_to_median_point','质心点','质心点'),
     ('button_action_pivot_to_active_element','活动元素','活动元素'),
 
-    # 通用模式“视图”菜单，在所有模式都可以调出的菜单
+    # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
     ('NO_BUTTON',"←通用模式-视图菜单→",""),
     ('button.action_view_selected_use_all_regions_false','框显所选','快捷键(.)'),
     ('button.action_view_all_center_false','框显全部','快捷键(Home)'),
@@ -51,7 +51,7 @@ button_options_list = [
     ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
     ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
 
-    # 通用模式“选择”菜单，不同模式当中功能相似的菜单集合
+    # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
     ('NO_BUTTON',"←通用模式-选择菜单→",""),
     ('button.action_select_select_all','全选','快捷键(A)'),
     ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
@@ -66,12 +66,17 @@ button_options_list = [
     ('button.action_call_select_select_linked_menu','选择相连元素(菜单)',''),
     ('object.select_pattern','按名称选择',''),
 
-    # “选择”菜单
+    # 通用模式——“添加”菜单，不同模式当中都实现不同的“添加”功能
+    ('NO_BUTTON',"←通用模式-添加菜单→",""),
+    ('button.action_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
+
+    # 物体模式——“选择”菜单
     ('NO_BUTTON',"←物体模式-选择菜单→",""),
     ('button.action_view3d_call_select_select_by_type_menu','按类型全选(菜单)',''),
     ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
 
-
+    # 物体模式——“物体”菜单
+    ('NO_BUTTON',"←物体模式-物体菜单→",""),
 
 
     ('testone','菜单功能1','测试菜单功能1'),
@@ -343,6 +348,15 @@ button_press_function = {
         "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
         "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT","ARMATUREEDIT", "ARMATUREPOSE",
     ),
+
+    # “添加”菜单
+        'button.action_add':(
+        "button.action_add","添加","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
+        "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+
 
     # 测试功能
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
