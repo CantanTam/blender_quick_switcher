@@ -125,7 +125,7 @@
     "panel2_col1_button9": "button.action_select_select_invert",
     "panel2_col1_button10": "button.action_select_select_circle",
     "panel_two_col2_title": "第二列标题",
-    "panel2_col2_button1": "button.action_object_select_hierarchy_parent_child",
+    "panel2_col2_button1": "button.action_call_common_function_transform_menu",
     "panel2_col2_button2": "button.action_view3d_call_select_select_by_type_menu",
     "panel2_col2_button3": "button.action_call_select_select_grouped_menu",
     "panel2_col2_button4": "button.action_view_selected_use_all_regions_false",

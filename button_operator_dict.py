@@ -3,8 +3,8 @@ button_options_list = [
     ('NO_BUTTON',"○无按钮○","默认不显示按钮"),
     ('SEPARATOR', '◂◂◂间隔▸▸▸', '弹出菜单间隔符'),
 
-    # 全局通用操作：
-    ('NO_BUTTON',"←全局通用操作→",""),
+    # 全局高频操作：
+    ('NO_BUTTON',"←全局常用操作→","全局都使用的高频操作"),
     ('button_action_grab','移动','移动'),
     ('button_action_scale','缩放','缩放'),
     ('button_action_rotate','旋转','旋转'),
@@ -26,6 +26,12 @@ button_options_list = [
     ('button_action_pivot_to_individual_origins','各自的原点','各自的原点'),
     ('button_action_pivot_to_median_point','质心点','质心点'),
     ('button_action_pivot_to_active_element','活动元素','活动元素'),
+
+    # 通用模式——共用功能
+    ('NO_BUTTON',"←通用模式-视图菜单→","全局共同使用的一些操作"),
+    ('button.action_call_common_function_transform_menu',"变换(菜单)","物体模式/网格模式共用的“变换”菜单"),
+
+
 
     # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
     ('NO_BUTTON',"←通用模式-视图菜单→",""),
@@ -77,6 +83,7 @@ button_options_list = [
 
     # 物体模式——“物体”菜单
     ('NO_BUTTON',"←物体模式-物体菜单→",""),
+
 
 
     ('testone','菜单功能1','测试菜单功能1'),
@@ -355,6 +362,14 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
         "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+
+    # 一些通用操作
+        'button.action_call_common_function_transform_menu':(
+        "button.action_call_common_function_transform_menu","变换","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT","LATTICEEDIT",
+        "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',"ARMATUREPOSE","GPENCILEDIT_GPENCIL","GREASEPENCILEDIT",
     ),
 
 

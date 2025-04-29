@@ -102,6 +102,11 @@ from .quick_menu_button_functions.button_actions_add_menu import (
     BUTTON_ACTION_OT_add,
 )
 
+from .quick_menu_button_functions.button_actions_common_functions import (
+    VIEW3D_MT_common_function_transform_menu,
+    BUTTON_ACTION_OT_call_common_function_transform_menu,
+)
+
 def register():    
     # 注册模式监测功能
     register_mode_handler()
@@ -190,12 +195,20 @@ def register():
     # “添加”菜单功能
     bpy.utils.register_class(BUTTON_ACTION_OT_add)
 
+    # 全局通用功能
+    bpy.utils.register_class(VIEW3D_MT_common_function_transform_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
+
     # 注册键位映射
     keymap.register()
 
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    # 全局通用功能
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
+    bpy.utils.unregister_class(VIEW3D_MT_common_function_transform_menu)
 
     # "添加"菜单功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_add)
