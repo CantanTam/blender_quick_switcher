@@ -105,6 +105,12 @@ from .quick_menu_button_functions.button_actions_add_menu import (
 from .quick_menu_button_functions.button_actions_common_functions import (
     VIEW3D_MT_common_function_transform_menu,
     BUTTON_ACTION_OT_call_common_function_transform_menu,
+    BUTTON_ACTION_OT_transform_tosphere,
+    BUTTON_ACTION_OT_transform_shear,
+    BUTTON_ACTION_OT_transform_bend,
+    BUTTON_ACTION_OT_transform_push_pull,
+    BUTTON_ACTION_OT_transform_translate_texturespace_true,
+    BUTTON_ACTION_OT_transform_resize_texturespace_true
 )
 
 def register():    
@@ -198,6 +204,12 @@ def register():
     # 全局通用功能
     bpy.utils.register_class(VIEW3D_MT_common_function_transform_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_tosphere)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_shear)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_bend)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_push_pull)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
 
     # 注册键位映射
     keymap.register()
@@ -207,6 +219,12 @@ def unregister():
     unregister_mode_handler()
 
     # 全局通用功能
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_push_pull)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_bend)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_shear)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_tosphere)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
     bpy.utils.unregister_class(VIEW3D_MT_common_function_transform_menu)
 
