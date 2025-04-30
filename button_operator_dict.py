@@ -11,6 +11,8 @@ button_options_list = [
     ('button.action_global_select_all','全选','快捷键(A)'),
     ('button.action_global_select_invert','反选','快捷键(Ctrl I)'),
     ('button.action_global_select_circle','刷选','快捷键(C)'),
+    ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
+    ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),
 
 
     # 切换坐标系
@@ -80,10 +82,6 @@ button_options_list = [
     ('button.action_call_select_select_linked_menu','选择相连元素(菜单)',''),
     ('object.select_pattern','按名称选择',''),
 
-    # 通用模式——“添加”菜单，不同模式当中都实现不同的“添加”功能
-    ('NO_BUTTON',"←通用模式-添加菜单→",""),
-    ('button.action_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
-
     # 物体模式——“选择”菜单
     ('NO_BUTTON',"←物体模式-选择菜单→","“物体—选择”菜单中显示的选项"),
     ('button.action_view3d_call_select_select_by_type_menu','按类型全选(菜单)',''),
@@ -94,6 +92,9 @@ button_options_list = [
     ('button.action_object_object_transform_transform_mode_align',"变换—对齐到变换坐标系",""),
     ('object.randomize_transform',"变换—随机变换",""),
     ('object.align',"变换—对齐物体",""),
+
+    # “骨架”——相关按钮
+    ('NO_BUTTON',"←骨架-编辑模式→","“骨架—编辑模式”菜单中显示的选项"),
 
 
 
@@ -118,14 +119,14 @@ button_press_function = {
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
-        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",'MESHSCULPT',
     ),
         'button.action_global_rotate':(
         "button.action_global_rotate","旋转","EVENT_R",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
-        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",'MESHSCULPT',
     ),
 
     # 全局高频操作—全选/反选/刷选
@@ -154,6 +155,20 @@ button_press_function = {
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
         "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+
+    # 全局高频操作——“添加”菜单/“复制”
+        'button.action_global_add':(
+        "button.action_global_add","添加","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
+        "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+        'button.action_global_duplicate_move':(
+        "button.action_global_duplicate_move","复制","DUPLICATE", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
     ),
 
     # 切换坐标系
@@ -386,14 +401,6 @@ button_press_function = {
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", 
         "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
         "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT","ARMATUREEDIT", "ARMATUREPOSE",
-    ),
-
-    # “添加”菜单
-        'button.action_add':(
-        "button.action_add","添加","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
-        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
-        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
-        "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
     ),
 
     # 一些通用操作

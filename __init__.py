@@ -33,6 +33,8 @@ from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_global_select_all,
     BUTTON_ACTION_OT_global_select_invert,
     BUTTON_ACTION_OT_global_select_circle,
+    BUTTON_ACTION_OT_global_duplicate_move,
+    BUTTON_ACTION_OT_global_add,
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -98,10 +100,6 @@ from .quick_menu_button_functions.button_actions_global_select_menu import (
     BUTTON_ACTION_OT_call_select_select_linked_menu,
 )
 
-from .quick_menu_button_functions.button_actions_global_add_menu import (
-    BUTTON_ACTION_OT_add,
-)
-
 from .quick_menu_button_functions.button_actions_common_functions import (
     VIEW3D_MT_common_function_transform_menu,
     BUTTON_ACTION_OT_call_common_function_transform_menu,
@@ -116,6 +114,10 @@ from .quick_menu_button_functions.button_actions_common_functions import (
 
 from .quick_menu_button_functions.button_actions_object_mode_menu import (
     BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
+)
+
+from .quick_menu_button_functions.button_actions_armature import (
+    BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
 
 def register():    
@@ -136,10 +138,15 @@ def register():
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_one)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_two)
 
-    # 所有按钮操作符的注册
+    # 全局高频操作类
     bpy.utils.register_class(BUTTON_ACTION_OT_grab)
     bpy.utils.register_class(BUTTON_ACTION_OT_scale)
     bpy.utils.register_class(BUTTON_ACTION_OT_rotate)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_all)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_invert)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_circle)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_duplicate_move)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_add)
 
     # 变换坐标系类
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
@@ -186,9 +193,6 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     
     # “选择”菜单功能项
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_all)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_invert)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_circle)
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
     bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
@@ -202,9 +206,6 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_grouped_menu)
     bpy.utils.register_class(VIEW3D_MT_select_select_linked_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
-
-    # “添加”菜单功能
-    bpy.utils.register_class(BUTTON_ACTION_OT_add)
 
     # 全局通用功能
     bpy.utils.register_class(VIEW3D_MT_common_function_transform_menu)
@@ -220,12 +221,18 @@ def register():
     # 物体模式—“物体”菜单
     bpy.utils.register_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
 
+    # "骨架"模式相关功能
+    bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
+
     # 注册键位映射
     keymap.register()
 
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    # ”骨架“模式相关功能
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
     # 物体模式—“物体”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
@@ -241,9 +248,6 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
     bpy.utils.unregister_class(VIEW3D_MT_common_function_transform_menu)
 
-    # "添加"菜单功能
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_add)
-
     # “选择”菜单功能项
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_linked_menu)
@@ -258,9 +262,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_circle)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_invert)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_all)
+
 
     # “视图”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
@@ -306,7 +308,12 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_local)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
-    # 移动/缩放/旋转操作类
+    # 全局高频操作类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_add)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_duplicate_move)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_circle)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_invert)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_all)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_rotate)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_scale)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_grab)

@@ -130,3 +130,52 @@ class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
+
+# 全局“添加”菜单功能
+class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
+    bl_idname = "button.action_global_add"
+    bl_label = "添加"
+    bl_description = "快捷键 Shift A"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_add")
+        if typeandmode == "CURVEEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_curve_add")
+        if typeandmode == 'SURFACEEDIT':
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_surface_add")
+        if typeandmode == 'METAEDIT':
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_metaball_add")
+        if typeandmode == 'MESHEDIT':
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_mesh_add")
+        if typeandmode == 'ARMATUREEDIT':
+            bpy.ops.wm.call_menu(name="TOPBAR_MT_edit_armature_add")
+        return {'FINISHED'}
+
+# 全局“复制”按钮功能
+class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
+    bl_idname = "button.action_global_duplicate_move"
+    bl_label = "复制"
+    bl_description = "快捷键 Shift D"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.duplicate_move('INVOKE_DEFAULT')
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.duplicate_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
