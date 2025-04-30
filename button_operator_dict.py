@@ -5,9 +5,13 @@ button_options_list = [
 
     # 全局高频操作：
     ('NO_BUTTON',"←全局常用操作→","全局都使用的高频操作"),
-    ('button_action_grab','移动','移动'),
-    ('button_action_scale','缩放','缩放'),
-    ('button_action_rotate','旋转','旋转'),
+    ('button.action_global_grab','移动','移动'),
+    ('button.action_global_scale','缩放','缩放'),
+    ('button.action_global_rotate','旋转','旋转'),
+    ('button.action_global_select_all','全选','快捷键(A)'),
+    ('button.action_global_select_invert','反选','快捷键(Ctrl I)'),
+    ('button.action_global_select_circle','刷选','快捷键(C)'),
+
 
     # 切换坐标系
     ('NO_BUTTON',"←切换坐标系→",""),
@@ -28,14 +32,16 @@ button_options_list = [
     ('button_action_pivot_to_active_element','活动元素','活动元素'),
 
     # 通用模式——共用功能
-    ('NO_BUTTON',"←通用模式-变换操作→","多种模式共用的一些变换操作"),
-    ('button.action_call_common_function_transform_menu',"变换(菜单)","物体模式/网格模式共用的“变换”菜单"),
+    ('NO_BUTTON',"←通用模式-“变换”菜单→","不同模式下“变换”菜单中都会出现的选项，被合并到这里"),
+    ('button.action_call_common_function_transform_menu',"变换(菜单)","多种编辑模式调出“变换”菜单"),
     ('button.action_transform_tosphere',"变换—球形化","多种模式共用的“球形化”操作"),
     ('button.action_transform_shear',"变换—切变","多种模式共用的“切变”操作"),
     ('button.action_transform_bend',"变换—弯曲","多种模式共用的“弯曲”操作"),
     ('button.action_transform_push_pull',"变换—推/拉","多种模式共用的“推/拉”操作"),
     ('button.action_transform_translate_texturespace_true',"变换—移动纹理空间","多种模式共用的“移动纹理空间”操作"),
     ('button.action_transform_resize_texturespace_true',"变换—缩放纹理空间","多种模式共用的“缩放纹理空间”操作"),
+    ('transform.vertex_warp',"变换—弯绕","多种模式共用的“弯绕”操作"),
+    ('button.action_transform_vertex_random',"变换—随机","多种模式共用的“随机”操作"),
 
 
     # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
@@ -64,9 +70,6 @@ button_options_list = [
 
     # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
     ('NO_BUTTON',"←通用模式-选择菜单→",""),
-    ('button.action_select_select_all','全选','快捷键(A)'),
-    ('button.action_select_select_invert','反选','快捷键(Ctrl I)'),
-    ('button.action_select_select_circle','刷选','快捷键(C)'),
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
     ('button.action_select_select_random','随机选择',''),
     ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
@@ -82,12 +85,16 @@ button_options_list = [
     ('button.action_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
 
     # 物体模式——“选择”菜单
-    ('NO_BUTTON',"←物体模式-选择菜单→",""),
+    ('NO_BUTTON',"←物体模式-选择菜单→","“物体—选择”菜单中显示的选项"),
     ('button.action_view3d_call_select_select_by_type_menu','按类型全选(菜单)',''),
     ('object.select_camera','选择活动摄像机','此按钮只在“物体”模式下出现'),
 
     # 物体模式——“物体”菜单
-    ('NO_BUTTON',"←物体模式-物体菜单→",""),
+    ('NO_BUTTON',"←物体模式-物体菜单→","“物体—物体”菜单中显示的选项"),
+    ('button.action_object_object_transform_transform_mode_align',"变换—对齐到变换坐标系",""),
+    ('object.randomize_transform',"变换—随机变换",""),
+    ('object.align',"变换—对齐物体",""),
+
 
 
 
@@ -98,27 +105,55 @@ button_options_list = [
 
 # [0]调用的函数id；[1]按钮名称；[2]按钮图标；[3][4][…]typeandmode包含在其中才显示按钮，“all”则是在所有场景中都显示
 button_press_function = {
-    # 全局高频操作
-    'button_action_grab':(
-        "button.action_grab","移动","EVENT_G",
+    # 全局高频操作-移动/缩放/旋转-G/S/R
+        'button.action_global_grab':(
+        "button.action_global_grab","移动","EVENT_G",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",'MESHSCULPT',
+    ),
+        'button.action_global_scale':(
+        "button.action_global_scale","缩放","EVENT_S",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_scale':(
-        "button.action_scale","缩放","EVENT_S",
+        'button.action_global_rotate':(
+        "button.action_global_rotate","旋转","EVENT_R",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_rotate':(
-        "button.action_rotate","旋转","EVENT_R",
-        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT",
-        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
-        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
-        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+
+    # 全局高频操作—全选/反选/刷选
+        'button.action_global_select_all':(
+        "button.action_global_select_all","全选","EVENT_A",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
+        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_global_select_invert':(
+        "button.action_global_select_invert","反选","RADIOBUT_OFF",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
+        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_global_select_circle':(
+        "button.action_global_select_circle","刷选","EVENT_C",
+        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
+        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
+        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
     ),
 
     # 切换坐标系
@@ -275,32 +310,6 @@ button_press_function = {
     ),
 
     # “选择”菜单
-        'button.action_select_select_all':(
-        "button.action_select_select_all","全选","EVENT_A",
-        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
-        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
-        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
-        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
-        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
-        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
-    ),
-        'button.action_select_select_invert':(
-        "button.action_select_select_invert","反选","RADIOBUT_OFF",
-        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
-        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
-        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
-        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GPENCILVERTEX_GPENCIL", 
-        "GREASEPENCILOBJECT", "GREASEPENCILEDIT", "GREASEPENCILVERTEX_GREASE_PENCIL", 
-        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
-    ),
-        'button.action_select_select_circle':(
-        "button.action_select_select_circle","刷选","EVENT_C",
-        "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT", "METAEDIT",
-        "FONTOBJECT", "FONTEDIT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
-        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
-        "MESHEDIT", "GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT", "GREASEPENCILEDIT", 
-        "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
-    ),
         'button.action_view3d_call_select_select_by_type_menu':(
         "button.action_view3d_call_select_select_by_type_menu","按类型选择","COLLAPSEMENU",
         "CURVEOBJECT",  "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
@@ -429,6 +438,31 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT","LATTICEEDIT",
         "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',"ARMATUREPOSE","GPENCILEDIT_GPENCIL","GREASEPENCILEDIT",
+    ),
+        'transform.vertex_warp':(
+        "transform.vertex_warp","弯绕","RADIOBUT_OFF", 
+        "LATTICEEDIT", "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+        'button.action_transform_vertex_random':(
+        "button.action_transform_vertex_random","随机","RADIOBUT_OFF", 
+        "LATTICEEDIT", "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+
+    # 物体模式——物体菜单
+        'button.action_object_object_transform_transform_mode_align':(
+        "button.action_object_object_transform_transform_mode_align","对齐到变换坐标系","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", 
+        "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
+    ),
+        'object.randomize_transform':(
+        "object.randomize_transform","随机变换","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
+    ),
+        'object.align':(
+        "object.align","对齐物体","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
     ),
 
     # 测试功能

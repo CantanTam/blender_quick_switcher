@@ -11,9 +11,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
         layout = self.layout
         
         if bpy.context.mode == "OBJECT":
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_tosphere", text="球形化")
             layout.operator("button.action_transform_shear", text="切变")
@@ -28,9 +28,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
             layout.operator("object.randomize_transform", text="随机变换")
             layout.operator("object.align", text="对齐物体")
         elif typeandmode == "MESHEDIT":
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_tosphere", text="球形化")
             layout.operator("button.action_transform_shear", text="切变")
@@ -44,9 +44,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
             layout.operator("button.action_transform_translate_texturespace_true", text="移动纹理空间")
             layout.operator("button.action_transform_resize_texturespace_true", text="缩放纹理空间")
         elif typeandmode in {"CURVEEDIT","SURFACEEDIT","METAEDIT","LATTICEEDIT"}:
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_tosphere", text="球形化")
             layout.operator("button.action_transform_shear", text="切变")
@@ -60,9 +60,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
             layout.operator("button.action_transform_translate_texturespace_true", text="移动纹理空间")
             layout.operator("button.action_transform_resize_texturespace_true", text="缩放纹理空间")
         elif typeandmode == "GPENCILEDIT_GPENCIL":
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_bend", text="弯曲")
             layout.operator("button.action_transform_shear", text="切变")
@@ -70,9 +70,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
             layout.operator("button.action_transform_push_pull", text="推/拉") # 官方菜单没有这个功能
             layout.operator("transform.transform", text="法向缩放").mode='GPENCIL_SHRINKFATTEN'
         elif typeandmode == "GREASEPENCILEDIT":
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_tosphere", text="球形化")
             layout.operator("button.action_transform_shear", text="切变")
@@ -80,9 +80,9 @@ class VIEW3D_MT_common_function_transform_menu(bpy.types.Menu):
             layout.operator("button.action_transform_push_pull", text="推/拉")
             layout.operator("transform.transform", text="半径").mode='CURVE_SHRINKFATTEN'     
         elif typeandmode in {"ARMATUREEDIT","ARMATUREPOSE"}:
-            layout.operator("button.action_grab", text="移动")
-            layout.operator("button.action_rotate", text="旋转")
-            layout.operator("button.action_scale", text="缩放")
+            layout.operator("button.action_global_grab", text="移动")
+            layout.operator("button.action_global_rotate", text="旋转")
+            layout.operator("button.action_global_scale", text="缩放")
             layout.separator()
             layout.operator("button.action_transform_tosphere", text="球形化")
             layout.operator("button.action_transform_shear", text="切变")
@@ -166,4 +166,75 @@ class BUTTON_ACTION_OT_transform_resize_texturespace_true(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.transform.resize('INVOKE_DEFAULT', texture_space=True)
         return {'FINISHED'}
+    
+# 变换——随机
+class BUTTON_ACTION_OT_transform_vertex_random(bpy.types.Operator):
+    bl_idname = "button.action_transform_vertex_random"
+    bl_label = "随机"
+    bl_description = "多种编辑模式下共用的“随机”"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    offset : bpy.props.FloatProperty(
+        name="",
+        default=0.1,
+        min=-10,
+        max=10,
+        precision=2,
+        subtype='DISTANCE',
+        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
+    )
+
+    uniform : bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=0.0,
+        max=1.0,
+        precision=3,
+        subtype='FACTOR',
+        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
+    )
+
+    normal : bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=0.0,
+        max=1.0,
+        precision=3,
+        subtype='FACTOR',
+        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
+    )
+
+    seed: bpy.props.IntProperty(
+        name="",
+        default=0,
+        min=0,
+        max=10000,
+        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+    
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="(数)量")
+        col_left.label(text="均衡")
+        col_left.label(text="法向")
+        col_left.label(text="随机种")
+
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        col_right.prop(self, "offset")
+        col_right.prop(self, "uniform")
+        col_right.prop(self, "normal")
+        col_right.prop(self, "seed")
+
+    def execute(self, context):
+        bpy.ops.transform.vertex_random(offset=self.offset, uniform=self.uniform, normal=self.normal, seed=self.seed, wait_for_input=True)
+        return {'FINISHED'}
+    

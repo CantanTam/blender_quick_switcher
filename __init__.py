@@ -29,10 +29,13 @@ from . import keymap
 from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_grab,
     BUTTON_ACTION_OT_scale,
-    BUTTON_ACTION_OT_rotate
+    BUTTON_ACTION_OT_rotate,
+    BUTTON_ACTION_OT_global_select_all,
+    BUTTON_ACTION_OT_global_select_invert,
+    BUTTON_ACTION_OT_global_select_circle,
 )
 
-from .quick_menu_button_functions.button_actions_switch_orientation_slots import (
+from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
     BUTTON_ACTION_OT_orientation_to_global,
     BUTTON_ACTION_OT_orientation_to_local,
     BUTTON_ACTION_OT_orientation_to_normal,
@@ -42,7 +45,7 @@ from .quick_menu_button_functions.button_actions_switch_orientation_slots import
     BUTTON_ACTION_OT_orientation_to_parent,
 )
 # 切换轴心点
-from .quick_menu_button_functions.button_actions_switch_pivot_points import (
+from .quick_menu_button_functions.button_actions_global_switch_pivot_points import (
     BUTTON_ACTION_OT_pivot_to_bounding_box_center,
     BUTTON_ACTION_OT_pivot_to_cursor,
     BUTTON_ACTION_OT_pivot_to_individual_origins,
@@ -50,7 +53,7 @@ from .quick_menu_button_functions.button_actions_switch_pivot_points import (
     BUTTON_ACTION_OT_pivot_to_active_element,
 )
 # “视图”菜单
-from .quick_menu_button_functions.button_actions_view_menu import (
+from .quick_menu_button_functions.button_actions_global_view_menu import (
     BUTTON_ACTION_OT_view_selected_use_all_regions_false,
     BUTTON_ACTION_OT_view_all_center_false,
     BUTTON_ACTION_OT_view_persportho,
@@ -79,10 +82,7 @@ from .quick_menu_button_functions.button_actions_view_menu import (
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
 )
 
-from .quick_menu_button_functions.button_actions_select_menu import (
-    BUTTON_ACTION_OT_select_select_all,
-    BUTTON_ACTION_OT_select_select_invert,
-    BUTTON_ACTION_OT_select_select_circle,
+from .quick_menu_button_functions.button_actions_global_select_menu import (
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
     BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu,
@@ -98,7 +98,7 @@ from .quick_menu_button_functions.button_actions_select_menu import (
     BUTTON_ACTION_OT_call_select_select_linked_menu,
 )
 
-from .quick_menu_button_functions.button_actions_add_menu import (
+from .quick_menu_button_functions.button_actions_global_add_menu import (
     BUTTON_ACTION_OT_add,
 )
 
@@ -110,7 +110,12 @@ from .quick_menu_button_functions.button_actions_common_functions import (
     BUTTON_ACTION_OT_transform_bend,
     BUTTON_ACTION_OT_transform_push_pull,
     BUTTON_ACTION_OT_transform_translate_texturespace_true,
-    BUTTON_ACTION_OT_transform_resize_texturespace_true
+    BUTTON_ACTION_OT_transform_resize_texturespace_true,
+    BUTTON_ACTION_OT_transform_vertex_random,
+)
+
+from .quick_menu_button_functions.button_actions_object_mode_menu import (
+    BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
 )
 
 def register():    
@@ -181,9 +186,9 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     
     # “选择”菜单功能项
-    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_all)
-    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_invert)
-    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_circle)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_all)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_invert)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_circle)
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
     bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
@@ -210,6 +215,10 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_push_pull)
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
+    bpy.utils.register_class(BUTTON_ACTION_OT_transform_vertex_random)
+
+    # 物体模式—“物体”菜单
+    bpy.utils.register_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
 
     # 注册键位映射
     keymap.register()
@@ -218,7 +227,11 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
+    # 物体模式—“物体”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
+
     # 全局通用功能
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_vertex_random)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_push_pull)
@@ -245,9 +258,9 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_circle)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_invert)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_all)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_circle)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_invert)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_all)
 
     # “视图”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
