@@ -13,6 +13,8 @@ button_options_list = [
     ('button.action_global_select_circle','刷选','快捷键(C)'),
     ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
     ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),
+    ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),
+    ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),
 
 
     # 切换坐标系
@@ -89,6 +91,7 @@ button_options_list = [
 
     # 物体模式——“物体”菜单
     ('NO_BUTTON',"←物体模式-物体菜单→","“物体—物体”菜单中显示的选项"),
+    ('button.action_global_duplicate_move_linked',"关联复制","快捷键(Alt D)"),
     ('button.action_object_object_transform_transform_mode_align',"变换—对齐到变换坐标系",""),
     ('object.randomize_transform',"变换—随机变换",""),
     ('object.align',"变换—对齐物体",""),
@@ -157,7 +160,7 @@ button_press_function = {
         "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
     ),
 
-    # 全局高频操作——“添加”菜单/“复制”
+    # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
         "button.action_global_add","添加","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
@@ -169,6 +172,18 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT", "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
+    ),
+        'button.action_global_copy':(
+        "button.action_global_copy","复制","COPYDOWN", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", 
+    ),
+        'button.action_global_paste':(
+        "button.action_global_paste","粘贴","PASTEDOWN", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", 
     ),
 
     # 切换坐标系
@@ -455,7 +470,12 @@ button_press_function = {
         "LATTICEEDIT", "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
     ),
 
-    # 物体模式——物体菜单
+    # 物体模式——“物体”菜单
+        'button.action_global_duplicate_move_linked':(
+        "button.action_global_duplicate_move_linked","关联复制","DUPLICATE", "CURVEOBJECT", "SURFACEOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT", "METAOBJECT",
+    ),
         'button.action_object_object_transform_transform_mode_align':(
         "button.action_object_object_transform_transform_mode_align","对齐到变换坐标系","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", 
         "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 

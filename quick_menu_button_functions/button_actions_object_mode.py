@@ -11,3 +11,15 @@ class BUTTON_ACTION_OT_object_object_transform_transform_mode_align(bpy.types.Op
     def execute(self, context):
         bpy.ops.transform.transform('INVOKE_DEFAULT', mode='ALIGN')
         return {'FINISHED'}
+    
+# 物体模式“关联复制 Alt D”按钮功能
+class BUTTON_ACTION_OT_global_duplicate_move_linked(bpy.types.Operator):
+    bl_idname = "button.action_global_duplicate_move_linked"
+    bl_label = "关联复制"
+    bl_description = "快捷键 Alt D"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    

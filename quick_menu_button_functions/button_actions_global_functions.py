@@ -155,7 +155,7 @@ class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="TOPBAR_MT_edit_armature_add")
         return {'FINISHED'}
 
-# 全局“复制”按钮功能
+# 全局“复制 Shift D”按钮功能
 class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
     bl_idname = "button.action_global_duplicate_move"
     bl_label = "复制"
@@ -179,3 +179,114 @@ class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
         elif typeandmode == "ARMATUREEDIT":
             bpy.ops.armature.duplicate_move('INVOKE_DEFAULT')
         return {'FINISHED'}
+    
+# 物体模式/蜡笔“复制 Ctrl C”按钮功能
+class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
+    bl_idname = "button.action_global_copy"
+    bl_label = "复制"
+    bl_description = "快捷键 Ctrl C"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.view3d.copybuffer()
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.copy()
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.copy()
+        return {'FINISHED'}
+    
+# 物体模式/蜡笔“复制 Ctrl C”按钮功能
+class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
+    bl_idname = "button.action_global_paste"
+    bl_label = "粘贴"
+    bl_description = "快捷键 Ctrl V"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    autoselect: bpy.props.BoolProperty( # 粘贴“物体”用
+        name="选择",
+        default=True,
+        description="扩展选择，而不是先取消选择",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    active_collection: bpy.props.BoolProperty(  # 粘贴“物体”用
+        name="活动集合",
+        default=True,
+        description="扩展选择，而不是先取消选择",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    type: bpy.props.EnumProperty(   # 4.2 版本粘贴蜡笔用
+        name="类型",
+        items=[
+            ('ACTIVE', "粘贴到活动项", ""),
+            ('LAYER', "按层粘贴", ""),
+        ],
+        default='ACTIVE',
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    paste_back: bpy.props.BoolProperty(  # 4.2 4.3 两个版本共用粘贴蜡笔用
+        name="粘贴到最后",
+        default=False,
+        description="将画笔粘贴到所有画笔之后",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    keep_world_transform: bpy.props.BoolProperty(  # 4.3 版本粘贴蜡笔用
+        name="保持世界变换",
+        default=False,
+        description="保持剪贴板中笔画的世界变换不变",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+    
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        if bpy.context.mode == "OBJECT":
+            col_left.label(text="")
+            col_left.label(text="")
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            col_left.label(text="类型")
+            col_left.label(text="") 
+            col_left.label(text="")    
+        elif typeandmode == "GREASEPENCILEDIT":
+            col_left.label(text="") 
+            col_left.label(text="")    
+        
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        if bpy.context.mode == "OBJECT":
+            col_right.prop(self, "autoselect")
+            col_right.prop(self, "active_collection")
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            col_right.prop(self, "type", expand=True)
+            col_right.prop(self, "paste_back")    
+        elif typeandmode == "GREASEPENCILEDIT":
+            col_right.prop(self, "paste_back") 
+            col_right.prop(self, "keep_world_transform")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.view3d.pastebuffer(autoselect=self.autoselect, active_collection=self.active_collection)
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.paste(type=self.type, paste_back=self.paste_back)
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.paste(paste_back=self.paste_back, keep_world_transform=self.keep_world_transform)
+        return {'FINISHED'}
+    
+
+
+    

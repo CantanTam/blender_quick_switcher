@@ -25,7 +25,7 @@ from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import keymap
 
-# 所有按钮操作符的导入：
+# 全局通用高频操作按钮：
 from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_grab,
     BUTTON_ACTION_OT_scale,
@@ -35,6 +35,8 @@ from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_global_select_circle,
     BUTTON_ACTION_OT_global_duplicate_move,
     BUTTON_ACTION_OT_global_add,
+    BUTTON_ACTION_OT_global_copy,
+    BUTTON_ACTION_OT_global_paste,
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -112,8 +114,9 @@ from .quick_menu_button_functions.button_actions_common_functions import (
     BUTTON_ACTION_OT_transform_vertex_random,
 )
 
-from .quick_menu_button_functions.button_actions_object_mode_menu import (
+from .quick_menu_button_functions.button_actions_object_mode import (
     BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
+    BUTTON_ACTION_OT_global_duplicate_move_linked,
 )
 
 from .quick_menu_button_functions.button_actions_armature import (
@@ -147,6 +150,8 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_global_select_circle)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_duplicate_move)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_add)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_copy)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_paste)
 
     # 变换坐标系类
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
@@ -220,6 +225,7 @@ def register():
 
     # 物体模式—“物体”菜单
     bpy.utils.register_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_duplicate_move_linked)
 
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
@@ -236,6 +242,7 @@ def unregister():
 
     # 物体模式—“物体”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_duplicate_move_linked)
 
     # 全局通用功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_vertex_random)
@@ -309,6 +316,8 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
     # 全局高频操作类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_paste)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_copy)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_add)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_duplicate_move)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_circle)
