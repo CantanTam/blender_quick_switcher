@@ -361,4 +361,83 @@ class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="view3d.mt_global_delete_menu")
         return {'FINISHED'}
 
+# 多种编辑模式“隐藏”/"隐藏未选项"
+class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
+    bl_idname = "button.action_global_hide_view_set"
+    bl_label = "隐藏"
+    bl_description = "快捷键 H"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    unselected: bpy.props.BoolProperty(
+        name="未选中项",
+        default=False,
+        description="隐藏未选中项而不是选择项",
+        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        col_right.prop(self, "unselected")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.hide_view_set(unselected=self.unselected)
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.hide(unselected=self.unselected)
+        if typeandmode == "METAEDIT":
+            bpy.ops.mball.hide_metaelems(unselected=self.unselected)
+        if typeandmode == "MESHEDIT":
+            bpy.ops.mesh.hide(unselected=self.unselected)
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILPAINT_GPENCIL"}:
+            bpy.ops.gpencil.hide(unselected=self.unselected)
+        if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.layer_hide(unselected=self.unselected)
+        if typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.hide(unselected=self.unselected)
+        if typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.hide(unselected=self.unselected)
+        return {'FINISHED'}
+    
+# 多种编辑模式"显示隐藏项"
+class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
+    bl_idname = "button.action_global_hide_view_clear"
+    bl_label = "显示隐藏项"
+    bl_description = "快捷键 Alt H"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.hide_view_clear()
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.reveal()
+        if typeandmode == "METAEDIT":
+            bpy.ops.mball.reveal_metaelems()
+        if typeandmode == "MESHEDIT":
+            bpy.ops.mesh.reveal()
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILPAINT_GPENCIL"}:
+            bpy.ops.gpencil.reveal()
+        if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.layer_reveal()
+        if typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.reveal()
+        if typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.reveal()
+        return {'FINISHED'}
     

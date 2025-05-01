@@ -16,6 +16,9 @@ button_options_list = [
     ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),
     ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),
     ('button.action_call_global_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),
+    ('button.action_global_hide_view_set',"隐藏","多种编辑模式共用的“隐藏(H)”操作"),
+    ('button.action_global_hide_view_clear',"显示隐藏项","多种编辑模式共用的“显示隐藏项(Alt H)”操作"),
+
 
 
 
@@ -194,7 +197,23 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT", "MESHEDIT","METAEDIT","GPENCILPAINT_GPENCIL","ARMATUREEDIT",
-        "CURVEEDIT","SURFACEEDIT",
+        "CURVEEDIT","SURFACEEDIT","GREASEPENCILPAINT_GREASE_PENCIL",
+    ),
+
+    # 全局高频操作——“隐藏”/“隐藏未选项”/“显示隐藏项”
+        'button.action_global_hide_view_set':(
+        "button.action_global_hide_view_set","隐藏","EVENT_H", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "MESHEDIT","METAEDIT","GPENCILPAINT_GPENCIL","ARMATUREEDIT",
+        "CURVEEDIT","SURFACEEDIT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+        'button.action_global_hide_view_clear':(
+        "button.action_global_hide_view_clear","显示隐藏项","HIDE_OFF", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "MESHEDIT","METAEDIT","GPENCILPAINT_GPENCIL","ARMATUREEDIT",
+        "CURVEEDIT","SURFACEEDIT","ARMATUREEDIT","ARMATUREPOSE",
     ),
 
     # 切换坐标系
