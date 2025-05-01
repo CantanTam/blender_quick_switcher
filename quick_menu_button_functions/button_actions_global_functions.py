@@ -286,7 +286,79 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         elif typeandmode == "GREASEPENCILEDIT":
             bpy.ops.grease_pencil.paste(paste_back=self.paste_back, keep_world_transform=self.keep_world_transform)
         return {'FINISHED'}
-    
 
+# 定义“删除”菜单
+class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
+    bl_label = "删除"
+    bl_idname = "view3d.mt_global_delete_menu"
+
+    def draw(self, context):
+        layout = self.layout
+
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == "OBJECT":
+            layout.operator("object.delete", text="删除", icon="QUESTION").use_global=False
+        elif typeandmode == "MESHEDIT":
+            layout.operator("mesh.dissolve_mode", text="融并删除" ,icon="CANCEL")
+            layout.separator()
+            layout.operator("mesh.delete", text="顶点").type='VERT'
+            layout.operator("mesh.delete", text="边").type='EDGE'
+            layout.operator("mesh.delete", text="面").type='FACE'
+            layout.operator("mesh.delete", text="仅边和面").type='EDGE_FACE'
+            layout.operator("mesh.delete", text="仅面").type='ONLY_FACE'
+            layout.separator()
+            layout.operator("mesh.dissolve_verts", text="融并顶点")
+            layout.operator("mesh.dissolve_edges", text="融并边")
+            layout.operator("mesh.dissolve_faces", text="融并面")
+            layout.separator()
+            layout.operator("mesh.dissolve_limited", text="有限融并")
+            layout.separator()
+            layout.operator("mesh.edge_collapse", text="塌陷边和面")
+            layout.operator("mesh.delete_edgeloop", text="循环边")
+        elif typeandmode == "METAEDIT":
+            layout.operator("mball.delete_metaelems", text="删除", icon="QUESTION")
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            layout.operator("gpencil.delete", text="点").type='POINTS'
+            layout.operator("gpencil.delete", text="笔画").type='STROKES'
+            layout.operator("gpencil.delete", text="帧").type='FRAME'
+            layout.separator()
+            layout.operator("gpencil.dissolve", text="消融").type='POINTS'
+            layout.operator("gpencil.dissolve", text="融并期间").type='BETWEEN'
+            layout.operator("gpencil.dissolve", text="融并未选中").type='UNSELECT'
+            layout.separator()
+            layout.operator("gpencil.delete", text="删除活动层的活动帧").type='FRAME'
+            layout.operator("gpencil.active_frames_delete_all", text="删除全部层的活动帧")
+        elif typeandmode == "GPENCILPAINT_GPENCIL":
+            layout.operator("gpencil.delete", text="删除活动层的活动帧").type='FRAME'
+            layout.operator("gpencil.active_frames_delete_all", text="删除全部层的活动帧")
+        elif typeandmode == "GREASEPENCILEDIT":        
+            layout.operator("grease_pencil.delete", text="删除")
+            layout.separator()
+            layout.operator("grease_pencil.dissolve", text="消融").type='POINTS'
+            layout.operator("grease_pencil.dissolve", text="融并其间").type='BETWEEN'
+            layout.operator("grease_pencil.dissolve", text="融并未选中").type='UNSELECT'
+            layout.separator()
+            layout.operator("grease_pencil.delete_frame", text="删除活动层的活动关键帧").type='ACTIVE_FRAME'
+            layout.operator("grease_pencil.delete_frame", text="删除所有层的活动关键帧").type='ALL_FRAMES'
+        elif typeandmode == "ARMATUREEDIT":
+            layout.operator("armature.delete", text="骨骼")
+            layout.separator()
+            layout.operator("armature.dissolve", text="融并骨骼")
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            layout.operator("curve.delete", text="顶点").type='VERT'
+            layout.operator("curve.delete", text="段数").type='SEGMENT'
+            layout.separator()
+            layout.operator("curve.dissolve_verts", text="融并顶点")
+
+# 定义调用“删除”菜单操作
+class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_global_delete_menu"
+    bl_label = "加选/减选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="view3d.mt_global_delete_menu")
+        return {'FINISHED'}
 
     

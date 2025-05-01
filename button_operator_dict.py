@@ -15,6 +15,8 @@ button_options_list = [
     ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),
     ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),
     ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),
+    ('button.action_call_global_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),
+
 
 
     # 切换坐标系
@@ -92,6 +94,8 @@ button_options_list = [
     # 物体模式——“物体”菜单
     ('NO_BUTTON',"←物体模式-物体菜单→","“物体—物体”菜单中显示的选项"),
     ('button.action_global_duplicate_move_linked',"关联复制","快捷键(Alt D)"),
+    ('object.join',"合并","快捷键(Ctrl J)"),
+
     ('button.action_object_object_transform_transform_mode_align',"变换—对齐到变换坐标系",""),
     ('object.randomize_transform',"变换—随机变换",""),
     ('object.align',"变换—对齐物体",""),
@@ -184,6 +188,13 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT", 
+    ),
+        'button.action_call_global_delete_menu':(
+        "button.action_call_global_delete_menu","删除","EVENT_X", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
+        "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "MESHEDIT","METAEDIT","GPENCILPAINT_GPENCIL","ARMATUREEDIT",
+        "CURVEEDIT","SURFACEEDIT",
     ),
 
     # 切换坐标系
@@ -475,6 +486,9 @@ button_press_function = {
         "button.action_global_duplicate_move_linked","关联复制","DUPLICATE", "CURVEOBJECT", "SURFACEOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT", "METAOBJECT",
+    ),
+        'object.join':(
+        "object.join","合并","RADIOBUT_OFF", "MESHOBJECT",
     ),
         'button.action_object_object_transform_transform_mode_align':(
         "button.action_object_object_transform_transform_mode_align","对齐到变换坐标系","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", 

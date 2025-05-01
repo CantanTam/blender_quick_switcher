@@ -37,6 +37,8 @@ from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_global_add,
     BUTTON_ACTION_OT_global_copy,
     BUTTON_ACTION_OT_global_paste,
+    BUTTON_ACTION_OT_call_global_delete_menu,
+    VIEW3D_MT_global_delete_menu,
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -152,6 +154,8 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_global_add)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_copy)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_paste)
+    bpy.utils.register_class(VIEW3D_MT_global_delete_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_call_global_delete_menu)
 
     # 变换坐标系类
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
@@ -316,6 +320,8 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
     # 全局高频操作类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_global_delete_menu)
+    bpy.utils.unregister_class(VIEW3D_MT_global_delete_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_paste)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_copy)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_add)
