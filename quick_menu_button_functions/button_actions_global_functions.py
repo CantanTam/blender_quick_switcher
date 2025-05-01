@@ -441,3 +441,116 @@ class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
             bpy.ops.pose.reveal()
         return {'FINISHED'}
     
+# 物体模式/骨骼姿态模式——“应用 Ctrl A”操作
+class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
+    bl_idname = "button.action_global_apply"
+    bl_label = "应用"
+    bl_description = "快捷键 Ctrl A"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_object_apply")
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_apply")
+        return {'FINISHED'}
+    
+# 物体模式/网格模式/骨骼姿态模式——“交互镜像 Ctrl M”操作
+class BUTTON_ACTION_OT_global_transform_mirror(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_mirror"
+    bl_label = "交互镜像"
+    bl_description = "快捷键 Ctrl M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.mirror('INVOKE_DEFAULT')    
+        return {'FINISHED'}
+
+# 物体模式/骨骼姿态“清空变换(菜单)”操作
+class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
+    bl_idname = "button.action_global_object_pose_clear"
+    bl_label = "清空变换"
+    bl_description = "物体模式/骨骼姿态模式“清空变换”菜单"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_object_clear")
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_transform")
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class QUICK_POPUP_MENU_OT_test(bpy.types.Operator):
+    bl_idname = "popup.quick_menu_test"
+    bl_label = "测试菜单"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=80)
+    
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="AABBCC", icon='PRESET')
+        col.separator()
+        col.operator("object.select_more", text="全选文本", icon="CUBE")
+        col.operator("mesh.select_more", text="全选文本", icon="CUBE")
+        col.operator("object.select_all", text="全选文本", icon="CUBE")
+        col.operator("object.select_all", text="全选文本", icon="CUBE")
+        col.operator("object.select_all", text="全选文本", icon="CUBE")
+
+class CALLOUT_QUICK_MENU_OT_test(bpy.types.Operator):
+    bl_idname = "call.popup_menu_test"
+    bl_label = "调用极速菜单2"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.quick_menu_test('INVOKE_DEFAULT')
+        return {'FINISHED'}

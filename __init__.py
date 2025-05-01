@@ -41,6 +41,11 @@ from .quick_menu_button_functions.button_actions_global_functions import (
     VIEW3D_MT_global_delete_menu,
     BUTTON_ACTION_OT_global_hide_view_set,
     BUTTON_ACTION_OT_global_hide_view_clear,
+    BUTTON_ACTION_OT_global_apply,
+    BUTTON_ACTION_OT_global_transform_mirror,
+    BUTTON_ACTION_OT_global_object_pose_clear,
+    QUICK_POPUP_MENU_OT_test,  # 测试完删除
+    CALLOUT_QUICK_MENU_OT_test,  # 测试完删除
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -93,8 +98,6 @@ from .quick_menu_button_functions.button_actions_global_view_menu import (
 from .quick_menu_button_functions.button_actions_global_select_menu import (
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
-    BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu,
-    BUTTON_ACTION_OT_select_select_random,
     VIEW3D_MT_object_select_more_or_less_menu,
     BUTTON_ACTION_OT_call_object_select_more_or_less_menu,
     BUTTON_ACTION_OT_object_select_more,
@@ -107,20 +110,14 @@ from .quick_menu_button_functions.button_actions_global_select_menu import (
 )
 
 from .quick_menu_button_functions.button_actions_common_functions import (
-    VIEW3D_MT_common_function_transform_menu,
-    BUTTON_ACTION_OT_call_common_function_transform_menu,
     BUTTON_ACTION_OT_transform_tosphere,
     BUTTON_ACTION_OT_transform_shear,
     BUTTON_ACTION_OT_transform_bend,
-    BUTTON_ACTION_OT_transform_push_pull,
-    BUTTON_ACTION_OT_transform_translate_texturespace_true,
-    BUTTON_ACTION_OT_transform_resize_texturespace_true,
-    BUTTON_ACTION_OT_transform_vertex_random,
 )
 
 from .quick_menu_button_functions.button_actions_object_mode import (
     BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
-    BUTTON_ACTION_OT_global_duplicate_move_linked,
+    BUTTON_ACTION_OT_object_object_duplicate_move_linked,
 )
 
 from .quick_menu_button_functions.button_actions_armature import (
@@ -160,6 +157,12 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_call_global_delete_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_hide_view_set)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_hide_view_clear)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_apply)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_transform_mirror)
+    bpy.utils.register_class(BUTTON_ACTION_OT_global_object_pose_clear)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_test)  # 测试完删除
+    bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_test)  # 测试完删除
+
 
     # 变换坐标系类
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
@@ -208,8 +211,6 @@ def register():
     # “选择”菜单功能项
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
     bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_random)
     bpy.utils.register_class(VIEW3D_MT_object_select_more_or_less_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_call_object_select_more_or_less_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_object_select_more)
@@ -221,19 +222,13 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
 
     # 全局通用功能
-    bpy.utils.register_class(VIEW3D_MT_common_function_transform_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_tosphere)
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_shear)
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_bend)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_push_pull)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_vertex_random)
 
     # 物体模式—“物体”菜单
     bpy.utils.register_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_duplicate_move_linked)
+    bpy.utils.register_class(BUTTON_ACTION_OT_object_object_duplicate_move_linked)
 
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
@@ -250,18 +245,12 @@ def unregister():
 
     # 物体模式—“物体”菜单
     bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_duplicate_move_linked)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_duplicate_move_linked)
 
     # 全局通用功能
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_vertex_random)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_resize_texturespace_true)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_translate_texturespace_true)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_push_pull)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_bend)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_shear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_tosphere)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_common_function_transform_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_common_function_transform_menu)
 
     # “选择”菜单功能项
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
@@ -273,8 +262,6 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_object_select_more)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_object_select_more_or_less_menu)
     bpy.utils.unregister_class(VIEW3D_MT_object_select_more_or_less_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_random)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu)
     bpy.utils.unregister_class(VIEW3D_MT_select_select_by_type_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)
 
@@ -324,6 +311,11 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
     # 全局高频操作类
+    bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_test)  # 测试完删除
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_test)  # 测试完删除
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_object_pose_clear)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_transform_mirror)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_apply)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_hide_view_clear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_hide_view_set)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_call_global_delete_menu)

@@ -36,18 +36,6 @@ class VIEW3D_MT_select_select_by_type_menu(bpy.types.Menu):
         layout.separator()
         layout.operator("object.select_by_type", text="扬声器", icon="OUTLINER_OB_SPEAKER").type='SPEAKER'
 
-# 弹出“按类型全选”菜单
-class BUTTON_ACTION_OT_view3d_call_select_select_by_type_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_select_select_by_type_menu"
-    bl_label = "按类型全选"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        bpy.ops.wm.call_menu(name="view3d.mt_select_select_by_type_menu")
-        return {'FINISHED'}
-
-
-    
 # 选择“镜像”
 class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
     bl_idname = "button.action_select_select_mirror"
@@ -119,94 +107,6 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
             bpy.ops.armature.select_mirror(only_active=self.only_active, extend=self.extend)
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.pose.select_mirror(only_active=self.only_active, extend=self.extend)
-        else:
-            return {'CANCELLED'}
-        return {'FINISHED'}
-
-# 随机选择
-class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
-    bl_idname = "button.action_select_select_random"
-    bl_label = "随机选择"
-    bl_description = ""
-    bl_options = {'REGISTER', 'UNDO'}
-
-    ratio: bpy.props.FloatProperty(
-        name="",
-        default=0.5,
-        min=0.0,
-        max=1.0,
-        precision=3,
-        subtype='FACTOR',
-        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
-    )
-
-    seed: bpy.props.IntProperty(
-        name="",
-        default=0,
-        min=0,
-        max=255,
-        update=lambda self, context: self.execute(context)  # 如果需要在修改时自动执行
-    )
-
-    action: bpy.props.EnumProperty(
-        name="选择动作",  # 显示在UI中的标签名称
-        items=[
-            ('SELECT', "选择", "全选"),  # 第三个参数是详细说明
-            ('DESELECT', "弃选", "弃选全部元素"), 
-        ],
-        default='SELECT',
-        update=lambda self, context: self.execute(context)
-    )
-
-    unselect_ends: bpy.props.BoolProperty(
-        name="不选中末端",            
-        description="不选择笔画的起点和末点", 
-        default=False,
-        update=lambda self, context: self.execute(context)
-    )    
-
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
-
-        layout = self.layout
-        #row = layout.row()
-        split = layout.row().split(factor=0.4)
-        
-        # 左侧列 - 标签
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_left.label(text="比率")
-        col_left.label(text="随机种")
-        col_left.label(text="动作")
-        
-        # 右侧列 - 垂直排列的单选按钮
-        col_right = split.column()
-        col_right.prop(self, "ratio")
-        col_right.prop(self, "seed")
-        col_right.prop(self, "action", expand=True)
-        if typeandmode == "GPENCILEDIT_GPENCIL":
-            col_right.prop(self, "unselect_ends")
-
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
-
-        if bpy.context.mode == 'OBJECT':
-            bpy.ops.object.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
-            bpy.ops.curve.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode == "METAEDIT":
-            bpy.ops.mball.select_random_metaelems(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode == "LATTICEEDIT":
-            bpy.ops.lattice.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode == "MESHEDIT":
-            bpy.ops.mesh.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
-            bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends) # 4.2 版本
-        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL"}:
-            bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action) # 4.3 版本
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
