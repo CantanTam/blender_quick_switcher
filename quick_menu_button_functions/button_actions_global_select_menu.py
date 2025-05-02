@@ -112,35 +112,46 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
         return {'FINISHED'}
 
 # ”加选/减选“菜单
-class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Menu):
+class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
     bl_label = ""
-    bl_idname = "view3d.mt_object_select_more_or_less_menu"
+    bl_idname = "popup.more_or_less_menu"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
 
     def draw(self, context):
         layout = self.layout
 
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
 
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="加选/减选", icon='FORCE_CHARGE')
+
         if bpy.context.mode == "OBJECT":
         # 调用 view_axis 操作符，并传入对应的 type 参数
-            layout.operator("object.select_more", text="扩展选区")
-            layout.operator("object.select_less", text="缩减选区")
+            col.operator("object.select_more", text="扩展选区", icon="ADD")
+            col.operator("object.select_less", text="缩减选区", icon="REMOVE")
         elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
-            layout.operator("curve.select_more", text="扩展选择")
-            layout.operator("curve.select_less", text="缩减选择")
+            col.operator("curve.select_more", text="扩展选择", icon="ADD")
+            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
         elif typeandmode == "MESHEDIT":
-            layout.operator("mesh.select_more", text="扩展选区")
-            layout.operator("mesh.select_less", text="缩减选区")
-            layout.separator()
-            layout.operator("mesh.select_next_item", text="下一个活动元素")
-            layout.operator("mesh.select_prev_item", text="上一个活动元素")
+            col.operator("mesh.select_more", text="扩展选区", icon="ADD")
+            col.operator("mesh.select_less", text="缩减选区", icon="REMOVE")
+            col.separator()
+            col.operator("mesh.select_next_item", text="下一个活动元素", icon="FRAME_NEXT")
+            col.operator("mesh.select_prev_item", text="上一个活动元素", icon="FRAME_PREV")
         elif typeandmode == "ARMATUREEDIT":
-            layout.operator("armature.select_more", text="扩展选区")
-            layout.operator("armature.select_less", text="缩减选区")
+            col.operator("armature.select_more", text="扩展选区", icon="ADD")
+            col.operator("armature.select_less", text="缩减选区", icon="REMOVE")
         elif typeandmode == "LATTICEEDIT":
-            layout.operator("lattice.select_more", text="扩展选区")
-            layout.operator("lattice.select_less", text="缩减选区")
-        return {'FINISHED'}
+            col.operator("lattice.select_more", text="扩展选区", icon="ADD")
+            col.operator("lattice.select_less", text="缩减选区", icon="REMOVE")
 
 class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
     bl_idname = "button.action_call_object_select_more_or_less_menu"
@@ -148,7 +159,7 @@ class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="view3d.mt_object_select_more_or_less_menu")
+        bpy.ops.popup.more_or_less_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
     
 # 加选    

@@ -44,8 +44,6 @@ from .quick_menu_button_functions.button_actions_global_functions import (
     BUTTON_ACTION_OT_global_apply,
     BUTTON_ACTION_OT_global_transform_mirror,
     BUTTON_ACTION_OT_global_object_pose_clear,
-    QUICK_POPUP_MENU_OT_test,  # 测试完删除
-    CALLOUT_QUICK_MENU_OT_test,  # 测试完删除
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -149,8 +147,6 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_global_apply)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_transform_mirror)
     bpy.utils.register_class(BUTTON_ACTION_OT_global_object_pose_clear)
-    bpy.utils.register_class(QUICK_POPUP_MENU_OT_test)  # 测试完删除
-    bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_test)  # 测试完删除
 
 
     # 变换坐标系类
@@ -278,8 +274,6 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
     # 全局高频操作类
-    bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_test)  # 测试完删除
-    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_test)  # 测试完删除
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_object_pose_clear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_transform_mirror)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_global_apply)
