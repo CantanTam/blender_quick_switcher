@@ -67,32 +67,21 @@ from .quick_menu_button_functions.button_actions_global_switch_pivot_points impo
 )
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
-    BUTTON_ACTION_OT_view_selected_use_all_regions_false,
-    BUTTON_ACTION_OT_view_all_center_false,
-    BUTTON_ACTION_OT_view_persportho,
-    BUTTON_ACTION_OT_view3d_localview,
-    BUTTON_ACTION_OT_view3d_localview_remove_from,
-    BUTTON_ACTION_OT_view3d_object_as_camera,
-    BUTTON_ACTION_OT_view3d_view_camera,
-    BUTTON_ACTION_OT_view3d_view_center_camera,
-    VIEW3D_MT_view_axis_menu,
-    BUTTON_ACTION_OT_view3d_call_menu_view_axis,
-    VIEW3D_MT_view_switch_axis_menu,
-    BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis,
+    BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu,
+    BUTTON_ACTION_OT_view3d_call_view_navigation_menu,
     BUTTON_ACTION_OT_view3d_zoom_border,
     BUTTON_ACTION_OT_view_pan_left,
     BUTTON_ACTION_OT_view_pan_right,
     BUTTON_ACTION_OT_view_pan_up,
     BUTTON_ACTION_OT_view_pan_down,
-    BUTTON_ACTION_OT_view3d_fly,
     BUTTON_ACTION_OT_view3d_walk,
-    VIEW3D_MT_view_align_menu,
-    BUTTON_ACTION_OT_view3d_call_menu_view_align,
+    BUTTON_ACTION_OT_view3d_call_view_align_menu,
     VIEW3D_MT_view_regions_menu,
-    BUTTON_ACTION_OT_view3d_call_menu_view_regions,
+    BUTTON_ACTION_OT_view3d_call_view_regions_menu,
     BUTTON_ACTION_OT_view3d_clip_border,
     BUTTON_ACTION_OT_view3d_render_border,
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
+    BUTTON_ACTION_OT_view3d_view_all_center_true,
 )
 
 from .quick_menu_button_functions.button_actions_global_select_menu import (
@@ -181,32 +170,21 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_active_element)
 
     # "视图"菜单功能项
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_selected_use_all_regions_false)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_all_center_false)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_persportho)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_localview)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_localview_remove_from)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_object_as_camera)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_camera)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_center_camera)
-    bpy.utils.register_class(VIEW3D_MT_view_axis_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
-    bpy.utils.register_class(VIEW3D_MT_view_switch_axis_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_navigation_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_zoom_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_left)
     bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_right)
     bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_up)
     bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_down)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_fly)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_walk)
-    bpy.utils.register_class(VIEW3D_MT_view_align_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_align)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_align_menu)
     bpy.utils.register_class(VIEW3D_MT_view_regions_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_regions_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_clip_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
     
     # “选择”菜单功能项
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
@@ -267,32 +245,21 @@ def unregister():
 
 
     # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_render_border)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_clip_border)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_regions)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_regions_menu)
     bpy.utils.unregister_class(VIEW3D_MT_view_regions_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_align)
-    bpy.utils.unregister_class(VIEW3D_MT_view_align_menu)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_align_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_walk)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_fly)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_zoom_border)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_down)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_up)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_right)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_left)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_switch_axis)
-    bpy.utils.unregister_class(VIEW3D_MT_view_switch_axis_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_menu_view_axis)
-    bpy.utils.unregister_class(VIEW3D_MT_view_axis_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_center_camera)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_camera)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_object_as_camera)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_localview_remove_from)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_localview)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_persportho)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_all_center_false)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_selected_use_all_regions_false)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_navigation_menu)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
 
     # 切换轴心点
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_active_element)

@@ -48,25 +48,22 @@ button_options_list = [
     ('button.action_transform_bend',"变换—弯曲","多种模式共用的“弯曲”操作"),
 
     # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
-    ('NO_BUTTON',"←通用模式-视图菜单→",""),
-    ('button.action_view_selected_use_all_regions_false','框显所选','快捷键(.)'),
-    ('button.action_view_all_center_false','框显全部','快捷键(Home)'),
-    ('button.action_view_persportho','透视/正交','快捷键(Num_5)'),
-    ('button.action_view3d_localview','局部视图','快捷键(/)'),
-    ('button.action_view3d_localview_remove_from','从局部视图中移除','快捷键(Alt+/)'),
-    ('button.action_view3d_object_as_camera','设置活动物体为摄像机','快捷键(Ctrl+Num_0)'),
-    ('button.action_view3d_view_camera','活动摄像机','快捷键(Num_0)'),
-    ('button.action_view3d_view_center_camera','摄像机边界框','快捷键(Home)'),
-    ('button.action_view3d_call_menu_view_axis','视图(菜单)',''),
-    ('button.action_view3d_call_menu_view_switch_axis','视图切换(菜单)',''),
+    ('NO_BUTTON',"←通用模式-视图(菜单)→",""),
+    ('view3d.view_selected','框显所选','快捷键(.)'),
+    ('view3d.view_all','框显全部','快捷键(Home)'),
+    ('view3d.localview','局部视图—切换局部视图','快捷键(/)'),
+    ('view3d.localview_remove_from','局部视图—从局部视图中移除','快捷键(Alt+/)'),
+    ('view3d.object_as_camera','摄像机—设置活动物体为摄像机','快捷键(Ctrl+Num_0)'),
+    ('view3d.view_center_camera','摄像机—摄像机边界框','快捷键(Home)'),
+    ('button.action_view3d_call_view_viewpoint_menu','视图(菜单)',''),
+    ('button.action_view3d_call_view_navigation_menu','视图切换(菜单)',''),
     ('button.action_view3d_zoom_border','视图切换—框选放大','快捷键(Shift+B)'),
-    ('button.action_view3d_fly','视图切换—飞行漫步',''),
     ('button.action_view3d_walk','视图切换—行走漫步','快捷键(Shift+`)'),
-    ('button.action_view3d_call_menu_view_align','对齐视图(菜单)',''),
+    ('button.action_view3d_call_view_align_menu','对齐视图(菜单)',''),
+    ('button.action_view3d_view_all_center_true','对齐视图—游标居中并查看全部',''),
     ('view3d.camera_to_view','对齐视图—活动摄像机对齐当前视角','快捷键(Ctrl+Alt+Num_0)'),
-    ('view3d.camera_to_view_selected','对齐视图—活动摄像机对齐选中的物体',''),
     ('button.action_view3d_lock_to_active_or_lock_clear','对齐视图—锁定/解锁视图',''),
-    ('button.action_view3d_call_menu_view_regions','视图框(菜单)',''),
+    ('button.action_view3d_call_view_regions_menu','视图框(菜单)',''),
     ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),
     ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
     ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
@@ -314,59 +311,50 @@ button_press_function = {
     ),
 
     # “视图”菜单
-        'button.action_view_selected_use_all_regions_false':(
-        "button.action_view_selected_use_all_regions_false","框显所选","DOT","all",
+        'view3d.view_selected':(
+        "view3d.view_selected","框显所选","DOT","all",
     ),
-        'button.action_view_all_center_false':(
-        "button.action_view_all_center_false","框显全部","HOME","all",
+        'view3d.view_all':(
+        "view3d.view_all","框显全部","HOME","all",
     ),
-        'button.action_view_persportho':(
-        "button.action_view_persportho","透视/正交","RADIOBUT_OFF","all",
+        'view3d.localview':(
+        "view3d.localview","局部视图","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_localview':(
-        "button.action_view3d_localview","局部视图","RADIOBUT_OFF","all",
+        'view3d.localview_remove_from':(
+        "view3d.localview_remove_from","从局部视图中移除","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_localview_remove_from':(
-        "button.action_view3d_localview_remove_from","从局部视图中移除","RADIOBUT_OFF","all",
+        'view3d.object_as_camera':(
+        "view3d.object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
     ),
-        'button.action_view3d_object_as_camera':(
-        "button.action_view3d_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
+        'view3d.view_center_camera':(
+        "view3d.view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
     ),
-        'button.action_view3d_view_camera':(
-        "button.action_view3d_view_camera","摄像机","CAMERA_DATA","all",
+        'button.action_view3d_call_view_viewpoint_menu':(
+        "button.action_view3d_call_view_viewpoint_menu","视图","COLLAPSEMENU","all",
     ),
-        'button.action_view3d_view_center_camera':(
-        "button.action_view3d_view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
-    ),
-        'button.action_view3d_call_menu_view_axis':(
-        "button.action_view3d_call_menu_view_axis","视图","COLLAPSEMENU","all",
-    ),
-        'button.action_view3d_call_menu_view_switch_axis':(
-        "button.action_view3d_call_menu_view_switch_axis","视图切换","COLLAPSEMENU","all",
+        'button.action_view3d_call_view_navigation_menu':(
+        "button.action_view3d_call_view_navigation_menu","视图切换","COLLAPSEMENU","all",
     ),
         'button.action_view3d_zoom_border':(
         "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
     ),
-        'button.action_view3d_fly':(
-        "button.action_view3d_fly","飞行漫步","RADIOBUT_OFF","all",
-    ),
         'button.action_view3d_walk':(
         "button.action_view3d_walk","行走漫步","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_call_menu_view_align':(
-        "button.action_view3d_call_menu_view_align","对齐视图","COLLAPSEMENU","all",
+        'button.action_view3d_call_view_align_menu':(
+        "button.action_view3d_call_view_align_menu","对齐视图","COLLAPSEMENU","all",
+    ),
+        'button.action_view3d_view_all_center_true':(
+        "button.action_view3d_view_all_center_true","游标居中并查看全部","PIVOT_CURSOR","all",
     ),
         'view3d.camera_to_view':(
         "view3d.camera_to_view","活动摄像机对齐当前视角","OUTLINER_DATA_CAMERA","all",
     ),
-        'view3d.camera_to_view_selected':(
-        "view3d.camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_DATA_CAMERA","all",
-    ),
         'button.action_view3d_lock_to_active_or_lock_clear':(
         "button.action_view3d_lock_to_active_or_lock_clear","锁定/解锁视图","CON_CAMERASOLVER","all",
     ),
-        'button.action_view3d_call_menu_view_regions':(
-        "button.action_view3d_call_menu_view_regions","视图框","COLLAPSEMENU","all",
+        'button.action_view3d_call_view_regions_menu':(
+        "button.action_view3d_call_view_regions_menu","视图框","COLLAPSEMENU","all",
     ),
         'button.action_view3d_clip_border':(
         "button.action_view3d_clip_border","裁剪框","CLIPUV_DEHLT","all",
@@ -386,11 +374,11 @@ button_press_function = {
         "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
     ),
         'button.action_call_object_select_more_or_less_menu':(
-        "button.action_call_object_select_more_or_less_menu","加选/减选","COLLAPSEMENU",
+        "button.action_call_object_select_more_or_less_menu","加选/减选","FORCE_CHARGE",
         "CURVEOBJECT", "CURVEEDIT", "SURFACEOBJECT", "SURFACEEDIT",  "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
-        "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+        "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", 
     ),
         'button.action_object_select_more':(
         "button.action_object_select_more","加选","ADD",

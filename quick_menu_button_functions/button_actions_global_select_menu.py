@@ -125,20 +125,6 @@ class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Menu):
         # 调用 view_axis 操作符，并传入对应的 type 参数
             layout.operator("object.select_more", text="扩展选区")
             layout.operator("object.select_less", text="缩减选区")
-            layout.separator()
-            op = layout.operator("object.select_hierarchy", text="父级")
-            op.direction='PARENT'
-            op.extend=False
-            op = layout.operator("object.select_hierarchy", text="子级")
-            op.direction='CHILD'
-            op.extend=False
-            layout.separator()
-            op = layout.operator("object.select_hierarchy", text="扩展父级")
-            op.direction='PARENT'
-            op.extend=True        
-            op = layout.operator("object.select_hierarchy", text="扩展子级")
-            op.direction='CHILD'
-            op.extend=True
         elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             layout.operator("curve.select_more", text="扩展选择")
             layout.operator("curve.select_less", text="缩减选择")
@@ -151,34 +137,6 @@ class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Menu):
         elif typeandmode == "ARMATUREEDIT":
             layout.operator("armature.select_more", text="扩展选区")
             layout.operator("armature.select_less", text="缩减选区")
-            layout.separator()
-            op = layout.operator("armature.select_hierarchy", text="父级")
-            op.direction='PARENT'
-            op.extend=False
-            op = layout.operator("armature.select_hierarchy", text="子级")
-            op.direction='CHILD'
-            op.extend=False
-            layout.separator()
-            op = layout.operator("armature.select_hierarchy", text="扩展父级")
-            op.direction='PARENT'
-            op.extend=True        
-            op = layout.operator("armature.select_hierarchy", text="扩展子级")
-            op.direction='CHILD'
-            op.extend=True
-        elif typeandmode == "ARMATUREPOSE":
-            op = layout.operator("pose.select_hierarchy", text="父级")
-            op.direction='PARENT'
-            op.extend=False
-            op = layout.operator("pose.select_hierarchy", text="子级")
-            op.direction='CHILD'
-            op.extend=False
-            layout.separator()
-            op = layout.operator("pose.select_hierarchy", text="扩展父级")
-            op.direction='PARENT'
-            op.extend=True        
-            op = layout.operator("pose.select_hierarchy", text="扩展子级")
-            op.direction='CHILD'
-            op.extend=True
         elif typeandmode == "LATTICEEDIT":
             layout.operator("lattice.select_more", text="扩展选区")
             layout.operator("lattice.select_less", text="缩减选区")

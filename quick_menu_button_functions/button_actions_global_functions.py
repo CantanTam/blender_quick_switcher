@@ -540,7 +540,7 @@ class QUICK_POPUP_MENU_OT_test(bpy.types.Operator):
         col = row.column(align=True)
         col.label(text="AABBCC", icon='PRESET')
         col.separator()
-        col.operator("object.select_more", text="全选文本", icon="CUBE")
+        col.operator("object.select_more", text="全选文本", icon="FORCE_CHARGE")
         col.operator("mesh.select_more", text="全选文本", icon="CUBE")
         col.operator("object.select_all", text="全选文本", icon="CUBE")
         col.operator("object.select_all", text="全选文本", icon="CUBE")
