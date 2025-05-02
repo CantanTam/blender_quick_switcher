@@ -80,6 +80,8 @@ from .quick_menu_button_functions.button_actions_global_view_menu import (
     BUTTON_ACTION_OT_view3d_render_border,
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
     BUTTON_ACTION_OT_view3d_view_all_center_true,
+    BUTTON_ACTION_OT_view3d_area_menu,
+    BUTTON_ACTION_OT_view3d_screen_screen_full_area,
 )
 
 from .quick_menu_button_functions.button_actions_global_select_menu import (
@@ -181,7 +183,9 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
-    
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_area_menu)
+    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_screen_screen_full_area)
+        
     # “选择”菜单功能项
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
     bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
@@ -241,6 +245,8 @@ def unregister():
 
 
     # “视图”菜单
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_screen_screen_full_area)
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_area_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_render_border)

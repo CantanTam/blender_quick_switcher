@@ -154,3 +154,27 @@ class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.view3d.render_border('INVOKE_DEFAULT')
         return {'FINISHED'}
+    
+# 自定义“区域”菜单
+class BUTTON_ACTION_OT_view3d_area_menu(bpy.types.Operator):
+    bl_idname = "button.action_view3d_area_menu"
+    bl_label = "区域"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="INFO_MT_area")
+        return {'FINISHED'}
+    
+# 自定义“区域”——切换全屏模式
+class BUTTON_ACTION_OT_view3d_screen_screen_full_area(bpy.types.Operator):
+    bl_idname = "button.action_view3d_screen_screen_full_area"
+    bl_label = "切换全屏模式"
+    bl_description = "快捷键 Ctrl Alt 空格"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.screen.screen_full_area(use_hide_panels=True)
+        return {'FINISHED'}
+    
+
+

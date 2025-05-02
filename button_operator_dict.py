@@ -67,6 +67,10 @@ button_options_list = [
     ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),
     ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
     ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
+    ('button.action_view3d_area_menu','区域(菜单)',''),
+    ('screen.region_quadview','区域—切换四格视图','快捷键(Ctrl Alt Q)'),
+    ('screen.screen_full_area','区域—区域最大化','快捷键(Ctrl 空格)'),
+    ('button.action_view3d_screen_screen_full_area','区域—切换全屏模式','快捷键(Ctrl Alt 空格)'),
 
     # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
     ('NO_BUTTON',"←通用模式-选择菜单→",""),
@@ -156,7 +160,7 @@ button_press_function = {
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
-        "button.action_global_add","添加","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "button.action_global_add","添加","PRESET", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
         "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
@@ -203,7 +207,7 @@ button_press_function = {
         "CURVEEDIT","SURFACEEDIT","ARMATUREEDIT","ARMATUREPOSE",
     ),
         'button.action_global_apply':(
-        "button.action_global_apply","应用","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "button.action_global_apply","应用","PRESET", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT",
         "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
@@ -216,7 +220,7 @@ button_press_function = {
         "ARMATUREEDIT","ARMATUREPOSE","LATTICEEDIT",
     ),
         'button.action_global_object_pose_clear':( # 清空变换(菜单)
-        "button.action_global_object_pose_clear","清空变换","COLLAPSEMENU", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "button.action_global_object_pose_clear","清空变换","PRESET", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT",
         "ARMATUREOBJECT", "ARMATUREPOSE",
@@ -310,7 +314,7 @@ button_press_function = {
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
 
-    # “视图”菜单
+    # 全局模式——“视图”菜单
         'view3d.view_selected':(
         "view3d.view_selected","框显所选","DOT","all",
     ),
@@ -330,10 +334,10 @@ button_press_function = {
         "view3d.view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
     ),
         'button.action_view3d_call_view_viewpoint_menu':(
-        "button.action_view3d_call_view_viewpoint_menu","视图","COLLAPSEMENU","all",
+        "button.action_view3d_call_view_viewpoint_menu","视图","PRESET","all",
     ),
         'button.action_view3d_call_view_navigation_menu':(
-        "button.action_view3d_call_view_navigation_menu","视图切换","COLLAPSEMENU","all",
+        "button.action_view3d_call_view_navigation_menu","视图切换","PRESET","all",
     ),
         'button.action_view3d_zoom_border':(
         "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
@@ -342,7 +346,7 @@ button_press_function = {
         "button.action_view3d_walk","行走漫步","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_call_view_align_menu':(
-        "button.action_view3d_call_view_align_menu","对齐视图","COLLAPSEMENU","all",
+        "button.action_view3d_call_view_align_menu","对齐视图","PRESET","all",
     ),
         'button.action_view3d_view_all_center_true':(
         "button.action_view3d_view_all_center_true","游标居中并查看全部","PIVOT_CURSOR","all",
@@ -354,7 +358,7 @@ button_press_function = {
         "button.action_view3d_lock_to_active_or_lock_clear","锁定/解锁视图","CON_CAMERASOLVER","all",
     ),
         'button.action_view3d_call_view_regions_menu':(
-        "button.action_view3d_call_view_regions_menu","视图框","COLLAPSEMENU","all",
+        "button.action_view3d_call_view_regions_menu","视图框","PRESET","all",
     ),
         'button.action_view3d_clip_border':(
         "button.action_view3d_clip_border","裁剪框","CLIPUV_DEHLT","all",
@@ -364,6 +368,18 @@ button_press_function = {
     ),
         'view3d.clear_render_border':(
         "view3d.clear_render_border","清除渲染框","RADIOBUT_OFF","all",
+    ),
+        'button.action_view3d_area_menu':(
+        "button.action_view3d_area_menu","区域","PRESET","all",
+    ),
+        'screen.region_quadview':(
+        "screen.region_quadview","四格视图","IMGDISPLAY","all",
+    ),
+        'screen.screen_full_area':(
+        "screen.screen_full_area","区域最大化","MOD_LENGTH","all",
+    ),
+        'button.action_view3d_screen_screen_full_area':(
+        "button.action_view3d_screen_screen_full_area","全屏模式","FULLSCREEN_ENTER","all",
     ),
 
     # “选择”菜单
@@ -404,7 +420,7 @@ button_press_function = {
         "GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT","ARMATUREPOSE",
     ),
         'button.action_call_select_select_grouped_menu':(
-        "button.action_call_select_select_grouped_menu","按组/相似选择","COLLAPSEMENU",
+        "button.action_call_select_select_grouped_menu","按组/相似选择","PRESET",
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT","MESHEDIT","GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "GREASEPENCILEDIT",
         "GREASEPENCILVERTEX_GREASE_PENCIL", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
@@ -412,7 +428,7 @@ button_press_function = {
         "ARMATUREPOSE","CURVEEDIT","SURFACEEDIT","METAEDIT",
     ),
         'button.action_call_select_select_linked_menu':(
-        "button.action_call_select_select_linked_menu","选择相连元素","COLLAPSEMENU",
+        "button.action_call_select_select_linked_menu","选择相连元素","PRESET",
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", 
         "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
         "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT","CURVEEDIT","SURFACEEDIT",
