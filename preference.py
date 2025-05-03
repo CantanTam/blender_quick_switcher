@@ -58,7 +58,6 @@ def update_enum_items(self, context):
         if item[0] == 'call.popup_menu_one()':
             keys_combination_functions[idx] = updated_item
 
-
     # 重新注册属性以便让更新生效（这种方式在某些情况下可能有副作用）
     unregister()
     register()
