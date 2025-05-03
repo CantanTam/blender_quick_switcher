@@ -47,6 +47,7 @@ from .quick_menu_button_functions.button_actions_global_functions import (
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
+    BUTTON_ACTION_OT_switch_orientation_menu,
     BUTTON_ACTION_OT_orientation_to_global,
     BUTTON_ACTION_OT_orientation_to_local,
     BUTTON_ACTION_OT_orientation_to_normal,
@@ -62,6 +63,7 @@ from .quick_menu_button_functions.button_actions_global_switch_pivot_points impo
     BUTTON_ACTION_OT_pivot_to_individual_origins,
     BUTTON_ACTION_OT_pivot_to_median_point,
     BUTTON_ACTION_OT_pivot_to_active_element,
+    BUTTON_ACTION_OT_switch_pivot_menu,
 )
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
@@ -152,6 +154,7 @@ def register():
 
 
     # 变换坐标系类
+    bpy.utils.register_class(BUTTON_ACTION_OT_switch_orientation_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_local)
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_normal)
@@ -161,6 +164,7 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_parent)
 
     # 切换轴心点
+    bpy.utils.register_class(BUTTON_ACTION_OT_switch_pivot_menu)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_cursor)
     bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
@@ -264,6 +268,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
 
     # 切换轴心点
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_switch_pivot_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_active_element)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_median_point)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
@@ -271,6 +276,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
 
     # 变换坐标系类
+    bpy.utils.unregister_class(BUTTON_ACTION_OT_switch_orientation_menu)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_parent)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_cursor)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_view)

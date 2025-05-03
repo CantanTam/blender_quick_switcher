@@ -4,7 +4,7 @@ button_options_list = [
     ('SEPARATOR', '◂◂◂间隔▸▸▸', '弹出菜单间隔符'),
 
     # 全局高频操作：
-    ('NO_BUTTON',"←全局常用操作→","全局都使用的高频操作"),
+    ('NO_BUTTON',"←全局通用常用操作→","全局都使用的高频操作"),
     ('button.action_global_grab','移动','移动'),
     ('button.action_global_scale','缩放','缩放'),
     ('button.action_global_rotate','旋转','旋转'),
@@ -25,21 +25,23 @@ button_options_list = [
 
     # 切换坐标系
     ('NO_BUTTON',"←切换坐标系→",""),
-    ('button_action_orientation_to_global','全局','全局坐标系'),
-    ('button_action_orientation_to_local','局部','局部坐标系'),
-    ('button_action_orientation_to_normal','法向','法向坐标系'),
-    ('button_action_orientation_to_gimbal','万向','万向坐标系'),
-    ('button_action_orientation_to_view','视图','视图坐标系'),
-    ('button_action_orientation_to_cursor','游标','游标坐标系'),
-    ('button_action_orientation_to_parent','父级','父级坐标系'),
+    ('button.action_switch_orientation_menu','切换坐标系(菜单)','弹出切换坐标系菜单'),
+    ('button.action_orientation_to_global','切换坐标系-全局','全局坐标系'),
+    ('button.action_orientation_to_local','切换坐标系-局部','局部坐标系'),
+    ('button.action_orientation_to_normal','切换坐标系-法向','法向坐标系'),
+    ('button.action_orientation_to_gimbal','切换坐标系-万向','万向坐标系'),
+    ('button.action_orientation_to_view','切换坐标系-视图','视图坐标系'),
+    ('button.action_orientation_to_cursor','切换坐标系-游标','游标坐标系'),
+    ('button.action_orientation_to_parent','切换坐标系-父级','父级坐标系'),
 
     # 切换轴心点
     ('NO_BUTTON',"←切换轴心点→",""),
-    ('button_action_pivot_to_bounding_box_center','边界框中心','边界框中心'),
-    ('button_action_pivot_to_cursor','3D 游标','3D 游标'),
-    ('button_action_pivot_to_individual_origins','各自的原点','各自的原点'),
-    ('button_action_pivot_to_median_point','质心点','质心点'),
-    ('button_action_pivot_to_active_element','活动元素','活动元素'),
+    ('button.action_switch_pivot_menu','切换轴心点(菜单)','弹出切换轴心点菜单'),
+    ('button.action_pivot_to_bounding_box_center','切换轴心点—边界框中心','边界框中心'),
+    ('button.action_pivot_to_cursor','切换轴心点—3D 游标','3D 游标'),
+    ('button.action_pivot_to_individual_origins','切换轴心点—各自的原点','各自的原点'),
+    ('button.action_pivot_to_median_point','切换轴心点—质心点','质心点'),
+    ('button.action_pivot_to_active_element','切换轴心点—活动元素','活动元素'),
 
     # 通用模式——共用功能
     ('NO_BUTTON',"←通用模式-“变换”菜单→","不同模式下“变换”菜单中都会出现的选项，被合并到这里"),
@@ -48,7 +50,7 @@ button_options_list = [
     ('button.action_transform_bend',"变换—弯曲","多种模式共用的“弯曲”操作"),
 
     # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
-    ('NO_BUTTON',"←通用模式-视图(菜单)→",""),
+    ('NO_BUTTON',"←全局模式-视图(菜单)→","全局模式当中的按钮功能可以在所有模式当中使用"),
     ('view3d.view_selected','框显所选','快捷键(.)'),
     ('view3d.view_all','框显全部','快捷键(Home)'),
     ('view3d.localview','局部视图—切换局部视图','快捷键(/)'),
@@ -73,7 +75,7 @@ button_options_list = [
     ('button.action_view3d_screen_screen_full_area','区域—切换全屏模式','快捷键(Ctrl Alt 空格)'),
 
     # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
-    ('NO_BUTTON',"←通用模式-选择菜单→",""),
+    ('NO_BUTTON',"←共用模式——“选择”菜单→","不同模式当中含有相同快捷键，而且功能名称接近的按钮被整合到这里"),
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
     ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
@@ -160,7 +162,7 @@ button_press_function = {
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
-        "button.action_global_add","添加","PRESET", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "button.action_global_add","添加","PLUS", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
         "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
@@ -226,50 +228,57 @@ button_press_function = {
         "ARMATUREOBJECT", "ARMATUREPOSE",
     ),
 
-    # 切换坐标系
-    'button_action_orientation_to_global':(
+        # 切换坐标系
+        'button.action_switch_orientation_menu':(
+        "button.action_switch_orientation_menu","切换坐标系","PRESET",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+        'button.action_orientation_to_global':(
         "button.action_orientation_to_global","全局","ORIENTATION_GLOBAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_local':(
+        'button.action_orientation_to_local':(
         "button.action_orientation_to_local","局部","ORIENTATION_LOCAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_normal':(
+        'button.action_orientation_to_normal':(
         "button.action_orientation_to_normal","法向","ORIENTATION_NORMAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_gimbal':(
+        'button.action_orientation_to_gimbal':(
         "button.action_orientation_to_gimbal","万向","ORIENTATION_GIMBAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_view':(
+        'button.action_orientation_to_view':(
         "button.action_orientation_to_view","视图","ORIENTATION_VIEW",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_cursor':(
+        'button.action_orientation_to_cursor':(
         "button.action_orientation_to_cursor","游标","ORIENTATION_CURSOR",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-    'button_action_orientation_to_parent':(
+        'button.action_orientation_to_parent':(
         "button.action_orientation_to_parent","父级","ORIENTATION_PARENT",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
@@ -278,35 +287,42 @@ button_press_function = {
     ),
 
     # 切换轴心点
-        'button_action_pivot_to_bounding_box_center':(
+        'button.action_switch_pivot_menu':(
+        "button.action_switch_pivot_menu","切换轴心点","PRESET",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+        'button.action_pivot_to_bounding_box_center':(
         "button.action_pivot_to_bounding_box_center","边界框中心","PIVOT_BOUNDBOX",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-        'button_action_pivot_to_cursor':(
+        'button.action_pivot_to_cursor':(
         "button.action_pivot_to_cursor","3D 游标","PIVOT_CURSOR",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-        'button_action_pivot_to_individual_origins':(
+        'button.action_pivot_to_individual_origins':(
         "button.action_pivot_to_individual_origins","各自的原点","PIVOT_INDIVIDUAL",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-        'button_action_pivot_to_median_point':(
+        'button.action_pivot_to_median_point':(
         "button.action_pivot_to_median_point","质心点","PIVOT_MEDIAN",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
     ),
-        'button_action_pivot_to_active_element':(
+        'button.action_pivot_to_active_element':(
         "button.action_pivot_to_active_element","活动元素","PIVOT_ACTIVE",
         "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",

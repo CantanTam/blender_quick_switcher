@@ -1,5 +1,14 @@
 import bpy
 
+class BUTTON_ACTION_OT_switch_pivot_menu(bpy.types.Operator):
+    bl_idname = "button.action_switch_pivot_menu"
+    bl_label = "切换轴心点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.context_menu_enum(data_path="scene.tool_settings.transform_pivot_point")
+        return {'FINISHED'}
+
 class BUTTON_ACTION_OT_pivot_to_bounding_box_center(bpy.types.Operator):
     bl_idname = "button.action_pivot_to_bounding_box_center"
     bl_label = "边界框中心"
