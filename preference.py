@@ -35,6 +35,18 @@ def save_settings(settings_dict):
 def update_preferences(self, context):
     self.save_to_file()
 
+keys_combination_functions = [
+    ('mode.menu_switch()', '弹出编辑模式菜单', '直接弹出编辑模式菜单'),
+    ('switch.vertex_edge_face()', '快速切换点/线/面', '点←线←面方向快速切换'),
+    ('mode.normal_up_to_down()', '上下方向快速切换编辑模式', '不弹出菜单，直接以从上到下的顺序切换编辑模式'), 
+    ('mode.normal_down_to_up()', '下上方向快速切换编辑模式', '不弹出菜单，直接以从下到上的顺序切换编辑模式'), 
+    ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
+    ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
+    ('call.popup_menu_one()','极速菜单1','超级菜单1'),
+    ('call.popup_menu_two()','极速菜单2','超级菜单2'),
+    ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
+]
+
 class QuickSwitchAddonPreferences(AddonPreferences):
     bl_idname = __package__  # 使用当前包名作为标识符
     
@@ -54,21 +66,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     except Exception as e:
                         print(f"初始设置 {prop_name} 失败: {e}")
 
-    keys_combination_functions = [
-        ('mode.menu_switch()', '弹出编辑模式菜单', '直接弹出编辑模式菜单'),
-        ('switch.vertex_edge_face()', '快速切换点/线/面', '点←线←面方向快速切换'),
-        ('mode.normal_up_to_down()', '上下方向快速切换编辑模式', '不弹出菜单，直接以从上到下的顺序切换编辑模式'), 
-        ('mode.normal_down_to_up()', '下上方向快速切换编辑模式', '不弹出菜单，直接以从下到上的顺序切换编辑模式'), 
-        ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
-        ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
-        ('call.popup_menu_one()','极速菜单1','超级菜单1'),
-        ('call.popup_menu_two()','极速菜单2','超级菜单2'),
-        ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
-    ]
-
-
-
-    
     ctrl_wheel_up: EnumProperty(
         name="Ctrl+鼠标上滚",
         description="选择Ctrl+鼠标上滚快捷键功能",
@@ -204,6 +201,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="极速菜单1",
         description="展开/折叠极速菜单1",
         default=True,
+        update=update_preferences
+    )
+
+    quick_panel_one_title: bpy.props.StringProperty(
+        name="",
+        description="极速菜单1名字",
+        default="极速菜单1名字",
         update=update_preferences
     )
     
@@ -1781,7 +1785,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon="TRIA_DOWN" if self.expand_quick_panel_one else "TRIA_RIGHT",
                 icon_only=True, 
                 emboss=False)
-        row.label(text="极速菜单1",icon='COLLECTION_COLOR_01')
+        row.prop(self, "quick_panel_one_title", icon="COLLECTION_COLOR_01")
             
         if self.expand_quick_panel_one:
 
