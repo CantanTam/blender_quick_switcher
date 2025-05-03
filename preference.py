@@ -47,6 +47,22 @@ keys_combination_functions = [
     ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
 ]
 
+def update_enum_items(self, context):
+    # 获取当前 quick_panel_one_title 的值（self 是首选项实例）
+    new_title = self.quick_panel_one_title
+
+    # 构造更新后那一项的元组
+    updated_item = ('call.popup_menu_one()', new_title, '超级菜单1')
+
+    for idx, item in enumerate(keys_combination_functions):
+        if item[0] == 'call.popup_menu_one()':
+            keys_combination_functions[idx] = updated_item
+
+
+    # 重新注册属性以便让更新生效（这种方式在某些情况下可能有副作用）
+    unregister()
+    register()
+
 class QuickSwitchAddonPreferences(AddonPreferences):
     bl_idname = __package__  # 使用当前包名作为标识符
     
@@ -208,7 +224,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="",
         description="极速菜单1名字",
         default="极速菜单1名字",
-        update=update_preferences
+        update=update_enum_items
     )
     
     panel_one_col1_title: bpy.props.StringProperty(
