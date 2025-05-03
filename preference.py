@@ -47,16 +47,21 @@ keys_combination_functions = [
     ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
 ]
 
+# 更改 call.popup_menu_X 当中的 极速菜单 名字值
 def update_enum_items(self, context):
     # 获取当前 quick_panel_one_title 的值（self 是首选项实例）
-    new_title = self.quick_panel_one_title
+    new_title_one = self.quick_panel_one_title
+    new_title_two = self.quick_panel_two_title
 
     # 构造更新后那一项的元组
-    updated_item = ('call.popup_menu_one()', new_title, '超级菜单1')
+    updated_item_one = ('call.popup_menu_one()', new_title_one, '超级菜单1')
+    updated_item_two = ('call.popup_menu_two()', new_title_two, '超级菜单2')
 
     for idx, item in enumerate(keys_combination_functions):
         if item[0] == 'call.popup_menu_one()':
-            keys_combination_functions[idx] = updated_item
+            keys_combination_functions[idx] = updated_item_one
+        elif item[0] == 'call.popup_menu_two()':
+            keys_combination_functions[idx] = updated_item_two
 
     # 重新注册属性以便让更新生效（这种方式在某些情况下可能有副作用）
     unregister()
@@ -190,7 +195,8 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="显示快捷键选项",
         description="展开/折叠快捷键选项",
         default=False,
-        update=update_preferences
+        # 这里保持默认关闭，当点击展开的时候，调用 update_enum_items
+        update=update_enum_items
     )
     
 
@@ -223,7 +229,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="",
         description="极速菜单1名字",
         default="极速菜单1名字",
-        update=update_enum_items
+        update=update_preferences
     )
     
     panel_one_col1_title: bpy.props.StringProperty(
@@ -1031,6 +1037,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         default=True,
         update=update_preferences
     )
+
+    quick_panel_two_title: bpy.props.StringProperty(
+        name="",
+        description="极速菜单2名字",
+        default="极速菜单2名字",
+        update=update_preferences
+    )
     
     panel_two_col1_title: bpy.props.StringProperty(
         name="第一列标题",
@@ -1756,7 +1769,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         box = layout.box()
         row = box.row()
         row.prop(self, "show_shortcut_options", 
-                icon="TRIA_DOWN" if self.show_shortcut_options else "TRIA_RIGHT",
+                icon="DOWNARROW_HLT" if self.show_shortcut_options else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
@@ -1797,7 +1810,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         box = layout.box()
         row = box.row()
         row.prop(self, "expand_quick_panel_one", 
-                icon="TRIA_DOWN" if self.expand_quick_panel_one else "TRIA_RIGHT",
+                icon="DOWNARROW_HLT" if self.expand_quick_panel_one else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
         row.prop(self, "quick_panel_one_title", icon="COLLECTION_COLOR_01")
@@ -1901,10 +1914,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         box = layout.box()
         row = box.row()
         row.prop(self, "expand_quick_panel_two", 
-                icon="TRIA_DOWN" if self.expand_quick_panel_two else "TRIA_RIGHT",
+                icon="DOWNARROW_HLT" if self.expand_quick_panel_two else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
-        row.label(text="极速菜单2",icon='COLLECTION_COLOR_02')
+        row.prop(self, "quick_panel_two_title", icon="COLLECTION_COLOR_02")
             
         if self.expand_quick_panel_two:
 
