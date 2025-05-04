@@ -62,20 +62,41 @@ class SwitchNotice:
         return 1.0
 
     def cleanup(self):
+        # 确保所有handler都被移除
         self.hide()
         if self.draw_handler:
-            bpy.types.SpaceView3D.draw_handler_remove(self.draw_handler, 'WINDOW')
-        bpy.app.timers.unregister(self.check_redraw)
+            try:
+                bpy.types.SpaceView3D.draw_handler_remove(self.draw_handler, 'WINDOW')
+            except:
+                pass
+            self.draw_handler = None
+        
+        # 确保定时器被移除
+        try:
+            bpy.app.timers.unregister(self.check_redraw)
+        except:
+            pass
+        
+        # 释放纹理资源
+        if hasattr(self, 'texture'):
+            del self.texture
+        if hasattr(self, 'image'):
+            del self.image
 
 # Global variable to store the current notice
 current_notice = None
 
 def show_notice(image_path):
     global current_notice
-    # Clean up previous notice
+    # 强制完全清理
     if current_notice:
         current_notice.cleanup()
-    # Create new notice
+        current_notice = None
+        # 给Blender一个事件循环周期来完成清理
+        # 这个空定时器确保资源释放完成后再创建新实例
+        bpy.app.timers.register(lambda: None, first_interval=0.1)
+    
+    # 创建全新实例
     current_notice = SwitchNotice(image_path)
 
 # Define register and unregister functions
