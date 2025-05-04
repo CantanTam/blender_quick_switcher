@@ -210,10 +210,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-
-
-
-
+# 编辑模式切换提示
+    to_show_switch_notice:BoolProperty(
+        name="编辑模式切换提示",
+        description="开启后，切换编辑模式过程中，会在view3d窗口中央底部显示切换提示",
+        default=True,
+        update=update_preferences
+    )
 
 
 
@@ -1773,6 +1776,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
+        row.prop(self, "to_show_switch_notice")
         
         if self.show_shortcut_options:
             # 选项内容区域
@@ -1803,7 +1807,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "ctrl_alt_mouse_right")
             row = content_box.row() 
             row.prop(self, "shift_alt_mouse_right")
-
 
         # -----------------------------------------------
         # 极速菜单1 设置项 BOX框

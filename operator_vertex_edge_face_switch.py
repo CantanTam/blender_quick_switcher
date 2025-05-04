@@ -17,13 +17,12 @@ class VERTEX_EDGE_FACE_OT_Switch(bpy.types.Operator):
                 select_mode = context.tool_settings.mesh_select_mode
                 if select_mode[2]:  # 面模式 -> 边模式
                     context.tool_settings.mesh_select_mode = (False, True, False)
-                    show_notice("/home/one/桌面/rect1.png")
+                    show_notice("rect.png")
                 elif select_mode[1]:  # 边模式 -> 顶点模式
                     context.tool_settings.mesh_select_mode = (True, False, False)
-                    show_notice("/home/one/桌面/path1.png")
+                    show_notice("path1.png")
                 else:  # 顶点模式 -> 面模式
                     context.tool_settings.mesh_select_mode = (False, False, True)
                 return {'FINISHED'}
             
-
         return {'FINISHED'}
