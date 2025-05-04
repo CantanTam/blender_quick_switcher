@@ -23,6 +23,7 @@ from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_two
 from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
+from . import show_switch_notice
 from . import keymap
 
 # 全局通用高频操作按钮：
@@ -115,10 +116,11 @@ from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
 
-def register():    
+def register():
     # 注册模式监测功能
     register_mode_handler()
 
+    show_switch_notice.register()
     
     # 注册所有Operator类
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
@@ -221,6 +223,8 @@ def register():
 def unregister():    
     # 注销模式监测功能
     unregister_mode_handler()
+
+    show_switch_notice.unregister()
 
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
