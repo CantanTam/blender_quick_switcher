@@ -3,7 +3,7 @@ import webbrowser
 import json
 import os
 from bpy.types import AddonPreferences, Operator
-from bpy.props import BoolProperty, EnumProperty
+from bpy.props import BoolProperty, EnumProperty, FloatProperty
 from .button_operator_dict import button_options_list
 
 # 定义 JSON 配置文件路径，假设保存于当前 addon 文件夹下
@@ -210,11 +210,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-# 编辑模式切换提示
-    to_show_switch_notice:BoolProperty(
-        name="编辑模式切换提示",
-        description="开启后，切换编辑模式过程中，会在view3d窗口中央底部显示切换提示",
-        default=True,
+# 编辑模式切换提示及缩放系数
+    to_show_switch_notice:FloatProperty(
+        name="切换提示缩放系数",
+        description="小于0.5关闭切换提示",
+        default=1.0,  # 默认值（可根据需要调整）
+        min=0.4,      # 最小值（可选）
+        max=2.0,     # 最大值（可选）
+        precision=1,
         update=update_preferences
     )
 
@@ -1776,7 +1779,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
-        row.prop(self, "to_show_switch_notice")
+        row.prop(self, "to_show_switch_notice",slider=True)
         
         if self.show_shortcut_options:
             # 选项内容区域

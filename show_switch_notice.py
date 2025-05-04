@@ -34,11 +34,19 @@ class SwitchNotice:
             self.shader = gpu.shader.from_builtin('2D_IMAGE')
         else:
             self.shader = gpu.shader.from_builtin('IMAGE')
-        #self.shader = gpu.shader.from_builtin('2D_IMAGE')
 
+        # 获取3D视图区域宽度
+        area_width = bpy.context.area.width #if bpy.context.area else 1920
 
+        prefs = bpy.context.preferences.addons.get(__package__).preferences
+        scale_factor = prefs.to_show_switch_notice
+
+        # 计算居中位置 (保持底部距离不变，仅水平居中)
+        left = (area_width - 200 * scale_factor) // 2  # 200是图像宽度(300-100)
+        right = left + 200 * scale_factor
+        
         self.vertices = {
-            "pos": [(100, 100), (300, 100), (300, 300), (100, 300)],
+            "pos": [(left, 15), (right, 15), (right, (110 - 15)*scale_factor + 15), (left, (110 - 15)*scale_factor + 15)],
             "texCoord": [(0, 0), (1, 0), (1, 1), (0, 1)],
         }
         self.batch = batch_for_shader(self.shader, 'TRI_FAN', self.vertices)
@@ -106,7 +114,7 @@ current_notice = None
 
 def show_notice(image_path):
     prefs = bpy.context.preferences.addons.get(__package__).preferences
-    if not prefs or not prefs.to_show_switch_notice:
+    if not prefs or prefs.to_show_switch_notice < 0.5:
         return
     
     global current_notice
