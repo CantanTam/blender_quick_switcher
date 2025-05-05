@@ -1,4 +1,5 @@
 import bpy
+from .show_switch_notice import show_notice
 
 class MODE_NORMAL_DOWNUP_OT_Switch(bpy.types.Operator):
     bl_idname = "mode.normal_down_to_up"
@@ -72,5 +73,10 @@ class MODE_NORMAL_DOWNUP_OT_Switch(bpy.types.Operator):
                 
             else:
                 return {'CANCELLED'}
+            
+            image_name = bpy.context.active_object.type+bpy.context.active_object.mode+".png"
+
+            show_notice(image_name)
+
         
         return {'FINISHED'}

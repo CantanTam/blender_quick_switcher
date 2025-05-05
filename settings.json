@@ -15,7 +15,7 @@
     "shift_alt_mouse_right": "mode.menu_switch()",
     "show_shortcut_options": true,
     "blank_button": "NO_BUTTON",
-    "to_show_switch_notice": 0.7587189674377441,
+    "to_show_switch_notice": 1.0,
     "expand_quick_panel_one": false,
     "quick_panel_one_title": "极速菜单1名",
     "panel_one_col1_title": "切换坐标系",

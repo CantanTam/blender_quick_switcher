@@ -42,11 +42,11 @@ class SwitchNotice:
         scale_factor = prefs.to_show_switch_notice
 
         # 计算居中位置 (保持底部距离不变，仅水平居中)
-        left = (area_width - 200 * scale_factor) // 2  # 200是图像宽度(300-100)
-        right = left + 200 * scale_factor
+        left = (area_width - 480 * scale_factor) // 2  # 200是图像宽度(300-100)
+        right = left + 480 * scale_factor
         
         self.vertices = {
-            "pos": [(left, 15), (right, 15), (right, (110 - 15)*scale_factor + 15), (left, (110 - 15)*scale_factor + 15)],
+            "pos": [(left, 15), (right, 15), (right, 80*scale_factor + 15), (left, 80*scale_factor + 15)],
             "texCoord": [(0, 0), (1, 0), (1, 1), (0, 1)],
         }
         self.batch = batch_for_shader(self.shader, 'TRI_FAN', self.vertices)
