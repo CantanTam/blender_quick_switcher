@@ -2,6 +2,7 @@ import bpy
 
 from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_typeandmode_name_mode import typeandmode_name # 导入字典用于比较 typeandmode 变化
+from .show_switch_notice import show_notice
 
 # 模拟原生 tab 切换编辑模式
 class MODE_TAB_OT_Switch(bpy.types.Operator):
@@ -49,6 +50,8 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
         else:
             if bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT','LATTICE'}:
                 bpy.ops.object.editmode_toggle()
+                image_path = bpy.context.active_object.type+bpy.context.active_object.mode + ".png"
+                show_notice(image_path)
 
             elif bpy.context.active_object.type+bpy.context.active_object.mode in type_mode_maps:
                 if typeandmode_name["object_prev_name"] == "NONE" or \
@@ -60,6 +63,8 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
                     # 先用 typeandmode_name 字典 获得原来的 object_prev_typeandmode 状态，例如 MESHEDIT_MESH
                     # 再用字典 types_mode_maps 把 MESHEDIT_MESH 转换为 EDIT 的切换模式。
                     bpy.ops.object.mode_set(mode=type_mode_maps[typeandmode_name["object_prev_typeandmode"]])
+                    image_path = bpy.context.active_object.type+bpy.context.active_object.mode + ".png"
+                    show_notice(image_path)
 
             else:
                 return {'CANCELLED'}

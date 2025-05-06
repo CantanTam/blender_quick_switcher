@@ -3,7 +3,7 @@ import webbrowser
 import json
 import os
 from bpy.types import AddonPreferences, Operator
-from bpy.props import BoolProperty, EnumProperty, FloatProperty
+from bpy.props import BoolProperty, EnumProperty, FloatProperty, IntProperty
 from .button_operator_dict import button_options_list
 
 # 定义 JSON 配置文件路径，假设保存于当前 addon 文件夹下
@@ -218,6 +218,16 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         min=0.4,      # 最小值（可选）
         max=2.0,     # 最大值（可选）
         precision=1,
+        update=update_preferences
+    )
+
+# 4.3 版本底部 notice 提示偏移高度
+    notice_bottom_height: IntProperty(
+        name="偏移高度",
+        description="仅限4.3版本底部有笔刷的视窗区域有效",
+        default=90,  # 默认值（可根据需要调整）
+        min=15,      # 最小值
+        max=500,     # 最大值（根据实际需求设定）
         update=update_preferences
     )
 
@@ -1780,6 +1790,8 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
         row.prop(self, "to_show_switch_notice",slider=True)
+        if bpy.app.version >= (4, 3, 0):
+            row.prop(self, "notice_bottom_height", slider=True)
         
         if self.show_shortcut_options:
             # 选项内容区域

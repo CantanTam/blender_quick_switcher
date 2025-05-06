@@ -3,7 +3,6 @@ import gpu
 from gpu_extras.batch import batch_for_shader
 import os
 
-# Define your SwitchNotice class here
 class SwitchNotice:
     def __init__(self, image_path):
         self.image_path = image_path
@@ -22,46 +21,82 @@ class SwitchNotice:
                 os.path.join(script_dir, "notice_images", self.image_path)
             )
         
-        # Check and load the image
         if not os.path.exists(self.image_path):
             raise FileNotFoundError(f"Image file not found: {self.image_path}")
         self.image = bpy.data.images.load(self.image_path)
         self.texture = gpu.texture.from_image(self.image)
 
-        # Create shader and batch
-        # 4.3 版本之后，着色器名称发生了改变
+        # 4.3版本之后着色器名称改变
         if bpy.app.version < (4, 3, 0):
             self.shader = gpu.shader.from_builtin('2D_IMAGE')
         else:
             self.shader = gpu.shader.from_builtin('IMAGE')
 
-        # 获取3D视图区域宽度
-        area_width = bpy.context.area.width #if bpy.context.area else 1920
+        # 获取 3D 视图区域宽度
+        area_width = bpy.context.area.width
 
         prefs = bpy.context.preferences.addons.get(__package__).preferences
-        scale_factor = prefs.to_show_switch_notice
+        self.scale_factor = prefs.to_show_switch_notice
+        height_offset = prefs.notice_bottom_height  # 如果需要，可以用这个偏移
 
-        # 计算居中位置 (保持底部距离不变，仅水平居中)
-        left = (area_width - 480 * scale_factor) // 2  # 200是图像宽度(300-100)
-        right = left + 480 * scale_factor
-        
+        # 计算居中位置（保持底部距离不变，仅水平居中）
+        self.left = (area_width - 480 * self.scale_factor) // 2  
+        self.right = self.left + 480 * self.scale_factor
+
+        # 初次计算资产栏高度
+        asset_shelf_height = self.get_asset_shelf_height()
+        height = asset_shelf_height + 15
+
+        # 定义顶点数据（位置和纹理坐标）
         self.vertices = {
-            "pos": [(left, 15), (right, 15), (right, 80*scale_factor + 15), (left, 80*scale_factor + 15)],
+            "pos": [
+                (self.left, height),
+                (self.right, height),
+                (self.right, 80 * self.scale_factor + height),
+                (self.left, 80 * self.scale_factor + height)
+            ],
             "texCoord": [(0, 0), (1, 0), (1, 1), (0, 1)],
         }
         self.batch = batch_for_shader(self.shader, 'TRI_FAN', self.vertices)
 
-        # Register draw handler
+        # 注册绘制处理器 (draw_handler 用于记录重绘请求)
         self.draw_handler = bpy.types.SpaceView3D.draw_handler_add(
-            self.view3d_draw_callback, (), 'WINDOW', 'POST_PIXEL')
+            self.view3d_draw_callback, (), 'WINDOW', 'POST_PIXEL'
+        )
 
-        # Start timer
         bpy.app.timers.register(self.check_redraw, persistent=True)
 
-        # Initial display
+        # 初次显示
         self.show()
 
+    def get_asset_shelf_height(self):
+        """遍历当前屏幕中所有 VIEW_3D 区域，返回第一个找到的 ASSET_SHELF 高度"""
+        asset_shelf_height = 0
+        for area in bpy.context.screen.areas:
+            if area.type == 'VIEW_3D':
+                for region in area.regions:
+                    if region.type == "ASSET_SHELF":
+                        asset_shelf_height = region.height
+                        break
+        return asset_shelf_height
+
+    def update_asset_shelf_height(self):
+        """在每次绘制前动态更新资产栏高度，并重置顶点数据"""
+        asset_shelf_height = self.get_asset_shelf_height()
+        height = asset_shelf_height + 15
+        new_pos = [
+            (self.left, height),
+            (self.right, height),
+            (self.right, 80 * self.scale_factor + height),
+            (self.left, 80 * self.scale_factor + height),
+        ]
+        self.vertices["pos"] = new_pos
+        # 重新构建 batch，这样绘制时就会使用新的顶点数据
+        self.batch = batch_for_shader(self.shader, 'TRI_FAN', self.vertices)
+
     def draw(self):
+        """在每次绘制前更新高度，然后绘制提示图像"""
+        self.update_asset_shelf_height()
         gpu.state.blend_set('ALPHA')
         self.shader.bind()
         self.shader.uniform_sampler("image", self.texture)
@@ -71,7 +106,8 @@ class SwitchNotice:
     def show(self):
         if self.handler is None:
             self.handler = bpy.types.SpaceView3D.draw_handler_add(
-                self.draw, (), 'WINDOW', 'POST_PIXEL')
+                self.draw, (), 'WINDOW', 'POST_PIXEL'
+            )
 
     def hide(self):
         if self.handler is not None:
@@ -83,33 +119,32 @@ class SwitchNotice:
 
     def check_redraw(self):
         if self.needs_redraw:
+            # 可根据需要调用 self.hide() 或其他刷新逻辑
             self.hide()
             self.needs_redraw = False
         return 1.0
 
     def cleanup(self):
-        # 确保所有handler都被移除
+        # 清理所有注册的处理器和定时器，并释放纹理资源
         self.hide()
         if self.draw_handler:
             try:
                 bpy.types.SpaceView3D.draw_handler_remove(self.draw_handler, 'WINDOW')
-            except:
+            except Exception:
                 pass
             self.draw_handler = None
         
-        # 确保定时器被移除
         try:
             bpy.app.timers.unregister(self.check_redraw)
-        except:
+        except Exception:
             pass
         
-        # 释放纹理资源
         if hasattr(self, 'texture'):
             del self.texture
         if hasattr(self, 'image'):
             del self.image
 
-# Global variable to store the current notice
+# 全局变量存储当前的 SwitchNotice 实例
 current_notice = None
 
 def show_notice(image_path):
@@ -118,20 +153,15 @@ def show_notice(image_path):
         return
     
     global current_notice
-    # 强制完全清理
     if current_notice:
         current_notice.cleanup()
         current_notice = None
-        # 给Blender一个事件循环周期来完成清理
-        # 这个空定时器确保资源释放完成后再创建新实例
         bpy.app.timers.register(lambda: None, first_interval=0.1)
     
-    # 创建全新实例
     current_notice = SwitchNotice(image_path)
 
-# Define register and unregister functions
 def register():
-    pass  # Add registration logic here if needed
+    pass
 
 def unregister():
     global current_notice

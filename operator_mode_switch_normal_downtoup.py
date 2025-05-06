@@ -75,7 +75,6 @@ class MODE_NORMAL_DOWNUP_OT_Switch(bpy.types.Operator):
                 return {'CANCELLED'}
             
             image_name = bpy.context.active_object.type+bpy.context.active_object.mode+".png"
-
             show_notice(image_name)
 
         
