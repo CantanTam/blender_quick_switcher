@@ -221,15 +221,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-# 4.3 版本底部 notice 提示偏移高度
-    notice_bottom_height: IntProperty(
-        name="偏移高度",
-        description="仅限4.3版本底部有笔刷的视窗区域有效",
-        default=90,  # 默认值（可根据需要调整）
-        min=15,      # 最小值
-        max=500,     # 最大值（根据实际需求设定）
-        update=update_preferences
-    )
+
+
+
 
 
 
@@ -1790,9 +1784,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
         row.prop(self, "to_show_switch_notice",slider=True)
-        if bpy.app.version >= (4, 3, 0):
-            row.prop(self, "notice_bottom_height", slider=True)
-        
+
         if self.show_shortcut_options:
             # 选项内容区域
             content_box = box.box()

@@ -37,7 +37,6 @@ class SwitchNotice:
 
         prefs = bpy.context.preferences.addons.get(__package__).preferences
         self.scale_factor = prefs.to_show_switch_notice
-        height_offset = prefs.notice_bottom_height  # 如果需要，可以用这个偏移
 
         # 计算居中位置（保持底部距离不变，仅水平居中）
         self.left = (area_width - 480 * self.scale_factor) // 2  
