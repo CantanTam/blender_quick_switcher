@@ -29,7 +29,11 @@ def super_quick_switch(keys_combination, context):
         op = getattr(prefs, pref_name)
         if op != 'NONE':
             try:
-                exec(f'bpy.ops.{op}()')  # 自动添加bpy.ops.前缀和()后缀
+                if op == 'mode.transfer()':
+                    # 调用系统 alt q 传递模式功能
+                    bpy.ops.mode.transfer('INVOKE_DEFAULT')
+                else:
+                    exec(f'bpy.ops.{op}()')  # 自动添加bpy.ops.前缀和()后缀
             except Exception as e:
                 print(f"执行操作失败: bpy.ops.{op}(), 错误: {e}")
     

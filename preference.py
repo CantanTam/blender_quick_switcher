@@ -42,6 +42,7 @@ keys_combination_functions = [
     ('mode.normal_down_to_up()', '下上方向快速切换编辑模式', '不弹出菜单，直接以从下到上的顺序切换编辑模式'), 
     ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
     ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
+    ('mode.transfer()','传递编辑模式','不经过物体模式切换，直接把当前模式传递给鼠标下的物体'),
     ('call.popup_menu_one()','极速菜单1','超级菜单1'),
     ('call.popup_menu_two()','极速菜单2','超级菜单2'),
     ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
@@ -1816,7 +1817,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "to_show_switch_notice")
             if self.to_show_switch_notice:
                 row = content_box.row()
-                row.prop(self, "switch_notice_scale", slider=True)
+                row.prop(self, "switch_notice_scale", slider=True , text="切换提示大小")
                 row = content_box.row()
                 row.prop(self, "switch_notice_themes")
 
