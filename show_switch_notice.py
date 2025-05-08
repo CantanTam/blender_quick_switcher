@@ -47,6 +47,7 @@ class SwitchNotice:
 
         # 获取 3D 视图区域宽度
         area_width = bpy.context.area.width
+        area_height = bpy.context.area.height
 
         prefs = bpy.context.preferences.addons.get(__package__).preferences
         self.scale_factor = prefs.switch_notice_scale
@@ -57,7 +58,13 @@ class SwitchNotice:
 
         # 初次计算资产栏高度
         asset_shelf_height = self.get_asset_shelf_height()
-        height = asset_shelf_height + 15
+
+        if prefs.switch_notice_position == "top":
+            height = area_height - 80 * self.scale_factor - 80
+        elif prefs.switch_notice_position == "center":
+            height = (area_height - 80 * self.scale_factor) * 0.5
+        elif prefs.switch_notice_position == "bottom":
+            height = asset_shelf_height + 15
 
         # 定义顶点数据（位置和纹理坐标）
         self.vertices = {
@@ -95,7 +102,16 @@ class SwitchNotice:
     def update_asset_shelf_height(self):
         """在每次绘制前动态更新资产栏高度，并重置顶点数据"""
         asset_shelf_height = self.get_asset_shelf_height()
-        height = asset_shelf_height + 15
+        prefs = bpy.context.preferences.addons.get(__package__).preferences
+        area_height = bpy.context.area.height
+
+        if prefs.switch_notice_position == "top":
+            height = area_height - 80 * self.scale_factor - 80
+        elif prefs.switch_notice_position == "center":
+            height = (area_height - 80 * self.scale_factor) * 0.5
+        elif prefs.switch_notice_position == "bottom":
+            height = asset_shelf_height + 15
+        
         new_pos = [
             (self.left, height),
             (self.right, height),
