@@ -12,14 +12,14 @@ class SwitchNotice:
 
         prefs = bpy.context.preferences.addons.get(__package__).preferences
 
-        if prefs.switch_notice_themes == 'light':
-            notice_theme = 'themes/light'
+        if prefs.switch_notice_themes == 'white':
+            notice_theme = 'themes/white'
         elif prefs.switch_notice_themes == 'dark':
             notice_theme = 'themes/dark'
         elif prefs.switch_notice_themes == 'pale':
             notice_theme = 'themes/pale'
-        elif prefs.switch_notice_themes == 'lightround':
-            notice_theme = 'themes/light_round'
+        elif prefs.switch_notice_themes == 'whiteround':
+            notice_theme = 'themes/white_round'
         elif prefs.switch_notice_themes == 'darkround':
             notice_theme = 'themes/dark_round'
 

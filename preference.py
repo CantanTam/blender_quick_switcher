@@ -238,13 +238,24 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     switch_notice_themes: bpy.props.EnumProperty(
         name="切换提示主题",
         items=[
-            ('pale', "PALE", ""),
-            ('light', "LIGHT", ""),
-            ('lightround', "LIGHTROUND", ""),
-            ('dark', "DARK", ""),
-            ('darkround', "DARKROUND", ""),
+            ('pale', "Pale", ""),
+            ('white', "White", ""),
+            ('whiteround', "White_Round", ""),
+            ('dark', "Dark", ""),
+            ('darkround', "Dark_round", ""),
         ],
-        default='light',
+        default='white',
+        update=update_preferences
+    )
+
+    switch_notice_position: bpy.props.EnumProperty(
+        name="切换提示位置",
+        items=[
+            ('top', "顶部", ""),
+            ('center', "中心", ""),
+            ('bottom', "底部", ""),
+        ],
+        default='bottom',
         update=update_preferences
     )
 
@@ -1820,6 +1831,8 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 row.prop(self, "switch_notice_scale", slider=True , text="切换提示大小")
                 row = content_box.row()
                 row.prop(self, "switch_notice_themes")
+                row = content_box.row()
+                row.prop(self, "switch_notice_position")
 
             content_box = box.box()
             row = content_box.row()
