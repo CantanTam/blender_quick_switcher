@@ -16,6 +16,12 @@ class SwitchNotice:
             notice_theme = 'themes/light'
         elif prefs.switch_notice_themes == 'dark':
             notice_theme = 'themes/dark'
+        elif prefs.switch_notice_themes == 'pale':
+            notice_theme = 'themes/pale'
+        elif prefs.switch_notice_themes == 'lightround':
+            notice_theme = 'themes/light_round'
+        elif prefs.switch_notice_themes == 'darkround':
+            notice_theme = 'themes/dark_round'
 
         # Convert relative path to absolute path (Windows compatible)
         if not os.path.isabs(self.image_path):

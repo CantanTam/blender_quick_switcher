@@ -237,8 +237,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     switch_notice_themes: bpy.props.EnumProperty(
         name="切换提示主题",
         items=[
+            ('pale', "PALE", ""),
             ('light', "LIGHT", ""),
+            ('lightround', "LIGHTROUND", ""),
             ('dark', "DARK", ""),
+            ('darkround', "DARKROUND", ""),
         ],
         default='light',
         update=update_preferences
