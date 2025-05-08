@@ -210,18 +210,39 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+
+
+
+
+
+
+    to_show_switch_notice:BoolProperty(
+        name="显示切换提示",
+        description="显示/隐藏切换提示",
+        default=True,
+        update=update_preferences
+    )
+
 # 编辑模式切换提示及缩放系数
-    to_show_switch_notice:FloatProperty(
+    switch_notice_scale:FloatProperty(
         name="切换提示缩放系数",
         description="小于0.5关闭切换提示",
         default=1.0,  # 默认值（可根据需要调整）
-        min=0.4,      # 最小值（可选）
+        min=0.5,      # 最小值（可选）
         max=2.0,     # 最大值（可选）
         precision=1,
         update=update_preferences
     )
 
-
+    switch_notice_themes: bpy.props.EnumProperty(
+        name="切换提示主题",
+        items=[
+            ('light', "LIGHT", ""),
+            ('dark', "DARK", ""),
+        ],
+        default='light',
+        update=update_preferences
+    )
 
 
 
@@ -1783,10 +1804,19 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
-        row.prop(self, "to_show_switch_notice",slider=True)
 
         if self.show_shortcut_options:
             # 选项内容区域
+            content_box = box.box()
+
+            row = content_box.row()
+            row.prop(self, "to_show_switch_notice")
+            if self.to_show_switch_notice:
+                row = content_box.row()
+                row.prop(self, "switch_notice_scale", slider=True)
+                row = content_box.row()
+                row.prop(self, "switch_notice_themes")
+
             content_box = box.box()
             row = content_box.row()
             row.prop(self, "ctrl_wheel_up")

@@ -10,6 +10,13 @@ class SwitchNotice:
         self.needs_redraw = False
         self.draw_handler = None
 
+        prefs = bpy.context.preferences.addons.get(__package__).preferences
+
+        if prefs.switch_notice_themes == 'light':
+            notice_theme = 'themes/light'
+        elif prefs.switch_notice_themes == 'dark':
+            notice_theme = 'themes/dark'
+
         # Convert relative path to absolute path (Windows compatible)
         if not os.path.isabs(self.image_path):
             # Get directory of this script
@@ -18,7 +25,7 @@ class SwitchNotice:
             script_dir = os.path.normpath(script_dir)
             # Join with notice_images subdirectory
             self.image_path = os.path.normpath(
-                os.path.join(script_dir, "notice_images", self.image_path)
+                os.path.join(script_dir, notice_theme, self.image_path)
             )
         
         if not os.path.exists(self.image_path):
@@ -36,7 +43,7 @@ class SwitchNotice:
         area_width = bpy.context.area.width
 
         prefs = bpy.context.preferences.addons.get(__package__).preferences
-        self.scale_factor = prefs.to_show_switch_notice
+        self.scale_factor = prefs.switch_notice_scale
 
         # 计算居中位置（保持底部距离不变，仅水平居中）
         self.left = (area_width - 480 * self.scale_factor) // 2  
@@ -148,7 +155,7 @@ current_notice = None
 
 def show_notice(image_path):
     prefs = bpy.context.preferences.addons.get(__package__).preferences
-    if not prefs or prefs.to_show_switch_notice < 0.5:
+    if not prefs or prefs.to_show_switch_notice == False:
         return
     
     global current_notice
