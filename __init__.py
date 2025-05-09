@@ -13,6 +13,7 @@ bl_info = {
 from .operators import CSAWHEEL_OT_ModeSwitchOperator
 from .preference import QuickSwitchAddonPreferences
 from .operator_mode_transfer import MODE_OT_Transfer
+from .operator_mode_transfer import MODE_OT_to_object_and_select
 from .operator_mode_switch_normal_uptodown import MODE_NORMAL_UPDOWN_OT_Switch
 from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
 from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
@@ -141,6 +142,7 @@ def register():
     bpy.utils.register_class(MODE_MENU_OT_Switch)
     bpy.utils.register_class(MODE_TAB_OT_Switch)
     bpy.utils.register_class(MODE_OT_Transfer)
+    bpy.utils.register_class(MODE_OT_to_object_and_select)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_two)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_one)
@@ -324,6 +326,7 @@ def unregister():
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_one)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one)
+    bpy.utils.unregister_class(MODE_OT_to_object_and_select)
     bpy.utils.unregister_class(MODE_OT_Transfer)
     bpy.utils.unregister_class(MODE_TAB_OT_Switch)
     bpy.utils.unregister_class(VERTEX_EDGE_FACE_OT_Switch)
