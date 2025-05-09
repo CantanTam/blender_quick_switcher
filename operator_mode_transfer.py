@@ -40,39 +40,55 @@ class MODE_OT_Transfer(bpy.types.Operator):
         
         return {'FINISHED'}
 
+
 class MODE_OT_to_object_and_select(bpy.types.Operator):
     bl_idname = "mode.to_object_and_select"
-    bl_label = "把鼠标所在位置下的对象转为物体类型并选中"
+    bl_label = "切换到对象模式并选择物体"
     bl_options = {'REGISTER', 'UNDO'}
 
     def invoke(self, context, event):
-        bpy.ops.object.mode_set(mode='OBJECT')
-        # 1. 在所有 AREA 里找第一个 VIEW_3D
+        # 捕获鼠标在当前区域内的坐标（使用相对区域坐标）
+        self.mouse_x = event.mouse_region_x
+        self.mouse_y = event.mouse_region_y
+        return self.execute(context)
+
+    def execute(self, context):
+        # 切换到对象模式（如果不是对象模式）
+        obj = context.object
+        if obj is not None and obj.mode != 'OBJECT':
+            bpy.ops.object.mode_set(mode='OBJECT')
+
+        # 查找第一个 3D 视图区域和其窗口子区域
+        view_area = None
         for area in context.window.screen.areas:
             if area.type == 'VIEW_3D':
-                region = next(r for r in area.regions if r.type == 'WINDOW')
-                override = {
-                    'window': context.window,
-                    'screen': context.screen,
-                    'area': area,
-                    'region': region,
-                    'scene': context.scene,
-                    'view_layer': context.view_layer,
-                }
-                # 2. 计算鼠标在该 region 内的相对坐标
-                mx = event.mouse_x - region.x
-                my = event.mouse_y - region.y
-                # 3. 调用 select 操作符
-                bpy.ops.view3d.select(
-                    override,
-                    extend=False,
-                    deselect=False,
-                    toggle=False,
-                    center=False,
-                    enumerate=False,
-                    object=False,
-                    location=(mx, my)
-                )
+                view_area = area
                 break
+        if view_area is None:
+            self.report({'WARNING'}, "未找到 3D 视图区域")
+            return {'CANCELLED'}
+
+        view_region = None
+        for region in view_area.regions:
+            if region.type == 'WINDOW':
+                view_region = region
+                break
+        if view_region is None:
+            self.report({'WARNING'}, "未找到 3D 视图窗口区域")
+            return {'CANCELLED'}
+
+        # 构造上下文覆盖并调用 view3d.select
+        override = {
+            'window': context.window,
+            'screen': context.window.screen,
+            'area': view_area,
+            'region': view_region
+        }
+        with context.temp_override(**override):
+            bpy.ops.view3d.select(location=(self.mouse_x, self.mouse_y))
+
+        image_name = bpy.context.active_object.type+bpy.context.active_object.mode+".png"
+        show_notice(image_name)
 
         return {'FINISHED'}
+
