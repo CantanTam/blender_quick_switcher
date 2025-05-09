@@ -19,7 +19,8 @@ def super_quick_switch(keys_combination, context):
         'CTRL_ALT_MOUSE_RIGHT': 'ctrl_alt_mouse_right',
         'SHIFT_ALT_MOUSE_RIGHT': 'shift_alt_mouse_right',
         'SHIFT_ALT_WHEEL_UP': 'shift_alt_wheel_up',
-        'SHIFT_ALT_WHEEL_DOWN': 'shift_alt_wheel_down'
+        'SHIFT_ALT_WHEEL_DOWN': 'shift_alt_wheel_down',
+        'CTRL_SHIFT_ALT_MOUSE_RIGHT': 'ctrl_shift_alt_mouse_right'
     }
 
     prefs = context.preferences.addons[__package__].preferences
@@ -62,7 +63,8 @@ class CSAWHEEL_OT_ModeSwitchOperator(Operator):
             ('SHIFT_ALT_MOUSE_RIGHT', 'SHIFT_ALT_MOUSE_RIGHT', ''),
             # 添加 shift alt 滚轮向上快捷键
             ('SHIFT_ALT_WHEEL_UP', 'SHIFT_ALT_WHEEL_UP', ''),
-            ('SHIFT_ALT_WHEEL_DOWN', 'SHIFT_ALT_WHEEL_DOWN', '')
+            ('SHIFT_ALT_WHEEL_DOWN', 'SHIFT_ALT_WHEEL_DOWN', ''),
+            ('CTRL_SHIFT_ALT_MOUSE_RIGHT', 'CTRL_SHIFT_ALT_MOUSE_RIGHT', '')
         ],
         default='CTRL_WHEEL_UP'
     )

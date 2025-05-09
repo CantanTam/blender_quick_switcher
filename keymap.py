@@ -26,7 +26,9 @@ def register():
         ('SHIFT_ALT_MOUSE_RIGHT', 'RIGHTMOUSE', False, True, True),
         #添加 shift alt 滚轮向上
         ('SHIFT_ALT_WHEEL_UP', 'WHEELUPMOUSE', False, True, True),
-        ('SHIFT_ALT_WHEEL_DOWN', 'WHEELDOWNMOUSE', False, True, True)
+        ('SHIFT_ALT_WHEEL_DOWN', 'WHEELDOWNMOUSE', False, True, True),
+        ('CTRL_SHIFT_ALT_MOUSE_RIGHT', 'RIGHTMOUSE', True, True, True)
+
     ]
 
     prefs = bpy.context.preferences.addons[__package__].preferences
@@ -45,7 +47,8 @@ def register():
         'CTRL_ALT_MOUSE_RIGHT': 'ctrl_alt_mouse_right',
         'SHIFT_ALT_MOUSE_RIGHT': 'shift_alt_mouse_right',
         'SHIFT_ALT_WHEEL_UP': 'shift_alt_wheel_up',
-        'SHIFT_ALT_WHEEL_DOWN': 'shift_alt_wheel_down'
+        'SHIFT_ALT_WHEEL_DOWN': 'shift_alt_wheel_down',
+        'CTRL_SHIFT_ALT_MOUSE_RIGHT': 'ctrl_shift_alt_mouse_right'
     }
 
     for direction, key, ctrl, alt, shift in key_combinations:

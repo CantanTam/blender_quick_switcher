@@ -291,6 +291,21 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+    ctrl_shift_alt_mouse_right: EnumProperty(
+        name="Ctrl_Shift+Alt+鼠标右键", 
+        description="选择Ctrl+Shift+Alt+鼠标右键快捷键功能",
+        items=keys_combination_functions,
+        default='mode.menu_switch()',
+        update=update_preferences
+    )
+
+    ctrl_shift_alt_mouse_right_on_panel:BoolProperty(
+        name="",
+        description="在N面板显示该选项",
+        default=True,
+        update=update_preferences
+    )
+
     show_shortcut_options: BoolProperty(
         name="显示快捷键选项",
         description="展开/折叠快捷键选项",
@@ -1974,6 +1989,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row = content_box.row() 
             row.prop(self, "shift_alt_mouse_right_on_panel")
             row.prop(self, "shift_alt_mouse_right")
+            row = content_box.row() 
+            row.prop(self, "ctrl_shift_alt_mouse_right_on_panel")
+            row.prop(self, "ctrl_shift_alt_mouse_right")
 
         # -----------------------------------------------
         # 极速菜单1 设置项 BOX框

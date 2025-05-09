@@ -68,6 +68,9 @@ class QUICKPOPUP_PT_NPanel(bpy.types.Panel):
         if prefs.shift_alt_mouse_right_on_panel:
             layout.row().prop(prefs, "shift_alt_mouse_right", text="Shift+Alt+鼠标右键")
 
+        if prefs.ctrl_shift_alt_mouse_right_on_panel:
+            layout.row().prop(prefs, "ctrl_shift_alt_mouse_right", text="Ctrl+Shift+Alt+鼠标右键")
+
 class QUICKPOPUP_OT_UpdateEnum(bpy.types.Operator):
     bl_idname = "quickpopup.update_enum"
     bl_label = "更新下拉菜单"
