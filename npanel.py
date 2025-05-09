@@ -18,6 +18,11 @@ class QUICKPOPUP_PT_NPanel(bpy.types.Panel):
         prefs = context.preferences.addons[__package__].preferences
         layout = self.layout
 
+        # 在这里统一设置：
+        layout.use_property_split = True     # 开启“属性名/控件”拆分
+        #layout.prop_split        = 0.7      # 左侧占 70%，右侧占 30%
+        layout.use_property_decorate = False
+
         # 更新按钮box框
         box = layout.box()
         box.operator("quickpopup.update_enum", icon='PRESET')
@@ -25,69 +30,43 @@ class QUICKPOPUP_PT_NPanel(bpy.types.Panel):
         factor_value = 0.5
         
         if prefs.ctrl_wheel_up_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+鼠标上滚")
-            row.prop(prefs, "ctrl_wheel_up", text="")
+            layout.row().prop(prefs, "ctrl_wheel_up", text="Ctrl+鼠标上滚",)
 
         if prefs.ctrl_wheel_down_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctr+鼠标下滚")
-            row.prop(prefs, "ctrl_wheel_down", text="")
+            layout.row().prop(prefs, "ctrl_wheel_down", text="Ctrl+鼠标下滚")
 
         if prefs.ctrl_alt_wheel_up_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+Shift+鼠标上滚")
-            row.prop(prefs, "ctrl_alt_wheel_up", text="")
+            layout.row().prop(prefs, "ctrl_alt_wheel_up", text="Ctrl+Alt+鼠标上滚")
 
         if prefs.ctrl_alt_wheel_down_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+Shift+鼠标下滚")
-            row.prop(prefs, "ctrl_alt_wheel_down", text="")
+            layout.row().prop(prefs, "ctrl_alt_wheel_down", text="Ctrl+Alt+鼠标下滚")
 
         if prefs.shift_wheel_up_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Shift+鼠标上滚")
-            row.prop(prefs, "shift_wheel_up", text="")
+            layout.row().prop(prefs, "shift_wheel_up", text="Shift+鼠标上滚")
 
         if prefs.shift_wheel_down_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Shift+鼠标下滚")
-            row.prop(prefs, "shift_wheel_down", text="")
+            layout.row().prop(prefs, "shift_wheel_down", text="Shift+鼠标下滚")
 
         if prefs.ctrl_shift_wheel_up_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+Shift+鼠标上滚")
-            row.prop(prefs, "ctrl_shift_wheel_up", text="")
+            layout.row().prop(prefs, "ctrl_shift_wheel_up", text="Ctrl+Shift+鼠标上滚")
 
         if prefs.ctrl_shift_wheel_down_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+Shift+鼠标下滚")
-            row.prop(prefs, "ctrl_shift_wheel_down", text="")
+            layout.row().prop(prefs, "ctrl_shift_wheel_down", text="Ctrl+Shift+鼠标下滚")
 
         if prefs.shift_alt_wheel_up_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Shift+Alt+鼠标上滚")
-            row.prop(prefs, "shift_alt_wheel_up", text="")
+            layout.row().prop(prefs, "shift_alt_wheel_up", text="Shift+Alt+鼠标上滚")
 
         if prefs.shift_alt_wheel_down_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Shift+Alt+鼠标下滚")
-            row.prop(prefs, "shift_alt_wheel_down", text="")
+            layout.row().prop(prefs, "shift_alt_wheel_down", text="Shift+Alt+鼠标下滚")
 
         if prefs.alt_mouse_right_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Alt+鼠标右键")
-            row.prop(prefs, "alt_mouse_right", text="")
+            layout.row().prop(prefs, "alt_mouse_right", text="Alt+鼠标右键")
 
         if prefs.ctrl_alt_mouse_right_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Ctrl+Alt+鼠标右键")
-            row.prop(prefs, "ctrl_alt_mouse_right", text="")
+            layout.row().prop(prefs, "ctrl_alt_mouse_right", text="Ctrl+Alt+鼠标右键")
 
         if prefs.shift_alt_mouse_right_on_panel:
-            row = layout.row().split(factor=factor_value, align=True)
-            row.label(text="Shift+Alt+鼠标右键")
-            row.prop(prefs, "shift_alt_mouse_right", text="")
+            layout.row().prop(prefs, "shift_alt_mouse_right", text="Shift+Alt+鼠标右键")
 
 class QUICKPOPUP_OT_UpdateEnum(bpy.types.Operator):
     bl_idname = "quickpopup.update_enum"
