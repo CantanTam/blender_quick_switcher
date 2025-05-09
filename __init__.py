@@ -26,7 +26,11 @@ from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import show_switch_notice
 from . import keymap
-from .npanel import QUICKPOPUP_PT_NPanel
+
+from .npanel import (
+    QUICKPOPUP_PT_NPanel,
+    QUICKPOPUP_OT_UpdateEnum,
+)
 
 # 全局通用高频操作按钮：
 from .quick_menu_button_functions.button_actions_global_functions import (
@@ -124,8 +128,9 @@ def register():
 
     show_switch_notice.register()
 
-    # npanel 设置
+    # npanel.py 设置
     bpy.utils.register_class(QUICKPOPUP_PT_NPanel)
+    bpy.utils.register_class(QUICKPOPUP_OT_UpdateEnum)
     
     # 注册所有Operator类
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
@@ -330,6 +335,7 @@ def unregister():
 
     # npanel 设置
     bpy.utils.unregister_class(QUICKPOPUP_PT_NPanel)
+    bpy.utils.unregister_class(QUICKPOPUP_OT_UpdateEnum)
     
     # 注销键位映射
     keymap.unregister()
