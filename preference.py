@@ -87,12 +87,26 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     except Exception as e:
                         print(f"初始设置 {prop_name} 失败: {e}")
 
+    to_use_npanel:BoolProperty(
+        name="使用N面板",
+        description="显示/隐藏N面板快速切换",
+        default=True,
+        update=update_preferences
+    )
+
     ctrl_wheel_up: EnumProperty(
         name="Ctrl+鼠标上滚",
         description="选择Ctrl+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='call.popup_menu_one()',
         update=update_preferences,
+    )
+
+    ctrl_wheel_up_on_panel:BoolProperty(
+        name="",
+        description="在N面板显示该选项",
+        default=True,
+        update=update_preferences
     )
     
     ctrl_wheel_down: EnumProperty(
@@ -1819,6 +1833,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
+        row.prop(self, "to_use_npanel")
 
         if self.show_shortcut_options:
             # 选项内容区域
@@ -1836,6 +1851,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
             content_box = box.box()
             row = content_box.row()
+            row.prop(self, "ctrl_wheel_up_on_panel")
             row.prop(self, "ctrl_wheel_up")
             row = content_box.row() 
             row.prop(self, "ctrl_wheel_down")

@@ -1,7 +1,7 @@
 import bpy
 
 bl_info = {
-    "name": "AA_切换",
+    "name": "AA_switch",
     "author": "Your Name",
     "version": (1, 1),
     "blender": (3, 6, 0),
@@ -26,6 +26,7 @@ from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
 from . import show_switch_notice
 from . import keymap
+from .npanel import QUICKPOPUP_PT_NPanel
 
 # 全局通用高频操作按钮：
 from .quick_menu_button_functions.button_actions_global_functions import (
@@ -122,6 +123,9 @@ def register():
     register_mode_handler()
 
     show_switch_notice.register()
+
+    # npanel 设置
+    bpy.utils.register_class(QUICKPOPUP_PT_NPanel)
     
     # 注册所有Operator类
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
@@ -323,6 +327,9 @@ def unregister():
     bpy.utils.unregister_class(MODE_MENU_OT_Switch)
     bpy.utils.unregister_class(QuickSwitchAddonPreferences)
     bpy.utils.unregister_class(CSAWHEEL_OT_ModeSwitchOperator)
+
+    # npanel 设置
+    bpy.utils.unregister_class(QUICKPOPUP_PT_NPanel)
     
     # 注销键位映射
     keymap.unregister()
