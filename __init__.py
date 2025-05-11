@@ -123,7 +123,14 @@ from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
 
+from .right_click_add import (
+    register as register_right_click,
+    unregister as unregister_right_click
+)
+
 def register():
+    # 注册右键菜单功能
+    register_right_click()
     # 注册模式监测功能
     register_mode_handler()
 
@@ -233,7 +240,9 @@ def register():
     # 注册键位映射
     keymap.register()
 
-def unregister():    
+def unregister():
+    # 注销右键菜单功能
+    unregister_right_click()
     # 注销模式监测功能
     unregister_mode_handler()
 
