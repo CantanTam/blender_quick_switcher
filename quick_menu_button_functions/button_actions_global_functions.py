@@ -354,7 +354,7 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
 # 定义调用“删除”菜单操作
 class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
     bl_idname = "button.action_call_global_delete_menu"
-    bl_label = "加选/减选"
+    bl_label = "删除"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):

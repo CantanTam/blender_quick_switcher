@@ -5,7 +5,7 @@ button_options_list = [
 
     # 全局高频操作：
     ('NO_BUTTON',"←全局通用常用操作→","全局都使用的高频操作"),
-    ('button.action_global_grab','移动','移动'),
+    ('button.action_global_grab','移动','移动'),        #已添加Switcher
     ('button.action_global_scale','缩放','缩放'),
     ('button.action_global_rotate','旋转','旋转'),
     ('button.action_global_select_all','全选','快捷键(A)'),
