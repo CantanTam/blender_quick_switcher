@@ -78,3 +78,22 @@ class BUTTON_ACTION_OT_orientation_to_parent(bpy.types.Operator):
     def execute(self, context):
         bpy.context.scene.transform_orientation_slots[0].type = 'PARENT'
         return {'FINISHED'}
+    
+classes = (
+    BUTTON_ACTION_OT_switch_orientation_menu,
+    BUTTON_ACTION_OT_orientation_to_global,
+    BUTTON_ACTION_OT_orientation_to_local,
+    BUTTON_ACTION_OT_orientation_to_normal,
+    BUTTON_ACTION_OT_orientation_to_gimbal,
+    BUTTON_ACTION_OT_orientation_to_view,
+    BUTTON_ACTION_OT_orientation_to_cursor,
+    BUTTON_ACTION_OT_orientation_to_parent,
+)
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)

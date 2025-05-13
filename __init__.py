@@ -47,14 +47,8 @@ from .quick_menu_button_functions.button_actions_global_functions import (
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
-    BUTTON_ACTION_OT_switch_orientation_menu,
-    BUTTON_ACTION_OT_orientation_to_global,
-    BUTTON_ACTION_OT_orientation_to_local,
-    BUTTON_ACTION_OT_orientation_to_normal,
-    BUTTON_ACTION_OT_orientation_to_gimbal,
-    BUTTON_ACTION_OT_orientation_to_view,
-    BUTTON_ACTION_OT_orientation_to_cursor,
-    BUTTON_ACTION_OT_orientation_to_parent,
+    register as register_button_actions_global_switch_orientation_slots,
+    unregister as unregister_button_actions_global_switch_orientation_slots,
 )
 # 切换轴心点
 from .quick_menu_button_functions.button_actions_global_switch_pivot_points import (
@@ -151,14 +145,7 @@ def register():
 
 
     # 变换坐标系类
-    bpy.utils.register_class(BUTTON_ACTION_OT_switch_orientation_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_global)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_local)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_normal)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_gimbal)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_view)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_cursor)
-    bpy.utils.register_class(BUTTON_ACTION_OT_orientation_to_parent)
+    register_button_actions_global_switch_orientation_slots()
 
     # 切换轴心点
     bpy.utils.register_class(BUTTON_ACTION_OT_switch_pivot_menu)
@@ -277,14 +264,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
 
     # 变换坐标系类
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_switch_orientation_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_parent)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_cursor)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_view)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_gimbal)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_normal)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_local)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
+    unregister_button_actions_global_switch_orientation_slots()
 
     # 全局高频操作类
     unregister_button_actions_global_functions()
