@@ -52,12 +52,8 @@ from .quick_menu_button_functions.button_actions_global_switch_orientation_slots
 )
 # 切换轴心点
 from .quick_menu_button_functions.button_actions_global_switch_pivot_points import (
-    BUTTON_ACTION_OT_pivot_to_bounding_box_center,
-    BUTTON_ACTION_OT_pivot_to_cursor,
-    BUTTON_ACTION_OT_pivot_to_individual_origins,
-    BUTTON_ACTION_OT_pivot_to_median_point,
-    BUTTON_ACTION_OT_pivot_to_active_element,
-    BUTTON_ACTION_OT_switch_pivot_menu,
+    register as register_button_actions_global_switch_pivot_points,
+    unregister as unregister_button_actions_global_switch_pivot_points,
 )
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
@@ -148,12 +144,7 @@ def register():
     register_button_actions_global_switch_orientation_slots()
 
     # 切换轴心点
-    bpy.utils.register_class(BUTTON_ACTION_OT_switch_pivot_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
-    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_cursor)
-    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
-    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_median_point)
-    bpy.utils.register_class(BUTTON_ACTION_OT_pivot_to_active_element)
+    register_button_actions_global_switch_pivot_points()
 
     # "视图"菜单功能项
     bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
@@ -256,12 +247,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
 
     # 切换轴心点
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_switch_pivot_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_active_element)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_median_point)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_individual_origins)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_cursor)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_pivot_to_bounding_box_center)
+    unregister_button_actions_global_switch_pivot_points()
 
     # 变换坐标系类
     unregister_button_actions_global_switch_orientation_slots()
