@@ -177,4 +177,30 @@ class BUTTON_ACTION_OT_view3d_screen_screen_full_area(bpy.types.Operator):
         return {'FINISHED'}
     
 
+classes = (
+    BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu,
+    BUTTON_ACTION_OT_view3d_call_view_navigation_menu,
+    BUTTON_ACTION_OT_view3d_zoom_border,
+    BUTTON_ACTION_OT_view_pan_left,
+    BUTTON_ACTION_OT_view_pan_right,
+    BUTTON_ACTION_OT_view_pan_up,
+    BUTTON_ACTION_OT_view_pan_down,
+    BUTTON_ACTION_OT_view3d_walk,
+    BUTTON_ACTION_OT_view3d_call_view_align_menu,
+    VIEW3D_MT_view_regions_menu,
+    BUTTON_ACTION_OT_view3d_call_view_regions_menu,
+    BUTTON_ACTION_OT_view3d_clip_border,
+    BUTTON_ACTION_OT_view3d_render_border,
+    BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
+    BUTTON_ACTION_OT_view3d_view_all_center_true,
+    BUTTON_ACTION_OT_view3d_area_menu,
+    BUTTON_ACTION_OT_view3d_screen_screen_full_area,
+)
 
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)

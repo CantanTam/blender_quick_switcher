@@ -57,23 +57,8 @@ from .quick_menu_button_functions.button_actions_global_switch_pivot_points impo
 )
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
-    BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu,
-    BUTTON_ACTION_OT_view3d_call_view_navigation_menu,
-    BUTTON_ACTION_OT_view3d_zoom_border,
-    BUTTON_ACTION_OT_view_pan_left,
-    BUTTON_ACTION_OT_view_pan_right,
-    BUTTON_ACTION_OT_view_pan_up,
-    BUTTON_ACTION_OT_view_pan_down,
-    BUTTON_ACTION_OT_view3d_walk,
-    BUTTON_ACTION_OT_view3d_call_view_align_menu,
-    VIEW3D_MT_view_regions_menu,
-    BUTTON_ACTION_OT_view3d_call_view_regions_menu,
-    BUTTON_ACTION_OT_view3d_clip_border,
-    BUTTON_ACTION_OT_view3d_render_border,
-    BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
-    BUTTON_ACTION_OT_view3d_view_all_center_true,
-    BUTTON_ACTION_OT_view3d_area_menu,
-    BUTTON_ACTION_OT_view3d_screen_screen_full_area,
+    register as register_button_actions_global_view_menu,
+    unregister as unregister_button_actions_global_view_menu,
 )
 
 from .quick_menu_button_functions.button_actions_global_select_menu import (
@@ -147,23 +132,7 @@ def register():
     register_button_actions_global_switch_pivot_points()
 
     # "视图"菜单功能项
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_navigation_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_zoom_border)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_left)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_right)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_up)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view_pan_down)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_walk)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_align_menu)
-    bpy.utils.register_class(VIEW3D_MT_view_regions_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_call_view_regions_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_clip_border)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_render_border)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_area_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_view3d_screen_screen_full_area)
+    register_button_actions_global_view_menu()
         
     # “选择”菜单功能项
     bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
@@ -228,23 +197,7 @@ def unregister():
 
 
     # “视图”菜单
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_screen_screen_full_area)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_area_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_view_all_center_true)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_render_border)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_clip_border)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_regions_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_view_regions_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_align_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_walk)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_zoom_border)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_down)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_up)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_right)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view_pan_left)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_navigation_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu)
+    unregister_button_actions_global_view_menu()
 
     # 切换轴心点
     unregister_button_actions_global_switch_pivot_points()

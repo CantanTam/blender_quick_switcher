@@ -147,7 +147,7 @@
     "panel2_col1_button9": "NO_BUTTON",
     "panel2_col1_button10": "NO_BUTTON",
     "panel_two_col2_title": "第二列标题",
-    "panel2_col2_button1": "NO_BUTTON",
+    "panel2_col2_button1": "button.action_view3d_zoom_border",
     "panel2_col2_button2": "NO_BUTTON",
     "panel2_col2_button3": "NO_BUTTON",
     "panel2_col2_button4": "NO_BUTTON",
