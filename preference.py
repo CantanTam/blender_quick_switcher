@@ -96,6 +96,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+    to_show_to_switcher:BoolProperty(
+        name="显示添加到Switcher",
+        description="显示/隐藏右击\"添加到Switcher\"选项",
+        default=False,
+        update=update_preferences
+    )
+
     ctrl_wheel_up: EnumProperty(
         name="Ctrl+鼠标上滚",
         description="选择Ctrl+鼠标上滚快捷键功能",
@@ -1934,6 +1941,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
         row.prop(self, "to_use_npanel")
+        row.prop(self, "to_show_to_switcher")
 
         if self.show_shortcut_options:
             # 选项内容区域

@@ -180,7 +180,7 @@ class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
             bpy.ops.armature.duplicate_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-# 物体模式/蜡笔“复制 Ctrl C”按钮功能
+# 物体模式/蜡笔/骨架姿态“复制 Ctrl C”按钮功能
 class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
     bl_idname = "button.action_global_copy"
     bl_label = "复制"
@@ -199,7 +199,7 @@ class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
             bpy.ops.grease_pencil.copy()
         return {'FINISHED'}
     
-# 物体模式/蜡笔“复制 Ctrl C”按钮功能
+# 物体模式/蜡笔/骨架姿态“复制 Ctrl V”按钮功能
 class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
     bl_idname = "button.action_global_paste"
     bl_label = "粘贴"

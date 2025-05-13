@@ -11,7 +11,7 @@ button_options_list = [
     ('button.action_global_select_all','全选','快捷键(A)'), #Switcher
     ('button.action_global_select_invert','反选','快捷键(Ctrl I)'), #Switcher
     ('button.action_global_select_circle','刷选','快捷键(C)'),  #Switcher
-    ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),     #Switcher not support
+    ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),     #Switcher
     ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),   #Switcher
     ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),   #Switcher
     ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),  #Swithcer

@@ -2,6 +2,10 @@ import bpy
 from . import preference
 
 def draw_add_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    
     op = getattr(context, "operator", None) or getattr(context, "button_operator", None)
     # 检查右键对象是否为 Transform → Translate (Move)
     if op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
@@ -74,10 +78,32 @@ def draw_add_to_switcher(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"粘贴\"添加到Switcher", icon='PASTEDOWN').action = 'button.action_global_paste'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_delete",
+        "MBALL_OT_delete_metaelems",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"删除\"添加到Switcher", icon='EVENT_X').action = 'button.action_global_call_delete_menu'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
+#不能使用 draw_add_to_switcher 的添加到 Switcher 方法：
+def add_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"添加(菜单)\"添加到Switcher", icon='PLUS').action = 'button.action_global_add'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
-
+def delete_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"删除(菜单)\"添加到Switcher", icon='EVENT_X').action = 'button.action_global_call_delete_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 
@@ -256,16 +282,53 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
             op.column = '_col10'
             op.button = f'_button{i}'
             
+classes = (
+    CALL_OT_add_to_switcher_menu,
+    PANEL_OT_set_panels,
+    BUTTON_OT_set_buttons,
+)
 
 def register():
-    bpy.utils.register_class(CALL_OT_add_to_switcher_menu)
-    bpy.utils.register_class(PANEL_OT_set_panels)
-    bpy.utils.register_class(BUTTON_OT_set_buttons)
-    # 将自定义绘制函数附加到按钮上下文菜单
+    for cls in classes:
+        bpy.utils.register_class(cls)
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher)
+    #“添加”菜单
+    bpy.types.VIEW3D_MT_add.append(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_mesh_add.append(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_curve_add.append(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_surface_add.append(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_metaball_add.append(add_menu_to_switcher)
+    bpy.types.TOPBAR_MT_edit_armature_add.append(add_menu_to_switcher)
+
+    #“删除”菜单
+    bpy.types.VIEW3D_MT_edit_mesh_delete.append(delete_menu_to_switcher)
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_delete.append(delete_menu_to_switcher)    
+    elif bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_greasepencil_delete.append(delete_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_armature_delete.append(delete_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_curve_delete.append(delete_menu_to_switcher)
+    
+
 
 def unregister():
+    #“删除”菜单
+    bpy.types.VIEW3D_MT_edit_mesh_delete.remove(delete_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_armature_delete.remove(delete_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_curve_delete.remove(delete_menu_to_switcher)
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_delete.remove(delete_menu_to_switcher)
+    elif bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_greasepencil_delete.remove(delete_menu_to_switcher)
+
+    #“添加”菜单
+    bpy.types.TOPBAR_MT_edit_armature_add.remove(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_metaball_add.remove(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_surface_add.remove(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_curve_add.remove(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_mesh_add.remove(add_menu_to_switcher)
+    bpy.types.VIEW3D_MT_add.remove(add_menu_to_switcher)
+
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher)
-    bpy.utils.unregister_class(BUTTON_OT_set_buttons)
-    bpy.utils.unregister_class(PANEL_OT_set_panels)
-    bpy.utils.unregister_class(CALL_OT_add_to_switcher_menu)
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
