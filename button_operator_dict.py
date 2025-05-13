@@ -6,16 +6,16 @@ button_options_list = [
     # 全局高频操作：
     ('NO_BUTTON',"←全局通用常用操作→","全局都使用的高频操作"),
     ('button.action_global_grab','移动','移动'),        #已添加Switcher
-    ('button.action_global_scale','缩放','缩放'),
-    ('button.action_global_rotate','旋转','旋转'),
-    ('button.action_global_select_all','全选','快捷键(A)'),
-    ('button.action_global_select_invert','反选','快捷键(Ctrl I)'),
-    ('button.action_global_select_circle','刷选','快捷键(C)'),
-    ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),
-    ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),
-    ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),
-    ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),
-    ('button.action_call_global_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),
+    ('button.action_global_scale','缩放','缩放'),       #switcher
+    ('button.action_global_rotate','旋转','旋转'),      #已添加Switcher
+    ('button.action_global_select_all','全选','快捷键(A)'), #Switcher
+    ('button.action_global_select_invert','反选','快捷键(Ctrl I)'), #Switcher
+    ('button.action_global_select_circle','刷选','快捷键(C)'),  #Switcher
+    ('button.action_global_add',"添加(菜单)","不同的模式当中，调出不同的添加菜单"),     #Switcher not support
+    ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),   #Switcher
+    ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),   #Switcher
+    ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),  #Swithcer
+    ('button.action_global_call_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),
     ('button.action_global_hide_view_set',"隐藏","多种编辑模式共用的“隐藏(H)”操作"),
     ('button.action_global_hide_view_clear',"显示隐藏项","多种编辑模式共用的“显示隐藏项(Alt H)”操作"),
     ('button.action_global_apply',"应用","物体模式/骨架姿态模式共用的“应用(Ctrl A)”操作"),
@@ -177,16 +177,16 @@ button_press_function = {
         "button.action_global_copy","复制","COPYDOWN", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
-        "GREASEPENCILEDIT","ARMATUREOBJECT", 
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "ARMATUREPOSE",
     ),
         'button.action_global_paste':(
         "button.action_global_paste","粘贴","PASTEDOWN", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
-        "GREASEPENCILEDIT","ARMATUREOBJECT", 
+        "GREASEPENCILEDIT","ARMATUREOBJECT", "ARMATUREPOSE",
     ),
-        'button.action_call_global_delete_menu':(
-        "button.action_call_global_delete_menu","删除","EVENT_X", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        'button.action_global_call_delete_menu':(
+        "button.action_global_call_delete_menu","删除","EVENT_X", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GPENCILEDIT_GPENCIL", "GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT", "MESHEDIT","METAEDIT","GPENCILPAINT_GPENCIL","ARMATUREEDIT",

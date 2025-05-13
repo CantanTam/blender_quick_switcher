@@ -1,14 +1,85 @@
 import bpy
 from . import preference
 
-def draw_move_context(self, context):
-    op = getattr(context, "button_operator", None)
+def draw_add_to_switcher(self, context):
+    op = getattr(context, "operator", None) or getattr(context, "button_operator", None)
     # 检查右键对象是否为 Transform → Translate (Move)
     if op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"移动\"添加到Switcher", icon='EVENT_G').action = 'button.action_global_grab'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_resize":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"缩放\"添加到Switcher", icon='EVENT_S').action = 'button.action_global_scale'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_rotate":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"旋转\"添加到Switcher", icon='EVENT_R').action = 'button.action_global_rotate'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_all",
+        "CURVE_OT_select_all",
+        "MBALL_OT_select_all",
+        "FONT_OT_select_all",
+        "LATTICE_OT_select_all",
+        "MESH_OT_select_all",
+        "GPENCIL_OT_select_all",    #4.2 版本或以下
+        "GREASE_PENCIL_OT_select_all", #4.3 版本或以上
+        "ARMATURE_OT_select_all",
+        "POSE_OT_select_all",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"全选\"添加到Switcher", icon='EVENT_A').action = 'button.action_global_select_all'
+        layout.operator("call.add_to_switcher_menu", text="\"反选\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_invert'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_select_circle":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"刷选\"添加到Switcher", icon='EVENT_C').action = 'button.action_global_select_circle'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_duplicate_move",
+        "CURVE_OT_duplicate_move",
+        "MBALL_OT_duplicate_move",
+        "GPENCIL_OT_duplicate_move", # 4.2 edition
+        "GREASE_PENCIL_OT_duplicate_move", # 4.3 edition
+        "MESH_OT_duplicate_move",
+        "ARMATURE_OT_duplicate_move",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"复制\"添加到Switcher", icon='DUPLICATE').action = 'button.action_global_duplicate_move'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier in {
+        "VIEW3D_OT_copybuffer",
+        "GPENCIL_OT_copy", # 4.2 edition
+        "GREASE_PENCIL_OT_copy", # 4.3 edition
+        "POSE_OT_copy",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"复制\"添加到Switcher", icon='COPYDOWN').action = 'button.action_global_copy'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    elif op and op.bl_rna.identifier in {
+        "VIEW3D_OT_pastebuffer",
+        "GPENCIL_OT_paste", # 4.2 edition
+        "GREASE_PENCIL_OT_paste", # 4.3 edition
+        "POSE_OT_paste",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"粘贴\"添加到Switcher", icon='PASTEDOWN').action = 'button.action_global_paste'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+
+
+
+
+
 
 switcher_panel = "panel1"
 #switcher_column = "_col1"
@@ -191,10 +262,10 @@ def register():
     bpy.utils.register_class(PANEL_OT_set_panels)
     bpy.utils.register_class(BUTTON_OT_set_buttons)
     # 将自定义绘制函数附加到按钮上下文菜单
-    bpy.types.UI_MT_button_context_menu.append(draw_move_context)
+    bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher)
 
 def unregister():
-    bpy.types.UI_MT_button_context_menu.remove(draw_move_context)
+    bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher)
     bpy.utils.unregister_class(BUTTON_OT_set_buttons)
     bpy.utils.unregister_class(PANEL_OT_set_panels)
     bpy.utils.unregister_class(CALL_OT_add_to_switcher_menu)

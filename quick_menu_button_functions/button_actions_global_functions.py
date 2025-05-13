@@ -191,6 +191,8 @@ class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
         if bpy.context.mode == "OBJECT":
             bpy.ops.view3d.copybuffer()
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.copy()
         elif typeandmode == "GPENCILEDIT_GPENCIL":
             bpy.ops.gpencil.copy()
         elif typeandmode == "GREASEPENCILEDIT":
@@ -242,6 +244,20 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
     )
 
+    flipped: bpy.props.BoolProperty( # 粘贴“物体”用
+        name="没X轴翻转",
+        default=False,
+        description="将存储的翻转姿态粘贴到当前姿态",
+        update=lambda self, context: self.execute(context) 
+    )
+
+    selected_mask: bpy.props.BoolProperty( # 粘贴“物体”用
+        name="只考虑所选部分",
+        default=False,
+        description="只将存储的姿态粘贴到当前姿态中的所选骨骼上",
+        update=lambda self, context: self.execute(context) 
+    )
+
     def invoke(self, context, event):
         return self.execute(context)
     
@@ -263,7 +279,10 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
             col_left.label(text="")    
         elif typeandmode == "GREASEPENCILEDIT":
             col_left.label(text="") 
-            col_left.label(text="")    
+            col_left.label(text="")
+        elif typeandmode == "ARMATUREPOSE":
+            col_left.label(text="") 
+            col_left.label(text="")
         
         # 右侧列 - 垂直排列的单选按钮
         col_right = split.column()
@@ -276,6 +295,9 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         elif typeandmode == "GREASEPENCILEDIT":
             col_right.prop(self, "paste_back") 
             col_right.prop(self, "keep_world_transform")
+        elif typeandmode == "ARMATUREPOSE":
+            col_right.prop(self, "flipped")
+            col_right.prop(self, "selected_mask")
 
     def execute(self, context):
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
@@ -285,6 +307,8 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
             bpy.ops.gpencil.paste(type=self.type, paste_back=self.paste_back)
         elif typeandmode == "GREASEPENCILEDIT":
             bpy.ops.grease_pencil.paste(paste_back=self.paste_back, keep_world_transform=self.keep_world_transform)
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.paste(flipped=self.flipped, selected_mask=self.selected_mask)
         return {'FINISHED'}
 
 # 定义“删除”菜单
@@ -353,7 +377,7 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
 
 # 定义调用“删除”菜单操作
 class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_global_delete_menu"
+    bl_idname = "button.action_global_call_delete_menu"
     bl_label = "删除"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -372,7 +396,7 @@ class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
         name="未选中项",
         default=False,
         description="隐藏未选中项而不是选择项",
-        update=lambda self, context: self.execute(context) #if bpy.context.mode == 'EDIT_MESH' else None
+        update=lambda self, context: self.execute(context) 
     )
 
     def invoke(self, context, event):
