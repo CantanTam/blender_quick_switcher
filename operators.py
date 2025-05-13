@@ -33,7 +33,7 @@ def super_quick_switch(keys_combination, context):
                 if op == 'mode.transfer()':
                     # 调用系统 alt q 传递模式功能
                     bpy.ops.mode.transfer('INVOKE_DEFAULT')
-                elif op == 'mode.to_object_and_select()':
+                elif op == 'mode.forced_select()':
                     bpy.ops.mode.to_object_and_select('INVOKE_DEFAULT')
                 else:
                     exec(f'bpy.ops.{op}()')  # 自动添加bpy.ops.前缀和()后缀

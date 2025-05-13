@@ -43,7 +43,7 @@ keys_combination_functions = [
     ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),
     ('wm.toolbar()','调用系统快捷菜单','调用Shift+Space快捷键'),
     ('mode.transfer()','传递编辑模式','不经过物体模式切换，直接把当前模式传递给鼠标下的物体'),
-    ('mode.to_object_and_select()','强行选中','把鼠标所在位置下的对象转为物体类型并选中'),
+    ('mode.forced_select()','强行选中','把鼠标所在位置下的对象转为物体类型并选中'),
 
     ('call.popup_menu_one()','极速菜单1','超级菜单1'),
     ('call.popup_menu_two()','极速菜单2','超级菜单2'),
@@ -107,7 +107,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="Ctrl+鼠标上滚",
         description="选择Ctrl+鼠标上滚快捷键功能",
         items=keys_combination_functions,
-        default='call.popup_menu_one()',
+        default='switch.vertex_edge_face()',
         update=update_preferences,
     )
 
@@ -257,7 +257,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="Alt+鼠标右键", 
         description="选择Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
-        default='mode.to_object_and_select()',
+        default='mode.transfer()',
         update=update_preferences
     )
 
@@ -302,7 +302,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="Ctrl_Shift+Alt+鼠标右键", 
         description="选择Ctrl+Shift+Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
-        default='mode.menu_switch()',
+        default='mode.forced_select()',
         update=update_preferences
     )
 

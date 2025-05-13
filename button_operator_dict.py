@@ -15,12 +15,12 @@ button_options_list = [
     ('button.action_global_duplicate_move',"复制","快捷键(Shift D)"),   #Switcher
     ('button.action_global_copy',"复制","物体模式/蜡笔编辑模式共用的“复制(Ctrl C)”操作"),   #Switcher
     ('button.action_global_paste',"粘贴","物体模式/蜡笔编辑模式共用的“粘贴(Ctrl V)”操作"),  #Swithcer
-    ('button.action_global_call_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),
-    ('button.action_global_hide_view_set',"隐藏","多种编辑模式共用的“隐藏(H)”操作"),
-    ('button.action_global_hide_view_clear',"显示隐藏项","多种编辑模式共用的“显示隐藏项(Alt H)”操作"),
-    ('button.action_global_apply',"应用","物体模式/骨架姿态模式共用的“应用(Ctrl A)”操作"),
-    ('button.action_global_transform_mirror',"交互镜像","物体模式/网格编辑模式/骨架姿态模式共用的“交互镜像(Ctrl M)”操作"),
-    ('button.action_global_object_pose_clear',"清空变换(菜单)","物体模式/骨骼姿态模式“清空变换”菜单"),
+    ('button.action_global_call_delete_menu',"删除","多种编辑模式共用的“删除(X)”操作"),     #Switcher
+    ('button.action_global_hide_view_set',"隐藏","多种编辑模式共用的“隐藏(H)”操作"),    #Switcher
+    ('button.action_global_hide_view_clear',"显示隐藏项","多种编辑模式共用的“显示隐藏项(Alt H)”操作"),  #Switcher
+    ('button.action_global_apply',"应用","物体模式/骨架姿态模式共用的“应用(Ctrl A)”操作"),  #Switcher
+    ('button.action_global_transform_mirror',"交互镜像","物体模式/网格编辑模式/骨架姿态模式共用的“交互镜像(Ctrl M)”操作"),  #Switcher
+    ('button.action_global_object_pose_clear',"清空变换(菜单)","物体模式/骨骼姿态模式“清空变换”菜单"),  #Switcher
 
 
     # 切换坐标系
