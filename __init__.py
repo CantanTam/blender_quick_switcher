@@ -23,8 +23,11 @@ from .popup_quick_menu_one import QUICK_POPUP_MENU_OT_one
 from .popup_quick_menu_two import QUICK_POPUP_MENU_OT_two
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_two
-from .operator_typeandmode_name_mode import register_mode_handler
-from .operator_typeandmode_name_mode import unregister_mode_handler
+
+from .operator_typeandmode_name_mode import (
+    register as register_operator_typeandmode_name_mode,
+    unregister as unregister_operator_typeandmode_name_mode,
+)
 
 from .show_switch_notice import (
     register as register_show_switch_notice,
@@ -39,23 +42,8 @@ from .npanel import (
 
 # 全局通用高频操作按钮：
 from .quick_menu_button_functions.button_actions_global_functions import (
-    BUTTON_ACTION_OT_grab,
-    BUTTON_ACTION_OT_scale,
-    BUTTON_ACTION_OT_rotate,
-    BUTTON_ACTION_OT_global_select_all,
-    BUTTON_ACTION_OT_global_select_invert,
-    BUTTON_ACTION_OT_global_select_circle,
-    BUTTON_ACTION_OT_global_duplicate_move,
-    BUTTON_ACTION_OT_global_add,
-    BUTTON_ACTION_OT_global_copy,
-    BUTTON_ACTION_OT_global_paste,
-    BUTTON_ACTION_OT_call_global_delete_menu,
-    VIEW3D_MT_global_delete_menu,
-    BUTTON_ACTION_OT_global_hide_view_set,
-    BUTTON_ACTION_OT_global_hide_view_clear,
-    BUTTON_ACTION_OT_global_apply,
-    BUTTON_ACTION_OT_global_transform_mirror,
-    BUTTON_ACTION_OT_global_object_pose_clear,
+    register as register_button_actions_global_functions,
+    unregister as unregister_button_actions_global_functions,
 )
 
 from .quick_menu_button_functions.button_actions_global_switch_orientation_slots import (
@@ -136,7 +124,7 @@ def register():
     # 注册右键菜单功能
     register_right_click_add()
     # 注册模式监测功能
-    register_mode_handler()
+    register_operator_typeandmode_name_mode()
 
     register_show_switch_notice()
 
@@ -159,23 +147,7 @@ def register():
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_two)
 
     # 全局高频操作类
-    bpy.utils.register_class(BUTTON_ACTION_OT_grab)
-    bpy.utils.register_class(BUTTON_ACTION_OT_scale)
-    bpy.utils.register_class(BUTTON_ACTION_OT_rotate)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_all)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_invert)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_select_circle)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_duplicate_move)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_add)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_copy)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_paste)
-    bpy.utils.register_class(VIEW3D_MT_global_delete_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_call_global_delete_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_hide_view_set)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_hide_view_clear)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_apply)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_transform_mirror)
-    bpy.utils.register_class(BUTTON_ACTION_OT_global_object_pose_clear)
+    register_button_actions_global_functions()
 
 
     # 变换坐标系类
@@ -247,7 +219,7 @@ def unregister():
     # 注销右键菜单功能
     unregister_right_click_add()
     # 注销模式监测功能
-    unregister_mode_handler()
+    unregister_operator_typeandmode_name_mode()
 
     unregister_show_switch_notice()
 
@@ -315,23 +287,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_orientation_to_global)
 
     # 全局高频操作类
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_object_pose_clear)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_transform_mirror)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_apply)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_hide_view_clear)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_hide_view_set)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_global_delete_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_global_delete_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_paste)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_copy)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_add)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_duplicate_move)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_circle)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_invert)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_global_select_all)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_rotate)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_scale)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_grab)
+    unregister_button_actions_global_functions()
 
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_two)

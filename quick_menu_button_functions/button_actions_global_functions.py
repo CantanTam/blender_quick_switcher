@@ -509,7 +509,33 @@ class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
         return {'FINISHED'}
 
 
+classes = (
+    BUTTON_ACTION_OT_grab,
+    BUTTON_ACTION_OT_scale,
+    BUTTON_ACTION_OT_rotate,
+    BUTTON_ACTION_OT_global_select_all,
+    BUTTON_ACTION_OT_global_select_invert,
+    BUTTON_ACTION_OT_global_select_circle,
+    BUTTON_ACTION_OT_global_duplicate_move,
+    BUTTON_ACTION_OT_global_add,
+    BUTTON_ACTION_OT_global_copy,
+    BUTTON_ACTION_OT_global_paste,
+    BUTTON_ACTION_OT_call_global_delete_menu,
+    VIEW3D_MT_global_delete_menu,
+    BUTTON_ACTION_OT_global_hide_view_set,
+    BUTTON_ACTION_OT_global_hide_view_clear,
+    BUTTON_ACTION_OT_global_apply,
+    BUTTON_ACTION_OT_global_transform_mirror,
+    BUTTON_ACTION_OT_global_object_pose_clear,
+)
 
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
 
 
 

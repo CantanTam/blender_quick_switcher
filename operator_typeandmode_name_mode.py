@@ -44,12 +44,12 @@ def record_name_typeandmode():
         #bpy.context.window_manager.popup_menu(lambda self, context: self.layout.label(text="测试"), title="没改变，不记录", icon='INFO')
         return 0.1
 
-def register_mode_handler():
+def register():
     global _record_typeandmode_name_timer
     if _record_typeandmode_name_timer is None:
         _record_typeandmode_name_timer = bpy.app.timers.register(record_name_typeandmode)
 
-def unregister_mode_handler():
+def unregister():
     global _record_typeandmode_name_timer
     if _record_typeandmode_name_timer is not None:
         bpy.app.timers.unregister(_record_typeandmode_name_timer)
