@@ -25,12 +25,16 @@ from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_two
 from .operator_typeandmode_name_mode import register_mode_handler
 from .operator_typeandmode_name_mode import unregister_mode_handler
-from . import show_switch_notice
+
+from .show_switch_notice import (
+    register as register_show_switch_notice,
+    unregister as unregister_show_switch_notice,
+)
 from . import keymap
 
 from .npanel import (
-    QUICKPOPUP_PT_NPanel,
-    QUICKPOPUP_OT_UpdateEnum,
+    register as register_npanel,
+    unregister as unregister_npanel,
 )
 
 # 全局通用高频操作按钮：
@@ -134,11 +138,10 @@ def register():
     # 注册模式监测功能
     register_mode_handler()
 
-    show_switch_notice.register()
+    register_show_switch_notice()
 
     # npanel.py 设置
-    bpy.utils.register_class(QUICKPOPUP_PT_NPanel)
-    bpy.utils.register_class(QUICKPOPUP_OT_UpdateEnum)
+    register_npanel()
     
     # 注册所有Operator类
     bpy.utils.register_class(CSAWHEEL_OT_ModeSwitchOperator)
@@ -246,7 +249,7 @@ def unregister():
     # 注销模式监测功能
     unregister_mode_handler()
 
-    show_switch_notice.unregister()
+    unregister_show_switch_notice()
 
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
@@ -346,8 +349,7 @@ def unregister():
     bpy.utils.unregister_class(CSAWHEEL_OT_ModeSwitchOperator)
 
     # npanel 设置
-    bpy.utils.unregister_class(QUICKPOPUP_PT_NPanel)
-    bpy.utils.unregister_class(QUICKPOPUP_OT_UpdateEnum)
+    unregister_npanel()
     
     # 注销键位映射
     keymap.unregister()

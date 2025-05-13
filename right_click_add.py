@@ -269,6 +269,3 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_OT_set_buttons)
     bpy.utils.unregister_class(PANEL_OT_set_panels)
     bpy.utils.unregister_class(CALL_OT_add_to_switcher_menu)
-
-if __name__ == "__main__":
-    register()

@@ -81,3 +81,11 @@ class QUICKPOPUP_OT_UpdateEnum(bpy.types.Operator):
         update_enum_items(prefs, context)
         self.report({'INFO'}, "已刷新快捷键下拉菜单")
         return {'FINISHED'}
+
+def register():
+    bpy.utils.register_class(QUICKPOPUP_PT_NPanel)
+    bpy.utils.register_class(QUICKPOPUP_OT_UpdateEnum)
+
+def unregister():
+    bpy.utils.unregister_class(QUICKPOPUP_PT_NPanel)
+    bpy.utils.unregister_class(QUICKPOPUP_OT_UpdateEnum)
