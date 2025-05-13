@@ -475,3 +475,26 @@ class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
         elif bpy.context.mode == "OBJECT" or typeandmode == "MESHEDIT":
             bpy.ops.wm.call_menu(name="view3d.mt_select_select_linked_menu")
         return {'FINISHED'}
+
+
+classes = (
+    BUTTON_ACTION_OT_select_select_mirror,
+    VIEW3D_MT_select_select_by_type_menu,
+    VIEW3D_MT_object_select_more_or_less_menu,
+    BUTTON_ACTION_OT_call_object_select_more_or_less_menu,
+    BUTTON_ACTION_OT_object_select_more,
+    BUTTON_ACTION_OT_object_select_less,
+    BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
+    VIEW3D_MT_select_select_grouped_menu,
+    BUTTON_ACTION_OT_call_select_select_grouped_menu,
+    VIEW3D_MT_select_select_linked_menu,
+    BUTTON_ACTION_OT_call_select_select_linked_menu,
+)
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)

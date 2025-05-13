@@ -62,17 +62,8 @@ from .quick_menu_button_functions.button_actions_global_view_menu import (
 )
 
 from .quick_menu_button_functions.button_actions_global_select_menu import (
-    BUTTON_ACTION_OT_select_select_mirror,
-    VIEW3D_MT_select_select_by_type_menu,
-    VIEW3D_MT_object_select_more_or_less_menu,
-    BUTTON_ACTION_OT_call_object_select_more_or_less_menu,
-    BUTTON_ACTION_OT_object_select_more,
-    BUTTON_ACTION_OT_object_select_less,
-    BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
-    VIEW3D_MT_select_select_grouped_menu,
-    BUTTON_ACTION_OT_call_select_select_grouped_menu,
-    VIEW3D_MT_select_select_linked_menu,
-    BUTTON_ACTION_OT_call_select_select_linked_menu,
+    register as register_button_actions_global_select_menu,
+    unregister as unregister_button_actions_global_select_menu,
 )
 
 from .quick_menu_button_functions.button_actions_common_functions import (
@@ -135,17 +126,7 @@ def register():
     register_button_actions_global_view_menu()
         
     # “选择”菜单功能项
-    bpy.utils.register_class(BUTTON_ACTION_OT_select_select_mirror)
-    bpy.utils.register_class(VIEW3D_MT_select_select_by_type_menu)
-    bpy.utils.register_class(VIEW3D_MT_object_select_more_or_less_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_call_object_select_more_or_less_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_object_select_more)
-    bpy.utils.register_class(BUTTON_ACTION_OT_object_select_less)
-    bpy.utils.register_class(BUTTON_ACTION_OT_object_select_hierarchy_parent_child)
-    bpy.utils.register_class(VIEW3D_MT_select_select_grouped_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_grouped_menu)
-    bpy.utils.register_class(VIEW3D_MT_select_select_linked_menu)
-    bpy.utils.register_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
+    register_button_actions_global_select_menu()
 
     # 全局通用功能
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_tosphere)
@@ -183,17 +164,7 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_tosphere)
 
     # “选择”菜单功能项
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_linked_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_select_select_linked_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_select_select_grouped_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_select_select_grouped_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_select_hierarchy_parent_child)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_select_less)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_select_more)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_call_object_select_more_or_less_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_object_select_more_or_less_menu)
-    bpy.utils.unregister_class(VIEW3D_MT_select_select_by_type_menu)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_select_select_mirror)
+    unregister_button_actions_global_select_menu()
 
 
     # “视图”菜单

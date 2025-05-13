@@ -139,7 +139,7 @@
     "panel2_col1_button1": "button.action_global_grab",
     "panel2_col1_button2": "button.action_pivot_to_median_point",
     "panel2_col1_button3": "button.action_orientation_to_local",
-    "panel2_col1_button4": "NO_BUTTON",
+    "panel2_col1_button4": "button.action_global_select_all",
     "panel2_col1_button5": "NO_BUTTON",
     "panel2_col1_button6": "NO_BUTTON",
     "panel2_col1_button7": "NO_BUTTON",
