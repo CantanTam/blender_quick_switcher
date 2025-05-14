@@ -421,6 +421,22 @@ def transformorientation_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"父级\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_orientation_to_parent'
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+def switchsnap_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"切换吸附(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_switch_snap_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"开/关吸附\"添加到Switcher", icon='SNAP_ON').action = 'button.action_switch_snap_toggle'
+    self.layout.operator("call.add_to_switcher_menu", text="\"增量\"添加到Switcher", icon='SNAP_INCREMENT').action = 'button.action_switch_snap_increment'
+    self.layout.operator("call.add_to_switcher_menu", text="\"顶点\"添加到Switcher", icon='SNAP_VERTEX').action = 'button.action_switch_snap_vertex'
+    self.layout.operator("call.add_to_switcher_menu", text="\"边\"添加到Switcher", icon='SNAP_EDGE').action = 'button.action_switch_snap_edge'
+    self.layout.operator("call.add_to_switcher_menu", text="\"面投射\"添加到Switcher", icon='SNAP_FACE').action = 'button.action_switch_snap_face'
+    self.layout.operator("call.add_to_switcher_menu", text="\"面最近\"添加到Switcher", icon='SNAP_FACE_NEAREST').action = 'button.action_switch_snap_face_nearest'
+    self.layout.operator("call.add_to_switcher_menu", text="\"体积\"添加到Switcher", icon='SNAP_VOLUME').action = 'button.action_switch_snap_volume'
+    self.layout.operator("call.add_to_switcher_menu", text="\"边中点\"添加到Switcher", icon='SNAP_MIDPOINT').action = 'button.action_switch_snap_edge_midpoint'
+    self.layout.operator("call.add_to_switcher_menu", text="\"垂直交线\"添加到Switcher", icon='SNAP_PERPENDICULAR').action = 'button.action_switch_snap_edge_perpendicular'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 
@@ -462,9 +478,13 @@ def register():
     #切换坐标系
     bpy.types.VIEW3D_PT_transform_orientations.append(transformorientation_menu_to_switcher)
 
-
+    #切换吸附菜单
+    bpy.types.VIEW3D_PT_snapping.append(switchsnap_menu_to_switcher)
 
 def unregister():
+    #切换吸附菜单
+    bpy.types.VIEW3D_PT_snapping.remove(switchsnap_menu_to_switcher)
+
     #切换坐标系
     bpy.types.VIEW3D_PT_transform_orientations(transformorientation_menu_to_switcher)
 

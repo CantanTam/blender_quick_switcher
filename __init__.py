@@ -55,6 +55,12 @@ from .quick_menu_button_functions.button_actions_global_switch_pivot_points impo
     register as register_button_actions_global_switch_pivot_points,
     unregister as unregister_button_actions_global_switch_pivot_points,
 )
+
+# 切换吸附
+from .quick_menu_button_functions.button_actions_global_switch_snap import (
+    register as register_button_actions_global_switch_snap,
+    unregister as unregister_button_actions_global_switch_snap,
+)
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
     register as register_button_actions_global_view_menu,
@@ -122,6 +128,9 @@ def register():
     # 切换轴心点
     register_button_actions_global_switch_pivot_points()
 
+    # 切换吸附
+    register_button_actions_global_switch_snap()
+
     # "视图"菜单功能项
     register_button_actions_global_view_menu()
         
@@ -170,6 +179,8 @@ def unregister():
     # “视图”菜单
     unregister_button_actions_global_view_menu()
 
+    # 切换吸附
+    unregister_button_actions_global_switch_snap()
     # 切换轴心点
     unregister_button_actions_global_switch_pivot_points()
 

@@ -6,7 +6,8 @@ class BUTTON_ACTION_OT_switch_orientation_menu(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.context_menu_enum(data_path="scene.transform_orientation_slots[0].type")
+        #bpy.ops.wm.context_menu_enum(data_path="scene.transform_orientation_slots[0].type")
+        bpy.ops.wm.call_panel(name="VIEW3D_PT_transform_orientations")
         return {'FINISHED'}
 
 class BUTTON_ACTION_OT_orientation_to_global(bpy.types.Operator):
