@@ -98,7 +98,15 @@ from .right_click_add import (
     unregister as unregister_right_click_add
 )
 
+from .right_click_add_setting_panel import (
+    register as register_right_click_add_setting_panel,
+    unregister as unregister_right_click_add_setting_panel,
+)
+
 def register():
+    # 注册右键添加到设置面板
+    register_right_click_add_setting_panel()
+
     # 注册右键菜单功能
     register_right_click_add()
     # 注册模式监测功能
@@ -126,7 +134,6 @@ def register():
 
     # 全局高频操作类
     register_button_actions_global_functions()
-
 
     # 变换坐标系类
     register_button_actions_global_switch_orientation_slots()
@@ -162,6 +169,8 @@ def register():
     keymap.register()
 
 def unregister():
+    # 注销右键添加到设置面板
+    unregister_right_click_add_setting_panel()
     # 注销右键菜单功能
     unregister_right_click_add()
     # 注销模式监测功能
