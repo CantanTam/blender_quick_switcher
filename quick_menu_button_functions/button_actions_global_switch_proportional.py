@@ -17,11 +17,18 @@ class BUTTON_ACTION_OT_switch_proportional_toggle(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.context.scene.tool_settings.use_proportional_edit = not bpy.context.scene.tool_settings.use_proportional_edit
-        if bpy.context.scene.tool_settings.use_proportional_edit == True:
-            show_notice("PROPORTIONAL_ON.png")
+        if bpy.context.active_object.mode == "OBJECT":
+            bpy.context.scene.tool_settings.use_proportional_edit_objects = not bpy.context.scene.tool_settings.use_proportional_edit_objects
+            if bpy.context.scene.tool_settings.use_proportional_edit_objects == True:
+                show_notice("PROPORTIONAL_ON.png")
+            else:
+                show_notice("PROPORTIONAL_OFF.png")
         else:
-            show_notice("PROPORTIONAL_OFF.png")
+            bpy.context.scene.tool_settings.use_proportional_edit = not bpy.context.scene.tool_settings.use_proportional_edit
+            if bpy.context.scene.tool_settings.use_proportional_edit == True:
+                show_notice("PROPORTIONAL_ON.png")
+            else:
+                show_notice("PROPORTIONAL_OFF.png")
         return {'FINISHED'}
 
 class BUTTON_ACTION_OT_switch_proportional_smooth(bpy.types.Operator):

@@ -93,9 +93,9 @@ from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
 
-from .right_click_add import (
-    register as register_right_click_add,
-    unregister as unregister_right_click_add
+from .right_click_add_common_actions import (
+    register as register_right_click_add_common_actions,
+    unregister as unregister_right_click_add_common_actions,
 )
 
 from .right_click_add_setting_panel import (
@@ -108,7 +108,7 @@ def register():
     register_right_click_add_setting_panel()
 
     # 注册右键菜单功能
-    register_right_click_add()
+    register_right_click_add_common_actions()
     # 注册模式监测功能
     register_operator_typeandmode_name_mode()
 
@@ -172,7 +172,7 @@ def unregister():
     # 注销右键添加到设置面板
     unregister_right_click_add_setting_panel()
     # 注销右键菜单功能
-    unregister_right_click_add()
+    unregister_right_click_add_common_actions()
     # 注销模式监测功能
     unregister_operator_typeandmode_name_mode()
 
