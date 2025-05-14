@@ -1,6 +1,6 @@
 import bpy
 
-def draw_add_to_switcher(self, context):
+def draw_add_to_switcher_common(self, context):
     show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
     if not show_switcher:
         return
@@ -198,7 +198,7 @@ def draw_add_to_switcher(self, context):
 
 
 
-#不能使用 draw_add_to_switcher 的添加到 Switcher 方法：
+#不能使用 draw_add_to_switcher_common 的添加到 Switcher 方法：
 def add_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
     if not show_switcher:
@@ -282,7 +282,7 @@ def switchproportional_menu_to_switcher(self, context):
 
 
 def register():
-    bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher)
+    bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_common)
     #“添加”菜单
     bpy.types.VIEW3D_MT_add.append(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_mesh_add.append(add_menu_to_switcher)
@@ -352,5 +352,5 @@ def unregister():
     bpy.types.VIEW3D_MT_mesh_add.remove(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_add.remove(add_menu_to_switcher)
 
-    bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher)
+    bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_common)
 

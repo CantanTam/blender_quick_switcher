@@ -98,6 +98,11 @@ from .right_click_add_common_actions import (
     unregister as unregister_right_click_add_common_actions,
 )
 
+from .right_click_global_view_actions import (
+    register as register_right_click_global_view_actions,
+    unregister as unregister_right_click_global_view_actions,
+)
+
 from .right_click_add_setting_panel import (
     register as register_right_click_add_setting_panel,
     unregister as unregister_right_click_add_setting_panel,
@@ -106,6 +111,9 @@ from .right_click_add_setting_panel import (
 def register():
     # 注册右键添加到设置面板
     register_right_click_add_setting_panel()
+
+    # 注册视图右键菜单功能
+    register_right_click_global_view_actions()
 
     # 注册右键菜单功能
     register_right_click_add_common_actions()
@@ -171,6 +179,10 @@ def register():
 def unregister():
     # 注销右键添加到设置面板
     unregister_right_click_add_setting_panel()
+
+    # 注销视图右键菜单功能
+    unregister_right_click_global_view_actions()
+
     # 注销右键菜单功能
     unregister_right_click_add_common_actions()
     # 注销模式监测功能

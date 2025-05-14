@@ -77,16 +77,18 @@ button_options_list = [
 
     # 通用模式——“视图”菜单，在所有模式都可以调出的菜单
     ('NO_BUTTON',"←全局模式-视图(菜单)→","全局模式当中的按钮功能可以在所有模式当中使用"),
-    ('view3d.view_selected','框显所选','快捷键(.)'),
-    ('view3d.view_all','框显全部','快捷键(Home)'),
-    ('view3d.localview','局部视图—切换局部视图','快捷键(/)'),
-    ('view3d.localview_remove_from','局部视图—从局部视图中移除','快捷键(Alt+/)'),
-    ('view3d.object_as_camera','摄像机—设置活动物体为摄像机','快捷键(Ctrl+Num_0)'),
-    ('view3d.view_center_camera','摄像机—摄像机边界框','快捷键(Home)'),
-    ('button.action_view3d_call_view_viewpoint_menu','视图(菜单)',''),
-    ('button.action_view3d_call_view_navigation_menu','视图切换(菜单)',''),
-    ('button.action_view3d_zoom_border','视图切换—框选放大','快捷键(Shift+B)'),
+    ('button.action_view3d_view_selected','框显所选','快捷键(.)'),    #Switcher
+    ('button.action_view3d_view_all','框显全部','快捷键(Home)'),  #Switcher
+    ('button.action_view3d_localview','局部视图—切换局部视图','快捷键(/)'),   #Switcher
+    ('view3d.localview_remove_from','局部视图—从局部视图中移除','快捷键(Alt+/)'),   #Switcher
+    ('button.action_view3d_object_as_camera','摄像机—设置活动物体为摄像机','快捷键(Ctrl+Num_0)'), #Switcher
+    ('button.action_view3d_view_center_camera','摄像机—摄像机边界框','快捷键(Home)'), #Switcher
+    ('button.action_view3d_call_view_viewpoint_menu','视图(菜单)',''),  #Switcher
+    ('button.action_view3d_call_view_navigation_menu','视图切换(菜单)',''), #Switcher
+    ('button.action_view3d_zoom_border','视图切换—框选放大','快捷键(Shift+B)'), #Switcher
+    ('button.action_view3d_fly','视图切换—飞行漫游模式',''),
     ('button.action_view3d_walk','视图切换—行走漫步','快捷键(Shift+`)'),
+    ('button.action_view3d_call_view_align_selected_menu','对齐视图-视图对齐活动项',''),
     ('button.action_view3d_call_view_align_menu','对齐视图(菜单)',''),
     ('button.action_view3d_view_all_center_true','对齐视图—游标居中并查看全部',''),
     ('view3d.camera_to_view','对齐视图—活动摄像机对齐当前视角','快捷键(Ctrl+Alt+Num_0)'),
@@ -501,23 +503,23 @@ button_press_function = {
     ),
 
     # 全局模式——“视图”菜单
-        'view3d.view_selected':(
-        "view3d.view_selected","框显所选","DOT","all",
+        'button.action_view3d_view_selected':(
+        "button.action_view3d_view_selected","框显所选","DOT","all",
     ),
-        'view3d.view_all':(
-        "view3d.view_all","框显全部","HOME","all",
+        'button.action_view3d_view_all':(
+        "button.action_view3d_view_all","框显全部","HOME","all",
     ),
-        'view3d.localview':(
-        "view3d.localview","局部视图","RADIOBUT_OFF","all",
+        'button.action_view3d_localview':(
+        "button.action_view3d_localview","局部视图","RADIOBUT_OFF","all",
     ),
         'view3d.localview_remove_from':(
         "view3d.localview_remove_from","从局部视图中移除","RADIOBUT_OFF","all",
     ),
-        'view3d.object_as_camera':(
-        "view3d.object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
+        'button.action_view3d_object_as_camera':(
+        "button.action_view3d_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
     ),
-        'view3d.view_center_camera':(
-        "view3d.view_center_camera","摄像机边界框","OUTLINER_DATA_CAMERA","all",
+        'button.action_view3d_view_center_camera':(
+        "button.action_view3d_view_center_camera","摄像机边界框","SELECT_SET","all",
     ),
         'button.action_view3d_call_view_viewpoint_menu':(
         "button.action_view3d_call_view_viewpoint_menu","视图","PRESET","all",
@@ -528,8 +530,14 @@ button_press_function = {
         'button.action_view3d_zoom_border':(
         "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
     ),
+        'button.action_view3d_fly':(
+        "button.action_view3d_fly","飞行漫游模式","RADIOBUT_OFF","all",
+    ),
         'button.action_view3d_walk':(
         "button.action_view3d_walk","行走漫步","RADIOBUT_OFF","all",
+    ),
+        'button.action_view3d_call_view_align_selected_menu':(
+        "button.action_view3d_call_view_align_selected_menu","视图对齐活动项","PRESET","all",
     ),
         'button.action_view3d_call_view_align_menu':(
         "button.action_view3d_call_view_align_menu","对齐视图","PRESET","all",
