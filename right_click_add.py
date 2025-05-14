@@ -438,6 +438,22 @@ def switchsnap_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"垂直交线\"添加到Switcher", icon='SNAP_PERPENDICULAR').action = 'button.action_switch_snap_edge_perpendicular'
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+def switchproportional_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"切换衰减编辑(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_switch_proportional_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"开/关衰减编辑\"添加到Switcher", icon='PROP_ON').action = 'button.action_switch_proportional_toggle'
+    self.layout.operator("call.add_to_switcher_menu", text="\"平滑\"添加到Switcher", icon='SMOOTHCURVE').action = 'button.action_switch_proportional_smooth'
+    self.layout.operator("call.add_to_switcher_menu", text="\"球体\"添加到Switcher", icon='SPHERECURVE').action = 'button.action_switch_proportional_sphere'
+    self.layout.operator("call.add_to_switcher_menu", text="\"根凸\"添加到Switcher", icon='ROOTCURVE').action = 'button.action_switch_proportional_root'
+    self.layout.operator("call.add_to_switcher_menu", text="\"平方反比\"添加到Switcher", icon='INVERSESQUARECURVE').action = 'button.action_switch_proportional_inverse_square'
+    self.layout.operator("call.add_to_switcher_menu", text="\"锐利\"添加到Switcher", icon='SHARPCURVE').action = 'button.action_switch_proportional_sharp'
+    self.layout.operator("call.add_to_switcher_menu", text="\"线性\"添加到Switcher", icon='LINCURVE').action = 'button.action_switch_proportional_linear'
+    self.layout.operator("call.add_to_switcher_menu", text="\"常值\"添加到Switcher", icon='NOCURVE').action = 'button.action_switch_proportional_constant'
+    self.layout.operator("call.add_to_switcher_menu", text="\"随机\"添加到Switcher", icon='RNDCURVE').action = 'button.action_switch_proportional_random'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 classes = (
@@ -481,7 +497,13 @@ def register():
     #切换吸附菜单
     bpy.types.VIEW3D_PT_snapping.append(switchsnap_menu_to_switcher)
 
+    #切换衰减编辑
+    bpy.types.VIEW3D_PT_proportional_edit.append(switchproportional_menu_to_switcher)
+
 def unregister():
+    #切换衰减编辑
+    bpy.types.VIEW3D_PT_proportional_edit.remove(switchproportional_menu_to_switcher)
+
     #切换吸附菜单
     bpy.types.VIEW3D_PT_snapping.remove(switchsnap_menu_to_switcher)
 

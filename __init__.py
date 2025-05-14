@@ -61,6 +61,12 @@ from .quick_menu_button_functions.button_actions_global_switch_snap import (
     register as register_button_actions_global_switch_snap,
     unregister as unregister_button_actions_global_switch_snap,
 )
+
+# 切换衰减编辑
+from .quick_menu_button_functions.button_actions_global_switch_proportional import (
+    register as register_button_actions_global_switch_proportional,
+    unregister as unregister_button_actions_global_switch_proportional,
+)
 # “视图”菜单
 from .quick_menu_button_functions.button_actions_global_view_menu import (
     register as register_button_actions_global_view_menu,
@@ -131,6 +137,9 @@ def register():
     # 切换吸附
     register_button_actions_global_switch_snap()
 
+    # 切换衰减编辑
+    register_button_actions_global_switch_proportional()
+
     # "视图"菜单功能项
     register_button_actions_global_view_menu()
         
@@ -178,6 +187,9 @@ def unregister():
 
     # “视图”菜单
     unregister_button_actions_global_view_menu()
+
+    # 切换衰减编辑
+    unregister_button_actions_global_switch_proportional()
 
     # 切换吸附
     unregister_button_actions_global_switch_snap()

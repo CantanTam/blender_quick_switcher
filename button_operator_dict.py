@@ -56,6 +56,19 @@ button_options_list = [
     ('button.action_switch_snap_edge_midpoint','切换吸附-边中点',''),   #Swithcer
     ('button.action_switch_snap_edge_perpendicular','切换吸附-垂直交线',''),    #Swithcer
 
+    # 切换衰减编辑
+    ('NO_BUTTON',"←切换衰减编辑→",""),
+    ('button.action_switch_proportional_menu','切换衰减编辑(菜单)','弹出衰减编辑菜单'), #Swithcer
+    ('button.action_switch_proportional_toggle','开/关衰减编辑','快捷键(O)'),   #Swithcer
+    ('button.action_switch_proportional_smooth','切换衰减-平滑',''), #Swithcer
+    ('button.action_switch_proportional_sphere','切换衰减-球体',''),    #Swithcer
+    ('button.action_switch_proportional_root','切换衰减-根凸',''),    #Swithcer
+    ('button.action_switch_proportional_inverse_square','切换衰减-平方反比',''),    #Swithcer
+    ('button.action_switch_proportional_sharp','切换衰减-锐利',''),    #Swithcer
+    ('button.action_switch_proportional_linear','切换衰减-线性',''),   #Swithcer
+    ('button.action_switch_proportional_constant','切换衰减-常值',''),    #Swithcer
+    ('button.action_switch_proportional_random','切换衰减-随机',''),    #Swithcer
+
     # 通用模式——共用功能
     ('NO_BUTTON',"←通用模式-“变换”菜单→","不同模式下“变换”菜单中都会出现的选项，被合并到这里"),
     ('button.action_transform_tosphere',"变换—球形化","多种模式共用的“球形化”操作"),
@@ -413,6 +426,78 @@ button_press_function = {
         "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
         "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
         "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT","ARMATUREPOSE",
+    ),
+
+    #切换衰减编辑
+        'button.action_switch_proportional_menu':(
+        "button.action_switch_proportional_menu","衰减编辑","PRESET",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_toggle':(
+        "button.action_switch_proportional_toggle","开/关衰减编辑","PROP_ON",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_smooth':(
+        "button.action_switch_proportional_smooth","平滑","SMOOTHCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_sphere':(
+        "button.action_switch_proportional_sphere","球体","SPHERECURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_root':(
+        "button.action_switch_proportional_root","根凸","ROOTCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_inverse_square':(
+        "button.action_switch_proportional_inverse_square","平方反比","INVERSESQUARECURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_sharp':(
+        "button.action_switch_proportional_sharp","锐利","SHARPCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_linear':(
+        "button.action_switch_proportional_linear","线性","LINCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_constant':(
+        "button.action_switch_proportional_constant","常值","NOCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
+    ),
+        'button.action_switch_proportional_random':(
+        "button.action_switch_proportional_random","随机","RNDCURVE",
+        "CURVEOBJECT","CURVEEDIT","SURFACEOBJECT","SURFACEEDIT","METAOBJECT","METAEDIT","FONTOBJECT","FONTEDIT",
+        "VOLUMEOBJECT","EMPTYOBJECT","LATTICEOBJECT","LATTICEEDIT","LIGHTOBJECT","LIGHT_PROBEOBJECT","CAMERAOBJECT",
+        "SPEAKEROBJECT","MESHOBJECT","MESHEDIT","GPENCILOBJECT","GPENCILEDIT_GPENCIL","GREASEPENCILOBJECT",
+        "GREASEPENCILEDIT","ARMATUREOBJECT","ARMATUREEDIT",
     ),
 
     # 全局模式——“视图”菜单

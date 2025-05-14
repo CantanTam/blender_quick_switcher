@@ -3,7 +3,7 @@ from ..show_switch_notice import show_notice
 
 class BUTTON_ACTION_OT_switch_snap_menu(bpy.types.Operator):
     bl_idname = "button.action_switch_snap_menu"
-    bl_label = "吸附"
+    bl_label = "吸附(菜单)"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
