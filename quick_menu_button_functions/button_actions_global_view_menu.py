@@ -1,4 +1,5 @@
 import bpy
+from ..show_switch_notice import show_notice
 
 class BUTTON_ACTION_OT_view3d_view_selected(bpy.types.Operator):
     bl_idname = "button.action_view3d_view_selected"
@@ -148,7 +149,24 @@ class BUTTON_ACTION_OT_view3d_zoom_border(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.view3d.zoom_border('INVOKE_DEFAULT')
         return {'FINISHED'}
-        
+    
+class BUTTON_ACTION_OT_view3d_zoom_camera_1_to_1(bpy.types.Operator):
+    bl_idname = "button.action_zoom_camera_1_to_1"
+    bl_label = "1:1缩放摄像机视图"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        # 确保当前区域是 3D 视图并获取 RegionView3D 数据
+        region_3d = getattr(context.space_data, "region_3d", None)
+        if region_3d:
+            return region_3d.view_perspective == 'CAMERA'
+        return False
+    
+    def execute(self, context):
+        bpy.ops.view3d.zoom_camera_1_to_1()
+        return {'FINISHED'}
+
 # 自定义“行走漫步”操作类
 class BUTTON_ACTION_OT_view3d_walk(bpy.types.Operator):
     bl_idname = "button.action_view3d_walk"
@@ -208,16 +226,6 @@ class BUTTON_ACTION_OT_view3d_view_align_selected_menu(bpy.types.Operator):
         op.type = 'LEFT'
         op.align_active=True
 
-
-
-
-
-
-
-
-
-
-
 class BUTTON_ACTION_OT_view3d_call_view_align_selected_menu(bpy.types.Operator):
     bl_idname = "button.action_view3d_call_view_align_selected_menu"
     bl_label = "视图对齐活动项"
@@ -237,11 +245,47 @@ class BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear(bpy.types.Operator):
     def execute(self, context):
         if bpy.context.space_data.lock_object is None:
             bpy.ops.view3d.view_lock_to_active()
+            show_notice("ACTIVE_LOCK.png")
         else:
             bpy.ops.view3d.view_lock_clear()
+            show_notice("ACTIVE_UNLOCK.png")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_view3d_camera_to_view(bpy.types.Operator):
+    bl_idname = "button.action_view3d_camera_to_view"
+    bl_label = "活动摄像机对齐当前视角"
+    bl_description = "Ctrl Alt Num_0"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        # 确保当前区域是 3D 视图并获取 RegionView3D 数据
+        region_3d = getattr(context.space_data, "region_3d", None)
+        if region_3d:
+            # 如果视图透视类型正好是 CAMERA，则返回 False，使按钮灰显不可用
+            return region_3d.view_perspective != 'CAMERA'  # :contentReference[oaicite:0]{index=0}
+        return False
+
+    def execute(self, context):
+        bpy.ops.view3d.camera_to_view('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_view3d_camera_to_view_selected(bpy.types.Operator):
+    bl_idname = "button.action_view3d_camera_to_view_selected"
+    bl_label = "活动摄像机对齐选中的物体"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        region_3d = getattr(context.space_data, "region_3d", None)
+        if region_3d.view_perspective != 'CAMERA':
+            bpy.ops.view3d.camera_to_view_selected()
+            bpy.ops.view3d.view_camera('INVOKE_DEFAULT')
+        elif region_3d.view_perspective == 'CAMERA':
+            bpy.ops.view3d.view_camera('INVOKE_DEFAULT')
+            bpy.ops.view3d.camera_to_view_selected()
+            bpy.ops.view3d.view_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-# 弹出“对齐视图”菜单
 class BUTTON_ACTION_OT_view3d_call_view_align_menu(bpy.types.Operator):
     bl_idname = "button.action_view3d_call_view_align_menu"
     bl_label = "对齐视图"
@@ -255,11 +299,25 @@ class BUTTON_ACTION_OT_view3d_call_view_align_menu(bpy.types.Operator):
 class BUTTON_ACTION_OT_view3d_view_all_center_true(bpy.types.Operator):
     bl_idname = "button.action_view3d_view_all_center_true"
     bl_label = "游标居中并查看全部"
+    bl_description = "快捷键 Shift C"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.view3d.view_all(center=True)
+        bpy.ops.view3d.view_lock_clear()
+        bpy.ops.view3d.snap_cursor_to_center()
+        bpy.ops.view3d.view_all('INVOKE_DEFAULT')
         return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_view3d_view_center_cursor(bpy.types.Operator):
+    bl_idname = "button.action_view3d_view_center_cursor"
+    bl_label = "视图中心对齐游标"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.view3d.view_lock_clear()
+        bpy.ops.view3d.view_center_cursor('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
 
 # 自定义“视图框”菜单
 class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
@@ -341,8 +399,11 @@ classes = (
     BUTTON_ACTION_OT_view3d_view_navigation_menu,
     BUTTON_ACTION_OT_view3d_call_view_navigation_menu,
     BUTTON_ACTION_OT_view3d_zoom_border,
+    BUTTON_ACTION_OT_view3d_zoom_camera_1_to_1,
     BUTTON_ACTION_OT_view3d_walk,
     BUTTON_ACTION_OT_view3d_fly,
+    BUTTON_ACTION_OT_view3d_camera_to_view,
+    BUTTON_ACTION_OT_view3d_camera_to_view_selected,
     BUTTON_ACTION_OT_view3d_call_view_align_menu,
     VIEW3D_MT_view_regions_menu,
     BUTTON_ACTION_OT_view3d_call_view_regions_menu,
@@ -350,6 +411,7 @@ classes = (
     BUTTON_ACTION_OT_view3d_render_border,
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
     BUTTON_ACTION_OT_view3d_view_all_center_true,
+    BUTTON_ACTION_OT_view3d_view_center_cursor,
     BUTTON_ACTION_OT_view3d_area_menu,
     BUTTON_ACTION_OT_view3d_screen_screen_full_area,
 )
