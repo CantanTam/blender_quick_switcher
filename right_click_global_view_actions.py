@@ -67,6 +67,13 @@ def draw_add_to_switcher_global_view(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"行走漫步\"添加到Switcher", icon='PLUS').action = 'button.action_view3d_walk'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+    elif op and op.bl_rna.identifier == "RENDER_OT_opengl":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"视图渲染图像\"添加到Switcher", icon='RENDER_STILL').action = 'button.action_view3d_render_opengl'
+        layout.operator("call.add_to_switcher_menu", text="\"视图渲染动画\"添加到Switcher", icon='RENDER_ANIMATION').action = 'button.action_view3d_render_opengl_animation'
+        layout.operator("call.add_to_switcher_menu", text="\"视图渲染关键帧\"添加到Switcher", icon='RENDER_ANIMATION').action = 'button.action_view3d_render_opengl_keyframe'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 
@@ -118,6 +125,16 @@ def global_view_viewregions_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"开/关渲染框\"添加到Switcher", icon='PLUS').action = 'button.action_view3d_render_border'
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+def global_view_area_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"区域(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_view3d_area_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"四格视图\"添加到Switcher", icon='IMGDISPLAY').action = 'screen.region_quadview'
+    self.layout.operator("call.add_to_switcher_menu", text="\"区域最大化\"添加到Switcher", icon='MOD_LENGTH').action = 'screen.screen_full_area'
+    self.layout.operator("call.add_to_switcher_menu", text="\"全屏模式\"添加到Switcher", icon='FULLSCREEN_ENTER').action = 'button.action_view3d_screen_screen_full_area'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 def register():
@@ -127,10 +144,11 @@ def register():
     bpy.types.VIEW3D_MT_view_align.append(global_view_viewalign_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align_selected.append(global_view_alignselected_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_regions.append(global_view_viewregions_menu_to_switcher)
-
+    bpy.types.INFO_MT_area.append(global_view_area_menu_to_switcher)
 
 
 def unregister():
+    bpy.types.INFO_MT_area.remove(global_view_area_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_regions.remove(global_view_viewregions_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align_selected.remove(global_view_alignselected_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align.remove(global_view_viewalign_menu_to_switcher)

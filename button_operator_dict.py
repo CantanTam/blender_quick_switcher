@@ -99,10 +99,15 @@ button_options_list = [
     ('button.action_view3d_call_view_regions_menu','视图框(菜单)',''),  #Switcher
     ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),   #Switcher
     ('button.action_view3d_render_border','视图框—开/关渲染框','快捷键(Ctrl+B)'),    #Switcher
-    ('button.action_view3d_area_menu','区域(菜单)',''),
-    ('screen.region_quadview','区域—切换四格视图','快捷键(Ctrl Alt Q)'),
-    ('screen.screen_full_area','区域—区域最大化','快捷键(Ctrl 空格)'),
-    ('button.action_view3d_screen_screen_full_area','区域—切换全屏模式','快捷键(Ctrl Alt 空格)'),
+
+    ('button.action_view3d_render_opengl','视图渲染图像',''),   #Switcher
+    ('button.action_view3d_render_opengl_animation','视图渲染动画',''),     #Switcher
+    ('button.action_view3d_render_opengl_keyframe','视图渲染关键帧',''),    #Switcher
+
+    ('button.action_view3d_area_menu','区域(菜单)',''), #Switcher
+    ('screen.region_quadview','区域—切换四格视图','快捷键(Ctrl Alt Q)'),    #Switcher
+    ('screen.screen_full_area','区域—区域最大化','快捷键(Ctrl 空格)'),  #Switcher
+    ('button.action_view3d_screen_screen_full_area','区域—切换全屏模式','快捷键(Ctrl Alt 空格)'),   #Switcher
 
     # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
     ('NO_BUTTON',"←共用模式——“选择”菜单→","不同模式当中含有相同快捷键，而且功能名称接近的按钮被整合到这里"),
@@ -571,6 +576,19 @@ button_press_function = {
         'button.action_view3d_render_border':(
         "button.action_view3d_render_border","开/关渲染框","RADIOBUT_OFF","all",
     ),
+
+        'button.action_view3d_render_opengl':(
+        "button.action_view3d_render_opengl","视图渲染图像","RENDER_STILL","all",
+    ),
+        'button.action_view3d_render_opengl_animation':(
+        "button.action_view3d_render_opengl_animation","视图渲染动画","RENDER_ANIMATION","all",
+    ),
+        'button.action_view3d_render_opengl_keyframe':(
+        "button.action_view3d_render_opengl_keyframe","视图渲染关键帧","RENDER_ANIMATION","all",
+    ),
+
+
+
         'button.action_view3d_area_menu':(
         "button.action_view3d_area_menu","区域","PRESET","all",
     ),

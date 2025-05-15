@@ -372,6 +372,45 @@ class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
             bpy.ops.view3d.render_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
+class BUTTON_ACTION_OT_view3d_render_opengl(bpy.types.Operator):
+    bl_idname = "button.action_view3d_render_opengl"
+    bl_label = "视图渲染图像"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.render.opengl('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_view3d_render_opengl_animation(bpy.types.Operator):
+    bl_idname = "button.action_view3d_render_opengl_animation"
+    bl_label = "视图渲染动画"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.render.opengl('INVOKE_DEFAULT', animation=True)
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_view3d_render_opengl_keyframe(bpy.types.Operator):
+    bl_idname = "button.action_view3d_render_opengl_keyframe"
+    bl_label = "视图渲染关键帧"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.render.opengl('INVOKE_DEFAULT', animation=True, render_keyed_only=True)
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 自定义“区域”菜单
 class BUTTON_ACTION_OT_view3d_area_menu(bpy.types.Operator):
     bl_idname = "button.action_view3d_area_menu"
@@ -420,6 +459,9 @@ classes = (
     BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
     BUTTON_ACTION_OT_view3d_view_all_center_true,
     BUTTON_ACTION_OT_view3d_view_center_cursor,
+    BUTTON_ACTION_OT_view3d_render_opengl,
+    BUTTON_ACTION_OT_view3d_render_opengl_animation,
+    BUTTON_ACTION_OT_view3d_render_opengl_keyframe,
     BUTTON_ACTION_OT_view3d_area_menu,
     BUTTON_ACTION_OT_view3d_screen_screen_full_area,
 )
