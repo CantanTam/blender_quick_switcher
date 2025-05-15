@@ -111,6 +111,9 @@ button_options_list = [
 
     # 通用模式——“选择”菜单，不同模式实现不同的“选择”功能
     ('NO_BUTTON',"←共用模式——“选择”菜单→","不同模式当中含有相同快捷键，而且功能名称接近的按钮被整合到这里"),
+    ('button.action_call_select_select_by_type_menu','按类型全选(菜单)',''), #Switcher
+    ('object.select_camera','选择活动摄像机',''),   #Switcher
+
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
     ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
@@ -603,6 +606,18 @@ button_press_function = {
     ),
 
     # “选择”菜单
+        'button.action_call_select_select_by_type_menu':(
+        "button.action_call_select_select_by_type_menu","按类型全选","PRESET",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT",
+    ),
+        'object.select_camera':(
+        "object.select_camera","选择活动摄像机","OUTLINER_OB_CAMERA",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT",
+    ),
         'button.action_select_select_mirror':(
         "button.action_select_select_mirror","选择镜像","MOD_MIRROR",
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 

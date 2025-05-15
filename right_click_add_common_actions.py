@@ -23,28 +23,6 @@ def draw_add_to_switcher_common(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"旋转\"添加到Switcher", icon='EVENT_R').action = 'button.action_global_rotate'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
     elif op and op.bl_rna.identifier in {
-        "OBJECT_OT_select_all",
-        "CURVE_OT_select_all",
-        "MBALL_OT_select_all",
-        "FONT_OT_select_all",
-        "LATTICE_OT_select_all",
-        "MESH_OT_select_all",
-        "GPENCIL_OT_select_all",    #4.2 版本或以下
-        "GREASE_PENCIL_OT_select_all", #4.3 版本或以上
-        "ARMATURE_OT_select_all",
-        "POSE_OT_select_all",
-        }:
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"全选\"添加到Switcher", icon='EVENT_A').action = 'button.action_global_select_all'
-        layout.operator("call.add_to_switcher_menu", text="\"反选\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_invert'
-        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
-    elif op and op.bl_rna.identifier == "VIEW3D_OT_select_circle":
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"刷选\"添加到Switcher", icon='EVENT_C').action = 'button.action_global_select_circle'
-        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
-    elif op and op.bl_rna.identifier in {
         "OBJECT_OT_duplicate_move",
         "CURVE_OT_duplicate_move",
         "MBALL_OT_duplicate_move",

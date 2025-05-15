@@ -1,40 +1,79 @@
 import bpy
+from ..show_switch_notice import show_notice
 
+# 套索选择——开始(备份用)
+class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
+    bl_idname = "button.action_global_select_lasso_set"
+    bl_label = "开始"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    waiting_for_click: bpy.props.BoolProperty(default=False, options={'HIDDEN'})
+
+    def invoke(self, context, event):
+        if not self.waiting_for_click:
+            self.waiting_for_click = True
+            context.window_manager.modal_handler_add(self)
+            show_notice("ACTIVE_LOCK.png")
+            return {'RUNNING_MODAL'}
+        return self.execute(context)
+
+    def modal(self, context, event):
+        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
+            return self.execute(context)
+        return {'PASS_THROUGH'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode == 'GPENCILEDIT_GPENCIL':
+            bpy.ops.gpencil.select_lasso('INVOKE_DEFAULT', mode='SET')
+        else:
+            bpy.ops.view3d.select_lasso('INVOKE_DEFAULT', mode='SET')
+        show_notice("ACTIVE_LOCK.png")
+        self.waiting_for_click = False
+        return {'FINISHED'}
 
 # “按类型选择”菜单
-class VIEW3D_MT_select_select_by_type_menu(bpy.types.Menu):
+class VIEW3D_MT_select_select_by_type_menu(bpy.types.Operator):
     bl_label = ""
-    bl_idname = "view3d.mt_select_select_by_type_menu"
+    bl_idname = "button.action_call_select_select_by_type_menu"
 
-    def draw(self, context):
-        layout = self.layout
-        
-        layout.operator("object.select_by_type", text="网格", icon="OUTLINER_OB_MESH").type='MESH'
-        layout.operator("object.select_by_type", text="曲线", icon="OUTLINER_OB_CURVE").type='CURVE'
-        layout.operator("object.select_by_type", text="表面", icon="OUTLINER_OB_SURFACE").type='SURFACE'
-        layout.operator("object.select_by_type", text="元球", icon="OUTLINER_OB_META").type='META'
-        layout.operator("object.select_by_type", text="文本", icon="OUTLINER_OB_FONT").type='FONT'
-        layout.operator("object.select_by_type", text="毛发曲线", icon="OUTLINER_OB_CURVES").type='CURVES'
-        layout.operator("object.select_by_type", text="点云", icon="OUTLINER_OB_POINTCLOUD").type='POINTCLOUD'
-        layout.operator("object.select_by_type", text="体积", icon="OUTLINER_OB_VOLUME").type='VOLUME'
-        if bpy.app.version >= (4,3,0):
-            layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
-            layout.operator("object.select_by_type", text="蜡笔V3版", icon="OUTLINER_OB_GREASEPENCIL").type='GREASEPENCIL'
-        else:
-            layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
-        layout.separator()
-        layout.operator("object.select_by_type", text="骨骼", icon="OUTLINER_OB_ARMATURE").type='ARMATURE'
-        layout.operator("object.select_by_type", text="晶格", icon="OUTLINER_OB_LATTICE").type='LATTICE'
-        layout.separator()
-        layout.operator("object.select_by_type", text="空物体", icon="OUTLINER_OB_EMPTY").type='EMPTY'
-        layout.separator()
-        layout.operator("object.select_by_type", text="灯光", icon="OUTLINER_OB_LIGHT").type='LIGHT'
-        layout.operator("object.select_by_type", text="光照探头", icon="OUTLINER_OB_LIGHTPROBE").type='LIGHT_PROBE'
-        layout.separator()
-        layout.operator("object.select_by_type", text="摄像机", icon="OUTLINER_OB_CAMERA").type='CAMERA'
-        layout.separator()
-        layout.operator("object.select_by_type", text="扬声器", icon="OUTLINER_OB_SPEAKER").type='SPEAKER'
+    @classmethod
+    def poll(cls, context):
+        # 不在OBJECT模式时直接返回False，菜单将不会显示
+        return context.active_object is not None and context.active_object.mode == 'OBJECT'
+
+    def execute(self, context):
+        def draw(self, context):
+            layout = self.layout
+            
+            layout.operator("object.select_by_type", text="网格", icon="OUTLINER_OB_MESH").type='MESH'
+            layout.operator("object.select_by_type", text="曲线", icon="OUTLINER_OB_CURVE").type='CURVE'
+            layout.operator("object.select_by_type", text="表面", icon="OUTLINER_OB_SURFACE").type='SURFACE'
+            layout.operator("object.select_by_type", text="元球", icon="OUTLINER_OB_META").type='META'
+            layout.operator("object.select_by_type", text="文本", icon="OUTLINER_OB_FONT").type='FONT'
+            layout.operator("object.select_by_type", text="毛发曲线", icon="OUTLINER_OB_CURVES").type='CURVES'
+            layout.operator("object.select_by_type", text="点云", icon="OUTLINER_OB_POINTCLOUD").type='POINTCLOUD'
+            layout.operator("object.select_by_type", text="体积", icon="OUTLINER_OB_VOLUME").type='VOLUME'
+            if bpy.app.version >= (4,3,0):
+                layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
+                layout.operator("object.select_by_type", text="蜡笔V3版", icon="OUTLINER_OB_GREASEPENCIL").type='GREASEPENCIL'
+            else:
+                layout.operator("object.select_by_type", text="蜡笔", icon="OUTLINER_OB_GREASEPENCIL").type='GPENCIL'
+            layout.separator()
+            layout.operator("object.select_by_type", text="骨骼", icon="OUTLINER_OB_ARMATURE").type='ARMATURE'
+            layout.operator("object.select_by_type", text="晶格", icon="OUTLINER_OB_LATTICE").type='LATTICE'
+            layout.separator()
+            layout.operator("object.select_by_type", text="空物体", icon="OUTLINER_OB_EMPTY").type='EMPTY'
+            layout.separator()
+            layout.operator("object.select_by_type", text="灯光", icon="OUTLINER_OB_LIGHT").type='LIGHT'
+            layout.operator("object.select_by_type", text="光照探头", icon="OUTLINER_OB_LIGHTPROBE").type='LIGHT_PROBE'
+            layout.separator()
+            layout.operator("object.select_by_type", text="摄像机", icon="OUTLINER_OB_CAMERA").type='CAMERA'
+            layout.separator()
+            layout.operator("object.select_by_type", text="扬声器", icon="OUTLINER_OB_SPEAKER").type='SPEAKER'
+        context.window_manager.popup_menu(draw, title="按类型全选")
+        return {'FINISHED'}
 
 # 选择“镜像”
 class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
@@ -478,6 +517,7 @@ class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
 
 
 classes = (
+    BUTTON_ACTION_OT_global_select_lasso_set,
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
     VIEW3D_MT_object_select_more_or_less_menu,
