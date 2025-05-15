@@ -5,6 +5,8 @@ from .button_operator_dict import button_press_function
 class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
     bl_idname = "popup.quick_menu_two"
     bl_label = ""
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+
 
 
     #def invoke(self, context, event):

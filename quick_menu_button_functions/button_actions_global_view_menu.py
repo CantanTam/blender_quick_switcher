@@ -321,7 +321,7 @@ class BUTTON_ACTION_OT_view3d_view_center_cursor(bpy.types.Operator):
 class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
     bl_idname = "button.action_view3d_view_regions_menu"
     bl_label = "视图框"
-    bl_options = {'REGISTER', 'UNDO'}
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout

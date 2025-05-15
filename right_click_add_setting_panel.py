@@ -99,8 +99,6 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col6 = row.column(align=True)  # col6占1份宽度
         col7 = row.column(align=True)  # col7占1份宽度
         col8 = row.column(align=True)  # col8占1份宽度
-        col9 = row.column(align=True)  # col9占1份宽度
-        col10 = row.column(align=True) # col10占1份宽度
 
         panel.scale_x = 1.3  # col1 占较大比例
         # 扩展更多列设置
@@ -163,19 +161,6 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
             op = col8.operator("button.set_buttons", text="")
             op.column = '_col8'
             op.button = f'_button{i}'
-
-        col9.label(text="col9", icon='RADIOBUT_OFF')
-        for i in range(1, 11):
-            op = col9.operator("button.set_buttons", text="")
-            op.column = '_col9'
-            op.button = f'_button{i}'
-
-        col10.label(text="col10", icon='RADIOBUT_OFF')
-        for i in range(1, 11):
-            op = col10.operator("button.set_buttons", text="")
-            op.column = '_col10'
-            op.button = f'_button{i}'
-
 
 classes = (
     CALL_OT_add_to_switcher_menu,

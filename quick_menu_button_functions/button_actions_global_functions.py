@@ -315,6 +315,8 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
 class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
     bl_label = "删除"
     bl_idname = "view3d.mt_global_delete_menu"
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+
 
     def draw(self, context):
         layout = self.layout

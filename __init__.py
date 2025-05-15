@@ -98,7 +98,7 @@ from .right_click_add_common_actions import (
     unregister as unregister_right_click_add_common_actions,
 )
 
-from .right_click_global_view_actions import (
+from .right_click_global_view_menu_actions import (
     register as register_right_click_global_view_actions,
     unregister as unregister_right_click_global_view_actions,
 )
