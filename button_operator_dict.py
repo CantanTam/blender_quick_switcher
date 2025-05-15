@@ -93,13 +93,12 @@ button_options_list = [
     ('button.action_view3d_call_view_align_menu','对齐视图(菜单)',''),
     ('button.action_view3d_camera_to_view','对齐视图—活动摄像机对齐当前视角','快捷键(Ctrl+Alt+Num_0)'), #Switcher
     ('button.action_view3d_camera_to_view_selected','对齐视图—活动摄像机对齐选中的物体',''), #Switcher
-    ('button.action_view3d_view_all_center_true','对齐视图—游标居中并查看全部','快捷键(Shift+C)'),
-    ('button.action_view3d_view_center_cursor','对齐视图—视图中心对齐游标',''),
-    ('button.action_view3d_lock_to_active_or_lock_clear','对齐视图—锁定/解锁视图',''),
-    ('button.action_view3d_call_view_regions_menu','视图框(菜单)',''),
-    ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),
-    ('button.action_view3d_render_border','视图框—渲染框','快捷键(Ctrl+B)'),
-    ('view3d.clear_render_border','视图框—清除渲染框','快捷键(Ctrl+B)'),
+    ('button.action_view3d_view_all_center_true','对齐视图—游标居中并查看全部','快捷键(Shift+C)'),  #Switcher
+    ('button.action_view3d_view_center_cursor','对齐视图—视图中心对齐游标',''), #Switcher
+    ('button.action_view3d_lock_to_active_or_lock_clear','对齐视图—锁定/解锁视图',''),  #Switcher
+    ('button.action_view3d_call_view_regions_menu','视图框(菜单)',''),  #Switcher
+    ('button.action_view3d_clip_border','视图框—裁剪框','快捷键(Alt+B)'),   #Switcher
+    ('button.action_view3d_render_border','视图框—开/关渲染框','快捷键(Ctrl+B)'),    #Switcher
     ('button.action_view3d_area_menu','区域(菜单)',''),
     ('screen.region_quadview','区域—切换四格视图','快捷键(Ctrl Alt Q)'),
     ('screen.screen_full_area','区域—区域最大化','快捷键(Ctrl 空格)'),
@@ -567,13 +566,10 @@ button_press_function = {
         "button.action_view3d_call_view_regions_menu","视图框","PRESET","all",
     ),
         'button.action_view3d_clip_border':(
-        "button.action_view3d_clip_border","裁剪框","CLIPUV_DEHLT","all",
+        "button.action_view3d_clip_border","裁剪框","CLIPUV_HLT","all",
     ),
         'button.action_view3d_render_border':(
-        "button.action_view3d_render_border","渲染框","RADIOBUT_OFF","all",
-    ),
-        'view3d.clear_render_border':(
-        "view3d.clear_render_border","清除渲染框","RADIOBUT_OFF","all",
+        "button.action_view3d_render_border","开/关渲染框","RADIOBUT_OFF","all",
     ),
         'button.action_view3d_area_menu':(
         "button.action_view3d_area_menu","区域","PRESET","all",

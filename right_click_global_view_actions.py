@@ -108,6 +108,16 @@ def global_view_alignselected_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"视图对齐活动项(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_view3d_call_view_align_selected_menu'
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+def global_view_viewregions_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"视图框(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_view3d_call_view_regions_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"裁剪框\"添加到Switcher", icon='PLUS').action = 'button.action_view3d_clip_border'
+    self.layout.operator("call.add_to_switcher_menu", text="\"开/关渲染框\"添加到Switcher", icon='PLUS').action = 'button.action_view3d_render_border'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
 
 
 def register():
@@ -116,10 +126,12 @@ def register():
     bpy.types.VIEW3D_MT_view_navigation.append(global_view_navigation_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align.append(global_view_viewalign_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align_selected.append(global_view_alignselected_menu_to_switcher)
+    bpy.types.VIEW3D_MT_view_regions.append(global_view_viewregions_menu_to_switcher)
 
 
 
 def unregister():
+    bpy.types.VIEW3D_MT_view_regions.remove(global_view_viewregions_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align_selected.remove(global_view_alignselected_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_align.remove(global_view_viewalign_menu_to_switcher)
     bpy.types.VIEW3D_MT_view_navigation.remove(global_view_navigation_menu_to_switcher)

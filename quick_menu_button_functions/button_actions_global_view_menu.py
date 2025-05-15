@@ -318,15 +318,13 @@ class BUTTON_ACTION_OT_view3d_view_center_cursor(bpy.types.Operator):
         bpy.ops.view3d.view_center_cursor('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-
-# 自定义“视图框”菜单
 class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
-    bl_label = ""
-    bl_idname = "view3d.mt_view_regions_menu"
+    bl_idname = "button.action_view3d_view_regions_menu"
+    bl_label = "视图框"
+    bl_options = {'REGISTER', 'UNDO'}
 
     def draw(self, context):
         layout = self.layout
-        
         layout.operator("button.action_view3d_clip_border", text="裁剪框")
         layout.operator("button.action_view3d_render_border", text="渲染框")
         layout.separator()
@@ -339,7 +337,7 @@ class BUTTON_ACTION_OT_view3d_call_view_regions_menu(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="view3d.mt_view_regions_menu")
+        bpy.ops.wm.call_menu(name="button.action_view3d_view_regions_menu")
         return {'FINISHED'}
 
 # 自定义“裁剪框”操作类
@@ -360,8 +358,18 @@ class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
     bl_description = "快捷键 Ctrl B"
     bl_options = {'REGISTER', 'UNDO'}
     
+    @staticmethod
+    def render_border_active(context):
+        for area in context.window.screen.areas:
+            if area.type == 'VIEW_3D':
+                return area.spaces.active.use_render_border
+        return False
+
     def execute(self, context):
-        bpy.ops.view3d.render_border('INVOKE_DEFAULT')
+        if self.render_border_active(context):
+            bpy.ops.view3d.clear_render_border()
+        else:
+            bpy.ops.view3d.render_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
 # 自定义“区域”菜单
