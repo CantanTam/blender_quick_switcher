@@ -114,7 +114,9 @@ button_options_list = [
     ('button.action_call_select_select_by_type_menu','按类型全选(菜单)',''), #Switcher
     ('object.select_camera','选择活动摄像机',''),   #Switcher
 
-    ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),
+    ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),   #Switcher
+    ('button.action_select_select_random','随机选择',''),   #Switcher
+
     ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
     ('button.action_object_select_less','减选','快捷键(Ctrl Num_-)'),
@@ -579,7 +581,6 @@ button_press_function = {
         'button.action_view3d_render_border':(
         "button.action_view3d_render_border","开/关渲染框","RADIOBUT_OFF","all",
     ),
-
         'button.action_view3d_render_opengl':(
         "button.action_view3d_render_opengl","视图渲染图像","RENDER_STILL","all",
     ),
@@ -589,9 +590,6 @@ button_press_function = {
         'button.action_view3d_render_opengl_keyframe':(
         "button.action_view3d_render_opengl_keyframe","视图渲染关键帧","RENDER_ANIMATION","all",
     ),
-
-
-
         'button.action_view3d_area_menu':(
         "button.action_view3d_area_menu","区域","PRESET","all",
     ),
@@ -623,6 +621,13 @@ button_press_function = {
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
         "LATTICEEDIT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", "ARMATUREPOSE",
+    ),
+        'button.action_select_select_random':(
+        "button.action_select_select_random","随机选择","RADIOBUT_OFF",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LATTICEEDIT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
+        "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "CURVEEDIT", "SURFACEEDIT",
+        "METAEDIT", "GPENCILEDIT_GPENCIL", "GREASEPENCILEDIT", "LATTICEEDIT",
     ),
         'button.action_call_object_select_more_or_less_menu':(
         "button.action_call_object_select_more_or_less_menu","加选/减选","FORCE_CHARGE",

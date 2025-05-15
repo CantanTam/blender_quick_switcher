@@ -43,6 +43,32 @@ def draw_add_to_switcher_global_select(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"选择活动摄像机\"添加到Switcher", icon='OUTLINER_OB_CAMERA').action = 'object.select_camera'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_mirror",
+        "LATTICE_OT_select_mirror",
+        "MESH_OT_select_mirror",
+        "ARMATURE_OT_select_mirror",
+        "POSE_OT_select_mirror",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择镜像\"添加到Switcher", icon='MOD_MIRROR').action = 'button.action_select_select_mirror'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_random",
+        "MESH_OT_select_random",
+        "CURVE_OT_select_random",
+        "MBALL_OT_select_random_metaelems",
+        "GPENCIL_OT_select_random",
+        "GREASE_PENCIL_OT_select_random",
+        "LATTICE_OT_select_random",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"随机选择\"添加到Switcher", icon='RADIOBUT_OFF').action = 'button.action_select_select_random'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_global_select)

@@ -150,6 +150,123 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
+
+
+
+
+
+
+
+
+
+
+
+# 随机选择
+class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
+    bl_idname = "button.action_select_select_random"
+    bl_label = "随机选择"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    ratio: bpy.props.FloatProperty(
+        name="",
+        description="用于随机选择的部分",
+        default=0.5, 
+        min=0.0,  
+        max=1.0, 
+        subtype='FACTOR',      
+        precision=3,          
+        update=lambda self, context: self.execute(context)  
+    )
+
+    seed: bpy.props.IntProperty(
+        name="",
+        description="随机数生成器的种值",
+        default=0,
+        min=0,
+        soft_max=255, 
+        update=lambda self, context: self.execute(context)  
+    )
+
+    action: bpy.props.EnumProperty(
+        name="动作",
+        items=[
+            ('SELECT', "选择", "全选"),
+            ('DESELECT', "弃选", "弃选全部元素"),
+        ],
+        default='SELECT',
+        update=lambda self, context: self.execute(context) 
+    )
+
+    unselect_ends: bpy.props.BoolProperty(
+        name="不选中末端",
+        description="不选择笔画的起点和末点",
+        default=False,
+        update=lambda self, context: self.execute(context)
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="比率")
+        col_left.label(text="随机种")
+        col_left.label(text="动作")
+        
+        col_right = split.column()
+        col_right.prop(self, "ratio")
+        col_right.prop(self, "seed")
+        col_right.prop(self, "action", expand=True)
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            col_right.prop(self, "unselect_ends")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_random_metaelems(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends)
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ”加选/减选“菜单
 class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
     bl_label = ""
@@ -517,7 +634,8 @@ class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
 
 
 classes = (
-    BUTTON_ACTION_OT_global_select_lasso_set,
+    BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
+    BUTTON_ACTION_OT_select_select_random,
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
     VIEW3D_MT_object_select_more_or_less_menu,
