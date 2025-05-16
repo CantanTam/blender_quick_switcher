@@ -531,6 +531,14 @@ class BUTTON_ACTION_OT_select_select_linked(bpy.types.Operator):
             bpy.ops.pose.select_linked('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_select_pattern(bpy.types.Operator):
+    bl_idname = "button.action_object_select_pattern"
+    bl_label = "按名称选择"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.select_pattern('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 
 
@@ -557,6 +565,7 @@ classes = (
     BUTTON_ACTION_OT_select_select_grouped,
     VIEW3D_MT_mesh_select_linked_menu,
     BUTTON_ACTION_OT_select_select_linked,
+    BUTTON_ACTION_OT_object_select_pattern,
 )
 
 def register():

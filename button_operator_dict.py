@@ -121,6 +121,7 @@ button_options_list = [
     ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),   #Switcher
     ('button.action_select_select_grouped','按组选择(菜单)','快捷键(Shift G)'), #Switcher
     ('button.action_select_select_linked','选择相连',''), #Switcher
+    ('button.action_object_select_pattern','按名称选择',''), #Switcher
 
     # 物体模式——“选择”菜单
     ('NO_BUTTON',"←物体模式-选择菜单→","“物体—选择”菜单中显示的选项"),
@@ -652,10 +653,17 @@ button_press_function = {
         'button.action_select_select_linked':(
         "button.action_select_select_linked","选择相连","LINK_BLEND", "ARMATUREPOSE",
         "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "GPENCILEDIT_GPENCIL",
-        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "ARMATUREPOSE",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
         "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "GREASEPENCILEDIT",
         "GPENCILEDIT_GPENCIL", "CURVEEDIT", "SURFACEEDIT", "MESHEDIT", "ARMATUREEDIT",
+    ),
+        'button.action_object_select_pattern':(
+        "button.action_object_select_pattern","按名称选择","RADIOBUT_OFF", 
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", 
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", 
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
+        "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", 
     ),
     # 一些通用操作
         'button.action_transform_tosphere':(
