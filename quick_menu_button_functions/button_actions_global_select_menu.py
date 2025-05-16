@@ -540,14 +540,229 @@ class BUTTON_ACTION_OT_object_select_pattern(bpy.types.Operator):
         bpy.ops.object.select_pattern('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+#网格编辑模式的选择选项
+
+class BUTTON_ACTION_OT_mesh_select_nth(bpy.types.Operator):
+    bl_idname = "button.action_mesh_select_nth"
+    bl_label = "间隔式弃选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    skip: bpy.props.IntProperty(
+        name="",
+        description="重复次序中跳过的元素数量",
+        default=1,
+        min=1,
+        soft_max=100, 
+        update=lambda self, context: self.execute(context)  
+    )
+
+    nth: bpy.props.IntProperty(
+        name="",
+        description="重复次序中选择的元素数量",
+        default=1,
+        min=1,
+        soft_max=100, 
+        update=lambda self, context: self.execute(context)  
+    )
+
+    offset: bpy.props.IntProperty(
+        name="",
+        description="从起始点偏移",
+        default=0,
+        soft_min=-100,
+        soft_max=100, 
+        update=lambda self, context: self.execute(context)  
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="弃选项")
+        col_left.label(text="选中项")
+        col_left.label(text="偏移量")
+        
+        col_right = split.column()
+        col_right.prop(self, "skip")
+        col_right.prop(self, "nth")
+        col_right.prop(self, "offset")
+
+    def execute(self, context):
+        bpy.ops.mesh.select_nth(skip=self.skip, nth=self.nth, offset=self.offset)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
+    bl_idname = "button.action_mesh_edges_select_sharp"
+    bl_label = "选择锐边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    sharpness: bpy.props.FloatProperty(
+        name="",
+        default=0.523599,
+        min=0.000174533,
+        max=3.14159,
+        soft_min=0.0174533,
+        soft_max=3.14159,
+        subtype='ANGLE',
+        update=lambda self, context: self.execute(context)
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="锐度")
+        
+        col_right = split.column()
+        col_right.prop(self, "sharpness")
+
+    def execute(self, context):
+        bpy.ops.mesh.edges_select_sharp(sharpness=self.sharpness)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_select_select_similar(bpy.types.Operator):
+    bl_idname = "button.action_select_select_similar"
+    bl_label = "选择相似"
+    bl_description = "快捷键 Shift G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    type: bpy.props.EnumProperty(
+        name="",
+        description="Property type to compare for similarity",
+        items=[
+            ('CHILDREN',            "子级",               ""),
+            ('CHILDREN_IMMEDIATE',  "直接子级",     ""),
+            ('SIBLINGS',            "平级",               ""),
+            ('LENGTH',              "长度",                 ""),
+            ('DIRECTION',           "方向(Y轴)",              ""),
+            ('PREFIX',              "前缀",                 ""),
+            ('SUFFIX',              "后缀",                 ""),
+            ('LAYER',               "层",                  ""),
+            ('GROUP',               "群组",                  ""),
+            ('SHAPE',               "形状",                  ""),
+        ],
+        default='LENGTH',
+        update=lambda self, context: self.execute(context)
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        description="Similarity threshold (0–1)",
+        default=0.1,
+        min=0.0,
+        max=1.0,
+        precision=3,
+        subtype='FACTOR',
+        update=lambda self, context: self.execute(context)
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        if bpy.context.active_object.type+bpy.context.active_object.mode == "ARMATUREEDIT":
+
+            layout = self.layout
+            split = layout.row().split(factor=0.4)
+            
+            col_left = split.column()
+            col_left.alignment = 'RIGHT'
+            col_left.label(text="类型")
+            col_left.label(text="阈值")
+            
+            col_right = split.column()
+            col_right.prop(self, "type")
+            col_right.prop(self, "threshold")
+
+    def execute(self, context):    
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode    
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.select_similar('INVOKE_DEFAULT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_select_similar")
+        elif bpy.context.mode == "ARMATUREEDIT":
+            bpy.ops.armature.select_similar(type=self.type, threshold=self.threshold)
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_similar('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
+    bl_idname = "popup.mesh_select_by_trait"
+    bl_label = "按特征全选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="按特征全选", icon='PRESET')
+        col.operator("mesh.select_non_manifold", text="非流形", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_loose", text="松散几何元素", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_interior_faces", text="内侧面", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_face_by_sides", text="按侧选面", icon="RADIOBUT_OFF")
+
+class BUTTON_ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
+    bl_idname = "button.action_mesh_call_select_by_trait"
+    bl_label = "按特征全选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.mesh_select_by_trait('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 
 
 
 
+class BUTTON_ACTION_OT_mesh_select_loops(bpy.types.Operator):
+    bl_idname = "popup.mesh_select_loops"
+    bl_label = "选择循环"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        return {'FINISHED'}
 
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
 
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="选择循环", icon='PRESET')
+        col.operator("mesh.loop_multi_select", text="循环边", icon="RADIOBUT_OFF").ring=False
+        col.operator("mesh.loop_multi_select", text="并排边", icon="RADIOBUT_OFF").ring=True
+        col.separator()
+        col.operator("mesh.loop_to_region", text="选择循环线内侧区域", icon="RADIOBUT_OFF")
+        col.operator("mesh.region_to_loop", text="选择区域轮廓线", icon="RADIOBUT_OFF")
+        col.separator()
+        col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
+        col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
+
+class BUTTON_ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
+    bl_idname = "button.action_call_mesh_select_loops"
+    bl_label = "选择循环"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.mesh_select_loops('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 
 
@@ -566,6 +781,13 @@ classes = (
     VIEW3D_MT_mesh_select_linked_menu,
     BUTTON_ACTION_OT_select_select_linked,
     BUTTON_ACTION_OT_object_select_pattern,
+    BUTTON_ACTION_OT_mesh_select_nth,
+    BUTTON_ACTION_OT_mesh_edges_select_sharp,
+    BUTTON_ACTION_OT_select_select_similar,
+    BUTTON_ACTION_OT_mesh_select_by_trait,
+    BUTTON_ACTION_OT_mesh_call_select_by_trait,
+    BUTTON_ACTION_OT_mesh_select_loops,
+    BUTTON_ACTION_OT_call_mesh_select_loops,
 )
 
 def register():

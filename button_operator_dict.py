@@ -123,6 +123,14 @@ button_options_list = [
     ('button.action_select_select_linked','选择相连',''), #Switcher
     ('button.action_object_select_pattern','按名称选择',''), #Switcher
 
+    # MESH EDIT模式的“选择”功能
+    ('button.action_mesh_select_nth','间隔式弃选',''), #Switcher
+    ('button.action_mesh_edges_select_sharp','选择锐边',''), #Switcher
+    ('button.action_select_select_similar','选择相似(菜单)',''), #Switcher
+    ('button.action_mesh_call_select_by_trait','按特征全选(菜单)',''), #Switcher
+    ('button.action_call_mesh_select_loops','选择循环(菜单)',''), #Switcher
+
+
     # 物体模式——“选择”菜单
     ('NO_BUTTON',"←物体模式-选择菜单→","“物体—选择”菜单中显示的选项"),
 
@@ -665,6 +673,25 @@ button_press_function = {
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
         "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", 
     ),
+
+    #MESHEDIT 的选择菜单
+        'button.action_mesh_select_nth':(
+        "button.action_mesh_select_nth","间隔式弃选","RADIOBUT_OFF", "MESHEDIT",
+    ),
+        'button.action_mesh_edges_select_sharp':(
+        "button.action_mesh_edges_select_sharp","选择锐边","RADIOBUT_OFF", "MESHEDIT",
+    ),
+        'button.action_select_select_similar':(
+        "button.action_select_select_similar","选择相似","PRESET", 
+        "MESHEDIT", "CURVEEDIT", "SURFACEEDIT", "ARMATUREEDIT", "METAEDIT",
+    ),
+        'button.action_mesh_call_select_by_trait':(
+        "button.action_mesh_call_select_by_trait","按特征全选","PRESET", "MESHEDIT",
+    ),
+        'button.action_call_mesh_select_loops':(
+        "button.action_call_mesh_select_loops","选择循环","PRESET", "MESHEDIT",
+    ),
+
     # 一些通用操作
         'button.action_transform_tosphere':(
         "button.action_transform_tosphere","球形化","RADIOBUT_OFF", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
