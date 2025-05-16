@@ -117,7 +117,7 @@ button_options_list = [
     ('button.action_select_select_mirror','选择镜像','快捷键(Ctrl Shift M)'),   #Switcher
     ('button.action_select_select_random','随机选择',''),   #Switcher
 
-    ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),
+    ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),    #Switcher
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
     ('button.action_object_select_less','减选','快捷键(Ctrl Num_-)'),
     ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),
@@ -635,6 +635,7 @@ button_press_function = {
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LATTICEEDIT",
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "MESHEDIT", "GPENCILOBJECT", "GREASEPENCILOBJECT", "ARMATUREOBJECT", "ARMATUREEDIT", 
+        "GPENCILEDIT_GPENCIL", "GREASEPENCILEDIT",
     ),
         'button.action_object_select_more':(
         "button.action_object_select_more","加选","ADD",

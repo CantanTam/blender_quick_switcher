@@ -69,10 +69,62 @@ def draw_add_to_switcher_global_select(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"随机选择\"添加到Switcher", icon='RADIOBUT_OFF').action = 'button.action_select_select_random'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+    elif op and op.bl_rna.identifier in {
+        "CURVE_OT_select_more",
+        "CURVE_OT_select_less",
+        "CURVE_OT_select_next",
+        "CURVE_OT_select_previous",
+        "GPENCIL_OT_select_more",
+        "GPENCIL_OT_select_less",
+        "GREASE_PENCIL_OT_select_more",
+        "GREASE_PENCIL_OT_select_less",
+        "ARMATURE_OT_select_more",
+        "ARMATURE_OT_select_less",
+        "LATTICE_OT_select_more",
+        "LATTICE_OT_select_less",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"加选/减选(菜单)\"添加到Switcher", icon='FORCE_CHARGE').action = 'button.action_call_object_select_more_or_less_menu'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+    elif op and op.bl_rna.identifier == "ARMATURE_OT_select_hierarchy":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+
+
+
+def global_select_object_moreless_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"加选/减选(菜单)\"添加到Switcher", icon='FORCE_CHARGE').action = 'button.action_call_object_select_more_or_less_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+def global_select_pose_moreless_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
+
+
+
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_global_select)
-
+    bpy.types.VIEW3D_MT_select_object_more_less.append(global_select_object_moreless_menu_to_switcher)
+    bpy.types.VIEW3D_MT_select_pose_more_less.append(global_select_pose_moreless_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_select_pose_more_less.remove(global_select_pose_moreless_menu_to_switcher)
+    bpy.types.VIEW3D_MT_select_object_more_less.remove(global_select_object_moreless_menu_to_switcher)
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_global_select)

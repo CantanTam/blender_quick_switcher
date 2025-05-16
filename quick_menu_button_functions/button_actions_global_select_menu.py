@@ -150,17 +150,6 @@ class BUTTON_ACTION_OT_select_select_mirror(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
 # 随机选择
 class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
     bl_idname = "button.action_select_select_random"
@@ -293,7 +282,13 @@ class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
         # 调用 view_axis 操作符，并传入对应的 type 参数
             col.operator("object.select_more", text="扩展选区", icon="ADD")
             col.operator("object.select_less", text="缩减选区", icon="REMOVE")
-        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+        elif typeandmode == "CURVEEDIT":
+            col.operator("curve.select_more", text="扩展选择", icon="ADD")
+            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
+            col.separator()
+            col.operator("curve.select_next", text="选择下一项", icon="FRAME_NEXT")
+            col.operator("curve.select_previous", text="选择上一项", icon="FRAME_PREV")
+        elif typeandmode == "SURFACEEDIT":
             col.operator("curve.select_more", text="扩展选择", icon="ADD")
             col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
         elif typeandmode == "MESHEDIT":
@@ -308,6 +303,12 @@ class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
         elif typeandmode == "LATTICEEDIT":
             col.operator("lattice.select_more", text="扩展选区", icon="ADD")
             col.operator("lattice.select_less", text="缩减选区", icon="REMOVE")
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            col.operator("gpencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("gpencil.select_less", text="缩减选区", icon="REMOVE")
+        elif typeandmode == "GREASEPENCILEDIT":
+            col.operator("grease_pencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("grease_pencil.select_less", text="缩减选区", icon="REMOVE")
 
 class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
     bl_idname = "button.action_call_object_select_more_or_less_menu"
