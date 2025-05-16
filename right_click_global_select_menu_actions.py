@@ -114,7 +114,13 @@ def global_select_pose_moreless_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
-
+def global_select_meshedit_moreless_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"加选/减选(菜单)\"添加到Switcher", icon='FORCE_CHARGE').action = 'button.action_call_object_select_more_or_less_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 
@@ -123,8 +129,11 @@ def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_global_select)
     bpy.types.VIEW3D_MT_select_object_more_less.append(global_select_object_moreless_menu_to_switcher)
     bpy.types.VIEW3D_MT_select_pose_more_less.append(global_select_pose_moreless_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_mesh_select_more_less.append(global_select_meshedit_moreless_menu_to_switcher)
+
 
 def unregister():
+    bpy.types.VIEW3D_MT_edit_mesh_select_more_less.remove(global_select_meshedit_moreless_menu_to_switcher)
     bpy.types.VIEW3D_MT_select_pose_more_less.remove(global_select_pose_moreless_menu_to_switcher)
     bpy.types.VIEW3D_MT_select_object_more_less.remove(global_select_object_moreless_menu_to_switcher)
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_global_select)
