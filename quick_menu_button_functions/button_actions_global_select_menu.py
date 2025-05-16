@@ -1,5 +1,101 @@
 import bpy
-from ..show_switch_notice import show_notice
+
+# 全局“全选”功能
+class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
+    bl_idname = "button.action_global_select_all"
+    bl_label = "全选"
+    bl_description = "快捷键 A"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_all(action='SELECT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_all(action='SELECT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_all(action='SELECT')
+        elif typeandmode ==  "FONTEDIT":
+            bpy.ops.font.select_all()
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_all(action='SELECT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_all(action='SELECT')
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            bpy.ops.gpencil.select_all(action='SELECT') # 4.2 版本
+        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_all(action='SELECT') # 4.3 版本
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_all(action='SELECT')
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_all(action='SELECT')
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+    
+# 全局“反选”功能
+class BUTTON_ACTION_OT_global_select_invert(bpy.types.Operator):
+    bl_idname = "button.action_global_select_invert"
+    bl_label = "反选"
+    bl_description = "快捷键 Ctrl I"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_all(action='INVERT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_all(action='INVERT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_all(action='INVERT')
+        elif typeandmode ==  "FONTEDIT":
+            bpy.ops.font.select_all()
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_all(action='INVERT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_all(action='INVERT')
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            bpy.ops.gpencil.select_all(action='INVERT') # 4.2 版本
+        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_all(action='INVERT') # 4.3 版本
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_all(action='INVERT')
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_all(action='INVERT')
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+    
+# 全局“刷选”功能
+class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
+    bl_idname = "button.action_global_select_circle"
+    bl_label = "刷选"
+    bl_description = "快捷键 C"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.view3d.select_circle('INVOKE_DEFAULT')
+        elif typeandmode in {
+            "CURVEEDIT", 
+            "SURFACEEDIT",
+            "METAEDIT",
+            "LATTICEEDIT",
+            "MESHEDIT",
+            "GREASEPENCILEDIT",
+            "ARMATUREEDIT",
+            "ARMATUREPOSE",
+            }:
+            bpy.ops.view3d.select_circle('INVOKE_DEFAULT')
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_circle('INVOKE_DEFAULT') # 4.2 版本
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
 
 # 套索选择——开始(备份用)
 class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
@@ -13,7 +109,6 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
         if not self.waiting_for_click:
             self.waiting_for_click = True
             context.window_manager.modal_handler_add(self)
-            show_notice("ACTIVE_LOCK.png")
             return {'RUNNING_MODAL'}
         return self.execute(context)
 
@@ -29,7 +124,6 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
             bpy.ops.gpencil.select_lasso('INVOKE_DEFAULT', mode='SET')
         else:
             bpy.ops.view3d.select_lasso('INVOKE_DEFAULT', mode='SET')
-        show_notice("ACTIVE_LOCK.png")
         self.waiting_for_click = False
         return {'FINISHED'}
 
@@ -249,8 +343,6 @@ class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
         return context.window_manager.invoke_popup(self, width=100)
 
     def draw(self, context):
-        layout = self.layout
-
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
 
         layout = self.layout
@@ -299,116 +391,6 @@ class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
         bpy.ops.popup.more_or_less_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-# 加选    
-class BUTTON_ACTION_OT_object_select_more(bpy.types.Operator):
-    bl_idname = "button.action_object_select_more"
-    bl_label = "加选"
-    bl_description = "快捷键 Ctrl Num_+"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    use_face_step: bpy.props.BoolProperty(
-        name="面步长",            
-        description="相连的面(而非边)", 
-        default=True,
-        update=lambda self, context: self.execute(context)
-    )    
-
-    def invoke(self, context, event):
-        return self.execute(context)
-    
-    def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
-
-        if typeandmode == "MESHEDIT":
-
-            layout = self.layout
-            #row = layout.row()
-            split = layout.row().split(factor=0.4)
-            
-            # 左侧列 - 标签
-            col_left = split.column()
-            col_left.label(text="")
-            
-            # 右侧列 - 垂直排列的单选按钮
-            col_right = split.column()
-            col_right.prop(self, "use_face_step")
-
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if bpy.context.mode == 'OBJECT':
-            bpy.ops.object.select_more()
-        elif typeandmode in {"CURVEEDIT","SURFACEEDIT",}:
-            bpy.ops.curve.select_more()
-        elif typeandmode == "MESHEDIT":
-            bpy.ops.mesh.select_more(use_face_step=self.use_face_step)
-        elif typeandmode == "GPENCILEDIT_GPENCIL": # 4.2 版本
-            bpy.ops.gpencil.select_more()
-        elif typeandmode == "GREASEPENCILEDIT": # 4.3 版本
-            bpy.ops.grease_pencil.select_more()
-        elif typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.select_more()
-        elif typeandmode == "LATTICEEDIT":
-            bpy.ops.lattice.select_more()
-        else:
-            return {'CANCELLED'}
-        return {'FINISHED'}
-    
-# 减选    
-class BUTTON_ACTION_OT_object_select_less(bpy.types.Operator):
-    bl_idname = "button.action_object_select_less"
-    bl_label = "减选"
-    bl_description = "快捷键 Ctrl Num_-"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    use_face_step: bpy.props.BoolProperty(
-        name="面步长",            
-        description="相连的面(而非边)", 
-        default=True,
-        update=lambda self, context: self.execute(context)
-    )    
-
-    def invoke(self, context, event):
-        return self.execute(context)
-    
-    def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
-
-        if typeandmode == "MESHEDIT":
-
-            layout = self.layout
-            #row = layout.row()
-            split = layout.row().split(factor=0.4)
-            
-            # 左侧列 - 标签
-            col_left = split.column()
-            col_left.label(text="")
-            
-            # 右侧列 - 垂直排列的单选按钮
-            col_right = split.column()
-            col_right.prop(self, "use_face_step")
-
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if bpy.context.mode == 'OBJECT':
-            bpy.ops.object.select_less()
-        elif typeandmode in {"CURVEEDIT","SURFACEEDIT",}:
-            bpy.ops.curve.select_less()
-        elif typeandmode == "MESHEDIT":
-            bpy.ops.mesh.select_less(use_face_step=self.use_face_step)
-        elif typeandmode == "GPENCILEDIT_GPENCIL": # 4.2 版本
-            bpy.ops.gpencil.select_less()
-        elif typeandmode == "GREASEPENCILEDIT": # 4.3 版本
-            bpy.ops.grease_pencil.select_less()
-        elif typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.select_less()
-        elif typeandmode == "LATTICEEDIT":
-            bpy.ops.lattice.select_less()
-        else:
-            return {'CANCELLED'}
-        return {'FINISHED'}
-    
 # 父级/子级/扩展父级/扩展子级 功能四合一   
 class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
     bl_idname = "button.action_object_select_hierarchy_parent_child"
@@ -422,7 +404,7 @@ class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
             ('PARENT', "父级", ""),
             ('CHILD', "子级", ""), 
         ],
-        #default='PARENT',
+        default='PARENT',
         update=lambda self, context: self.execute(context)
     )
 
@@ -480,81 +462,101 @@ class BUTTON_ACTION_OT_select_select_grouped(bpy.types.Operator):
             bpy.ops.pose.select_grouped('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-# 选择相连项（菜单）
-class VIEW3D_MT_select_select_linked_menu(bpy.types.Menu):
-    bl_label = ""
-    bl_idname = "view3d.mt_select_select_linked_menu"
-
-    def draw(self, context):
-        layout = self.layout
-
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if bpy.context.mode == "OBJECT":
-            layout.operator("object.select_linked", text="物体数据").type='OBDATA'
-            layout.operator("object.select_linked", text="材质").type='MATERIAL'
-            layout.operator("object.select_linked", text="实例集合").type='DUPGROUP'
-            layout.operator("object.select_linked", text="粒子系统").type='PARTICLE'
-            layout.operator("object.select_linked", text="库").type='LIBRARY'
-            layout.operator("object.select_linked", text="库(物体数据)").type='LIBRARY_OBDATA'
-        elif typeandmode == "MESHEDIT":
-            layout.operator("mesh.select_linked", text="关联项")
-            layout.operator("mesh.shortest_path_select", text="最短路径")
-            layout.operator("mesh.faces_select_linked_flat", text="相连的平民面")
-
-# 调出“选择相连项”菜单
-class BUTTON_ACTION_OT_call_select_select_linked_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_select_select_linked_menu"
+# ”加选/减选“菜单
+class VIEW3D_MT_mesh_select_linked_menu(bpy.types.Operator):
     bl_label = "选择相连元素"
-    bl_description = "不同编辑模式有不同功能"
+    bl_idname = "popup.mesh_select_linked_menu"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        return {'FINISHED'}
 
-        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
-            bpy.ops.curve.select_linked()
-            return {'FINISHED'}
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
-            bpy.ops.gpencil.select_linked()
-            return {'FINISHED'}
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="选择相连元素", icon='LINK_BLEND')
+        col.operator("mesh.select_linked", text="关联项", icon="RADIOBUT_OFF")
+        col.operator("mesh.shortest_path_select", text="最短路径", icon="RADIOBUT_OFF")
+        col.operator("mesh.faces_select_linked_flat", text="相连的平展面", icon="RADIOBUT_OFF")
+
+# 调出“选择相连”菜单
+class BUTTON_ACTION_OT_select_select_linked(bpy.types.Operator):
+    bl_idname = "button.action_select_select_linked"
+    bl_label = "选择相连"
+    bl_description = "选择相连元素/关联项"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    all_forks: bpy.props.BoolProperty(
+        name="全部分支",
+        description="跟随父级链中的分支",
+        default=False,
+        update=lambda self, context: self.execute(context)
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        if bpy.context.active_object.type + bpy.context.active_object.mode == "ARMATUREEDIT":
+            layout = self.layout
+            split = layout.row().split(factor=0.4)
+            
+            col_left = split.column()
+            col_left.alignment = 'RIGHT'
+            col_left.label(text="")
+            
+            col_right = split.column()
+            col_right.prop(self, "all_forks")
+
+    def execute(self, context):        
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.select_linked('INVOKE_DEFAULT')
         elif typeandmode == "GREASEPENCILEDIT":
-            bpy.ops.grease_pencil.select_linked()
-            return {'FINISHED'}
+            bpy.ops.grease_pencil.select_linked('INVOKE_DEFAULT')
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_linked('INVOKE_DEFAULT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_linked('INVOKE_DEFAULT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.popup.mesh_select_linked_menu('INVOKE_DEFAULT')
         elif typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.select_linked()
+            bpy.ops.armature.select_linked(all_forks=self.all_forks)
         elif typeandmode == "ARMATUREPOSE":
-            bpy.ops.pose.select_linked()
-        elif bpy.context.mode == "OBJECT" or typeandmode == "MESHEDIT":
-            bpy.ops.wm.call_menu(name="view3d.mt_select_select_linked_menu")
+            bpy.ops.pose.select_linked('INVOKE_DEFAULT')
         return {'FINISHED'}
 
 
+
+
+
+
+
+
+
+
+
+
+
 classes = (
+    BUTTON_ACTION_OT_global_select_all,
+    BUTTON_ACTION_OT_global_select_invert,
+    BUTTON_ACTION_OT_global_select_circle,
     BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
     BUTTON_ACTION_OT_select_select_random,
     BUTTON_ACTION_OT_select_select_mirror,
     VIEW3D_MT_select_select_by_type_menu,
     VIEW3D_MT_object_select_more_or_less_menu,
     BUTTON_ACTION_OT_call_object_select_more_or_less_menu,
-    BUTTON_ACTION_OT_object_select_more,
-    BUTTON_ACTION_OT_object_select_less,
     BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
     BUTTON_ACTION_OT_select_select_grouped,
-    VIEW3D_MT_select_select_linked_menu,
-    BUTTON_ACTION_OT_call_select_select_linked_menu,
+    VIEW3D_MT_mesh_select_linked_menu,
+    BUTTON_ACTION_OT_select_select_linked,
 )
 
 def register():
