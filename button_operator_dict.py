@@ -120,8 +120,8 @@ button_options_list = [
     ('button.action_call_object_select_more_or_less_menu','加选/减选(菜单)',''),    #Switcher
     ('button.action_object_select_more','加选','快捷键(Ctrl Num_+)'),
     ('button.action_object_select_less','减选','快捷键(Ctrl Num_-)'),
-    ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),
-    ('button.action_call_select_select_grouped_menu','按组/相似选择(菜单)','快捷键(Shift G)'),
+    ('button.action_object_select_hierarchy_parent_child','父级/子级','父级/子级/扩展父级/扩展子级功能集合'),   #Switcher
+    ('button.action_select_select_grouped','按组选择(菜单)','快捷键(Shift G)'), #Switcher
     ('button.action_call_select_select_linked_menu','选择相连元素(菜单)','选择相连元素'),
 
     # 物体模式——“选择”菜单
@@ -660,13 +660,12 @@ button_press_function = {
         "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT",
         "GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT","ARMATUREPOSE",
     ),
-        'button.action_call_select_select_grouped_menu':(
-        "button.action_call_select_select_grouped_menu","按组/相似选择","PRESET",
-        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT","MESHEDIT","GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL",
-        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "GREASEPENCILEDIT",
-        "GREASEPENCILVERTEX_GREASE_PENCIL", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
-        "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", "ARMATUREEDIT",
-        "ARMATUREPOSE","CURVEEDIT","SURFACEEDIT","METAEDIT",
+        'button.action_select_select_grouped':(
+        "button.action_select_select_grouped","按组选择","PRESET",
+        "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT", "GPENCILEDIT_GPENCIL",
+        "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "ARMATUREPOSE",
+        "LIGHTOBJECT", "LIGHT_PROBEOBJECT", "CAMERAOBJECT", "SPEAKEROBJECT", 
+        "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT", 
     ),
         'button.action_call_select_select_linked_menu':(
         "button.action_call_select_select_linked_menu","选择相连元素","PRESET",

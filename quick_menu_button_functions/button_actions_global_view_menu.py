@@ -198,7 +198,7 @@ class BUTTON_ACTION_OT_view3d_view_align_selected_menu(bpy.types.Operator):
         return {'FINISHED'}
 
     def invoke(self, context, event):
-        return context.window_manager.invoke_popup(self, width=80)
+        return context.window_manager.invoke_popup(self, width=100)
 
     def draw(self, context):
         layout = self.layout

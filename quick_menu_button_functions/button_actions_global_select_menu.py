@@ -236,26 +236,6 @@ class BUTTON_ACTION_OT_select_select_random(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # ”加选/减选“菜单
 class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
     bl_label = ""
@@ -484,105 +464,33 @@ class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-# 按组选择类（菜单）
-class VIEW3D_MT_select_select_grouped_menu(bpy.types.Menu):
-    bl_label = ""
-    bl_idname = "view3d.mt_select_select_grouped_menu"
-
-    def draw(self, context):
-        layout = self.layout
-
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if bpy.context.mode == "OBJECT":
-            layout.operator("object.select_grouped", text="子级").type='CHILDREN_RECURSIVE'
-            layout.operator("object.select_grouped", text="直接子级").type='CHILDREN'
-            layout.operator("object.select_grouped", text="父级").type='PARENT'
-            layout.operator("object.select_grouped", text="平级").type='SIBLINGS'
-            layout.operator("object.select_grouped", text="类型").type='TYPE'
-            layout.operator("object.select_grouped", text="集合").type='COLLECTION'
-            layout.operator("object.select_grouped", text="钩挂").type='HOOK'
-            layout.operator("object.select_grouped", text="通道层").type='PASS'
-            layout.operator("object.select_grouped", text="颜色").type='COLOR'
-            layout.operator("object.select_grouped", text="插帧集").type='KEYINGSET'
-            layout.operator("object.select_grouped", text="灯光类型").type='LIGHT_TYPE'
-        elif typeandmode == "MESHEDIT" and bpy.app.version < (4, 2, 0) :
-            layout.operator("mesh.select_similar", text="法向").type='NORMAL'
-            layout.operator("mesh.select_similar", text="相邻面数量").type='FACE'
-            layout.operator("mesh.select_similar", text="顶点组").type='VGROUP'
-            layout.operator("mesh.select_similar", text="连接边数量").type='EDGE'
-            layout.operator("mesh.select_similar", text="顶点折痕").type='VCREASE'
-            layout.separator()
-            layout.operator("mesh.select_similar_region", text="面区域")
-        elif typeandmode == "MESHEDIT" and bpy.app.version >= (4, 2, 0) :
-            layout.operator("mesh.select_similar", text="法向").type='VERT_NORMAL'
-            layout.operator("mesh.select_similar", text="相邻面数量").type='VERT_FACES'
-            layout.operator("mesh.select_similar", text="顶点组").type='VERT_GROUPS'
-            layout.operator("mesh.select_similar", text="连接边数量").type='VERT_EDGES'
-            layout.operator("mesh.select_similar", text="顶点折痕").type='VERT_CREASE'
-            layout.separator()
-            layout.operator("mesh.select_similar_region", text="面区域")         
-        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
-            layout.operator("gpencil.select_grouped", text="层").type='LAYER'
-            layout.operator("gpencil.select_grouped", text="材质").type='MATERIAL'
-        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL"}:
-            layout.operator("grease_pencil.select_similar", text="层").mode='LAYER'
-            layout.operator("grease_pencil.select_similar", text="材质").mode='MATERIAL'
-            layout.operator("grease_pencil.select_similar", text="顶点颜色").mode='VERTEX_COLOR'
-            layout.operator("grease_pencil.select_similar", text="半径").mode='RADIUS'
-            layout.operator("grease_pencil.select_similar", text="不透明度").mode='OPACITY'
-        elif typeandmode == "ARMATUREEDIT" and bpy.app.version < (4, 2, 0) :
-            layout.operator("armature.select_similar", text="子级").type='CHILDREN'
-            layout.operator("armature.select_similar", text="直接子级").type='CHILDREN_IMMEDIATE'
-            layout.operator("armature.select_similar", text="平级").type='SIBLINGS'
-            layout.operator("armature.select_similar", text="长度").type='LENGTH'
-            layout.operator("armature.select_similar", text="方向(Y轴)").type='DIRECTION'
-            layout.operator("armature.select_similar", text="前缀").type='PREFIX'
-            layout.operator("armature.select_similar", text="后缀").type='SUFFIX'
-            layout.operator("armature.select_similar", text="层").type='LAYER'
-            layout.operator("armature.select_similar", text="群组").type='GROUP'
-            layout.operator("armature.select_similar", text="形状").type='SHAPE'
-        elif typeandmode == "ARMATUREEDIT" and bpy.app.version >= (4, 2, 0) :
-            layout.operator("armature.select_similar", text="子级").type='CHILDREN'
-            layout.operator("armature.select_similar", text="直接子级").type='CHILDREN_IMMEDIATE'
-            layout.operator("armature.select_similar", text="平级").type='SIBLINGS'
-            layout.operator("armature.select_similar", text="长度").type='LENGTH'
-            layout.operator("armature.select_similar", text="方向(Y轴)").type='DIRECTION'
-            layout.operator("armature.select_similar", text="前缀").type='PREFIX'
-            layout.operator("armature.select_similar", text="后缀").type='SUFFIX'
-            layout.operator("armature.select_similar", text="骨骼集合").type='BONE_COLLECTION'
-            layout.operator("armature.select_similar", text="颜色").type='COLOR'
-            layout.operator("armature.select_similar", text="形状").type='SHAPE'
-        elif typeandmode == "ARMATUREPOSE" and bpy.app.version < (4, 2, 0) :
-            layout.operator("pose.select_grouped", text="层").type='LAYER'
-            layout.operator("pose.select_grouped", text="群组").type='GROUP'
-            layout.operator("pose.select_grouped", text="插帧集").type='KEYINGSET'
-        elif typeandmode == "ARMATUREPOSE" and bpy.app.version >= (4, 2, 0) :
-            layout.operator("pose.select_grouped", text="集合").type='COLLECTION'
-            layout.operator("pose.select_grouped", text="颜色").type='COLOR'
-            layout.operator("pose.select_grouped", text="插帧集").type='KEYINGSET'
-        elif typeandmode == "METAEDIT":
-            layout.operator("mball.select_similar", text="类型").type='TYPE'
-            layout.operator("mball.select_similar", text="半径").type='RADIUS'
-            layout.operator("mball.select_similar", text="硬度").type='STIFFNESS'
-            layout.operator("mball.select_similar", text="旋转").type='ROTATION'
-
 # 调出“按组选择”菜单
-class BUTTON_ACTION_OT_call_select_select_grouped_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_select_select_grouped_menu"
+class BUTTON_ACTION_OT_select_select_grouped(bpy.types.Operator):
+    bl_idname = "button.action_select_select_grouped"
     bl_label = "按组选择"
     bl_description = "快捷键 Shift G"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        typeandmode = context.active_object.type + context.active_object.mode
-        
-        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
-            #bpy.ops.button.action_curveedit_surfaceedit_select_similar()
-            bpy.ops.curve.select_similar('INVOKE_DEFAULT')
-        else:
-            bpy.ops.wm.call_menu(name="view3d.mt_select_select_grouped_menu")
+    def execute(self, context):        
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.select_grouped('INVOKE_DEFAULT')
+        elif bpy.context.mode == "EDIT_GPENCIL":
+            bpy.ops.gpencil.select_grouped('INVOKE_DEFAULT')
+        elif bpy.context.mode == "POSE":
+            bpy.ops.pose.select_grouped('INVOKE_DEFAULT')
         return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 选择相连项（菜单）
 class VIEW3D_MT_select_select_linked_menu(bpy.types.Menu):
@@ -644,8 +552,7 @@ classes = (
     BUTTON_ACTION_OT_object_select_more,
     BUTTON_ACTION_OT_object_select_less,
     BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
-    VIEW3D_MT_select_select_grouped_menu,
-    BUTTON_ACTION_OT_call_select_select_grouped_menu,
+    BUTTON_ACTION_OT_select_select_grouped,
     VIEW3D_MT_select_select_linked_menu,
     BUTTON_ACTION_OT_call_select_select_linked_menu,
 )

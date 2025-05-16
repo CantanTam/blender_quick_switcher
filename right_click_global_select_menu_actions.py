@@ -94,6 +94,16 @@ def draw_add_to_switcher_global_select(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_select_grouped",
+        "POSE_OT_select_grouped",
+        "OBJECT_OT_select_grouped",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"按组选择(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_select_select_grouped'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+
 
 
 
