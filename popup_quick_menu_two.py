@@ -7,13 +7,6 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
     bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
-
-
-    #def invoke(self, context, event):
-    #    return context.window_manager.invoke_popup(self, width=640)
-
-
-
     def draw(self, context):
         layout = self.layout
 
@@ -54,15 +47,7 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
         for i in range(1, 11):
             col8_tuples += button_press_function.get(getattr(prefs, f"panel2_col8_button{i}"), ())
 
-
-        # ---------------↑↑↑↑ 再计算一次第 col1 的宽度 ↑↑↑↑-----------------------
-
-
-
-        # ------------创建十列布局-------------------------
         row = layout.row()
-
-
 
         if prefs.panel_two_col1_title.strip() != "" and (typeandmode in col1_tuples or "all" in col1_tuples):
             col1 = row.column(align=True)

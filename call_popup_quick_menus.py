@@ -6,7 +6,7 @@ class CALLOUT_QUICK_MENU_OT_one(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.popup.quick_menu_one('INVOKE_DEFAULT')
+        bpy.ops.wm.call_menu(name="popup.quick_menu_one")
         return {'FINISHED'}
     
 # 因为 operators.py 当中 限过了快捷键功能的运行方式是 exec(f'bpy.ops.{op}()') 

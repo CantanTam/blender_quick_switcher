@@ -50,26 +50,6 @@ keys_combination_functions = [
     ('NONE', '[ 无功能 ]', '如果快捷键和其它插件有键位冲突，可以选择[无功能]，重启Blender，注销组合键功能')
 ]
 
-# 更改 call.popup_menu_X 当中的 极速菜单 名字值
-def update_enum_items(self, context):
-    # 获取当前 quick_panel_one_title 的值（self 是首选项实例）
-    new_title_one = self.quick_panel_one_title
-    new_title_two = self.quick_panel_two_title
-
-    # 构造更新后那一项的元组
-    updated_item_one = ('call.popup_menu_one()', new_title_one, '超级菜单1')
-    updated_item_two = ('call.popup_menu_two()', new_title_two, '超级菜单2')
-
-    for idx, item in enumerate(keys_combination_functions):
-        if item[0] == 'call.popup_menu_one()':
-            keys_combination_functions[idx] = updated_item_one
-        elif item[0] == 'call.popup_menu_two()':
-            keys_combination_functions[idx] = updated_item_two
-
-    # 重新注册属性以便让更新生效（这种方式在某些情况下可能有副作用）
-    unregister()
-    register()
-
 class QuickSwitchAddonPreferences(AddonPreferences):
     bl_idname = __package__  # 使用当前包名作为标识符
     
@@ -317,8 +297,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="显示快捷键选项",
         description="展开/折叠快捷键选项",
         default=False,
-        # 这里保持默认关闭，当点击展开的时候，调用 update_enum_items
-        update=update_enum_items
+        update=update_preferences
     )
     
 
@@ -385,7 +364,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 # --------↓↓↓↓ panel one 相关设置 ↓↓↓↓---------
-    expand_quick_panel_one:BoolProperty(
+    quick_menu_one:BoolProperty(
         name="极速菜单1",
         description="展开/折叠极速菜单1",
         default=True,
@@ -403,17 +382,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第一列标题",
         description="留空不显示该列",
         default="第一列标题",
-        update=update_preferences
-    )
-
-    panel_one_col1_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第一列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -504,17 +472,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col2_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第二列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel1_col2_button1: EnumProperty(
         name="菜单1列2按钮1",
         description="菜单1列2按钮1功能测试",
@@ -599,17 +556,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第三列标题",
         description="留空不显示该列",
         default="第三列标题",
-        update=update_preferences
-    )
-
-    panel_one_col3_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第三列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -700,17 +646,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col4_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第四列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel1_col4_button1: EnumProperty(
         name="菜单1列4按钮1",
         description="菜单1列4按钮1功能测试",
@@ -795,17 +730,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第五列标题",
         description="留空不显示该列",
         default="第五列标题",
-        update=update_preferences
-    )
-
-    panel_one_col5_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第五列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -896,17 +820,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col6_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第六列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel1_col6_button1: EnumProperty(
         name="菜单1列6按钮1",
         description="菜单1列6按钮1功能测试",
@@ -994,17 +907,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col7_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第七列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
-        update=update_preferences
-    )
-
     panel1_col7_button1: EnumProperty(
         name="菜单1列7按钮1",
         description="菜单1列7按钮1功能测试",
@@ -1089,17 +991,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         name="第八列标题",
         description="留空不显示该列",
         default="第八列标题",
-        update=update_preferences
-    )
-
-    panel_one_col8_width: bpy.props.IntProperty(
-        name="面板宽度",
-        description="第八列宽度",
-        default=80,
-        min=55,  # 最小值
-        max=150,  # 最大值
-        soft_min=55,  # 拖动时的最小限制
-        soft_max=150,  # 拖动时的最大限制
         update=update_preferences
     )
 
@@ -2005,101 +1896,37 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         # 极速菜单1 设置项 BOX框
         box = layout.box()
         row = box.row()
-        row.prop(self, "expand_quick_panel_one", 
-                icon="DOWNARROW_HLT" if self.expand_quick_panel_one else "RIGHTARROW",
+        row.prop(self, "quick_menu_one", 
+                icon="DOWNARROW_HLT" if self.quick_menu_one else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
-        row.prop(self, "quick_panel_one_title", icon="COLLECTION_COLOR_01")
+        row.label(text="极速菜单1", icon="COLLECTION_COLOR_01")
+        #row.prop(self, "quick_panel_one_title", icon="COLLECTION_COLOR_01")
             
-        if self.expand_quick_panel_one:
+        if self.quick_menu_one:
 
-            # 第一列设置项：
             top_box = box.box()
+            top_box.label(text="abl ldjf ld l")
             row = top_box.row()
-            row.prop(self, "panel_one_col1_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col1_width", text="第一列宽度")
+            row.prop(self, "panel_one_col1_title", text="")
+            row.prop(self, "panel_one_col2_title", text="")
+            row.prop(self, "panel_one_col3_title", text="")
+            row.prop(self, "panel_one_col4_title", text="")
+            row.prop(self, "panel_one_col5_title", text="")
+            row.prop(self, "panel_one_col6_title", text="")
+            row.prop(self, "panel_one_col7_title", text="")
+            row.prop(self, "panel_one_col8_title", text="")
 
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col1_button{i}")
-
-            # 第二列设置项：
-            top_box = box.box()
+            top_box.label(text="lj fdljf dlf jl")
             row = top_box.row()
-            row.prop(self, "panel_one_col2_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col2_width", text="第二列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col2_button{i}")
-
-            # 第三列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col3_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col3_width", text="第三列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col3_button{i}")
-
-            # 第四列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col4_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col4_width", text="第四列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col4_button{i}")
-
-            # 第五列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col5_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col5_width", text="第五列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col5_button{i}")
-
-            # 第六列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col6_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col6_width", text="第六列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col6_button{i}")
-
-            # 第七列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col7_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col7_width", text="第七列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col7_button{i}")
-
-            # 第八列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_one_col8_title", text="",icon="TOPBAR")
-            row.prop(self, "panel_one_col8_width", text="第八列宽度")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel1_col8_button{i}")
+            row.prop(self, "panel_two_col1_title", text="")
+            row.prop(self, "panel_two_col2_title", text="")
+            row.prop(self, "panel_two_col3_title", text="")
+            row.prop(self, "panel_two_col4_title", text="")
+            row.prop(self, "panel_two_col5_title", text="")
+            row.prop(self, "panel_two_col6_title", text="")
+            row.prop(self, "panel_two_col7_title", text="")
+            row.prop(self, "panel_two_col8_title", text="")
 
 
 
@@ -2119,83 +1946,16 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
             # 第一列设置项：
             top_box = box.box()
+            top_box.label(text="lj fdljf dlf jl")
             row = top_box.row()
-            row.prop(self, "panel_two_col1_title", text="",icon="TOPBAR")
-
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col1_button{i}")
-
-            # 第二列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col2_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col2_button{i}")
-
-            # 第三列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col3_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col3_button{i}")
-
-            # 第四列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col4_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col4_button{i}")
-
-            # 第五列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col5_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col5_button{i}")
-
-            # 第六列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col6_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col6_button{i}")
-
-            # 第七列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col7_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col7_button{i}")
-
-            # 第八列设置项：
-            top_box = box.box()
-            row = top_box.row()
-            row.prop(self, "panel_two_col8_title", text="",icon="TOPBAR")
-            
-            content_box = top_box.box()
-            for i in range(1, 11):
-                row = content_box.row()
-                row.prop(self, f"panel2_col8_button{i}")
+            row.prop(self, "panel_two_col1_title", text="")
+            row.prop(self, "panel_two_col2_title", text="")
+            row.prop(self, "panel_two_col3_title", text="")
+            row.prop(self, "panel_two_col4_title", text="")
+            row.prop(self, "panel_two_col5_title", text="")
+            row.prop(self, "panel_two_col6_title", text="")
+            row.prop(self, "panel_two_col7_title", text="")
+            row.prop(self, "panel_two_col8_title", text="")
 
 
 
