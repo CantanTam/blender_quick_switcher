@@ -69,13 +69,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     except Exception as e:
                         print(f"初始设置 {prop_name} 失败: {e}")
 
-    to_use_npanel:BoolProperty(
-        name="使用N面板",
-        description="显示/隐藏N面板快速切换",
-        default=True,
-        update=update_preferences
-    )
-
     to_show_to_switcher:BoolProperty(
         name="显示添加到Switcher",
         description="显示/隐藏右击\"添加到Switcher\"选项",
@@ -90,13 +83,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         default='switch.vertex_edge_face()',
         update=update_preferences,
     )
-
-    ctrl_wheel_up_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
     
     ctrl_wheel_down: EnumProperty(
         name="Ctrl+鼠标下滚", 
@@ -106,25 +92,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences,
     )
 
-    ctrl_wheel_down_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     ctrl_alt_wheel_up: EnumProperty(
         name="Ctrl+Alt+鼠标上滚", 
         description="选择Ctrl+Alt+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()',
-        update=update_preferences
-    )
-
-    ctrl_alt_wheel_up_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -136,25 +108,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    ctrl_alt_wheel_down_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     shift_wheel_up: EnumProperty(
         name="Shift+鼠标上滚", 
         description="选择Shift+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()',
-        update=update_preferences
-    )
-
-    shift_wheel_up_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -166,25 +124,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    shift_wheel_down_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     ctrl_shift_wheel_up: EnumProperty(
         name="Ctrl+Shift+鼠标上滚", 
         description="选择Ctrl+Shift+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.normal_down_to_up()',
-        update=update_preferences
-    )
-
-    ctrl_shift_wheel_up_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -196,25 +140,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    ctrl_shift_wheel_down_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     shift_alt_wheel_up: EnumProperty(
         name="Shift+Alt+鼠标上滚", 
         description="选择Shift+Alt+鼠标上滚快捷键功能",
         items=keys_combination_functions,
         default='mode.menu_switch()',
-        update=update_preferences
-    )
-
-    shift_alt_wheel_up_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -226,25 +156,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    shift_alt_wheel_down_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     alt_mouse_right: EnumProperty(
         name="Alt+鼠标右键", 
         description="选择Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
         default='mode.transfer()',
-        update=update_preferences
-    )
-
-    alt_mouse_right_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -256,13 +172,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    ctrl_alt_mouse_right_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     shift_alt_mouse_right: EnumProperty(
         name="Shift+Alt+鼠标右键", 
         description="选择Shift+Alt+鼠标右键快捷键功能",
@@ -271,25 +180,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    shift_alt_mouse_right_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
-        update=update_preferences
-    )
-
     ctrl_shift_alt_mouse_right: EnumProperty(
         name="Ctrl_Shift+Alt+鼠标右键", 
         description="选择Ctrl+Shift+Alt+鼠标右键快捷键功能",
         items=keys_combination_functions,
         default='mode.forced_select()',
-        update=update_preferences
-    )
-
-    ctrl_shift_alt_mouse_right_on_panel:BoolProperty(
-        name="",
-        description="在N面板显示该选项",
-        default=True,
         update=update_preferences
     )
 
@@ -1831,7 +1726,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
-        row.prop(self, "to_use_npanel")
         row.prop(self, "to_show_to_switcher")
 
         if self.show_shortcut_options:
@@ -1850,46 +1744,32 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
             content_box = box.box()
             row = content_box.row()
-            row.prop(self, "ctrl_wheel_up_on_panel")
             row.prop(self, "ctrl_wheel_up")
             row = content_box.row()
-            row.prop(self, "ctrl_wheel_down_on_panel") 
             row.prop(self, "ctrl_wheel_down")
             row = content_box.row() 
-            row.prop(self, "ctrl_alt_wheel_up_on_panel")
             row.prop(self, "ctrl_alt_wheel_up")
             row = content_box.row() 
-            row.prop(self, "ctrl_alt_wheel_down_on_panel")
             row.prop(self, "ctrl_alt_wheel_down")
             row = content_box.row() 
-            row.prop(self, "shift_wheel_up_on_panel")
             row.prop(self, "shift_wheel_up")
             row = content_box.row() 
-            row.prop(self, "shift_wheel_down_on_panel")
             row.prop(self, "shift_wheel_down")
             row = content_box.row() 
-            row.prop(self, "ctrl_shift_wheel_up_on_panel")
             row.prop(self, "ctrl_shift_wheel_up")
             row = content_box.row() 
-            row.prop(self, "ctrl_shift_wheel_down_on_panel")
             row.prop(self, "ctrl_shift_wheel_down")
             row = content_box.row() 
-            row.prop(self, "shift_alt_wheel_up_on_panel")
             row.prop(self, "shift_alt_wheel_up")
             row = content_box.row() 
-            row.prop(self, "shift_alt_wheel_down_on_panel")
             row.prop(self, "shift_alt_wheel_down")
             row = content_box.row() 
-            row.prop(self, "alt_mouse_right_on_panel")
             row.prop(self, "alt_mouse_right")
             row = content_box.row() 
-            row.prop(self, "ctrl_alt_mouse_right_on_panel")
             row.prop(self, "ctrl_alt_mouse_right")
             row = content_box.row() 
-            row.prop(self, "shift_alt_mouse_right_on_panel")
             row.prop(self, "shift_alt_mouse_right")
             row = content_box.row() 
-            row.prop(self, "ctrl_shift_alt_mouse_right_on_panel")
             row.prop(self, "ctrl_shift_alt_mouse_right")
 
         # -----------------------------------------------

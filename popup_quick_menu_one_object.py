@@ -3,7 +3,7 @@ import bpy
 from .button_operator_dict import button_press_function
 
 class POPUP_MENU_OT_object(bpy.types.Menu):
-    bl_idname = "popup.quick_menu_object"
+    bl_idname = "popup.quick_menu_one_object"
     bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
