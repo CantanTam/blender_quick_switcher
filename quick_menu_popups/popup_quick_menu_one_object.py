@@ -14,7 +14,7 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
     def poll(cls, context):
         prefs = context.preferences.addons[cls.ADDON_NAME].preferences
         for i in range(1, 9):
-            if getattr(prefs, f"panel1_col{i}_title").strip() != "":
+            if getattr(prefs, f"panelone_mode1_col{i}_title").strip() != "":
                 return True
         return False
 
@@ -23,29 +23,29 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
         layout = self.layout
         row = layout.row()
 
-        if prefs.panel1_col1_title.strip() != "" :
+        if prefs.panelone_mode1_col1_title.strip() != "" :
             col1 = row.column()
-        if prefs.panel1_col2_title.strip() != "":
+        if prefs.panelone_mode1_col2_title.strip() != "":
             col2 = row.column()
-        if prefs.panel1_col3_title.strip() != "":
+        if prefs.panelone_mode1_col3_title.strip() != "":
             col3 = row.column()
-        if prefs.panel1_col4_title.strip() != "":
+        if prefs.panelone_mode1_col4_title.strip() != "":
             col4 = row.column()
-        if prefs.panel1_col5_title.strip() != "":
+        if prefs.panelone_mode1_col5_title.strip() != "":
             col5 = row.column()
-        if prefs.panel1_col6_title.strip() != "":
+        if prefs.panelone_mode1_col6_title.strip() != "":
             col6 = row.column()
-        if prefs.panel1_col7_title.strip() != "":
+        if prefs.panelone_mode1_col7_title.strip() != "":
             col7 = row.column()
-        if prefs.panel1_col8_title.strip() != "":
+        if prefs.panelone_mode1_col8_title.strip() != "":
             col8 = row.column()
 
         # 第一列菜单项
-        if prefs.panel1_col1_title.strip() != "":
-            col1.label(text=prefs.panel1_col1_title, icon='PRESET')
+        if prefs.panelone_mode1_col1_title.strip() != "":
+            col1.label(text=prefs.panelone_mode1_col1_title, icon='PRESET')
             col1.separator()
             for i in range(1, 11):
-                col1_button_value = getattr(prefs, f"panel1_col1_button{i}")
+                col1_button_value = getattr(prefs, f"panelone_mode1_col1_button{i}")
                 temp_col1_button = button_press_function.get(col1_button_value)
                 if col1_button_value == 'SEPARATOR':
                     col1.separator()
@@ -55,11 +55,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第二列菜单项
-        if prefs.panel1_col2_title.strip() != "":
-            col2.label(text=prefs.panel1_col2_title, icon='PRESET')
+        if prefs.panelone_mode1_col2_title.strip() != "":
+            col2.label(text=prefs.panelone_mode1_col2_title, icon='PRESET')
             col2.separator()
             for i in range(1, 11):
-                col2_button_value = getattr(prefs, f"panel1_col2_button{i}")
+                col2_button_value = getattr(prefs, f"panelone_mode1_col2_button{i}")
                 temp_col2_button = button_press_function.get(col2_button_value)
                 if col2_button_value == 'SEPARATOR':
                     col2.separator()
@@ -68,11 +68,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第三列菜单项
-        if prefs.panel1_col3_title.strip() != "":
-            col3.label(text=prefs.panel1_col3_title, icon='PRESET')
+        if prefs.panelone_mode1_col3_title.strip() != "":
+            col3.label(text=prefs.panelone_mode1_col3_title, icon='PRESET')
             col3.separator()
             for i in range(1, 11):
-                col3_button_value = getattr(prefs, f"panel1_col3_button{i}")
+                col3_button_value = getattr(prefs, f"panelone_mode1_col3_button{i}")
                 temp_col3_button = button_press_function.get(col3_button_value)
                 if col3_button_value == 'SEPARATOR':
                     col3.separator()
@@ -81,11 +81,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第四列菜单项
-        if prefs.panel1_col4_title.strip() != "":
-            col4.label(text=prefs.panel1_col4_title, icon='PRESET')
+        if prefs.panelone_mode1_col4_title.strip() != "":
+            col4.label(text=prefs.panelone_mode1_col4_title, icon='PRESET')
             col4.separator()
             for i in range(1, 11):
-                col4_button_value = getattr(prefs, f"panel1_col4_button{i}")
+                col4_button_value = getattr(prefs, f"panelone_mode1_col4_button{i}")
                 temp_col4_button = button_press_function.get(col4_button_value)
                 if col4_button_value == 'SEPARATOR':
                     col4.separator()
@@ -94,11 +94,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第五列菜单项
-        if prefs.panel1_col5_title.strip() != "":
-            col5.label(text=prefs.panel1_col5_title, icon='PRESET')
+        if prefs.panelone_mode1_col5_title.strip() != "":
+            col5.label(text=prefs.panelone_mode1_col5_title, icon='PRESET')
             col5.separator()
             for i in range(1, 11):
-                col5_button_value = getattr(prefs, f"panel1_col5_button{i}")
+                col5_button_value = getattr(prefs, f"panelone_mode1_col5_button{i}")
                 temp_col5_button = button_press_function.get(col5_button_value)
                 if col5_button_value == 'SEPARATOR':
                     col5.separator()
@@ -107,11 +107,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第六列菜单项
-        if prefs.panel1_col6_title.strip() != "":
-            col6.label(text=prefs.panel1_col6_title, icon='PRESET')
+        if prefs.panelone_mode1_col6_title.strip() != "":
+            col6.label(text=prefs.panelone_mode1_col6_title, icon='PRESET')
             col6.separator()
             for i in range(1, 11):
-                col6_button_value = getattr(prefs, f"panel1_col6_button{i}")
+                col6_button_value = getattr(prefs, f"panelone_mode1_col6_button{i}")
                 temp_col6_button = button_press_function.get(col6_button_value)
                 if col6_button_value == 'SEPARATOR':
                     col6.separator()
@@ -120,11 +120,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第七列菜单项
-        if prefs.panel1_col7_title.strip() != "":
-            col7.label(text=prefs.panel1_col7_title, icon='PRESET')
+        if prefs.panelone_mode1_col7_title.strip() != "":
+            col7.label(text=prefs.panelone_mode1_col7_title, icon='PRESET')
             col7.separator()
             for i in range(1, 11):
-                col7_button_value = getattr(prefs, f"panel1_col7_button{i}")
+                col7_button_value = getattr(prefs, f"panelone_mode1_col7_button{i}")
                 temp_col7_button = button_press_function.get(col7_button_value)
                 if col7_button_value == 'SEPARATOR':
                     col7.separator()
@@ -133,11 +133,11 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
 
 
         # 第八列菜单项
-        if prefs.panel1_col8_title.strip() != "":
-            col8.label(text=prefs.panel1_col8_title, icon='PRESET')
+        if prefs.panelone_mode1_col8_title.strip() != "":
+            col8.label(text=prefs.panelone_mode1_col8_title, icon='PRESET')
             col8.separator()
             for i in range(1, 11):
-                col8_button_value = getattr(prefs, f"panel1_col8_button{i}")
+                col8_button_value = getattr(prefs, f"panelone_mode1_col8_button{i}")
                 temp_col8_button = button_press_function.get(col8_button_value)
                 if col8_button_value == 'SEPARATOR':
                     col8.separator()
