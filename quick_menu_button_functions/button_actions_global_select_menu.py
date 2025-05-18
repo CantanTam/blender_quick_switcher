@@ -726,10 +726,6 @@ class BUTTON_ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
         bpy.ops.popup.mesh_select_by_trait('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-
-
-
-
 class BUTTON_ACTION_OT_mesh_select_loops(bpy.types.Operator):
     bl_idname = "popup.mesh_select_loops"
     bl_label = "选择循环"
@@ -764,6 +760,88 @@ class BUTTON_ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
         bpy.ops.popup.mesh_select_loops('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
+    bl_idname = "button.action_mesh_select_axis"
+    bl_label = "活动项的同侧"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    orientation: bpy.props.EnumProperty(
+        name="",
+        description="轴朝向",
+        items=[
+            ('GLOBAL', "全局",    "", 'ORIENTATION_GLOBAL',   0),
+            ('LOCAL',  "局部",     "", 'ORIENTATION_LOCAL', 1),
+            ('NORMAL', "法向",    "", 'ORIENTATION_NORMAL',   2),
+            ('GIMBAL', "万向",    "", 'ORIENTATION_GIMBAL',    3),
+            ('VIEW',   "视图",      "", 'ORIENTATION_VIEW',      4),
+            ('CURSOR', "游标",    "", 'ORIENTATION_CURSOR',        5),
+            ('PARENT', "父级",    "", 'ORIENTATION_PARENT',     6),
+        ],
+        default='LOCAL',
+        update=lambda self, context: self.execute(context)
+    )
+
+    sign: bpy.props.EnumProperty(
+        name="",
+        description="选择的一侧",
+        items=[
+            ('POS',   "正轴向",   ""),
+            ('NEG',   "负轴向",   ""),
+            ('ALIGN', "对齐轴",   ""),
+        ],
+        default='POS',
+        update=lambda self, context: self.execute(context)
+    )
+
+    axis: bpy.props.EnumProperty(
+        name="",
+        description="选择各点用来比较的轴向",
+        items=[
+            ('X', "X", ""),
+            ('Y', "Y", ""),
+            ('Z', "Z", ""),
+        ],
+        default='X',
+        update=lambda self, context: self.execute(context)
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        description="Threshold for selecting (in Blender units)",
+        default=0,
+        min=0,
+        max=50.0,
+        soft_max=10.0,
+        precision=3,
+        update=lambda self, context: self.execute(context)
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="轴向模式")
+        col_left.label(text="轴向记号")
+        col_left.label(text="轴向")
+        col_left.label(text="阈值")
+
+        col_right = split.column()
+        col_right.prop(self, "orientation")
+        col_right.prop(self, "sign")
+        col_right.prop(self, "axis")
+        col_right.prop(self, "threshold")
+
+    def execute(self, context):
+        bpy.ops.mesh.select_axis(orientation=self.orientation, sign=self.sign, axis=self.axis, threshold=self.threshold)
+        return {'FINISHED'}
+
+
+
 
 
 classes = (
@@ -788,6 +866,7 @@ classes = (
     BUTTON_ACTION_OT_mesh_call_select_by_trait,
     BUTTON_ACTION_OT_mesh_select_loops,
     BUTTON_ACTION_OT_call_mesh_select_loops,
+    BUTTON_ACTION_OT_mesh_select_axis,
 )
 
 def register():

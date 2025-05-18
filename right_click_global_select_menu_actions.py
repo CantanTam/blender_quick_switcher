@@ -148,6 +148,11 @@ def draw_add_to_switcher_global_select(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"选择相似(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_select_select_similar'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_select_axis":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"活动项的同侧\"添加到Switcher", icon='RADIOBUT_OFF').action = 'button.action_mesh_select_axis'
+        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 def global_select_object_moreless_menu_to_switcher(self, context):

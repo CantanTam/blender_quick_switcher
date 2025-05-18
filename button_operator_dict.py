@@ -129,6 +129,7 @@ button_options_list = [
     ('button.action_select_select_similar','选择相似(菜单)',''), #Switcher
     ('button.action_mesh_call_select_by_trait','按特征全选(菜单)',''), #Switcher
     ('button.action_call_mesh_select_loops','选择循环(菜单)',''), #Switcher
+    ('button.action_mesh_select_axis','活动项的同侧',''), #Switcher
 
 
     # 物体模式——“选择”菜单
@@ -690,6 +691,9 @@ button_press_function = {
     ),
         'button.action_call_mesh_select_loops':(
         "button.action_call_mesh_select_loops","选择循环","PRESET", "MESHEDIT",
+    ),
+        'button.action_mesh_select_axis':(
+        "button.action_mesh_select_axis","活动项的同侧","RADIOBUT_OFF", "MESHEDIT",
     ),
 
     # 一些通用操作
