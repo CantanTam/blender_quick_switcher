@@ -22,4 +22,3 @@ class CALLOUT_QUICK_MENU_OT_two(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="popup.quick_menu_two")
         return {'FINISHED'}
     
-    
