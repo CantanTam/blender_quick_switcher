@@ -8,10 +8,13 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
     bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
-    def draw(self, context):
-        layout = self.layout
+    # 通用的插件名称引用
+    ADDON_NAME = __package__.split('.')[0]
 
-        prefs = context.preferences.addons[__package__].preferences
+    def draw(self, context):
+        prefs = context.preferences.addons[self.ADDON_NAME].preferences
+
+        layout = self.layout
 
         # 利用typeandmode 和
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode

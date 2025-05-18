@@ -1,14 +1,17 @@
 import bpy
 
-from .button_operator_dict import button_press_function
+from ..button_operator_dict import button_press_function
 
-class POPUP_MENU_OT_object(bpy.types.Menu):
+class POPUP_MENU_OT_one_object(bpy.types.Menu):
     bl_idname = "popup.quick_menu_one_object"
     bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
+    # 通用的插件名称引用
+    ADDON_NAME = __package__.split('.')[0]
+
     def draw(self, context):
-        prefs = context.preferences.addons[__package__].preferences
+        prefs = context.preferences.addons[self.ADDON_NAME].preferences
 
         layout = self.layout
         row = layout.row()
