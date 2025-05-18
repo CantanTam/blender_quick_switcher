@@ -10,9 +10,16 @@ class POPUP_MENU_OT_one_object(bpy.types.Menu):
     # 通用的插件名称引用
     ADDON_NAME = __package__.split('.')[0]
 
+    @classmethod
+    def poll(cls, context):
+        prefs = context.preferences.addons[cls.ADDON_NAME].preferences
+        for i in range(1, 9):
+            if getattr(prefs, f"panel1_col{i}_title").strip() != "":
+                return True
+        return False
+
     def draw(self, context):
         prefs = context.preferences.addons[self.ADDON_NAME].preferences
-
         layout = self.layout
         row = layout.row()
 

@@ -1711,15 +1711,17 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="选择快捷键功能", icon="MODIFIER")
+        row.prop(self, "to_show_switch_notice")
         row.prop(self, "to_show_to_switcher")
 
         if self.show_shortcut_options:
             # 选项内容区域
-            content_box = box.box()
-
-            row = content_box.row()
-            row.prop(self, "to_show_switch_notice")
             if self.to_show_switch_notice:
+                content_box = box.box()
+
+            #row = content_box.row()
+            
+            
                 row = content_box.row()
                 row.prop(self, "switch_notice_scale", slider=True , text="切换提示大小")
                 row = content_box.row()
