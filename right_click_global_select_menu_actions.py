@@ -24,6 +24,7 @@ def draw_add_to_switcher_global_select(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"全选\"添加到Switcher", icon='EVENT_A').action = 'button.action_global_select_all'
         layout.operator("call.add_to_switcher_menu", text="\"反选\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_invert'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+        layout.operator("call.add_to_switcher_menu", text="添加[空按钮]到Switcher", icon='CANCEL').action = 'NO_BUTTON'
 
     elif op and op.bl_rna.identifier in {
         "VIEW3D_OT_select_circle",
