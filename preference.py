@@ -371,14 +371,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    quick_panel_one_title: bpy.props.StringProperty(
+    quick_panel1_title: bpy.props.StringProperty(
         name="",
         description="极速菜单1名字",
         default="极速菜单1名字",
         update=update_preferences
     )
     
-    panel_one_col1_title: bpy.props.StringProperty(
+    panel1_col1_title: bpy.props.StringProperty(
         name="第一列标题",
         description="留空不显示该列",
         default="第一列标题",
@@ -465,7 +465,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col2_title: bpy.props.StringProperty(
+    panel1_col2_title: bpy.props.StringProperty(
         name="第二列标题",
         description="留空不显示该列",
         default="第二列标题",
@@ -552,7 +552,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col3_title: bpy.props.StringProperty(
+    panel1_col3_title: bpy.props.StringProperty(
         name="第三列标题",
         description="留空不显示该列",
         default="第三列标题",
@@ -639,7 +639,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col4_title: bpy.props.StringProperty(
+    panel1_col4_title: bpy.props.StringProperty(
         name="第四列标题",
         description="留空不显示该列",
         default="第四列标题",
@@ -726,7 +726,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col5_title: bpy.props.StringProperty(
+    panel1_col5_title: bpy.props.StringProperty(
         name="第五列标题",
         description="留空不显示该列",
         default="第五列标题",
@@ -813,7 +813,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col6_title: bpy.props.StringProperty(
+    panel1_col6_title: bpy.props.StringProperty(
         name="第六列标题",
         description="留空不显示该列",
         default="第六列标题",
@@ -900,7 +900,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col7_title: bpy.props.StringProperty(
+    panel1_col7_title: bpy.props.StringProperty(
         name="第七列标题",
         description="留空不显示该列",
         default="第七列标题",
@@ -987,7 +987,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_one_col8_title: bpy.props.StringProperty(
+    panel1_col8_title: bpy.props.StringProperty(
         name="第八列标题",
         description="留空不显示该列",
         default="第八列标题",
@@ -1096,14 +1096,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    quick_panel_two_title: bpy.props.StringProperty(
+    quick_panel2_title: bpy.props.StringProperty(
         name="",
         description="极速菜单2名字",
         default="极速菜单2名字",
         update=update_preferences
     )
     
-    panel_two_col1_title: bpy.props.StringProperty(
+    panel2_col1_title: bpy.props.StringProperty(
         name="第一列标题",
         description="留空不显示该列",
         default="第一列标题",
@@ -1190,7 +1190,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col2_title: bpy.props.StringProperty(
+    panel2_col2_title: bpy.props.StringProperty(
         name="第二列标题",
         description="留空不显示该列",
         default="第二列标题",
@@ -1277,7 +1277,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col3_title: bpy.props.StringProperty(
+    panel2_col3_title: bpy.props.StringProperty(
         name="第三列标题",
         description="留空不显示该列",
         default="第三列标题",
@@ -1364,7 +1364,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col4_title: bpy.props.StringProperty(
+    panel2_col4_title: bpy.props.StringProperty(
         name="第四列标题",
         description="留空不显示该列",
         default="第四列标题",
@@ -1451,7 +1451,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col5_title: bpy.props.StringProperty(
+    panel2_col5_title: bpy.props.StringProperty(
         name="第五列标题",
         description="留空不显示该列",
         default="第五列标题",
@@ -1538,7 +1538,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col6_title: bpy.props.StringProperty(
+    panel2_col6_title: bpy.props.StringProperty(
         name="第六列标题",
         description="留空不显示该列",
         default="第六列标题",
@@ -1625,7 +1625,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col7_title: bpy.props.StringProperty(
+    panel2_col7_title: bpy.props.StringProperty(
         name="第七列标题",
         description="留空不显示该列",
         default="第七列标题",
@@ -1712,7 +1712,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panel_two_col8_title: bpy.props.StringProperty(
+    panel2_col8_title: bpy.props.StringProperty(
         name="第八列标题",
         description="留空不显示该列",
         default="第八列标题",
@@ -1901,32 +1901,32 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="极速菜单1", icon="COLLECTION_COLOR_01")
-        #row.prop(self, "quick_panel_one_title", icon="COLLECTION_COLOR_01")
+        #row.prop(self, "quick_panel1_title", icon="COLLECTION_COLOR_01")
             
         if self.quick_menu_one:
 
             top_box = box.box()
             top_box.label(text="abl ldjf ld l")
             row = top_box.row()
-            row.prop(self, "panel_one_col1_title", text="")
-            row.prop(self, "panel_one_col2_title", text="")
-            row.prop(self, "panel_one_col3_title", text="")
-            row.prop(self, "panel_one_col4_title", text="")
-            row.prop(self, "panel_one_col5_title", text="")
-            row.prop(self, "panel_one_col6_title", text="")
-            row.prop(self, "panel_one_col7_title", text="")
-            row.prop(self, "panel_one_col8_title", text="")
+            row.prop(self, "panel1_col1_title", text="")
+            row.prop(self, "panel1_col2_title", text="")
+            row.prop(self, "panel1_col3_title", text="")
+            row.prop(self, "panel1_col4_title", text="")
+            row.prop(self, "panel1_col5_title", text="")
+            row.prop(self, "panel1_col6_title", text="")
+            row.prop(self, "panel1_col7_title", text="")
+            row.prop(self, "panel1_col8_title", text="")
 
             top_box.label(text="lj fdljf dlf jl")
             row = top_box.row()
-            row.prop(self, "panel_two_col1_title", text="")
-            row.prop(self, "panel_two_col2_title", text="")
-            row.prop(self, "panel_two_col3_title", text="")
-            row.prop(self, "panel_two_col4_title", text="")
-            row.prop(self, "panel_two_col5_title", text="")
-            row.prop(self, "panel_two_col6_title", text="")
-            row.prop(self, "panel_two_col7_title", text="")
-            row.prop(self, "panel_two_col8_title", text="")
+            row.prop(self, "panel2_col1_title", text="")
+            row.prop(self, "panel2_col2_title", text="")
+            row.prop(self, "panel2_col3_title", text="")
+            row.prop(self, "panel2_col4_title", text="")
+            row.prop(self, "panel2_col5_title", text="")
+            row.prop(self, "panel2_col6_title", text="")
+            row.prop(self, "panel2_col7_title", text="")
+            row.prop(self, "panel2_col8_title", text="")
 
 
 
@@ -1940,7 +1940,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon="DOWNARROW_HLT" if self.expand_quick_panel_two else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
-        row.prop(self, "quick_panel_two_title", icon="COLLECTION_COLOR_02")
+        row.prop(self, "quick_panel2_title", icon="COLLECTION_COLOR_02")
             
         if self.expand_quick_panel_two:
 
@@ -1948,14 +1948,14 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             top_box.label(text="lj fdljf dlf jl")
             row = top_box.row()
-            row.prop(self, "panel_two_col1_title", text="")
-            row.prop(self, "panel_two_col2_title", text="")
-            row.prop(self, "panel_two_col3_title", text="")
-            row.prop(self, "panel_two_col4_title", text="")
-            row.prop(self, "panel_two_col5_title", text="")
-            row.prop(self, "panel_two_col6_title", text="")
-            row.prop(self, "panel_two_col7_title", text="")
-            row.prop(self, "panel_two_col8_title", text="")
+            row.prop(self, "panel2_col1_title", text="")
+            row.prop(self, "panel2_col2_title", text="")
+            row.prop(self, "panel2_col3_title", text="")
+            row.prop(self, "panel2_col4_title", text="")
+            row.prop(self, "panel2_col5_title", text="")
+            row.prop(self, "panel2_col6_title", text="")
+            row.prop(self, "panel2_col7_title", text="")
+            row.prop(self, "panel2_col8_title", text="")
 
 
 

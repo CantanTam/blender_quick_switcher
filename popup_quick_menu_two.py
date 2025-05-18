@@ -49,26 +49,26 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
 
         row = layout.row()
 
-        if prefs.panel_two_col1_title.strip() != "" and (typeandmode in col1_tuples or "all" in col1_tuples):
+        if prefs.panel2_col1_title.strip() != "" and (typeandmode in col1_tuples or "all" in col1_tuples):
             col1 = row.column(align=True)
-        if prefs.panel_two_col2_title.strip() != "" and (typeandmode in col2_tuples or "all" in col2_tuples):
+        if prefs.panel2_col2_title.strip() != "" and (typeandmode in col2_tuples or "all" in col2_tuples):
             col2 = row.column(align=True)
-        if prefs.panel_two_col3_title.strip() != "" and (typeandmode in col3_tuples or "all" in col3_tuples):
+        if prefs.panel2_col3_title.strip() != "" and (typeandmode in col3_tuples or "all" in col3_tuples):
             col3 = row.column(align=True)
-        if prefs.panel_two_col4_title.strip() != "" and (typeandmode in col4_tuples or "all" in col4_tuples):
+        if prefs.panel2_col4_title.strip() != "" and (typeandmode in col4_tuples or "all" in col4_tuples):
             col4 = row.column(align=True)
-        if prefs.panel_two_col5_title.strip() != "" and (typeandmode in col5_tuples or "all" in col5_tuples):
+        if prefs.panel2_col5_title.strip() != "" and (typeandmode in col5_tuples or "all" in col5_tuples):
             col5 = row.column(align=True)
-        if prefs.panel_two_col6_title.strip() != "" and (typeandmode in col6_tuples or "all" in col6_tuples):
+        if prefs.panel2_col6_title.strip() != "" and (typeandmode in col6_tuples or "all" in col6_tuples):
             col6 = row.column(align=True)
-        if prefs.panel_two_col7_title.strip() != "" and (typeandmode in col7_tuples or "all" in col7_tuples):
+        if prefs.panel2_col7_title.strip() != "" and (typeandmode in col7_tuples or "all" in col7_tuples):
             col7 = row.column(align=True)
-        if prefs.panel_two_col8_title.strip() != "" and (typeandmode in col8_tuples or "all" in col8_tuples):
+        if prefs.panel2_col8_title.strip() != "" and (typeandmode in col8_tuples or "all" in col8_tuples):
             col8 = row.column(align=True)
 
         # 第一列菜单项
-        if prefs.panel_two_col1_title.strip() != "" and (typeandmode in col1_tuples or "all" in col1_tuples) :
-            col1.label(text=prefs.panel_two_col1_title, icon='PRESET')
+        if prefs.panel2_col1_title.strip() != "" and (typeandmode in col1_tuples or "all" in col1_tuples) :
+            col1.label(text=prefs.panel2_col1_title, icon='PRESET')
             col1.separator()
             # 我在设置preference的时候，已经为 panel2_col1_button1 在下拉菜单选定了值，例如
             # teston，现在是需要用用 'testone' 这个值在 button_press_function 当中寻找
@@ -85,8 +85,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col1.operator(temp_col1_button[0], text=temp_col1_button[1], icon=temp_col1_button[2])
 
         # 第二列菜单项
-        if prefs.panel_two_col2_title.strip() != "" and (typeandmode in col2_tuples or "all" in col2_tuples):
-            col2.label(text=prefs.panel_two_col2_title, icon='PRESET')
+        if prefs.panel2_col2_title.strip() != "" and (typeandmode in col2_tuples or "all" in col2_tuples):
+            col2.label(text=prefs.panel2_col2_title, icon='PRESET')
             col2.separator()
 
             for i in range(1, 11):
@@ -100,8 +100,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col2.operator(temp_col2_button[0], text=temp_col2_button[1], icon=temp_col2_button[2])
 
         # 第三列菜单项
-        if prefs.panel_two_col3_title.strip() != "" and (typeandmode in col3_tuples or "all" in col3_tuples):
-            col3.label(text=prefs.panel_two_col3_title, icon='PRESET')
+        if prefs.panel2_col3_title.strip() != "" and (typeandmode in col3_tuples or "all" in col3_tuples):
+            col3.label(text=prefs.panel2_col3_title, icon='PRESET')
             col3.separator()
 
             for i in range(1, 11):
@@ -115,8 +115,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col3.operator(temp_col3_button[0], text=temp_col3_button[1], icon=temp_col3_button[2])
 
         # 第四列菜单项
-        if prefs.panel_two_col4_title.strip() != "" and (typeandmode in col4_tuples or "all" in col4_tuples):
-            col4.label(text=prefs.panel_two_col4_title, icon='PRESET')
+        if prefs.panel2_col4_title.strip() != "" and (typeandmode in col4_tuples or "all" in col4_tuples):
+            col4.label(text=prefs.panel2_col4_title, icon='PRESET')
             col4.separator()
 
             for i in range(1, 11):
@@ -130,8 +130,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col4.operator(temp_col4_button[0], text=temp_col4_button[1], icon=temp_col4_button[2])
 
         # 第五列菜单项
-        if prefs.panel_two_col5_title.strip() != "" and (typeandmode in col5_tuples or "all" in col5_tuples):
-            col5.label(text=prefs.panel_two_col5_title, icon='PRESET')
+        if prefs.panel2_col5_title.strip() != "" and (typeandmode in col5_tuples or "all" in col5_tuples):
+            col5.label(text=prefs.panel2_col5_title, icon='PRESET')
             col5.separator()
 
             for i in range(1, 11):
@@ -145,8 +145,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col5.operator(temp_col5_button[0], text=temp_col5_button[1], icon=temp_col5_button[2])
 
         # 第六列菜单项
-        if prefs.panel_two_col6_title.strip() != "" and (typeandmode in col6_tuples or "all" in col6_tuples):
-            col6.label(text=prefs.panel_two_col6_title, icon='PRESET')
+        if prefs.panel2_col6_title.strip() != "" and (typeandmode in col6_tuples or "all" in col6_tuples):
+            col6.label(text=prefs.panel2_col6_title, icon='PRESET')
             col6.separator()
 
             for i in range(1, 11):
@@ -160,8 +160,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col6.operator(temp_col6_button[0], text=temp_col6_button[1], icon=temp_col6_button[2])
 
         # 第七列菜单项
-        if prefs.panel_two_col7_title.strip() != "" and (typeandmode in col7_tuples or "all" in col7_tuples):
-            col7.label(text=prefs.panel_two_col7_title, icon='PRESET')
+        if prefs.panel2_col7_title.strip() != "" and (typeandmode in col7_tuples or "all" in col7_tuples):
+            col7.label(text=prefs.panel2_col7_title, icon='PRESET')
             col7.separator()
 
             for i in range(1, 11):
@@ -175,8 +175,8 @@ class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
                     col7.operator(temp_col7_button[0], text=temp_col7_button[1], icon=temp_col7_button[2])
 
         # 第八列菜单项
-        if prefs.panel_two_col8_title.strip() != "" and (typeandmode in col8_tuples or "all" in col8_tuples):
-            col8.label(text=prefs.panel_two_col8_title, icon='PRESET')
+        if prefs.panel2_col8_title.strip() != "" and (typeandmode in col8_tuples or "all" in col8_tuples):
+            col8.label(text=prefs.panel2_col8_title, icon='PRESET')
             col8.separator()
 
             for i in range(1, 11):
