@@ -222,10 +222,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 # 编辑模式切换提示及缩放系数
     switch_notice_scale:FloatProperty(
         name="切换提示缩放系数",
-        description="小于0.5关闭切换提示",
-        default=1.0,  # 默认值（可根据需要调整）
-        min=0.5,      # 最小值（可选）
-        max=2.0,     # 最大值（可选）
+        default=1.0,  
+        min=0.5,     
+        max=2.0,    
         precision=1,
         update=update_preferences
     )
@@ -266,17 +265,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    quick_panel1_title: bpy.props.StringProperty(
-        name="",
-        description="极速菜单1名字",
-        default="极速菜单1名字",
-        update=update_preferences
-    )
-    
     panel1_col1_title: bpy.props.StringProperty(
-        name="第一列标题",
+        name="一列标题",
         description="留空不显示该列",
-        default="第一列标题",
+        default="一列标题",
         update=update_preferences
     )
 
@@ -361,9 +353,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col2_title: bpy.props.StringProperty(
-        name="第二列标题",
+        name="二列标题",
         description="留空不显示该列",
-        default="第二列标题",
+        default="二列标题",
         update=update_preferences
     )
 
@@ -448,9 +440,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col3_title: bpy.props.StringProperty(
-        name="第三列标题",
+        name="三列标题",
         description="留空不显示该列",
-        default="第三列标题",
+        default="三列标题",
         update=update_preferences
     )
 
@@ -535,9 +527,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col4_title: bpy.props.StringProperty(
-        name="第四列标题",
+        name="四列标题",
         description="留空不显示该列",
-        default="第四列标题",
+        default="四列标题",
         update=update_preferences
     )
 
@@ -622,9 +614,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col5_title: bpy.props.StringProperty(
-        name="第五列标题",
+        name="五列标题",
         description="留空不显示该列",
-        default="第五列标题",
+        default="五列标题",
         update=update_preferences
     )
 
@@ -709,9 +701,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col6_title: bpy.props.StringProperty(
-        name="第六列标题",
+        name="六列标题",
         description="留空不显示该列",
-        default="第六列标题",
+        default="六列标题",
         update=update_preferences
     )
 
@@ -796,9 +788,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col7_title: bpy.props.StringProperty(
-        name="第七列标题",
+        name="七列标题",
         description="留空不显示该列",
-        default="第七列标题",
+        default="七列标题",
         update=update_preferences
     )
 
@@ -883,9 +875,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel1_col8_title: bpy.props.StringProperty(
-        name="第八列标题",
+        name="八列标题",
         description="留空不显示该列",
-        default="第八列标题",
+        default="八列标题",
         update=update_preferences
     )
 
@@ -984,24 +976,17 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 # --------↓↓↓↓ panel two 相关设置 ↓↓↓↓---------
-    expand_quick_panel_two:BoolProperty(
+    quick_menu_two:BoolProperty(
         name="极速菜单2",
         description="展开/折叠极速菜单2",
         default=True,
         update=update_preferences
     )
-
-    quick_panel2_title: bpy.props.StringProperty(
-        name="",
-        description="极速菜单2名字",
-        default="极速菜单2名字",
-        update=update_preferences
-    )
     
     panel2_col1_title: bpy.props.StringProperty(
-        name="第一列标题",
+        name="一列标题",
         description="留空不显示该列",
-        default="第一列标题",
+        default="一列标题",
         update=update_preferences
     )
 
@@ -1086,9 +1071,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col2_title: bpy.props.StringProperty(
-        name="第二列标题",
+        name="二列标题",
         description="留空不显示该列",
-        default="第二列标题",
+        default="二列标题",
         update=update_preferences
     )
 
@@ -1173,9 +1158,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col3_title: bpy.props.StringProperty(
-        name="第三列标题",
+        name="三列标题",
         description="留空不显示该列",
-        default="第三列标题",
+        default="三列标题",
         update=update_preferences
     )
 
@@ -1260,9 +1245,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col4_title: bpy.props.StringProperty(
-        name="第四列标题",
+        name="四列标题",
         description="留空不显示该列",
-        default="第四列标题",
+        default="四列标题",
         update=update_preferences
     )
 
@@ -1347,9 +1332,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col5_title: bpy.props.StringProperty(
-        name="第五列标题",
+        name="五列标题",
         description="留空不显示该列",
-        default="第五列标题",
+        default="五列标题",
         update=update_preferences
     )
 
@@ -1434,9 +1419,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col6_title: bpy.props.StringProperty(
-        name="第六列标题",
+        name="六列标题",
         description="留空不显示该列",
-        default="第六列标题",
+        default="六列标题",
         update=update_preferences
     )
 
@@ -1521,9 +1506,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col7_title: bpy.props.StringProperty(
-        name="第七列标题",
+        name="七列标题",
         description="留空不显示该列",
-        default="第七列标题",
+        default="七列标题",
         update=update_preferences
     )
 
@@ -1608,9 +1593,9 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     )
 
     panel2_col8_title: bpy.props.StringProperty(
-        name="第八列标题",
+        name="八列标题",
         description="留空不显示该列",
-        default="第八列标题",
+        default="八列标题",
         update=update_preferences
     )
 
@@ -1781,12 +1766,11 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                 icon_only=True, 
                 emboss=False)
         row.label(text="极速菜单1", icon="COLLECTION_COLOR_01")
-        #row.prop(self, "quick_panel1_title", icon="COLLECTION_COLOR_01")
             
         if self.quick_menu_one:
 
             top_box = box.box()
-            top_box.label(text="abl ldjf ld l")
+            top_box.label(text="物体模式",icon="OBJECT_DATA")
             row = top_box.row()
             row.prop(self, "panel1_col1_title", text="")
             row.prop(self, "panel1_col2_title", text="")
@@ -1796,7 +1780,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panel1_col6_title", text="")
             row.prop(self, "panel1_col7_title", text="")
             row.prop(self, "panel1_col8_title", text="")
-
+        
             top_box.label(text="lj fdljf dlf jl")
             row = top_box.row()
             row.prop(self, "panel2_col1_title", text="")
@@ -1816,13 +1800,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         # 极速菜单2 设置项 BOX框
         box = layout.box()
         row = box.row()
-        row.prop(self, "expand_quick_panel_two", 
-                icon="DOWNARROW_HLT" if self.expand_quick_panel_two else "RIGHTARROW",
+        row.prop(self, "quick_menu_two", 
+                icon="DOWNARROW_HLT" if self.quick_menu_two else "RIGHTARROW",
                 icon_only=True, 
                 emboss=False)
-        row.prop(self, "quick_panel2_title", icon="COLLECTION_COLOR_02")
-            
-        if self.expand_quick_panel_two:
+        row.label(text="极速菜单2", icon="COLLECTION_COLOR_02")            
+        
+        if self.quick_menu_two:
 
             # 第一列设置项：
             top_box = box.box()

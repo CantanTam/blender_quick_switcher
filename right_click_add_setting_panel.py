@@ -108,12 +108,12 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
                 col.scale_x = 1.0
 
 
-        # 第一列标题和分隔符
+        # 一列标题和分隔符
         panel.label(text="选择超级菜单", icon='PRESET')
         for i in range(1, 11):
             panel.operator("panel.set_panels", text=f"超级菜单{i}", icon='TOPBAR').panel = f'panel{i}'
 
-        # 第一列标题和分隔符
+        # 一列标题和分隔符
         col1.label(text="col1", icon='RADIOBUT_OFF')
         for i in range(1, 11):
             op = col1.operator("button.set_buttons", text="")
