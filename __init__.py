@@ -19,7 +19,7 @@ from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
 from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
 from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_mode_switch_tab import MODE_TAB_OT_Switch
-from .popup_quick_menu_object import POPUP_MENU_OT_object
+from .popup_quick_menu_one_object import POPUP_MENU_OT_object
 from .popup_quick_menu_two import QUICK_POPUP_MENU_OT_two
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_two
