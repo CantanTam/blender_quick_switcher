@@ -1,9 +1,10 @@
 import bpy
 from . import preference
 
-switcher_panel = "panel1"
-#switcher_column = "_col1"
-#switcher_button = "_button1"
+switcher_panel = "panelone"
+switcher_mode = "_mode1"
+switcher_column = "_col1"
+switcher_button = "_button1"
 switcher_action = ""
 
 class PANEL_OT_set_panels(bpy.types.Operator):
@@ -12,7 +13,7 @@ class PANEL_OT_set_panels(bpy.types.Operator):
     
     panel: bpy.props.StringProperty(
         name="极速菜单",
-        default="panel1"
+        default="panelone"
     )
 
     def execute(self, context):
@@ -34,15 +35,69 @@ class BUTTON_OT_set_buttons(bpy.types.Operator):
     button: bpy.props.StringProperty(
         name="按钮",
         default="_button1"
-    )
+    ) 
+
+    mode: bpy.props.StringProperty(
+        name="按钮",
+        default="_mode1"
+    ) 
 
     def execute(self, context):
         #global switcher_column
         #global switcher_button
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.active_object.mode == "OBJECT":
+            self.mode = "_mode1"
+        elif typeandmode == "MESHEDIT":
+            self.mode = "_mode2"
+        elif typeandmode == "MESHSCULPT":
+            self.mode = "_mode3"
+        elif typeandmode == "MESHVERTEX_PAINT":
+            self.mode = "_mode4"
+        elif typeandmode == "MESHWEIGHT_PAINT":
+            self.mode = "_mode5"
+        elif typeandmode == "MESHTEXTURE_PAINT":
+            self.mode = "_mode6"
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            self.mode = "_mode7"
+        elif typeandmode == "GPENCILSCULPT_GPENCIL":
+            self.mode = "_mode8"
+        elif typeandmode == "GPENCILPAINT_GPENCIL":
+            self.mode = "_mode9"
+        elif typeandmode == "GPENCILWEIGHT_GPENCIL":
+            self.mode = "_mode10"
+        elif typeandmode == "GPENCILVERTEX_GPENCIL":
+            self.mode = "_mode11"
+        elif typeandmode == "GREASEPENCILEDIT":
+            self.mode = "_mode12"
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
+            self.mode = "_mode13"
+        elif typeandmode == "GREASEPENCILPAINT_GREASE_PENCIL":
+            self.mode = "_mode14"
+        elif typeandmode == "GREASEPENCILWEIGHT_GREASE_PENCIL":
+            self.mode = "_mode15"
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
+            self.mode = "_mode16"
+        elif typeandmode == "ARMATUREEDIT":
+            self.mode = "_mode17"
+        elif typeandmode == "ARMATUREPOSE":
+            self.mode = "_mode18"
+        elif typeandmode == "CURVEEDIT":
+            self.mode = "_mode19"
+        elif typeandmode == "SURFACEEDIT":
+            self.mode = "_mode20"
+        elif typeandmode == "METAEDIT":
+            self.mode = "_mode21"
+        elif typeandmode == "FONTEDIT":
+            self.mode = "_mode22"
+        elif typeandmode == "LATTICEEDIT":
+            self.mode = "_mode23"
+
+        switcher_mode = self.mode
         switcher_column = self.column
         switcher_button = self.button
         prefs = bpy.context.preferences.addons[__package__].preferences
-        attr_name = f"{switcher_panel}{switcher_column}{switcher_button}"
+        attr_name = f"{switcher_panel}{switcher_mode}{switcher_column}{switcher_button}"
         setattr(prefs, attr_name, switcher_action)
         # 完整保存流程
         try:
@@ -86,11 +141,12 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         return context.window_manager.invoke_popup(self, width=800)
 
     def draw(self, context):
+        typeandmode =  bpy.context.active_object.type+" "+bpy.context.active_object.mode+" mode"
         layout = self.layout
-
+        layout.label(text="OBJECT mode" if bpy.context.active_object.mode == "OBJECT" else typeandmode)
         # 创建三列布局并设置宽度比例 (col1最宽)
         row = layout.row()
-        panel = row.column(align=True)
+        col0 = row.column(align=True)
         col1 = row.column(align=True)  # col1占2份宽度
         col2 = row.column(align=True)  # col2占1份宽度 
         col3 = row.column(align=True)  # col3占1份宽度
@@ -100,7 +156,7 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col7 = row.column(align=True)  # col7占1份宽度
         col8 = row.column(align=True)  # col8占1份宽度
 
-        panel.scale_x = 1.3  # col1 占较大比例
+        col0.scale_x = 1.1  # col1 占较大比例
         # 扩展更多列设置
         for i in range(1, 11):
             col = getattr(self, f'col{i}', None)
@@ -109,9 +165,12 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
 
 
         # 一列标题和分隔符
-        panel.label(text="选择超级菜单", icon='PRESET')
-        for i in range(1, 11):
-            panel.operator("panel.set_panels", text=f"超级菜单{i}", icon='TOPBAR').panel = f'panel{i}'
+        col0.label(text="选择超级菜单", icon='PRESET')
+        col0.operator("panel.set_panels", text="超级菜单1", icon='COLLECTION_COLOR_01' if switcher_panel == "panelone" else "COLLECTION_NEW").panel = "panelone"
+        col0.operator("panel.set_panels", text="超级菜单2", icon='COLLECTION_COLOR_02' if switcher_panel == "paneltwo" else "COLLECTION_NEW").panel = "paneltwo"
+        col0.operator("panel.set_panels", text="超级菜单3", icon='COLLECTION_COLOR_03' if switcher_panel == "panelthree" else "COLLECTION_NEW").panel = "panelthree"
+        col0.operator("panel.set_panels", text="超级菜单4", icon='COLLECTION_COLOR_04' if switcher_panel == "panelfour" else "COLLECTION_NEW").panel = "panelfour"
+        col0.operator("panel.set_panels", text="超级菜单5", icon='COLLECTION_COLOR_05' if switcher_panel == "panelfive" else "COLLECTION_NEW").panel = "panelfive"
 
         # 一列标题和分隔符
         col1.label(text="col1", icon='RADIOBUT_OFF')
