@@ -3,7 +3,7 @@ import webbrowser
 import json
 import os
 from bpy.types import AddonPreferences, Operator
-from bpy.props import BoolProperty, EnumProperty, FloatProperty, IntProperty
+from bpy.props import BoolProperty, EnumProperty, FloatProperty, IntProperty, StringProperty
 from .button_operator_dict import button_options_list
 
 # 定义 JSON 配置文件路径，假设保存于当前 addon 文件夹下
@@ -272,17 +272,15 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col1_title: bpy.props.StringProperty(
+    panelone_mode1_col1_title: StringProperty(
         name="一列标题",
         description="留空不显示该列",
         default="一列标题",
         update=update_preferences
     )
 
-    panelone_mode1_col1_button1: EnumProperty(
-        name="菜单1列1按钮1",
-        description="菜单1列1按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -359,7 +357,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col2_title: bpy.props.StringProperty(
+    panelone_mode1_col2_title: StringProperty(
         name="二列标题",
         description="留空不显示该列",
         default="二列标题",
@@ -446,7 +444,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col3_title: bpy.props.StringProperty(
+    panelone_mode1_col3_title: StringProperty(
         name="三列标题",
         description="留空不显示该列",
         default="三列标题",
@@ -533,7 +531,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col4_title: bpy.props.StringProperty(
+    panelone_mode1_col4_title: StringProperty(
         name="四列标题",
         description="留空不显示该列",
         default="四列标题",
@@ -620,7 +618,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col5_title: bpy.props.StringProperty(
+    panelone_mode1_col5_title: StringProperty(
         name="五列标题",
         description="留空不显示该列",
         default="五列标题",
@@ -707,7 +705,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col6_title: bpy.props.StringProperty(
+    panelone_mode1_col6_title: StringProperty(
         name="六列标题",
         description="留空不显示该列",
         default="六列标题",
@@ -794,7 +792,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col7_title: bpy.props.StringProperty(
+    panelone_mode1_col7_title: StringProperty(
         name="七列标题",
         description="留空不显示该列",
         default="七列标题",
@@ -881,7 +879,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col8_title: bpy.props.StringProperty(
+    panelone_mode1_col8_title: StringProperty(
         name="八列标题",
         description="留空不显示该列",
         default="八列标题",
@@ -997,7 +995,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
     
-    panelone_mode2_col1_title: bpy.props.StringProperty(
+    panelone_mode2_col1_title: StringProperty(
         name="一列标题",
         description="留空不显示该列",
         default="一列标题",
@@ -1084,7 +1082,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col2_title: bpy.props.StringProperty(
+    panelone_mode2_col2_title: StringProperty(
         name="二列标题",
         description="留空不显示该列",
         default="二列标题",
@@ -1171,7 +1169,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col3_title: bpy.props.StringProperty(
+    panelone_mode2_col3_title: StringProperty(
         name="三列标题",
         description="留空不显示该列",
         default="三列标题",
@@ -1258,7 +1256,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col4_title: bpy.props.StringProperty(
+    panelone_mode2_col4_title: StringProperty(
         name="四列标题",
         description="留空不显示该列",
         default="四列标题",
@@ -1345,7 +1343,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col5_title: bpy.props.StringProperty(
+    panelone_mode2_col5_title: StringProperty(
         name="五列标题",
         description="留空不显示该列",
         default="五列标题",
@@ -1432,7 +1430,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col6_title: bpy.props.StringProperty(
+    panelone_mode2_col6_title: StringProperty(
         name="六列标题",
         description="留空不显示该列",
         default="六列标题",
@@ -1519,7 +1517,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col7_title: bpy.props.StringProperty(
+    panelone_mode2_col7_title: StringProperty(
         name="七列标题",
         description="留空不显示该列",
         default="七列标题",
@@ -1606,7 +1604,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col8_title: bpy.props.StringProperty(
+    panelone_mode2_col8_title: StringProperty(
         name="八列标题",
         description="留空不显示该列",
         default="八列标题",
