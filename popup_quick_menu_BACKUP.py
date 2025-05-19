@@ -3,8 +3,8 @@ import bpy
 from .button_operator_dict import button_press_function
 
 # 以原来的 oopup menu two 作为基础的样式备份
-class QUICK_POPUP_MENU_OT_two(bpy.types.Menu):
-    bl_idname = "popup.quick_menu_two"
+class QUICK_POPUP_MENU_OT_one_meshedit(bpy.types.Menu):
+    bl_idname = "popup.quick_menu_one_meshedit"
     bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 

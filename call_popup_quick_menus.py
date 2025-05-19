@@ -19,6 +19,6 @@ class CALLOUT_QUICK_MENU_OT_two(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="popup.quick_menu_two")
+        bpy.ops.wm.call_menu(name="popup.quick_menu_one_meshedit")
         return {'FINISHED'}
     

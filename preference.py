@@ -265,6 +265,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+    panelone_mode1_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+
     panelone_mode1_col1_title: bpy.props.StringProperty(
         name="一列标题",
         description="留空不显示该列",
@@ -979,6 +986,13 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     quick_menu_two:BoolProperty(
         name="极速菜单2",
         description="展开/折叠极速菜单2",
+        default=True,
+        update=update_preferences
+    )
+
+    panelone_mode2_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
         default=True,
         update=update_preferences
     )
@@ -1772,8 +1786,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         if self.quick_menu_one:
 
             top_box = box.box()
-            top_box.label(text="物体模式",icon="OBJECT_DATA")
+            top_box.label(text="物体模式", icon="OBJECT_DATA")
             row = top_box.row()
+            row.prop(self, "panelone_mode1_visible",
+                    icon="HIDE_OFF" if self.panelone_mode1_visible else "HIDE_ON")
             row.prop(self, "panelone_mode1_col1_title", text="")
             row.prop(self, "panelone_mode1_col2_title", text="")
             row.prop(self, "panelone_mode1_col3_title", text="")
@@ -1783,8 +1799,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             row.prop(self, "panelone_mode1_col7_title", text="")
             row.prop(self, "panelone_mode1_col8_title", text="")
         
-            top_box.label(text="lj fdljf dlf jl")
+            top_box.label(text="网络编辑模式", icon="EDITMODE_HLT")
             row = top_box.row()
+            row.prop(self, "panelone_mode2_visible",
+                    icon="HIDE_OFF" if self.panelone_mode2_visible else "HIDE_ON")
             row.prop(self, "panelone_mode2_col1_title", text="")
             row.prop(self, "panelone_mode2_col2_title", text="")
             row.prop(self, "panelone_mode2_col3_title", text="")
