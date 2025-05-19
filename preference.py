@@ -257,7 +257,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 
-# --------↓↓↓↓ panel one 相关设置 ↓↓↓↓---------
+# --------↓↓↓↓ panelone mode1 相关设置 ↓↓↓↓---------
     quick_menu_one:BoolProperty(
         name="极速菜单1",
         description="展开/折叠极速菜单1",
@@ -285,74 +285,56 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col1_button2: EnumProperty(
-        name="菜单1列1按钮2",
-        description="菜单1列1按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button3: EnumProperty(
-        name="菜单1列1按钮3",
-        description="菜单1列1按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button4: EnumProperty(
-        name="菜单1列1按钮4",
-        description="菜单1列1按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button5: EnumProperty(
-        name="菜单1列1按钮5",
-        description="菜单1列1按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button6: EnumProperty(
-        name="菜单1列1按钮6",
-        description="菜单1列1按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button7: EnumProperty(
-        name="菜单1列1按钮7",
-        description="菜单1列1按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button8: EnumProperty(
-        name="菜单1列1按钮8",
-        description="菜单1列1按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button9: EnumProperty(
-        name="菜单1列1按钮9",
-        description="菜单1列1按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col1_button10: EnumProperty(
-        name="菜单1列1按钮10",
-        description="菜单1列1按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col1_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -364,82 +346,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col2_button1: EnumProperty(
-        name="菜单1列2按钮1",
-        description="菜单1列2按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button2: EnumProperty(
-        name="菜单1列2按钮2",
-        description="菜单1列2按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button3: EnumProperty(
-        name="菜单1列2按钮3",
-        description="菜单1列2按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button4: EnumProperty(
-        name="菜单1列2按钮4",
-        description="菜单1列2按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button5: EnumProperty(
-        name="菜单1列2按钮5",
-        description="菜单1列2按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button6: EnumProperty(
-        name="菜单1列2按钮6",
-        description="菜单1列2按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button7: EnumProperty(
-        name="菜单1列2按钮7",
-        description="菜单1列2按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button8: EnumProperty(
-        name="菜单1列2按钮8",
-        description="菜单1列2按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button9: EnumProperty(
-        name="菜单1列2按钮9",
-        description="菜单1列2按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col2_button10: EnumProperty(
-        name="菜单1列2按钮10",
-        description="菜单1列2按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col2_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -451,82 +413,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col3_button1: EnumProperty(
-        name="菜单1列3按钮1",
-        description="菜单1列3按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button2: EnumProperty(
-        name="菜单1列3按钮2",
-        description="菜单1列3按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button3: EnumProperty(
-        name="菜单1列3按钮3",
-        description="菜单1列3按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button4: EnumProperty(
-        name="菜单1列3按钮4",
-        description="菜单1列3按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button5: EnumProperty(
-        name="菜单1列3按钮5",
-        description="菜单1列3按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button6: EnumProperty(
-        name="菜单1列3按钮6",
-        description="菜单1列3按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button7: EnumProperty(
-        name="菜单1列3按钮7",
-        description="菜单1列3按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button8: EnumProperty(
-        name="菜单1列3按钮8",
-        description="菜单1列3按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button9: EnumProperty(
-        name="菜单1列3按钮9",
-        description="菜单1列3按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col3_button10: EnumProperty(
-        name="菜单1列3按钮10",
-        description="菜单1列3按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col3_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -538,82 +480,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col4_button1: EnumProperty(
-        name="菜单1列4按钮1",
-        description="菜单1列4按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button2: EnumProperty(
-        name="菜单1列4按钮2",
-        description="菜单1列4按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button3: EnumProperty(
-        name="菜单1列4按钮3",
-        description="菜单1列4按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button4: EnumProperty(
-        name="菜单1列4按钮4",
-        description="菜单1列4按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button5: EnumProperty(
-        name="菜单1列4按钮5",
-        description="菜单1列4按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button6: EnumProperty(
-        name="菜单1列4按钮6",
-        description="菜单1列4按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button7: EnumProperty(
-        name="菜单1列4按钮7",
-        description="菜单1列4按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button8: EnumProperty(
-        name="菜单1列4按钮8",
-        description="菜单1列4按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button9: EnumProperty(
-        name="菜单1列4按钮9",
-        description="菜单1列4按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col4_button10: EnumProperty(
-        name="菜单1列4按钮10",
-        description="菜单1列4按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col4_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -625,82 +547,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col5_button1: EnumProperty(
-        name="菜单1列5按钮1",
-        description="菜单1列5按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button2: EnumProperty(
-        name="菜单1列5按钮2",
-        description="菜单1列5按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button3: EnumProperty(
-        name="菜单1列5按钮3",
-        description="菜单1列5按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button4: EnumProperty(
-        name="菜单1列5按钮4",
-        description="菜单1列5按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button5: EnumProperty(
-        name="菜单1列5按钮5",
-        description="菜单1列5按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button6: EnumProperty(
-        name="菜单1列5按钮6",
-        description="菜单1列5按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button7: EnumProperty(
-        name="菜单1列5按钮7",
-        description="菜单1列5按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button8: EnumProperty(
-        name="菜单1列5按钮8",
-        description="菜单1列5按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button9: EnumProperty(
-        name="菜单1列5按钮9",
-        description="菜单1列5按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col5_button10: EnumProperty(
-        name="菜单1列5按钮10",
-        description="菜单1列5按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col5_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -712,82 +614,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col6_button1: EnumProperty(
-        name="菜单1列6按钮1",
-        description="菜单1列6按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button2: EnumProperty(
-        name="菜单1列6按钮2",
-        description="菜单1列6按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button3: EnumProperty(
-        name="菜单1列6按钮3",
-        description="菜单1列6按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button4: EnumProperty(
-        name="菜单1列6按钮4",
-        description="菜单1列6按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button5: EnumProperty(
-        name="菜单1列6按钮5",
-        description="菜单1列6按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button6: EnumProperty(
-        name="菜单1列6按钮6",
-        description="菜单1列6按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button7: EnumProperty(
-        name="菜单1列6按钮7",
-        description="菜单1列6按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button8: EnumProperty(
-        name="菜单1列6按钮8",
-        description="菜单1列6按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button9: EnumProperty(
-        name="菜单1列6按钮9",
-        description="菜单1列6按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col6_button10: EnumProperty(
-        name="菜单1列6按钮10",
-        description="菜单1列6按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col6_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -799,82 +681,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col7_button1: EnumProperty(
-        name="菜单1列7按钮1",
-        description="菜单1列7按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button2: EnumProperty(
-        name="菜单1列7按钮2",
-        description="菜单1列7按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button3: EnumProperty(
-        name="菜单1列7按钮3",
-        description="菜单1列7按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button4: EnumProperty(
-        name="菜单1列7按钮4",
-        description="菜单1列7按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button5: EnumProperty(
-        name="菜单1列7按钮5",
-        description="菜单1列7按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button6: EnumProperty(
-        name="菜单1列7按钮6",
-        description="菜单1列7按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button7: EnumProperty(
-        name="菜单1列7按钮7",
-        description="菜单1列7按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button8: EnumProperty(
-        name="菜单1列7按钮8",
-        description="菜单1列7按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button9: EnumProperty(
-        name="菜单1列7按钮9",
-        description="菜单1列7按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col7_button10: EnumProperty(
-        name="菜单1列7按钮10",
-        description="菜单1列7按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col7_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -886,87 +748,67 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode1_col8_button1: EnumProperty(
-        name="菜单1列8按钮1",
-        description="菜单1列8按钮1功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button2: EnumProperty(
-        name="菜单1列8按钮2",
-        description="菜单1列8按钮2功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button3: EnumProperty(
-        name="菜单1列8按钮3",
-        description="菜单1列8按钮3功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button4: EnumProperty(
-        name="菜单1列8按钮4",
-        description="菜单1列8按钮4功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button5: EnumProperty(
-        name="菜单1列8按钮5",
-        description="菜单1列8按钮5功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button6: EnumProperty(
-        name="菜单1列7按钮6",
-        description="菜单1列7按钮6功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button7: EnumProperty(
-        name="菜单1列7按钮7",
-        description="菜单1列7按钮7功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button8: EnumProperty(
-        name="菜单1列7按钮8",
-        description="菜单1列7按钮8功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button9: EnumProperty(
-        name="菜单1列7按钮9",
-        description="菜单1列7按钮9功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode1_col8_button10: EnumProperty(
-        name="菜单1列7按钮10",
-        description="菜单1列7按钮10功能测试",
-        items=button_options_list,
+    panelone_mode1_col8_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-# --------↑↑↑↑ panel one 相关设置 ↑↑↑↑---------
+# --------↑↑↑↑ panelone mode1 相关设置 ↑↑↑↑---------
 
 
 
