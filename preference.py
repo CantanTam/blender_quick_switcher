@@ -253,11 +253,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-
-
-
-
-# --------↓↓↓↓ panelone mode1 相关设置 ↓↓↓↓---------
+#极速菜单通用管理
     quick_menu_one:BoolProperty(
         name="极速菜单1",
         description="展开/折叠极速菜单1",
@@ -265,6 +261,20 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
+    quick_menu_two:BoolProperty(
+        name="极速菜单2",
+        description="展开/折叠极速菜单2",
+        default=True,
+        update=update_preferences
+    )
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode1 相关设置 ↓↓↓↓---------
     panelone_mode1_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
@@ -808,7 +818,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-# --------↑↑↑↑ panelone mode1 相关设置 ↑↑↑↑---------
+# --------↑↑↑↑ panelone_mode1 相关设置 ↑↑↑↑---------
 
 
 
@@ -822,14 +832,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 
-# --------↓↓↓↓ panel two 相关设置 ↓↓↓↓---------
-    quick_menu_two:BoolProperty(
-        name="极速菜单2",
-        description="展开/折叠极速菜单2",
-        default=True,
-        update=update_preferences
-    )
-
+# --------↓↓↓↓ panelone_mode2 相关设置 ↓↓↓↓---------
     panelone_mode2_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
@@ -844,82 +847,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col1_button1: EnumProperty(
-        name="菜单2列1按钮1",
-        description="菜单2列1按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button2: EnumProperty(
-        name="菜单2列1按钮2",
-        description="菜单2列1按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button3: EnumProperty(
-        name="菜单2列1按钮3",
-        description="菜单2列1按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button4: EnumProperty(
-        name="菜单2列1按钮4",
-        description="菜单2列1按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button5: EnumProperty(
-        name="菜单2列1按钮5",
-        description="菜单2列1按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button6: EnumProperty(
-        name="菜单2列1按钮6",
-        description="菜单2列1按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button7: EnumProperty(
-        name="菜单2列1按钮7",
-        description="菜单2列1按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button8: EnumProperty(
-        name="菜单2列1按钮8",
-        description="菜单2列1按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button9: EnumProperty(
-        name="菜单2列1按钮9",
-        description="菜单2列1按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col1_button10: EnumProperty(
-        name="菜单2列1按钮10",
-        description="菜单2列1按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col1_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -931,82 +914,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col2_button1: EnumProperty(
-        name="菜单2列2按钮1",
-        description="菜单2列2按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button2: EnumProperty(
-        name="菜单2列2按钮2",
-        description="菜单2列2按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button3: EnumProperty(
-        name="菜单2列2按钮3",
-        description="菜单2列2按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button4: EnumProperty(
-        name="菜单2列2按钮4",
-        description="菜单2列2按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button5: EnumProperty(
-        name="菜单2列2按钮5",
-        description="菜单2列2按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button6: EnumProperty(
-        name="菜单2列2按钮6",
-        description="菜单2列2按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button7: EnumProperty(
-        name="菜单2列2按钮7",
-        description="菜单2列2按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button8: EnumProperty(
-        name="菜单2列2按钮8",
-        description="菜单2列2按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button9: EnumProperty(
-        name="菜单2列2按钮9",
-        description="菜单2列2按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col2_button10: EnumProperty(
-        name="菜单2列2按钮10",
-        description="菜单2列2按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col2_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1018,82 +981,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col3_button1: EnumProperty(
-        name="菜单2列3按钮1",
-        description="菜单2列3按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button2: EnumProperty(
-        name="菜单2列3按钮2",
-        description="菜单2列3按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button3: EnumProperty(
-        name="菜单2列3按钮3",
-        description="菜单2列3按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button4: EnumProperty(
-        name="菜单2列3按钮4",
-        description="菜单2列3按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button5: EnumProperty(
-        name="菜单2列3按钮5",
-        description="菜单2列3按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button6: EnumProperty(
-        name="菜单2列3按钮6",
-        description="菜单2列3按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button7: EnumProperty(
-        name="菜单2列3按钮7",
-        description="菜单2列3按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button8: EnumProperty(
-        name="菜单2列3按钮8",
-        description="菜单2列3按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button9: EnumProperty(
-        name="菜单2列3按钮9",
-        description="菜单2列3按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col3_button10: EnumProperty(
-        name="菜单2列3按钮10",
-        description="菜单2列3按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col3_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1105,82 +1048,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col4_button1: EnumProperty(
-        name="菜单2列4按钮1",
-        description="菜单2列4按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button2: EnumProperty(
-        name="菜单2列4按钮2",
-        description="菜单2列4按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button3: EnumProperty(
-        name="菜单2列4按钮3",
-        description="菜单2列4按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button4: EnumProperty(
-        name="菜单2列4按钮4",
-        description="菜单2列4按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button5: EnumProperty(
-        name="菜单2列4按钮5",
-        description="菜单2列4按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button6: EnumProperty(
-        name="菜单2列4按钮6",
-        description="菜单2列4按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button7: EnumProperty(
-        name="菜单2列4按钮7",
-        description="菜单2列4按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button8: EnumProperty(
-        name="菜单2列4按钮8",
-        description="菜单2列4按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button9: EnumProperty(
-        name="菜单2列4按钮9",
-        description="菜单2列4按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col4_button10: EnumProperty(
-        name="菜单2列4按钮10",
-        description="菜单2列4按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col4_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1192,82 +1115,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col5_button1: EnumProperty(
-        name="菜单2列5按钮1",
-        description="菜单2列5按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button2: EnumProperty(
-        name="菜单2列5按钮2",
-        description="菜单2列5按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button3: EnumProperty(
-        name="菜单2列5按钮3",
-        description="菜单2列5按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button4: EnumProperty(
-        name="菜单2列5按钮4",
-        description="菜单2列5按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button5: EnumProperty(
-        name="菜单2列5按钮5",
-        description="菜单2列5按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button6: EnumProperty(
-        name="菜单2列5按钮6",
-        description="菜单2列5按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button7: EnumProperty(
-        name="菜单2列5按钮7",
-        description="菜单2列5按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button8: EnumProperty(
-        name="菜单2列5按钮8",
-        description="菜单2列5按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button9: EnumProperty(
-        name="菜单2列5按钮9",
-        description="菜单2列5按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col5_button10: EnumProperty(
-        name="菜单2列5按钮10",
-        description="菜单2列5按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col5_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1279,82 +1182,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col6_button1: EnumProperty(
-        name="菜单2列6按钮1",
-        description="菜单2列6按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button2: EnumProperty(
-        name="菜单2列6按钮2",
-        description="菜单2列6按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button3: EnumProperty(
-        name="菜单2列6按钮3",
-        description="菜单2列6按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button4: EnumProperty(
-        name="菜单2列6按钮4",
-        description="菜单2列6按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button5: EnumProperty(
-        name="菜单2列6按钮5",
-        description="菜单2列6按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button6: EnumProperty(
-        name="菜单2列6按钮6",
-        description="菜单2列6按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button7: EnumProperty(
-        name="菜单2列6按钮7",
-        description="菜单2列6按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button8: EnumProperty(
-        name="菜单2列6按钮8",
-        description="菜单2列6按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button9: EnumProperty(
-        name="菜单2列6按钮9",
-        description="菜单2列6按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col6_button10: EnumProperty(
-        name="菜单2列6按钮10",
-        description="菜单2列6按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col6_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1366,82 +1249,62 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col7_button1: EnumProperty(
-        name="菜单2列7按钮1",
-        description="菜单2列7按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button2: EnumProperty(
-        name="菜单2列7按钮2",
-        description="菜单2列7按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button3: EnumProperty(
-        name="菜单2列7按钮3",
-        description="菜单2列7按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button4: EnumProperty(
-        name="菜单2列7按钮4",
-        description="菜单2列7按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button5: EnumProperty(
-        name="菜单2列7按钮5",
-        description="菜单2列7按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button6: EnumProperty(
-        name="菜单2列7按钮6",
-        description="菜单2列7按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button7: EnumProperty(
-        name="菜单2列7按钮7",
-        description="菜单2列7按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button8: EnumProperty(
-        name="菜单2列7按钮8",
-        description="菜单2列7按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button9: EnumProperty(
-        name="菜单2列7按钮9",
-        description="菜单2列7按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col7_button10: EnumProperty(
-        name="菜单2列7按钮10",
-        description="菜单2列7按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col7_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
@@ -1453,86 +1316,66 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
 
-    panelone_mode2_col8_button1: EnumProperty(
-        name="菜单2列7按钮1",
-        description="菜单2列7按钮1功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button1: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button2: EnumProperty(
-        name="菜单2列8按钮2",
-        description="菜单2列8按钮2功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button2: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button3: EnumProperty(
-        name="菜单2列8按钮3",
-        description="菜单2列8按钮3功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button3: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button4: EnumProperty(
-        name="菜单2列8按钮4",
-        description="菜单2列8按钮4功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button4: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button5: EnumProperty(
-        name="菜单2列8按钮5",
-        description="菜单2列8按钮5功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button5: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button6: EnumProperty(
-        name="菜单2列8按钮6",
-        description="菜单2列8按钮6功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button6: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button7: EnumProperty(
-        name="菜单2列8按钮7",
-        description="菜单2列8按钮7功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button7: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button8: EnumProperty(
-        name="菜单2列8按钮8",
-        description="菜单2列8按钮8功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button8: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button9: EnumProperty(
-        name="菜单2列8按钮9",
-        description="菜单2列8按钮9功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button9: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
 
-    panelone_mode2_col8_button10: EnumProperty(
-        name="菜单2列8按钮10",
-        description="菜单2列8按钮10功能测试",
-        items=button_options_list,
+    panelone_mode2_col8_button10: StringProperty(
+        name="",
         default='NO_BUTTON',
         update=update_preferences
     )
-# --------↑↑↑↑ panel two 相关设置 ↑↑↑↑---------
+# --------↑↑↑↑ panelone_mode2_ 相关设置 ↑↑↑↑---------
 
 
 
@@ -1542,6 +1385,24379 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
 
 
+
+# --------↓↓↓↓ panelone_mode3_ 相关设置 ↓↓↓↓---------
+    panelone_mode3_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode3_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode3_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode3_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode4_ 相关设置 ↓↓↓↓---------
+    panelone_mode4_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode4_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode4_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode4_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode5_ 相关设置 ↓↓↓↓---------
+    panelone_mode5_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode5_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode5_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone mode5 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode6_ 相关设置 ↓↓↓↓---------
+    panelone_mode6_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode6_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode6_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode6_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode7_ 相关设置 ↓↓↓↓---------
+    panelone_mode7_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode7_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode7_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode7_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode8_ 相关设置 ↓↓↓↓---------
+    panelone_mode8_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode8_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode8_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode8_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode9_ 相关设置 ↓↓↓↓---------
+    panelone_mode9_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode9_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode9_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode9_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode10_ 相关设置 ↓↓↓↓---------
+    panelone_mode10_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode10_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode10_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode10_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode11_ 相关设置 ↓↓↓↓---------
+    panelone_mode11_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode11_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode11_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode11_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode12_ 相关设置 ↓↓↓↓---------
+    panelone_mode12_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode12_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode12_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode12_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode13_ 相关设置 ↓↓↓↓---------
+    panelone_mode13_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode13_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode13_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode13_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode14_ 相关设置 ↓↓↓↓---------
+    panelone_mode14_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode14_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode14_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode14_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode15_ 相关设置 ↓↓↓↓---------
+    panelone_mode15_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode15_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode15_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode15_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode16_ 相关设置 ↓↓↓↓---------
+    panelone_mode16_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode16_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode16_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode16_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode17_ 相关设置 ↓↓↓↓---------
+    panelone_mode17_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode17_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode17_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode17_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode18_ 相关设置 ↓↓↓↓---------
+    panelone_mode18_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode18_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode18_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode18_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode19_ 相关设置 ↓↓↓↓---------
+    panelone_mode19_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode19_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode19_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode19_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode20_ 相关设置 ↓↓↓↓---------
+    panelone_mode20_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode20_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode20_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode20_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode21_ 相关设置 ↓↓↓↓---------
+    panelone_mode21_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode21_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode21_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode21_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode22_ 相关设置 ↓↓↓↓---------
+    panelone_mode22_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode22_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode22_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode22_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ panelone_mode23_ 相关设置 ↓↓↓↓---------
+    panelone_mode23_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    panelone_mode23_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    panelone_mode23_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone_mode23_ 相关设置 ↑↑↑↑---------
+
+
+#============================================================
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode1 相关设置 ↓↓↓↓---------
+    paneltwo_mode1_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode1_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+# --------↑↑↑↑ paneltwo_mode1 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode2 相关设置 ↓↓↓↓---------
+    paneltwo_mode2_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode2_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode2_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode2_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode3_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode3_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode3_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode3_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode3_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode4_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode4_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode4_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode4_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode4_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode5_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode5_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode5_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode5_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ panelone mode5 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode6_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode6_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode6_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode6_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode6_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode7_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode7_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode7_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode7_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode7_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode8_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode8_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode8_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode8_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode8_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode9_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode9_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode9_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode9_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode9_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode10_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode10_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode10_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode10_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode10_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode11_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode11_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode11_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode11_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode11_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode12_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode12_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode12_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode12_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode12_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode13_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode13_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode13_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode13_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode13_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode14_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode14_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode14_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode14_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode14_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode15_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode15_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode15_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode15_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode15_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode16_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode16_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode16_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode16_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode16_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode17_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode17_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode17_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode17_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode17_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode18_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode18_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode18_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode18_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode18_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode19_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode19_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode19_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode19_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode19_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode20_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode20_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode20_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode20_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode20_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode21_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode21_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode21_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode21_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode21_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode22_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode22_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode22_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode22_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode22_ 相关设置 ↑↑↑↑---------
+
+
+
+
+
+
+
+
+
+
+# --------↓↓↓↓ paneltwo_mode23_ 相关设置 ↓↓↓↓---------
+    paneltwo_mode23_visible: BoolProperty(
+        name="",
+        description="显示/隐藏超级面板",
+        default=True,
+        update=update_preferences
+    )
+    
+    paneltwo_mode23_col1_title: StringProperty(
+        name="一列标题",
+        description="留空不显示该列",
+        default="一列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col1_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_title: StringProperty(
+        name="二列标题",
+        description="留空不显示该列",
+        default="二列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col2_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_title: StringProperty(
+        name="三列标题",
+        description="留空不显示该列",
+        default="三列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col3_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_title: StringProperty(
+        name="四列标题",
+        description="留空不显示该列",
+        default="四列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col4_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_title: StringProperty(
+        name="五列标题",
+        description="留空不显示该列",
+        default="五列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col5_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_title: StringProperty(
+        name="六列标题",
+        description="留空不显示该列",
+        default="六列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col6_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_title: StringProperty(
+        name="七列标题",
+        description="留空不显示该列",
+        default="七列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col7_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_title: StringProperty(
+        name="八列标题",
+        description="留空不显示该列",
+        default="八列标题",
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button1: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button2: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button3: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button4: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button5: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button6: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button7: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button8: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button9: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+
+    paneltwo_mode23_col8_button10: StringProperty(
+        name="",
+        default='NO_BUTTON',
+        update=update_preferences
+    )
+# --------↑↑↑↑ paneltwo_mode23_ 相关设置 ↑↑↑↑---------
 
 
 

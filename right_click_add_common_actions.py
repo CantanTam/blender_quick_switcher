@@ -303,14 +303,14 @@ def unregister():
     bpy.types.VIEW3D_PT_snapping.remove(switchsnap_menu_to_switcher)
 
     #切换坐标系
-    bpy.types.VIEW3D_PT_transform_orientations(transformorientation_menu_to_switcher)
+    bpy.types.VIEW3D_PT_transform_orientations.remove(transformorientation_menu_to_switcher)
 
     #"清空变换"菜单
     bpy.types.VIEW3D_MT_pose_transform.remove(cleartransform_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_clear.remove(cleartransform_menu_to_switcher)
 
     #“应用”菜单
-    bpy.types.VIEW3D_MT_pose_apply(apply_menu_to_switcher)
+    bpy.types.VIEW3D_MT_pose_apply.remove(apply_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_apply.remove(apply_menu_to_switcher)
 
     #“删除”菜单
