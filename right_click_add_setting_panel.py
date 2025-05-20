@@ -177,7 +177,7 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col0.operator("panel.set_panels", text="超级菜单2", icon='COLLECTION_COLOR_02' if switcher_panel == "paneltwo" else "COLLECTION_NEW").panel = "paneltwo"
         col0.operator("panel.set_panels", text="超级菜单3", icon='COLLECTION_COLOR_03' if switcher_panel == "panelthree" else "COLLECTION_NEW").panel = "panelthree"
         col0.operator("panel.set_panels", text="超级菜单4", icon='COLLECTION_COLOR_04' if switcher_panel == "panelfour" else "COLLECTION_NEW").panel = "panelfour"
-        col0.operator("panel.set_panels", text="超级菜单5", icon='COLLECTION_COLOR_05' if switcher_panel == "panelfive" else "COLLECTION_NEW").panel = "panelfive"
+        col0.operator("call.add_to_switcher_menu", text="添加[空按钮]", icon='CANCEL').action = 'NO_BUTTON'
 
         # 一列标题和分隔符
         col_titles = []
@@ -193,6 +193,8 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
                 op = col1.operator("button.set_buttons", text=button1_attr[1], icon=button1_attr[2])
             else:
                 op = col1.operator("button.set_buttons", text="")
+            op.column = '_col1'
+            op.button = f'_button{i}'
 
         col2.label(text=col_titles[1], icon='PLUS')
         for i in range(1, 11):
