@@ -92,8 +92,13 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
 
     def invoke(self, context, event):
         global switcher_action
-        switcher_action = self.action  # 先设置动作
-        # 显示弹出菜单
+        switcher_action = self.action
+        
+        # 如果是NO_BUTTON操作则直接执行不显示面板
+        if self.action in {'NO_BUTTON','SEPARATOR'}:
+            return self.execute(context)
+            
+        # 其他情况显示弹出菜单
         return context.window_manager.invoke_popup(self, width=800)
 
     def draw(self, context):
@@ -175,8 +180,8 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col0.label(text="选择超级菜单", icon='PRESET')
         col0.operator("panel.set_panels", text="超级菜单1", icon='COLLECTION_COLOR_01' if switcher_panel == "panelone" else "COLLECTION_NEW").panel = "panelone"
         col0.operator("panel.set_panels", text="超级菜单2", icon='COLLECTION_COLOR_02' if switcher_panel == "paneltwo" else "COLLECTION_NEW").panel = "paneltwo"
-        col0.operator("panel.set_panels", text="超级菜单3", icon='COLLECTION_COLOR_03' if switcher_panel == "panelthree" else "COLLECTION_NEW").panel = "panelthree"
-        col0.operator("panel.set_panels", text="超级菜单4", icon='COLLECTION_COLOR_04' if switcher_panel == "panelfour" else "COLLECTION_NEW").panel = "panelfour"
+        col0.separator()
+        col0.operator("call.add_to_switcher_menu", text="添加分隔符", icon='REMOVE').action = 'SEPARATOR'
         col0.operator("call.add_to_switcher_menu", text="添加[空按钮]", icon='CANCEL').action = 'NO_BUTTON'
 
         # 一列标题和分隔符
