@@ -1,5 +1,6 @@
 import bpy
 from . import preference
+from .button_operator_dict import button_press_function
 
 switcher_panel = "panelone"
 switcher_mode = "_mode1"
@@ -186,49 +187,80 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
 
         col1.label(text=col_titles[0], icon='PLUS')
         for i in range(1, 11):
-            op = col1.operator("button.set_buttons", text="")
-            op.column = '_col1'
-            op.button = f'_button{i}'
+            button1_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col1_button{i}")) or ()  # 确保 button1_attr 至少是个 tuple
+
+            if len(button1_attr) >= 3:
+                op = col1.operator("button.set_buttons", text=button1_attr[1], icon=button1_attr[2])
+            else:
+                op = col1.operator("button.set_buttons", text="")
 
         col2.label(text=col_titles[1], icon='PLUS')
         for i in range(1, 11):
-            op = col2.operator("button.set_buttons", text="")
+            button2_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col2_button{i}")) or ()
+            if len(button2_attr) >= 3:
+                op = col2.operator("button.set_buttons", text=button2_attr[1], icon=button2_attr[2])
+            else:
+                op = col2.operator("button.set_buttons", text="")
             op.column = '_col2'
             op.button = f'_button{i}'
 
         col3.label(text=col_titles[2], icon='PLUS')
         for i in range(1, 11):
-            op = col3.operator("button.set_buttons", text="")
+            button3_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col3_button{i}")) or ()
+            if len(button3_attr) >= 3:
+                op = col3.operator("button.set_buttons", text=button3_attr[1], icon=button3_attr[2])
+            else:
+                op = col3.operator("button.set_buttons", text="")
             op.column = '_col3'
             op.button = f'_button{i}'
 
         col4.label(text=col_titles[3], icon='PLUS')
         for i in range(1, 11):
-            op = col4.operator("button.set_buttons", text="")
+            button4_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col4_button{i}")) or ()
+            if len(button4_attr) >= 3:
+                op = col4.operator("button.set_buttons", text=button4_attr[1], icon=button4_attr[2])
+            else:
+                op = col4.operator("button.set_buttons", text="")
             op.column = '_col4'
             op.button = f'_button{i}'
 
         col5.label(text=col_titles[4], icon='PLUS')
         for i in range(1, 11):
-            op = col5.operator("button.set_buttons", text="")
+            button5_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col5_button{i}")) or ()
+            if len(button5_attr) >= 3:
+                op = col5.operator("button.set_buttons", text=button5_attr[1], icon=button5_attr[2])
+            else:
+                op = col5.operator("button.set_buttons", text="")
             op.column = '_col5'
             op.button = f'_button{i}'
 
         col6.label(text=col_titles[5], icon='PLUS')
         for i in range(1, 11):
-            op = col6.operator("button.set_buttons", text="")
+            button6_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col6_button{i}")) or ()
+            if len(button6_attr) >= 3:
+                op = col6.operator("button.set_buttons", text=button6_attr[1], icon=button6_attr[2])
+            else:
+                op = col6.operator("button.set_buttons", text="")
             op.column = '_col6'
             op.button = f'_button{i}'
 
         col7.label(text=col_titles[6], icon='PLUS')
         for i in range(1, 11):
-            op = col7.operator("button.set_buttons", text="")
+            button7_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col7_button{i}")) or ()
+            if len(button7_attr) >= 3:
+                op = col7.operator("button.set_buttons", text=button7_attr[1], icon=button7_attr[2])
+            else:
+                op = col7.operator("button.set_buttons", text="")
             op.column = '_col7'
             op.button = f'_button{i}'
 
         col8.label(text=col_titles[7], icon='PLUS')
         for i in range(1, 11):
-            op = col8.operator("button.set_buttons", text="")
+            button8_attr = button_press_function.get(getattr(prefs, f"{switcher_panel}{switcher_mode}_col8_button{i}")) or ()
+            if len(button8_attr) >= 3:
+                op = col8.operator("button.set_buttons", text=button8_attr[1], icon=button8_attr[2])
+            else:
+                op = col8.operator("button.set_buttons", text="")
             op.column = '_col8'
             op.button = f'_button{i}'
 

@@ -744,6 +744,6 @@ button_press_function = {
     # 测试功能
     'testone':("mode.tab_switch","智能切换","CUBE","GREASEPENCILOBJECT","MESHEDIT"),
     'testtwo':("wm.toolbar","系统快捷键","BOOKMARKS","OBJCET","GREASEPENCILOBJECT","MESHEDIT","MESHOBJECT"),
-    'SEPARATOR':(),
+    'SEPARATOR':("","","REMOVE"),
     'NO_BUTTON':(),
 }
