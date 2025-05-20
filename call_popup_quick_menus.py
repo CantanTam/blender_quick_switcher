@@ -71,6 +71,58 @@ class CALLOUT_QUICK_MENU_OT_two(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="popup.quick_menu_one_meshedit")
+        typeandmode =  bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.mode == "OBJECT":    #mode1
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_object")
+        # MESH
+        elif typeandmode == "MESHEDIT":     #mode2
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_meshedit")
+        elif typeandmode == "MESHSCULPT":   #mode3
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_meshsculpt")
+        elif typeandmode == "MESHVERTEX_PAINT": #mode4
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_meshvertexpaint")
+        elif typeandmode == "MESHWEIGHT_PAINT": #mode5
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_meshweightpaint")
+        elif typeandmode == "MESHTEXTURE_PAINT": #mode6
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_meshtexture")
+        # 4.2 或以下版本 GPENCIL
+        elif typeandmode == "GPENCILEDIT_GPENCIL":  #mode7
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_gpenciledit")
+        elif typeandmode == "GPENCILSCULPT_GPENCIL":  #mode8
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_gpencilsculpt")
+        elif typeandmode == "GPENCILPAINT_GPENCIL":  #mode9
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_gpencilpaint")
+        elif typeandmode == "GPENCILWEIGHT_GPENCIL":  #mode10
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_gpencilweight")
+        elif typeandmode == "GPENCILVERTEX_GPENCIL":  #mode11
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_gpencilvertex")
+        # 4.3  或以上版本 GREASEPENCIL
+        elif typeandmode == "GREASEPENCILEDIT":  #mode12
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_greasepenciledit")
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":  #mode13
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_greasepencilsculpt")
+        elif typeandmode == "GREASEPENCILPAINT_GREASE_PENCIL":  #mode14
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_greasepencilpaint")
+        elif typeandmode == "GREASEPENCILWEIGHT_GREASE_PENCIL":  #mode15
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_greasepencilweight")
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":  #mode16
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_greasepencilvertex")
+        # ARMATURE
+        elif typeandmode == "ARMATUREEDIT":  #mode17
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_armatureedit")
+        elif typeandmode == "ARMATUREPOSE":  #mode18
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_armaturepose")
+        # CURVE/SURFACE/META/FONT/LATTICE
+        elif typeandmode == "CURVEEDIT":  #mode19
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_curveedit")
+        elif typeandmode == "SURFACEEDIT":  #mode20
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_surfaceedit")
+        elif typeandmode == "METAEDIT":  #mode21
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_metaedit")
+        elif typeandmode == "FONTEDIT":  #mode22
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_fontedit")
+        elif typeandmode == "LATTICEEDIT":  #mode23
+            bpy.ops.wm.call_menu(name="popup.quick_menu_two_latticeedit")
+
         return {'FINISHED'}
     
