@@ -195,23 +195,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         update=update_preferences
     )
     
-
-# 设置一个空按钮，如果按钮功能不适用当前模式，变成一个空白按钮
-# 这个选项不在 def draw 中显示
-    blank_button: EnumProperty(
-        name="空白按钮",
-        description="用于不显示按钮",
-        items=button_options_list,
-        default='NO_BUTTON',
-        update=update_preferences
-    )
-
-
-
-
-
-
-
     to_show_switch_notice:BoolProperty(
         name="显示切换提示",
         description="显示/隐藏切换提示",
@@ -278,7 +261,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode1_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
 
@@ -836,7 +819,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode2_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -1390,7 +1373,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode3_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -1944,7 +1927,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode4_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -2498,7 +2481,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode5_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -3052,7 +3035,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode6_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -3606,7 +3589,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode7_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -4160,7 +4143,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode8_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -4714,7 +4697,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode9_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -5268,7 +5251,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode10_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -5822,7 +5805,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode11_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -6376,7 +6359,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode12_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -6930,7 +6913,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode13_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -7484,7 +7467,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode14_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -8038,7 +8021,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode15_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -8592,7 +8575,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode16_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -9146,7 +9129,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode17_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -9700,7 +9683,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode18_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -10254,7 +10237,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode19_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -10808,7 +10791,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode20_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -11362,7 +11345,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode21_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -11916,7 +11899,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode22_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -12470,7 +12453,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     panelone_mode23_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -13026,7 +13009,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode1_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
 
@@ -13584,7 +13567,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode2_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -14138,7 +14121,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode3_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -14692,7 +14675,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode4_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -15246,7 +15229,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode5_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -15800,7 +15783,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode6_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -16354,7 +16337,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode7_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -16908,7 +16891,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode8_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -17462,7 +17445,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode9_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -18016,7 +17999,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode10_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -18570,7 +18553,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode11_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -19124,7 +19107,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode12_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -19678,7 +19661,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode13_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -20232,7 +20215,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode14_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -20786,7 +20769,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode15_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -21340,7 +21323,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode16_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -21894,7 +21877,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode17_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -22448,7 +22431,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode18_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -23002,7 +22985,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode19_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -23556,7 +23539,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode20_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -24110,7 +24093,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode21_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -24664,7 +24647,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode22_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -25218,7 +25201,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
     paneltwo_mode23_visible: BoolProperty(
         name="",
         description="显示/隐藏超级面板",
-        default=True,
+        default=False,
         update=update_preferences
     )
     
@@ -25842,34 +25825,239 @@ class QuickSwitchAddonPreferences(AddonPreferences):
         if self.quick_menu_one:
 
             top_box = box.box()
-            top_box.label(text="物体模式", icon="OBJECT_DATA")
+            top_box.alignment = "LEFT"
+
             row = top_box.row()
-            row.prop(self, "panelone_mode1_visible",
-                    icon="HIDE_OFF" if self.panelone_mode1_visible else "HIDE_ON")
-            row.prop(self, "panelone_mode1_col1_title", text="")
-            row.prop(self, "panelone_mode1_col2_title", text="")
-            row.prop(self, "panelone_mode1_col3_title", text="")
-            row.prop(self, "panelone_mode1_col4_title", text="")
-            row.prop(self, "panelone_mode1_col5_title", text="")
-            row.prop(self, "panelone_mode1_col6_title", text="")
-            row.prop(self, "panelone_mode1_col7_title", text="")
-            row.prop(self, "panelone_mode1_col8_title", text="")
+            row.prop(self, "panelone_mode1_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode1_visible else "RIGHTARROW", emboss=False)
+            row.label(text="物体模式", icon="OBJECT_DATA")
+
+            if self.panelone_mode1_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode1_col{i}_title", text="")
         
-            top_box.label(text="网络编辑模式", icon="EDITMODE_HLT")
             row = top_box.row()
             row.prop(self, "panelone_mode2_visible",
-                    icon="HIDE_OFF" if self.panelone_mode2_visible else "HIDE_ON")
-            row.prop(self, "panelone_mode2_col1_title", text="")
-            row.prop(self, "panelone_mode2_col2_title", text="")
-            row.prop(self, "panelone_mode2_col3_title", text="")
-            row.prop(self, "panelone_mode2_col4_title", text="")
-            row.prop(self, "panelone_mode2_col5_title", text="")
-            row.prop(self, "panelone_mode2_col6_title", text="")
-            row.prop(self, "panelone_mode2_col7_title", text="")
-            row.prop(self, "panelone_mode2_col8_title", text="")
+                icon="DOWNARROW_HLT" if self.panelone_mode2_visible else "RIGHTARROW", emboss=False)
+            row.label(text="网格编辑模式", icon="EDITMODE_HLT")
 
+            if self.panelone_mode2_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode2_col{i}_title", text="")
 
+            row = top_box.row()
+            row.prop(self, "panelone_mode3_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode3_visible else "RIGHTARROW", emboss=False)
+            row.label(text="网格雕刻模式", icon="SCULPTMODE_HLT")
 
+            if self.panelone_mode3_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode3_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode4_visible",
+                icon="DOWNARROW_HLT" if self.panelone_mode4_visible else "RIGHTARROW", emboss=False)
+            row.label(text="网格顶点绘制模式", icon="VPAINT_HLT")
+
+            if self.panelone_mode4_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode4_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode5_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode5_visible else "RIGHTARROW", emboss=False)
+            row.label(text="网格权重绘制模式", icon="WPAINT_HLT")
+
+            if self.panelone_mode5_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode5_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode6_visible",
+                icon="DOWNARROW_HLT" if self.panelone_mode6_visible else "RIGHTARROW", emboss=False)
+            row.label(text="网格纹理绘制模式", icon="TPAINT_HLT")
+
+            if self.panelone_mode6_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode6_col{i}_title", text="")
+
+            if bpy.app.version < (4, 3, 0):
+                row = top_box.row()
+                row.prop(self, "panelone_mode7_visible", 
+                    icon="DOWNARROW_HLT" if self.panelone_mode7_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
+
+                if self.panelone_mode7_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode7_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode8_visible",
+                    icon="DOWNARROW_HLT" if self.panelone_mode8_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
+
+                if self.panelone_mode8_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode8_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode9_visible", 
+                    icon="DOWNARROW_HLT" if self.panelone_mode9_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
+
+                if self.panelone_mode9_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode9_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode10_visible",
+                    icon="DOWNARROW_HLT" if self.panelone_mode10_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
+
+                if self.panelone_mode10_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode10_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode11_visible", 
+                    icon="DOWNARROW_HLT" if self.panelone_mode11_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
+
+                if self.panelone_mode11_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode11_col{i}_title", text="")
+
+            if bpy.app.version >= (4, 3, 0):
+                row = top_box.row()
+                row.prop(self, "panelone_mode12_visible",
+                    icon="DOWNARROW_HLT" if self.panelone_mode12_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
+
+                if self.panelone_mode12_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode12_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode13_visible", 
+                    icon="DOWNARROW_HLT" if self.panelone_mode13_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
+
+                if self.panelone_mode13_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode13_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode14_visible",
+                    icon="DOWNARROW_HLT" if self.panelone_mode14_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
+
+                if self.panelone_mode14_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode14_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode15_visible", 
+                    icon="DOWNARROW_HLT" if self.panelone_mode15_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
+
+                if self.panelone_mode15_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode15_col{i}_title", text="")
+
+                row = top_box.row()
+                row.prop(self, "panelone_mode16_visible",
+                    icon="DOWNARROW_HLT" if self.panelone_mode16_visible else "RIGHTARROW", emboss=False)
+                row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
+
+                if self.panelone_mode16_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode16_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode17_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode17_visible else "RIGHTARROW", emboss=False)
+            row.label(text="骨架编辑模式", icon="OUTLINER_DATA_ARMATURE")
+
+            if self.panelone_mode17_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode17_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode18_visible",
+                icon="DOWNARROW_HLT" if self.panelone_mode18_visible else "RIGHTARROW", emboss=False)
+            row.label(text="骨架姿态模式", icon="POSE_HLT")
+
+            if self.panelone_mode18_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode18_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode19_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode19_visible else "RIGHTARROW", emboss=False)
+            row.label(text="曲线编辑模式", icon="OUTLINER_DATA_CURVE")
+
+            if self.panelone_mode19_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode19_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode20_visible",
+                icon="DOWNARROW_HLT" if self.panelone_mode20_visible else "RIGHTARROW", emboss=False)
+            row.label(text="表(曲)面编辑模式", icon="SURFACE_DATA")
+
+            if self.panelone_mode20_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode20_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode21_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode21_visible else "RIGHTARROW", emboss=False)
+            row.label(text="融球编辑模式", icon="META_DATA")
+
+            if self.panelone_mode21_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode21_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode22_visible",
+                icon="DOWNARROW_HLT" if self.panelone_mode22_visible else "RIGHTARROW", emboss=False)
+            row.label(text="字体编辑模式", icon="FONT_DATA")
+
+            if self.panelone_mode22_visible:   
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode22_col{i}_title", text="")
+
+            row = top_box.row()
+            row.prop(self, "panelone_mode23_visible", 
+                icon="DOWNARROW_HLT" if self.panelone_mode23_visible else "RIGHTARROW", emboss=False)
+            row.label(text="晶格编辑模式", icon="LATTICE_DATA")
+
+            if self.panelone_mode23_visible:
+                row = top_box.row()
+                for i in range(1, 9):
+                    row.prop(self, f"panelone_mode23_col{i}_title", text="")
 
 
         # -----------------------------------------------

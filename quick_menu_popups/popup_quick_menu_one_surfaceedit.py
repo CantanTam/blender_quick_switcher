@@ -4,7 +4,7 @@ from ..button_operator_dict import button_press_function
 
 class QUICK_POPUP_MENU_OT_one_surfaceedit(bpy.types.Menu):
     bl_idname = "popup.quick_menu_one_surfaceedit"
-    bl_label = "表(曲)面模式"
+    bl_label = "表(曲)面编辑模式"
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     # 通用的插件名称引用
