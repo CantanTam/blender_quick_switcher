@@ -45,55 +45,7 @@ class BUTTON_OT_set_buttons(bpy.types.Operator):
     def execute(self, context):
         #global switcher_column
         #global switcher_button
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-        if bpy.context.active_object.mode == "OBJECT":
-            self.mode = "_mode1"
-        elif typeandmode == "MESHEDIT":
-            self.mode = "_mode2"
-        elif typeandmode == "MESHSCULPT":
-            self.mode = "_mode3"
-        elif typeandmode == "MESHVERTEX_PAINT":
-            self.mode = "_mode4"
-        elif typeandmode == "MESHWEIGHT_PAINT":
-            self.mode = "_mode5"
-        elif typeandmode == "MESHTEXTURE_PAINT":
-            self.mode = "_mode6"
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
-            self.mode = "_mode7"
-        elif typeandmode == "GPENCILSCULPT_GPENCIL":
-            self.mode = "_mode8"
-        elif typeandmode == "GPENCILPAINT_GPENCIL":
-            self.mode = "_mode9"
-        elif typeandmode == "GPENCILWEIGHT_GPENCIL":
-            self.mode = "_mode10"
-        elif typeandmode == "GPENCILVERTEX_GPENCIL":
-            self.mode = "_mode11"
-        elif typeandmode == "GREASEPENCILEDIT":
-            self.mode = "_mode12"
-        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
-            self.mode = "_mode13"
-        elif typeandmode == "GREASEPENCILPAINT_GREASE_PENCIL":
-            self.mode = "_mode14"
-        elif typeandmode == "GREASEPENCILWEIGHT_GREASE_PENCIL":
-            self.mode = "_mode15"
-        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
-            self.mode = "_mode16"
-        elif typeandmode == "ARMATUREEDIT":
-            self.mode = "_mode17"
-        elif typeandmode == "ARMATUREPOSE":
-            self.mode = "_mode18"
-        elif typeandmode == "CURVEEDIT":
-            self.mode = "_mode19"
-        elif typeandmode == "SURFACEEDIT":
-            self.mode = "_mode20"
-        elif typeandmode == "METAEDIT":
-            self.mode = "_mode21"
-        elif typeandmode == "FONTEDIT":
-            self.mode = "_mode22"
-        elif typeandmode == "LATTICEEDIT":
-            self.mode = "_mode23"
 
-        switcher_mode = self.mode
         switcher_column = self.column
         switcher_button = self.button
         prefs = bpy.context.preferences.addons[__package__].preferences
@@ -131,6 +83,9 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         default=""
     )
 
+    # 通用的插件名称引用
+    ADDON_NAME = __package__.split('.')[0]
+
     def execute(self, context):
         return {'FINISHED'}
 
@@ -141,9 +96,61 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         return context.window_manager.invoke_popup(self, width=800)
 
     def draw(self, context):
-        typeandmode =  bpy.context.active_object.type+" "+bpy.context.active_object.mode+" mode"
+        global switcher_mode
+        prefs = context.preferences.addons[self.ADDON_NAME].preferences
+
+        panel_name = bpy.context.active_object.type+" "+bpy.context.active_object.mode+" mode"
+
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        if bpy.context.mode == "OBJECT":
+            switcher_mode = "_mode1"
+        elif typeandmode == "MESHEDIT":
+            switcher_mode = "_mode2"
+        elif typeandmode == "MESHSCULPT":
+            switcher_mode = "_mode3"
+        elif typeandmode == "MESHVERTEX_PAINT":
+            switcher_mode = "_mode4"
+        elif typeandmode == "MESHWEIGHT_PAINT":
+            switcher_mode = "_mode5"
+        elif typeandmode == "MESHTEXTURE_PAINT":
+            switcher_mode = "_mode6"
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            switcher_mode = "_mode7"
+        elif typeandmode == "GPENCILSCULPT_GPENCIL":
+            switcher_mode = "_mode8"
+        elif typeandmode == "GPENCILPAINT_GPENCIL":
+            switcher_mode = "_mode9"
+        elif typeandmode == "GPENCILWEIGHT_GPENCIL":
+            switcher_mode = "_mode10"
+        elif typeandmode == "GPENCILVERTEX_GPENCIL":
+            switcher_mode = "_mode11"
+        elif typeandmode == "GREASEPENCILEDIT":
+            switcher_mode = "_mode12"
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
+            switcher_mode = "_mode13"
+        elif typeandmode == "GREASEPENCILPAINT_GREASE_PENCIL":
+            switcher_mode = "_mode14"
+        elif typeandmode == "GREASEPENCILWEIGHT_GREASE_PENCIL":
+            switcher_mode = "_mode15"
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
+            switcher_mode = "_mode16"
+        elif typeandmode == "ARMATUREEDIT":
+            switcher_mode = "_mode17"
+        elif typeandmode == "ARMATUREPOSE":
+            switcher_mode = "_mode18"
+        elif typeandmode == "CURVEEDIT":
+            switcher_mode = "_mode19"
+        elif typeandmode == "SURFACEEDIT":
+            switcher_mode = "_mode20"
+        elif typeandmode == "METAEDIT":
+            switcher_mode = "_mode21"
+        elif typeandmode == "FONTEDIT":
+            switcher_mode = "_mode22"
+        elif typeandmode == "LATTICEEDIT":
+            switcher_mode = "_mode23"
+        
         layout = self.layout
-        layout.label(text="OBJECT mode" if bpy.context.active_object.mode == "OBJECT" else typeandmode)
+        layout.label(text="OBJECT mode" if bpy.context.active_object.mode == "OBJECT" else panel_name)
         # 创建三列布局并设置宽度比例 (col1最宽)
         row = layout.row()
         col0 = row.column(align=True)
@@ -163,7 +170,6 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
             if col:
                 col.scale_x = 1.0
 
-
         # 一列标题和分隔符
         col0.label(text="选择超级菜单", icon='PRESET')
         col0.operator("panel.set_panels", text="超级菜单1", icon='COLLECTION_COLOR_01' if switcher_panel == "panelone" else "COLLECTION_NEW").panel = "panelone"
@@ -173,49 +179,54 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col0.operator("panel.set_panels", text="超级菜单5", icon='COLLECTION_COLOR_05' if switcher_panel == "panelfive" else "COLLECTION_NEW").panel = "panelfive"
 
         # 一列标题和分隔符
-        col1.label(text="col1", icon='RADIOBUT_OFF')
+        col_titles = []
+        for i in range(1, 9):
+            attr_name = f"{switcher_panel}{switcher_mode}_col{i}_title"
+            col_titles.append(getattr(prefs, attr_name))
+
+        col1.label(text=col_titles[0], icon='PLUS')
         for i in range(1, 11):
             op = col1.operator("button.set_buttons", text="")
             op.column = '_col1'
             op.button = f'_button{i}'
 
-        col2.label(text="col2", icon='RADIOBUT_OFF')
+        col2.label(text=col_titles[1], icon='PLUS')
         for i in range(1, 11):
             op = col2.operator("button.set_buttons", text="")
             op.column = '_col2'
             op.button = f'_button{i}'
 
-        col3.label(text="col3", icon='RADIOBUT_OFF')
+        col3.label(text=col_titles[2], icon='PLUS')
         for i in range(1, 11):
             op = col3.operator("button.set_buttons", text="")
             op.column = '_col3'
             op.button = f'_button{i}'
 
-        col4.label(text="col4", icon='RADIOBUT_OFF')
+        col4.label(text=col_titles[3], icon='PLUS')
         for i in range(1, 11):
             op = col4.operator("button.set_buttons", text="")
             op.column = '_col4'
             op.button = f'_button{i}'
 
-        col5.label(text="col5", icon='RADIOBUT_OFF')
+        col5.label(text=col_titles[4], icon='PLUS')
         for i in range(1, 11):
             op = col5.operator("button.set_buttons", text="")
             op.column = '_col5'
             op.button = f'_button{i}'
 
-        col6.label(text="col6", icon='RADIOBUT_OFF')
+        col6.label(text=col_titles[5], icon='PLUS')
         for i in range(1, 11):
             op = col6.operator("button.set_buttons", text="")
             op.column = '_col6'
             op.button = f'_button{i}'
 
-        col7.label(text="col7", icon='RADIOBUT_OFF')
+        col7.label(text=col_titles[6], icon='PLUS')
         for i in range(1, 11):
             op = col7.operator("button.set_buttons", text="")
             op.column = '_col7'
             op.button = f'_button{i}'
 
-        col8.label(text="col8", icon='RADIOBUT_OFF')
+        col8.label(text=col_titles[7], icon='PLUS')
         for i in range(1, 11):
             op = col8.operator("button.set_buttons", text="")
             op.column = '_col8'
