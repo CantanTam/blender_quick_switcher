@@ -20,34 +20,53 @@ from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
 from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_mode_switch_tab import MODE_TAB_OT_Switch
 
-from .quick_menu_popups.popup_quick_menu_one_object import POPUP_MENU_OT_one_object
-
+from .quick_menu_popups.popup_quick_menu_one_object import QUICK_POPUP_MENU_OT_one_object
 from .quick_menu_popups.popup_quick_menu_one_meshedit import QUICK_POPUP_MENU_OT_one_meshedit
 from .quick_menu_popups.popup_quick_menu_one_meshsculpt import QUICK_POPUP_MENU_OT_one_meshsculpt
 from .quick_menu_popups.popup_quick_menu_one_meshtexture import QUICK_POPUP_MENU_OT_one_meshtexture
 from .quick_menu_popups.popup_quick_menu_one_meshvertexpaint import QUICK_POPUP_MENU_OT_one_meshvertexpaint
 from .quick_menu_popups.popup_quick_menu_one_meshweightpaint import QUICK_POPUP_MENU_OT_one_meshweightpaint
-
 from .quick_menu_popups.popup_quick_menu_one_gpenciledit import QUICK_POPUP_MENU_OT_one_gpenciledit
 from .quick_menu_popups.popup_quick_menu_one_gpencilpaint import QUICK_POPUP_MENU_OT_one_gpencilpaint
 from .quick_menu_popups.popup_quick_menu_one_gpencilsculpt import QUICK_POPUP_MENU_OT_one_gpencilsculpt
 from .quick_menu_popups.popup_quick_menu_one_gpencilvertex import QUICK_POPUP_MENU_OT_one_gpencilvertex
 from .quick_menu_popups.popup_quick_menu_one_gpencilweight import QUICK_POPUP_MENU_OT_one_gpencilweight
-
 from .quick_menu_popups.popup_quick_menu_one_greasepenciledit import QUICK_POPUP_MENU_OT_one_greasepenciledit
 from .quick_menu_popups.popup_quick_menu_one_greasepencilpaint import QUICK_POPUP_MENU_OT_one_greasepencilpaint
 from .quick_menu_popups.popup_quick_menu_one_greasepencilsculpt import QUICK_POPUP_MENU_OT_one_greasepencilsculpt
 from .quick_menu_popups.popup_quick_menu_one_greasepencilvertex import QUICK_POPUP_MENU_OT_one_greasepencilvertex
 from .quick_menu_popups.popup_quick_menu_one_greasepencilweight import QUICK_POPUP_MENU_OT_one_greasepencilweight
-
 from .quick_menu_popups.popup_quick_menu_one_armatureedit import QUICK_POPUP_MENU_OT_one_armatureedit
 from .quick_menu_popups.popup_quick_menu_one_armaturepose import QUICK_POPUP_MENU_OT_one_armaturepose
-
 from .quick_menu_popups.popup_quick_menu_one_curveedit import QUICK_POPUP_MENU_OT_one_curveedit
 from .quick_menu_popups.popup_quick_menu_one_surfaceedit import QUICK_POPUP_MENU_OT_one_surfaceedit
 from .quick_menu_popups.popup_quick_menu_one_metaedit import QUICK_POPUP_MENU_OT_one_metaedit
 from .quick_menu_popups.popup_quick_menu_one_fontedit import QUICK_POPUP_MENU_OT_one_fontedit
 from .quick_menu_popups.popup_quick_menu_one_latticeedit import QUICK_POPUP_MENU_OT_one_latticeedit
+
+from .quick_menu_popups.popup_quick_menu_two_object import QUICK_POPUP_MENU_OT_two_object
+from .quick_menu_popups.popup_quick_menu_two_meshedit import QUICK_POPUP_MENU_OT_two_meshedit
+from .quick_menu_popups.popup_quick_menu_two_meshsculpt import QUICK_POPUP_MENU_OT_two_meshsculpt
+from .quick_menu_popups.popup_quick_menu_two_meshtexture import QUICK_POPUP_MENU_OT_two_meshtexture
+from .quick_menu_popups.popup_quick_menu_two_meshvertexpaint import QUICK_POPUP_MENU_OT_two_meshvertexpaint
+from .quick_menu_popups.popup_quick_menu_two_meshweightpaint import QUICK_POPUP_MENU_OT_two_meshweightpaint
+from .quick_menu_popups.popup_quick_menu_two_gpenciledit import QUICK_POPUP_MENU_OT_two_gpenciledit
+from .quick_menu_popups.popup_quick_menu_two_gpencilpaint import QUICK_POPUP_MENU_OT_two_gpencilpaint
+from .quick_menu_popups.popup_quick_menu_two_gpencilsculpt import QUICK_POPUP_MENU_OT_two_gpencilsculpt
+from .quick_menu_popups.popup_quick_menu_two_gpencilvertex import QUICK_POPUP_MENU_OT_two_gpencilvertex
+from .quick_menu_popups.popup_quick_menu_two_gpencilweight import QUICK_POPUP_MENU_OT_two_gpencilweight
+from .quick_menu_popups.popup_quick_menu_two_greasepenciledit import QUICK_POPUP_MENU_OT_two_greasepenciledit
+from .quick_menu_popups.popup_quick_menu_two_greasepencilpaint import QUICK_POPUP_MENU_OT_two_greasepencilpaint
+from .quick_menu_popups.popup_quick_menu_two_greasepencilsculpt import QUICK_POPUP_MENU_OT_two_greasepencilsculpt
+from .quick_menu_popups.popup_quick_menu_two_greasepencilvertex import QUICK_POPUP_MENU_OT_two_greasepencilvertex
+from .quick_menu_popups.popup_quick_menu_two_greasepencilweight import QUICK_POPUP_MENU_OT_two_greasepencilweight
+from .quick_menu_popups.popup_quick_menu_two_armatureedit import QUICK_POPUP_MENU_OT_two_armatureedit
+from .quick_menu_popups.popup_quick_menu_two_armaturepose import QUICK_POPUP_MENU_OT_two_armaturepose
+from .quick_menu_popups.popup_quick_menu_two_curveedit import QUICK_POPUP_MENU_OT_two_curveedit
+from .quick_menu_popups.popup_quick_menu_two_surfaceedit import QUICK_POPUP_MENU_OT_two_surfaceedit
+from .quick_menu_popups.popup_quick_menu_two_metaedit import QUICK_POPUP_MENU_OT_two_metaedit
+from .quick_menu_popups.popup_quick_menu_two_fontedit import QUICK_POPUP_MENU_OT_two_fontedit
+from .quick_menu_popups.popup_quick_menu_two_latticeedit import QUICK_POPUP_MENU_OT_two_latticeedit
 
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_one
 from .call_popup_quick_menus import CALLOUT_QUICK_MENU_OT_two
@@ -165,7 +184,7 @@ def register():
     bpy.utils.register_class(MODE_OT_to_object_and_select)
 
     # 注册所有QUICK_POPUP_MENU_OT_*类
-    bpy.utils.register_class(POPUP_MENU_OT_one_object)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_object)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_meshedit)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_meshsculpt)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_meshtexture)
@@ -188,6 +207,30 @@ def register():
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_metaedit)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_fontedit)
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_latticeedit)
+
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_object)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_meshedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_meshsculpt)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_meshtexture)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_meshvertexpaint)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_meshweightpaint)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_gpenciledit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_gpencilpaint)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_gpencilsculpt)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_gpencilvertex)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_gpencilweight)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_greasepenciledit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_greasepencilpaint)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_greasepencilsculpt)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_greasepencilvertex)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_greasepencilweight)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_armatureedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_armaturepose)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_curveedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_surfaceedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_metaedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_fontedit)
+    bpy.utils.register_class(QUICK_POPUP_MENU_OT_two_latticeedit)
 
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_one)
     bpy.utils.register_class(CALLOUT_QUICK_MENU_OT_two)
@@ -279,6 +322,30 @@ def unregister():
     unregister_button_actions_global_functions()
 
     # 注销所有QUICK_POPUP_MENU_OT_*类
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_latticeedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_fontedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_metaedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_surfaceedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_curveedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_armaturepose)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_armatureedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_greasepencilweight)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_greasepencilvertex)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_greasepencilsculpt)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_greasepencilpaint)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_greasepenciledit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_gpencilweight)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_gpencilvertex)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_gpencilsculpt)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_gpencilpaint)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_gpenciledit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_meshweightpaint)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_meshvertexpaint)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_meshtexture)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_meshsculpt)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_meshedit)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_two_object)
+
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_latticeedit)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_fontedit)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_metaedit)
@@ -301,7 +368,7 @@ def unregister():
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_meshtexture)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_meshsculpt)
     bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_meshedit)
-    bpy.utils.unregister_class(POPUP_MENU_OT_one_object)
+    bpy.utils.unregister_class(QUICK_POPUP_MENU_OT_one_object)
 
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_two)
