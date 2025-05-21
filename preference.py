@@ -4,7 +4,7 @@ import json
 import os
 from bpy.types import AddonPreferences, Operator
 from bpy.props import BoolProperty, EnumProperty, FloatProperty, IntProperty, StringProperty
-from .button_operator_dict import button_options_list
+#from .button_operator_dict import button_options_list
 
 # 定义 JSON 配置文件路径，假设保存于当前 addon 文件夹下
 def get_settings_file_path():
@@ -25771,9 +25771,6 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             # 选项内容区域
             if self.to_show_switch_notice:
                 content_box = box.box()
-
-            #row = content_box.row()
-            
             
                 row = content_box.row()
                 row.prop(self, "switch_notice_scale", slider=True , text="切换提示大小")
