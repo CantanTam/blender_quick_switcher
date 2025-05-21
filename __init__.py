@@ -83,7 +83,7 @@ from .show_switch_notice import (
 from . import keymap
 
 # 全局通用高频操作按钮：
-from .quick_menu_button_functions.button_actions_global_functions import (
+from .quick_menu_button_functions.button_actions_global import (
     register as register_button_actions_global_functions,
     unregister as unregister_button_actions_global_functions,
 )
@@ -108,11 +108,6 @@ from .quick_menu_button_functions.button_actions_global_switch_snap import (
 from .quick_menu_button_functions.button_actions_global_switch_proportional import (
     register as register_button_actions_global_switch_proportional,
     unregister as unregister_button_actions_global_switch_proportional,
-)
-# “视图”菜单
-from .quick_menu_button_functions.button_actions_global_view_menu import (
-    register as register_button_actions_global_view_menu,
-    unregister as unregister_button_actions_global_view_menu,
 )
 
 from .quick_menu_button_functions.button_actions_global_select_menu import (
@@ -250,9 +245,6 @@ def register():
     # 切换衰减编辑
     register_button_actions_global_switch_proportional()
 
-    # "视图"菜单功能项
-    register_button_actions_global_view_menu()
-        
     # “选择”菜单功能项
     register_button_actions_global_select_menu()
 
@@ -302,10 +294,6 @@ def unregister():
 
     # “选择”菜单功能项
     unregister_button_actions_global_select_menu()
-
-
-    # “视图”菜单
-    unregister_button_actions_global_view_menu()
 
     # 切换衰减编辑
     unregister_button_actions_global_switch_proportional()

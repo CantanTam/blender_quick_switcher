@@ -1,7 +1,9 @@
 import bpy
 
 def draw_add_to_switcher_common(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    ADDON_NAME = __package__.split('.')[0]
+
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     
