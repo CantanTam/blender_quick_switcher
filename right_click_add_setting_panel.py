@@ -8,6 +8,8 @@ switcher_column = "_col1"
 switcher_button = "_button1"
 switcher_action = ""
 
+temp_action = ""
+
 class PANEL_OT_set_panels(bpy.types.Operator):
     bl_idname = "panel.set_panels"
     bl_label = "设置panel"
@@ -84,18 +86,29 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         default=""
     )
 
+    hide_panel: bpy.props.BoolProperty(
+        name="",
+        default=False
+    )
+
     # 通用的插件名称引用
     ADDON_NAME = __package__.split('.')[0]
 
     def execute(self, context):
+        self.hide_panel = False
         return {'FINISHED'}
 
     def invoke(self, context, event):
         global switcher_action
+        global temp_action
+
         switcher_action = self.action
+
+        if self.action not in {'NO_BUTTON','SEPARATOR'}:
+            temp_action = self.action
         
         # 如果是NO_BUTTON操作则直接执行不显示面板
-        if self.action in {'NO_BUTTON','SEPARATOR'}:
+        if self.action in {'NO_BUTTON','SEPARATOR'} or self.hide_panel:
             return self.execute(context)
             
         # 其他情况显示弹出菜单
@@ -183,6 +196,11 @@ class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
         col0.separator()
         col0.operator("call.add_to_switcher_menu", text="添加分隔符", icon='REMOVE').action = 'SEPARATOR'
         col0.operator("call.add_to_switcher_menu", text="添加[空按钮]", icon='CANCEL').action = 'NO_BUTTON'
+        col0.separator()
+        temp_button = button_press_function.get(temp_action)
+        op = col0.operator("call.add_to_switcher_menu", text=temp_button[1], icon=temp_button[2])
+        op.action = temp_button[0]
+        op.hide_panel = True
 
         # 一列标题和分隔符
         col_titles = []

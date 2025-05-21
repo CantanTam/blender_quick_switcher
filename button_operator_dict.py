@@ -210,7 +210,7 @@ button_press_function = {
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
-        "button.action_global_add","添加","PLUS", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
+        "button.action_global_add","添加","PRESET", "CURVEOBJECT", "SURFACEOBJECT", "METAOBJECT",
         "FONTOBJECT", "VOLUMEOBJECT", "EMPTYOBJECT", "LATTICEOBJECT", "LIGHTOBJECT", "LIGHT_PROBEOBJECT", 
         "CAMERAOBJECT", "SPEAKEROBJECT", "MESHOBJECT","GPENCILOBJECT", "GREASEPENCILOBJECT","ARMATUREOBJECT",
         "CURVEEDIT",'SURFACEEDIT','METAEDIT','MESHEDIT','ARMATUREEDIT',
