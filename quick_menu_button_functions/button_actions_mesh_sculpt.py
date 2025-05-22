@@ -23,3 +23,22 @@ class BUTTON_ACTION_OT_object_object_duplicate_move_linked(bpy.types.Operator):
         bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
         return {'FINISHED'}
     
+
+
+
+
+
+
+classes = (
+    BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
+    BUTTON_ACTION_OT_object_object_duplicate_move_linked,
+
+)
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)

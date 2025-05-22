@@ -1,84 +1,83 @@
 
-# [0]调用的函数id；[1]按钮名称；[2]按钮图标；[3][4][…]typeandmode包含在其中才显示按钮，“all”则是在所有场景中都显示
-button_press_function = {
+button_press_global = {
     # 全局模式——“视图”菜单,所有操作模式当中都适用
-        'button.action_view3d_view_selected':(
-        "button.action_view3d_view_selected","框显所选","DOT","all",
+        'button.action_global_view_selected':(
+        "button.action_global_view_selected","框显所选","DOT","all",
     ),
-        'button.action_view3d_view_all':(
-        "button.action_view3d_view_all","框显全部","HOME","all",
+        'button.action_global_view_all':(
+        "button.action_global_view_all","框显全部","HOME","all",
     ),
-        'button.action_view3d_localview':(
-        "button.action_view3d_localview","局部视图","RADIOBUT_OFF","all",
+        'button.action_global_localview':(
+        "button.action_global_localview","局部视图","RADIOBUT_OFF","all",
     ),
         'view3d.localview_remove_from':(
         "view3d.localview_remove_from","从局部视图中移除","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_object_as_camera':(
-        "button.action_view3d_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
+        'button.action_global_object_as_camera':(
+        "button.action_global_object_as_camera","设置活动物体为摄像机","OUTLINER_OB_CAMERA","all",
     ),
-        'button.action_view3d_view_center_camera':(
-        "button.action_view3d_view_center_camera","摄像机边界框","SELECT_SET","all",
+        'button.action_global_view_center_camera':(
+        "button.action_global_view_center_camera","摄像机边界框","SELECT_SET","all",
     ),
-        'button.action_view3d_call_view_viewpoint_menu':(
-        "button.action_view3d_call_view_viewpoint_menu","视图","PRESET","all",
+        'button.action_global_call_view_viewpoint_menu':(
+        "button.action_global_call_view_viewpoint_menu","视图","PRESET","all",
     ),
-        'button.action_view3d_call_view_navigation_menu':(
-        "button.action_view3d_call_view_navigation_menu","视图切换","PRESET","all",
+        'button.action_global_call_view_navigation_menu':(
+        "button.action_global_call_view_navigation_menu","视图切换","PRESET","all",
     ),
-        'button.action_view3d_zoom_border':(
-        "button.action_view3d_zoom_border","框选放大","SELECT_SET","all",
+        'button.action_global_zoom_border':(
+        "button.action_global_zoom_border","框选放大","SELECT_SET","all",
     ),
         'button.action_zoom_camera_1_to_1':(
         "button.action_zoom_camera_1_to_1","1:1缩放摄像机视图","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_fly':(
-        "button.action_view3d_fly","飞行漫游模式","RADIOBUT_OFF","all",
+        'button.action_global_fly':(
+        "button.action_global_fly","飞行漫游模式","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_walk':(
-        "button.action_view3d_walk","行走漫步","RADIOBUT_OFF","all",
+        'button.action_global_walk':(
+        "button.action_global_walk","行走漫步","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_call_view_align_selected_menu':(
-        "button.action_view3d_call_view_align_selected_menu","视图对齐活动项","PRESET","all",
+        'button.action_global_call_view_align_selected_menu':(
+        "button.action_global_call_view_align_selected_menu","视图对齐活动项","PRESET","all",
     ),
-        'button.action_view3d_call_view_align_menu':(
-        "button.action_view3d_call_view_align_menu","对齐视图","PRESET","all",
+        'button.action_global_call_view_align_menu':(
+        "button.action_global_call_view_align_menu","对齐视图","PRESET","all",
     ),
-        'button.action_view3d_view_all_center_true':(
-        "button.action_view3d_view_all_center_true","游标居中并查看全部","CURSOR","all",
+        'button.action_global_view_all_center_true':(
+        "button.action_global_view_all_center_true","游标居中并查看全部","CURSOR","all",
     ),
-        'button.action_view3d_view_center_cursor':(
-        "button.action_view3d_view_center_cursor","视图中心对齐游标","PIVOT_CURSOR","all",
+        'button.action_global_view_center_cursor':(
+        "button.action_global_view_center_cursor","视图中心对齐游标","PIVOT_CURSOR","all",
     ),
-        'button.action_view3d_camera_to_view':(
-        "button.action_view3d_camera_to_view","活动摄像机对齐当前视角","OUTLINER_DATA_CAMERA","all",
+        'button.action_global_camera_to_view':(
+        "button.action_global_camera_to_view","活动摄像机对齐当前视角","OUTLINER_DATA_CAMERA","all",
     ),
-        'button.action_view3d_camera_to_view_selected':(
-        "button.action_view3d_camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_OB_CAMERA","all",
+        'button.action_global_camera_to_view_selected':(
+        "button.action_global_camera_to_view_selected","活动摄像机对齐选中的物体","OUTLINER_OB_CAMERA","all",
     ),
-        'button.action_view3d_lock_to_active_or_lock_clear':(
-        "button.action_view3d_lock_to_active_or_lock_clear","锁定/解锁视图","CON_CAMERASOLVER","all",
+        'button.action_global_lock_to_active_or_lock_clear':(
+        "button.action_global_lock_to_active_or_lock_clear","锁定/解锁视图","CON_CAMERASOLVER","all",
     ),
-        'button.action_view3d_call_view_regions_menu':(
-        "button.action_view3d_call_view_regions_menu","视图框","PRESET","all",
+        'button.action_global_call_view_regions_menu':(
+        "button.action_global_call_view_regions_menu","视图框","PRESET","all",
     ),
-        'button.action_view3d_clip_border':(
-        "button.action_view3d_clip_border","裁剪框","CLIPUV_HLT","all",
+        'button.action_global_clip_border':(
+        "button.action_global_clip_border","裁剪框","CLIPUV_HLT","all",
     ),
-        'button.action_view3d_render_border':(
-        "button.action_view3d_render_border","开/关渲染框","RADIOBUT_OFF","all",
+        'button.action_global_render_border':(
+        "button.action_global_render_border","开/关渲染框","RADIOBUT_OFF","all",
     ),
-        'button.action_view3d_render_opengl':(
-        "button.action_view3d_render_opengl","视图渲染图像","RENDER_STILL","all",
+        'button.action_global_render_opengl':(
+        "button.action_global_render_opengl","视图渲染图像","RENDER_STILL","all",
     ),
-        'button.action_view3d_render_opengl_animation':(
-        "button.action_view3d_render_opengl_animation","视图渲染动画","RENDER_ANIMATION","all",
+        'button.action_global_render_opengl_animation':(
+        "button.action_global_render_opengl_animation","视图渲染动画","RENDER_ANIMATION","all",
     ),
-        'button.action_view3d_render_opengl_keyframe':(
-        "button.action_view3d_render_opengl_keyframe","视图渲染关键帧","RENDER_ANIMATION","all",
+        'button.action_global_render_opengl_keyframe':(
+        "button.action_global_render_opengl_keyframe","视图渲染关键帧","RENDER_ANIMATION","all",
     ),
-        'button.action_view3d_area_menu':(
-        "button.action_view3d_area_menu","区域","PRESET","all",
+        'button.action_global_area_menu':(
+        "button.action_global_area_menu","区域","PRESET","all",
     ),
         'screen.region_quadview':(
         "screen.region_quadview","四格视图","IMGDISPLAY","all",
@@ -86,8 +85,8 @@ button_press_function = {
         'screen.screen_full_area':(
         "screen.screen_full_area","区域最大化","MOD_LENGTH","all",
     ),
-        'button.action_view3d_screen_screen_full_area':(
-        "button.action_view3d_screen_screen_full_area","全屏模式","FULLSCREEN_ENTER","all",
+        'button.action_global_screen_screen_full_area':(
+        "button.action_global_screen_screen_full_area","全屏模式","FULLSCREEN_ENTER","all",
     ),
 
     # 全局高频操作-移动/缩放/旋转-G/S/R
@@ -110,6 +109,14 @@ button_press_function = {
     ),
         'button.action_global_select_circle':(
         "button.action_global_select_circle","刷选","EVENT_C",
+    ),
+
+    # “选择”菜单
+        'button.action_global_select_select_mirror':(
+        "button.action_global_select_select_mirror","选择镜像","MOD_MIRROR",
+    ),
+        'button.action_global_select_select_random':(
+        "button.action_global_select_select_random","随机选择","RADIOBUT_OFF",
     ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
@@ -254,35 +261,6 @@ button_press_function = {
     ),
         'button.action_switch_proportional_random':(
         "button.action_switch_proportional_random","随机","RNDCURVE",
-    ),
-
-    # “选择”菜单
-        'button.action_call_select_select_by_type_menu':(
-        "button.action_call_select_select_by_type_menu","按类型全选","PRESET",
-    ),
-        'object.select_camera':(
-        "object.select_camera","选择活动摄像机","OUTLINER_OB_CAMERA",
-    ),
-        'button.action_select_select_mirror':(
-        "button.action_select_select_mirror","选择镜像","MOD_MIRROR",
-    ),
-        'button.action_select_select_random':(
-        "button.action_select_select_random","随机选择","RADIOBUT_OFF",
-    ),
-        'button.action_call_object_select_more_or_less_menu':(
-        "button.action_call_object_select_more_or_less_menu","加选/减选","FORCE_CHARGE",
-    ),
-        'button.action_object_select_hierarchy_parent_child':(
-        "button.action_object_select_hierarchy_parent_child","父级/子级","ORIENTATION_PARENT",
-    ),
-        'button.action_select_select_grouped':(
-        "button.action_select_select_grouped","按组选择","PRESET",
-    ),
-        'button.action_select_select_linked':(
-        "button.action_select_select_linked","选择相连","LINK_BLEND",
-    ),
-        'button.action_object_select_pattern':(
-        "button.action_object_select_pattern","按名称选择","RADIOBUT_OFF", 
     ),
 
     #MESHEDIT 的选择菜单

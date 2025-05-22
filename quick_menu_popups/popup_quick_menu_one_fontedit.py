@@ -1,6 +1,6 @@
 import bpy
 
-from ..button_operator_dict import button_press_function
+from ..button_dicts.button_dict_all import button_press_function
 
 class QUICK_POPUP_MENU_OT_one_fontedit(bpy.types.Menu):
     bl_idname = "popup.quick_menu_one_fontedit"

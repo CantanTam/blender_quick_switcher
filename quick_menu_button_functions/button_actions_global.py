@@ -3,8 +3,8 @@ import bpy
 from ..show_switch_notice import show_notice
 
 # 全局“视图”菜单功能
-class BUTTON_ACTION_OT_view3d_view_selected(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_selected"
+class BUTTON_ACTION_OT_global_view_selected(bpy.types.Operator):
+    bl_idname = "button.action_global_view_selected"
     bl_label = "框选所选"
     bl_description = "快捷键 ."
     bl_options = {'REGISTER', 'UNDO'}
@@ -13,8 +13,8 @@ class BUTTON_ACTION_OT_view3d_view_selected(bpy.types.Operator):
         bpy.ops.view3d.view_selected('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_view_all(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_all"
+class BUTTON_ACTION_OT_global_view_all(bpy.types.Operator):
+    bl_idname = "button.action_global_view_all"
     bl_label = "框选全部"
     bl_description = "快捷键 Home"
     bl_options = {'REGISTER', 'UNDO'}
@@ -23,8 +23,8 @@ class BUTTON_ACTION_OT_view3d_view_all(bpy.types.Operator):
         bpy.ops.view3d.view_all('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_localview(bpy.types.Operator):
-    bl_idname = "button.action_view3d_localview"
+class BUTTON_ACTION_OT_global_localview(bpy.types.Operator):
+    bl_idname = "button.action_global_localview"
     bl_label = "切换局部视图"
     bl_description = "快捷键 /"
     bl_options = {'REGISTER', 'UNDO'}
@@ -33,8 +33,8 @@ class BUTTON_ACTION_OT_view3d_localview(bpy.types.Operator):
         bpy.ops.view3d.localview('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_object_as_camera(bpy.types.Operator):
-    bl_idname = "button.action_view3d_object_as_camera"
+class BUTTON_ACTION_OT_global_object_as_camera(bpy.types.Operator):
+    bl_idname = "button.action_global_object_as_camera"
     bl_label = "设置活动物体为摄像机"
     bl_description = "快捷键 Ctrl Num_0"
     bl_options = {'REGISTER', 'UNDO'}
@@ -43,8 +43,8 @@ class BUTTON_ACTION_OT_view3d_object_as_camera(bpy.types.Operator):
         bpy.ops.view3d.object_as_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_view_center_camera(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_center_camera"
+class BUTTON_ACTION_OT_global_view_center_camera(bpy.types.Operator):
+    bl_idname = "button.action_global_view_center_camera"
     bl_label = "摄像机边界框"
     bl_description = "快捷键 Home"
     bl_options = {'REGISTER', 'UNDO'}
@@ -53,8 +53,8 @@ class BUTTON_ACTION_OT_view3d_view_center_camera(bpy.types.Operator):
         bpy.ops.view3d.view_center_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_view_viewpoint_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_viewpoint_menu"
+class BUTTON_ACTION_OT_global_view_viewpoint_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_view_viewpoint_menu"
     bl_label = "视图"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -81,17 +81,17 @@ class BUTTON_ACTION_OT_view3d_view_viewpoint_menu(bpy.types.Operator):
         col.operator("view3d.view_axis", text="左视图", icon="RADIOBUT_OFF").type='LEFT'
 
 # 唤出"视图“菜单类
-class BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_view_viewpoint_menu"
+class BUTTON_ACTION_OT_global_call_view_viewpoint_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_call_view_viewpoint_menu"
     bl_label = "视图"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.button.action_view3d_view_viewpoint_menu('INVOKE_DEFAULT')
+        bpy.ops.button.action_global_view_viewpoint_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_view3d_view_navigation_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_navigation_menu"
+class BUTTON_ACTION_OT_global_view_navigation_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_view_navigation_menu"
     bl_label = "视图切换"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -132,18 +132,18 @@ class BUTTON_ACTION_OT_view3d_view_navigation_menu(bpy.types.Operator):
         col.operator("view3d.walk", text="行走漫游", icon="RADIOBUT_OFF")
 
 # 唤出“视图切换”菜单类
-class BUTTON_ACTION_OT_view3d_call_view_navigation_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_view_navigation_menu"
+class BUTTON_ACTION_OT_global_call_view_navigation_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_call_view_navigation_menu"
     bl_label = "视图切换"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.button.action_view3d_view_navigation_menu('INVOKE_DEFAULT')
+        bpy.ops.button.action_global_view_navigation_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
     
 # 自定义“框选放大”操作类
-class BUTTON_ACTION_OT_view3d_zoom_border(bpy.types.Operator):
-    bl_idname = "button.action_view3d_zoom_border"
+class BUTTON_ACTION_OT_global_zoom_border(bpy.types.Operator):
+    bl_idname = "button.action_global_zoom_border"
     bl_label = "框选放大"
     bl_description = "快捷键 Shift B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -152,7 +152,7 @@ class BUTTON_ACTION_OT_view3d_zoom_border(bpy.types.Operator):
         bpy.ops.view3d.zoom_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_zoom_camera_1_to_1(bpy.types.Operator):
+class BUTTON_ACTION_OT_global_zoom_camera_1_to_1(bpy.types.Operator):
     bl_idname = "button.action_zoom_camera_1_to_1"
     bl_label = "1:1缩放摄像机视图"
     bl_options = {'REGISTER', 'UNDO'}
@@ -170,8 +170,8 @@ class BUTTON_ACTION_OT_view3d_zoom_camera_1_to_1(bpy.types.Operator):
         return {'FINISHED'}
 
 # 自定义“行走漫步”操作类
-class BUTTON_ACTION_OT_view3d_walk(bpy.types.Operator):
-    bl_idname = "button.action_view3d_walk"
+class BUTTON_ACTION_OT_global_walk(bpy.types.Operator):
+    bl_idname = "button.action_global_walk"
     bl_label = "行走漫步"
     bl_description = "快捷键 Shift `"
     bl_options = {'REGISTER', 'UNDO'}
@@ -181,8 +181,8 @@ class BUTTON_ACTION_OT_view3d_walk(bpy.types.Operator):
         bpy.ops.view3d.walk('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_fly(bpy.types.Operator):
-    bl_idname = "button.action_view3d_fly"
+class BUTTON_ACTION_OT_global_fly(bpy.types.Operator):
+    bl_idname = "button.action_global_fly"
     bl_label = "飞行漫游模式"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -191,7 +191,7 @@ class BUTTON_ACTION_OT_view3d_fly(bpy.types.Operator):
         bpy.ops.view3d.fly('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_view_align_selected_menu(bpy.types.Operator):
+class BUTTON_ACTION_OT_global_view_align_selected_menu(bpy.types.Operator):
     bl_idname = "button.action_view_align_selected_menu"
     bl_label = "视图对齐活动项"
     bl_options = {'REGISTER', 'UNDO'}
@@ -228,8 +228,8 @@ class BUTTON_ACTION_OT_view3d_view_align_selected_menu(bpy.types.Operator):
         op.type = 'LEFT'
         op.align_active=True
 
-class BUTTON_ACTION_OT_view3d_call_view_align_selected_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_view_align_selected_menu"
+class BUTTON_ACTION_OT_global_call_view_align_selected_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_call_view_align_selected_menu"
     bl_label = "视图对齐活动项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -238,8 +238,8 @@ class BUTTON_ACTION_OT_view3d_call_view_align_selected_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # 自定义“锁定/解锁视图至活动物体”按钮类
-class BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear(bpy.types.Operator):
-    bl_idname = "button.action_view3d_lock_to_active_or_lock_clear"
+class BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear(bpy.types.Operator):
+    bl_idname = "button.action_global_lock_to_active_or_lock_clear"
     bl_label = "锁定/解锁视图"
     bl_description = "锁定视图至活动物体/消除视图锁定"
     bl_options = {'REGISTER', 'UNDO'}
@@ -253,8 +253,8 @@ class BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear(bpy.types.Operator):
             show_notice("ACTIVE_UNLOCK.png")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_camera_to_view(bpy.types.Operator):
-    bl_idname = "button.action_view3d_camera_to_view"
+class BUTTON_ACTION_OT_global_camera_to_view(bpy.types.Operator):
+    bl_idname = "button.action_global_camera_to_view"
     bl_label = "活动摄像机对齐当前视角"
     bl_description = "Ctrl Alt Num_0"
     bl_options = {'REGISTER', 'UNDO'}
@@ -272,8 +272,8 @@ class BUTTON_ACTION_OT_view3d_camera_to_view(bpy.types.Operator):
         bpy.ops.view3d.camera_to_view('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_camera_to_view_selected(bpy.types.Operator):
-    bl_idname = "button.action_view3d_camera_to_view_selected"
+class BUTTON_ACTION_OT_global_camera_to_view_selected(bpy.types.Operator):
+    bl_idname = "button.action_global_camera_to_view_selected"
     bl_label = "活动摄像机对齐选中的物体"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -288,8 +288,8 @@ class BUTTON_ACTION_OT_view3d_camera_to_view_selected(bpy.types.Operator):
             bpy.ops.view3d.view_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_view3d_call_view_align_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_view_align_menu"
+class BUTTON_ACTION_OT_global_call_view_align_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_call_view_align_menu"
     bl_label = "对齐视图"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -298,8 +298,8 @@ class BUTTON_ACTION_OT_view3d_call_view_align_menu(bpy.types.Operator):
         return {'FINISHED'}
     
 # 弹出“对齐视图”——游标居中并查看全部
-class BUTTON_ACTION_OT_view3d_view_all_center_true(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_all_center_true"
+class BUTTON_ACTION_OT_global_view_all_center_true(bpy.types.Operator):
+    bl_idname = "button.action_global_view_all_center_true"
     bl_label = "游标居中并查看全部"
     bl_description = "快捷键 Shift C"
     bl_options = {'REGISTER', 'UNDO'}
@@ -310,8 +310,8 @@ class BUTTON_ACTION_OT_view3d_view_all_center_true(bpy.types.Operator):
         bpy.ops.view3d.view_all('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_view_center_cursor(bpy.types.Operator):
-    bl_idname = "button.action_view3d_view_center_cursor"
+class BUTTON_ACTION_OT_global_view_center_cursor(bpy.types.Operator):
+    bl_idname = "button.action_global_view_center_cursor"
     bl_label = "视图中心对齐游标"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -321,30 +321,30 @@ class BUTTON_ACTION_OT_view3d_view_center_cursor(bpy.types.Operator):
         return {'FINISHED'}
 
 class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
-    bl_idname = "button.action_view3d_view_regions_menu"
+    bl_idname = "button.action_global_view_regions_menu"
     bl_label = "视图框"
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout
-        layout.operator("button.action_view3d_clip_border", text="裁剪框")
-        layout.operator("button.action_view3d_render_border", text="渲染框")
+        layout.operator("button.action_global_clip_border", text="裁剪框")
+        layout.operator("button.action_global_render_border", text="渲染框")
         layout.separator()
         layout.operator("view3d.clear_render_border", text="清除渲染框")
 
 # 弹出“视图框”菜单
-class BUTTON_ACTION_OT_view3d_call_view_regions_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_call_view_regions_menu"
+class BUTTON_ACTION_OT_global_call_view_regions_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_call_view_regions_menu"
     bl_label = "视图框"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="button.action_view3d_view_regions_menu")
+        bpy.ops.wm.call_menu(name="button.action_global_view_regions_menu")
         return {'FINISHED'}
 
 # 自定义“裁剪框”操作类
-class BUTTON_ACTION_OT_view3d_clip_border(bpy.types.Operator):
-    bl_idname = "button.action_view3d_clip_border"
+class BUTTON_ACTION_OT_global_clip_border(bpy.types.Operator):
+    bl_idname = "button.action_global_clip_border"
     bl_label = "裁剪框"
     bl_description = "快捷键 Alt B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -354,8 +354,8 @@ class BUTTON_ACTION_OT_view3d_clip_border(bpy.types.Operator):
         return {'FINISHED'}
     
 # 自定义“渲染框”操作类
-class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
-    bl_idname = "button.action_view3d_render_border"
+class BUTTON_ACTION_OT_global_render_border(bpy.types.Operator):
+    bl_idname = "button.action_global_render_border"
     bl_label = "渲染框"
     bl_description = "快捷键 Ctrl B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -374,8 +374,8 @@ class BUTTON_ACTION_OT_view3d_render_border(bpy.types.Operator):
             bpy.ops.view3d.render_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_render_opengl(bpy.types.Operator):
-    bl_idname = "button.action_view3d_render_opengl"
+class BUTTON_ACTION_OT_global_render_opengl(bpy.types.Operator):
+    bl_idname = "button.action_global_render_opengl"
     bl_label = "视图渲染图像"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -383,8 +383,8 @@ class BUTTON_ACTION_OT_view3d_render_opengl(bpy.types.Operator):
         bpy.ops.render.opengl('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_render_opengl_animation(bpy.types.Operator):
-    bl_idname = "button.action_view3d_render_opengl_animation"
+class BUTTON_ACTION_OT_global_render_opengl_animation(bpy.types.Operator):
+    bl_idname = "button.action_global_render_opengl_animation"
     bl_label = "视图渲染动画"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -392,8 +392,8 @@ class BUTTON_ACTION_OT_view3d_render_opengl_animation(bpy.types.Operator):
         bpy.ops.render.opengl('INVOKE_DEFAULT', animation=True)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_view3d_render_opengl_keyframe(bpy.types.Operator):
-    bl_idname = "button.action_view3d_render_opengl_keyframe"
+class BUTTON_ACTION_OT_global_render_opengl_keyframe(bpy.types.Operator):
+    bl_idname = "button.action_global_render_opengl_keyframe"
     bl_label = "视图渲染关键帧"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -402,8 +402,8 @@ class BUTTON_ACTION_OT_view3d_render_opengl_keyframe(bpy.types.Operator):
         return {'FINISHED'}
 
 # 自定义“区域”菜单
-class BUTTON_ACTION_OT_view3d_area_menu(bpy.types.Operator):
-    bl_idname = "button.action_view3d_area_menu"
+class BUTTON_ACTION_OT_global_area_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_area_menu"
     bl_label = "区域"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -412,8 +412,8 @@ class BUTTON_ACTION_OT_view3d_area_menu(bpy.types.Operator):
         return {'FINISHED'}
     
 # 自定义“区域”——切换全屏模式
-class BUTTON_ACTION_OT_view3d_screen_screen_full_area(bpy.types.Operator):
-    bl_idname = "button.action_view3d_screen_screen_full_area"
+class BUTTON_ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
+    bl_idname = "button.action_global_screen_screen_full_area"
     bl_label = "切换全屏模式"
     bl_description = "快捷键 Ctrl Alt 空格"
     bl_options = {'REGISTER', 'UNDO'}
@@ -422,6 +422,301 @@ class BUTTON_ACTION_OT_view3d_screen_screen_full_area(bpy.types.Operator):
         bpy.ops.screen.screen_full_area(use_hide_panels=True)
         return {'FINISHED'}
     
+
+
+
+
+
+
+
+
+
+
+
+
+# “选择”菜单——全选
+class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
+    bl_idname = "button.action_global_select_all"
+    bl_label = "全选"
+    bl_description = "快捷键 A"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.select_all(action='SELECT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_all(action='SELECT')    
+        elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
+            bpy.ops.paint.face_select_all(action='SELECT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_all(action='SELECT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_all(action='SELECT')
+        elif typeandmode ==  "FONTEDIT":
+            bpy.ops.font.select_all()
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_all(action='SELECT')
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL","GPENCILSCULPT_GPENCIL"}:
+            bpy.ops.gpencil.select_all(action='SELECT') # 4.2 版本
+        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL","GREASEPENCILSCULPT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_all(action='SELECT') # 4.3 版本
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_all(action='SELECT')
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_all(action='SELECT')
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+# “选择”菜单——反选
+class BUTTON_ACTION_OT_global_select_invert(bpy.types.Operator):
+    bl_idname = "button.action_global_select_invert"
+    bl_label = "反选"
+    bl_description = "快捷键 Ctrl I"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == "OBJECT":
+            bpy.ops.object.select_all(action='INVERT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_all(action='INVERT')    
+        elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
+            bpy.ops.paint.face_select_all(action='INVERT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_all(action='INVERT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_all(action='INVERT')
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_all(action='INVERT')
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL","GPENCILSCULPT_GPENCIL"}:
+            bpy.ops.gpencil.select_all(action='INVERT') # 4.2 版本
+        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL","GREASEPENCILSCULPT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_all(action='INVERT') # 4.3 版本
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_all(action='INVERT')
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_all(action='INVERT')
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+# “选择”菜单——刷选
+class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
+    bl_idname = "button.action_global_select_circle"
+    bl_label = "刷选"
+    bl_description = "快捷键 C"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.view3d.select_circle('INVOKE_DEFAULT')
+        elif typeandmode in {
+            "CURVEEDIT", 
+            "SURFACEEDIT",
+            "METAEDIT",
+            "LATTICEEDIT",
+            "MESHEDIT",
+            "MESHVERTEX_PAINT",
+            "MESHWEIGHT_PAINT",
+            "MESHTEXTURE_PAINT",
+            "GREASEPENCILEDIT",
+            "GREASEPENCILSCULPT_GREASE_PENCIL",
+            "GREASEPENCILVERTEX_GREASE_PENCIL",
+            "ARMATUREEDIT",
+            "ARMATUREPOSE",
+            }:
+            bpy.ops.view3d.select_circle('INVOKE_DEFAULT')
+        elif typeandmode in {
+            "GPENCILEDIT_GPENCIL",
+            "GPENCILVERTEX_GPENCIL",
+            "GPENCILSCULPT_GPENCIL",
+            }:
+            bpy.ops.gpencil.select_circle('INVOKE_DEFAULT') # 4.2 版本
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+# “选择”菜单——选择镜像
+class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
+    bl_idname = "button.action_global_select_select_mirror"
+    bl_label = "选择镜像"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    axis: bpy.props.EnumProperty(
+        name="镜像轴",
+        items=[
+            ('X', "X轴", ""),
+            ('Y', "Y轴", ""),
+            ('Z', "Z轴", ""),
+        ],
+        default='X',
+    )
+    
+    extend: bpy.props.BoolProperty(
+        name="扩展",
+        default=False,
+        description="扩展选择，而不是先取消选择",
+    )
+
+    # 针对骨骼的选项
+    only_active: bpy.props.BoolProperty(
+        name="仅激活",
+        default=False,
+        description="仅操作活动的骨骼",
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        if typeandmode in {"MESHEDIT","LATTICEEDIT"}:
+            col_left.label(text="轴向")
+        
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        if typeandmode in {"MESHEDIT","LATTICEEDIT"}:
+            col_right.prop(self, "axis", expand=True)
+        if typeandmode in {"ARMATUREEDIT","ARMATUREPOSE"}:
+            col_right.prop(self, "only_active")
+        col_right.prop(self, "extend")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_mirror(extend=self.extend)
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_mirror(axis={self.axis}, extend=self.extend)
+        elif typeandmode == "MESHEDIT":
+            # 在编辑模式下直接将轴参数传给操作符
+            bpy.ops.mesh.select_mirror(axis={self.axis}, extend=self.extend)
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_mirror(only_active=self.only_active, extend=self.extend)
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_mirror(only_active=self.only_active, extend=self.extend)
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+# “选择”菜单——随机选择
+class BUTTON_ACTION_OT_global_select_select_random(bpy.types.Operator):
+    bl_idname = "button.action_global_select_select_random"
+    bl_label = "随机选择"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    ratio: bpy.props.FloatProperty(
+        name="",
+        description="用于随机选择的部分",
+        default=0.5, 
+        min=0.0,  
+        max=1.0, 
+        subtype='FACTOR',      
+        precision=3,          
+        #update=lambda self, context: self.execute(context)  
+    )
+
+    seed: bpy.props.IntProperty(
+        name="",
+        description="随机数生成器的种值",
+        default=0,
+        min=0,
+        soft_max=255, 
+        #update=lambda self, context: self.execute(context)  
+    )
+
+    action: bpy.props.EnumProperty(
+        name="动作",
+        items=[
+            ('SELECT', "选择", "全选"),
+            ('DESELECT', "弃选", "弃选全部元素"),
+        ],
+        default='SELECT',
+        #update=lambda self, context: self.execute(context) 
+    )
+
+    unselect_ends: bpy.props.BoolProperty(
+        name="不选中末端",
+        description="不选择笔画的起点和末点",
+        default=False,
+        #update=lambda self, context: self.execute(context)
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="比率")
+        col_left.label(text="随机种")
+        col_left.label(text="动作")
+        
+        col_right = split.column()
+        col_right.prop(self, "ratio")
+        col_right.prop(self, "seed")
+        col_right.prop(self, "action", expand=True)
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            col_right.prop(self, "unselect_ends")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_random_metaelems(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends)
+        elif typeandmode in {"GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"} and\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
+            bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends)
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode in {"GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"} and\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
+            bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
+            bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
 
 # 全局“移动”功能
 class BUTTON_ACTION_OT_grab(bpy.types.Operator):
@@ -838,36 +1133,47 @@ class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
 
 
 classes = (
-    BUTTON_ACTION_OT_view3d_view_align_selected_menu,
-    BUTTON_ACTION_OT_view3d_call_view_align_selected_menu,
-    BUTTON_ACTION_OT_view3d_view_selected,
-    BUTTON_ACTION_OT_view3d_view_all,
-    BUTTON_ACTION_OT_view3d_localview,
-    BUTTON_ACTION_OT_view3d_object_as_camera,
-    BUTTON_ACTION_OT_view3d_view_center_camera,
-    BUTTON_ACTION_OT_view3d_view_viewpoint_menu,
-    BUTTON_ACTION_OT_view3d_call_view_viewpoint_menu,
-    BUTTON_ACTION_OT_view3d_view_navigation_menu,
-    BUTTON_ACTION_OT_view3d_call_view_navigation_menu,
-    BUTTON_ACTION_OT_view3d_zoom_border,
-    BUTTON_ACTION_OT_view3d_zoom_camera_1_to_1,
-    BUTTON_ACTION_OT_view3d_walk,
-    BUTTON_ACTION_OT_view3d_fly,
-    BUTTON_ACTION_OT_view3d_camera_to_view,
-    BUTTON_ACTION_OT_view3d_camera_to_view_selected,
-    BUTTON_ACTION_OT_view3d_call_view_align_menu,
+    # "视图"菜单
+    BUTTON_ACTION_OT_global_view_align_selected_menu,
+    BUTTON_ACTION_OT_global_call_view_align_selected_menu,
+    BUTTON_ACTION_OT_global_view_selected,
+    BUTTON_ACTION_OT_global_view_all,
+    BUTTON_ACTION_OT_global_localview,
+    BUTTON_ACTION_OT_global_object_as_camera,
+    BUTTON_ACTION_OT_global_view_center_camera,
+    BUTTON_ACTION_OT_global_view_viewpoint_menu,
+    BUTTON_ACTION_OT_global_call_view_viewpoint_menu,
+    BUTTON_ACTION_OT_global_view_navigation_menu,
+    BUTTON_ACTION_OT_global_call_view_navigation_menu,
+    BUTTON_ACTION_OT_global_zoom_border,
+    BUTTON_ACTION_OT_global_zoom_camera_1_to_1,
+    BUTTON_ACTION_OT_global_walk,
+    BUTTON_ACTION_OT_global_fly,
+    BUTTON_ACTION_OT_global_camera_to_view,
+    BUTTON_ACTION_OT_global_camera_to_view_selected,
+    BUTTON_ACTION_OT_global_call_view_align_menu,
     VIEW3D_MT_view_regions_menu,
-    BUTTON_ACTION_OT_view3d_call_view_regions_menu,
-    BUTTON_ACTION_OT_view3d_clip_border,
-    BUTTON_ACTION_OT_view3d_render_border,
-    BUTTON_ACTION_OT_view3d_lock_to_active_or_lock_clear,
-    BUTTON_ACTION_OT_view3d_view_all_center_true,
-    BUTTON_ACTION_OT_view3d_view_center_cursor,
-    BUTTON_ACTION_OT_view3d_render_opengl,
-    BUTTON_ACTION_OT_view3d_render_opengl_animation,
-    BUTTON_ACTION_OT_view3d_render_opengl_keyframe,
-    BUTTON_ACTION_OT_view3d_area_menu,
-    BUTTON_ACTION_OT_view3d_screen_screen_full_area,
+    BUTTON_ACTION_OT_global_call_view_regions_menu,
+    BUTTON_ACTION_OT_global_clip_border,
+    BUTTON_ACTION_OT_global_render_border,
+    BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear,
+    BUTTON_ACTION_OT_global_view_all_center_true,
+    BUTTON_ACTION_OT_global_view_center_cursor,
+    BUTTON_ACTION_OT_global_render_opengl,
+    BUTTON_ACTION_OT_global_render_opengl_animation,
+    BUTTON_ACTION_OT_global_render_opengl_keyframe,
+    BUTTON_ACTION_OT_global_area_menu,
+    BUTTON_ACTION_OT_global_screen_screen_full_area,
+
+    #“选择”菜单
+    BUTTON_ACTION_OT_global_select_all,
+    BUTTON_ACTION_OT_global_select_invert,
+    BUTTON_ACTION_OT_global_select_circle,
+    BUTTON_ACTION_OT_global_select_select_mirror,
+    BUTTON_ACTION_OT_global_select_select_random,
+
+
+
     BUTTON_ACTION_OT_grab,
     BUTTON_ACTION_OT_scale,
     BUTTON_ACTION_OT_rotate,

@@ -1,15 +1,69 @@
 import bpy
+from .. import ADDON_NAME
 
-def draw_add_to_switcher_common(self, context):
-    ADDON_NAME = __package__.split('.')[0]
+def draw_add_to_switcher_global(self, context):
 
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     
     op = getattr(context, "operator", None) or getattr(context, "button_operator", None)
-    # 检查右键对象是否为 Transform → Translate (Move)
-    if op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
+
+    if op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_all",
+        "CURVE_OT_select_all",
+        "MBALL_OT_select_all",
+        "LATTICE_OT_select_all",
+        "MESH_OT_select_all",
+        "PAINT_OT_face_select_all",
+        "GPENCIL_OT_select_all",    #4.2 版本或以下
+        "GREASE_PENCIL_OT_select_all", #4.3 版本或以上
+        "ARMATURE_OT_select_all",
+        "POSE_OT_select_all",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"全选\"添加到Switcher", icon='EVENT_A').action = 'button.action_global_select_all'
+        layout.operator("call.add_to_switcher_menu", text="\"反选\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_invert'
+
+    elif op and op.bl_rna.identifier == "FONT_OT_select_all":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"全选\"添加到Switcher", icon='EVENT_A').action = 'button.action_global_select_all'
+
+    elif op and op.bl_rna.identifier in {
+        "VIEW3D_OT_select_circle",
+        "GPENCIL_OT_select_circle",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"刷选\"添加到Switcher", icon='EVENT_C').action = 'button.action_global_select_circle'
+
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_mirror",
+        "LATTICE_OT_select_mirror",
+        "MESH_OT_select_mirror",
+        "ARMATURE_OT_select_mirror",
+        "POSE_OT_select_mirror",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择镜像\"添加到Switcher", icon='MOD_MIRROR').action = 'button.action_global_select_select_mirror'
+
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_random",
+        "MESH_OT_select_random",
+        "CURVE_OT_select_random",
+        "MBALL_OT_select_random_metaelems",
+        "GPENCIL_OT_select_random",
+        "GREASE_PENCIL_OT_select_random",
+        "LATTICE_OT_select_random",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"随机选择\"添加到Switcher", icon='RADIOBUT_OFF').action = 'button.action_global_select_select_random'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"移动\"添加到Switcher", icon='EVENT_G').action = 'button.action_global_grab'
@@ -178,9 +232,9 @@ def draw_add_to_switcher_common(self, context):
 
 
 
-#不能使用 draw_add_to_switcher_common 的添加到 Switcher 方法：
+#不能使用 draw_add_to_switcher_global 的添加到 Switcher 方法：
 def add_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -188,7 +242,7 @@ def add_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def delete_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -196,7 +250,7 @@ def delete_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def apply_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -204,7 +258,7 @@ def apply_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def cleartransform_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -212,7 +266,7 @@ def cleartransform_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def transformorientation_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -227,7 +281,7 @@ def transformorientation_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def switchsnap_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -244,7 +298,7 @@ def switchsnap_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 def switchproportional_menu_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[__package__].preferences.to_show_to_switcher
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
@@ -262,7 +316,7 @@ def switchproportional_menu_to_switcher(self, context):
 
 
 def register():
-    bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_common)
+    bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_global)
     #“添加”菜单
     bpy.types.VIEW3D_MT_add.append(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_mesh_add.append(add_menu_to_switcher)
@@ -332,5 +386,5 @@ def unregister():
     bpy.types.VIEW3D_MT_mesh_add.remove(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_add.remove(add_menu_to_switcher)
 
-    bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_common)
+    bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_global)
 

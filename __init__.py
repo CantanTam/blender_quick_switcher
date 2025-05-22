@@ -10,6 +10,8 @@ bl_info = {
     "category": "3D View"
 }
 
+ADDON_NAME = __name__
+
 from .operators import CSAWHEEL_OT_ModeSwitchOperator
 from .preference import QuickSwitchAddonPreferences
 from .operator_mode_transfer import MODE_OT_Transfer
@@ -121,26 +123,36 @@ from .quick_menu_button_functions.button_actions_common_functions import (
     BUTTON_ACTION_OT_transform_bend,
 )
 
-from .quick_menu_button_functions.button_actions_object_mode import (
-    BUTTON_ACTION_OT_object_object_transform_transform_mode_align,
-    BUTTON_ACTION_OT_object_object_duplicate_move_linked,
+from .quick_menu_button_functions.button_actions_object import (
+    register as register_button_actions_object,
+    unregister as unregister_button_actions_object,
+)
+
+from .quick_menu_button_functions.button_actions_mesh_edit import (
+    register as register_button_actions_mesh_edit,
+    unregister as unregister_button_actions_mesh_edit,
 )
 
 from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
 
-from .right_click_add_common_actions import (
+from .right_click_to_switcher.right_click_add_object import (
+    register as register_right_click_add_object,
+    unregister as unregister_right_click_add_object,
+)
+
+from .right_click_to_switcher.right_click_add_global import (
     register as register_right_click_add_common_actions,
     unregister as unregister_right_click_add_common_actions,
 )
 
-from .right_click_global_view_menu_actions import (
+from .right_click_to_switcher.right_click_global_view_menu_actions import (
     register as register_right_click_global_view_actions,
     unregister as unregister_right_click_global_view_actions,
 )
 
-from .right_click_global_select_menu_actions import (
+from .right_click_to_switcher.right_click_global_select_menu_actions import (
     register as register_right_click_global_select_menu_actions,
     unregister as unregister_right_click_global_select_menu_actions,
 )
@@ -159,6 +171,9 @@ def register():
 
     # 注册视图右键菜单功能
     register_right_click_global_view_actions()
+
+    # 注册物体模式——添加到右键
+    register_right_click_add_object()
 
     # 注册右键菜单功能
     register_right_click_add_common_actions()
@@ -254,8 +269,10 @@ def register():
     bpy.utils.register_class(BUTTON_ACTION_OT_transform_bend)
 
     # 物体模式—“物体”菜单
-    bpy.utils.register_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
-    bpy.utils.register_class(BUTTON_ACTION_OT_object_object_duplicate_move_linked)
+    register_button_actions_object()
+
+    # 物体模式
+    register_button_actions_mesh_edit()
 
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
@@ -275,6 +292,10 @@ def unregister():
 
     # 注销右键菜单功能
     unregister_right_click_add_common_actions()
+
+    # 注销 物体模式——添加到右键
+    unregister_right_click_add_object()
+    
     # 注销模式监测功能
     unregister_operator_typeandmode_name_mode()
 
@@ -283,10 +304,12 @@ def unregister():
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
-    # 物体模式—“物体”菜单
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_transform_transform_mode_align)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_object_object_duplicate_move_linked)
+    #网格编辑模式
+    unregister_button_actions_mesh_edit()
 
+    # 物体模式—“物体”菜单
+    unregister_button_actions_object()
+    
     # 全局通用功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_bend)
     bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_shear)

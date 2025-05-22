@@ -1,6 +1,6 @@
 import bpy
 from . import preference
-from .button_operator_dict import button_press_function
+from .button_dicts.button_dict_all import button_press_function
 
 switcher_panel = "panelone"
 switcher_mode = "_mode1"
