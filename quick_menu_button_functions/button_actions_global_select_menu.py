@@ -33,70 +33,6 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
         return {'FINISHED'}
 
 
-
-
-
-
-# ”加选/减选“菜单
-class VIEW3D_MT_object_select_more_or_less_menu(bpy.types.Operator):
-    bl_label = ""
-    bl_idname = "popup.more_or_less_menu"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        return {'FINISHED'}
-
-    def invoke(self, context, event):
-        return context.window_manager.invoke_popup(self, width=100)
-
-    def draw(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        layout = self.layout
-        row = layout.row()
-        col = row.column(align=True)
-        col.label(text="加选/减选", icon='FORCE_CHARGE')
-
-        if bpy.context.mode == "OBJECT":
-        # 调用 view_axis 操作符，并传入对应的 type 参数
-            col.operator("object.select_more", text="扩展选区", icon="ADD")
-            col.operator("object.select_less", text="缩减选区", icon="REMOVE")
-        elif typeandmode == "CURVEEDIT":
-            col.operator("curve.select_more", text="扩展选择", icon="ADD")
-            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
-            col.separator()
-            col.operator("curve.select_next", text="选择下一项", icon="FRAME_NEXT")
-            col.operator("curve.select_previous", text="选择上一项", icon="FRAME_PREV")
-        elif typeandmode == "SURFACEEDIT":
-            col.operator("curve.select_more", text="扩展选择", icon="ADD")
-            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
-        elif typeandmode == "MESHEDIT":
-            col.operator("mesh.select_more", text="扩展选区", icon="ADD")
-            col.operator("mesh.select_less", text="缩减选区", icon="REMOVE")
-            col.separator()
-            col.operator("mesh.select_next_item", text="下一个活动元素", icon="FRAME_NEXT")
-            col.operator("mesh.select_prev_item", text="上一个活动元素", icon="FRAME_PREV")
-        elif typeandmode == "ARMATUREEDIT":
-            col.operator("armature.select_more", text="扩展选区", icon="ADD")
-            col.operator("armature.select_less", text="缩减选区", icon="REMOVE")
-        elif typeandmode == "LATTICEEDIT":
-            col.operator("lattice.select_more", text="扩展选区", icon="ADD")
-            col.operator("lattice.select_less", text="缩减选区", icon="REMOVE")
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
-            col.operator("gpencil.select_more", text="扩展选区", icon="ADD")
-            col.operator("gpencil.select_less", text="缩减选区", icon="REMOVE")
-        elif typeandmode == "GREASEPENCILEDIT":
-            col.operator("grease_pencil.select_more", text="扩展选区", icon="ADD")
-            col.operator("grease_pencil.select_less", text="缩减选区", icon="REMOVE")
-
-class BUTTON_ACTION_OT_call_object_select_more_or_less_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_object_select_more_or_less_menu"
-    bl_label = "加选/减选"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        bpy.ops.popup.more_or_less_menu('INVOKE_DEFAULT')
-        return {'FINISHED'}
     
 # 父级/子级/扩展父级/扩展子级 功能四合一   
 class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
@@ -553,8 +489,6 @@ class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
 
 classes = (
     BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
-    VIEW3D_MT_object_select_more_or_less_menu,
-    BUTTON_ACTION_OT_call_object_select_more_or_less_menu,
     BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
     BUTTON_ACTION_OT_select_select_grouped,
     VIEW3D_MT_mesh_select_linked_menu,

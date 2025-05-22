@@ -136,15 +136,19 @@ from .quick_menu_button_functions.button_actions_mesh_edit import (
 from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
+from .right_click_to_switcher.right_click_add_global import (
+    register as register_right_click_add_global,
+    unregister as unregister_right_click_add_global,
+)
 
 from .right_click_to_switcher.right_click_add_object import (
     register as register_right_click_add_object,
     unregister as unregister_right_click_add_object,
 )
 
-from .right_click_to_switcher.right_click_add_global import (
-    register as register_right_click_add_common_actions,
-    unregister as unregister_right_click_add_common_actions,
+from .right_click_to_switcher.right_click_add_meshedit import (
+    register as register_right_click_add_meshedit,
+    unregister as unregister_right_click_add_meshedit,
 )
 
 from .right_click_to_switcher.right_click_global_view_menu_actions import (
@@ -175,8 +179,11 @@ def register():
     # 注册物体模式——添加到右键
     register_right_click_add_object()
 
+    # 注册“网格编辑”模式
+    register_right_click_add_meshedit()
+
     # 注册右键菜单功能
-    register_right_click_add_common_actions()
+    register_right_click_add_global()
     # 注册模式监测功能
     register_operator_typeandmode_name_mode()
 
@@ -291,10 +298,13 @@ def unregister():
     unregister_right_click_global_view_actions()
 
     # 注销右键菜单功能
-    unregister_right_click_add_common_actions()
+    unregister_right_click_add_global()
 
     # 注销 物体模式——添加到右键
     unregister_right_click_add_object()
+
+    # 注销 “网格编辑”模式
+    unregister_right_click_add_meshedit()
     
     # 注销模式监测功能
     unregister_operator_typeandmode_name_mode()

@@ -708,6 +708,106 @@ class BUTTON_ACTION_OT_global_select_select_random(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
+# “选择”菜单——加选/减选
+class VIEW3D_MT_global_select_more_or_less_menu(bpy.types.Operator):
+    bl_label = ""
+    bl_idname = "popup.global_more_or_less_menu"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="加选/减选", icon='FORCE_CHARGE')
+
+        if bpy.context.mode == "OBJECT":
+            col.operator("object.select_more", text="扩展选区", icon="ADD")
+            col.operator("object.select_less", text="缩减选区", icon="REMOVE")
+        elif typeandmode == "CURVEEDIT":
+            col.operator("curve.select_more", text="扩展选择", icon="ADD")
+            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
+            col.separator()
+            col.operator("curve.select_next", text="选择下一项", icon="FRAME_NEXT")
+            col.operator("curve.select_previous", text="选择上一项", icon="FRAME_PREV")
+        elif typeandmode == "SURFACEEDIT":
+            col.operator("curve.select_more", text="扩展选择", icon="ADD")
+            col.operator("curve.select_less", text="缩减选择", icon="REMOVE")
+        elif typeandmode == "MESHEDIT":
+            col.operator("mesh.select_more", text="扩展选区", icon="ADD")
+            col.operator("mesh.select_less", text="缩减选区", icon="REMOVE")
+            col.separator()
+            col.operator("mesh.select_next_item", text="下一个活动元素", icon="FRAME_NEXT")
+            col.operator("mesh.select_prev_item", text="上一个活动元素", icon="FRAME_PREV")
+
+        elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
+            col.operator("paint.face_select_more", text="扩展选择", icon="ADD")
+            col.operator("paint.face_select_less", text="缩减选择", icon="REMOVE")
+
+        elif typeandmode == "ARMATUREEDIT":
+            col.operator("armature.select_more", text="扩展选区", icon="ADD")
+            col.operator("armature.select_less", text="缩减选区", icon="REMOVE")
+        elif typeandmode == "LATTICEEDIT":
+            col.operator("lattice.select_more", text="扩展选区", icon="ADD")
+            col.operator("lattice.select_less", text="缩减选区", icon="REMOVE")
+
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            col.operator("gpencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("gpencil.select_less", text="缩减选区", icon="REMOVE")
+
+        elif typeandmode in {"GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            col.operator("gpencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("gpencil.select_less", text="缩减选区", icon="REMOVE")
+
+        elif typeandmode == "GREASEPENCILEDIT":
+            col.operator("grease_pencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("grease_pencil.select_less", text="缩减选区", icon="REMOVE")
+
+        elif typeandmode in {"GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            col.operator("grease_pencil.select_more", text="扩展选区", icon="ADD")
+            col.operator("grease_pencil.select_less", text="缩减选区", icon="REMOVE")
+
+        col.separator()
+        col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
+        col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
+
+class BUTTON_ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_global_select_more_or_less_menu"
+    bl_label = "加选/减选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.global_more_or_less_menu('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1171,7 +1271,8 @@ classes = (
     BUTTON_ACTION_OT_global_select_circle,
     BUTTON_ACTION_OT_global_select_select_mirror,
     BUTTON_ACTION_OT_global_select_select_random,
-
+    VIEW3D_MT_global_select_more_or_less_menu,
+    BUTTON_ACTION_OT_call_global_select_more_or_less_menu,
 
 
     BUTTON_ACTION_OT_grab,

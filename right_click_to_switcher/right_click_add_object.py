@@ -21,12 +21,21 @@ def draw_add_to_switcher_object(self, context):
 
 
 
+def object_select_moreless_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"加选/减选(菜单)\"添加到Switcher", icon='FORCE_CHARGE').action = 'button.action_call_global_select_more_or_less_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_object_select_hierarchy_parent_child'
 
 
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_object)
+    bpy.types.VIEW3D_MT_select_object_more_less.append(object_select_moreless_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_select_object_more_less.remove(object_select_moreless_menu_to_switcher)
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_object)
 
