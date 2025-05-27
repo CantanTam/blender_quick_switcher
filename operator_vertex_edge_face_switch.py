@@ -44,4 +44,63 @@ class VERTEX_EDGE_FACE_OT_Switch(bpy.types.Operator):
                 show_notice("MESHTEXTURE_FACE.png")
             else:
                 show_notice("MESHTEXTURE_NONE.png")
+
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            if bpy.context.active_object.data.use_curve_edit:
+                if bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'POINT':
+                    bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'STROKE'
+                    show_notice("GREASE_STROKE_CURVEON.png")
+                else:
+                    bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'POINT'
+                    show_notice("GREASE_POINT_CURVEON.png")
+            else:
+                if bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'POINT':
+                    bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'SEGMENT'
+                    show_notice("GREASE_BETWEEN.png")
+                elif bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'SEGMENT':
+                    bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'STROKE'
+                    show_notice("GREASE_STROKE.png")
+                else:
+                    bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'POINT'
+                    show_notice("GREASE_POINT.png")
+
+        elif typeandmode == "GREASEPENCILEDIT":
+            if bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'POINT':
+                bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'SEGMENT'
+                show_notice("GREASE_BETWEEN.png")
+            elif bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'SEGMENT':
+                bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'STROKE'
+                show_notice("GREASE_STROKE.png")
+            else:
+                bpy.context.scene.tool_settings.gpencil_selectmode_edit = 'POINT'
+                show_notice("GREASE_POINT.png")   
+
+        elif typeandmode in {"GPENCILVERTEX_GPENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            if bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment:
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke = True
+                show_notice("GREASE_STROKE.png")
+            elif bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke:
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point = True
+                show_notice("GREASE_POINT.png")
+            elif bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point:
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point = False
+                show_notice("GREASE_NONE.png")
+            else:
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment = True
+                show_notice("GREASE_BETWEEN.png")
+
+        elif typeandmode in {"GPENCILSCULPT_GPENCIL","GREASEPENCILSCULPT_GREASE_PENCIL"}:
+            if bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke = True
+                show_notice("GREASE_STROKE.png")
+            elif bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke:
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_point = True
+                show_notice("GREASE_POINT.png")
+            elif bpy.context.scene.tool_settings.use_gpencil_select_mask_point:
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_point = False
+                show_notice("GREASE_NONE.png")
+            else:
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_segment = True
+                show_notice("GREASE_BETWEEN.png")
+
         return {'FINISHED'}
