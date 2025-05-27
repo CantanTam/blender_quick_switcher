@@ -118,6 +118,12 @@ button_press_global = {
         'button.action_global_select_select_random':(
         "button.action_global_select_select_random","随机选择","RADIOBUT_OFF",
     ),
+        'button.action_call_global_select_more_or_less_menu':(
+        "button.action_call_global_select_more_or_less_menu","加选/减选","FORCE_CHARGE",
+    ),
+        'button.action_global_select_select_parent_or_child':(
+        "button.action_global_select_select_parent_or_child","父级/子级","ORIENTATION_PARENT",
+    ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(

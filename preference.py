@@ -38,6 +38,7 @@ def update_preferences(self, context):
 keys_combination_functions = [
     ('mode.menu_switch()', '弹出编辑模式菜单', '直接弹出编辑模式菜单'),
     ('switch.vertex_edge_face()', '快速切换点/线/面', '点←线←面方向快速切换'),
+    ('switch.grab_scale_rotate()', '快速切换移动/滑移/缩放/旋转/自由旋转', ''),
     ('mode.normal_up_to_down()', '上下方向快速切换编辑模式', '不弹出菜单，直接以从上到下的顺序切换编辑模式'), 
     ('mode.normal_down_to_up()', '下上方向快速切换编辑模式', '不弹出菜单，直接以从下到上的顺序切换编辑模式'), 
     ('mode.tab_switch()','切换最近两次编辑模式','比原生Tab键更合理的切换编辑模式方式'),

@@ -7,12 +7,6 @@ button_press_object = {
         'object.select_camera':(
         "object.select_camera","选择活动摄像机","OUTLINER_OB_CAMERA",
     ),
-        'button.action_call_global_select_more_or_less_menu':(
-        "button.action_call_global_select_more_or_less_menu","加选/减选","FORCE_CHARGE",
-    ),
-        'button.action_object_select_hierarchy_parent_child':(
-        "button.action_object_select_hierarchy_parent_child","父级/子级","ORIENTATION_PARENT",
-    ),
         'button.action_select_select_grouped':(
         "button.action_select_select_grouped","按组选择","PRESET",
     ),

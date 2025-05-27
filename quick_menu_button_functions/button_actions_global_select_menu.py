@@ -33,67 +33,11 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
         return {'FINISHED'}
 
 
-    
-# 父级/子级/扩展父级/扩展子级 功能四合一   
-class BUTTON_ACTION_OT_object_select_hierarchy_parent_child(bpy.types.Operator):
-    bl_idname = "button.action_object_select_hierarchy_parent_child"
-    bl_label = "父级/子级/扩展父级/扩展子级"
-    bl_description = "父级/子级/扩展父级/扩展子级功能集合"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    direction: bpy.props.EnumProperty(
-        name="选择动作",  # 显示在UI中的标签名称
-        items=[
-            ('PARENT', "父级", ""),
-            ('CHILD', "子级", ""), 
-        ],
-        default='PARENT',
-        update=lambda self, context: self.execute(context)
-    )
-
-    extend: bpy.props.BoolProperty(
-        name="扩展",            
-        description="", 
-        default=False,
-        update=lambda self, context: self.execute(context)
-    ) 
-
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def draw(self, context):
-        layout = self.layout
-        #row = layout.row()
-        split = layout.row().split(factor=0.4)
-        
-        # 左侧列 - 标签
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_left.label(text="方向")
-        
-        # 右侧列 - 垂直排列的单选按钮
-        col_right = split.column()
-        col_right.prop(self, "direction", expand=True)
-        col_right.prop(self, "extend")
-
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if bpy.context.mode == 'OBJECT':
-            bpy.ops.object.select_hierarchy(direction=self.direction, extend=self.extend)
-        elif typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.select_hierarchy(direction=self.direction, extend=self.extend)
-        elif typeandmode == "ARMATUREPOSE":
-            bpy.ops.pose.select_hierarchy(direction=self.direction, extend=self.extend)
-        else:
-            return {'CANCELLED'}
-        return {'FINISHED'}
 
 # 调出“按组选择”菜单
 class BUTTON_ACTION_OT_select_select_grouped(bpy.types.Operator):
     bl_idname = "button.action_select_select_grouped"
     bl_label = "按组选择"
-    bl_description = "快捷键 Shift G"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):        
@@ -489,7 +433,6 @@ class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
 
 classes = (
     BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
-    BUTTON_ACTION_OT_object_select_hierarchy_parent_child,
     BUTTON_ACTION_OT_select_select_grouped,
     VIEW3D_MT_mesh_select_linked_menu,
     BUTTON_ACTION_OT_select_select_linked,

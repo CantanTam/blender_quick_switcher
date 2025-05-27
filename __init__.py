@@ -21,6 +21,10 @@ from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
 from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
 from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_mode_switch_tab import MODE_TAB_OT_Switch
+from .operator_grab_scale_rotate_switch import (
+    GRAB_SCALE_ROTATE_OT_Switch,
+    GRAB_SCALE_ROTATE_OT_Switch_action,
+)
 
 from .quick_menu_popups.popup_quick_menu_one_object import QUICK_POPUP_MENU_OT_one_object
 from .quick_menu_popups.popup_quick_menu_one_meshedit import QUICK_POPUP_MENU_OT_one_meshedit
@@ -151,6 +155,16 @@ from .right_click_to_switcher.right_click_add_meshedit import (
     unregister as unregister_right_click_add_meshedit,
 )
 
+from .right_click_to_switcher.right_click_add_armature_edit import (
+    register as register_right_click_add_armature_edit,
+    unregister as unregister_right_click_add_armature_edit,
+)
+
+from .right_click_to_switcher.right_click_add_armature_pose import (
+    register as register_right_click_add_armature_pose,
+    unregister as unregister_right_click_add_armature_pose,
+)
+
 from .right_click_to_switcher.right_click_global_view_menu_actions import (
     register as register_right_click_global_view_actions,
     unregister as unregister_right_click_global_view_actions,
@@ -182,6 +196,12 @@ def register():
     # 注册“网格编辑”模式
     register_right_click_add_meshedit()
 
+    # 注册“骨架编辑”模式
+    register_right_click_add_armature_edit()
+
+    # 注册“骨架姿态”
+    register_right_click_add_armature_pose()
+
     # 注册右键菜单功能
     register_right_click_add_global()
     # 注册模式监测功能
@@ -199,6 +219,8 @@ def register():
     bpy.utils.register_class(MODE_TAB_OT_Switch)
     bpy.utils.register_class(MODE_OT_Transfer)
     bpy.utils.register_class(MODE_OT_to_object_and_select)
+    bpy.utils.register_class(GRAB_SCALE_ROTATE_OT_Switch)
+    bpy.utils.register_class(GRAB_SCALE_ROTATE_OT_Switch_action)
 
     # 注册所有QUICK_POPUP_MENU_OT_*类
     bpy.utils.register_class(QUICK_POPUP_MENU_OT_one_object)
@@ -305,6 +327,12 @@ def unregister():
 
     # 注销 “网格编辑”模式
     unregister_right_click_add_meshedit()
+
+    # 注销“骨架编辑”
+    unregister_right_click_add_armature_edit()
+
+    # 注销“骨架姿态”
+    unregister_right_click_add_armature_pose()
     
     # 注销模式监测功能
     unregister_operator_typeandmode_name_mode()
@@ -394,6 +422,8 @@ def unregister():
     # 注销所有Operator类
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_two)
     bpy.utils.unregister_class(CALLOUT_QUICK_MENU_OT_one)
+    bpy.utils.unregister_class(GRAB_SCALE_ROTATE_OT_Switch_action)
+    bpy.utils.unregister_class(GRAB_SCALE_ROTATE_OT_Switch)
     bpy.utils.unregister_class(MODE_OT_to_object_and_select)
     bpy.utils.unregister_class(MODE_OT_Transfer)
     bpy.utils.unregister_class(MODE_TAB_OT_Switch)

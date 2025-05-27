@@ -787,7 +787,55 @@ class BUTTON_ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
         bpy.ops.popup.global_more_or_less_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+# “选择”菜单——父级/子级
+class BUTTON_ACTION_OT_global_select_select_parent_or_child(bpy.types.Operator):
+    bl_idname = "button.action_global_select_select_parent_or_child"
+    bl_label = "父级/子级/扩展父级/扩展子级"
+    bl_description = "父级/子级/扩展父级/扩展子级功能集合"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    direction: bpy.props.EnumProperty(
+        name="选择动作", 
+        items=[
+            ('PARENT', "父级", ""),
+            ('CHILD', "子级", ""), 
+        ],
+        default='PARENT',
+    )
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",            
+        description="", 
+        default=False,
+    ) 
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="方向")
+        
+        col_right = split.column()
+        col_right.prop(self, "direction", expand=True)
+        col_right.prop(self, "extend")
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if bpy.context.mode == 'OBJECT':
+            bpy.ops.object.select_hierarchy(direction=self.direction, extend=self.extend)
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_hierarchy(direction=self.direction, extend=self.extend)
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_hierarchy(direction=self.direction, extend=self.extend)
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
 
 
 
@@ -1273,6 +1321,7 @@ classes = (
     BUTTON_ACTION_OT_global_select_select_random,
     VIEW3D_MT_global_select_more_or_less_menu,
     BUTTON_ACTION_OT_call_global_select_more_or_less_menu,
+    BUTTON_ACTION_OT_global_select_select_parent_or_child,
 
 
     BUTTON_ACTION_OT_grab,
