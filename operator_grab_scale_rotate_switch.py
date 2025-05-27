@@ -50,16 +50,20 @@ def is_object_selected(context):
         return any(e.select for e in obj.data.elements)
 
     elif obj.type == 'GPENCIL' and context.mode == "EDIT_GPENCIL":
-        try:
-            return any(
-                p.select
-                for l in obj.data.layers
-                for f in l.frames
-                for s in f.strokes
-                for p in s.points
-            )
-        except AttributeError:
-            return False
+        # Blender api 不支持检测开启曲线状态下的选中检测，所以这里当作它已经选中
+        if getattr(obj.data, "use_curve_edit", False):
+            return True
+        else:
+            try:
+                return any(
+                    p.select
+                    for l in obj.data.layers
+                    for f in l.frames
+                    for s in f.strokes
+                    for p in s.points
+                )
+            except AttributeError:
+                return False
         
     elif obj.type == 'GREASEPENCIL' and context.mode == "EDIT_GREASE_PENCIL":
         try:

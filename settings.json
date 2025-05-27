@@ -18,7 +18,7 @@
     "show_shortcut_options": true,
     "to_show_switch_notice": true,
     "switch_notice_scale": 1.0,
-    "switch_notice_themes": "white",
+    "switch_notice_themes": "darkround",
     "switch_notice_position": "bottom",
     "quick_menu_one": false,
     "quick_menu_two": true,
