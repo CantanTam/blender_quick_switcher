@@ -60,16 +60,26 @@ def is_object_selected(context):
         return any(e.select for e in obj.data.elements)
 
     # Grease Pencil Edit 模式（兼容 4.2 和 4.3）
-    elif (
-        (obj.type == 'GPENCIL' and context.mode == "EDIT_GPENCIL") or
-        (obj.type == 'GREASEPENCIL' and context.mode == "EDIT")
-    ):
+    elif obj.type == 'GPENCIL' and context.mode == "EDIT_GPENCIL":
         try:
             return any(
                 p.select
                 for l in obj.data.layers
                 for f in l.frames
                 for s in f.strokes
+                for p in s.points
+            )
+        except AttributeError:
+            return False
+        
+    elif obj.type == 'GREASEPENCIL' and context.mode == "EDIT_GREASE_PENCIL":
+        try:
+            return any(
+                p.select
+                for l in obj.data.layers
+                for f in l.frames
+                if f.drawing  # 确保 drawing 存在
+                for s in f.drawing.strokes
                 for p in s.points
             )
         except AttributeError:
