@@ -83,6 +83,45 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"加选/减选(菜单)\"添加到Switcher", icon='FORCE_CHARGE').action = 'button.action_call_global_select_more_or_less_menu'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_select_grouped",
+        "POSE_OT_select_grouped",
+        "OBJECT_OT_select_grouped",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"按组选择(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_select_select_grouped'
+
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_select_linked",
+        "GREASE_PENCIL_OT_select_linked",
+        "GPENCIL_OT_select_linked",
+        "CURVE_OT_select_linked",
+        "POSE_OT_select_linked",
+        "PAINT_OT_face_select_linked",
+        "PAINT_OT_vert_select_linked",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择相连(菜单)\"添加到Switcher", icon='LINK_BLEND').action = 'button.action_global_select_select_linked'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     elif op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
         layout = self.layout
         layout.separator()

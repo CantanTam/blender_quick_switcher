@@ -13,6 +13,10 @@ def draw_add_to_switcher_armature_edit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_global_select_select_parent_or_child'
 
+    elif op and op.bl_rna.identifier == "ARMATURE_OT_select_linked":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择相连(菜单)\"添加到Switcher", icon='LINK_BLEND').action = 'button.action_armatureedit_select_select_linked'
 
 
 

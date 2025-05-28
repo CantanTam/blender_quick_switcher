@@ -140,6 +140,12 @@ from .quick_menu_button_functions.button_actions_mesh_edit import (
 from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
+
+from .quick_menu_button_functions.button_actions_armature_edit import (
+    register as register_button_actions_armature_edit,
+    unregister as unregister_button_actions_armature_edit,
+)
+
 from .right_click_to_switcher.right_click_add_global import (
     register as register_right_click_add_global,
     unregister as unregister_right_click_add_global,
@@ -306,6 +312,8 @@ def register():
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
+    register_button_actions_armature_edit()
+
     # 注册键位映射
     keymap.register()
 
@@ -341,6 +349,8 @@ def unregister():
 
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
+
+    unregister_button_actions_armature_edit()
 
     #网格编辑模式
     unregister_button_actions_mesh_edit()

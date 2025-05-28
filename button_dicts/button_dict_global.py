@@ -124,6 +124,12 @@ button_press_global = {
         'button.action_global_select_select_parent_or_child':(
         "button.action_global_select_select_parent_or_child","父级/子级","ORIENTATION_PARENT",
     ),
+        'button.action_select_select_grouped':(
+        "button.action_select_select_grouped","按组选择","PRESET",
+    ),
+        'button.action_global_select_select_linked':(
+        "button.action_global_select_select_linked","选择相连","LINK_BLEND",
+    ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
