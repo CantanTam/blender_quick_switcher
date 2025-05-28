@@ -36,18 +36,10 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
 
 
 
-# ”加选/减选“菜单
 
 
 
-class BUTTON_ACTION_OT_object_select_pattern(bpy.types.Operator):
-    bl_idname = "button.action_object_select_pattern"
-    bl_label = "按名称选择"
-    bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        bpy.ops.object.select_pattern('INVOKE_DEFAULT')
-        return {'FINISHED'}
 
 #网格编辑模式的选择选项
 
@@ -139,71 +131,7 @@ class BUTTON_ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
         bpy.ops.mesh.edges_select_sharp(sharpness=self.sharpness)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_select_select_similar(bpy.types.Operator):
-    bl_idname = "button.action_select_select_similar"
-    bl_label = "选择相似"
-    bl_description = "快捷键 Shift G"
-    bl_options = {'REGISTER', 'UNDO'}
 
-    type: bpy.props.EnumProperty(
-        name="",
-        description="Property type to compare for similarity",
-        items=[
-            ('CHILDREN',            "子级",               ""),
-            ('CHILDREN_IMMEDIATE',  "直接子级",     ""),
-            ('SIBLINGS',            "平级",               ""),
-            ('LENGTH',              "长度",                 ""),
-            ('DIRECTION',           "方向(Y轴)",              ""),
-            ('PREFIX',              "前缀",                 ""),
-            ('SUFFIX',              "后缀",                 ""),
-            ('LAYER',               "层",                  ""),
-            ('GROUP',               "群组",                  ""),
-            ('SHAPE',               "形状",                  ""),
-        ],
-        default='LENGTH',
-        update=lambda self, context: self.execute(context)
-    )
-
-    threshold: bpy.props.FloatProperty(
-        name="",
-        description="Similarity threshold (0–1)",
-        default=0.1,
-        min=0.0,
-        max=1.0,
-        precision=3,
-        subtype='FACTOR',
-        update=lambda self, context: self.execute(context)
-    )
-
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def draw(self, context):
-        if bpy.context.active_object.type+bpy.context.active_object.mode == "ARMATUREEDIT":
-
-            layout = self.layout
-            split = layout.row().split(factor=0.4)
-            
-            col_left = split.column()
-            col_left.alignment = 'RIGHT'
-            col_left.label(text="类型")
-            col_left.label(text="阈值")
-            
-            col_right = split.column()
-            col_right.prop(self, "type")
-            col_right.prop(self, "threshold")
-
-    def execute(self, context):    
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode    
-        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
-            bpy.ops.curve.select_similar('INVOKE_DEFAULT')
-        elif typeandmode == "MESHEDIT":
-            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_select_similar")
-        elif bpy.context.mode == "ARMATUREEDIT":
-            bpy.ops.armature.select_similar(type=self.type, threshold=self.threshold)
-        elif typeandmode == "METAEDIT":
-            bpy.ops.mball.select_similar('INVOKE_DEFAULT')
-        return {'FINISHED'}
 
 class BUTTON_ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
     bl_idname = "popup.mesh_select_by_trait"
@@ -352,10 +280,8 @@ class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
 
 classes = (
     BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
-    BUTTON_ACTION_OT_object_select_pattern,
     BUTTON_ACTION_OT_mesh_select_nth,
     BUTTON_ACTION_OT_mesh_edges_select_sharp,
-    BUTTON_ACTION_OT_select_select_similar,
     BUTTON_ACTION_OT_mesh_select_by_trait,
     BUTTON_ACTION_OT_mesh_call_select_by_trait,
     BUTTON_ACTION_OT_mesh_select_loops,

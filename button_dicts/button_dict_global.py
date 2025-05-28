@@ -130,6 +130,12 @@ button_press_global = {
         'button.action_global_select_select_linked':(
         "button.action_global_select_select_linked","选择相连","LINK_BLEND",
     ),
+        'button.action_object_select_pattern':(
+        "button.action_object_select_pattern","按名称选择","RADIOBUT_OFF", 
+    ),
+        'button.action_global_select_select_similar':(
+        "button.action_global_select_select_similar","选择相似","PRESET", 
+    ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
@@ -281,10 +287,6 @@ button_press_global = {
     ),
         'button.action_mesh_edges_select_sharp':(
         "button.action_mesh_edges_select_sharp","选择锐边","RADIOBUT_OFF", "MESHEDIT",
-    ),
-        'button.action_select_select_similar':(
-        "button.action_select_select_similar","选择相似","PRESET", 
-        "MESHEDIT", "CURVEEDIT", "SURFACEEDIT", "ARMATUREEDIT", "METAEDIT",
     ),
         'button.action_mesh_call_select_by_trait':(
         "button.action_mesh_call_select_by_trait","按特征全选","PRESET", "MESHEDIT",

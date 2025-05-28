@@ -909,7 +909,7 @@ class BUTTON_ACTION_OT_global_select_select_linked(bpy.types.Operator):
 
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.pose.select_linked('INVOKE_DEFAULT')
-            
+
         return {'FINISHED'}
 
 class VIEW3D_MT_mesh_select_linked_menu(bpy.types.Operator):
@@ -935,10 +935,60 @@ class VIEW3D_MT_mesh_select_linked_menu(bpy.types.Operator):
         col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
         col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
 
+# “选择”菜单——按名称
+class BUTTON_ACTION_OT_global_select_select_pattern(bpy.types.Operator):
+    bl_idname = "button.action_object_select_pattern"
+    bl_label = "按名称选择"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.object.select_pattern('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
+# "选择"菜单——选择相似
+class BUTTON_ACTION_OT_global_select_select_similar(bpy.types.Operator):
+    bl_idname = "button.action_global_select_select_similar"
+    bl_label = "选择相似"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):    
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode    
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.select_similar('INVOKE_DEFAULT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_select_similar")
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_similar('INVOKE_DEFAULT')
 
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
+
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
+            if bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
+                bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
+                bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
+        
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
+            if bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point or\
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke or\
+                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment:
+                bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
+
+        return {'FINISHED'}
+
+class VIEW3D_MT_global_select_select_similar_menu(bpy.types.Menu):
+    bl_idname = "button.action_global_select_select_similar_menu"
+    bl_label = "选择相似元素"
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("grease_pencil.select_similar", text="层").mode='LAYER'
+        layout.operator("grease_pencil.select_similar", text="材质").mode='MATERIAL'
+        layout.operator("grease_pencil.select_similar", text="顶点颜色").mode='VERTEX_COLOR'
+        layout.operator("grease_pencil.select_similar", text="半径").mode='RADIUS'
+        layout.operator("grease_pencil.select_similar", text="不透明度").mode='OPACITY'
 
 
 
@@ -1419,6 +1469,11 @@ classes = (
     BUTTON_ACTION_OT_global_select_select_grouped,
     VIEW3D_MT_mesh_select_linked_menu,
     BUTTON_ACTION_OT_global_select_select_linked,
+    BUTTON_ACTION_OT_global_select_select_pattern,
+    BUTTON_ACTION_OT_global_select_select_similar,
+    VIEW3D_MT_global_select_select_similar_menu,
+
+
 
 
     BUTTON_ACTION_OT_grab,

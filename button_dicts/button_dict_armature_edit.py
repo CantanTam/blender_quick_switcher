@@ -3,5 +3,7 @@ button_press_armature_edit = {
         'button.action_armatureedit_select_select_linked':(
         "button.action_armatureedit_select_select_linked","选择相连","LINK_BLEND",
     ),
-
+        'button.action_armatureedit_select_similar':(
+        "button.action_armatureedit_select_similar","选择相似","PRESET",
+    ),
 }

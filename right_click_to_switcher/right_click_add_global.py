@@ -105,6 +105,19 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"选择相连(菜单)\"添加到Switcher", icon='LINK_BLEND').action = 'button.action_global_select_select_linked'
 
+    elif op and op.bl_rna.identifier == "OBJECT_OT_select_pattern":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"按名称选择\"添加到Switcher", icon='PLUS').action = 'button.action_object_select_pattern'
+
+    elif op and op.bl_rna.identifier in {
+        "CURVE_OT_select_similar",
+        "MBALL_OT_select_similar",
+        "GREASE_PENCIL_OT_select_similar",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择相似(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_select_select_similar'
 
 
 
@@ -277,6 +290,13 @@ def draw_add_to_switcher_global(self, context):
 
 
 
+def global_select_select_similar_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"选择相似(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_select_select_similar'
+    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
 
 
@@ -377,6 +397,10 @@ def switchproportional_menu_to_switcher(self, context):
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_global)
     #“添加”菜单
+
+    # "选择"菜单
+    bpy.types.VIEW3D_MT_edit_mesh_select_similar.append(global_select_select_similar_menu_to_switcher)
+
     bpy.types.VIEW3D_MT_add.append(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_mesh_add.append(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_curve_add.append(add_menu_to_switcher)
@@ -444,6 +468,9 @@ def unregister():
     bpy.types.VIEW3D_MT_curve_add.remove(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_mesh_add.remove(add_menu_to_switcher)
     bpy.types.VIEW3D_MT_add.remove(add_menu_to_switcher)
+
+    # “选择”菜单
+    bpy.types.VIEW3D_MT_edit_mesh_select_similar.remove(global_select_select_similar_menu_to_switcher)
 
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_global)
 
