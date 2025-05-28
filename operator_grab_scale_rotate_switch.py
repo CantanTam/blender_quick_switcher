@@ -7,30 +7,30 @@ gsr_mode: int = 0
 def is_object_selected(context):
     obj = context.active_object
     if not obj:
-        return False
+        is_selected = False
 
     if context.mode == "OBJECT":
-        return obj.select_get()
+        is_selected = obj.select_get()
 
     if obj.type == 'MESH' and context.mode == "EDIT_MESH":
         bm = bmesh.from_edit_mesh(obj.data)
-        return (
+        is_selected = (
             any(e.select for e in bm.verts) or
             any(e.select for e in bm.edges) or
             any(e.select for e in bm.faces)
         )
 
     elif obj.type == 'ARMATURE' and context.mode == "EDIT_ARMATURE":
-        return any(
+        is_selected = any(
             b.select_head or b.select_tail or b.select
             for b in obj.data.edit_bones
         )
 
     elif obj.type == 'ARMATURE' and context.mode == "POSE":
-        return any(bone.bone.select for bone in obj.pose.bones)
+        is_selected = any(bone.bone.select for bone in obj.pose.bones)
 
     elif obj.type == 'CURVE' and context.mode == "EDIT_CURVE":
-        return any(
+        is_selected = any(
             (
                 p.select_control_point or p.select_left_handle or p.select_right_handle
                 if spl.type == 'BEZIER'
@@ -41,21 +41,35 @@ def is_object_selected(context):
         )
 
     elif obj.type == 'SURFACE' and context.mode == "EDIT_SURFACE":
-        return any(p.select for spl in obj.data.splines for p in spl.points )
+        is_selected = any(p.select for spl in obj.data.splines for p in spl.points )
 
     elif obj.type == 'LATTICE' and context.mode == "EDIT_LATTICE":
-        return any(p.select for p in obj.data.points)
+        is_selected = any(p.select for p in obj.data.points)
 
     elif obj.type == 'META' and context.mode == "EDIT_METABALL":
-        return any(e.select for e in obj.data.elements)
+        is_selected = any(e.select for e in obj.data.elements)
 
     elif obj.type == 'GPENCIL' and context.mode == "EDIT_GPENCIL":
-        # Blender api 不支持检测开启曲线状态下的选中检测，所以这里当作它已经选中
-        if getattr(obj.data, "use_curve_edit", False):
-            return True
+        # Blender api 不支持检测开启曲线状态下的选中检测，所以：关闭→检测→开启
+        if getattr(obj.data, "use_curve_edit", True):
+            bpy.context.active_object.data.use_curve_edit = False
+
+            try:
+                is_selected = any(
+                    p.select
+                    for l in obj.data.layers
+                    for f in l.frames
+                    for s in f.strokes
+                    for p in s.points
+                )
+                
+            except AttributeError:
+                is_selected = False
+
+            bpy.context.active_object.data.use_curve_edit = True
         else:
             try:
-                return any(
+                is_selected = any(
                     p.select
                     for l in obj.data.layers
                     for f in l.frames
@@ -63,11 +77,11 @@ def is_object_selected(context):
                     for p in s.points
                 )
             except AttributeError:
-                return False
+                is_selected = False
         
     elif obj.type == 'GREASEPENCIL' and context.mode == "EDIT_GREASE_PENCIL":
         try:
-            return any(
+            is_selected = any(
                 p.select
                 for l in obj.data.layers
                 for f in l.frames
@@ -76,9 +90,9 @@ def is_object_selected(context):
                 for p in s.points
             )
         except AttributeError:
-            return False
+            is_selected = False
 
-    return False
+    return is_selected
 
 class GRAB_SCALE_ROTATE_OT_Switch(bpy.types.Operator):
     bl_idname = "switch.grab_scale_rotate"
