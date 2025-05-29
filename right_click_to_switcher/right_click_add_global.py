@@ -119,8 +119,29 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"选择相似(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_select_select_similar'
 
+    elif op and op.bl_rna.identifier in {
+        "PAINT_OT_vert_select_ungrouped",
+        "LATTICE_OT_select_ungrouped",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"未归组顶点\"添加到Switcher", icon='PLUS').action = 'button.action_global_selectt_select_ungrouped'
 
+    elif op and op.bl_rna.identifier == "GPENCIL_OT_select_first":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择首点\"添加到Switcher", icon='PLUS').action = 'button.action_global_gpencil_select_select_first'
 
+    elif op and op.bl_rna.identifier == "GPENCIL_OT_select_last":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择末点\"添加到Switcher", icon='PLUS').action = 'button.action_global_gpencil_select_select_last'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_select_ends":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"起始点\"添加到Switcher", icon='PLUS').action = 'button.action_global_greasepencil_select_select_first'
+        layout.operator("call.add_to_switcher_menu", text="\"结束点\"添加到Switcher", icon='PLUS').action = 'button.action_global_greasepencil_select_select_last'
 
 
 

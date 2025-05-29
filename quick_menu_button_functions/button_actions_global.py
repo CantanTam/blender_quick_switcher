@@ -990,6 +990,332 @@ class VIEW3D_MT_global_select_select_similar_menu(bpy.types.Menu):
         layout.operator("grease_pencil.select_similar", text="半径").mode='RADIUS'
         layout.operator("grease_pencil.select_similar", text="不透明度").mode='OPACITY'
 
+# “选择”菜单——未归组顶点
+class BUTTON_ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
+    bl_idname = "button.action_global_selectt_select_ungrouped"
+    bl_label = "选择未归组项"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def lattice_has_grouped_points(self, obj):
+        # 对 Lattice 的每个点检查是否有归组
+        for i, point in enumerate(obj.data.points):
+            for vg in obj.vertex_groups:
+                try:
+                    weight = vg.weight(i)
+                    if weight > 0.0:
+                        return True
+                except RuntimeError:
+                    continue
+        return False
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",            
+        description="", 
+        default=False,
+    ) 
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        
+        col_right = split.column()
+        col_right.prop(self, "extend")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT"} and bpy.context.active_object.data.use_paint_mask_vertex:
+            if not bpy.context.active_object.vertex_groups:
+                self.report({'ERROR'}, "物体未包含权重/顶点组")
+                return {'CANCELLED'}
+
+            if not any(v.groups for v in bpy.context.active_object.data.vertices):
+                self.report({'ERROR'}, "物体未包含权重/顶点组")
+                return {'CANCELLED'}
+            bpy.ops.paint.vert_select_ungrouped(extend=self.extend)
+
+        elif typeandmode == "LATTICEEDIT":
+            if not bpy.context.active_object.vertex_groups:
+                self.report({'ERROR'}, "该 Lattice 没有顶点组")
+                return {'CANCELLED'}
+            if not self.lattice_has_grouped_points(bpy.context.active_object):
+                self.report({'ERROR'}, "该 Lattice 没有归组的点")
+                return {'CANCELLED'}
+
+            bpy.ops.lattice.select_ungrouped(extend=self.extend)
+
+        else:
+            self.report({'ERROR'}, "不支持的物体类型或模式")
+            return {'CANCELLED'}
+        
+        return {'FINISHED'}
+
+# “选择”菜单——选择首点
+class BUTTON_ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
+    bl_idname = "button.action_global_gpencil_select_select_first"
+    bl_label = "选中首点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode == "SCULPT_GPENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        elif bpy.context.mode == "VERTEX_GPENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        return True
+
+    only_selected_strokes: bpy.props.BoolProperty(
+        name="仅选中笔画",            
+        description="只选择笔画的起始点", 
+        default=False,
+    ) 
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",            
+        description="扩展选择，而不是取消选择", 
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        col_left.label(text="")
+        
+        col_right = split.column()
+        col_right.prop(self, "only_selected_strokes")
+        col_right.prop(self, "extend")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        elif typeandmode == "GPENCILSCULPT_GPENCIL":
+            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        elif typeandmode == "GPENCILVERTEX_GPENCIL":
+            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        return {'FINISHED'}
+
+# “选择”菜单——选择末点
+class BUTTON_ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
+    bl_idname = "button.action_global_gpencil_select_select_last"
+    bl_label = "选中末点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode == "SCULPT_GPENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        elif bpy.context.mode == "VERTEX_GPENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        return True
+    
+    only_selected_strokes: bpy.props.BoolProperty(
+        name="仅选中笔画",            
+        description="只选择笔画的起始点", 
+        default=False,
+    ) 
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",            
+        description="扩展选择，而不是取消选择", 
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        col_left.label(text="")
+        
+        col_right = split.column()
+        col_right.prop(self, "only_selected_strokes")
+        col_right.prop(self, "extend")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        elif typeandmode == "GPENCILSCULPT_GPENCIL":
+            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        elif typeandmode == "GPENCILVERTEX_GPENCIL":
+            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
+
+        return {'FINISHED'}
+
+# “选择”菜单——起始点
+class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operator):
+    bl_idname = "button.action_global_greasepencil_select_select_first"
+    bl_label = "选择端点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode == "SCULPT_GREASE_PENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        elif bpy.context.mode == "VERTEX_GREASE_PENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        return True
+
+    amount_start: bpy.props.IntProperty(
+        name="",
+        description="从起始端选择的点的数量",
+        default=1,
+        min=0,
+    )
+
+    amount_end: bpy.props.IntProperty(
+        name="",
+        description="从末端选择的点的数量",
+        default=0,
+        min=0,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="起始数量")
+        col_left.label(text="末端数量")
+        
+        col_right = split.column()
+        col_right.prop(self, "amount_start")
+        col_right.prop(self, "amount_end")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+        
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+
+        return {'FINISHED'}
+
+# “选择”菜单——结束点
+class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator):
+    bl_idname = "button.action_global_greasepencil_select_select_last"
+    bl_label = "选择端点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode == "SCULPT_GREASE_PENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        elif bpy.context.mode == "VERTEX_GREASE_PENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        return True
+
+    amount_start: bpy.props.IntProperty(
+        name="",
+        description="从起始端选择的点的数量",
+        default=0,
+        min=0,
+    )
+
+    amount_end: bpy.props.IntProperty(
+        name="",
+        description="从末端选择的点的数量",
+        default=1,
+        min=0,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="起始数量")
+        col_left.label(text="末端数量")
+        
+        col_right = split.column()
+        col_right.prop(self, "amount_start")
+        col_right.prop(self, "amount_end")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+        
+        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+
+        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
+            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
+
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
 
 
 
@@ -1472,7 +1798,11 @@ classes = (
     BUTTON_ACTION_OT_global_select_select_pattern,
     BUTTON_ACTION_OT_global_select_select_similar,
     VIEW3D_MT_global_select_select_similar_menu,
-
+    BUTTON_ACTION_OT_global_select_select_ungrouped,
+    BUTTON_ACTION_OT_global_gpencil_select_select_first,
+    BUTTON_ACTION_OT_global_gpencil_select_select_last,
+    BUTTON_ACTION_OT_global_greasepencil_select_select_first,
+    BUTTON_ACTION_OT_global_greasepencil_select_select_last,
 
 
 

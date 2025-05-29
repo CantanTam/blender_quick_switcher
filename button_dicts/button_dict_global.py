@@ -136,6 +136,21 @@ button_press_global = {
         'button.action_global_select_select_similar':(
         "button.action_global_select_select_similar","选择相似","PRESET", 
     ),
+        'button.action_global_selectt_select_ungrouped':(
+        "button.action_global_selectt_select_ungrouped","未归组顶点","RADIOBUT_OFF", 
+    ),
+        'button.action_global_gpencil_select_select_first':(
+        "button.action_global_gpencil_select_select_first","选择首点","RADIOBUT_OFF", 
+    ),
+        'button.action_global_gpencil_select_select_last':(
+        "button.action_global_gpencil_select_select_last","选择末点","RADIOBUT_OFF", 
+    ),
+        'button.action_global_greasepencil_select_select_first':(
+        "button.action_global_greasepencil_select_select_first","起始点","RADIOBUT_OFF", 
+    ),
+        'button.action_global_greasepencil_select_select_last':(
+        "button.action_global_greasepencil_select_select_last","结束点","RADIOBUT_OFF", 
+    ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
