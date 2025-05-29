@@ -245,7 +245,7 @@ class BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        if bpy.context.space_data.lock_object is None:
+        if context.space_data.lock_object is None:
             bpy.ops.view3d.view_lock_to_active()
             show_notice("ACTIVE_LOCK.png")
         else:
@@ -443,17 +443,17 @@ class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
         return True
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.object.select_all(action='SELECT')
         elif typeandmode == "MESHEDIT":
             bpy.ops.mesh.select_all(action='SELECT')    
@@ -486,10 +486,19 @@ class BUTTON_ACTION_OT_global_select_invert(bpy.types.Operator):
     bl_description = "快捷键 Ctrl I"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        return True
 
-        if bpy.context.mode == "OBJECT":
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+
+        if context.mode == "OBJECT":
             bpy.ops.object.select_all(action='INVERT')
         elif typeandmode == "MESHEDIT":
             bpy.ops.mesh.select_all(action='INVERT')    
@@ -520,10 +529,24 @@ class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
     bl_description = "快捷键 C"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        if context.mode in {"VERTEX_GPENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        return True
 
-        if bpy.context.mode == 'OBJECT':
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+
+        if context.mode == 'OBJECT':
             bpy.ops.view3d.select_circle('INVOKE_DEFAULT')
         elif typeandmode in {
             "CURVEEDIT", 
@@ -584,7 +607,7 @@ class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
         return self.execute(context)
 
     def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        typeandmode = context.active_object.type + context.active_object.mode
 
         layout = self.layout
         split = layout.row().split(factor=0.4)
@@ -604,9 +627,9 @@ class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
         col_right.prop(self, "extend")
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        typeandmode = context.active_object.type + context.active_object.mode
 
-        if bpy.context.mode == 'OBJECT':
+        if context.mode == 'OBJECT':
             bpy.ops.object.select_mirror(extend=self.extend)
         elif typeandmode == "LATTICEEDIT":
             bpy.ops.lattice.select_mirror(axis={self.axis}, extend=self.extend)
@@ -663,12 +686,27 @@ class BUTTON_ACTION_OT_global_select_select_random(bpy.types.Operator):
         default=False,
         #update=lambda self, context: self.execute(context)
     )
+
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        elif context.mode == "VERTEX_GPENCIL"and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+
+        return True
     
     def invoke(self, context, event):
         return self.execute(context)
 
     def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        typeandmode = context.active_object.type + context.active_object.mode
 
         layout = self.layout
         split = layout.row().split(factor=0.4)
@@ -687,32 +725,29 @@ class BUTTON_ACTION_OT_global_select_select_random(bpy.types.Operator):
             col_right.prop(self, "unselect_ends")
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        typeandmode = context.active_object.type + context.active_object.mode
 
-        if bpy.context.mode == 'OBJECT':
+        if context.mode == 'OBJECT':
             bpy.ops.object.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+
         elif typeandmode == "MESHEDIT":
             bpy.ops.mesh.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+
         elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             bpy.ops.curve.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+
         elif typeandmode == "METAEDIT":
             bpy.ops.mball.select_random_metaelems(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
+
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
             bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends)
-        elif typeandmode in {"GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"} and\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
-            bpy.ops.gpencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action, unselect_ends=self.unselect_ends)
-        elif typeandmode == "GREASEPENCILEDIT":
+
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
             bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
-        elif typeandmode in {"GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"} and\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
-            bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
-            bpy.ops.grease_pencil.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+
         elif typeandmode == "LATTICEEDIT":
             bpy.ops.lattice.select_random(ratio=self.ratio, seed=self.seed, action=self.action)
+
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
@@ -730,14 +765,14 @@ class VIEW3D_MT_global_select_more_or_less_menu(bpy.types.Operator):
         return context.window_manager.invoke_popup(self, width=100)
 
     def draw(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
         layout = self.layout
         row = layout.row()
         col = row.column(align=True)
         col.label(text="加选/减选", icon='FORCE_CHARGE')
 
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             col.operator("object.select_more", text="扩展选区", icon="ADD")
             col.operator("object.select_less", text="缩减选区", icon="REMOVE")
         elif typeandmode == "CURVEEDIT":
@@ -792,6 +827,26 @@ class BUTTON_ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
     bl_label = "加选/减选"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        
+        elif context.mode == "EDIT_GREASE_PENCIL" and \
+            context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
+        
+        return True
+    
     def execute(self, context):
         bpy.ops.popup.global_more_or_less_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
@@ -834,9 +889,9 @@ class BUTTON_ACTION_OT_global_select_select_parent_or_child(bpy.types.Operator):
         col_right.prop(self, "extend")
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
-        if bpy.context.mode == 'OBJECT':
+        if context.mode == 'OBJECT':
             bpy.ops.object.select_hierarchy(direction=self.direction, extend=self.extend)
         elif typeandmode == "ARMATUREEDIT":
             bpy.ops.armature.select_hierarchy(direction=self.direction, extend=self.extend)
@@ -852,15 +907,31 @@ class BUTTON_ACTION_OT_global_select_select_grouped(bpy.types.Operator):
     bl_label = "按组选择"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if context.mode == "SCULPT_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        
+        return True
+
     def execute(self, context):        
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.object.select_grouped('INVOKE_DEFAULT')
-        elif bpy.context.mode in {
+        elif context.mode in {
             "EDIT_GPENCIL",
             "SCULPT_GPENCIL",
             "VERTEX_GPENCIL"}:
             bpy.ops.gpencil.select_grouped('INVOKE_DEFAULT')
-        elif bpy.context.mode == "POSE":
+        elif context.mode == "POSE":
             bpy.ops.pose.select_grouped('INVOKE_DEFAULT')
         return {'FINISHED'}
 
@@ -871,35 +942,37 @@ class BUTTON_ACTION_OT_global_select_select_linked(bpy.types.Operator):
     bl_description = "选择相连元素/关联项"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):        
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
         
-        if bpy.context.mode == "OBJECT":
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        
+        elif context.mode == "EDIT_GREASE_PENCIL" and \
+            context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
+        
+        return True
+
+    def execute(self, context):        
+        typeandmode = context.active_object.type + context.active_object.mode
+        
+        if context.mode == "OBJECT":
             bpy.ops.object.select_linked('INVOKE_DEFAULT')
 
-        elif typeandmode == "GREASEPENCILEDIT":
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
             bpy.ops.grease_pencil.select_linked('INVOKE_DEFAULT')
 
-        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_linked('INVOKE_DEFAULT')
-
-        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_linked('INVOKE_DEFAULT')
-
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
             bpy.ops.gpencil.select_linked('INVOKE_DEFAULT')
-
-        elif typeandmode == "GPENCILSCULPT_GPENCIL":
-            if bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
-                bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
-                bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
-                bpy.ops.gpencil.select_linked('INVOKE_DEFAULT')
-
-        elif typeandmode == "GPENCILVERTEX_GPENCIL":
-            if bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point or\
-                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke or\
-                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment:
-                bpy.ops.gpencil.select_linked('INVOKE_DEFAULT')
 
         elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
             bpy.ops.curve.select_linked('INVOKE_DEFAULT')
@@ -911,9 +984,9 @@ class BUTTON_ACTION_OT_global_select_select_linked(bpy.types.Operator):
             "MESHVERTEX_PAINT",
             "MESHWEIGHT_PAINT",
             "MESHTEXTURE_PAINT"}:
-            if bpy.context.active_object.data.use_paint_mask:
+            if context.active_object.data.use_paint_mask:
                 bpy.ops.paint.face_select_linked()
-            elif bpy.context.active_object.data.use_paint_mask_vertex:
+            elif context.active_object.data.use_paint_mask_vertex:
                 bpy.ops.paint.vert_select_linked()
 
         elif typeandmode == "ARMATUREPOSE":
@@ -960,29 +1033,33 @@ class BUTTON_ACTION_OT_global_select_select_similar(bpy.types.Operator):
     bl_label = "选择相似"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if context.mode == "EDIT_GREASE_PENCIL" and \
+            context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
+        
+        elif context.mode == "SCULPT_GREASE_PENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+
+        return True
+
     def execute(self, context):    
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode    
+        typeandmode = context.active_object.type+context.active_object.mode    
         if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             bpy.ops.curve.select_similar('INVOKE_DEFAULT')
+
         elif typeandmode == "MESHEDIT":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_select_similar")
+
         elif typeandmode == "METAEDIT":
             bpy.ops.mball.select_similar('INVOKE_DEFAULT')
 
-        elif typeandmode == "GREASEPENCILEDIT":
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
             bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
-
-        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
-            if bpy.context.scene.tool_settings.use_gpencil_select_mask_point or\
-                bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke or\
-                bpy.context.scene.tool_settings.use_gpencil_select_mask_segment:
-                bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
-        
-        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
-            if bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point or\
-                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke or\
-                bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment:
-                bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
 
         return {'FINISHED'}
 
@@ -1038,23 +1115,23 @@ class BUTTON_ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
         col_right.prop(self, "extend")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
-        if typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT"} and bpy.context.active_object.data.use_paint_mask_vertex:
-            if not bpy.context.active_object.vertex_groups:
+        if typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT"} and context.active_object.data.use_paint_mask_vertex:
+            if not context.active_object.vertex_groups:
                 self.report({'ERROR'}, "物体未包含权重/顶点组")
                 return {'CANCELLED'}
 
-            if not any(v.groups for v in bpy.context.active_object.data.vertices):
+            if not any(v.groups for v in context.active_object.data.vertices):
                 self.report({'ERROR'}, "物体未包含权重/顶点组")
                 return {'CANCELLED'}
             bpy.ops.paint.vert_select_ungrouped(extend=self.extend)
 
         elif typeandmode == "LATTICEEDIT":
-            if not bpy.context.active_object.vertex_groups:
+            if not context.active_object.vertex_groups:
                 self.report({'ERROR'}, "该 Lattice 没有顶点组")
                 return {'CANCELLED'}
-            if not self.lattice_has_grouped_points(bpy.context.active_object):
+            if not self.lattice_has_grouped_points(context.active_object):
                 self.report({'ERROR'}, "该 Lattice 没有归组的点")
                 return {'CANCELLED'}
 
@@ -1074,15 +1151,15 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode == "SCULPT_GPENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode == "SCULPT_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
-        elif bpy.context.mode == "VERTEX_GPENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
             return False
         return True
 
@@ -1126,15 +1203,15 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode == "SCULPT_GPENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode == "SCULPT_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
-        elif bpy.context.mode == "VERTEX_GPENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
             return False
         return True
     
@@ -1178,17 +1255,13 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operato
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode == "SCULPT_GREASE_PENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode == "SCULPT_GREASE_PENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
-        elif bpy.context.mode == "VERTEX_GREASE_PENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
-            return False
-        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+
+        elif context.mode == "EDIT_GREASE_PENCIL" and context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
             return False
         return True
 
@@ -1234,17 +1307,13 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode == "SCULPT_GREASE_PENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode == "SCULPT_GREASE_PENCIL" and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
-        elif bpy.context.mode == "VERTEX_GREASE_PENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
-            return False
-        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+
+        elif context.mode == "EDIT_GREASE_PENCIL" and context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
             return False
         return True
 
@@ -1290,19 +1359,19 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        if bpy.context.mode in {"SCULPT_GREASE_PENCIL","SCULPT_GPENCIL"} and (
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+        if context.mode in {"SCULPT_GREASE_PENCIL","SCULPT_GPENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
             return False
         
-        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+        elif context.mode == "EDIT_GREASE_PENCIL" and context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
             return False
         
-        elif bpy.context.mode == "VERTEX_GPENCIL" and (
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
-            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+        elif context.mode == "VERTEX_GPENCIL" and (
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
             return False
         
         return True
@@ -1323,7 +1392,7 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
         return self.execute(context)
 
     def draw(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
         layout = self.layout
         split = layout.row().split(factor=0.4)
@@ -1342,7 +1411,7 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
             col_right.prop(self, "deselect_ends")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
         if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
             bpy.ops.gpencil.select_alternate(unselect_ends = self.unselect_ends)
@@ -1417,9 +1486,9 @@ class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
-        if bpy.context.mode == 'OBJECT':
+        if context.mode == 'OBJECT':
             bpy.ops.wm.call_menu(name="VIEW3D_MT_add")
         if typeandmode == "CURVEEDIT":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_curve_add")
@@ -1441,8 +1510,8 @@ class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-        if bpy.context.mode == "OBJECT":
+        typeandmode = context.active_object.type+context.active_object.mode
+        if context.mode == "OBJECT":
             bpy.ops.object.duplicate_move('INVOKE_DEFAULT')
         elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             bpy.ops.curve.duplicate_move('INVOKE_DEFAULT')
@@ -1466,8 +1535,8 @@ class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-        if bpy.context.mode == "OBJECT":
+        typeandmode = context.active_object.type+context.active_object.mode
+        if context.mode == "OBJECT":
             bpy.ops.view3d.copybuffer()
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.pose.copy()
@@ -1540,7 +1609,7 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         return self.execute(context)
     
     def draw(self, context):
-        typeandmode = bpy.context.active_object.type + bpy.context.active_object.mode
+        typeandmode = context.active_object.type + context.active_object.mode
 
         layout = self.layout
         split = layout.row().split(factor=0.4)
@@ -1548,7 +1617,7 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         # 左侧列 - 标签
         col_left = split.column()
         col_left.alignment = 'RIGHT'
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             col_left.label(text="")
             col_left.label(text="")
         elif typeandmode == "GPENCILEDIT_GPENCIL":
@@ -1564,7 +1633,7 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
         
         # 右侧列 - 垂直排列的单选按钮
         col_right = split.column()
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             col_right.prop(self, "autoselect")
             col_right.prop(self, "active_collection")
         elif typeandmode == "GPENCILEDIT_GPENCIL":
@@ -1578,8 +1647,8 @@ class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
             col_right.prop(self, "selected_mask")
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-        if bpy.context.mode == "OBJECT":
+        typeandmode = context.active_object.type+context.active_object.mode
+        if context.mode == "OBJECT":
             bpy.ops.view3d.pastebuffer(autoselect=self.autoselect, active_collection=self.active_collection)
         elif typeandmode == "GPENCILEDIT_GPENCIL":
             bpy.ops.gpencil.paste(type=self.type, paste_back=self.paste_back)
@@ -1599,9 +1668,9 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
     def draw(self, context):
         layout = self.layout
 
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
 
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             layout.operator("object.delete", text="删除", icon="QUESTION").use_global=False
         elif typeandmode == "MESHEDIT":
             layout.operator("mesh.dissolve_mode", text="融并删除" ,icon="CANCEL")
@@ -1697,9 +1766,9 @@ class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
         col_right.prop(self, "unselected")
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
         
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.object.hide_view_set(unselected=self.unselected)
         if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             bpy.ops.curve.hide(unselected=self.unselected)
@@ -1725,9 +1794,9 @@ class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
         
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.object.hide_view_clear()
         if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
             bpy.ops.curve.reveal()
@@ -1753,9 +1822,9 @@ class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
         
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_object_apply")
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_apply")
@@ -1780,9 +1849,9 @@ class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+        typeandmode = context.active_object.type+context.active_object.mode
         
-        if bpy.context.mode == "OBJECT":
+        if context.mode == "OBJECT":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_object_clear")
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_transform")
