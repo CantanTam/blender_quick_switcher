@@ -143,6 +143,13 @@ def draw_add_to_switcher_global(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"起始点\"添加到Switcher", icon='PLUS').action = 'button.action_global_greasepencil_select_select_first'
         layout.operator("call.add_to_switcher_menu", text="\"结束点\"添加到Switcher", icon='PLUS').action = 'button.action_global_greasepencil_select_select_last'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_select_alternate",
+        "GREASE_PENCIL_OT_select_alternate",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选择交替\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_select_alternate'
 
 
 

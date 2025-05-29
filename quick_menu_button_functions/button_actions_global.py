@@ -441,6 +441,15 @@ class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
     bl_description = "快捷键 A"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        return True
+
     def execute(self, context):
         typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
 
@@ -1106,17 +1115,7 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
         col_right.prop(self, "extend")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if typeandmode == "GPENCILEDIT_GPENCIL":
-            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
-        elif typeandmode == "GPENCILSCULPT_GPENCIL":
-            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
-        elif typeandmode == "GPENCILVERTEX_GPENCIL":
-            bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
+        bpy.ops.gpencil.select_first(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
         return {'FINISHED'}
 
 # “选择”菜单——选择末点
@@ -1168,17 +1167,7 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
         col_right.prop(self, "extend")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if typeandmode == "GPENCILEDIT_GPENCIL":
-            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
-        elif typeandmode == "GPENCILSCULPT_GPENCIL":
-            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
-        elif typeandmode == "GPENCILVERTEX_GPENCIL":
-            bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
-
+        bpy.ops.gpencil.select_last(only_selected_strokes=self.only_selected_strokes, extend=self.extend)
         return {'FINISHED'}
 
 # “选择”菜单——起始点
@@ -1199,6 +1188,8 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operato
             not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
             not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
             return False
+        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
         return True
 
     amount_start: bpy.props.IntProperty(
@@ -1232,17 +1223,7 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operato
         col_right.prop(self, "amount_end")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if typeandmode == "GREASEPENCILEDIT":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-        
-        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-
-        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-
+        bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
         return {'FINISHED'}
 
 # “选择”菜单——结束点
@@ -1263,6 +1244,8 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator
             not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
             not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
             return False
+        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
         return True
 
     amount_start: bpy.props.IntProperty(
@@ -1296,20 +1279,76 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator
         col_right.prop(self, "amount_end")  
 
     def execute(self, context):
-        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
-
-        if typeandmode == "GREASEPENCILEDIT":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-        
-        elif typeandmode == "GREASEPENCILSCULPT_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-
-        elif typeandmode == "GREASEPENCILVERTEX_GREASE_PENCIL":
-            bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
-
+        bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
         return {'FINISHED'}
 
+# “选择”菜单——选择菜单
+class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
+    bl_idname = "button.action_global_select_select_alternate"
+    bl_label = "选择交替"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if bpy.context.mode in {"SCULPT_GREASE_PENCIL","SCULPT_GPENCIL"} and (
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        
+        elif bpy.context.mode == "EDIT_GREASE_PENCIL" and bpy.context.scene.tool_settings.gpencil_selectmode_edit == 'STROKE':
+            return False
+        
+        elif bpy.context.mode == "VERTEX_GPENCIL" and (
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_point and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_stroke and
+            not bpy.context.scene.tool_settings.use_gpencil_vertex_select_mask_segment):
+            return False
+        
+        return True
+
+    unselect_ends: bpy.props.BoolProperty(
+        name="不选中末端",            
+        description="不选择笔画的起点和末点", 
+        default=False,
+    ) 
+
+    deselect_ends: bpy.props.BoolProperty(
+        name="取消选择末端",            
+        description="选择/取消选择笔画的起点和末点", 
+        default=False,
+    ) 
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            col_left.label(text="")
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            col_left.label(text="")
+        
+        col_right = split.column()
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            col_right.prop(self, "unselect_ends")
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            col_right.prop(self, "deselect_ends")  
+
+    def execute(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
+
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILSCULPT_GPENCIL","GPENCILVERTEX_GPENCIL"}:
+            bpy.ops.gpencil.select_alternate(unselect_ends = self.unselect_ends)
+        elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_alternate(deselect_ends = self.deselect_ends)
+        return {'FINISHED'}
 
 
 
@@ -1803,6 +1842,7 @@ classes = (
     BUTTON_ACTION_OT_global_gpencil_select_select_last,
     BUTTON_ACTION_OT_global_greasepencil_select_select_first,
     BUTTON_ACTION_OT_global_greasepencil_select_select_last,
+    BUTTON_ACTION_OT_global_select_select_alternate,
 
 
 

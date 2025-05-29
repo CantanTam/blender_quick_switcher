@@ -151,6 +151,9 @@ button_press_global = {
         'button.action_global_greasepencil_select_select_last':(
         "button.action_global_greasepencil_select_select_last","结束点","RADIOBUT_OFF", 
     ),
+        'button.action_global_select_select_alternate':(
+        "button.action_global_select_select_alternate","选择交替","RADIOBUT_OFF", 
+    ),
 
     # 全局高频操作——“添加”菜单/“复制(Shift+D)”/“复制(Ctrl C)”/“粘贴(Ctrl V)”
         'button.action_global_add':(
