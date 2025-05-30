@@ -1598,6 +1598,73 @@ class BUTTON_ACTION_OT_global_transform_vertex_warp(bpy.types.Operator):
         bpy.ops.transform.vertex_warp(warp_angle=self.warp_angle, offset_angle=self.offset_angle, min=self.min, max=self.max)
         return {'FINISHED'}
 
+# “变换”菜单——随机
+class BUTTON_ACTION_OT_global_transform_vertex_random(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_vertex_random"
+    bl_label = "随机"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    offset: bpy.props.FloatProperty(
+        name="",
+        description="偏移的距离",
+        soft_max=10,
+        soft_min=-10,
+        default=0.0,
+        precision=2,
+        subtype='DISTANCE'  # 可选，表示为距离类型
+    )
+
+    uniform: bpy.props.FloatProperty(
+        name="",
+        description="提高以获得均匀的偏移距离",
+        default=0.0,
+        min=0.0,
+        max=1.0,
+        subtype='FACTOR',
+        precision=3
+    )
+
+    normal: bpy.props.FloatProperty(
+        name="",
+        description="将偏移方向与法线对齐",
+        default=0.0,
+        min=0.0,
+        max=1.0,
+        subtype='FACTOR',
+        precision=3
+    )
+
+    seed: bpy.props.IntProperty(
+        name="",
+        description="随机数生成器的种值",
+        default=0,
+        min=0,
+        max=10000
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="(数)量")
+        col_left.label(text="均衡")
+        col_left.label(text="法向")
+        col_left.label(text="随机种")
+
+        col_right = split.column()
+        col_right.prop(self, "offset")
+        col_right.prop(self, "uniform")
+        col_right.prop(self, "normal")
+        col_right.prop(self, "seed")
+
+    def execute(self, context):
+        bpy.ops.transform.vertex_random(offset=self.offset, uniform=self.uniform, normal=self.normal, seed=self.seed)
+        return {'FINISHED'}
 
 
 
@@ -2063,6 +2130,7 @@ classes = (
     BUTTON_ACTION_OT_global_transform_translate_texturespace_true,
     BUTTON_ACTION_OT_global_transform_resize_texturespace_true,
     BUTTON_ACTION_OT_global_transform_vertex_warp,
+    BUTTON_ACTION_OT_global_transform_vertex_random,
 
     BUTTON_ACTION_OT_global_duplicate_move,
     BUTTON_ACTION_OT_global_add,

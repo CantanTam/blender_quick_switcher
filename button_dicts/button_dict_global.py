@@ -184,6 +184,9 @@ button_press_global = {
         'button.action_global_transform_vertex_warp':(
         "button.action_global_transform_vertex_warp","弯绕","RADIOBUT_OFF",
     ), 
+        'button.action_global_transform_vertex_random':(
+        "button.action_global_transform_vertex_random","随机","RADIOBUT_OFF",
+    ), 
 
     # 全局高频操作——“隐藏”/“隐藏未选项”/“显示隐藏项”
         'button.action_global_hide_view_set':(

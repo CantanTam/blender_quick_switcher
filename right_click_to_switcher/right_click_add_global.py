@@ -186,6 +186,10 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"弯绕\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_vertex_warp'
 
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_vertex_random":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"随机\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_vertex_random'
 
 
 
@@ -348,6 +352,8 @@ def global_transform_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"变换(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_transform'
     if bpy.context.mode == "SCULPT" and bpy.app.version >= (4, 3, 0):
         self.layout.operator("call.add_to_switcher_menu", text="\"球形化\"添加到Switcher", icon='SPHERE').action = 'button.action_global_transform_tosphere'
+    if context.mode == "EDIT_GPENCIL":
+        self.layout.operator("call.add_to_switcher_menu", text="\"法向缩放\"添加到Switcher", icon='PLUS').action = 'button.action_gpenciledit_transform_shrink_fatten'
 
 
 

@@ -137,6 +137,11 @@ from .quick_menu_button_functions.button_actions_mesh_edit import (
     unregister as unregister_button_actions_mesh_edit,
 )
 
+from .quick_menu_button_functions.button_actions_gpencil_edit import (
+    register as register_button_actions_gpencil_edit,
+    unregister as unregister_button_actions_gpencil_edit,
+)
+
 from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
@@ -156,7 +161,7 @@ from .right_click_to_switcher.right_click_add_object import (
     unregister as unregister_right_click_add_object,
 )
 
-from .right_click_to_switcher.right_click_add_meshedit import (
+from .right_click_to_switcher.right_click_add_mesh_edit import (
     register as register_right_click_add_meshedit,
     unregister as unregister_right_click_add_meshedit,
 )
@@ -309,6 +314,8 @@ def register():
     # 物体模式
     register_button_actions_mesh_edit()
 
+    register_button_actions_gpencil_edit()
+
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
@@ -351,6 +358,8 @@ def unregister():
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
     unregister_button_actions_armature_edit()
+
+    unregister_button_actions_gpencil_edit()
 
     #网格编辑模式
     unregister_button_actions_mesh_edit()
