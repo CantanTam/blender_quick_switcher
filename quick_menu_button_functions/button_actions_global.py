@@ -1407,25 +1407,6 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
             bpy.ops.grease_pencil.select_alternate(deselect_ends = self.deselect_ends)
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # “变换”菜单
 class BUTTON_ACTION_OT_global_transform(bpy.types.Operator):
     bl_idname = "button.action_global_transform"
@@ -1501,6 +1482,131 @@ class BUTTON_ACTION_OT_global_transform_shear(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.transform.shear('INVOKE_DEFAULT')
         return {'FINISHED'}
+
+# “变换”菜单——弯曲
+class BUTTON_ACTION_OT_global_transform_bend(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_bend"
+    bl_label = "弯曲"
+    bl_description = "快捷键 Shift W"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.bend('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+# “变换”菜单——推/拉
+class BUTTON_ACTION_OT_global_transform_push_pull(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_push_pull"
+    bl_label = "推/拉"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.push_pull('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+# “变换”菜单——移动纹理空间
+class BUTTON_ACTION_OT_global_transform_translate_texturespace_true(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_translate_texturespace_true"
+    bl_label = "移动纹理空间"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        # 晶格编辑模式下，其实不可用
+        if context.mode == "EDIT_LATTICE":
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.transform.translate('INVOKE_DEFAULT',texture_space=True)
+        return {'FINISHED'}
+
+# “变换”菜单——缩放纹理空间
+class BUTTON_ACTION_OT_global_transform_resize_texturespace_true(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_resize_texturespace_true"
+    bl_label = "缩放纹理空间"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        # 晶格编辑模式下，其实不可用
+        if context.mode == "EDIT_LATTICE":
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.transform.resize('INVOKE_DEFAULT',texture_space=True)
+        return {'FINISHED'}
+
+# “变换”菜单——弯绕
+class BUTTON_ACTION_OT_global_transform_vertex_warp(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_vertex_warp"
+    bl_label = "弯绕"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    warp_angle: bpy.props.FloatProperty(
+        name="",
+        description="以游标为中心的弯绕量",
+        default=6.283185,
+        soft_min=-6.283185,
+        soft_max=6.283185,
+        subtype='ANGLE',
+    )
+
+    offset_angle: bpy.props.FloatProperty(
+        name="",
+        description="使用弯曲基型的佩尔林噪波",
+        default=0.000000,
+        soft_min=-6.283185,
+        soft_max=6.283185,
+        subtype='ANGLE',
+    )
+
+    min: bpy.props.FloatProperty(
+        name="",
+        default=-1,
+        precision=3,
+    )
+
+    max: bpy.props.FloatProperty(
+        name="",
+        default=1,
+        precision=3,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="弯绕角度")
+        col_left.label(text="偏移角度")
+        col_left.label(text="最小值")
+        col_left.label(text="最大值")
+
+        col_right = split.column()
+        col_right.prop(self, "warp_angle")
+        col_right.prop(self, "offset_angle")
+        col_right.prop(self, "min")
+        col_right.prop(self, "max")
+
+    def execute(self, context):
+        bpy.ops.transform.vertex_warp(warp_angle=self.warp_angle, offset_angle=self.offset_angle, min=self.min, max=self.max)
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1952,6 +2058,11 @@ classes = (
     BUTTON_ACTION_OT_global_transform,
     BUTTON_ACTION_OT_global_transform_tosphere,
     BUTTON_ACTION_OT_global_transform_shear,
+    BUTTON_ACTION_OT_global_transform_bend,
+    BUTTON_ACTION_OT_global_transform_push_pull,
+    BUTTON_ACTION_OT_global_transform_translate_texturespace_true,
+    BUTTON_ACTION_OT_global_transform_resize_texturespace_true,
+    BUTTON_ACTION_OT_global_transform_vertex_warp,
 
     BUTTON_ACTION_OT_global_duplicate_move,
     BUTTON_ACTION_OT_global_add,

@@ -7,6 +7,8 @@ button_press_object = {
         'object.select_camera':(
         "object.select_camera","选择活动摄像机","OUTLINER_OB_CAMERA",
     ),
-
+        'button.action_object_randomize_transform':(
+        "button.action_object_randomize_transform","随机变换","RADIOBUT_OFF",
+    ),
 
 }

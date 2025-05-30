@@ -169,6 +169,22 @@ button_press_global = {
         'button.action_global_transform_shear':(
         "button.action_global_transform_shear","切变","RADIOBUT_OFF",
     ), 
+        'button.action_global_transform_bend':(
+        "button.action_global_transform_bend","弯曲","RADIOBUT_OFF",
+    ), 
+        'button.action_global_transform_push_pull':(
+        "button.action_global_transform_push_pull","推/拉","RADIOBUT_OFF",
+    ), 
+        'button.action_global_transform_translate_texturespace_true':(
+        "button.action_global_transform_translate_texturespace_true","移动纹理空间","RADIOBUT_OFF",
+    ), 
+        'button.action_global_transform_resize_texturespace_true':(
+        "button.action_global_transform_resize_texturespace_true","缩放纹理空间","RADIOBUT_OFF",
+    ), 
+        'button.action_global_transform_vertex_warp':(
+        "button.action_global_transform_vertex_warp","弯绕","RADIOBUT_OFF",
+    ), 
+
     # 全局高频操作——“隐藏”/“隐藏未选项”/“显示隐藏项”
         'button.action_global_hide_view_set':(
         "button.action_global_hide_view_set","隐藏","EVENT_H",

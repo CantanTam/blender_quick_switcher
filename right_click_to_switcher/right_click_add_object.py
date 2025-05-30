@@ -18,6 +18,11 @@ def draw_add_to_switcher_object(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"选择活动摄像机\"添加到Switcher", icon='OUTLINER_OB_CAMERA').action = 'object.select_camera'
     
+    elif op and op.bl_rna.identifier == "OBJECT_OT_randomize_transform":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"随机变换\"添加到Switcher", icon='PLUS').action = 'button.action_object_randomize_transform'
+    
 
 
 

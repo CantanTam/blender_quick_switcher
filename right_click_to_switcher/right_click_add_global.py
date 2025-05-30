@@ -161,12 +161,30 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"切变\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_shear'
 
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_bend":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"弯曲\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_bend'
 
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_push_pull":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"推/拉\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_push_pull'
 
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"移动纹理空间\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_translate_texturespace_true'
 
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_resize":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"缩放纹理空间\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_resize_texturespace_true'
 
-
-
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_vertex_warp":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"弯绕\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_vertex_warp'
 
 
 
