@@ -92,6 +92,9 @@ def is_object_selected(context):
         except AttributeError:
             is_selected = False
 
+    elif obj.type == 'MESH' and context.mode == "SCULPT":
+        is_selected = True
+
     return is_selected
 
 class GRAB_SCALE_ROTATE_OT_Switch(bpy.types.Operator):
@@ -110,6 +113,7 @@ class GRAB_SCALE_ROTATE_OT_Switch(bpy.types.Operator):
 
         if bpy.context.mode == "OBJECT" or typeandmode in {
             "GPENCILEDIT_GPENCIL",
+            "MESHSCULPT",
             "GREASEPENCILEDIT",
             "ARMATUREEDIT",
             "ARMATUREPOSE",
@@ -156,6 +160,7 @@ class GRAB_SCALE_ROTATE_OT_Switch_action(bpy.types.Operator):
         if not event.ctrl and not event.shift and not event.alt:
             if bpy.context.mode == "OBJECT" or typeandmode in {
                 "GPENCILEDIT_GPENCIL",
+                "MESHSCULPT",
                 "GREASEPENCILEDIT",
                 "ARMATUREEDIT",
                 "ARMATUREPOSE",

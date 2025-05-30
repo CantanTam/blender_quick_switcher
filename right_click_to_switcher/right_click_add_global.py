@@ -151,33 +151,29 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"选择交替\"添加到Switcher", icon='PLUS').action = 'button.action_global_select_select_alternate'
 
-
-
-
-
-
-
-
-
-
-
-
-
-    elif op and op.bl_rna.identifier == "TRANSFORM_OT_translate":
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_tosphere":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"移动\"添加到Switcher", icon='EVENT_G').action = 'button.action_global_grab'
-        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
-    elif op and op.bl_rna.identifier == "TRANSFORM_OT_resize":
+        layout.operator("call.add_to_switcher_menu", text="\"球形化\"添加到Switcher", icon='SPHERE').action = 'button.action_global_transform_tosphere'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_shear":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"缩放\"添加到Switcher", icon='EVENT_S').action = 'button.action_global_scale'
-        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
-    elif op and op.bl_rna.identifier == "TRANSFORM_OT_rotate":
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"旋转\"添加到Switcher", icon='EVENT_R').action = 'button.action_global_rotate'
-        layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+        layout.operator("call.add_to_switcher_menu", text="\"切变\"添加到Switcher", icon='PLUS').action = 'button.action_global_transform_shear'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     elif op and op.bl_rna.identifier in {
         "OBJECT_OT_duplicate_move",
         "CURVE_OT_duplicate_move",
@@ -191,6 +187,7 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"复制\"添加到Switcher", icon='DUPLICATE').action = 'button.action_global_duplicate_move'
         layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
+    
     elif op and op.bl_rna.identifier in {
         "VIEW3D_OT_copybuffer",
         "GPENCIL_OT_copy", # 4.2 edition
@@ -324,8 +321,15 @@ def global_select_select_similar_menu_to_switcher(self, context):
         return
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"选择相似(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_select_select_similar'
-    self.layout.operator("call.add_to_switcher_menu", text="添加分隔符到Switcher", icon='REMOVE').action = 'SEPARATOR'
 
+def global_transform_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"变换(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_transform'
+    if bpy.context.mode == "SCULPT" and bpy.app.version >= (4, 3, 0):
+        self.layout.operator("call.add_to_switcher_menu", text="\"球形化\"添加到Switcher", icon='SPHERE').action = 'button.action_global_transform_tosphere'
 
 
 
@@ -436,6 +440,15 @@ def register():
     bpy.types.VIEW3D_MT_metaball_add.append(add_menu_to_switcher)
     bpy.types.TOPBAR_MT_edit_armature_add.append(add_menu_to_switcher)
 
+    # "变换"菜单
+    bpy.types.VIEW3D_MT_transform_object.append(global_transform_menu_to_switcher)
+    bpy.types.VIEW3D_MT_transform.append(global_transform_menu_to_switcher)
+    if bpy.app.version > (4, 2, 0):
+        bpy.types.VIEW3D_MT_sculpt_transform.append(global_transform_menu_to_switcher)
+    if bpy.app.version < (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_transform.append(global_transform_menu_to_switcher) 
+    bpy.types.VIEW3D_MT_transform_armature.append(global_transform_menu_to_switcher)
+
     #“删除”菜单
     bpy.types.VIEW3D_MT_edit_mesh_delete.append(delete_menu_to_switcher)
     if bpy.app.version <= (4, 2, 0):
@@ -488,6 +501,15 @@ def unregister():
         bpy.types.VIEW3D_MT_edit_gpencil_delete.remove(delete_menu_to_switcher)
     elif bpy.app.version >= (4, 3, 0):
         bpy.types.VIEW3D_MT_edit_greasepencil_delete.remove(delete_menu_to_switcher)
+
+    # “变换”菜单
+    bpy.types.VIEW3D_MT_transform_armature.remove(global_transform_menu_to_switcher)
+    if bpy.app.version < (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_transform.remove(global_transform_menu_to_switcher)
+    if bpy.app.version > (4, 2, 0):
+        bpy.types.VIEW3D_MT_sculpt_transform.remove(global_transform_menu_to_switcher)
+    bpy.types.VIEW3D_MT_transform.remove(global_transform_menu_to_switcher)
+    bpy.types.VIEW3D_MT_transform_object.remove(global_transform_menu_to_switcher)
 
     #“添加”菜单
     bpy.types.TOPBAR_MT_edit_armature_add.remove(add_menu_to_switcher)

@@ -422,18 +422,6 @@ class BUTTON_ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
         bpy.ops.screen.screen_full_area(use_hide_panels=True)
         return {'FINISHED'}
     
-
-
-
-
-
-
-
-
-
-
-
-
 # “选择”菜单——全选
 class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
     bl_idname = "button.action_global_select_all"
@@ -1351,7 +1339,7 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator
         bpy.ops.grease_pencil.select_ends(amount_start=self.amount_start, amount_end=self.amount_end)
         return {'FINISHED'}
 
-# “选择”菜单——选择菜单
+# “选择”菜单——选择交替
 class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
     bl_idname = "button.action_global_select_select_alternate"
     bl_label = "选择交替"
@@ -1438,45 +1426,92 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
 
 
 
-
-
-
-
-
-
-# 全局“移动”功能
-class BUTTON_ACTION_OT_grab(bpy.types.Operator):
-    bl_idname = "button.action_global_grab"
-    bl_label = "移动"
-    bl_description = "快捷键 G"
+# “变换”菜单
+class BUTTON_ACTION_OT_global_transform(bpy.types.Operator):
+    bl_idname = "button.action_global_transform"
+    bl_label = "变换"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.transform.translate('INVOKE_DEFAULT')
+        typeandmode = context.active_object.type+context.active_object.mode
+
+        if context.mode == "OBJECT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_transform_object")
+
+        elif typeandmode in {
+            "MESHEDIT",
+            "GREASEPENCILEDIT",
+            "CURVEEDIT",
+            "SURFACEEDIT",
+            "METAEDIT",
+            "LATTICEEDIT"
+            }:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_transform")
+
+        elif typeandmode == "MESHSCULPT" and bpy.app.version > (4, 2, 0):
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_sculpt_transform")
+
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_gpencil_transform")
+
+        elif typeandmode in {"ARMATUREEDIT","ARMATUREPOSE"}:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_transform_armature")
+
         return {'FINISHED'}
-    
-# 全局“缩放”功能
-class BUTTON_ACTION_OT_scale(bpy.types.Operator):
-    bl_idname = "button.action_global_scale"
-    bl_label = "缩放"
-    bl_description = "快捷键 S"
+
+# “变换”菜单——球形化
+class BUTTON_ACTION_OT_global_transform_tosphere(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_tosphere"
+    bl_label = "球形化"
+    bl_description = "快捷键 Shift Alt S"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.transform.resize('INVOKE_DEFAULT')
+        typeandmode = context.active_object.type+context.active_object.mode
+        if context.mode == "OBJECT":
+            bpy.ops.transform.tosphere('INVOKE_DEFAULT')
+
+        elif typeandmode in {
+            "MESHEDIT",
+            "GPENCILEDIT_GPENCIL",
+            "GREASEPENCILEDIT",
+            "ARMATUREEDIT",
+            "ARMATUREPOSE",
+            "CURVEEDIT",
+            "SURFACEEDIT",
+            "METAEDIT",
+            "LATTICEEDIT"}:
+            bpy.ops.transform.tosphere('INVOKE_DEFAULT')
+
+        elif typeandmode == "MESHSCULPT":
+            current_mode_idname = bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname
+            bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = "builtin.mesh_filter"
+            bpy.ops.sculpt.mesh_filter('INVOKE_DEFAULT', type='SPHERE')
+            bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = current_mode_idname
+
         return {'FINISHED'}
 
-# 全局“旋转”功能    
-class BUTTON_ACTION_OT_rotate(bpy.types.Operator):
-    bl_idname = "button.action_global_rotate"
-    bl_label = "旋转(R)"
-    bl_description = "快捷键 R"
+# “变换”菜单——切变
+class BUTTON_ACTION_OT_global_transform_shear(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_shear"
+    bl_label = "切变"
+    bl_description = "快捷键 Ctrl Shift Alt S"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.transform.rotate('INVOKE_DEFAULT')
+        bpy.ops.transform.shear('INVOKE_DEFAULT')
         return {'FINISHED'}
-    
+
+
+
+
+
+
+
+
+
+
+
 
 # 全局“添加”菜单功能
 class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
@@ -1913,11 +1948,11 @@ classes = (
     BUTTON_ACTION_OT_global_greasepencil_select_select_last,
     BUTTON_ACTION_OT_global_select_select_alternate,
 
+    # 物体对象相对应的操作
+    BUTTON_ACTION_OT_global_transform,
+    BUTTON_ACTION_OT_global_transform_tosphere,
+    BUTTON_ACTION_OT_global_transform_shear,
 
-
-    BUTTON_ACTION_OT_grab,
-    BUTTON_ACTION_OT_scale,
-    BUTTON_ACTION_OT_rotate,
     BUTTON_ACTION_OT_global_duplicate_move,
     BUTTON_ACTION_OT_global_add,
     BUTTON_ACTION_OT_global_copy,

@@ -89,18 +89,7 @@ button_press_global = {
         "button.action_global_screen_screen_full_area","全屏模式","FULLSCREEN_ENTER","all",
     ),
 
-    # 全局高频操作-移动/缩放/旋转-G/S/R
-        'button.action_global_grab':(
-        "button.action_global_grab","移动","EVENT_G",
-    ),
-        'button.action_global_scale':(
-        "button.action_global_scale","缩放","EVENT_S",
-    ),
-        'button.action_global_rotate':(
-        "button.action_global_rotate","旋转","EVENT_R",
-    ),
-
-    # 全局高频操作—全选/反选/刷选
+    # “选择”菜单
         'button.action_global_select_all':(
         "button.action_global_select_all","全选","EVENT_A",
     ),
@@ -110,8 +99,6 @@ button_press_global = {
         'button.action_global_select_circle':(
         "button.action_global_select_circle","刷选","EVENT_C",
     ),
-
-    # “选择”菜单
         'button.action_global_select_select_mirror':(
         "button.action_global_select_select_mirror","选择镜像","MOD_MIRROR",
     ),
@@ -172,6 +159,16 @@ button_press_global = {
         "button.action_global_call_delete_menu","删除","EVENT_X",
     ),
 
+    # 全局物体对象相对应的操作
+        'button.action_global_transform':(
+        "button.action_global_transform","变换","PRESET",
+    ),    
+        'button.action_global_transform_tosphere':(
+        "button.action_global_transform_tosphere","球形化","SPHERE",
+    ),  
+        'button.action_global_transform_shear':(
+        "button.action_global_transform_shear","切变","RADIOBUT_OFF",
+    ), 
     # 全局高频操作——“隐藏”/“隐藏未选项”/“显示隐藏项”
         'button.action_global_hide_view_set':(
         "button.action_global_hide_view_set","隐藏","EVENT_H",
