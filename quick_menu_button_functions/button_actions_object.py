@@ -365,6 +365,22 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Opera
 
 
 
+class BUTTON_ACTION_OT_global_duplicate_move_linked(bpy.types.Operator):
+    bl_idname = "button.action_global_duplicate_move_linked"
+    bl_label = "关联复制"
+    bl_description = "快捷键 Alt D"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
+
+
+
+
+
 classes = (
     BUTTON_ACTION_OT_object_select_select_by_type_menu,
     BUTTON_ACTION_OT_object_transform_randomize_transform,
@@ -376,6 +392,8 @@ classes = (
     BUTTON_ACTION_OT_object_origin_set_origin_cursor,
     BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass,
     BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume,
+
+    BUTTON_ACTION_OT_global_duplicate_move_linked,
 
 )
 

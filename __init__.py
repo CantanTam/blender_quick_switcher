@@ -121,12 +121,6 @@ from .quick_menu_button_functions.button_actions_global_select_menu import (
     unregister as unregister_button_actions_global_select_menu,
 )
 
-from .quick_menu_button_functions.button_actions_common_functions import (
-    BUTTON_ACTION_OT_transform_tosphere,
-    BUTTON_ACTION_OT_transform_shear,
-    BUTTON_ACTION_OT_transform_bend,
-)
-
 from .quick_menu_button_functions.button_actions_object import (
     register as register_button_actions_object,
     unregister as unregister_button_actions_object,
@@ -315,11 +309,6 @@ def register():
     # “选择”菜单功能项
     register_button_actions_global_select_menu()
 
-    # 全局通用功能
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_tosphere)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_shear)
-    bpy.utils.register_class(BUTTON_ACTION_OT_transform_bend)
-
     # 物体模式—“物体”菜单
     register_button_actions_object()
 
@@ -384,11 +373,6 @@ def unregister():
 
     # 物体模式—“物体”菜单
     unregister_button_actions_object()
-    
-    # 全局通用功能
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_bend)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_shear)
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_transform_tosphere)
 
     # “选择”菜单功能项
     unregister_button_actions_global_select_menu()

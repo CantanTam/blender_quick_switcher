@@ -17,8 +17,6 @@ button_press_object = {
         'button.action_call_object_origin_set_menu':(
         "button.action_call_object_origin_set_menu","设置原点","PRESET",
     ),
-
-
         'button.action_object_origin_set_geometry_origin':(
         "button.action_object_origin_set_geometry_origin","几何中心->原点","RADIOBUT_OFF",
     ),
@@ -34,4 +32,9 @@ button_press_object = {
         'button.action_object_origin_set_origin_center_of_volume':(
         "button.action_object_origin_set_origin_center_of_volume","原点->质心(体积)","RADIOBUT_OFF",
     ),
+
+        'button.action_global_duplicate_move_linked':(
+        "button.action_global_duplicate_move_linked","关联复制","DUPLICATE",
+    ),
+
 }

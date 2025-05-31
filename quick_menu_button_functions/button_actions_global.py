@@ -1666,25 +1666,16 @@ class BUTTON_ACTION_OT_global_transform_vertex_random(bpy.types.Operator):
         bpy.ops.transform.vertex_random(offset=self.offset, uniform=self.uniform, normal=self.normal, seed=self.seed)
         return {'FINISHED'}
 
+# 交互镜像
+class BUTTON_ACTION_OT_global_transform_mirror(bpy.types.Operator):
+    bl_idname = "button.action_global_transform_mirror"
+    bl_label = "交互镜像"
+    bl_description = "快捷键 Ctrl M"
+    bl_options = {'REGISTER', 'UNDO'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def execute(self, context):
+        bpy.ops.transform.mirror('INVOKE_DEFAULT')    
+        return {'FINISHED'}
 
 # 全局“添加”菜单功能
 class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
@@ -1879,7 +1870,8 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
         typeandmode = context.active_object.type+context.active_object.mode
 
         if context.mode == "OBJECT":
-            layout.operator("object.delete", text="删除", icon="QUESTION").use_global=False
+            layout.operator("object.delete", text="删除", icon="QUESTION",).use_global=False
+            layout.operator("object.delete", text="全局删除", icon="QUESTION").use_global=True
         elif typeandmode == "MESHEDIT":
             layout.operator("mesh.dissolve_mode", text="融并删除" ,icon="CANCEL")
             layout.separator()
@@ -1939,7 +1931,12 @@ class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="view3d.mt_global_delete_menu")
+        typeandmode = context.active_object.type+context.active_object.mode
+
+        if context.mode == "OBJECT":
+            bpy.ops.object.delete('INVOKE_DEFAULT',use_global=False)
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.wm.call_menu(name="view3d.mt_global_delete_menu")
         return {'FINISHED'}
 
 # 多种编辑模式“隐藏”/"隐藏未选项"
@@ -2038,16 +2035,7 @@ class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_apply")
         return {'FINISHED'}
     
-# 物体模式/网格模式/骨骼姿态模式——“交互镜像 Ctrl M”操作
-class BUTTON_ACTION_OT_global_transform_mirror(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_mirror"
-    bl_label = "交互镜像"
-    bl_description = "快捷键 Ctrl M"
-    bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        bpy.ops.transform.mirror('INVOKE_DEFAULT')    
-        return {'FINISHED'}
 
 # 物体模式/骨骼姿态“清空变换(菜单)”操作
 class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
@@ -2131,6 +2119,7 @@ classes = (
     BUTTON_ACTION_OT_global_transform_resize_texturespace_true,
     BUTTON_ACTION_OT_global_transform_vertex_warp,
     BUTTON_ACTION_OT_global_transform_vertex_random,
+    BUTTON_ACTION_OT_global_transform_mirror,
 
     BUTTON_ACTION_OT_global_duplicate_move,
     BUTTON_ACTION_OT_global_add,
@@ -2141,7 +2130,6 @@ classes = (
     BUTTON_ACTION_OT_global_hide_view_set,
     BUTTON_ACTION_OT_global_hide_view_clear,
     BUTTON_ACTION_OT_global_apply,
-    BUTTON_ACTION_OT_global_transform_mirror,
     BUTTON_ACTION_OT_global_object_pose_clear,
 )
 

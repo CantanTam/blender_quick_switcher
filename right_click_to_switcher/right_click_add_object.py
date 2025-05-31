@@ -39,7 +39,11 @@ def draw_add_to_switcher_object(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"原点->质心(表面)\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_center_of_mass'
         layout.operator("call.add_to_switcher_menu", text="\"原点->质心(体积)\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_center_of_volume'
 
-
+    elif op and op.bl_rna.identifier == "OBJECT_OT_duplicate_move_linked":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"关联复制\"添加到Switcher", icon='DUPLICATE').action = 'button.action_global_duplicate_move_linked'
+    
 
 
 def object_select_moreless_menu_to_switcher(self, context):
