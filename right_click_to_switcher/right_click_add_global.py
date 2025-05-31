@@ -271,9 +271,53 @@ def draw_add_to_switcher_global(self, context):
         if bpy.context.mode == "OBJECT":
             layout.operator("call.add_to_switcher_menu", text="\"全局删除\"添加到Switcher", icon='PLUS').action = 'button.action_object_delete_global_true'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_snap_to_grid",
+        "GREASE_PENCIL_OT_snap_to_grid",
+        "VIEW3D_OT_snap_selected_to_grid",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选中项->栅格点\"添加到Switcher", icon='PLUS').action = 'button.action_global_selected_to_grid'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_snap_to_cursor",
+        "GREASE_PENCIL_OT_snap_to_cursor",
+        "VIEW3D_OT_snap_selected_to_cursor",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选中项->游标\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_selected_to_cursor_offset_false'
+        layout.operator("call.add_to_switcher_menu", text="\"选中项->游标(保持偏移)\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_selected_to_cursor_offset_true'
 
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_snap_selected_to_active":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"选中项->活动项\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_selected_to_active'
 
+    elif op and op.bl_rna.identifier in {
+        "GPENCIL_OT_snap_cursor_to_selected",
+        "GREASE_PENCIL_OT_snap_cursor_to_selected",
+        "VIEW3D_OT_snap_cursor_to_selected",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"游标->选中项\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_cursor_to_selected'
+
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_snap_cursor_to_center":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"游标->世界原点\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_cursor_to_center'
+
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_snap_cursor_to_grid":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"游标->栅格点\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_cursor_to_grid'
+
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_snap_cursor_to_active":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"游标->活动项\"添加到Switcher", icon='PLUS').action = 'button.action_global_snap_cursor_to_active'
 
 
 
@@ -445,6 +489,13 @@ def switchproportional_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"常值\"添加到Switcher", icon='NOCURVE').action = 'button.action_switch_proportional_constant'
     self.layout.operator("call.add_to_switcher_menu", text="\"随机\"添加到Switcher", icon='RNDCURVE').action = 'button.action_switch_proportional_random'
 
+def snap_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"吸附(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_snap_menu'
+
 
 
 def register():
@@ -504,9 +555,21 @@ def register():
         bpy.types.VIEW3D_MT_edit_gpencil_showhide.append(global_hide_show_menu_to_switcher)
     if bpy.app.version >= (4, 3, 0):
         bpy.types.VIEW3D_MT_edit_greasepencil_showhide.append(global_hide_show_menu_to_switcher)
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.GPENCIL_MT_snap.append(snap_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.GREASE_PENCIL_MT_snap.append(snap_menu_to_switcher)
+    bpy.types.VIEW3D_MT_snap.append(snap_menu_to_switcher)
 
 
 def unregister():
+
+    bpy.types.VIEW3D_MT_snap.remove(snap_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.GREASE_PENCIL_MT_snap.remove(snap_menu_to_switcher)
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.GPENCIL_MT_snap.remove(snap_menu_to_switcher)
+
 
     if bpy.app.version <= (4, 2, 0):
         bpy.types.VIEW3D_MT_edit_gpencil_showhide.remove(global_hide_show_menu_to_switcher)

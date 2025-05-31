@@ -204,6 +204,37 @@ button_press_global = {
         'button.action_global_hide_show_menu':(
         "button.action_global_hide_show_menu","显示/隐藏","PRESET",
     ),
+
+    # 吸附
+        'button.action_global_snap_menu':(
+        "button.action_global_snap_menu","吸附","PRESET",
+    ),    
+        'button.action_global_selected_to_grid':(
+        "button.action_global_selected_to_grid","选中项->栅格点","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_selected_to_cursor_offset_false':(
+        "button.action_global_snap_selected_to_cursor_offset_false","选中项->游标","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_selected_to_cursor_offset_true':(
+        "button.action_global_snap_selected_to_cursor_offset_true","选中项->游标(保持偏移)","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_selected_to_active':(
+        "button.action_global_snap_selected_to_active","选中项->活动项","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_cursor_to_selected':(
+        "button.action_global_snap_cursor_to_selected","游标->选中项","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_cursor_to_center':(
+        "button.action_global_snap_cursor_to_center","游标->世界原点","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_cursor_to_grid':(
+        "button.action_global_snap_cursor_to_grid","游标->栅格点","RADIOBUT_OFF",
+    ), 
+        'button.action_global_snap_cursor_to_active':(
+        "button.action_global_snap_cursor_to_active","游标->活动项","RADIOBUT_OFF",
+    ), 
+
+
         'button.action_global_apply':(
         "button.action_global_apply","应用","PRESET",
     ),

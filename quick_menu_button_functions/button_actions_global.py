@@ -2066,8 +2066,200 @@ class BUTTON_ACTION_OT_global_hide_show_menu(bpy.types.Operator):
         if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
             bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_greasepencil_showhide")
         return {'FINISHED'}
-    
+
+# 吸附
+class BUTTON_ACTION_OT_global_snap_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_menu"
+    bl_label = "吸附"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
         
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.wm.call_menu(name="GPENCIL_MT_snap")
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.wm.call_menu(name="GREASE_PENCIL_MT_snap")
+        else:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_snap")
+        return {'FINISHED'}
+
+# 选中项->栅格点
+class BUTTON_ACTION_OT_global_selected_to_grid(bpy.types.Operator):
+    bl_idname = "button.action_global_selected_to_grid"
+    bl_label = "选中项->栅格点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.snap_to_grid()
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.snap_to_grid()
+        else:
+            bpy.ops.view3d.snap_selected_to_grid()
+        return {'FINISHED'}
+
+# 选中项->游标
+class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_false(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_selected_to_cursor_offset_false"
+    bl_label = "选中项->游标"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_offset: bpy.props.BoolProperty(
+        name="偏移量",
+        default=False,
+        description="将选中项作为一个整体吸附或吸附各物体的中心",
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_offset")
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.snap_to_cursor(use_offset=self.use_offset)
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.snap_to_cursor(use_offset=self.use_offset)
+        else:
+            bpy.ops.view3d.snap_selected_to_cursor(use_offset=self.use_offset)
+        return {'FINISHED'}
+
+# 选中项->游标(保持偏移)
+class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_true(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_selected_to_cursor_offset_true"
+    bl_label = "选中项->游标(保持偏移)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+
+    use_offset: bpy.props.BoolProperty(
+        name="偏移量",
+        default=True,
+        description="将选中项作为一个整体吸附或吸附各物体的中心",
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_offset")
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.snap_to_cursor(use_offset=self.use_offset)
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.snap_to_cursor(use_offset=self.use_offset)
+        else:
+            bpy.ops.view3d.snap_selected_to_cursor(use_offset=self.use_offset)
+        return {'FINISHED'}
+
+# 选中项->活动项
+class BUTTON_ACTION_OT_global_snap_selected_to_active(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_selected_to_active"
+    bl_label = "选中项->活动项"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.view3d.snap_selected_to_active()
+        return {'FINISHED'}
+
+# 游标->选中项
+class BUTTON_ACTION_OT_global_snap_cursor_to_selected(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_cursor_to_selected"
+    bl_label = "游标->选中项"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.gpencil.snap_cursor_to_selected()
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.grease_pencil.snap_cursor_to_selected()
+        else:
+            bpy.ops.view3d.snap_cursor_to_selected()
+        return {'FINISHED'}
+
+# 游标->世界原点
+class BUTTON_ACTION_OT_global_snap_cursor_to_center(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_cursor_to_center"
+    bl_label = "游标->世界原点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.view3d.snap_cursor_to_center()
+        return {'FINISHED'}
+
+# 游标->栅格点
+class BUTTON_ACTION_OT_global_snap_cursor_to_grid(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_cursor_to_grid"
+    bl_label = "游标->栅格点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.view3d.snap_cursor_to_grid()
+        return {'FINISHED'}
+
+# 游标->活动项
+class BUTTON_ACTION_OT_global_snap_cursor_to_active(bpy.types.Operator):
+    bl_idname = "button.action_global_snap_cursor_to_active"
+    bl_label = "游标->活动项"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.view3d.snap_cursor_to_active()
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 物体模式/骨骼姿态模式——“应用 Ctrl A”操作
 class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
@@ -2085,6 +2277,39 @@ class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_apply")
         return {'FINISHED'}
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 物体模式/骨骼姿态“清空变换(菜单)”操作
@@ -2181,6 +2406,17 @@ classes = (
     BUTTON_ACTION_OT_global_hide_view_set_unselected,
     BUTTON_ACTION_OT_global_hide_view_clear,
     BUTTON_ACTION_OT_global_hide_show_menu,
+    
+    BUTTON_ACTION_OT_global_snap_menu,
+    BUTTON_ACTION_OT_global_selected_to_grid,
+    BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_false,
+    BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_true,
+    BUTTON_ACTION_OT_global_snap_selected_to_active,
+    BUTTON_ACTION_OT_global_snap_cursor_to_selected,
+    BUTTON_ACTION_OT_global_snap_cursor_to_center,
+    BUTTON_ACTION_OT_global_snap_cursor_to_grid,
+    BUTTON_ACTION_OT_global_snap_cursor_to_active,
+
     BUTTON_ACTION_OT_global_apply,
     BUTTON_ACTION_OT_global_object_pose_clear,
 )
