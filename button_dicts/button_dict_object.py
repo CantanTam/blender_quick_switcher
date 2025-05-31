@@ -32,9 +32,10 @@ button_press_object = {
         'button.action_object_origin_set_origin_center_of_volume':(
         "button.action_object_origin_set_origin_center_of_volume","原点->质心(体积)","RADIOBUT_OFF",
     ),
-
-        'button.action_global_duplicate_move_linked':(
-        "button.action_global_duplicate_move_linked","关联复制","DUPLICATE",
+        'button.action_object_duplicate_move_linked':(
+        "button.action_object_duplicate_move_linked","关联复制","DUPLICATE",
     ),
-
+        'button.action_object_delete_global_true':(
+        "button.action_object_delete_global_true","全局删除","RADIOBUT_OFF",
+    ),
 }

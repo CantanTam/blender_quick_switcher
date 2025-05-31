@@ -193,10 +193,16 @@ button_press_global = {
 
     # 全局高频操作——“隐藏”/“隐藏未选项”/“显示隐藏项”
         'button.action_global_hide_view_set':(
-        "button.action_global_hide_view_set","隐藏","EVENT_H",
+        "button.action_global_hide_view_set","隐藏选中项","EVENT_H",
+    ),
+        'button.action_global_hide_view_set_unselected':(
+        "button.action_global_hide_view_set_unselected","隐藏未选项","HIDE_ON",
     ),
         'button.action_global_hide_view_clear':(
         "button.action_global_hide_view_clear","显示隐藏项","HIDE_OFF",
+    ),
+        'button.action_global_hide_show_menu':(
+        "button.action_global_hide_show_menu","显示/隐藏","PRESET",
     ),
         'button.action_global_apply':(
         "button.action_global_apply","应用","PRESET",

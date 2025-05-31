@@ -354,19 +354,8 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Opera
         bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-class BUTTON_ACTION_OT_global_duplicate_move_linked(bpy.types.Operator):
-    bl_idname = "button.action_global_duplicate_move_linked"
+class BUTTON_ACTION_OT_object_duplicate_move_linked(bpy.types.Operator):
+    bl_idname = "button.action_object_duplicate_move_linked"
     bl_label = "关联复制"
     bl_description = "快捷键 Alt D"
     bl_options = {'REGISTER', 'UNDO'}
@@ -374,6 +363,25 @@ class BUTTON_ACTION_OT_global_duplicate_move_linked(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
         return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_delete_global_true(bpy.types.Operator):
+    bl_idname = "button.action_object_delete_global_true"
+    bl_label = "全局删除"
+    bl_description = "快捷键 Shift X"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.delete('INVOKE_DEFAULT', use_global=True)
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -393,7 +401,8 @@ classes = (
     BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass,
     BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume,
 
-    BUTTON_ACTION_OT_global_duplicate_move_linked,
+    BUTTON_ACTION_OT_object_duplicate_move_linked,
+    BUTTON_ACTION_OT_object_delete_global_true,
 
 )
 

@@ -196,10 +196,6 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"交互镜像\"添加到Switcher", icon='MOD_MIRROR').action = 'button.action_global_transform_mirror'
 
-
-
-
-
     elif op and op.bl_rna.identifier in {
         "OBJECT_OT_duplicate_move",
         "CURVE_OT_duplicate_move",
@@ -234,14 +230,6 @@ def draw_add_to_switcher_global(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"粘贴\"添加到Switcher", icon='PASTEDOWN').action = 'button.action_global_paste'
 
     elif op and op.bl_rna.identifier in {
-        "OBJECT_OT_delete",
-        "MBALL_OT_delete_metaelems",
-        }:
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"删除\"添加到Switcher", icon='EVENT_X').action = 'button.action_global_call_delete_menu'
-
-    elif op and op.bl_rna.identifier in {
         "OBJECT_OT_hide_view_set",
         "CURVE_OT_hide",
         "MBALL_OT_hide_metaelems",
@@ -253,7 +241,8 @@ def draw_add_to_switcher_global(self, context):
         }:
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"隐藏\"添加到Switcher", icon='EVENT_H').action = 'button.action_global_hide_view_set'
+        layout.operator("call.add_to_switcher_menu", text="\"隐藏选中项\"添加到Switcher", icon='EVENT_H').action = 'button.action_global_hide_view_set'
+        layout.operator("call.add_to_switcher_menu", text="\"隐藏未选项\"添加到Switcher", icon='HIDE_ON').action = 'button.action_global_hide_view_set_unselected'
 
     elif op and op.bl_rna.identifier in {
         "OBJECT_OT_hide_view_clear",
@@ -269,14 +258,18 @@ def draw_add_to_switcher_global(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"显示隐藏项\"添加到Switcher", icon='HIDE_OFF').action = 'button.action_global_hide_view_clear'
 
-    
-
-
-
-
-
-
-
+    elif op and op.bl_rna.identifier in {
+        "OBJECT_OT_delete",
+        "MBALL_OT_delete_metaelems",
+        "GPENCIL_OT_delete",
+        "GPENCIL_OT_active_frames_delete_all",
+        "GREASE_PENCIL_OT_active_frame_delete",
+        }:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"删除\"添加到Switcher", icon='EVENT_X').action = 'button.action_global_call_delete_menu'
+        if bpy.context.mode == "OBJECT":
+            layout.operator("call.add_to_switcher_menu", text="\"全局删除\"添加到Switcher", icon='PLUS').action = 'button.action_object_delete_global_true'
 
 
 
@@ -354,6 +347,12 @@ def global_transform_menu_to_switcher(self, context):
     if context.mode == "EDIT_GPENCIL":
         self.layout.operator("call.add_to_switcher_menu", text="\"法向缩放\"添加到Switcher", icon='PLUS').action = 'button.action_gpenciledit_transform_shrink_fatten'
 
+def global_hide_show_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"显示/隐藏(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_global_hide_show_menu'
 
 
 
@@ -366,7 +365,6 @@ def global_transform_menu_to_switcher(self, context):
 
 
 
-#不能使用 draw_add_to_switcher_global 的添加到 Switcher 方法：
 def add_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
@@ -476,7 +474,7 @@ def register():
     bpy.types.VIEW3D_MT_edit_mesh_delete.append(delete_menu_to_switcher)
     if bpy.app.version <= (4, 2, 0):
         bpy.types.VIEW3D_MT_edit_gpencil_delete.append(delete_menu_to_switcher)    
-    elif bpy.app.version >= (4, 3, 0):
+    if bpy.app.version >= (4, 3, 0):
         bpy.types.VIEW3D_MT_edit_greasepencil_delete.append(delete_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_armature_delete.append(delete_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_curve_delete.append(delete_menu_to_switcher)
@@ -498,7 +496,26 @@ def register():
     #切换衰减编辑
     bpy.types.VIEW3D_PT_proportional_edit.append(switchproportional_menu_to_switcher)
 
+    bpy.types.VIEW3D_MT_object_showhide.append(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_curve_showhide.append(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_meta_showhide.append(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_mesh_showhide.append(global_hide_show_menu_to_switcher)
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_showhide.append(global_hide_show_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_greasepencil_showhide.append(global_hide_show_menu_to_switcher)
+
+
 def unregister():
+
+    if bpy.app.version <= (4, 2, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_showhide.remove(global_hide_show_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_greasepencil_showhide.remove(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_mesh_showhide.remove(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_meta_showhide.remove(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_edit_curve_showhide.remove(global_hide_show_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_showhide.remove(global_hide_show_menu_to_switcher)
     #切换衰减编辑
     bpy.types.VIEW3D_PT_proportional_edit.remove(switchproportional_menu_to_switcher)
 

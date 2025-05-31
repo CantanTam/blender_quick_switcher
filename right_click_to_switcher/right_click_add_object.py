@@ -42,7 +42,7 @@ def draw_add_to_switcher_object(self, context):
     elif op and op.bl_rna.identifier == "OBJECT_OT_duplicate_move_linked":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"关联复制\"添加到Switcher", icon='DUPLICATE').action = 'button.action_global_duplicate_move_linked'
+        layout.operator("call.add_to_switcher_menu", text="\"关联复制\"添加到Switcher", icon='DUPLICATE').action = 'button.action_object_duplicate_move_linked'
     
 
 

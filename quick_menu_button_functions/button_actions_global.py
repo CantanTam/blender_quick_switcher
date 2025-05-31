@@ -1869,10 +1869,7 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
 
         typeandmode = context.active_object.type+context.active_object.mode
 
-        if context.mode == "OBJECT":
-            layout.operator("object.delete", text="删除", icon="QUESTION",).use_global=False
-            layout.operator("object.delete", text="全局删除", icon="QUESTION").use_global=True
-        elif typeandmode == "MESHEDIT":
+        if typeandmode == "MESHEDIT":
             layout.operator("mesh.dissolve_mode", text="融并删除" ,icon="CANCEL")
             layout.separator()
             layout.operator("mesh.delete", text="顶点").type='VERT'
@@ -1889,40 +1886,14 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
             layout.separator()
             layout.operator("mesh.edge_collapse", text="塌陷边和面")
             layout.operator("mesh.delete_edgeloop", text="循环边")
-        elif typeandmode == "METAEDIT":
-            layout.operator("mball.delete_metaelems", text="删除", icon="QUESTION")
-        elif typeandmode == "GPENCILEDIT_GPENCIL":
-            layout.operator("gpencil.delete", text="点").type='POINTS'
-            layout.operator("gpencil.delete", text="笔画").type='STROKES'
-            layout.operator("gpencil.delete", text="帧").type='FRAME'
-            layout.separator()
-            layout.operator("gpencil.dissolve", text="消融").type='POINTS'
-            layout.operator("gpencil.dissolve", text="融并期间").type='BETWEEN'
-            layout.operator("gpencil.dissolve", text="融并未选中").type='UNSELECT'
-            layout.separator()
-            layout.operator("gpencil.delete", text="删除活动层的活动帧").type='FRAME'
-            layout.operator("gpencil.active_frames_delete_all", text="删除全部层的活动帧")
+
         elif typeandmode == "GPENCILPAINT_GPENCIL":
             layout.operator("gpencil.delete", text="删除活动层的活动帧").type='FRAME'
             layout.operator("gpencil.active_frames_delete_all", text="删除全部层的活动帧")
-        elif typeandmode == "GREASEPENCILEDIT":        
-            layout.operator("grease_pencil.delete", text="删除")
-            layout.separator()
-            layout.operator("grease_pencil.dissolve", text="消融").type='POINTS'
-            layout.operator("grease_pencil.dissolve", text="融并其间").type='BETWEEN'
-            layout.operator("grease_pencil.dissolve", text="融并未选中").type='UNSELECT'
-            layout.separator()
-            layout.operator("grease_pencil.delete_frame", text="删除活动层的活动关键帧").type='ACTIVE_FRAME'
-            layout.operator("grease_pencil.delete_frame", text="删除所有层的活动关键帧").type='ALL_FRAMES'
-        elif typeandmode == "ARMATUREEDIT":
-            layout.operator("armature.delete", text="骨骼")
-            layout.separator()
-            layout.operator("armature.dissolve", text="融并骨骼")
-        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
-            layout.operator("curve.delete", text="顶点").type='VERT'
-            layout.operator("curve.delete", text="段数").type='SEGMENT'
-            layout.separator()
-            layout.operator("curve.dissolve_verts", text="融并顶点")
+
+        elif typeandmode == "GREASEPENCILPAINT_GREASE_PENCIL":
+            layout.operator("grease_pencil.active_frame_delete", text="删除活动层的活动关键帧").all=False
+            layout.operator("grease_pencil.active_frame_delete", text="删除所有层的活动关键帧").all=True
 
 # 定义调用“删除”菜单操作
 class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
@@ -1935,14 +1906,24 @@ class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
 
         if context.mode == "OBJECT":
             bpy.ops.object.delete('INVOKE_DEFAULT',use_global=False)
-        elif typeandmode == "MESHEDIT":
+        elif typeandmode in {"MESHEDIT","GPENCILPAINT_GPENCIL","GREASEPENCILPAINT_GREASE_PENCIL"}:
             bpy.ops.wm.call_menu(name="view3d.mt_global_delete_menu")
+        elif typeandmode == "GPENCILEDIT_GPENCIL":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_gpencil_delete")
+        elif typeandmode == "GREASEPENCILEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_greasepencil_delete")
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_armature_delete")
+        elif typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_curve_delete")
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.delete_metaelems('INVOKE_DEFAULT')
         return {'FINISHED'}
 
 # 多种编辑模式“隐藏”/"隐藏未选项"
 class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
     bl_idname = "button.action_global_hide_view_set"
-    bl_label = "隐藏"
+    bl_label = "隐藏选中项"
     bl_description = "快捷键 H"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1950,7 +1931,6 @@ class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
         name="未选中项",
         default=False,
         description="隐藏未选中项而不是选择项",
-        update=lambda self, context: self.execute(context) 
     )
 
     def invoke(self, context, event):
@@ -1991,6 +1971,56 @@ class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
             bpy.ops.pose.hide(unselected=self.unselected)
         return {'FINISHED'}
     
+class BUTTON_ACTION_OT_global_hide_view_set_unselected(bpy.types.Operator):
+    bl_idname = "button.action_global_hide_view_set_unselected"
+    bl_label = "隐藏未选项"
+    bl_description = "快捷键 Shift H"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    unselected: bpy.props.BoolProperty(
+        name="未选中项",
+        default=True,
+        description="隐藏未选中项而不是选择项",
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        # 左侧列 - 标签
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        
+        # 右侧列 - 垂直排列的单选按钮
+        col_right = split.column()
+        col_right.prop(self, "unselected")
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if context.mode == "OBJECT":
+            bpy.ops.object.hide_view_set(unselected=self.unselected)
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.curve.hide(unselected=self.unselected)
+        if typeandmode == "METAEDIT":
+            bpy.ops.mball.hide_metaelems(unselected=self.unselected)
+        if typeandmode == "MESHEDIT":
+            bpy.ops.mesh.hide(unselected=self.unselected)
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILPAINT_GPENCIL"}:
+            bpy.ops.gpencil.hide(unselected=self.unselected)
+        if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.layer_hide(unselected=self.unselected)
+        if typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.hide(unselected=self.unselected)
+        if typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.hide(unselected=self.unselected)
+        return {'FINISHED'}
+
 # 多种编辑模式"显示隐藏项"
 class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
     bl_idname = "button.action_global_hide_view_clear"
@@ -2013,12 +2043,32 @@ class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
             bpy.ops.gpencil.reveal()
         if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
             bpy.ops.grease_pencil.layer_reveal()
-        if typeandmode == "ARMATUREEDIT":
-            bpy.ops.armature.reveal()
-        if typeandmode == "ARMATUREPOSE":
-            bpy.ops.pose.reveal()
         return {'FINISHED'}
     
+class BUTTON_ACTION_OT_global_hide_show_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_hide_show_menu"
+    bl_label = "显示/隐藏"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+        
+        if context.mode == "OBJECT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_object_showhide")
+        if typeandmode in {"CURVEEDIT","SURFACEEDIT"}:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_curve_showhide")
+        if typeandmode == "METAEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_meta_showhide")
+        if typeandmode == "MESHEDIT":
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_showhide")
+        if typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILPAINT_GPENCIL"}:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_gpencil_showhide")
+        if typeandmode in {"GREASEPENCILEDIT","GREASEPENCILPAINT_GREASE_PENCIL"}:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_greasepencil_showhide")
+        return {'FINISHED'}
+    
+        
+
 # 物体模式/骨骼姿态模式——“应用 Ctrl A”操作
 class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
     bl_idname = "button.action_global_apply"
@@ -2128,7 +2178,9 @@ classes = (
     BUTTON_ACTION_OT_call_global_delete_menu,
     VIEW3D_MT_global_delete_menu,
     BUTTON_ACTION_OT_global_hide_view_set,
+    BUTTON_ACTION_OT_global_hide_view_set_unselected,
     BUTTON_ACTION_OT_global_hide_view_clear,
+    BUTTON_ACTION_OT_global_hide_show_menu,
     BUTTON_ACTION_OT_global_apply,
     BUTTON_ACTION_OT_global_object_pose_clear,
 )
