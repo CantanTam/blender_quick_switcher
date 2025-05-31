@@ -23,6 +23,22 @@ def draw_add_to_switcher_object(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"随机变换\"添加到Switcher", icon='PLUS').action = 'button.action_object_randomize_transform'
     
+    elif op and op.bl_rna.identifier == "OBJECT_OT_align":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"对齐物体\"添加到Switcher", icon='PLUS').action = 'button.action_object_transform_object_align'
+    
+    elif op and op.bl_rna.identifier == "OBJECT_OT_origin_set":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置原点(菜单)\"添加到Switcher", icon='PRESET').action = 'button.action_call_object_origin_set_menu'
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"几何中心->原点\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_geometry_origin'
+        layout.operator("call.add_to_switcher_menu", text="\"原点->几何中心\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_geometry'
+        layout.operator("call.add_to_switcher_menu", text="\"原点->3D 游标\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_cursor'
+        layout.operator("call.add_to_switcher_menu", text="\"原点->质心(表面)\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_center_of_mass'
+        layout.operator("call.add_to_switcher_menu", text="\"原点->质心(体积)\"添加到Switcher", icon='PLUS').action = 'button.action_object_origin_set_origin_center_of_volume'
+
 
 
 

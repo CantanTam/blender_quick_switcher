@@ -195,6 +195,168 @@ class BUTTON_ACTION_OT_object_transform_randomize_transform(bpy.types.Operator):
         )
         return {'FINISHED'}
 
+# “变换”菜单——对齐物体
+class BUTTON_ACTION_OT_object_transform_object_align(bpy.types.Operator):
+    bl_idname = "button.action_object_transform_object_align"
+    bl_label = "对齐物体"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    bb_quality: bpy.props.BoolProperty(
+        name="",
+        description="",
+        default=True
+    )
+
+    align_mode: bpy.props.EnumProperty(
+        name="",
+        description="",
+        items=[
+            ('OPT_1', "反面", ""),
+            ('OPT_2', "中心", ""),
+            ('OPT_3', "正面", "")
+        ],
+        default='OPT_2'
+    )
+
+    relative_to: bpy.props.EnumProperty(
+        name="",
+        description="",
+        items=[
+            ('OPT_1', "场景原点", ""),
+            ('OPT_2', "3D 游标", ""),
+            ('OPT_3', "选中项", ""),
+            ('OPT_4', "活动项", "")
+        ],
+        default='OPT_4'
+    )
+
+    align_axis: bpy.props.EnumProperty(
+        name="",
+        description="",
+        options={'ENUM_FLAG'},
+        items=[
+            ('X', "X", ""),
+            ('Y', "Y", ""),
+            ('Z', "Z", "")
+        ],
+        default=set() 
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+    
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = "RIGHT"
+        col_right = split.column()
+
+        col_left.label(text="")
+        col_right.prop(self, "bb_quality", text="高品质")
+
+        col_left.label(text="对齐模式")
+        col_right.prop(self, "align_mode", text="")
+
+        col_left.label(text="相对于")
+        col_right.prop(self, "relative_to", text="")
+
+        col_left.label(text="对齐")
+        col_right.prop(self, "align_axis", text="XYZ")
+
+    def execute(self, context):
+        bpy.ops.object.align(
+            bb_quality=self.bb_quality,
+            align_mode=self.align_mode,
+            relative_to=self.relative_to,
+            align_axis=self.align_axis
+        )
+        return {'FINISHED'}
+
+
+class POPUP_MT_object_origin_set_menu(bpy.types.Operator):
+    bl_idname = "popup.object_origin_set_menu"
+    bl_label = "设置原点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=120)
+
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="设置原点", icon='PRESET')
+        col.operator("object.origin_set", text="几何中心 -> 原点", icon="RADIOBUT_OFF").type='GEOMETRY_ORIGIN'
+        col.operator("object.origin_set", text="原点 -> 几何中心", icon="RADIOBUT_OFF").type='ORIGIN_GEOMETRY'
+        col.operator("object.origin_set", text="原点 -> 3D 游标", icon="RADIOBUT_OFF").type='ORIGIN_CURSOR'
+        col.operator("object.origin_set", text="原点 -> 质心(表面)", icon="RADIOBUT_OFF").type='ORIGIN_CENTER_OF_MASS'
+        col.operator("object.origin_set", text="原点 -> 质心(体积)", icon="RADIOBUT_OFF").type='ORIGIN_CENTER_OF_VOLUME'
+        col.separator()
+        col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
+        col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
+
+class BUTTON_ACTION_OT_call_object_origin_set_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_object_origin_set_menu"
+    bl_label = "设置原点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.object_origin_set_menu('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_origin_set_geometry_origin(bpy.types.Operator):
+    bl_idname = "button.action_object_origin_set_geometry_origin"
+    bl_label = "几何中心 -> 原点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_origin_set_origin_geometry(bpy.types.Operator):
+    bl_idname = "button.action_object_origin_set_origin_geometry"
+    bl_label = "原点 -> 几何中心"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_origin_set_origin_cursor(bpy.types.Operator):
+    bl_idname = "button.action_object_origin_set_origin_cursor"
+    bl_label = "原点 -> 3D 游标"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass(bpy.types.Operator):
+    bl_idname = "button.action_object_origin_set_origin_center_of_mass"
+    bl_label = "原点 -> 质心(表面)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Operator):
+    bl_idname = "button.action_object_origin_set_origin_center_of_volume"
+    bl_label = "原点 -> 质心(体积)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
+        return {'FINISHED'}
+
+
+
+
 
 
 
@@ -206,6 +368,14 @@ class BUTTON_ACTION_OT_object_transform_randomize_transform(bpy.types.Operator):
 classes = (
     BUTTON_ACTION_OT_object_select_select_by_type_menu,
     BUTTON_ACTION_OT_object_transform_randomize_transform,
+    BUTTON_ACTION_OT_object_transform_object_align,
+    POPUP_MT_object_origin_set_menu,
+    BUTTON_ACTION_OT_call_object_origin_set_menu,
+    BUTTON_ACTION_OT_object_origin_set_geometry_origin,
+    BUTTON_ACTION_OT_object_origin_set_origin_geometry,
+    BUTTON_ACTION_OT_object_origin_set_origin_cursor,
+    BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass,
+    BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume,
 
 )
 

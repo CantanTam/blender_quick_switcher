@@ -151,6 +151,11 @@ from .quick_menu_button_functions.button_actions_armature_edit import (
     unregister as unregister_button_actions_armature_edit,
 )
 
+from .quick_menu_button_functions.button_actions_curve_edit import (
+    register as register_button_actions_curve_edit,
+    unregister as unregister_button_actions_curve_edit,
+)
+
 from .right_click_to_switcher.right_click_add_global import (
     register as register_right_click_add_global,
     unregister as unregister_right_click_add_global,
@@ -169,6 +174,11 @@ from .right_click_to_switcher.right_click_add_mesh_edit import (
 from .right_click_to_switcher.right_click_add_armature_edit import (
     register as register_right_click_add_armature_edit,
     unregister as unregister_right_click_add_armature_edit,
+)
+
+from .right_click_to_switcher.right_click_add_curve_edit import (
+    register as register_right_click_add_curve_edit,
+    unregister as unregister_right_click_add_curve_edit,
 )
 
 from .right_click_to_switcher.right_click_add_armature_pose import (
@@ -209,6 +219,8 @@ def register():
 
     # 注册“骨架编辑”模式
     register_right_click_add_armature_edit()
+
+    register_right_click_add_curve_edit()
 
     # 注册“骨架姿态”
     register_right_click_add_armature_pose()
@@ -321,6 +333,8 @@ def register():
 
     register_button_actions_armature_edit()
 
+    register_button_actions_curve_edit()
+
     # 注册键位映射
     keymap.register()
 
@@ -343,6 +357,8 @@ def unregister():
     # 注销 “网格编辑”模式
     unregister_right_click_add_meshedit()
 
+    unregister_right_click_add_curve_edit()
+
     # 注销“骨架编辑”
     unregister_right_click_add_armature_edit()
 
@@ -356,6 +372,8 @@ def unregister():
 
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
+
+    unregister_button_actions_curve_edit()
 
     unregister_button_actions_armature_edit()
 
