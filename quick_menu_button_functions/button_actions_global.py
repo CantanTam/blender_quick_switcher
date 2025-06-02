@@ -2233,34 +2233,6 @@ class BUTTON_ACTION_OT_global_snap_cursor_to_active(bpy.types.Operator):
         bpy.ops.view3d.snap_cursor_to_active()
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 物体模式/骨骼姿态模式——“应用 Ctrl A”操作
 class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
     bl_idname = "button.action_global_apply"
@@ -2277,41 +2249,6 @@ class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_apply")
         return {'FINISHED'}
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 物体模式/骨骼姿态“清空变换(菜单)”操作
 class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
     bl_idname = "button.action_global_object_pose_clear"
@@ -2327,6 +2264,88 @@ class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_transform")
         return {'FINISHED'}
+
+class BUTTON_ACTION_OT_global_parent_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_parent_menu"
+    bl_label = "父级"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_parent")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_global_set_parent_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_set_parent_menu"
+    bl_label = "设置父级目标"
+    bl_description = "快捷键 Ctrl P"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.parent_set('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_global_parent_clear_menu(bpy.types.Operator):
+    bl_idname = "button.action_global_parent_clear_menu"
+    bl_label = "清空父级"
+    bl_description = "快捷键 Alt P"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.parent_clear('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 classes = (
@@ -2419,6 +2438,9 @@ classes = (
 
     BUTTON_ACTION_OT_global_apply,
     BUTTON_ACTION_OT_global_object_pose_clear,
+    BUTTON_ACTION_OT_global_parent_menu,
+    BUTTON_ACTION_OT_global_set_parent_menu,
+    BUTTON_ACTION_OT_global_parent_clear_menu,
 )
 
 def register():

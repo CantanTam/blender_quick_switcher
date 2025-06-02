@@ -238,8 +238,17 @@ button_press_global = {
         'button.action_global_apply':(
         "button.action_global_apply","应用","PRESET",
     ),
-        'button.action_global_object_pose_clear':( # 清空变换(菜单)
+        'button.action_global_object_pose_clear':( 
         "button.action_global_object_pose_clear","清空变换","PRESET",
+    ),
+        'button.action_global_parent_menu':( 
+        "button.action_global_parent_menu","父级","PRESET",
+    ),
+        'button.action_global_set_parent_menu':( 
+        "button.action_global_set_parent_menu","设置父级目标","PRESET",
+    ),
+        'button.action_global_parent_clear_menu':( 
+        "button.action_global_parent_clear_menu","清空父级","PRESET",
     ),
 
         # 切换坐标系

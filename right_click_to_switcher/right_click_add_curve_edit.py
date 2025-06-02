@@ -8,7 +8,7 @@ def curveedit_transform_mode_curve_shrinkfatten_to_switcher(self, context):
     if not show_switcher or bpy.context.mode not in {"EDIT_CURVE","EDIT_GREASE_PENCIL"}:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"半径\"添加到Switcher", icon='PLUS').action = 'button.action_transform_transform_mode_curve_shrinkfatten'
+    self.layout.operator("call.add_to_switcher_menu", text="\"半径\"⟶Switcher", icon='PLUS').action = 'button.action_transform_transform_mode_curve_shrinkfatten'
 
 
 

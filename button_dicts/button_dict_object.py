@@ -38,4 +38,44 @@ button_press_object = {
         'button.action_object_delete_global_true':(
         "button.action_object_delete_global_true","全局删除","RADIOBUT_OFF",
     ),
+        'button.action_object_join':(
+        "button.action_object_join","合并","RADIOBUT_OFF",
+    ),
+        'button.action_object_asset_menu':(
+        "button.action_object_asset_menu","资源","PRESET",
+    ),
+        'button.action_object_asset_mark':(
+        "button.action_object_asset_mark","标记为资产","RADIOBUT_OFF",
+    ),
+        'button.action_object_asset_clear_fake_user_false':(
+        "button.action_object_asset_clear_fake_user_false","清理资产","RADIOBUT_OFF",
+    ),
+        'button.action_object_asset_clear_fake_user_true':(
+        "button.action_object_asset_clear_fake_user_true","清理资产(设置伪用户)","RADIOBUT_OFF",
+    ),
+    # 集合
+        'button.action_object_collection_menu':(
+        "button.action_object_collection_menu","集合","PRESET",
+    ),  
+        'button.action_object_collection_create':(
+        "button.action_object_collection_create","创建新集合","COLLECTION_NEW",
+    ), 
+        'button.action_object_move_to_collection':(
+        "button.action_object_move_to_collection","移动到集合","RADIOBUT_OFF",
+    ),  
+        'button.action_object_link_to_collection':(
+        "button.action_object_link_to_collection","关联至集合","RADIOBUT_OFF",
+    ),  
+        'button.action_object_collection_objects_remove':(
+        "button.action_object_collection_objects_remove","从集合中移除","RADIOBUT_OFF",
+    ),  
+        'button.action_object_collection_objects_remove_all':(
+        "button.action_object_collection_objects_remove_all","从所有集合中移除","RADIOBUT_OFF",
+    ),  
+        'button.action_object_collection_objects_add_active':(
+        "button.action_object_collection_objects_add_active","将选中项添加到活动集合中","RADIOBUT_OFF",
+    ),  
+        'button.action_object_collection_objects_remove_active':(
+        "button.action_object_collection_objects_remove_active","从活动集合中移除所选","RADIOBUT_OFF",
+    ),  
 }

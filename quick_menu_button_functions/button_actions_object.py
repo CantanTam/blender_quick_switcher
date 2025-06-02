@@ -201,6 +201,12 @@ class BUTTON_ACTION_OT_object_transform_object_align(bpy.types.Operator):
     bl_label = "对齐物体"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     bb_quality: bpy.props.BoolProperty(
         name="",
         description="",
@@ -305,6 +311,12 @@ class BUTTON_ACTION_OT_call_object_origin_set_menu(bpy.types.Operator):
     bl_label = "设置原点"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.popup.object_origin_set_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
@@ -314,6 +326,12 @@ class BUTTON_ACTION_OT_object_origin_set_geometry_origin(bpy.types.Operator):
     bl_label = "几何中心 -> 原点"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
         return {'FINISHED'}
@@ -323,6 +341,12 @@ class BUTTON_ACTION_OT_object_origin_set_origin_geometry(bpy.types.Operator):
     bl_label = "原点 -> 几何中心"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')
         return {'FINISHED'}
@@ -332,6 +356,12 @@ class BUTTON_ACTION_OT_object_origin_set_origin_cursor(bpy.types.Operator):
     bl_label = "原点 -> 3D 游标"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
         return {'FINISHED'}
@@ -341,6 +371,12 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass(bpy.types.Operato
     bl_label = "原点 -> 质心(表面)"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
         return {'FINISHED'}
@@ -350,6 +386,12 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Opera
     bl_label = "原点 -> 质心(体积)"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
     def execute(self, context):
         bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
         return {'FINISHED'}
@@ -359,6 +401,12 @@ class BUTTON_ACTION_OT_object_duplicate_move_linked(bpy.types.Operator):
     bl_label = "关联复制"
     bl_description = "快捷键 Alt D"
     bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
 
     def execute(self, context):
         bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
@@ -370,8 +418,87 @@ class BUTTON_ACTION_OT_object_delete_global_true(bpy.types.Operator):
     bl_description = "快捷键 Shift X"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+
     def execute(self, context):
         bpy.ops.object.delete('INVOKE_DEFAULT', use_global=True)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_join(bpy.types.Operator):
+    bl_idname = "button.action_object_join"
+    bl_label = "合并"
+    bl_description = "快捷键 Ctrl J"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):        
+        bpy.ops.object.join()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_asset_menu(bpy.types.Operator):
+    bl_idname = "button.action_object_asset_menu"
+    bl_label = "资源"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):        
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_asset")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_asset_mark(bpy.types.Operator):
+    bl_idname = "button.action_object_asset_mark"
+    bl_label = "标记为资产"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects or context.active_object.asset_data:
+            return False
+        return True
+
+    def execute(self, context):        
+        bpy.ops.asset.mark()
+        self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已经是资产")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_asset_clear_fake_user_false(bpy.types.Operator):
+    bl_idname = "button.action_object_asset_clear_fake_user_false"
+    bl_label = "清理资产"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects or not context.active_object.asset_data:
+            return False
+        return True
+
+    def execute(self, context):        
+        bpy.ops.asset.clear(set_fake_user=False)
+        self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已非资产")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_asset_clear_fake_user_true(bpy.types.Operator):
+    bl_idname = "button.action_object_asset_clear_fake_user_true"
+    bl_label = "清理资产(设置伪用户)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects or not context.active_object.asset_data:
+            return False
+        return True
+
+    def execute(self, context):        
+        bpy.ops.asset.clear(set_fake_user=True)
+        self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已非资产(设置伪用户)")
         return {'FINISHED'}
 
 
@@ -379,6 +506,154 @@ class BUTTON_ACTION_OT_object_delete_global_true(bpy.types.Operator):
 
 
 
+
+
+
+
+
+
+
+
+
+class BUTTON_ACTION_OT_object_collection_menu(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_menu"
+    bl_label = "集合"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_collection")
+        return {'FINISHED'}
+        
+class BUTTON_ACTION_OT_object_move_to_collection(bpy.types.Operator):
+    bl_idname = "button.action_object_move_to_collection"
+    bl_label = "移动到集合"
+    bl_description = "快捷键 M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.object.move_to_collection('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_link_to_collection(bpy.types.Operator):
+    bl_idname = "button.action_object_link_to_collection"
+    bl_label = "关联至集合"
+    bl_description = "快捷键 Shift M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.object.link_to_collection('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_collection_create(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_create"
+    bl_label = "创建新集合"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    name: bpy.props.StringProperty(
+        name="",
+        default="Collection",
+        description="新集合名称"
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="名称")
+
+        col_right = split.column()
+        col_right.prop(self, "name")
+    
+    def execute(self, context):
+        bpy.ops.collection.create(name=self.name)
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_collection_objects_remove(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_objects_remove"
+    bl_label = "从集合中移除"
+    bl_description = "快捷键 Ctrl Alt G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.collection.objects_remove('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_collection_objects_remove_all(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_objects_remove_all"
+    bl_label = "从所有集合中移除"
+    bl_description = "快捷键 Ctrl Shift Alt G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.collection.objects_remove_all()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_collection_objects_add_active(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_objects_add_active"
+    bl_label = "将选中项添加到活动集合中"
+    bl_description = "快捷键 Ctrl Shift G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.collection.objects_add_active('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_collection_objects_remove_active(bpy.types.Operator):
+    bl_idname = "button.action_object_collection_objects_remove_active"
+    bl_label = "从活动集合中移除所选"
+    bl_description = "快捷键 Shift Alt G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.collection.objects_remove_active('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 
 
@@ -403,6 +678,19 @@ classes = (
 
     BUTTON_ACTION_OT_object_duplicate_move_linked,
     BUTTON_ACTION_OT_object_delete_global_true,
+    BUTTON_ACTION_OT_object_join,
+    BUTTON_ACTION_OT_object_asset_menu,
+    BUTTON_ACTION_OT_object_asset_mark,
+    BUTTON_ACTION_OT_object_asset_clear_fake_user_false,
+    BUTTON_ACTION_OT_object_asset_clear_fake_user_true,
+    BUTTON_ACTION_OT_object_collection_menu,
+    BUTTON_ACTION_OT_object_collection_create,
+    BUTTON_ACTION_OT_object_move_to_collection,
+    BUTTON_ACTION_OT_object_link_to_collection,
+    BUTTON_ACTION_OT_object_collection_objects_remove,
+    BUTTON_ACTION_OT_object_collection_objects_remove_all,
+    BUTTON_ACTION_OT_object_collection_objects_add_active,
+    BUTTON_ACTION_OT_object_collection_objects_remove_active,
 
 )
 

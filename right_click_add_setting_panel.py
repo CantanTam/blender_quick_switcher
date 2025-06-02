@@ -78,7 +78,7 @@ class BUTTON_OT_set_buttons(bpy.types.Operator):
 
 class CALL_OT_add_to_switcher_menu(bpy.types.Operator):
     bl_idname = "call.add_to_switcher_menu"
-    bl_label = "添加到Switcher"
+    bl_label = "⟶Switcher"
 
     action: bpy.props.StringProperty(
         name="动作",

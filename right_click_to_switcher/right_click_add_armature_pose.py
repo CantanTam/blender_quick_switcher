@@ -11,7 +11,7 @@ def draw_add_to_switcher_armature_pose(self, context):
     if op and op.bl_rna.identifier == "POSE_OT_select_hierarchy":   #添加其它选项后删除
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_global_select_select_parent_or_child'
+        layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"⟶Switcher", icon='ORIENTATION_PARENT').action = 'button.action_global_select_select_parent_or_child'
 
 
 
@@ -23,7 +23,7 @@ def global_select_pose_moreless_menu_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"添加到Switcher", icon='ORIENTATION_PARENT').action = 'button.action_global_select_select_parent_or_child'
+    self.layout.operator("call.add_to_switcher_menu", text="\"父级/子级(菜单)\"⟶Switcher", icon='ORIENTATION_PARENT').action = 'button.action_global_select_select_parent_or_child'
 
 
 
