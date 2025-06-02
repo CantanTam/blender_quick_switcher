@@ -239,7 +239,7 @@ button_press_global = {
         "button.action_global_apply","应用","PRESET",
     ),
         'button.action_global_object_pose_clear':( 
-        "button.action_global_object_pose_clear","清空变换","PRESET",
+        "button.action_global_object_pose_clear","清空","PRESET",
     ),
         'button.action_global_parent_menu':( 
         "button.action_global_parent_menu","父级","PRESET",

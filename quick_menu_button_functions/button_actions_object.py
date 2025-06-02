@@ -501,20 +501,6 @@ class BUTTON_ACTION_OT_object_asset_clear_fake_user_true(bpy.types.Operator):
         self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已非资产(设置伪用户)")
         return {'FINISHED'}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class BUTTON_ACTION_OT_object_collection_menu(bpy.types.Operator):
     bl_idname = "button.action_object_collection_menu"
     bl_label = "集合"
@@ -655,11 +641,95 @@ class BUTTON_ACTION_OT_object_collection_objects_remove_active(bpy.types.Operato
         bpy.ops.collection.objects_remove_active('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_relations_menu(bpy.types.Operator):
+    bl_idname = "button.action_object_relations_menu"
+    bl_label = "关系"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_relations")
+        return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_liboverride(bpy.types.Operator):
+    bl_idname = "button.action_object_liboverride"
+    bl_label = "库重写"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_liboverride")
+        return {'FINISHED'}
+    
+class VIEW3D_MT_object_constraints_menu(bpy.types.Menu):
+    bl_idname = "button.action_object_constraints_menu"
+    bl_label = "约束"
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
 
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("button.action_object_constraint_add_with_targets", text="添加约束(预指定目标物体)")
+        layout.operator("button.action_object_constraint_copy", text="将约束复制到当前所选")
+        layout.separator()
+        layout.operator("button.action_object_constraint_clear", text="清除物体约束")
 
+class BUTTON_ACTION_OT_call_object_constraints_menu(bpy.types.Operator):
+    bl_idname = "button.action_call_object_constraints_menu"
+    bl_label = "约束"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="button.action_object_constraints_menu")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_constraint_add_with_targets(bpy.types.Operator):
+    bl_idname = "button.action_object_constraint_add_with_targets"
+    bl_label = "添加约束(预指定目标物体)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.object.constraint_add_with_targets('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_object_constraint_copy(bpy.types.Operator):
+    bl_idname = "button.action_object_constraint_copy"
+    bl_label = "将约束复制到当前所选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.object.constraints_copy()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_constraint_clear(bpy.types.Operator):
+    bl_idname = "button.action_object_constraint_clear"
+    bl_label = "清除物体约束"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.object.constraints_clear()
+        return {'FINISHED'}
 
 
 
@@ -691,6 +761,14 @@ classes = (
     BUTTON_ACTION_OT_object_collection_objects_remove_all,
     BUTTON_ACTION_OT_object_collection_objects_add_active,
     BUTTON_ACTION_OT_object_collection_objects_remove_active,
+
+    BUTTON_ACTION_OT_object_relations_menu,
+    BUTTON_ACTION_OT_object_liboverride,
+    VIEW3D_MT_object_constraints_menu,
+    BUTTON_ACTION_OT_call_object_constraints_menu,
+    BUTTON_ACTION_OT_object_constraint_add_with_targets,
+    BUTTON_ACTION_OT_object_constraint_copy,
+    BUTTON_ACTION_OT_object_constraint_clear,
 
 )
 

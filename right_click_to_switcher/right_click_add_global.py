@@ -448,7 +448,7 @@ def cleartransform_menu_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"清空变换(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_global_object_pose_clear'
+    self.layout.operator("call.add_to_switcher_menu", text="\"清空(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_global_object_pose_clear'
 
 
 def transformorientation_menu_to_switcher(self, context):

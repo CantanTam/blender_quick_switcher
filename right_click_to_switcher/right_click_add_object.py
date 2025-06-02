@@ -95,9 +95,20 @@ def draw_add_to_switcher_object(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"从活动集合中移除所选\"⟶Switcher", icon='PLUS').action = 'button.action_object_collection_objects_remove_active'
 
+    elif op and op.bl_rna.identifier == "OBJECT_OT_constraint_add_with_targets":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"添加约束(预指定目标物体)\"⟶Switcher", icon='PLUS').action = 'button.action_object_constraint_add_with_targets'
 
+    elif op and op.bl_rna.identifier == "OBJECT_OT_constraints_copy":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"将约束复制到当前所选\"⟶Switcher", icon='PLUS').action = 'button.action_object_constraint_copy'
 
-
+    elif op and op.bl_rna.identifier == "OBJECT_OT_constraints_clear":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"清除物体约束\"⟶Switcher", icon='PLUS').action = 'button.action_object_constraint_clear'
 
 
 
@@ -141,14 +152,41 @@ def object_collection_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"集合(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_collection_menu'
 
+def object_relations_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"关系(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_relations_menu'
+
+def object_liboverride_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"库重写(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_liboverride'
+
+def object_constraints_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"约束(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_call_object_constraints_menu'
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_object)
     bpy.types.VIEW3D_MT_select_object_more_less.append(object_select_moreless_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_asset.append(object_asset_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_collection.append(object_collection_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_relations.append(object_relations_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_liboverride.append(object_liboverride_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_constraints.append(object_constraints_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_object_constraints.remove(object_constraints_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_liboverride.remove(object_liboverride_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_relations.remove(object_relations_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_collection.remove(object_collection_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_asset.remove(object_asset_menu_to_switcher)
     bpy.types.VIEW3D_MT_select_object_more_less.remove(object_select_moreless_menu_to_switcher)

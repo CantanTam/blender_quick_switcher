@@ -78,4 +78,25 @@ button_press_object = {
         'button.action_object_collection_objects_remove_active':(
         "button.action_object_collection_objects_remove_active","从活动集合中移除所选","RADIOBUT_OFF",
     ),  
+    # 关系
+        'button.action_object_relations_menu':(
+        "button.action_object_relations_menu","关系","PRESET",
+    ), 
+    # 库重写
+        'button.action_object_liboverride':(
+        "button.action_object_liboverride","库重写","PRESET",
+    ),   
+    # 约束
+        'button.action_call_object_constraints_menu':(
+        "button.action_call_object_constraints_menu","约束","PRESET",
+    ), 
+        'button.action_object_constraint_add_with_targets':(
+        "button.action_object_constraint_add_with_targets","添加约束(预指定目标物体)","RADIOBUT_OFF",
+    ), 
+        'button.action_object_constraint_copy':(
+        "button.action_object_constraint_copy","将约束复制到当前所选","RADIOBUT_OFF",
+    ), 
+        'button.action_object_constraint_clear':(
+        "button.action_object_constraint_clear","清除物体约束","RADIOBUT_OFF",
+    ), 
 }
