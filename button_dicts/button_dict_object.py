@@ -13,6 +13,9 @@ button_press_object = {
         'button.action_object_transform_object_align':(
         "button.action_object_transform_object_align","对齐物体","RADIOBUT_OFF",
     ),
+        'button.action_object_transform_transform':(
+        "button.action_object_transform_transform","对齐到变换坐标系","RADIOBUT_OFF",
+    ),
     # 切换原点
         'button.action_call_object_origin_set_menu':(
         "button.action_call_object_origin_set_menu","设置原点","PRESET",
@@ -133,8 +136,14 @@ button_press_object = {
         'button.action_object_gpencil_bake_grease_pencil_animation':(
         "button.action_object_gpencil_bake_grease_pencil_animation","烘焙物体变换至蜡笔","RADIOBUT_OFF",
     ),
-        'button.action_object_object_rigid_body':(
-        "button.action_object_object_rigid_body","刚体","PRESET",
+        'button.action_object_rigid_body':(
+        "button.action_object_rigid_body","刚体","PRESET",
+    ),
+        'button.action_objectt_quick_effects':(
+        "button.action_objectt_quick_effects","快速效果","PRESET",
+    ),
+        'button.action_objectt_cleanup':(
+        "button.action_objectt_cleanup","清理","PRESET",
     ),
 
 }

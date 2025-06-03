@@ -27,6 +27,11 @@ def draw_add_to_switcher_object(self, context):
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"对齐物体\"⟶Switcher", icon='PLUS').action = 'button.action_object_transform_object_align'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_transform":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"对齐到变换坐标系\"⟶Switcher", icon='PLUS').action = 'button.action_object_transform_transform'
     
     elif op and op.bl_rna.identifier == "OBJECT_OT_origin_set":
         layout = self.layout
@@ -238,7 +243,21 @@ def object_rigid_body_menu_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"刚体(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_object_rigid_body'
+    self.layout.operator("call.add_to_switcher_menu", text="\"刚体(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_rigid_body'
+
+def object_quick_effects_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"快速效果(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_objectt_quick_effects'
+
+def object_cleanup_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"清理(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_objectt_cleanup'
 
 
 def register():
@@ -253,8 +272,12 @@ def register():
     bpy.types.VIEW3D_MT_make_links.append(object_make_links_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_animation.append(object_animation_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_rigid_body.append(object_rigid_body_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_quick_effects.append(object_quick_effects_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_cleanup.append(object_cleanup_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_object_cleanup.remove(object_cleanup_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_quick_effects.remove(object_quick_effects_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_rigid_body.remove(object_rigid_body_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_animation.remove(object_animation_menu_to_switcher)
     bpy.types.VIEW3D_MT_make_links.remove(object_make_links_menu_to_switcher)

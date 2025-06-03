@@ -280,6 +280,20 @@ class BUTTON_ACTION_OT_object_transform_object_align(bpy.types.Operator):
         )
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_transform_transform(bpy.types.Operator):
+    bl_idname = "button.action_object_transform_transform"
+    bl_label = "对齐到变换坐标系"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if not context.selected_objects:
+            return False
+        return True
+    
+    def execute(self, context):
+        bpy.ops.transform.transform('INVOKE_DEFAULT', mode='ALIGN')
+        return {'FINISHED'}
 
 class POPUP_MT_object_origin_set_menu(bpy.types.Operator):
     bl_idname = "popup.object_origin_set_menu"
@@ -844,18 +858,37 @@ class BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Ope
         return {'FINISHED'}
     
 class BUTTON_ACTION_OT_object_object_rigid_body(bpy.types.Operator):
-    bl_idname = "button.action_object_object_rigid_body"
+    bl_idname = "button.action_object_rigid_body"
     bl_label = "刚体"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_rigid_body")
         return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_objectt_quick_effects(bpy.types.Operator):
+    bl_idname = "button.action_objectt_quick_effects"
+    bl_label = "快速效果"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_quick_effects")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_objectt_cleanup(bpy.types.Operator):
+    bl_idname = "button.action_objectt_cleanup"
+    bl_label = "清理"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_cleanup")
+        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_object_select_select_by_type_menu,
     BUTTON_ACTION_OT_object_transform_randomize_transform,
     BUTTON_ACTION_OT_object_transform_object_align,
+    BUTTON_ACTION_OT_object_transform_transform,
     POPUP_MT_object_origin_set_menu,
     BUTTON_ACTION_OT_call_object_origin_set_menu,
     BUTTON_ACTION_OT_object_origin_set_geometry_origin,
@@ -901,6 +934,8 @@ classes = (
     BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation,
 
     BUTTON_ACTION_OT_object_object_rigid_body,
+    BUTTON_ACTION_OT_object_objectt_quick_effects,
+    BUTTON_ACTION_OT_object_objectt_cleanup,
 
 )
 

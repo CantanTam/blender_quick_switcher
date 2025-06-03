@@ -264,8 +264,7 @@ class BUTTON_ACTION_OT_global_camera_to_view(bpy.types.Operator):
         # 确保当前区域是 3D 视图并获取 RegionView3D 数据
         region_3d = getattr(context.space_data, "region_3d", None)
         if region_3d:
-            # 如果视图透视类型正好是 CAMERA，则返回 False，使按钮灰显不可用
-            return region_3d.view_perspective != 'CAMERA'  # :contentReference[oaicite:0]{index=0}
+            return region_3d.view_perspective != 'CAMERA' 
         return False
 
     def execute(self, context):
@@ -600,13 +599,11 @@ class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
         layout = self.layout
         split = layout.row().split(factor=0.4)
         
-        # 左侧列 - 标签
         col_left = split.column()
         col_left.alignment = 'RIGHT'
         if typeandmode in {"MESHEDIT","LATTICEEDIT"}:
             col_left.label(text="轴向")
         
-        # 右侧列 - 垂直排列的单选按钮
         col_right = split.column()
         if typeandmode in {"MESHEDIT","LATTICEEDIT"}:
             col_right.prop(self, "axis", expand=True)
