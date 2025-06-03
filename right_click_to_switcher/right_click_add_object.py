@@ -110,6 +110,45 @@ def draw_add_to_switcher_object(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"清除物体约束\"⟶Switcher", icon='PLUS').action = 'button.action_object_constraint_clear'
 
+    elif op and op.bl_rna.identifier == "ANIM_OT_keyframe_insert_menu":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"插入关键帧\"⟶Switcher", icon='KEYFRAME_HLT').action = 'button.action_object_anim_keyframe_insert_menu'
+
+    elif op and op.bl_rna.identifier == "ANIM_OT_keyframe_insert":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"插入关键帧\"⟶Switcher", icon='KEYTYPE_KEYFRAME_VEC').action = 'button.action_object_anim_keyframe_insert'
+
+    elif op and op.bl_rna.identifier == "ANIM_OT_keyframe_delete_v3d":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"删除关键帧\"⟶Switcher", icon='KEYFRAME').action = 'button.action_object_anim_keyframe_delete_v3d'
+
+    elif op and op.bl_rna.identifier == "ANIM_OT_keyframe_clear_v3d":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"清除关键帧\"⟶Switcher", icon='KEYFRAME').action = 'button.action_object_anim_keyframe_clear_v3d'
+
+    elif op and op.bl_rna.identifier == "ANIM_OT_keying_set_active_set":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"更改插帧集\"⟶Switcher", icon='KEYFRAME_HLT').action = 'button.action_object_anim_keying_set_active_set'
+
+    elif op and op.bl_rna.identifier == "NLA_OT_bake":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"烘焙动作\"⟶Switcher", icon='PLUS').action = 'button.action_object_nla_bake'
+
+    elif op and op.bl_rna.identifier == "GPENCIL_OT_bake_mesh_animation":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"烘焙网格至蜡笔\"⟶Switcher", icon='PLUS').action = 'button.action_object_gpencil_bake_mesh_animation'
+
+    elif op and op.bl_rna.identifier in {"GPENCIL_OT_bake_grease_pencil_animation","GREASE_PENCIL_OT_bake_grease_pencil_animation"}:
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"烘焙物体变换至蜡笔\"⟶Switcher", icon='PLUS').action = 'button.action_object_gpencil_bake_grease_pencil_animation'
 
 
 
@@ -173,6 +212,27 @@ def object_constraints_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"约束(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_call_object_constraints_menu'
 
+def object_track_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"追踪(轨迹)(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_track'
+
+def object_make_links_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"关联/传递数据(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_make_links'
+
+def object_animation_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"动画(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_animation'
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_object)
@@ -182,8 +242,14 @@ def register():
     bpy.types.VIEW3D_MT_object_relations.append(object_relations_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_liboverride.append(object_liboverride_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_constraints.append(object_constraints_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_track.append(object_track_menu_to_switcher)
+    bpy.types.VIEW3D_MT_make_links.append(object_make_links_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_animation.append(object_animation_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_object_animation.remove(object_animation_menu_to_switcher)
+    bpy.types.VIEW3D_MT_make_links.remove(object_make_links_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_track.remove(object_track_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_constraints.remove(object_constraints_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_liboverride.remove(object_liboverride_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_relations.remove(object_relations_menu_to_switcher)

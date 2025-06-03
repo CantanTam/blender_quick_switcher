@@ -99,4 +99,39 @@ button_press_object = {
         'button.action_object_constraint_clear':(
         "button.action_object_constraint_clear","清除物体约束","RADIOBUT_OFF",
     ), 
+        'button.action_object_track':(
+        "button.action_object_track","追踪(轨迹)","PRESET",
+    ), 
+        'button.action_object_make_links':(
+        "button.action_object_make_links","关联/传递数据","PRESET",
+    ), 
+    # 动画
+        'button.action_object_animation':(
+        "button.action_object_animation","动画","PRESET",
+    ), 
+        'button.action_object_anim_keyframe_insert_menu':(
+        "button.action_object_anim_keyframe_insert_menu","插入关键帧","KEYFRAME_HLT",
+    ),
+        'button.action_object_anim_keyframe_insert':(
+        "button.action_object_anim_keyframe_insert","插入关键帧","KEYTYPE_KEYFRAME_VEC",
+    ),
+        'button.action_object_anim_keyframe_delete_v3d':(
+        "button.action_object_anim_keyframe_delete_v3d","删除关键帧","KEYFRAME",
+    ),
+        'button.action_object_anim_keyframe_clear_v3d':(
+        "button.action_object_anim_keyframe_clear_v3d","清除关键帧","KEYFRAME",
+    ),
+        'button.action_object_anim_keying_set_active_set':(
+        "button.action_object_anim_keying_set_active_set","更改插帧集","KEYFRAME_HLT",
+    ),
+        'button.action_object_nla_bake':(
+        "button.action_object_nla_bake","烘焙动作","RADIOBUT_OFF",
+    ),
+        'button.action_object_gpencil_bake_mesh_animation':(
+        "button.action_object_gpencil_bake_mesh_animation","烘焙网格至蜡笔","RADIOBUT_OFF",
+    ),
+        'button.action_object_gpencil_bake_grease_pencil_animation':(
+        "button.action_object_gpencil_bake_grease_pencil_animation","烘焙物体变换至蜡笔","RADIOBUT_OFF",
+    ),
+
 }

@@ -731,8 +731,117 @@ class BUTTON_ACTION_OT_object_constraint_clear(bpy.types.Operator):
         bpy.ops.object.constraints_clear()
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_track(bpy.types.Operator):
+    bl_idname = "button.action_object_track"
+    bl_label = "追踪(轨迹)"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_track")
+        return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_make_links(bpy.types.Operator):
+    bl_idname = "button.action_object_make_links"
+    bl_label = "关联/传递数据"
+    bl_description = "快捷键 Ctrl L"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_make_links")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_animation(bpy.types.Operator):
+    bl_idname = "button.action_object_animation"
+    bl_label = "动画"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_animation")
+        return {'FINISHED'}
 
+class BUTTON_ACTION_OT_object_anim_keyframe_insert_menu(bpy.types.Operator):
+    bl_idname = "button.action_object_anim_keyframe_insert_menu"
+    bl_label = "插入关键帧"
+    bl_description = "快捷键 I"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.anim.keyframe_insert_menu('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_anim_keyframe_insert(bpy.types.Operator):
+    bl_idname = "button.action_object_anim_keyframe_insert"
+    bl_label = "插入关键帧"
+    bl_description = "快捷键 I"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.anim.keyframe_insert()
+        self.report({'INFO'}, "已插入关键帧")
+        return {'FINISHED'} 
+    
+class BUTTON_ACTION_OT_object_anim_keyframe_delete_v3d(bpy.types.Operator):
+    bl_idname = "button.action_object_anim_keyframe_delete_v3d"
+    bl_label = "删除关键帧"
+    bl_description = "快捷键 Alt I"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.anim.keyframe_delete_v3d('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_anim_keyframe_clear_v3d(bpy.types.Operator):
+    bl_idname = "button.action_object_anim_keyframe_clear_v3d"
+    bl_label = "清除关键帧"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.anim.keyframe_clear_v3d('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_anim_keying_set_active_set(bpy.types.Operator):
+    bl_idname = "button.action_object_anim_keying_set_active_set"
+    bl_label = "更改插帧集"
+    bl_description = "快捷键 Ctrl Shift Alt I"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.anim.keying_set_active_set('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_nla_bake(bpy.types.Operator):
+    bl_idname = "button.action_object_nla_bake"
+    bl_label = "烘焙动作"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.nla.bake('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_gpencil_bake_mesh_animation(bpy.types.Operator):
+    bl_idname = "button.action_object_gpencil_bake_mesh_animation"
+    bl_label = "烘焙网格至蜡笔"
+    bl_options = {'REGISTER', 'UNDO'}
+    
+    def execute(self, context):
+        bpy.ops.gpencil.bake_mesh_animation('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Operator):
+    bl_idname = "button.action_object_gpencil_bake_grease_pencil_animation"
+    bl_label = "烘焙物体变换至蜡笔"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        return context.active_object.type in {"GPENCIL","GREASEPENCIL"}
+    
+    def execute(self, context):
+        if context.active_object.type == "GPENCIL":
+            bpy.ops.gpencil.bake_grease_pencil_animation('INVOKE_DEFAULT')
+        elif context.active_object.type == "GREASEPENCIL":
+            bpy.ops.grease_pencil.bake_grease_pencil_animation('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_object_select_select_by_type_menu,
@@ -769,6 +878,17 @@ classes = (
     BUTTON_ACTION_OT_object_constraint_add_with_targets,
     BUTTON_ACTION_OT_object_constraint_copy,
     BUTTON_ACTION_OT_object_constraint_clear,
+    BUTTON_ACTION_OT_object_track,
+    BUTTON_ACTION_OT_object_make_links,
+    BUTTON_ACTION_OT_object_animation,
+    BUTTON_ACTION_OT_object_anim_keyframe_insert_menu,
+    BUTTON_ACTION_OT_object_anim_keyframe_insert,
+    BUTTON_ACTION_OT_object_anim_keyframe_delete_v3d,
+    BUTTON_ACTION_OT_object_anim_keyframe_clear_v3d,
+    BUTTON_ACTION_OT_object_anim_keying_set_active_set,
+    BUTTON_ACTION_OT_object_nla_bake,
+    BUTTON_ACTION_OT_object_gpencil_bake_mesh_animation,
+    BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation,
 
 )
 
