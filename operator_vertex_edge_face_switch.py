@@ -103,4 +103,12 @@ class VERTEX_EDGE_FACE_OT_Switch(bpy.types.Operator):
                 bpy.context.scene.tool_settings.use_gpencil_select_mask_segment = True
                 show_notice("GREASE_BETWEEN.png")
 
+        elif typeandmode in {"CURVESEDIT","CURVESSCULPT_CURVES"}:
+            if bpy.context.active_object.data.selection_domain == 'POINT':
+                bpy.ops.curves.set_selection_domain(domain='CURVE')
+                show_notice("CURVES_CURVE.png")
+            else:
+                bpy.ops.curves.set_selection_domain(domain='POINT')
+                show_notice("CURVES_POINT.png")
+
         return {'FINISHED'}

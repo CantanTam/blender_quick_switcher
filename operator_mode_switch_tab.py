@@ -41,7 +41,13 @@ class MODE_TAB_OT_Switch(bpy.types.Operator):
             # Armature 类型（两个版本保持一致）
             'ARMATUREOBJECT': 'OBJECT',
             'ARMATUREEDIT': 'EDIT',
-            'ARMATUREPOSE': 'POSE'
+            'ARMATUREPOSE': 'POSE',
+
+            # 毛发模式
+            'CURVESOBJECT': 'OBJECT',
+            'CURVESEDIT': 'EDIT',
+            'CURVESSCULPT_CURVES': 'SCULPT_CURVES',
+
         }
 
         if not bpy.context.active_object:

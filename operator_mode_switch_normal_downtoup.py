@@ -52,6 +52,14 @@ class MODE_NORMAL_DOWNUP_OT_Switch(bpy.types.Operator):
                 else:
                     bpy.ops.object.mode_set(mode='EDIT')
 
+            elif bpy.context.active_object.type == 'CURVES':
+                if context.mode == 'OBJECT':
+                    bpy.ops.object.mode_set(mode='SCULPT_CURVES')
+                elif context.mode == 'SCULPT_CURVES':
+                    bpy.ops.object.mode_set(mode='EDIT')
+                else:
+                    bpy.ops.object.mode_set(mode='OBJECT')
+
             elif bpy.context.active_object.type == 'MESH':
                 mesh_mode ={
                     "OBJECT":"TEXTURE_PAINT",

@@ -60,6 +60,15 @@ class MODE_MENU_OT_Switch(bpy.types.Operator):
                     
                 context.window_manager.popup_menu(armature_menu, title="切换骨架模式")
 
+            elif context.active_object.type == 'CURVES':
+                def curves_menu(self, context):
+                    layout = self.layout
+                    layout.operator("object.mode_set", text="物体模式", icon='OBJECT_DATAMODE').mode = 'OBJECT'
+                    layout.operator("object.mode_set", text="编辑模式",icon='EDITMODE_HLT').mode = 'EDIT'
+                    layout.operator("object.mode_set", text="雕刻模式", icon='SCULPTMODE_HLT').mode = 'SCULPT_CURVES'
+                    
+                context.window_manager.popup_menu(curves_menu, title="切换毛发模式")
+
             elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
                 bpy.ops.object.editmode_toggle()
                 
