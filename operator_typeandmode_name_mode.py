@@ -29,7 +29,6 @@ def record_name_typeandmode():
             typeandmode_name["object_current_name"] = bpy.context.active_object.name
             typeandmode_name["object_current_type"] = bpy.context.active_object.type
 
-            #bpy.context.window_manager.popup_menu(lambda self, context: self.layout.label(text="测试"), title="发生改变，记录", icon='INFO')
             return 0.1
         else:
             return 0.1
@@ -41,7 +40,7 @@ def record_name_typeandmode():
         typeandmode_name["object_current_name"] = "NONE"
         typeandmode_name["object_prev_type"] = "NONE"
         typeandmode_name["object_current_type"] = "NONE"
-        #bpy.context.window_manager.popup_menu(lambda self, context: self.layout.label(text="测试"), title="没改变，不记录", icon='INFO')
+        
         return 0.1
 
 def register():

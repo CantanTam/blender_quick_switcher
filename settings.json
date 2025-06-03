@@ -68,7 +68,7 @@
     "panelone_mode1_col4_button9": "NO_BUTTON",
     "panelone_mode1_col4_button10": "NO_BUTTON",
     "panelone_mode1_col5_title": "五列标题",
-    "panelone_mode1_col5_button1": "button.action_global_select_select_linked",
+    "panelone_mode1_col5_button1": "button.action_global_transform",
     "panelone_mode1_col5_button2": "button.action_global_add",
     "panelone_mode1_col5_button3": "button.action_object_liboverride",
     "panelone_mode1_col5_button4": "button.action_object_asset_menu",
