@@ -40,6 +40,10 @@ def is_object_selected(context):
             for p in (spl.bezier_points if spl.type == 'BEZIER' else spl.points)
         )
 
+    elif obj.type == 'CURVES' and context.mode == 'EDIT_CURVES':
+        selection_attr = obj.data.attributes.get(".selection")
+        is_selected = any(p.value > 0.5 for p in selection_attr.data)
+
     elif obj.type == 'SURFACE' and context.mode == "EDIT_SURFACE":
         is_selected = any(p.select for spl in obj.data.splines for p in spl.points )
 
@@ -118,6 +122,7 @@ class GRAB_SCALE_ROTATE_OT_Switch(bpy.types.Operator):
             "ARMATUREEDIT",
             "ARMATUREPOSE",
             "CURVEEDIT",
+            "CURVESEDIT",
             "SURFACEEDIT",
             "METAEDIT",
             "LATTICEEDIT",
@@ -165,6 +170,7 @@ class GRAB_SCALE_ROTATE_OT_Switch_action(bpy.types.Operator):
                 "ARMATUREEDIT",
                 "ARMATUREPOSE",
                 "CURVEEDIT",
+                "CURVESEDIT",
                 "SURFACEEDIT",
                 "METAEDIT",
                 "LATTICEEDIT",

@@ -42,7 +42,7 @@ button_press_object = {
         "button.action_object_join","合并","RADIOBUT_OFF",
     ),
         'button.action_object_asset_menu':(
-        "button.action_object_asset_menu","资源","PRESET",
+        "button.action_object_asset_menu","资源","ASSET_MANAGER",
     ),
         'button.action_object_asset_mark':(
         "button.action_object_asset_mark","标记为资产","RADIOBUT_OFF",
@@ -55,7 +55,7 @@ button_press_object = {
     ),
     # 集合
         'button.action_object_collection_menu':(
-        "button.action_object_collection_menu","集合","PRESET",
+        "button.action_object_collection_menu","集合","OUTLINER_COLLECTION",
     ),  
         'button.action_object_collection_create':(
         "button.action_object_collection_create","创建新集合","COLLECTION_NEW",
@@ -84,11 +84,11 @@ button_press_object = {
     ), 
     # 库重写
         'button.action_object_liboverride':(
-        "button.action_object_liboverride","库重写","PRESET",
+        "button.action_object_liboverride","库重写","LIBRARY_DATA_OVERRIDE",
     ),   
     # 约束
         'button.action_call_object_constraints_menu':(
-        "button.action_call_object_constraints_menu","约束","PRESET",
+        "button.action_call_object_constraints_menu","约束","CONSTRAINT",
     ), 
         'button.action_object_constraint_add_with_targets':(
         "button.action_object_constraint_add_with_targets","添加约束(预指定目标物体)","RADIOBUT_OFF",
@@ -132,6 +132,9 @@ button_press_object = {
     ),
         'button.action_object_gpencil_bake_grease_pencil_animation':(
         "button.action_object_gpencil_bake_grease_pencil_animation","烘焙物体变换至蜡笔","RADIOBUT_OFF",
+    ),
+        'button.action_object_object_rigid_body':(
+        "button.action_object_object_rigid_body","刚体","PRESET",
     ),
 
 }

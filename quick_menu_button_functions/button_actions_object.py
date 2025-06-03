@@ -842,6 +842,15 @@ class BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Ope
         elif context.active_object.type == "GREASEPENCIL":
             bpy.ops.grease_pencil.bake_grease_pencil_animation('INVOKE_DEFAULT')
         return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_object_object_rigid_body(bpy.types.Operator):
+    bl_idname = "button.action_object_object_rigid_body"
+    bl_label = "刚体"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_object_rigid_body")
+        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_object_select_select_by_type_menu,
@@ -880,6 +889,7 @@ classes = (
     BUTTON_ACTION_OT_object_constraint_clear,
     BUTTON_ACTION_OT_object_track,
     BUTTON_ACTION_OT_object_make_links,
+
     BUTTON_ACTION_OT_object_animation,
     BUTTON_ACTION_OT_object_anim_keyframe_insert_menu,
     BUTTON_ACTION_OT_object_anim_keyframe_insert,
@@ -889,6 +899,8 @@ classes = (
     BUTTON_ACTION_OT_object_nla_bake,
     BUTTON_ACTION_OT_object_gpencil_bake_mesh_animation,
     BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation,
+
+    BUTTON_ACTION_OT_object_object_rigid_body,
 
 )
 

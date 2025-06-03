@@ -182,14 +182,14 @@ def object_asset_menu_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"资源(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_asset_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"资源(菜单)\"⟶Switcher", icon='ASSET_MANAGER').action = 'button.action_object_asset_menu'
 
 def object_collection_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"集合(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_collection_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"集合(菜单)\"⟶Switcher", icon='OUTLINER_COLLECTION').action = 'button.action_object_collection_menu'
 
 def object_relations_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
@@ -203,14 +203,14 @@ def object_liboverride_menu_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"库重写(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_liboverride'
+    self.layout.operator("call.add_to_switcher_menu", text="\"库重写(菜单)\"⟶Switcher", icon='LIBRARY_DATA_OVERRIDE').action = 'button.action_object_liboverride'
 
 def object_constraints_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"约束(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_call_object_constraints_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"约束(菜单)\"⟶Switcher", icon='CONSTRAINT').action = 'button.action_call_object_constraints_menu'
 
 def object_track_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
@@ -233,6 +233,13 @@ def object_animation_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"动画(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_animation'
 
+def object_rigid_body_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"刚体(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_object_object_rigid_body'
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_object)
@@ -245,8 +252,10 @@ def register():
     bpy.types.VIEW3D_MT_object_track.append(object_track_menu_to_switcher)
     bpy.types.VIEW3D_MT_make_links.append(object_make_links_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_animation.append(object_animation_menu_to_switcher)
+    bpy.types.VIEW3D_MT_object_rigid_body.append(object_rigid_body_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_object_rigid_body.remove(object_rigid_body_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_animation.remove(object_animation_menu_to_switcher)
     bpy.types.VIEW3D_MT_make_links.remove(object_make_links_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_track.remove(object_track_menu_to_switcher)
