@@ -61,7 +61,7 @@ def draw_add_to_switcher_global(self, context):
         }:
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"随机选择\"⟶Switcher", icon='RADIOBUT_OFF').action = 'button.action_global_select_select_random'
+        layout.operator("call.add_to_switcher_menu", text="\"随机选择\"⟶Switcher", icon='PLUS').action = 'button.action_global_select_select_random'
 
     elif op and op.bl_rna.identifier in {
         "CURVE_OT_select_more",
@@ -465,7 +465,6 @@ def transformorientation_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"游标\"⟶Switcher", icon='ORIENTATION_CURSOR').action = 'button.action_orientation_to_cursor'
     self.layout.operator("call.add_to_switcher_menu", text="\"父级\"⟶Switcher", icon='ORIENTATION_PARENT').action = 'button.action_orientation_to_parent'
 
-
 def switchsnap_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
@@ -481,7 +480,6 @@ def switchsnap_menu_to_switcher(self, context):
     self.layout.operator("call.add_to_switcher_menu", text="\"体积\"⟶Switcher", icon='SNAP_VOLUME').action = 'button.action_switch_snap_volume'
     self.layout.operator("call.add_to_switcher_menu", text="\"边中点\"⟶Switcher", icon='SNAP_MIDPOINT').action = 'button.action_switch_snap_edge_midpoint'
     self.layout.operator("call.add_to_switcher_menu", text="\"垂直交线\"⟶Switcher", icon='SNAP_PERPENDICULAR').action = 'button.action_switch_snap_edge_perpendicular'
-
 
 def switchproportional_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
@@ -512,6 +510,13 @@ def global_parent_menu_to_switcher(self, context):
         return
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"父级(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_global_parent_menu'
+
+def global_show_face_orientation_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"面朝向\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_edit_show_face_orientation'
 
 
 
@@ -578,10 +583,12 @@ def register():
         bpy.types.GREASE_PENCIL_MT_snap.append(snap_menu_to_switcher)
     bpy.types.VIEW3D_MT_snap.append(snap_menu_to_switcher)
     bpy.types.VIEW3D_MT_object_parent.append(global_parent_menu_to_switcher)
+    bpy.types.VIEW3D_MT_view.append(global_show_face_orientation_to_switcher)
 
 
 def unregister():
 
+    bpy.types.VIEW3D_MT_view.remove(global_show_face_orientation_to_switcher)
     bpy.types.VIEW3D_MT_object_parent.remove(global_parent_menu_to_switcher)
     bpy.types.VIEW3D_MT_snap.remove(snap_menu_to_switcher)
     if bpy.app.version >= (4, 3, 0):

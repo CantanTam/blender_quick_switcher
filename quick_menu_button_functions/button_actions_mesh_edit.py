@@ -1,19 +1,231 @@
 import bpy
 
-# 以下是“物体”模式当中“物体”菜单特有的一些选项
+# “选择”菜单
+class BUTTON_ACTION_OT_mesh_select_nth(bpy.types.Operator):
+    bl_idname = "button.action_mesh_select_nth"
+    bl_label = "间隔式弃选"
+    bl_options = {'REGISTER', 'UNDO'}
 
-# 变换——缩放纹理空间
-class BUTTON_ACTION_OT_meshedit_select_select_all(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_select_select_all"
-    bl_label = "全选"
-    bl_description = "快捷键 A"
+    skip: bpy.props.IntProperty(
+        name="",
+        description="重复次序中跳过的元素数量",
+        default=1,
+        min=1,
+        soft_max=100, 
+    )
+
+    nth: bpy.props.IntProperty(
+        name="",
+        description="重复次序中选择的元素数量",
+        default=1,
+        min=1,
+        soft_max=100, 
+    )
+
+    offset: bpy.props.IntProperty(
+        name="",
+        description="从起始点偏移",
+        default=0,
+        soft_min=-100,
+        soft_max=100, 
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="弃选项")
+        col_left.label(text="选中项")
+        col_left.label(text="偏移量")
+        
+        col_right = split.column()
+        col_right.prop(self, "skip")
+        col_right.prop(self, "nth")
+        col_right.prop(self, "offset")
+
+    def execute(self, context):
+        bpy.ops.mesh.select_nth(skip=self.skip, nth=self.nth, offset=self.offset)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
+    bl_idname = "button.action_mesh_edges_select_sharp"
+    bl_label = "选择锐边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    sharpness: bpy.props.FloatProperty(
+        name="",
+        default=0.523599,
+        min=0.000174533,
+        max=3.14159,
+        soft_min=0.0174533,
+        soft_max=3.14159,
+        subtype='ANGLE',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="锐度")
+        
+        col_right = split.column()
+        col_right.prop(self, "sharpness")
+
+    def execute(self, context):
+        bpy.ops.mesh.edges_select_sharp(sharpness=self.sharpness)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
+    bl_idname = "popup.mesh_select_by_trait"
+    bl_label = "按特征全选"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.mesh.select_all(action='SELECT')
         return {'FINISHED'}
-    
-# 网络——变换——法向缩放
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="按特征全选", icon='PRESET')
+        col.operator("mesh.select_non_manifold", text="非流形", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_loose", text="松散几何元素", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_interior_faces", text="内侧面", icon="RADIOBUT_OFF")
+        col.operator("mesh.select_face_by_sides", text="按侧选面", icon="RADIOBUT_OFF")
+
+class BUTTON_ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
+    bl_idname = "button.action_mesh_call_select_by_trait"
+    bl_label = "按特征全选"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.mesh_select_by_trait('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_select_loops(bpy.types.Operator):
+    bl_idname = "popup.mesh_select_loops"
+    bl_label = "选择循环"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        row = layout.row()
+        col = row.column(align=True)
+        col.label(text="选择循环", icon='PRESET')
+        col.operator("mesh.loop_multi_select", text="循环边", icon="RADIOBUT_OFF").ring=False
+        col.operator("mesh.loop_multi_select", text="并排边", icon="RADIOBUT_OFF").ring=True
+        col.separator()
+        col.operator("mesh.loop_to_region", text="选择循环线内侧区域", icon="RADIOBUT_OFF")
+        col.operator("mesh.region_to_loop", text="选择区域轮廓线", icon="RADIOBUT_OFF")
+        col.separator()
+        col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
+        col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
+
+class BUTTON_ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
+    bl_idname = "button.action_call_mesh_select_loops"
+    bl_label = "选择循环"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.popup.mesh_select_loops('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
+    bl_idname = "button.action_mesh_select_axis"
+    bl_label = "活动项的同侧"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    orientation: bpy.props.EnumProperty(
+        name="",
+        description="轴朝向",
+        items=[
+            ('GLOBAL', "全局",    "", 'ORIENTATION_GLOBAL',   0),
+            ('LOCAL',  "局部",     "", 'ORIENTATION_LOCAL', 1),
+            ('NORMAL', "法向",    "", 'ORIENTATION_NORMAL',   2),
+            ('GIMBAL', "万向",    "", 'ORIENTATION_GIMBAL',    3),
+            ('VIEW',   "视图",      "", 'ORIENTATION_VIEW',      4),
+            ('CURSOR', "游标",    "", 'ORIENTATION_CURSOR',        5),
+            ('PARENT', "父级",    "", 'ORIENTATION_PARENT',     6),
+        ],
+        default='LOCAL',
+    )
+
+    sign: bpy.props.EnumProperty(
+        name="",
+        description="选择的一侧",
+        items=[
+            ('POS',   "正轴向",   ""),
+            ('NEG',   "负轴向",   ""),
+            ('ALIGN', "对齐轴",   ""),
+        ],
+        default='POS',
+    )
+
+    axis: bpy.props.EnumProperty(
+        name="",
+        description="选择各点用来比较的轴向",
+        items=[
+            ('X', "X", ""),
+            ('Y', "Y", ""),
+            ('Z', "Z", ""),
+        ],
+        default='X',
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        description="",
+        default=0,
+        min=0,
+        max=50.0,
+        soft_max=10.0,
+        precision=3,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="轴向模式")
+        col_left.label(text="轴向记号")
+        col_left.label(text="轴向")
+        col_left.label(text="阈值")
+
+        col_right = split.column()
+        col_right.prop(self, "orientation")
+        col_right.prop(self, "sign")
+        col_right.prop(self, "axis")
+        col_right.prop(self, "threshold")
+
+    def execute(self, context):
+        bpy.ops.mesh.select_axis(orientation=self.orientation, sign=self.sign, axis=self.axis, threshold=self.threshold)
+        return {'FINISHED'}
+
+# “网格”菜单
 class BUTTON_ACTION_OT_meshedit_transform_shrink_fatten(bpy.types.Operator):
     bl_idname = "button.action_meshedit_transform_shrink_fatten"
     bl_label = "法向缩放"
@@ -24,13 +236,596 @@ class BUTTON_ACTION_OT_meshedit_transform_shrink_fatten(bpy.types.Operator):
         bpy.ops.transform.shrink_fatten('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_meshedit_transform_skin_resize(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_skin_resize"
+    bl_label = "重置蒙皮尺寸"
+    bl_description = "快捷键 Ctrl A"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.transform.skin_resize('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_extrude_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_extrude_menu"
+    bl_label = "挤出"
+    bl_description = "快捷键 Alt E"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_extrude")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_edit_mesh_merge_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_merge_menu"
+    bl_label = "合并"
+    bl_description = "快捷键 M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_merge")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_split_menu"
+    bl_label = "拆分"
+    bl_description = "快捷键 Alt M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_split")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_split_menu"
+    bl_label = "拆分"
+    bl_description = "快捷键 Alt M"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_split")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_mesh_separate(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_separate"
+    bl_label = "分离"
+    bl_description = "快捷键 P"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.separate('INVOKE_DEFAULT')
+        return {'FINISHED'} 
+
+class BUTTON_ACTION_OT_meshedit_mesh_bisect(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_bisect"
+    bl_label = "切分"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.bisect('INVOKE_DEFAULT')
+        return {'FINISHED'} 
+    
+class BUTTON_ACTION_OT_meshedit_mesh_knife_project(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_knife_project"
+    bl_label = "投影切割"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.knife_project()
+        return {'FINISHED'} 
+
+class BUTTON_ACTION_OT_meshedit_mesh_knife_tool(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_knife_tool"
+    bl_label = "裁刀拓扑工具"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.knife_tool('INVOKE_DEFAULT')
+        return {'FINISHED'} 
+
+class BUTTON_ACTION_OT_meshedit_mesh_convex_hull(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_convex_hull"
+    bl_label = "凸壳"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    delete_unused: bpy.props.BoolProperty(
+        name="删除未使用项",
+        description="",
+        default=True
+    )
+
+    use_existing_faces: bpy.props.BoolProperty(
+        name="使用已有的面",
+        description="",
+        default=True
+    )
+
+    make_holes: bpy.props.BoolProperty(
+        name="生成空洞",
+        description="",
+        default=False
+    )
+
+    join_triangles: bpy.props.BoolProperty(
+        name="合并三角面",
+        description="",
+        default=True
+    )
+
+    face_threshold: bpy.props.FloatProperty(
+        name="",
+        description="Face angle limit in radians",
+        default=0.698132,
+        min=0.0,
+        max=3.14159,
+        subtype='ANGLE'
+    )
+
+    shape_threshold: bpy.props.FloatProperty(
+        name="",
+        description="",
+        default=0.698132,
+        min=0.0,
+        max=3.14159,
+        subtype='ANGLE'
+    )
+
+    uvs: bpy.props.BoolProperty(
+        name="比较UV",
+        description="",
+        default=False
+    )
+
+    vcols: bpy.props.BoolProperty(
+        name="比较顶点色",
+        description="",
+        default=False
+    )
+
+    seam: bpy.props.BoolProperty(
+        name="比较缝合边",
+        description="",
+        default=False
+    )
+
+    sharp: bpy.props.BoolProperty(
+        name="比较锐边",
+        description="",
+        default=False
+    )
+
+    materials: bpy.props.BoolProperty(
+        name="比较材质",
+        description="",
+        default=False
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="面夹角最大值")
+        col_left.label(text="最大形状角度")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "delete_unused")
+        col_right.prop(self, "use_existing_faces")
+        col_right.prop(self, "make_holes")
+        col_right.prop(self, "join_triangles")
+        col_right.prop(self, "face_threshold")
+        col_right.prop(self, "shape_threshold")
+        col_right.prop(self, "uvs")
+        col_right.prop(self, "vcols")
+        col_right.prop(self, "seam")
+        col_right.prop(self, "sharp")
+        col_right.prop(self, "materials")
+
+    def execute(self, context):
+        bpy.ops.mesh.convex_hull(
+            delete_unused=self.delete_unused,
+            use_existing_faces=self.use_existing_faces,
+            make_holes=self.make_holes,
+            join_triangles=self.join_triangles,
+            face_threshold=self.face_threshold,
+            shape_threshold=self.shape_threshold,
+            uvs=self.uvs,
+            vcols=self.vcols,
+            seam=self.seam,
+            sharp=self.sharp,
+            materials=self.materials,)
+        return {'FINISHED'} 
+    
+class BUTTON_ACTION_OT_meshedit_mesh_symmetrize(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_symmetrize"
+    bl_label = "对称"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    direction: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('NEGATIVE_X', "-X 到 +X", ""),
+            ('POSITIVE_X', "+X 到 -X", ""),
+            ('NEGATIVE_Y', "-Y 到 +Y", ""),
+            ('POSITIVE_Y', "+Y 到 -Y", ""),
+            ('NEGATIVE_Z', "-Z 到 +Z", ""),
+            ('POSITIVE_Z', "+Z 到 -Z", ""),
+        ],
+        default='NEGATIVE_X'
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        default=0.000,
+        min=0.0,
+        max=10.0,
+        soft_max=0.1,
+        precision=3,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="方向")
+        col_left.label(text="阈值")
+
+        col_right = split.column()
+        col_right.prop(self, "direction")
+        col_right.prop(self, "threshold")
+
+    def execute(self, context):
+        bpy.ops.mesh.symmetrize(direction=self.direction, threshold=self.threshold)
+        return {'FINISHED'} 
+
+class BUTTON_ACTION_OT_meshedit_mesh_symmetry_snap(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_symmetry_snap"
+    bl_label = "吸附到对称结构"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    direction: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('NEGATIVE_X', "-X 到 +X", ""),
+            ('POSITIVE_X', "+X 到 -X", ""),
+            ('NEGATIVE_Y', "-Y 到 +Y", ""),
+            ('POSITIVE_Y', "+Y 到 -Y", ""),
+            ('NEGATIVE_Z', "-Z 到 +Z", ""),
+            ('POSITIVE_Z', "+Z 到 -Z", "")
+        ],
+        default='NEGATIVE_X'
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        default=0.05,
+        min=0.0,
+        max=10.0,
+        soft_max=1,
+        subtype="DISTANCE",
+    )
+
+    factor: bpy.props.FloatProperty(
+        name="",
+        default=0.5,
+        min=0.0,
+        max=1.0
+    )
+
+    use_center: bpy.props.BoolProperty(
+        name="中心",
+        default=True
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="方向")
+        col_left.label(text="阈值")
+        col_left.label(text="系数")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "direction")
+        col_right.prop(self, "threshold")
+        col_right.prop(self, "factor")
+        col_right.prop(self, "use_center")
+        
+    def execute(self, context):
+        bpy.ops.mesh.symmetry_snap(
+            direction=self.direction,
+            threshold=self.threshold, 
+            factor=self.factor,
+            use_center=self.use_center,)
+        return {'FINISHED'} 
+    
+class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_normals_menu"
+    bl_label = "法向"
+    bl_description = "快捷键 Alt N"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_normals")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_flip_normals(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_flip_normals"
+    bl_label = "翻转法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    only_clnors: bpy.props.BoolProperty(
+        name="仅自定义法向",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "only_clnors")
+
+    def execute(self, context):
+        bpy.ops.mesh.flip_normals(only_clnors=self.only_clnors)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_normals_make_consistent(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_normals_make_consistent"
+    bl_label = "重新计算法线"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    inside: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('OUT', "外向", ""),
+            ('IN', "内向", ""),
+        ],
+        default='OUT',
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="法线方向")
+
+        col_right = split.column()
+        col_right.prop(self, "inside", text="abc", expand=True)
+
+    def execute(self, context):
+        bpy.ops.mesh.normals_make_consistent(inside=False if self.inside == 'OUT' else True)
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_set_normals_from_faces(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_set_normals_from_faces"
+    bl_label = "从面设置法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    keep_sharp: bpy.props.BoolProperty(
+        name="保持锐边",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "keep_sharp")
+
+    def execute(self, context):
+        bpy.ops.mesh.set_normals_from_faces(keep_sharp=self.keep_sharp)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_transform_rotate_normal(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_rotate_normal"
+    bl_label = "旋转法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.rotate_normal('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_point_normals(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_point_normals"
+    bl_label = "法向指向目标体"
+    bl_description = "快捷键 Alt L"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.point_normals('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_merge_normals(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_merge_normals"
+    bl_label = "合并法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.merge_normals()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_split_normals(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_split_normals"
+    bl_label = "拆分法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.split_normals()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_average(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_normals_average"
+    bl_label = "平均法向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_normals_average")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_shading(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_shading"
+    bl_label = "着色方式"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_shading")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_weights(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_weights"
+    bl_label = "权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_weights")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_attribute_set(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_attribute_set"
+    bl_label = "设置属性"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.attribute_set('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_sort_elements(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_sort_elements"
+    bl_label = "网格元素排序"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.sort_elements('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_clean(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_clean"
+    bl_label = "清理"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_clean")
+        return {'FINISHED'}
+
+# “顶点”菜单
+class BUTTON_ACTION_OT_meshedit_extrude_vertices_move(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_extrude_vertices_move"
+    bl_label = "挤出顶点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.extrude_vertices_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_bevel_vertices(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_bevel_vertices"
+    bl_label = "点倒角"
+    bl_description = "快捷键 Ctrl Shift B"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.bevel('INVOKE_DEFAULT',affect='VERTICES')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_bevel_edges(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_bevel_edges"
+    bl_label = "边倒角"
+    bl_description = "快捷键 Ctrl B"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.bevel('INVOKE_DEFAULT',affect='EDGES')
+        return {'FINISHED'}
 
 
 
 classes = (
-    BUTTON_ACTION_OT_meshedit_select_select_all,
+    BUTTON_ACTION_OT_mesh_select_nth,
+    BUTTON_ACTION_OT_mesh_edges_select_sharp,
+    BUTTON_ACTION_OT_mesh_select_by_trait,
+    BUTTON_ACTION_OT_mesh_call_select_by_trait,
+    BUTTON_ACTION_OT_mesh_select_loops,
+    BUTTON_ACTION_OT_call_mesh_select_loops,
+    BUTTON_ACTION_OT_mesh_select_axis,
+
     BUTTON_ACTION_OT_meshedit_transform_shrink_fatten,
+    BUTTON_ACTION_OT_meshedit_transform_skin_resize,
+
+    BUTTON_ACTION_OT_meshedit_edit_mesh_extrude_menu,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_merge_menu,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu,
+    BUTTON_ACTION_OT_meshedit_mesh_separate,
+    BUTTON_ACTION_OT_meshedit_mesh_bisect,
+    BUTTON_ACTION_OT_meshedit_mesh_knife_project,
+    BUTTON_ACTION_OT_meshedit_mesh_knife_tool,
+    BUTTON_ACTION_OT_meshedit_mesh_convex_hull,
+    BUTTON_ACTION_OT_meshedit_mesh_symmetrize,
+    BUTTON_ACTION_OT_meshedit_mesh_symmetry_snap,
+
+    BUTTON_ACTION_OT_meshedit_edit_mesh_normals_menu,
+    BUTTON_ACTION_OT_meshedit_flip_normals,
+    BUTTON_ACTION_OT_meshedit_normals_make_consistent,
+    BUTTON_ACTION_OT_meshedit_set_normals_from_faces,
+    BUTTON_ACTION_OT_meshedit_transform_rotate_normal,
+    BUTTON_ACTION_OT_meshedit_point_normals,
+    BUTTON_ACTION_OT_meshedit_merge_normals,
+    BUTTON_ACTION_OT_meshedit_split_normals,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_normals_average,
+
+    BUTTON_ACTION_OT_meshedit_edit_mesh_shading,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_weights,
+    BUTTON_ACTION_OT_meshedit_attribute_set,
+    BUTTON_ACTION_OT_meshedit_sort_elements,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_clean,
+
+    BUTTON_ACTION_OT_meshedit_extrude_vertices_move,
+    BUTTON_ACTION_OT_meshedit_bevel_vertices,
+    BUTTON_ACTION_OT_meshedit_bevel_edges,
 
 )
 

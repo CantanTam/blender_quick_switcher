@@ -88,7 +88,9 @@ button_press_global = {
         'button.action_global_screen_screen_full_area':(
         "button.action_global_screen_screen_full_area","全屏模式","FULLSCREEN_ENTER",
     ),
-
+        'button.action_meshedit_edit_show_face_orientation':(
+        "button.action_meshedit_edit_show_face_orientation","面朝向","RADIOBUT_OFF",
+    ),
     # “选择”菜单
         'button.action_global_select_all':(
         "button.action_global_select_all","全选","EVENT_A",
@@ -360,24 +362,6 @@ button_press_global = {
         'button.action_switch_proportional_random':(
         "button.action_switch_proportional_random","随机","RNDCURVE",
     ),
-
-    #MESHEDIT 的选择菜单
-        'button.action_mesh_select_nth':(
-        "button.action_mesh_select_nth","间隔式弃选","RADIOBUT_OFF", "MESHEDIT",
-    ),
-        'button.action_mesh_edges_select_sharp':(
-        "button.action_mesh_edges_select_sharp","选择锐边","RADIOBUT_OFF", "MESHEDIT",
-    ),
-        'button.action_mesh_call_select_by_trait':(
-        "button.action_mesh_call_select_by_trait","按特征全选","PRESET", "MESHEDIT",
-    ),
-        'button.action_call_mesh_select_loops':(
-        "button.action_call_mesh_select_loops","选择循环","PRESET", "MESHEDIT",
-    ),
-        'button.action_mesh_select_axis':(
-        "button.action_mesh_select_axis","活动项的同侧","RADIOBUT_OFF", "MESHEDIT",
-    ),
-
     # 一些通用操作
         'button.action_transform_tosphere':(
         "button.action_transform_tosphere","球形化","RADIOBUT_OFF",

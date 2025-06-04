@@ -185,11 +185,6 @@ from .right_click_to_switcher.right_click_global_view_menu_actions import (
     unregister as unregister_right_click_global_view_actions,
 )
 
-from .right_click_to_switcher.right_click_global_select_menu_actions import (
-    register as register_right_click_global_select_menu_actions,
-    unregister as unregister_right_click_global_select_menu_actions,
-)
-
 from .right_click_add_setting_panel import (
     register as register_right_click_add_setting_panel,
     unregister as unregister_right_click_add_setting_panel,
@@ -198,9 +193,6 @@ from .right_click_add_setting_panel import (
 def register():
     # 注册右键添加到设置面板
     register_right_click_add_setting_panel()
-
-    # 注册“选择”菜单右键功能
-    register_right_click_global_select_menu_actions()
 
     # 注册视图右键菜单功能
     register_right_click_global_view_actions()
@@ -330,9 +322,6 @@ def register():
 def unregister():
     # 注销右键添加到设置面板
     unregister_right_click_add_setting_panel()
-
-    # 注销“选择”菜单右键功能
-    unregister_right_click_global_select_menu_actions()
 
     # 注销视图右键菜单功能
     unregister_right_click_global_view_actions()

@@ -421,6 +421,16 @@ class BUTTON_ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
         bpy.ops.screen.screen_full_area(use_hide_panels=True)
         return {'FINISHED'}
     
+#切换面朝向，是我额外添加的功能
+class BUTTON_ACTION_OT_meshedit_edit_mesh_show_face_orientation(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_show_face_orientation"
+    bl_label = "面朝向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.context.space_data.overlay.show_face_orientation = not bpy.context.space_data.overlay.show_face_orientation
+        return {'FINISHED'}
+    
 # “选择”菜单——全选
 class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
     bl_idname = "button.action_global_select_all"
@@ -2377,6 +2387,8 @@ classes = (
     BUTTON_ACTION_OT_global_render_opengl_keyframe,
     BUTTON_ACTION_OT_global_area_menu,
     BUTTON_ACTION_OT_global_screen_screen_full_area,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_show_face_orientation,
+
 
     #“选择”菜单
     BUTTON_ACTION_OT_global_select_all,
