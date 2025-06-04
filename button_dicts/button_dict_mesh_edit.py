@@ -106,20 +106,51 @@ button_press_mesh_edit = {
         'button.action_meshedit_bevel_edges':(
         "button.action_meshedit_bevel_edges","边倒角","MOD_BEVEL",
     ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        'button.action_meshedit_edge_face_add':(
+        "button.action_meshedit_edge_face_add","填充面","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_vert_connect_path':(
+        "button.action_meshedit_vert_connect_path","连接顶点","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_vert_connect':(
+        "button.action_meshedit_vert_connect","连接顶点对","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_rip_move':(
+        "button.action_meshedit_rip_move","断离顶点","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_rip_move_fill':(
+        "button.action_meshedit_rip_move_fill","断离顶点并填充","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_rip_edge_move':(
+        "button.action_meshedit_rip_edge_move","断离顶点并延长","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_transform_vert_slide':(
+        "button.action_meshedit_transform_vert_slide","滑移顶点","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_vertices_smooth':(
+        "button.action_meshedit_vertices_smooth","平滑顶点","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_vertices_smooth_laplacian':(
+        "button.action_meshedit_vertices_smooth_laplacian","平滑顶点(拉普拉斯)","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_transform_vert_crease':(
+        "button.action_meshedit_transform_vert_crease","顶点折痕","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_blend_from_shape':(
+        "button.action_meshedit_blend_from_shape","从形状混合","SHAPEKEY_DATA",
+    ),
+        'button.action_meshedit_shape_propagate_to_all':(
+        "button.action_meshedit_shape_propagate_to_all","传递到形状","SHAPEKEY_DATA",
+    ),
+        'button.action_meshedit_vertex_group_menu':(
+        "button.action_meshedit_vertex_group_menu","顶点组","GROUP_VERTEX",
+    ),
+        'button.action_meshedit_hook_menu':(
+        "button.action_meshedit_hook_menu","钩挂","PRESET",
+    ),
+        'button.action_meshedit_vertex_parent_set':(
+        "button.action_meshedit_vertex_parent_set","创建父级顶点","RADIOBUT_OFF",
+    ),
 
 
 

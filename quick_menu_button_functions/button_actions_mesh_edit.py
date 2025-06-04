@@ -1,4 +1,5 @@
 import bpy
+import bmesh
 
 # “选择”菜单
 class BUTTON_ACTION_OT_mesh_select_nth(bpy.types.Operator):
@@ -782,7 +783,411 @@ class BUTTON_ACTION_OT_meshedit_bevel_edges(bpy.types.Operator):
         bpy.ops.mesh.bevel('INVOKE_DEFAULT',affect='EDGES')
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_meshedit_edge_face_add(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edge_face_add"
+    bl_label = "从顶点创建边/面"
+    bl_description = "快捷键 F"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.mesh.edge_face_add()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vert_connect_path(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vert_connect_path"
+    bl_label = "连接顶点路径"
+    bl_description = "快捷键 J"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.vert_connect_path()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vert_connect(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vert_connect"
+    bl_label = "连接顶点对"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.vert_connect()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_rip_move(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_rip_move"
+    bl_label = "断离顶点"
+    bl_description = "快捷键 V"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        obj = context.edit_object
+        if not obj or obj.type != 'MESH':
+            return False
+
+        bm = bmesh.from_edit_mesh(bpy.context.edit_object.data)
+        bm.verts.ensure_lookup_table()
+        bm.edges.ensure_lookup_table()
+
+        selected_verts = [v for v in bm.verts if v.select]
+        if len(selected_verts) != 1:
+            return False
+
+        v = selected_verts[0]
+        if len(v.link_edges) < 3:
+            return False
+
+        return True
+
+    def execute(self, context):
+        bpy.ops.mesh.rip_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_rip_move_fill(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_rip_move_fill"
+    bl_label = "断离顶点并填充"
+    bl_description = "快捷键 Alt V"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        obj = context.edit_object
+        if not obj or obj.type != 'MESH':
+            return False
+
+        bm = bmesh.from_edit_mesh(bpy.context.edit_object.data)
+        bm.verts.ensure_lookup_table()
+        bm.edges.ensure_lookup_table()
+
+        selected_verts = [v for v in bm.verts if v.select]
+        if len(selected_verts) != 1:
+            return False
+
+        v = selected_verts[0]
+        if len(v.link_edges) < 3:
+            return False
+
+        return True
+
+    def execute(self, context):
+        bpy.ops.mesh.rip_move('INVOKE_DEFAULT', MESH_OT_rip={"use_fill":True})
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_rip_edge_move(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_rip_edge_move"
+    bl_label = "断离顶点并延长"
+    bl_description = "快捷键 Alt D"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.rip_edge_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_transform_vert_slide(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_vert_slide"
+    bl_label = "滑移顶点"
+    bl_description = "快捷键 Shift V"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.vert_slide('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vertices_smooth(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vertices_smooth"
+    bl_label = "平滑顶点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    factor: bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=-10.0,
+        max=10.0,
+        soft_min=1,
+        soft_max=1,
+        subtype="FACTOR",
+        precision=3,
+    )
+
+    repeat: bpy.props.IntProperty(
+        name="",
+        default=1,
+        min=1,
+        max=1000,
+        soft_max=100,
+    )
+
+    xaxis: bpy.props.BoolProperty(
+        name="X 轴",
+        description="Smooth along the X axis",
+        default=True
+    )
+
+    yaxis: bpy.props.BoolProperty(
+        name="Y 轴",
+        description="Smooth along the Y axis",
+        default=True
+    )
+
+    zaxis: bpy.props.BoolProperty(
+        name="Z 轴",
+        description="Smooth along the Z axis",
+        default=True
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="平滑")
+        col_left.label(text="重复")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "factor")
+        col_right.prop(self, "repeat")
+        col_right.prop(self, "xaxis")
+        col_right.prop(self, "yaxis")
+        col_right.prop(self, "zaxis")
+
+
+    def execute(self, context):
+        bpy.ops.mesh.vertices_smooth(
+        factor=self.factor,
+        repeat=self.repeat,
+        xaxis=self.xaxis,
+        yaxis=self.yaxis,
+        zaxis=self.zaxis,
+        )
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vertices_smooth_laplacian(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vertices_smooth_laplacian"
+    bl_label = "拉普拉斯平滑顶点"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    repeat: bpy.props.IntProperty(
+        name="",
+        default=1,
+        min=1,
+        max=1000,
+        soft_max=200,
+    )
+
+    lambda_factor: bpy.props.FloatProperty(
+        name="",
+        default=1.0,
+        min=0,
+        max=1000.0,
+        precision=3
+    )
+
+    lambda_border: bpy.props.FloatProperty(
+        name="",
+        default=5e-5,
+        min=0,
+        max=1000.0,
+        precision=3
+    )
+
+    use_x: bpy.props.BoolProperty(
+        name="X 轴向平滑",
+        default=True
+    )
+
+    use_y: bpy.props.BoolProperty(
+        name="Y 轴向平滑",
+        default=True
+    )
+
+    use_z: bpy.props.BoolProperty(
+        name="Z 轴向平滑",
+        default=True
+    )
+
+    preserve_volume: bpy.props.BoolProperty(
+        name="维持体积",
+        default=True
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.5)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="网格光滑次数")
+        col_left.label(text="Lambda 系数")
+        col_left.label(text="边界内的Lambda 系数")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "repeat")
+        col_right.prop(self, "lambda_factor")
+        col_right.prop(self, "lambda_border")
+        col_right.prop(self, "use_x")
+        col_right.prop(self, "use_y")
+        col_right.prop(self, "use_z")
+        col_right.prop(self, "preserve_volume")
+
+    def execute(self, context):
+        bpy.ops.mesh.vertices_smooth_laplacian(
+            repeat=self.repeat,
+            lambda_factor=self.lambda_factor,
+            lambda_border=self.lambda_border,
+            use_x=self.use_x,
+            use_y=self.use_y,
+            use_z=self.use_z,
+            preserve_volume=self.preserve_volume
+        )
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_transform_vert_crease(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_vert_crease"
+    bl_label = "顶点折痕"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.vert_crease('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+def shape_key_items(self, context):
+    items = []
+    obj = context.object
+
+    if obj and obj.type == 'MESH' and obj.data.shape_keys:
+        for i, key in enumerate(obj.data.shape_keys.key_blocks):
+            items.append((
+                key.name,     # name（返回值）
+                key.name,     # label（显示值，保持英文原样）
+                "",           # description
+                'SHAPEKEY_DATA',  # 图标
+                i             # index
+            ))
+    else:
+        items.append(("", "None", "No shape keys available", 'ERROR', 0))
+
+    return items
+    
+class BUTTON_ACTION_OT_meshedit_blend_from_shape(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_blend_from_shape"
+    bl_label = "从形状混合"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):        
+        if not context.active_object.data.shape_keys or len(context.active_object.data.shape_keys.key_blocks) == 0:
+            return False
+
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        if not any(v.select for v in bm.verts) and not any(e.select for e in bm.edges) and not any(f.select for f in bm.faces):
+            return False
+
+        return True
+
+    shape: bpy.props.EnumProperty(
+        name="",
+        items=shape_key_items,
+    )
+
+    blend: bpy.props.FloatProperty(
+        name="",
+        default=1.0,
+        min=-1000.0,
+        soft_min=-2,
+        max=1000.0,
+        soft_max=2,
+        precision=3,
+    )
+
+    add: bpy.props.BoolProperty(
+        name="相加",
+        default=True
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="形状")
+        col_left.label(text="混合")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "shape")
+        col_right.prop(self, "blend")
+        col_right.prop(self, "add")
+
+    def execute(self, context):
+        bpy.ops.mesh.blend_from_shape(shape=self.shape, blend=self.blend, add=self.add)
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_shape_propagate_to_all(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_shape_propagate_to_all"
+    bl_label = "传递到形状"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):        
+        if not context.active_object.data.shape_keys or len(context.active_object.data.shape_keys.key_blocks) == 0:
+            return False
+
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        if not any(v.select for v in bm.verts) and not any(e.select for e in bm.edges) and not any(f.select for f in bm.faces):
+            return False
+
+        return True
+
+    def execute(self, context):
+        bpy.ops.mesh.shape_propagate_to_all()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vertex_group_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vertex_group_menu"
+    bl_label = "顶点组"
+    bl_description = "快捷键 Ctrl G"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_vertex_group")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_hook_menu(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_hook_menu"
+    bl_label = "钩挂"
+    bl_description = "快捷键 Ctrl H"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_hook")
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_vertex_parent_set"
+    bl_label = "创建父级顶点"
+    bl_description = "快捷键 Ctrl P"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.object.vertex_parent_set('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_mesh_select_nth,
@@ -826,6 +1231,21 @@ classes = (
     BUTTON_ACTION_OT_meshedit_extrude_vertices_move,
     BUTTON_ACTION_OT_meshedit_bevel_vertices,
     BUTTON_ACTION_OT_meshedit_bevel_edges,
+    BUTTON_ACTION_OT_meshedit_edge_face_add,
+    BUTTON_ACTION_OT_meshedit_vert_connect_path,
+    BUTTON_ACTION_OT_meshedit_vert_connect,
+    BUTTON_ACTION_OT_meshedit_rip_move,
+    BUTTON_ACTION_OT_meshedit_rip_move_fill,
+    BUTTON_ACTION_OT_meshedit_rip_edge_move,
+    BUTTON_ACTION_OT_meshedit_transform_vert_slide,
+    BUTTON_ACTION_OT_meshedit_vertices_smooth,
+    BUTTON_ACTION_OT_meshedit_vertices_smooth_laplacian,
+    BUTTON_ACTION_OT_meshedit_transform_vert_crease,
+    BUTTON_ACTION_OT_meshedit_blend_from_shape,
+    BUTTON_ACTION_OT_meshedit_shape_propagate_to_all,
+    BUTTON_ACTION_OT_meshedit_vertex_group_menu,
+    BUTTON_ACTION_OT_meshedit_hook_menu,
+    BUTTON_ACTION_OT_meshedit_vertex_parent_set,
 
 )
 

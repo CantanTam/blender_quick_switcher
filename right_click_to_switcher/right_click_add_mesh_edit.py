@@ -125,6 +125,67 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"点倒角\"⟶Switcher", icon='MOD_BEVEL').action = 'button.action_meshedit_bevel_vertices'
         layout.operator("call.add_to_switcher_menu", text="\"边倒角\"⟶Switcher", icon='MOD_BEVEL').action = 'button.action_meshedit_bevel_edges'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_edge_face_add":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"从顶点创建边/面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_edge_face_add'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_vert_connect_path":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"连接顶点路径\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vert_connect_path'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_vert_connect":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"连接顶点对\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vert_connect'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_rip_move":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"断离顶点\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_rip_move'
+        layout.operator("call.add_to_switcher_menu", text="\"断离顶点并填充\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_rip_move_fill'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_rip_edge_move":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"断离顶点并延长\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_rip_edge_move'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_vert_slide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"滑移顶点\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_transform_vert_slide'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_vertices_smooth":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"平滑顶点\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vertices_smooth'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_vertices_smooth_laplacian":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"平滑顶点(拉普拉斯)\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vertices_smooth_laplacian'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_vert_crease":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"顶点折痕\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_transform_vert_crease'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_blend_from_shape":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"从形状混合\"⟶Switcher", icon='SHAPEKEY_DATA').action = 'button.action_meshedit_blend_from_shape'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_shape_propagate_to_all":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"传递到形状\"⟶Switcher", icon='SHAPEKEY_DATA').action = 'button.action_meshedit_shape_propagate_to_all'
+
+    elif op and op.bl_rna.identifier == "OBJECT_OT_vertex_parent_set":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"创建父级顶点\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vertex_parent_set'
+
 
 
 
@@ -218,6 +279,20 @@ def meshedit_edit_mesh_clean_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"清理(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_meshedit_edit_mesh_clean'
 
+def meshedit_vertex_group_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"顶点组(菜单)\"⟶Switcher", icon='GROUP_VERTEX').action = 'button.action_meshedit_vertex_group_menu'
+
+def meshedit_hook_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"钩挂(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_meshedit_hook_menu'
+
 
 
 
@@ -245,8 +320,12 @@ def register():
     bpy.types.VIEW3D_MT_edit_mesh_shading.append(meshedit_edit_mesh_shading_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_weights.append(meshedit_edit_mesh_weights_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_clean.append(meshedit_edit_mesh_clean_menu_to_switcher)
+    bpy.types.VIEW3D_MT_vertex_group.append(meshedit_vertex_group_menu_to_switcher)
+    bpy.types.VIEW3D_MT_hook.append(meshedit_hook_menu_to_switcher)
 
 def unregister():
+    bpy.types.VIEW3D_MT_hook.remove(meshedit_hook_menu_to_switcher)
+    bpy.types.VIEW3D_MT_vertex_group.remove(meshedit_vertex_group_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_clean.remove(meshedit_edit_mesh_clean_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_weights.remove(meshedit_edit_mesh_weights_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_shading.remove(meshedit_edit_mesh_shading_menu_to_switcher)
