@@ -242,12 +242,27 @@ button_press_mesh_edit = {
         'button.action_meshedit_face_split_by_edges':(
         "button.action_meshedit_face_split_by_edges","焊接边线到面","RADIOBUT_OFF",
     ),
-
-
-
-
-
-
+        'button.action_meshedit_faces_shade_smooth':(
+        "button.action_meshedit_faces_shade_smooth","平滑着色","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_faces_shade_flat':(
+        "button.action_meshedit_faces_shade_flat","平直着色","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_edit_mesh_faces_data':(
+        "button.action_meshedit_edit_mesh_faces_data","面数据","PRESET",
+    ),
+        'button.action_meshedit_colors_rotate':(
+        "button.action_meshedit_colors_rotate","旋转顶点着色","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_colors_reverse':(
+        "button.action_meshedit_colors_reverse","反相颜色","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_uvs_rotate':(
+        "button.action_meshedit_uvs_rotate","旋转UV","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_uvs_reverse':(
+        "button.action_meshedit_uvs_reverse","翻转UV","RADIOBUT_OFF",
+    ),
 
 
 

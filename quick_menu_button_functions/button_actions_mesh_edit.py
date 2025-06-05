@@ -2293,6 +2293,161 @@ class BUTTON_ACTION_OT_meshedit_face_split_by_edges(bpy.types.Operator):
         bpy.ops.mesh.face_split_by_edges()
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_meshedit_faces_shade_smooth(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_faces_shade_smooth"
+    bl_label = "平滑/平直着色"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    shade_method: bpy.props.EnumProperty(
+        name="着色方式",
+        items=[
+            ('SMOOTH', "平滑着色", ""),
+            ('FLAT', "平直着色", ""),
+        ],
+        default='SMOOTH',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="着色方式")
+
+        col_right = split.column()
+        col_right.prop(self, "shade_method", expand=True)
+
+    def execute(self, context):
+        if self.shade_method == 'SMOOTH':
+            bpy.ops.mesh.faces_shade_smooth()
+        elif self.shade_method == 'FLAT':
+            bpy.ops.mesh.faces_shade_flat()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_faces_shade_flat(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_faces_shade_flat"
+    bl_label = "平滑/平直着色"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    shade_method: bpy.props.EnumProperty(
+        name="着色方式",
+        items=[
+            ('SMOOTH', "平滑着色", ""),
+            ('FLAT', "平直着色", ""),
+        ],
+        default='FLAT',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="着色方式")
+
+        col_right = split.column()
+        col_right.prop(self, "shade_method", expand=True)
+
+    def execute(self, context):
+        if self.shade_method == 'SMOOTH':
+            bpy.ops.mesh.faces_shade_smooth()
+        elif self.shade_method == 'FLAT':
+            bpy.ops.mesh.faces_shade_flat()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edit_mesh_faces_data(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edit_mesh_faces_data"
+    bl_label = "面数据"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_faces_data")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_colors_rotate(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_colors_rotate"
+    bl_label = "旋转顶点着色"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_ccw: bpy.props.BoolProperty(
+        name="逆时针",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_ccw")
+
+    def execute(self, context):
+        bpy.ops.mesh.colors_rotate(use_ccw=self.use_ccw)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_colors_reverse(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_colors_reverse"
+    bl_label = "反相颜色"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.colors_reverse()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_uvs_rotate(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_uvs_rotate"
+    bl_label = "旋转 UV"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_ccw: bpy.props.BoolProperty(
+        name="逆时针",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_ccw")
+
+    def execute(self, context):
+        bpy.ops.mesh.uvs_rotate(use_ccw=self.use_ccw)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_uvs_reverse(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_uvs_reverse"
+    bl_label = "翻转 UV"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.uvs_reverse()
+        return {'FINISHED'}
+
+
+
 
 classes = (
     BUTTON_ACTION_OT_mesh_select_nth,
@@ -2383,6 +2538,13 @@ classes = (
     BUTTON_ACTION_OT_meshedit_intersect,
     BUTTON_ACTION_OT_meshedit_intersect_boolean,
     BUTTON_ACTION_OT_meshedit_face_split_by_edges,
+    BUTTON_ACTION_OT_meshedit_faces_shade_smooth,
+    BUTTON_ACTION_OT_meshedit_faces_shade_flat,
+    BUTTON_ACTION_OT_meshedit_edit_mesh_faces_data,
+    BUTTON_ACTION_OT_meshedit_colors_rotate,
+    BUTTON_ACTION_OT_meshedit_colors_reverse,
+    BUTTON_ACTION_OT_meshedit_uvs_rotate,
+    BUTTON_ACTION_OT_meshedit_uvs_reverse,
 
 )
 
