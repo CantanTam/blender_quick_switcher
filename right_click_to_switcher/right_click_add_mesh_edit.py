@@ -191,6 +191,16 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"挤出边线\"⟶Switcher", icon='EDGESEL').action = 'button.action_meshedit_extrude_edges_move'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_bridge_edge_loops":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"桥接循环边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_bridge_edge_loops'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_subdivide_edgering":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"细分并排边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_subdivide_edgering'
+
     elif op and op.bl_rna.identifier == "MESH_OT_unsubdivide":
         layout = self.layout
         layout.separator()
@@ -229,14 +239,23 @@ def draw_add_to_switcher_meshedit(self, context):
     elif op and op.bl_rna.identifier == "MESH_OT_mark_seam":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"标记缝合边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_seam_clear_false'
-        layout.operator("call.add_to_switcher_menu", text="\"清除缝合边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_seam_clear_true'
+        layout.operator("call.add_to_switcher_menu", text="\"缝合边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_seam_toggle'
 
     elif op and op.bl_rna.identifier == "MESH_OT_mark_sharp":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"标记锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_sharp'
-        layout.operator("call.add_to_switcher_menu", text="\"清除锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_sharp_clear_true'
+        layout.operator("call.add_to_switcher_menu", text="\"锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_sharp_toggle'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_set_sharpness_by_angle":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"按角度设置锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_set_sharpness_by_angle'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_mark_freestyle_edge":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"标记Freestyle边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_freestyle_edge_clear_false'
+        layout.operator("call.add_to_switcher_menu", text="\"清除Freestyle边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_freestyle_edge_clear_true'
 
 
 

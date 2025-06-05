@@ -154,8 +154,14 @@ button_press_mesh_edit = {
         'button.action_meshedit_extrude_edges_move':(
         "button.action_meshedit_extrude_edges_move","挤出边线","EDGESEL",
     ),
+        'button.action_meshedit_bridge_edge_loops':(
+        "button.action_meshedit_bridge_edge_loops","桥接循环边","RADIOBUT_OFF",
+    ),
         'button.action_meshedit_edge_rotate':(
         "button.action_meshedit_edge_rotate","旋转边","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_subdivide_edgering':(
+        "button.action_meshedit_subdivide_edgering","细分并排边","RADIOBUT_OFF",
     ),
         'button.action_meshedit_unsubdivide':(
         "button.action_meshedit_unsubdivide","反细分","RADIOBUT_OFF",
@@ -175,20 +181,21 @@ button_press_mesh_edit = {
         'button.action_meshedit_transform_edge_bevelweight':(
         "button.action_meshedit_transform_edge_bevelweight","倒角边权重","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_seam_clear_false':(
-        "button.action_meshedit_mesh_mark_seam_clear_false","标记缝合边","RADIOBUT_OFF",
+        'button.action_meshedit_mesh_mark_seam_toggle':(
+        "button.action_meshedit_mesh_mark_seam_toggle","缝合边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_seam_clear_true':(
-        "button.action_meshedit_mesh_mark_seam_clear_true","清除缝合边","RADIOBUT_OFF",
+        'button.action_meshedit_mesh_mark_sharp_toggle':(
+        "button.action_meshedit_mesh_mark_sharp_toggle","锐边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_sharp':(
-        "button.action_meshedit_mesh_mark_sharp","标记锐边","RADIOBUT_OFF",
+        'button.action_meshedit_mesh_set_sharpness_by_angle':(
+        "button.action_meshedit_mesh_set_sharpness_by_angle","按角度设置锐边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_sharp_clear_true':(
-        "button.action_meshedit_mesh_mark_sharp_clear_true","清除锐边","RADIOBUT_OFF",
+        'button.action_meshedit_mesh_mark_freestyle_edge_clear_false':(
+        "button.action_meshedit_mesh_mark_freestyle_edge_clear_false","标记Freestyle边","RADIOBUT_OFF",
     ),
-
-
+        'button.action_meshedit_mesh_mark_freestyle_edge_clear_true':(
+        "button.action_meshedit_mesh_mark_freestyle_edge_clear_true","清除Freestyle边","RADIOBUT_OFF",
+    ),
 
 
 

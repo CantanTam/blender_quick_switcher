@@ -1199,8 +1199,221 @@ class BUTTON_ACTION_OT_meshedit_extrude_edges_move(bpy.types.Operator):
         bpy.ops.mesh.extrude_edges_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
+class BUTTON_ACTION_OT_meshedit_bridge_edge_loops(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_bridge_edge_loops"
+    bl_label = "桥接循环边"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    type: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('SINGLE', "开放循环", ""),
+            ('CLOSED', "闭合循环", ""),
+            ('PAIRS', "循环对", ""),
+        ],
+        default='SINGLE',
+    )
 
+    use_merge: bpy.props.BoolProperty(
+        name="合并",
+        default=False,
+    )
+
+    merge_factor: bpy.props.FloatProperty(
+        name="",
+        default=0.5,
+        min=0.0,
+        max=1.0,
+        precision=3,
+    )
+
+    twist_offset: bpy.props.IntProperty(
+        name="",
+        default=0,
+        min=-1000,
+        max=1000,
+    )
+
+    number_cuts: bpy.props.IntProperty(
+        name="",
+        default=0,
+        min=0,
+        max=1000,
+        soft_max=64,
+    )
+
+    interpolation: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('LINEAR', "线性", ""),
+            ('PATH', "混合路径", ""),
+            ('SURFACE', "混合曲面", ""),
+        ],
+        default='PATH',
+    )
+
+    smoothness: bpy.props.FloatProperty(
+        name="",
+        default=1.0,
+        min=0.0,
+        max=1000.0,
+        soft_max=2,
+        precision=3,
+    )
+
+    profile_shape_factor: bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=-1000.0,
+        soft_min=-2,
+        max=1000.0,
+        soft_max=2,
+        precision=3,
+    )
+
+    profile_shape: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('SMOOTH', "平滑", "", 'SMOOTHCURVE', 0),
+            ('SPHERE', "球状", "", 'SPHERECURVE', 1),
+            ('ROOT', "根凸", "", 'ROOTCURVE', 2),
+            ('INVERSE_SQUARE', "平方反比", "", 'INVERSESQUARECURVE', 3),
+            ('SHARP', "锐利", "", 'SHARPCURVE', 4),
+            ('LINEAR', "线性", "", 'LINCURVE', 5),
+        ],
+        default='SMOOTH',
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="连接多个循环")
+        col_left.label(text="")
+        col_left.label(text="合并系数")
+        col_left.label(text="扭曲")
+        col_left.label(text="切割次数")
+        col_left.label(text="插值类型")
+        col_left.label(text="平滑度")
+        col_left.label(text="轮廓系数")
+        col_left.label(text="轮廓形状")
+
+        col_right = split.column()
+        col_right.prop(self, "type")
+        col_right.prop(self, "use_merge")
+        col_right.prop(self, "merge_factor")
+        col_right.prop(self, "twist_offset")
+        col_right.prop(self, "number_cuts")
+        col_right.prop(self, "interpolation")
+        col_right.prop(self, "smoothness")
+        col_right.prop(self, "profile_shape_factor")
+        col_right.prop(self, "profile_shape")
+
+    def execute(self, context):
+        bpy.ops.mesh.bridge_edge_loops(
+            type=self.type,
+            use_merge=self.use_merge,
+            merge_factor=self.merge_factor,
+            twist_offset=self.twist_offset,
+            number_cuts=self.number_cuts,
+            interpolation=self.interpolation,
+            smoothness=self.smoothness,
+            profile_shape_factor=self.profile_shape_factor,
+            profile_shape=self.profile_shape,
+        )
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_subdivide_edgering(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_subdivide_edgering"
+    bl_label = "细分并排边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    number_cuts: bpy.props.IntProperty(
+        name="",
+        default=10,
+        min=0,
+        max=1000,
+        soft_max=64,
+    )
+
+    interpolation: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('LINEAR', "线性", ""),
+            ('PATH', "混合路径", ""),
+            ('SURFACE', "混合曲面", ""),
+        ],
+        default='PATH',
+    )
+
+    smoothness: bpy.props.FloatProperty(
+        name="",
+        default=1.0,
+        min=0.0,
+        max=1000.0,
+        soft_max=2,
+        precision=3,
+    )
+
+    profile_shape_factor: bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=-1000.0,
+        soft_min=-2,
+        max=1000.0,
+        soft_max=2,
+        precision=3,
+    )
+
+    profile_shape: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('SMOOTH', "平滑", "", 'SMOOTHCURVE', 0),
+            ('SPHERE', "球状", "", 'SPHERECURVE', 1),
+            ('ROOT', "根凸", "", 'ROOTCURVE', 2),
+            ('INVERSE_SQUARE', "平方反比", "", 'INVERSESQUARECURVE', 3),
+            ('SHARP', "锐利", "", 'SHARPCURVE', 4),
+            ('LINEAR', "线性", "", 'LINCURVE', 5),
+        ],
+        default='SMOOTH',
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="切割次数")
+        col_left.label(text="插值类型")
+        col_left.label(text="平滑度")
+        col_left.label(text="轮廓系数")
+        col_left.label(text="轮廓形状")
+
+        col_right = split.column()
+        col_right.prop(self, "number_cuts")
+        col_right.prop(self, "interpolation")
+        col_right.prop(self, "smoothness")
+        col_right.prop(self, "profile_shape_factor")
+        col_right.prop(self, "profile_shape")
+    
+    def execute(self, context):
+        bpy.ops.mesh.subdivide_edgering(
+            number_cuts=self.number_cuts,
+            interpolation=self.interpolation,
+            smoothness=self.smoothness,
+            profile_shape_factor=self.profile_shape_factor,
+            profile_shape=self.profile_shape,
+        )
+        return {'FINISHED'}
 
 class BUTTON_ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
     bl_idname = "button.action_meshedit_unsubdivide"
@@ -1346,31 +1559,69 @@ class BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight(bpy.types.Operator):
         bpy.ops.transform.edge_bevelweight('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_false(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_seam_clear_false"
-    bl_label = "标记缝合边"
+class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_toggle(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_seam_toggle"
+    bl_label = "缝合边"
+    bl_description = "标记缝合边/清除缝合边二合一"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.mesh.mark_seam(clear=False)
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        has_seam = any(e.select and e.seam for e in bm.edges)
+        bpy.ops.mesh.mark_seam(clear=has_seam)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_true(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_seam_clear_true"
-    bl_label = "清除缝合边"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        bpy.ops.mesh.mark_seam(clear=True)
-        return {'FINISHED'}
-
-class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_sharp"
-    bl_label = "标记锐边"
+class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_toggle(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_sharp_toggle"
+    bl_label = "标记/清除锐边"
+    bl_description = "标记缝合边/清除缝合边二合一"
     bl_options = {'REGISTER', 'UNDO'}
 
     use_verts: bpy.props.BoolProperty(
-        name="顶点",
+        name="",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        has_sharp = any(e.select and not e.smooth for e in bm.edges)
+
+        layout = self.layout
+        split = layout.row().split(factor=0.6)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="标记锐边顶点" if has_sharp else "清除锐边顶点")
+
+        col_right = split.column()
+        col_right.prop(self, "use_verts")
+
+    def execute(self, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        has_sharp = any(e.select and not e.smooth for e in bm.edges)
+        bpy.ops.mesh.mark_sharp(clear=has_sharp, use_verts=self.use_verts)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_set_sharpness_by_angle"
+    bl_label = "按角度设置锐边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    angle: bpy.props.FloatProperty(
+        name="",
+        default=0.523599,  
+        min=0.000174533,  
+        soft_min=0.0174533, 
+        max=3.14159,       
+        subtype='ANGLE',  
+        unit='ROTATION',
+    )
+
+    extend: bpy.props.BoolProperty(
+        name="扩展",
         default=False,
     )
 
@@ -1383,49 +1634,34 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp(bpy.types.Operator):
 
         col_left = split.column()
         col_left.alignment = 'RIGHT'
+        col_left.label(text="角度")
         col_left.label(text="")
 
         col_right = split.column()
-        col_right.prop(self, "use_verts")
+        col_right.prop(self, "angle")
+        col_right.prop(self, "extend")
 
     def execute(self, context):
-        bpy.ops.mesh.mark_sharp(clear=False, use_verts=self.use_verts)
+        bpy.ops.mesh.set_sharpness_by_angle(angle=self.angle, extend=self.extend)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_clear_true(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_sharp_clear_true"
-    bl_label = "清除锐边"
+class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_freestyle_edge_clear_false"
+    bl_label = "标记Freestyle边"
     bl_options = {'REGISTER', 'UNDO'}
 
-    use_verts: bpy.props.BoolProperty(
-        name="顶点",
-        default=False,
-    )
+    def execute(self, context):
+        bpy.ops.mesh.mark_freestyle_edge(clear=False)
+        return {'FINISHED'}
 
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def draw(self, context):
-        layout = self.layout
-        split = layout.row().split(factor=0.4)
-
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_left.label(text="")
-
-        col_right = split.column()
-        col_right.prop(self, "use_verts")
+class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_freestyle_edge_clear_true"
+    bl_label = "清除Freestyle边"
+    bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.mesh.mark_sharp(clear=True, use_verts=self.use_verts)
+        bpy.ops.mesh.mark_freestyle_edge(clear=True)
         return {'FINISHED'}
-    
-
-
-
-
-
-
 
 
 
@@ -1489,7 +1725,9 @@ classes = (
     BUTTON_ACTION_OT_meshedit_hook_menu,
     BUTTON_ACTION_OT_meshedit_vertex_parent_set,
     BUTTON_ACTION_OT_meshedit_extrude_edges_move,
+    BUTTON_ACTION_OT_meshedit_bridge_edge_loops,
 
+    BUTTON_ACTION_OT_meshedit_subdivide_edgering,
     BUTTON_ACTION_OT_meshedit_unsubdivide,
     BUTTON_ACTION_OT_meshedit_edge_rotate,
     BUTTON_ACTION_OT_meshedit_transform_edge_slide,
@@ -1497,10 +1735,11 @@ classes = (
     BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide,
     BUTTON_ACTION_OT_meshedit_transform_edge_crease,
     BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_false,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_true,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_clear_true,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_toggle,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_toggle,
+    BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true,
 
 )
 
