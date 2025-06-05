@@ -199,7 +199,7 @@ def draw_add_to_switcher_global(self, context):
     elif op and op.bl_rna.identifier in {
         "OBJECT_OT_duplicate_move",
         "CURVE_OT_duplicate_move",
-        "MBALL_OT_duplicate_move",
+        "MBALL_OT_duplicate_metaelems",
         "GPENCIL_OT_duplicate_move", # 4.2 edition
         "GREASE_PENCIL_OT_duplicate_move", # 4.3 edition
         "MESH_OT_duplicate_move",

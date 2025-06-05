@@ -257,9 +257,80 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"标记Freestyle边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_freestyle_edge_clear_false'
         layout.operator("call.add_to_switcher_menu", text="\"清除Freestyle边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_freestyle_edge_clear_true'
 
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_edit_mesh_extrude_move_normal":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"挤出\"⟶Switcher", icon='FACESEL').action = 'button.action_meshedit_view3d_edit_mesh_extrude_move_normal'
 
+    elif op and op.bl_rna.identifier == "VIEW3D_OT_edit_mesh_extrude_move_shrink_fatten":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"沿法向挤出\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_extrude_move_shrink_fatten'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_extrude_faces_move":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"挤出各个面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_extrude_faces_move'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_inset":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"内插面\"⟶Switcher", icon='FACESEL').action = 'button.action_meshedit_inset'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_poke":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"尖分面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_poke'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_quads_convert_to_tris":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"面三角化\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_quads_convert_to_tris'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_tris_convert_to_quads":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"三角面->四边面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_tris_convert_to_quads'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_solidify":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"面实体化\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_solidify'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_wireframe":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"线框\"⟶Switcher", icon='MOD_WIREFRAME').action = 'button.action_meshedit_wireframe'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_fill":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"填充\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_fill'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_fill_grid":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"栅格填充\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_fill_grid'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_beautify_fill":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"完美建面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_beautify_fill'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_intersect":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"交集(切割)\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_intersect'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_intersect_boolean":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"交集(布尔)\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_intersect_boolean'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_face_split_by_edges":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"焊接边线到面\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_face_split_by_edges'
 
 
 

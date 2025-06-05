@@ -196,18 +196,52 @@ button_press_mesh_edit = {
         'button.action_meshedit_mesh_mark_freestyle_edge_clear_true':(
         "button.action_meshedit_mesh_mark_freestyle_edge_clear_true","清除Freestyle边","RADIOBUT_OFF",
     ),
-
-
-
-
-
-
-
-
-
-
-
-
+    # “面”菜单
+        'button.action_meshedit_view3d_edit_mesh_extrude_move_normal':(
+        "button.action_meshedit_view3d_edit_mesh_extrude_move_normal","挤出","FACESEL",
+    ),
+        'button.action_meshedit_extrude_move_shrink_fatten':(
+        "button.action_meshedit_extrude_move_shrink_fatten","沿法向挤出","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_extrude_faces_move':(
+        "button.action_meshedit_extrude_faces_move","挤出各个面","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_inset':(
+        "button.action_meshedit_inset","内插面","FACESEL",
+    ),
+        'button.action_meshedit_poke':(
+        "button.action_meshedit_poke","尖分面","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_quads_convert_to_tris':(
+        "button.action_meshedit_quads_convert_to_tris","面三角化","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_tris_convert_to_quads':(
+        "button.action_meshedit_tris_convert_to_quads","三角面->四边面","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_solidify':(
+        "button.action_meshedit_solidify","面实体化","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_wireframe':(
+        "button.action_meshedit_wireframe","线框","MOD_WIREFRAME",
+    ),
+        'button.action_meshedit_fill':(
+        "button.action_meshedit_fill","填充","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_fill_grid':(
+        "button.action_meshedit_fill_grid","栅格填充","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_beautify_fill':(
+        "button.action_meshedit_beautify_fill","完美建面","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_intersect':(
+        "button.action_meshedit_intersect","交集(切割)","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_intersect_boolean':(
+        "button.action_meshedit_intersect_boolean","交集(布尔)","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_face_split_by_edges':(
+        "button.action_meshedit_face_split_by_edges","焊接边线到面","RADIOBUT_OFF",
+    ),
 
 
 

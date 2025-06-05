@@ -1663,8 +1663,635 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true(bpy.types.Op
         bpy.ops.mesh.mark_freestyle_edge(clear=True)
         return {'FINISHED'}
 
+# “面”菜单
+class BUTTON_ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_view3d_edit_mesh_extrude_move_normal"
+    bl_label = "挤出面"
+    bl_description = "快捷键 E"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.view3d.edit_mesh_extrude_move_normal('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_extrude_move_shrink_fatten(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_extrude_move_shrink_fatten"
+    bl_label = "沿法向挤出面"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.view3d.edit_mesh_extrude_move_shrink_fatten('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_extrude_faces_move(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_extrude_faces_move"
+    bl_label = "挤出各个面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.extrude_faces_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_inset(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_inset"
+    bl_label = "内插面"
+    bl_description = "快捷键 I"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.inset('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_poke(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_poke"
+    bl_label = "尖分面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    offset: bpy.props.FloatProperty(
+        name="",
+        default=0.0,
+        min=-1000.0,
+        soft_min=-1,
+        max=1000.0,
+        soft_max=1,
+        subtype='DISTANCE'
+    )
+
+    use_relative_offset: bpy.props.BoolProperty(
+        name="相对偏移",
+        default=False,
+    )
+
+    center_mode: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('MEDIAN_WEIGHTED', "加权质心", ""),
+            ('MEDIAN', "质心", ""),
+            ('BOUNDS', "边界范围", ""),
+        ],
+        default='MEDIAN_WEIGHTED',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="尖分偏移")
+        col_left.label(text="")
+        col_left.label(text="尖分中心")
+
+        col_right = split.column()
+        col_right.prop(self, "offset")
+        col_right.prop(self, "use_relative_offset")
+        col_right.prop(self, "center_mode")
+
+    def execute(self, context):
+        bpy.ops.mesh.poke(
+            offset=self.offset, 
+            use_relative_offset=self.use_relative_offset, 
+            center_mode=self.center_mode,)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_quads_convert_to_tris(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_quads_convert_to_tris"
+    bl_label = "面三角化"
+    bl_description = "快捷键 Ctrl T"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    quad_method: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('BEAUTY', "布线优化", ""),
+            ('FIXED', "固定", ""),
+            ('FIXED_ALTERNATE', "固定交替", ""),
+            ('SHORTEST_DIAGONAL', "最短对角线", ""),
+            ('LONGEST_DIAGONAL', "最长对角线", ""),
+        ],
+        default='BEAUTY',
+    )
+
+    ngon_method: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('BEAUTY', "布线优化", ""),
+            ('CLIP', "剪辑(裁切)", ""),
+        ],
+        default='BEAUTY',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="四边面拆分方法")
+        col_left.label(text="多边形方法")
+
+        col_right = split.column()
+        col_right.prop(self, "quad_method")
+        col_right.prop(self, "ngon_method")
+
+    def execute(self, context):
+        bpy.ops.mesh.quads_convert_to_tris(quad_method=self.quad_method, ngon_method=self.ngon_method)
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_tris_convert_to_quads(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_tris_convert_to_quads"
+    bl_label = "三角面->四边面"
+    bl_description = "快捷键 Alt J"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    face_threshold: bpy.props.FloatProperty(
+        name="",
+        default=0.698132,
+        min=0.0,
+        max=3.14159,
+        subtype='ANGLE',
+    )
+
+    shape_threshold: bpy.props.FloatProperty(
+        name="",
+        default=0.698132,
+        min=0.0,
+        max=3.14159,
+        subtype='ANGLE',
+    )
+
+    uvs: bpy.props.BoolProperty(
+        name="比较UV",
+        default=False,
+    )
+
+    vcols: bpy.props.BoolProperty(
+        name="比较顶点色",
+        default=False,
+    )
+
+    seam: bpy.props.BoolProperty(
+        name="比较缝合边",
+        default=False,
+    )
+
+    sharp: bpy.props.BoolProperty(
+        name="比较锐边",
+        default=False,
+    )
+
+    materials: bpy.props.BoolProperty(
+        name="比较材质",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="面夹角最大值")
+        col_left.label(text="最大形状角度")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "face_threshold")
+        col_right.prop(self, "shape_threshold")
+        col_right.prop(self, "uvs")
+        col_right.prop(self, "vcols")
+        col_right.prop(self, "seam")
+        col_right.prop(self, "sharp")
+        col_right.prop(self, "materials")
+
+    def execute(self, context):
+        bpy.ops.mesh.tris_convert_to_quads(
+            face_threshold=self.face_threshold,
+            shape_threshold=self.shape_threshold,
+            uvs=self.uvs,
+            vcols=self.vcols,
+            seam=self.seam,
+            sharp=self.sharp,
+            materials=self.materials,)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_solidify(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_solidify"
+    bl_label = "面实体化"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    thickness: bpy.props.FloatProperty(
+        name="",
+        min=-10000,
+        max=10000,
+        default=0.01,
+        subtype='DISTANCE'
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="厚(宽)度")
+
+        col_right = split.column()
+        col_right.prop(self, "thickness")
+
+    def execute(self, context):
+        bpy.ops.mesh.solidify(thickness=self.thickness)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_wireframe(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_wireframe"
+    bl_label = "线框"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_boundary: bpy.props.BoolProperty(
+        name="边界范围",
+        default=True,
+    )
+
+    use_even_offset: bpy.props.BoolProperty(
+        name="均等偏移",
+        default=True,
+    )
+
+    use_relative_offset: bpy.props.BoolProperty(
+        name="相对偏移",
+        default=False,
+    )
+
+    use_replace: bpy.props.BoolProperty(
+        name="替换",
+        default=True,
+    )
+
+    thickness: bpy.props.FloatProperty(
+        name="",
+        default=0.01,
+        min=0.0,
+        max=10000.0,
+        soft_max=1,
+        subtype='DISTANCE',
+    )
+
+    offset: bpy.props.FloatProperty(
+        name="",
+        default=0.01,
+        min=0.0,
+        max=10000.0,
+        soft_max=10,
+        subtype='DISTANCE',
+    )
+
+    use_crease: bpy.props.BoolProperty(
+        name="折痕",
+        default=False,
+    )
+
+    crease_weight: bpy.props.FloatProperty(
+        name="",
+        default=0.01,
+        min=0.0,
+        max=1000.0,
+        soft_max=1,
+        subtype='DISTANCE',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="")
+        col_left.label(text="厚(宽)度")
+        col_left.label(text="偏移量")
+        col_left.label(text="")
+        col_left.label(text="折痕权重")
+
+        col_right = split.column()
+        col_right.prop(self, "use_boundary")
+        col_right.prop(self, "use_even_offset")
+        col_right.prop(self, "use_relative_offset")
+        col_right.prop(self, "use_replace")
+        col_right.prop(self, "thickness")
+        col_right.prop(self, "offset")
+        col_right.prop(self, "use_crease")
+        col_right.prop(self, "crease_weight")
+
+    def execute(self, context):
+        bpy.ops.mesh.wireframe(
+            use_boundary=self.use_boundary,
+            use_even_offset=self.use_even_offset,
+            use_relative_offset=self.use_relative_offset,
+            use_replace=self.use_replace,
+            thickness=self.thickness,
+            offset=self.offset,
+            use_crease=self.use_crease,
+            crease_weight=self.crease_weight)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_fill(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_fill"
+    bl_label = "填充"
+    bl_description = "快捷键 Alt F"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        return any(f.select for f in bm.edges)
+    
+    use_beauty: bpy.props.BoolProperty(
+        name="布线优化",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_beauty")
+
+    def execute(self, context):
+        bpy.ops.mesh.fill(use_beauty=self.use_beauty)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_fill_grid(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_fill_grid"
+    bl_label = "栅格填充"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        return any(f.select for f in bm.edges)
+
+    span: bpy.props.IntProperty(
+        name="",
+        default=1,
+        min=1,
+        max=1000,
+        soft_max=100,
+    )
+
+    offset: bpy.props.IntProperty(
+        name="",
+        default=0,
+        min=-1000,
+        soft_min=-100,
+        max=1000,
+        soft_max=100,
+    )
+
+    use_interp_simple: bpy.props.BoolProperty(
+        name="简单混合",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="跨分")
+        col_left.label(text="偏移量")
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "span")
+        col_right.prop(self, "offset")
+        col_right.prop(self, "use_interp_simple")
+
+    def execute(self, context):
+        bpy.ops.mesh.fill_grid(span=self.span, offset=self.offset, use_interp_simple=self.use_interp_simple)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_beautify_fill(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_beautify_fill"
+    bl_label = "完美建面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        return any(f.select for f in bm.verts)
+
+    angle_limit: bpy.props.FloatProperty(
+        name="",
+        default=3.14159,
+        min=0.0,
+        max=3.14159,
+        subtype='ANGLE',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="最大角度")
+
+        col_right = split.column()
+        col_right.prop(self, "angle_limit")
+
+    def execute(self, context):
+        bpy.ops.mesh.beautify_fill(angle_limit=self.angle_limit)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_intersect(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_intersect"
+    bl_label = "交集(切割)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    mode: bpy.props.EnumProperty(
+        name="源",
+        items=[
+            ('SELECT', "自身交集", ""),
+            ('SELECT_UNSELECT', "选中/未选中", ""),
+        ],
+        default='SELECT_UNSELECT',
+    )
+
+    separate_mode: bpy.props.EnumProperty(
+        name="分离模式",
+        items=[
+            ('ALL', "全部", ""),
+            ('CUT', "剪切", ""),
+            ('NONE', "合并", ""),
+        ],
+        default='CUT',
+    )
+
+    solver: bpy.props.EnumProperty(
+        name="解算器",
+        items=[
+            ('FAST', "快速", ""),
+            ('EXACT', "准确", ""),
+        ],
+        default='EXACT',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="源")
+        row = col_right.row()
+        row.prop(self, "mode", expand=True)
+
+        col_left.label(text="分离模式")
+        row = col_right.row()
+        row.prop(self, "separate_mode", expand=True)
+
+        col_left.label(text="解算器")
+        row = col_right.row()
+        row.prop(self, "solver", expand=True)
+
+    def execute(self, context):
+        bpy.ops.mesh.intersect(mode=self.mode, separate_mode=self.separate_mode, solver=self.solver)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_intersect_boolean(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_intersect_boolean"
+    bl_label = "交集(布尔)"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    operation: bpy.props.EnumProperty(
+        name="布尔运算",
+        items=[
+            ('INTERSECT', "交集", ""),
+            ('UNION', "并集", ""),
+            ('DIFFERENCE', "差值", ""),
+        ],
+        default='DIFFERENCE',
+    )
+
+    solver: bpy.props.EnumProperty(
+        name="解算器",
+        items=[
+            ('FAST', "快速", ""),
+            ('EXACT', "准确", ""),
+        ],
+        default='EXACT',
+    )
+
+    use_swap: bpy.props.BoolProperty(
+        name="",
+        default=False,
+    )
+
+    use_self: bpy.props.BoolProperty(
+        name="",
+        default=False,
+    )
+
+    threshold: bpy.props.FloatProperty(
+        name="",
+        default=1e-6,
+        min=0.0,
+        max=0.01,
+        soft_max=0.001,
+        subtype='DISTANCE',
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="布尔运算")
+        row = col_right.row()
+        row.prop(self, "operation", expand=True)
+
+        col_left.label(text="解算器")
+        row = col_right.row()
+        row.prop(self, "solver", expand=True)
+
+        col_left.label(text="")
+        row = col_right.row()
+        row.prop(self, "use_swap", text="交换")
+
+        col_left.label(text="")
+        row = col_right.row()
+        row.prop(self, "use_self", text="自身交集")
+
+        if self.solver == 'FAST':
+            col_left.label(text="合并阈值")
+            row = col_right.row()
+            row.prop(self, "threshold")
+
+    def execute(self, context):
+        bpy.ops.mesh.intersect_boolean(
+            operation=self.operation, 
+            solver=self.solver,
+            use_swap=self.use_swap,
+            use_self=self.use_self,
+            threshold=self.threshold,)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_face_split_by_edges(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_face_split_by_edges"
+    bl_label = "焊接边线到面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.face_split_by_edges()
+        return {'FINISHED'}
 
 
 classes = (
@@ -1740,6 +2367,22 @@ classes = (
     BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle,
     BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false,
     BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true,
+
+    BUTTON_ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal,
+    BUTTON_ACTION_OT_meshedit_extrude_move_shrink_fatten,
+    BUTTON_ACTION_OT_meshedit_extrude_faces_move,
+    BUTTON_ACTION_OT_meshedit_inset,
+    BUTTON_ACTION_OT_meshedit_mesh_poke,
+    BUTTON_ACTION_OT_meshedit_quads_convert_to_tris,
+    BUTTON_ACTION_OT_meshedit_tris_convert_to_quads,
+    BUTTON_ACTION_OT_meshedit_solidify,
+    BUTTON_ACTION_OT_meshedit_wireframe,
+    BUTTON_ACTION_OT_meshedit_fill,
+    BUTTON_ACTION_OT_meshedit_fill_grid,
+    BUTTON_ACTION_OT_meshedit_beautify_fill,
+    BUTTON_ACTION_OT_meshedit_intersect,
+    BUTTON_ACTION_OT_meshedit_intersect_boolean,
+    BUTTON_ACTION_OT_meshedit_face_split_by_edges,
 
 )
 
