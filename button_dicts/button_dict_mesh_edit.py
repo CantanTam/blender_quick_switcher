@@ -151,6 +151,62 @@ button_press_mesh_edit = {
         'button.action_meshedit_vertex_parent_set':(
         "button.action_meshedit_vertex_parent_set","创建父级顶点","RADIOBUT_OFF",
     ),
+        'button.action_meshedit_extrude_edges_move':(
+        "button.action_meshedit_extrude_edges_move","挤出边线","EDGESEL",
+    ),
+        'button.action_meshedit_edge_rotate':(
+        "button.action_meshedit_edge_rotate","旋转边","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_unsubdivide':(
+        "button.action_meshedit_unsubdivide","反细分","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_transform_edge_slide':(
+        "button.action_meshedit_transform_edge_slide","滑移边线","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_loopcut_slide':(
+        "button.action_meshedit_loopcut_slide","环切并滑移","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_offset_edge_loops_slide':(
+        "button.action_meshedit_offset_edge_loops_slide","偏移边线并滑移","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_transform_edge_crease':(
+        "button.action_meshedit_transform_edge_crease","边线折痕","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_transform_edge_bevelweight':(
+        "button.action_meshedit_transform_edge_bevelweight","倒角边权重","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_mesh_mark_seam_clear_false':(
+        "button.action_meshedit_mesh_mark_seam_clear_false","标记缝合边","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_mesh_mark_seam_clear_true':(
+        "button.action_meshedit_mesh_mark_seam_clear_true","清除缝合边","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_mesh_mark_sharp':(
+        "button.action_meshedit_mesh_mark_sharp","标记锐边","RADIOBUT_OFF",
+    ),
+        'button.action_meshedit_mesh_mark_sharp_clear_true':(
+        "button.action_meshedit_mesh_mark_sharp_clear_true","清除锐边","RADIOBUT_OFF",
+    ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

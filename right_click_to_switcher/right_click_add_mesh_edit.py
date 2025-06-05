@@ -186,8 +186,57 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"创建父级顶点\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_vertex_parent_set'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_extrude_edges_move":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"挤出边线\"⟶Switcher", icon='EDGESEL').action = 'button.action_meshedit_extrude_edges_move'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_unsubdivide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"反细分\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_unsubdivide'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_edge_rotate":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"顺/逆时针旋转边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_edge_rotate'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_edge_slide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"滑移边线\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_transform_edge_slide'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_loopcut_slide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"环切并滑移\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_loopcut_slide'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_offset_edge_loops_slide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"偏移边线并滑移\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_offset_edge_loops_slide'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_edge_crease":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"边线折痕\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_transform_edge_crease'
+
+    elif op and op.bl_rna.identifier == "TRANSFORM_OT_edge_bevelweight":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"倒角边权重\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_transform_edge_bevelweight'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_mark_seam":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"标记缝合边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_seam_clear_false'
+        layout.operator("call.add_to_switcher_menu", text="\"清除缝合边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_seam_clear_true'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_mark_sharp":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"标记锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_sharp'
+        layout.operator("call.add_to_switcher_menu", text="\"清除锐边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_mesh_mark_sharp_clear_true'
 
 
 

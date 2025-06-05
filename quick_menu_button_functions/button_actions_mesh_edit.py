@@ -1189,6 +1189,248 @@ class BUTTON_ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
         bpy.ops.object.vertex_parent_set('INVOKE_DEFAULT')
         return {'FINISHED'}
 
+# “边”菜单
+class BUTTON_ACTION_OT_meshedit_extrude_edges_move(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_extrude_edges_move"
+    bl_label = "挤出边线"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.extrude_edges_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+
+
+
+class BUTTON_ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_unsubdivide"
+    bl_label = "反细分"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    iterations: bpy.props.IntProperty(
+        name="",
+        min=1,
+        max=1000,
+        soft_max=100,
+        default=2,
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="迭代")
+
+        col_right = split.column()
+        col_right.prop(self, "iterations")
+
+    def execute(self, context):
+        bpy.ops.mesh.unsubdivide(iterations=self.iterations)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_edge_rotate(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_edge_rotate"
+    bl_label = "顺/逆时针旋转边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        obj = context.active_object
+        if not obj or obj.type != 'MESH':
+            return False
+
+        if context.mode != 'EDIT_MESH':
+            return False
+
+        bm = bmesh.from_edit_mesh(obj.data)
+
+        # 不管处于哪种选择模式，只要有选中的面，就直接 False
+        if any(f.select for f in bm.faces):
+            return False
+
+        selected_edges = {e for e in bm.edges if e.select}
+        if selected_edges:
+            for face in bm.faces:
+                # 如果这个面所有的边都被选中了，则构成了一个完整面
+                if face.edges and face.edges.issubset(selected_edges):
+                    return False  # 有一个完整面 -> 不允许旋转
+            return True  # 所有面都没被完整选中 -> 允许旋转
+
+        # 检查是否选中了两个点且刚好是一条边的两端
+        selected_verts = [v for v in bm.verts if v.select]
+        if len(selected_verts) == 2:
+            v1, v2 = selected_verts
+            for e in v1.link_edges:
+                if e.other_vert(v1) == v2:
+                    return True
+
+        return False
+
+    use_ccw: bpy.props.EnumProperty(
+        name="",
+        items=[
+            ('FALSE', "顺时针", ""),
+            ('TRUE', "逆时针", ""),
+        ],
+        default='FALSE',
+    )
+    
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="旋转方向")
+
+        col_right = split.column()
+        col_right.prop(self, "use_ccw", text="abc", expand=True)
+
+    def execute(self, context):
+        bpy.ops.mesh.edge_rotate(use_ccw=False if self.use_ccw == 'FALSE' else True)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_transform_edge_slide(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_edge_slide"
+    bl_label = "滑移边线"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.edge_slide('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_loopcut_slide(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_loopcut_slide"
+    bl_label = "环切并滑移"
+    bl_description = "快捷键 Ctrl R"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.loopcut_slide('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_offset_edge_loops_slide"
+    bl_label = "偏移边线并滑移"
+    bl_description = "快捷键 Ctrl Shift R"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.offset_edge_loops_slide('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_transform_edge_crease(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_edge_crease"
+    bl_label = "边线折痕"
+    bl_description = "快捷键 Shift E"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.edge_crease('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_transform_edge_bevelweight"
+    bl_label = "倒角边权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.edge_bevelweight('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_false(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_seam_clear_false"
+    bl_label = "标记缝合边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_seam(clear=False)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_true(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_seam_clear_true"
+    bl_label = "清除缝合边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_seam(clear=True)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_sharp"
+    bl_label = "标记锐边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_verts: bpy.props.BoolProperty(
+        name="顶点",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_verts")
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_sharp(clear=False, use_verts=self.use_verts)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_clear_true(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_mesh_mark_sharp_clear_true"
+    bl_label = "清除锐边"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    use_verts: bpy.props.BoolProperty(
+        name="顶点",
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_left.label(text="")
+
+        col_right = split.column()
+        col_right.prop(self, "use_verts")
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_sharp(clear=True, use_verts=self.use_verts)
+        return {'FINISHED'}
+    
+
+
+
+
+
+
+
+
+
+
+
 classes = (
     BUTTON_ACTION_OT_mesh_select_nth,
     BUTTON_ACTION_OT_mesh_edges_select_sharp,
@@ -1246,6 +1488,19 @@ classes = (
     BUTTON_ACTION_OT_meshedit_vertex_group_menu,
     BUTTON_ACTION_OT_meshedit_hook_menu,
     BUTTON_ACTION_OT_meshedit_vertex_parent_set,
+    BUTTON_ACTION_OT_meshedit_extrude_edges_move,
+
+    BUTTON_ACTION_OT_meshedit_unsubdivide,
+    BUTTON_ACTION_OT_meshedit_edge_rotate,
+    BUTTON_ACTION_OT_meshedit_transform_edge_slide,
+    BUTTON_ACTION_OT_meshedit_loopcut_slide,
+    BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide,
+    BUTTON_ACTION_OT_meshedit_transform_edge_crease,
+    BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_false,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_clear_true,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp,
+    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_clear_true,
 
 )
 
