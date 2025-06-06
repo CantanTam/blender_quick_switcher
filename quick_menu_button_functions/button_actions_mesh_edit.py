@@ -1414,6 +1414,108 @@ class BUTTON_ACTION_OT_meshedit_subdivide_edgering(bpy.types.Operator):
             profile_shape=self.profile_shape,
         )
         return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_screw(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_screw"
+    bl_label = "螺旋"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        bm.faces.ensure_lookup_table()
+        bm.verts.ensure_lookup_table()
+
+        selected_verts = [v for v in bm.verts if v.select]
+        if not selected_verts:
+            return False
+
+        selected_verts_set = set(selected_verts)
+        for face in bm.faces:
+            if all(v in selected_verts_set for v in face.verts):
+                return False
+        
+        for edge in bm.edges:
+            if edge.verts[0].select and edge.verts[1].select:
+                return True
+
+        return False
+
+    steps: bpy.props.IntProperty(
+        name="",
+        default=9,
+        min=1,
+        soft_min=3,
+        max=100000,
+        soft_max=256,
+    )
+
+    turns: bpy.props.IntProperty(
+        name="",
+        default=1,
+        min=1,
+        max=100000,
+    )
+
+    center: bpy.props.FloatVectorProperty(
+        name="",
+        default=(0.0, 0.0, 0.0),
+        subtype='XYZ_LENGTH'
+    )
+
+    axis: bpy.props.FloatVectorProperty(
+        name="",
+        default=(0.0, 0.0, 1.0),
+        subtype='XYZ',
+        min=-1.0,
+        max=1.0,
+    )
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+
+        col_left = split.column()
+        col_right = split.column()
+        col_left.alignment = 'RIGHT'
+
+        col_left.label(text="步数(阶梯)")
+        col_right.prop(self, "steps")
+
+        col_left.label(text="圈数")
+        col_right.prop(self, "turns")
+
+        col_l = col_left.column(align=True)
+        col_l.alignment = "RIGHT"
+        col_l.label(text="中心 X")
+        col_l.label(text="Y")
+        col_l.label(text="Z")
+
+        col_r = col_right.column(align=True)
+        col_r.prop(self, "center", index=0, text="")
+        col_r.prop(self, "center", index=1, text="")
+        col_r.prop(self, "center", index=2, text="")
+
+        col_l = col_left.column(align=True)
+        col_l.alignment = "RIGHT"
+        col_l.label(text="轴向 X")
+        col_l.label(text="Y")
+        col_l.label(text="Z")
+
+        col_r = col_right.column(align=True)
+        col_r.prop(self, "axis", index=0, text="")
+        col_r.prop(self, "axis", index=1, text="")
+        col_r.prop(self, "axis", index=2, text="")
+
+    def execute(self, context):
+        bpy.ops.mesh.screw(
+            steps=self.steps,
+            turns=self.turns,
+            center=self.center,
+            axis=self.axis,)
+        return {'FINISHED'}
 
 class BUTTON_ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
     bl_idname = "button.action_meshedit_unsubdivide"
@@ -2446,8 +2548,51 @@ class BUTTON_ACTION_OT_meshedit_uvs_reverse(bpy.types.Operator):
         bpy.ops.mesh.uvs_reverse()
         return {'FINISHED'}
 
+class BUTTON_ACTION_OT_meshedit_flip_quad_tessellation(bpy.types.Operator):
+    bl_idname = "button.action_meshedit_flip_quad_tessellation"
+    bl_label = "翻转四边形密铺"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.flip_quad_tessellation()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_false(bpy.types.Operator):
+    bl_idname = "button.action_mark_freestyle_face_false"
+    bl_label = "标记Freestyle面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_freestyle_face(clear=False)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_true(bpy.types.Operator):
+    bl_idname = "button.action_mark_freestyle_face_true"
+    bl_label = "清除Freestyle面"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.mesh.mark_freestyle_face(clear=True)
+        return {'FINISHED'}
 
 
+class BUTTON_ACTION_OT_meshedit_uvs_unwrap_menu(bpy.types.Operator):
+    bl_idname = "button.action_uvs_unwrap_menu"
+    bl_label = "展开UV"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="IMAGE_MT_uvs_unwrap")
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_meshedit_uv_reset(bpy.types.Operator):
+    bl_idname = "button.action_uv_reset"
+    bl_label = "重置UV"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.uv.reset()
+        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_mesh_select_nth,
@@ -2510,6 +2655,7 @@ classes = (
     BUTTON_ACTION_OT_meshedit_bridge_edge_loops,
 
     BUTTON_ACTION_OT_meshedit_subdivide_edgering,
+    BUTTON_ACTION_OT_meshedit_screw,
     BUTTON_ACTION_OT_meshedit_unsubdivide,
     BUTTON_ACTION_OT_meshedit_edge_rotate,
     BUTTON_ACTION_OT_meshedit_transform_edge_slide,
@@ -2545,6 +2691,12 @@ classes = (
     BUTTON_ACTION_OT_meshedit_colors_reverse,
     BUTTON_ACTION_OT_meshedit_uvs_rotate,
     BUTTON_ACTION_OT_meshedit_uvs_reverse,
+    BUTTON_ACTION_OT_meshedit_flip_quad_tessellation,
+    BUTTON_ACTION_OT_meshedit_mark_freestyle_face_false,
+    BUTTON_ACTION_OT_meshedit_mark_freestyle_face_true,
+    
+    BUTTON_ACTION_OT_meshedit_uvs_unwrap_menu,
+    BUTTON_ACTION_OT_meshedit_uv_reset,
 
 )
 

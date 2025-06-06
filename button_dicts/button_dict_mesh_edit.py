@@ -163,6 +163,9 @@ button_press_mesh_edit = {
         'button.action_meshedit_subdivide_edgering':(
         "button.action_meshedit_subdivide_edgering","细分并排边","RADIOBUT_OFF",
     ),
+        'button.action_meshedit_screw':(
+        "button.action_meshedit_screw","螺旋","MOD_SCREW",
+    ),
         'button.action_meshedit_unsubdivide':(
         "button.action_meshedit_unsubdivide","反细分","RADIOBUT_OFF",
     ),
@@ -263,9 +266,22 @@ button_press_mesh_edit = {
         'button.action_meshedit_uvs_reverse':(
         "button.action_meshedit_uvs_reverse","翻转UV","RADIOBUT_OFF",
     ),
-
-
-
+        'button.action_meshedit_flip_quad_tessellation':(
+        "button.action_meshedit_flip_quad_tessellation","翻转四边形密铺","RADIOBUT_OFF",
+    ),
+        'button.action_mark_freestyle_face_false':(
+        "button.action_mark_freestyle_face_false","标记Freestyle面","RADIOBUT_OFF",
+    ),
+        'button.action_mark_freestyle_face_true':(
+        "button.action_mark_freestyle_face_true","清除Freestyle面","RADIOBUT_OFF",
+    ),
+    # UV 展开
+        'button.action_uvs_unwrap_menu':(
+        "button.action_uvs_unwrap_menu","展开UV","PRESET",
+    ),
+        'button.action_uv_reset':(
+        "button.action_uv_reset","重置UV","PRESET",
+    ),
 
 
 

@@ -201,6 +201,11 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"细分并排边\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_subdivide_edgering'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_screw":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"螺旋\"⟶Switcher", icon='MOD_SCREW').action = 'button.action_meshedit_screw'
+
     elif op and op.bl_rna.identifier == "MESH_OT_unsubdivide":
         layout = self.layout
         layout.separator()
@@ -362,6 +367,26 @@ def draw_add_to_switcher_meshedit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"翻转 UV\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_uvs_reverse'
 
+    elif op and op.bl_rna.identifier == "MESH_OT_flip_quad_tessellation":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"翻转四边形密铺\"⟶Switcher", icon='PLUS').action = 'button.action_meshedit_flip_quad_tessellation'
+
+    elif op and op.bl_rna.identifier == "MESH_OT_mark_freestyle_face":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"标记Freestyle面\"⟶Switcher", icon='PLUS').action = 'button.action_mark_freestyle_face_false'
+        layout.operator("call.add_to_switcher_menu", text="\"清除Freestyle面\"⟶Switcher", icon='PLUS').action = 'button.action_mark_freestyle_face_true'
+
+    elif op and op.bl_rna.identifier == "UV_OT_unwrap":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"展开UV(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_uvs_unwrap_menu'
+
+    elif op and op.bl_rna.identifier == "UV_OT_reset":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"重置UV\"⟶Switcher", icon='PLUS').action = 'button.action_uv_reset'
 
 
 
@@ -473,6 +498,14 @@ def meshedit_faces_data_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"面数据(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_meshedit_edit_mesh_faces_data'
 
+def meshedit_uv_unwrap_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"展开UV(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_uvs_unwrap_menu'
+
+
 
 
 
@@ -502,8 +535,10 @@ def register():
     bpy.types.VIEW3D_MT_vertex_group.append(meshedit_vertex_group_menu_to_switcher)
     bpy.types.VIEW3D_MT_hook.append(meshedit_hook_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_faces_data.append(meshedit_faces_data_menu_to_switcher)
+    bpy.types.IMAGE_MT_uvs_unwrap.append(meshedit_uv_unwrap_menu_to_switcher)
 
 def unregister():
+    bpy.types.IMAGE_MT_uvs_unwrap.remove(meshedit_uv_unwrap_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_mesh_faces_data.remove(meshedit_faces_data_menu_to_switcher)
     bpy.types.VIEW3D_MT_hook.remove(meshedit_hook_menu_to_switcher)
     bpy.types.VIEW3D_MT_vertex_group.remove(meshedit_vertex_group_menu_to_switcher)
