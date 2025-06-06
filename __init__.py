@@ -136,6 +136,17 @@ from .quick_menu_button_functions.button_actions_gpencil_edit import (
     unregister as unregister_button_actions_gpencil_edit,
 )
 
+from .quick_menu_button_functions.button_actions_gpencil_weight import (
+    register as register_button_actions_gpencil_weight,
+    unregister as unregister_button_actions_gpencil_weight,
+)
+
+
+from .quick_menu_button_functions.button_actions_greasepencil_weight import (
+    register as register_button_actions_greasepencil_weight,
+    unregister as ungister_button_actions_greasepencil_weight,
+)
+
 from .quick_menu_button_functions.button_actions_armature import (
     BUTTON_ACTION_OT_armature_bone_primitive_add,
 )
@@ -148,6 +159,11 @@ from .quick_menu_button_functions.button_actions_armature_edit import (
 from .quick_menu_button_functions.button_actions_curve_edit import (
     register as register_button_actions_curve_edit,
     unregister as unregister_button_actions_curve_edit,
+)
+
+from .quick_menu_button_functions.button_actions_lattice import (
+    register as register_button_actions_lattice,
+    unregister as unregister_button_actions_lattice,
 )
 
 from .right_click_to_switcher.right_click_add_global import (
@@ -165,6 +181,21 @@ from .right_click_to_switcher.right_click_add_mesh_edit import (
     unregister as unregister_right_click_add_meshedit,
 )
 
+from .right_click_to_switcher.right_click_add_gpencil_edit import (
+    register as register_right_click_add_gpencil_edit,
+    unregister as unregister_right_click_add_gpencil_edit,
+)
+
+from .right_click_to_switcher.right_click_add_gpencil_weight import (
+    register as register_right_click_add_gpencil_weight,
+    unregister as unregister_right_click_add_gpencil_weight,
+)
+
+from .right_click_to_switcher.right_click_add_greasepencil_weight import (
+    register as register_right_click_add_greasepencil_weight,
+    unregister as unregister_right_click_add_greasepencil_weight,
+)
+
 from .right_click_to_switcher.right_click_add_armature_edit import (
     register as register_right_click_add_armature_edit,
     unregister as unregister_right_click_add_armature_edit,
@@ -178,6 +209,11 @@ from .right_click_to_switcher.right_click_add_curve_edit import (
 from .right_click_to_switcher.right_click_add_armature_pose import (
     register as register_right_click_add_armature_pose,
     unregister as unregister_right_click_add_armature_pose,
+)
+
+from .right_click_to_switcher.right_click_add_lattice_edit import (
+    register as register_right_click_add_lattice_edit,
+    unregister as unregister_right_click_add_lattice_edit,
 )
 
 from .right_click_to_switcher.right_click_global_view_menu_actions import (
@@ -203,6 +239,15 @@ def register():
     # 注册“网格编辑”模式
     register_right_click_add_meshedit()
 
+    register_right_click_add_gpencil_edit()
+
+    register_right_click_add_gpencil_weight()
+
+
+
+
+    register_right_click_add_greasepencil_weight()
+
     # 注册“骨架编辑”模式
     register_right_click_add_armature_edit()
 
@@ -210,6 +255,8 @@ def register():
 
     # 注册“骨架姿态”
     register_right_click_add_armature_pose()
+
+    register_right_click_add_lattice_edit()
 
     # 注册右键菜单功能
     register_right_click_add_global()
@@ -309,12 +356,18 @@ def register():
 
     register_button_actions_gpencil_edit()
 
+    register_button_actions_gpencil_weight()
+
+    register_button_actions_greasepencil_weight()
+
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
     register_button_actions_armature_edit()
 
     register_button_actions_curve_edit()
+
+    register_button_actions_lattice()
 
     # 注册键位映射
     keymap.register()
@@ -332,6 +385,13 @@ def unregister():
     # 注销 物体模式——添加到右键
     unregister_right_click_add_object()
 
+
+    unregister_right_click_add_greasepencil_weight()
+
+    unregister_right_click_add_gpencil_weight()
+
+    unregister_right_click_add_gpencil_edit()
+
     # 注销 “网格编辑”模式
     unregister_right_click_add_meshedit()
 
@@ -339,6 +399,8 @@ def unregister():
 
     # 注销“骨架编辑”
     unregister_right_click_add_armature_edit()
+
+    unregister_right_click_add_lattice_edit()
 
     # 注销“骨架姿态”
     unregister_right_click_add_armature_pose()
@@ -351,9 +413,15 @@ def unregister():
     # ”骨架“模式相关功能
     bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
+    unregister_button_actions_lattice()
+
     unregister_button_actions_curve_edit()
 
     unregister_button_actions_armature_edit()
+
+    ungister_button_actions_greasepencil_weight()
+
+    unregister_button_actions_gpencil_weight()
 
     unregister_button_actions_gpencil_edit()
 

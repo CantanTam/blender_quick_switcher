@@ -1185,6 +1185,12 @@ class BUTTON_ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
     bl_description = "快捷键 Ctrl P"
     bl_options = {'REGISTER', 'UNDO'}
 
+    @classmethod
+    def poll(cls, context):
+        bm = bmesh.from_edit_mesh(context.active_object.data)
+        selected_verts = [v for v in bm.verts if v.select]
+        return len(selected_verts) in {1, 3}
+
     def execute(self, context):
         bpy.ops.object.vertex_parent_set('INVOKE_DEFAULT')
         return {'FINISHED'}
