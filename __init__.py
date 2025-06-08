@@ -141,10 +141,14 @@ from .quick_menu_button_functions.button_actions_gpencil_weight import (
     unregister as unregister_button_actions_gpencil_weight,
 )
 
+from .quick_menu_button_functions.button_actions_greasepencil_edit import (
+    register as register_button_actions_greasepencil_edit,
+    unregister as unregister_button_actions_greasepencil_edit,
+)
 
 from .quick_menu_button_functions.button_actions_greasepencil_weight import (
     register as register_button_actions_greasepencil_weight,
-    unregister as ungister_button_actions_greasepencil_weight,
+    unregister as unregister_button_actions_greasepencil_weight,
 )
 
 from .quick_menu_button_functions.button_actions_armature import (
@@ -189,6 +193,11 @@ from .right_click_to_switcher.right_click_add_gpencil_edit import (
 from .right_click_to_switcher.right_click_add_gpencil_weight import (
     register as register_right_click_add_gpencil_weight,
     unregister as unregister_right_click_add_gpencil_weight,
+)
+
+from .right_click_to_switcher.right_click_add_greasepencil_edit import (
+    register as register_right_click_add_greasepencil_edit,
+    unregister as unregister_right_click_add_greasepencil_edit,
 )
 
 from .right_click_to_switcher.right_click_add_greasepencil_weight import (
@@ -244,7 +253,7 @@ def register():
     register_right_click_add_gpencil_weight()
 
 
-
+    register_right_click_add_greasepencil_edit()
 
     register_right_click_add_greasepencil_weight()
 
@@ -358,6 +367,8 @@ def register():
 
     register_button_actions_gpencil_weight()
 
+    register_button_actions_greasepencil_edit()
+
     register_button_actions_greasepencil_weight()
 
     # "骨架"模式相关功能
@@ -387,6 +398,8 @@ def unregister():
 
 
     unregister_right_click_add_greasepencil_weight()
+
+    unregister_right_click_add_greasepencil_edit()
 
     unregister_right_click_add_gpencil_weight()
 
@@ -419,7 +432,9 @@ def unregister():
 
     unregister_button_actions_armature_edit()
 
-    ungister_button_actions_greasepencil_weight()
+    unregister_button_actions_greasepencil_weight()
+
+    unregister_button_actions_greasepencil_edit()
 
     unregister_button_actions_gpencil_weight()
 
