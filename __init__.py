@@ -131,6 +131,11 @@ from .quick_menu_button_functions.button_actions_mesh_edit import (
     unregister as unregister_button_actions_mesh_edit,
 )
 
+from .quick_menu_button_functions.button_actions_mesh_vertex import (
+    register as register_button_actions_mesh_vertex,
+    unregister as unregister_button_actions_mesh_vertex,
+)
+
 from .quick_menu_button_functions.button_actions_gpencil_edit import (
     register as register_button_actions_gpencil_edit,
     unregister as unregister_button_actions_gpencil_edit,
@@ -181,8 +186,13 @@ from .right_click_to_switcher.right_click_add_object import (
 )
 
 from .right_click_to_switcher.right_click_add_mesh_edit import (
-    register as register_right_click_add_meshedit,
-    unregister as unregister_right_click_add_meshedit,
+    register as register_right_click_add_mesh_edit,
+    unregister as unregister_right_click_add_mesh_edit,
+)
+
+from .right_click_to_switcher.right_click_add_mesh_vertex import (
+    register as register_right_click_add_mesh_vertex,
+    unregister as unregister_right_click_add_mesh_vertex,
 )
 
 from .right_click_to_switcher.right_click_add_gpencil_edit import (
@@ -246,7 +256,9 @@ def register():
     register_right_click_add_object()
 
     # 注册“网格编辑”模式
-    register_right_click_add_meshedit()
+    register_right_click_add_mesh_edit()
+
+    register_right_click_add_mesh_vertex()
 
     register_right_click_add_gpencil_edit()
 
@@ -363,6 +375,8 @@ def register():
     # 物体模式
     register_button_actions_mesh_edit()
 
+    register_button_actions_mesh_vertex()
+
     register_button_actions_gpencil_edit()
 
     register_button_actions_gpencil_weight()
@@ -405,8 +419,9 @@ def unregister():
 
     unregister_right_click_add_gpencil_edit()
 
+    unregister_right_click_add_mesh_vertex()
     # 注销 “网格编辑”模式
-    unregister_right_click_add_meshedit()
+    unregister_right_click_add_mesh_edit()
 
     unregister_right_click_add_curve_edit()
 
@@ -439,6 +454,8 @@ def unregister():
     unregister_button_actions_gpencil_weight()
 
     unregister_button_actions_gpencil_edit()
+
+    unregister_button_actions_mesh_vertex()
 
     #网格编辑模式
     unregister_button_actions_mesh_edit()
