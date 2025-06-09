@@ -15,7 +15,10 @@ button_press_greasepencil_weight = {
         'button.action_greasepencilweight_weight_sample':(
         "button.action_greasepencilweight_weight_sample","采样权重","RADIOBUT_OFF",
     ),
-
+    # grease_pencil paint 模式的“色彩取样”
+        'button.action_paint_sample_color':(
+        "button.action_paint_sample_color","色彩取样","RADIOBUT_OFF",
+    ),
 
 
 

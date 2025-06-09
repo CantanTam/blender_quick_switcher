@@ -56,13 +56,92 @@ def draw_add_to_switcher_greasepenciledit(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"挤出\"⟶Switcher", icon='EVENT_E').action = 'button.action_greasepenciledit_extrude_move'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_stroke_smooth":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"光滑\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_stroke_smooth'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_handle_type":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置控制柄类型\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_set_handle_type'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_stroke_subdivide":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"细分笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_stroke_subdivide'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_stroke_subdivide_smooth":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"细分并平滑笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_stroke_subdivide_smooth'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_stroke_simplify":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"简化笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_stroke_simplify'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_join_selection":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"合并笔画\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_join_selection'
+        layout.operator("call.add_to_switcher_menu", text="\"合并笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_join_selection_join'
+        layout.operator("call.add_to_switcher_menu", text="\"合并并复制笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_join_selection_joincopy'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_active_material":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置活动的材质\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_set_active_material'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_reorder":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"排列笔画\"⟶Switcher", icon='PRESET').action = 'button.action_call_greasepenciledit_reorder_menu'
+        layout.operator("call.add_to_switcher_menu", text="\"笔画移到最前\"⟶Switcher", icon='PLUS').action = 'button.action_gpenciledit_reorder_top'
+        layout.operator("call.add_to_switcher_menu", text="\"笔画前移\"⟶Switcher", icon='PLUS').action = 'button.action_gpenciledit_reorder_up'
+        layout.operator("call.add_to_switcher_menu", text="\"笔画后送\"⟶Switcher", icon='PLUS').action = 'button.action_gpenciledit_reorder_down'
+        layout.operator("call.add_to_switcher_menu", text="\"笔画移到最后\"⟶Switcher", icon='PLUS').action = 'button.action_gpenciledit_reorder_bottom'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_cyclical_set":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"闭合笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_cyclical_set_close'
+        layout.operator("call.add_to_switcher_menu", text="\"切换闭合笔画\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_cyclical_set_toggle'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_caps_set":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置端点\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_caps_set'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_stroke_switch_direction":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"切换方向\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_stroke_switch_direction'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_uniform_thickness":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置统一粗细\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_set_uniform_thickness'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_uniform_opacity":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置统一不透明度\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_set_uniform_opacity'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_curve_type":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置曲线类型\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_set_curve_type'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_set_curve_resolution":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"设置曲线分辨率\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_set_curve_resolution'
+
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_reset_uvs":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"重置UV\"⟶Switcher", icon='PLUS').action = 'button.action_greasepenciledit_reset_uvs'
 
 
 def greasepenciledit_layer_add_menu_to_switcher(self, context):
@@ -86,6 +165,29 @@ def greasepenciledit_cleanup_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"清理(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_cleanup_menu'
 
+def greasepenciledit_vertex_group_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"顶点组(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_vertex_group_menu'
+
+def greasepenciledit_move_to_layer_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"移动到层(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_move_to_layer_menu'
+
+def greasepenciledit_assign_material_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"指定材质(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_greasepenciledit_assign_material_menu'
+
+
+
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_greasepenciledit)
@@ -93,9 +195,15 @@ def register():
         bpy.types.GREASE_PENCIL_MT_layer_active.append(greasepenciledit_layer_add_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_animation.append(greasepenciledit_animation_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_cleanup.append(greasepenciledit_cleanup_menu_to_switcher)
+        bpy.types.VIEW3D_MT_greasepencil_vertex_group.append(greasepenciledit_vertex_group_menu_to_switcher)
+        bpy.types.GREASE_PENCIL_MT_move_to_layer.append(greasepenciledit_move_to_layer_menu_to_switcher)
+        bpy.types.VIEW3D_MT_grease_pencil_assign_material.append(greasepenciledit_assign_material_menu_to_switcher)
 
 def unregister():
     if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_grease_pencil_assign_material.remove(greasepenciledit_assign_material_menu_to_switcher)
+        bpy.types.GREASE_PENCIL_MT_move_to_layer.remove(greasepenciledit_move_to_layer_menu_to_switcher)
+        bpy.types.VIEW3D_MT_greasepencil_vertex_group.remove(greasepenciledit_vertex_group_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_cleanup.remove(greasepenciledit_cleanup_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_animation.remove(greasepenciledit_animation_menu_to_switcher)
         bpy.types.GREASE_PENCIL_MT_layer_active.remove(greasepenciledit_layer_add_menu_to_switcher)

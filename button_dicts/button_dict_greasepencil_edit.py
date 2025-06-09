@@ -43,8 +43,85 @@ button_press_greasepencil_edit = {
         'button.action_greasepenciledit_extrude_move':(
         "button.action_greasepenciledit_extrude_move","挤出","EVENT_E",
     ),
-
-
+        'button.action_greasepenciledit_stroke_smooth':(
+        "button.action_greasepenciledit_stroke_smooth","光滑","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_vertex_group_menu':(
+        "button.action_greasepenciledit_vertex_group_menu","顶点组","PRESET",
+    ),
+        'button.action_greasepenciledit_set_handle_type':(
+        "button.action_greasepenciledit_set_handle_type","设置控制柄类型","PRESET",
+    ),
+    # “笔画”菜单
+        'button.action_greasepenciledit_stroke_subdivide':(
+        "button.action_greasepenciledit_stroke_subdivide","细分笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_stroke_subdivide_smooth':(
+        "button.action_greasepenciledit_stroke_subdivide_smooth","细分并平滑笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_stroke_simplify':(
+        "button.action_greasepenciledit_stroke_simplify","简化笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_join_selection':(
+        "button.action_greasepenciledit_join_selection","合并笔画","PRESET",
+    ),
+        'button.action_greasepenciledit_join_selection_join':(
+        "button.action_greasepenciledit_join_selection_join","合并笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_join_selection_joincopy':(
+        "button.action_greasepenciledit_join_selection_joincopy","合并并复制笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_move_to_layer_menu':(
+        "button.action_greasepenciledit_move_to_layer_menu","移动到层","PRESET",
+    ),
+        'button.action_greasepenciledit_assign_material_menu':(
+        "button.action_greasepenciledit_assign_material_menu","指定材质","PRESET",
+    ),
+        'button.action_greasepenciledit_set_active_material':(
+        "button.action_greasepenciledit_set_active_material","设置活动的材质","RADIOBUT_OFF",
+    ),
+        'button.action_call_greasepenciledit_reorder_menu':(
+        "button.action_call_greasepenciledit_reorder_menu","排列笔画","PRESET",
+    ),
+        'button.action_gpenciledit_reorder_top':(
+        "button.action_gpenciledit_reorder_top","笔画移到最前","RADIOBUT_OFF",
+    ),
+        'button.action_gpenciledit_reorder_up':(
+        "button.action_gpenciledit_reorder_up","笔画前移","RADIOBUT_OFF",
+    ),
+        'button.action_gpenciledit_reorder_down':(
+        "button.action_gpenciledit_reorder_down","笔画后送","RADIOBUT_OFF",
+    ),
+        'button.action_gpenciledit_reorder_bottom':(
+        "button.action_gpenciledit_reorder_bottom","笔画移到最后","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_cyclical_set_close':(
+        "button.action_greasepenciledit_cyclical_set_close","闭合笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_cyclical_set_toggle':(
+        "button.action_greasepenciledit_cyclical_set_toggle","切换闭合笔画","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_caps_set':(
+        "button.action_greasepenciledit_caps_set","设置端点","PRESET",
+    ),
+        'button.action_greasepenciledit_stroke_switch_direction':(
+        "button.action_greasepenciledit_stroke_switch_direction","切换方向","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_set_uniform_thickness':(
+        "button.action_greasepenciledit_set_uniform_thickness","设置统一粗细","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_set_uniform_opacity':(
+        "button.action_greasepenciledit_set_uniform_opacity","设置统一不透明度","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_set_curve_type':(
+        "button.action_greasepenciledit_set_curve_type","设置曲线类型","PRESET",
+    ),
+        'button.action_greasepenciledit_set_curve_resolution':(
+        "button.action_greasepenciledit_set_curve_resolution","设置曲线分辨率","RADIOBUT_OFF",
+    ),
+        'button.action_greasepenciledit_reset_uvs':(
+        "button.action_greasepenciledit_reset_uvs","重置UV","RADIOBUT_OFF",
+    ),
 
 
 
