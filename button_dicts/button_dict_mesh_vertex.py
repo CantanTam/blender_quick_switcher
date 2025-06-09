@@ -23,5 +23,9 @@ button_press_mesh_vertex = {
         'button.action_meshvertex_vertex_color_brightness_contrast':(
         "button.action_meshvertex_vertex_color_brightness_contrast","亮度/对比度","RADIOBUT_OFF",
     ),
+    # 4.3 版本有效
+        'button.action_paint_sample_color':(
+        "button.action_paint_sample_color","色彩取样","RADIOBUT_OFF",
+    ),
 
 }

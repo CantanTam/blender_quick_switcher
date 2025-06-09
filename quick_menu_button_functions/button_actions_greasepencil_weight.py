@@ -117,16 +117,6 @@ class BUTTON_ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
         bpy.ops.grease_pencil.weight_sample('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-# grease_pencil paint 模式下的“色彩取样”只有一个选项，所以直接合并到这里来
-class BUTTON_ACTION_OT_paint_sample_color(bpy.types.Operator):
-    bl_idname = "button.action_paint_sample_color"
-    bl_label = "色彩取样"
-    bl_description = "快捷键 Shift X"
-    bl_options = {'REGISTER', 'UNDO'}
-
-    def execute(self, context):
-        bpy.ops.paint.sample_color('INVOKE_DEFAULT')
-        return {'FINISHED'}
 
 classes = (
     BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize_all,
@@ -135,7 +125,6 @@ classes = (
     BUTTON_ACTION_OT_greasepencilweight_vertex_group_smooth,
     BUTTON_ACTION_OT_greasepencilweight_weight_sample,
 
-    BUTTON_ACTION_OT_paint_sample_color,
 
 
 

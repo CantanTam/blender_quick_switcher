@@ -33,12 +33,6 @@ def draw_add_to_switcher_greasepencilweight(self, context):
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"采样权重\"⟶Switcher", icon='PLUS').action = 'button.action_greasepencilweight_weight_sample'
-    # grease_pencil paint 模式的“色彩取样”
-    elif op and op.bl_rna.identifier == "PAINT_OT_sample_color":
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"色彩取样\"⟶Switcher", icon='PLUS').action = 'button.action_paint_sample_color'
-
 
 
 def register():

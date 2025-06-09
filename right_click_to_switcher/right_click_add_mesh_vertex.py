@@ -48,6 +48,11 @@ def draw_add_to_switcher_meshvertex(self, context):
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"亮度/对比度\"⟶Switcher", icon='PLUS').action = 'button.action_meshvertex_vertex_color_brightness_contrast'
+    # 4.3 版本有效
+    elif op and op.bl_rna.identifier == "PAINT_OT_sample_color":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"色彩取样\"⟶Switcher", icon='PLUS').action = 'button.action_paint_sample_color'
 
 
 

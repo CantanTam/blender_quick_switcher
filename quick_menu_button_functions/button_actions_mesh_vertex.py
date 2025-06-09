@@ -258,10 +258,19 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Ope
         col_right.prop(self, "contrast", text="")
 
     def execute(self, context):
-        bpy.ops.paint.vertex_color_invert()
-        #bpy.ops.paint.vertex_color_brightness_contrast(brightness=self.brightness, contrast=self.contrast)
+        bpy.ops.paint.vertex_color_brightness_contrast(brightness=self.brightness, contrast=self.contrast)
         return {'FINISHED'}
 
+# 4.3 版本有效
+class BUTTON_ACTION_OT_paint_sample_color(bpy.types.Operator):
+    bl_idname = "button.action_paint_sample_color"
+    bl_label = "色彩取样"
+    bl_description = "快捷键 Shift X"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.paint.sample_color('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 
 classes = (
@@ -273,6 +282,8 @@ classes = (
     BUTTON_ACTION_OT_meshvertex_vertex_color_levels,
     BUTTON_ACTION_OT_meshvertex_vertex_color_hsv,
     BUTTON_ACTION_OT_meshvertex_vertex_color_brightness_contrast,
+
+    BUTTON_ACTION_OT_paint_sample_color,
 
 )
 
