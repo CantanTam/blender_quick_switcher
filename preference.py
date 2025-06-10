@@ -25747,6 +25747,7 @@ class QuickSwitchAddonPreferences(AddonPreferences):
 
     # 绘制插件设置页选项菜单函数
     def draw(self, context):
+        typeandmode = bpy.context.active_object.type+bpy.context.active_object.mode
         # 每次绘制时强制检查设置
         settings = load_settings()
         if settings:
@@ -25825,70 +25826,76 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             top_box.alignment = "LEFT"
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode1_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode1_visible else "RIGHTARROW", emboss=False)
-            row.label(text="物体模式", icon="OBJECT_DATA")
-
-            if self.panelone_mode1_visible:
+            if bpy.context.mode == 'OBJECT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode1_col{i}_title", text="")
+                row.prop(self, "panelone_mode1_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode1_visible else "HIDE_ON", emboss=False)
+                row.label(text="物体模式", icon="OBJECT_DATA")
+
+                if self.panelone_mode1_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode1_col{i}_title", text="")
         
-            row = top_box.row()
-            row.prop(self, "panelone_mode2_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode2_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格编辑模式", icon="EDITMODE_HLT")
-
-            if self.panelone_mode2_visible:   
+            if typeandmode == 'MESHEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode2_col{i}_title", text="")
+                row.prop(self, "panelone_mode2_visible",
+                    icon="HIDE_OFF" if self.panelone_mode2_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格编辑模式", icon="EDITMODE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode3_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode3_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格雕刻模式", icon="SCULPTMODE_HLT")
+                if self.panelone_mode2_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode2_col{i}_title", text="")
 
-            if self.panelone_mode3_visible:
+            if typeandmode == 'MESHSCULPT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode3_col{i}_title", text="")
+                row.prop(self, "panelone_mode3_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode3_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格雕刻模式", icon="SCULPTMODE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode4_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode4_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格顶点绘制模式", icon="VPAINT_HLT")
+                if self.panelone_mode3_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode3_col{i}_title", text="")
 
-            if self.panelone_mode4_visible:   
+            if typeandmode == 'MESHVERTEX_PAINT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode4_col{i}_title", text="")
+                row.prop(self, "panelone_mode4_visible",
+                    icon="HIDE_OFF" if self.panelone_mode4_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格顶点绘制模式", icon="VPAINT_HLT")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode5_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode5_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格权重绘制模式", icon="WPAINT_HLT")
+                if self.panelone_mode4_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode4_col{i}_title", text="")
 
-            if self.panelone_mode5_visible:
+            if typeandmode == 'MESHWEIGHT_PAINT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode5_col{i}_title", text="")
+                row.prop(self, "panelone_mode5_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode5_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格权重绘制模式", icon="WPAINT_HLT")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode6_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode6_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格纹理绘制模式", icon="TPAINT_HLT")
+                if self.panelone_mode5_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode5_col{i}_title", text="")
 
-            if self.panelone_mode6_visible:   
+            if typeandmode == 'MESHTEXTURE_PAINT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode6_col{i}_title", text="")
+                row.prop(self, "panelone_mode6_visible",
+                    icon="HIDE_OFF" if self.panelone_mode6_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格纹理绘制模式", icon="TPAINT_HLT")
 
-            if bpy.app.version < (4, 3, 0):
+                if self.panelone_mode6_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode6_col{i}_title", text="")
+
+            if typeandmode == 'GPENCILEDIT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode7_visible", 
-                    icon="DOWNARROW_HLT" if self.panelone_mode7_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode7_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
 
                 if self.panelone_mode7_visible:
@@ -25896,9 +25903,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode7_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILSCULPT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode8_visible",
-                    icon="DOWNARROW_HLT" if self.panelone_mode8_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode8_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
 
                 if self.panelone_mode8_visible:   
@@ -25906,9 +25914,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode8_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILPAINT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode9_visible", 
-                    icon="DOWNARROW_HLT" if self.panelone_mode9_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode9_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
 
                 if self.panelone_mode9_visible:
@@ -25916,9 +25925,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode9_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILWEIGHT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode10_visible",
-                    icon="DOWNARROW_HLT" if self.panelone_mode10_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode10_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
 
                 if self.panelone_mode10_visible:   
@@ -25926,9 +25936,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode10_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILVERTEX_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode11_visible", 
-                    icon="DOWNARROW_HLT" if self.panelone_mode11_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode11_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
 
                 if self.panelone_mode11_visible:
@@ -25936,10 +25947,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode11_col{i}_title", text="")
 
-            if bpy.app.version >= (4, 3, 0):
+            if typeandmode == 'GREASEPENCILEDIT':
                 row = top_box.row()
                 row.prop(self, "panelone_mode12_visible",
-                    icon="DOWNARROW_HLT" if self.panelone_mode12_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode12_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
 
                 if self.panelone_mode12_visible:   
@@ -25947,9 +25958,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode12_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILSCULPT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode13_visible", 
-                    icon="DOWNARROW_HLT" if self.panelone_mode13_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode13_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
 
                 if self.panelone_mode13_visible:
@@ -25957,9 +25969,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode13_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILPAINT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode14_visible",
-                    icon="DOWNARROW_HLT" if self.panelone_mode14_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode14_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
 
                 if self.panelone_mode14_visible:   
@@ -25967,9 +25980,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode14_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILWEIGHT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode15_visible", 
-                    icon="DOWNARROW_HLT" if self.panelone_mode15_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode15_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
 
                 if self.panelone_mode15_visible:
@@ -25977,9 +25991,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode15_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILVERTEX_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "panelone_mode16_visible",
-                    icon="DOWNARROW_HLT" if self.panelone_mode16_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.panelone_mode16_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
 
                 if self.panelone_mode16_visible:   
@@ -25987,75 +26002,82 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"panelone_mode16_col{i}_title", text="")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode17_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode17_visible else "RIGHTARROW", emboss=False)
-            row.label(text="骨架编辑模式", icon="OUTLINER_DATA_ARMATURE")
-
-            if self.panelone_mode17_visible:
+            if typeandmode == 'ARMATUREEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode17_col{i}_title", text="")
+                row.prop(self, "panelone_mode17_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode17_visible else "HIDE_ON", emboss=False)
+                row.label(text="骨架编辑模式", icon="OUTLINER_DATA_ARMATURE")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode18_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode18_visible else "RIGHTARROW", emboss=False)
-            row.label(text="骨架姿态模式", icon="POSE_HLT")
+                if self.panelone_mode17_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode17_col{i}_title", text="")
 
-            if self.panelone_mode18_visible:   
+            if typeandmode == 'ARMATUREPOSE':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode18_col{i}_title", text="")
+                row.prop(self, "panelone_mode18_visible",
+                    icon="HIDE_OFF" if self.panelone_mode18_visible else "HIDE_ON", emboss=False)
+                row.label(text="骨架姿态模式", icon="POSE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode19_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode19_visible else "RIGHTARROW", emboss=False)
-            row.label(text="曲线编辑模式", icon="OUTLINER_DATA_CURVE")
+                if self.panelone_mode18_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode18_col{i}_title", text="")
 
-            if self.panelone_mode19_visible:
+            if typeandmode == 'CURVEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode19_col{i}_title", text="")
+                row.prop(self, "panelone_mode19_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode19_visible else "HIDE_ON", emboss=False)
+                row.label(text="曲线编辑模式", icon="OUTLINER_DATA_CURVE")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode20_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode20_visible else "RIGHTARROW", emboss=False)
-            row.label(text="表(曲)面编辑模式", icon="SURFACE_DATA")
+                if self.panelone_mode19_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode19_col{i}_title", text="")
 
-            if self.panelone_mode20_visible:   
+            if typeandmode == 'SURFACEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode20_col{i}_title", text="")
+                row.prop(self, "panelone_mode20_visible",
+                    icon="HIDE_OFF" if self.panelone_mode20_visible else "HIDE_ON", emboss=False)
+                row.label(text="表(曲)面编辑模式", icon="SURFACE_DATA")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode21_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode21_visible else "RIGHTARROW", emboss=False)
-            row.label(text="融球编辑模式", icon="META_DATA")
+                if self.panelone_mode20_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode20_col{i}_title", text="")
 
-            if self.panelone_mode21_visible:
+            if typeandmode == 'METAEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode21_col{i}_title", text="")
+                row.prop(self, "panelone_mode21_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode21_visible else "HIDE_ON", emboss=False)
+                row.label(text="融球编辑模式", icon="META_DATA")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode22_visible",
-                icon="DOWNARROW_HLT" if self.panelone_mode22_visible else "RIGHTARROW", emboss=False)
-            row.label(text="字体编辑模式", icon="FONT_DATA")
+                if self.panelone_mode21_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode21_col{i}_title", text="")
 
-            if self.panelone_mode22_visible:   
+            if typeandmode == 'FONTEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode22_col{i}_title", text="")
+                row.prop(self, "panelone_mode22_visible",
+                    icon="HIDE_OFF" if self.panelone_mode22_visible else "HIDE_ON", emboss=False)
+                row.label(text="字体编辑模式", icon="FONT_DATA")
 
-            row = top_box.row()
-            row.prop(self, "panelone_mode23_visible", 
-                icon="DOWNARROW_HLT" if self.panelone_mode23_visible else "RIGHTARROW", emboss=False)
-            row.label(text="晶格编辑模式", icon="LATTICE_DATA")
+                if self.panelone_mode22_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode22_col{i}_title", text="")
 
-            if self.panelone_mode23_visible:
+            if typeandmode == 'LATTICEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"panelone_mode23_col{i}_title", text="")
+                row.prop(self, "panelone_mode23_visible", 
+                    icon="HIDE_OFF" if self.panelone_mode23_visible else "HIDE_ON", emboss=False)
+                row.label(text="晶格编辑模式", icon="LATTICE_DATA")
+
+                if self.panelone_mode23_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"panelone_mode23_col{i}_title", text="")
 
 
         # -----------------------------------------------
@@ -26073,70 +26095,76 @@ class QuickSwitchAddonPreferences(AddonPreferences):
             top_box = box.box()
             top_box.alignment = "LEFT"
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode1_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode1_visible else "RIGHTARROW", emboss=False)
-            row.label(text="物体模式", icon="OBJECT_DATA")
-
-            if self.paneltwo_mode1_visible:
+            if bpy.context.mode == 'OBJECT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode1_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode1_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode1_visible else "HIDE_ON", emboss=False)
+                row.label(text="物体模式", icon="OBJECT_DATA")
+
+                if self.paneltwo_mode1_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode1_col{i}_title", text="")
         
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode2_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode2_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格编辑模式", icon="EDITMODE_HLT")
-
-            if self.paneltwo_mode2_visible:   
+            if typeandmode == 'MESHEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode2_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode2_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode2_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格编辑模式", icon="EDITMODE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode3_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode3_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格雕刻模式", icon="SCULPTMODE_HLT")
+                if self.paneltwo_mode2_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode2_col{i}_title", text="")
 
-            if self.paneltwo_mode3_visible:
+            if typeandmode == 'MESHSCULPT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode3_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode3_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode3_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格雕刻模式", icon="SCULPTMODE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode4_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode4_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格顶点绘制模式", icon="VPAINT_HLT")
+                if self.paneltwo_mode3_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode3_col{i}_title", text="")
 
-            if self.paneltwo_mode4_visible:   
+            if typeandmode == 'MESHVERTEX_PAINT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode4_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode4_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode4_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格顶点绘制模式", icon="VPAINT_HLT")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode5_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode5_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格权重绘制模式", icon="WPAINT_HLT")
+                if self.paneltwo_mode4_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode4_col{i}_title", text="")
 
-            if self.paneltwo_mode5_visible:
+            if typeandmode == 'MESHWEIGHT_PAINT':          
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode5_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode5_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode5_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格权重绘制模式", icon="WPAINT_HLT")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode6_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode6_visible else "RIGHTARROW", emboss=False)
-            row.label(text="网格纹理绘制模式", icon="TPAINT_HLT")
+                if self.paneltwo_mode5_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode5_col{i}_title", text="")
 
-            if self.paneltwo_mode6_visible:   
+            if typeandmode == 'MESHTEXTURE_PAINT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode6_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode6_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode6_visible else "HIDE_ON", emboss=False)
+                row.label(text="网格纹理绘制模式", icon="TPAINT_HLT")
 
-            if bpy.app.version < (4, 3, 0):
+                if self.paneltwo_mode6_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode6_col{i}_title", text="")
+
+            if typeandmode == 'GPENCILEDIT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode7_visible", 
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode7_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode7_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
 
                 if self.paneltwo_mode7_visible:
@@ -26144,9 +26172,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode7_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILSCULPT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode8_visible",
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode8_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode8_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
 
                 if self.paneltwo_mode8_visible:   
@@ -26154,9 +26183,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode8_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILPAINT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode9_visible", 
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode9_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode9_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
 
                 if self.paneltwo_mode9_visible:
@@ -26164,9 +26194,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode9_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILWEIGHT_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode10_visible",
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode10_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode10_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
 
                 if self.paneltwo_mode10_visible:   
@@ -26174,9 +26205,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode10_col{i}_title", text="")
 
+            if typeandmode == 'GPENCILVERTEX_GPENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode11_visible", 
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode11_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode11_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
 
                 if self.paneltwo_mode11_visible:
@@ -26184,10 +26216,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode11_col{i}_title", text="")
 
-            if bpy.app.version >= (4, 3, 0):
+            if typeandmode == 'GREASEPENCILEDIT':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode12_visible",
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode12_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode12_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔编辑模式", icon="OUTLINER_DATA_GREASEPENCIL")
 
                 if self.paneltwo_mode12_visible:   
@@ -26195,9 +26227,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode12_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILSCULPT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode13_visible", 
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode13_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode13_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔雕刻模式", icon="SCULPTMODE_HLT")
 
                 if self.paneltwo_mode13_visible:
@@ -26205,9 +26238,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode13_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILPAINT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode14_visible",
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode14_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode14_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔绘制模式", icon="GREASEPENCIL")
 
                 if self.paneltwo_mode14_visible:   
@@ -26215,9 +26249,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode14_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILWEIGHT_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode15_visible", 
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode15_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode15_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔权重绘制模式", icon="WPAINT_HLT")
 
                 if self.paneltwo_mode15_visible:
@@ -26225,9 +26260,10 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode15_col{i}_title", text="")
 
+            if typeandmode == 'GREASEPENCILVERTEX_GREASE_PENCIL':
                 row = top_box.row()
                 row.prop(self, "paneltwo_mode16_visible",
-                    icon="DOWNARROW_HLT" if self.paneltwo_mode16_visible else "RIGHTARROW", emboss=False)
+                    icon="HIDE_OFF" if self.paneltwo_mode16_visible else "HIDE_ON", emboss=False)
                 row.label(text="蜡笔顶点绘制模式", icon="VPAINT_HLT")
 
                 if self.paneltwo_mode16_visible:   
@@ -26235,75 +26271,82 @@ class QuickSwitchAddonPreferences(AddonPreferences):
                     for i in range(1, 9):
                         row.prop(self, f"paneltwo_mode16_col{i}_title", text="")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode17_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode17_visible else "RIGHTARROW", emboss=False)
-            row.label(text="骨架编辑模式", icon="OUTLINER_DATA_ARMATURE")
-
-            if self.paneltwo_mode17_visible:
+            if typeandmode == 'ARMATUREEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode17_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode17_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode17_visible else "HIDE_ON", emboss=False)
+                row.label(text="骨架编辑模式", icon="OUTLINER_DATA_ARMATURE")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode18_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode18_visible else "RIGHTARROW", emboss=False)
-            row.label(text="骨架姿态模式", icon="POSE_HLT")
+                if self.paneltwo_mode17_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode17_col{i}_title", text="")
 
-            if self.paneltwo_mode18_visible:   
+            if typeandmode == 'ARMATUREPOSE':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode18_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode18_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode18_visible else "HIDE_ON", emboss=False)
+                row.label(text="骨架姿态模式", icon="POSE_HLT")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode19_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode19_visible else "RIGHTARROW", emboss=False)
-            row.label(text="曲线编辑模式", icon="OUTLINER_DATA_CURVE")
+                if self.paneltwo_mode18_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode18_col{i}_title", text="")
 
-            if self.paneltwo_mode19_visible:
+            if typeandmode == 'CURVEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode19_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode19_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode19_visible else "HIDE_ON", emboss=False)
+                row.label(text="曲线编辑模式", icon="OUTLINER_DATA_CURVE")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode20_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode20_visible else "RIGHTARROW", emboss=False)
-            row.label(text="表(曲)面编辑模式", icon="SURFACE_DATA")
+                if self.paneltwo_mode19_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode19_col{i}_title", text="")
 
-            if self.paneltwo_mode20_visible:   
+            if typeandmode == 'SURFACEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode20_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode20_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode20_visible else "HIDE_ON", emboss=False)
+                row.label(text="表(曲)面编辑模式", icon="SURFACE_DATA")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode21_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode21_visible else "RIGHTARROW", emboss=False)
-            row.label(text="融球编辑模式", icon="META_DATA")
+                if self.paneltwo_mode20_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode20_col{i}_title", text="")
 
-            if self.paneltwo_mode21_visible:
+            if typeandmode == 'METAEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode21_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode21_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode21_visible else "HIDE_ON", emboss=False)
+                row.label(text="融球编辑模式", icon="META_DATA")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode22_visible",
-                icon="DOWNARROW_HLT" if self.paneltwo_mode22_visible else "RIGHTARROW", emboss=False)
-            row.label(text="字体编辑模式", icon="FONT_DATA")
+                if self.paneltwo_mode21_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode21_col{i}_title", text="")
 
-            if self.paneltwo_mode22_visible:   
+            if typeandmode == 'FONTEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode22_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode22_visible",
+                    icon="HIDE_OFF" if self.paneltwo_mode22_visible else "HIDE_ON", emboss=False)
+                row.label(text="字体编辑模式", icon="FONT_DATA")
 
-            row = top_box.row()
-            row.prop(self, "paneltwo_mode23_visible", 
-                icon="DOWNARROW_HLT" if self.paneltwo_mode23_visible else "RIGHTARROW", emboss=False)
-            row.label(text="晶格编辑模式", icon="LATTICE_DATA")
+                if self.paneltwo_mode22_visible:   
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode22_col{i}_title", text="")
 
-            if self.paneltwo_mode23_visible:
+            if typeandmode == 'LATTICEEDIT':
                 row = top_box.row()
-                for i in range(1, 9):
-                    row.prop(self, f"paneltwo_mode23_col{i}_title", text="")
+                row.prop(self, "paneltwo_mode23_visible", 
+                    icon="HIDE_OFF" if self.paneltwo_mode23_visible else "HIDE_ON", emboss=False)
+                row.label(text="晶格编辑模式", icon="LATTICE_DATA")
+
+                if self.paneltwo_mode23_visible:
+                    row = top_box.row()
+                    for i in range(1, 9):
+                        row.prop(self, f"paneltwo_mode23_col{i}_title", text="")
 
 
 
