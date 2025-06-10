@@ -146,6 +146,11 @@ from .quick_menu_button_functions.button_actions_gpencil_weight import (
     unregister as unregister_button_actions_gpencil_weight,
 )
 
+from .quick_menu_button_functions.button_actions_gpencil_vertex import (
+    register as register_button_actions_gpencil_vertex,
+    unregister as unregister_button_actions_gpencil_vertex,
+)
+
 from .quick_menu_button_functions.button_actions_greasepencil_edit import (
     register as register_button_actions_greasepencil_edit,
     unregister as unregister_button_actions_greasepencil_edit,
@@ -154,6 +159,11 @@ from .quick_menu_button_functions.button_actions_greasepencil_edit import (
 from .quick_menu_button_functions.button_actions_greasepencil_weight import (
     register as register_button_actions_greasepencil_weight,
     unregister as unregister_button_actions_greasepencil_weight,
+)
+
+from .quick_menu_button_functions.button_actions_greasepencil_vertex import (
+    register as register_button_actions_greasepencil_vertex,
+    unregister as unregister_button_actions_greasepencil_vertex,
 )
 
 from .quick_menu_button_functions.button_actions_armature import (
@@ -205,6 +215,11 @@ from .right_click_to_switcher.right_click_add_gpencil_weight import (
     unregister as unregister_right_click_add_gpencil_weight,
 )
 
+from .right_click_to_switcher.right_click_add_gpencil_vertex import (
+    register as register_right_click_add_gpencil_vertex,
+    unregister as unregister_right_click_add_gpencil_vertex,
+)
+
 from .right_click_to_switcher.right_click_add_greasepencil_edit import (
     register as register_right_click_add_greasepencil_edit,
     unregister as unregister_right_click_add_greasepencil_edit,
@@ -213,6 +228,11 @@ from .right_click_to_switcher.right_click_add_greasepencil_edit import (
 from .right_click_to_switcher.right_click_add_greasepencil_weight import (
     register as register_right_click_add_greasepencil_weight,
     unregister as unregister_right_click_add_greasepencil_weight,
+)
+
+from .right_click_to_switcher.right_click_add_greasepencil_vertex import (
+    register as register_right_click_add_greasepencil_vertex,
+    unregister as unregister_right_click_add_greasepencil_vertex,
 )
 
 from .right_click_to_switcher.right_click_add_armature_edit import (
@@ -264,10 +284,14 @@ def register():
 
     register_right_click_add_gpencil_weight()
 
+    register_right_click_add_gpencil_vertex()
+
 
     register_right_click_add_greasepencil_edit()
 
     register_right_click_add_greasepencil_weight()
+
+    register_right_click_add_greasepencil_vertex()
 
     # 注册“骨架编辑”模式
     register_right_click_add_armature_edit()
@@ -381,9 +405,13 @@ def register():
 
     register_button_actions_gpencil_weight()
 
+    register_button_actions_gpencil_vertex()
+
     register_button_actions_greasepencil_edit()
 
     register_button_actions_greasepencil_weight()
+
+    register_button_actions_greasepencil_vertex()
 
     # "骨架"模式相关功能
     bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
@@ -410,10 +438,13 @@ def unregister():
     # 注销 物体模式——添加到右键
     unregister_right_click_add_object()
 
+    unregister_right_click_add_greasepencil_vertex()
 
     unregister_right_click_add_greasepencil_weight()
 
     unregister_right_click_add_greasepencil_edit()
+
+    unregister_right_click_add_gpencil_vertex()
 
     unregister_right_click_add_gpencil_weight()
 
@@ -447,9 +478,13 @@ def unregister():
 
     unregister_button_actions_armature_edit()
 
+    unregister_button_actions_greasepencil_vertex()
+
     unregister_button_actions_greasepencil_weight()
 
     unregister_button_actions_greasepencil_edit()
+
+    unregister_button_actions_gpencil_vertex()
 
     unregister_button_actions_gpencil_weight()
 
