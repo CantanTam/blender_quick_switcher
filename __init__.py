@@ -166,10 +166,6 @@ from .quick_menu_button_functions.button_actions_greasepencil_vertex import (
     unregister as unregister_button_actions_greasepencil_vertex,
 )
 
-from .quick_menu_button_functions.button_actions_armature import (
-    BUTTON_ACTION_OT_armature_bone_primitive_add,
-)
-
 from .quick_menu_button_functions.button_actions_armature_edit import (
     register as register_button_actions_armature_edit,
     unregister as unregister_button_actions_armature_edit,
@@ -413,9 +409,6 @@ def register():
 
     register_button_actions_greasepencil_vertex()
 
-    # "骨架"模式相关功能
-    bpy.utils.register_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
-
     register_button_actions_armature_edit()
 
     register_button_actions_curve_edit()
@@ -468,9 +461,6 @@ def unregister():
     unregister_operator_typeandmode_name_mode()
 
     unregister_show_switch_notice()
-
-    # ”骨架“模式相关功能
-    bpy.utils.unregister_class(BUTTON_ACTION_OT_armature_bone_primitive_add)
 
     unregister_button_actions_lattice()
 

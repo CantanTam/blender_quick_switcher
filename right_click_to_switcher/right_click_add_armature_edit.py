@@ -151,10 +151,12 @@ def register():
     bpy.types.VIEW3D_MT_edit_armature_names.append(armatureedit_name_roll_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_armature_parent.append(armatureedit_armature_parent_menu_to_switcher)
     bpy.types.VIEW3D_MT_bone_options_toggle.append(armatureedit_bone_options_toggle_menu_to_switcher)
-    bpy.types.VIEW3D_MT_bone_collections.append(armatureedit_bone_collections_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_bone_collections.append(armatureedit_bone_collections_menu_to_switcher)
 
 def unregister():
-    bpy.types.VIEW3D_MT_bone_collections.remove(armatureedit_bone_collections_menu_to_switcher)
+    if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_bone_collections.remove(armatureedit_bone_collections_menu_to_switcher)
     bpy.types.VIEW3D_MT_bone_options_toggle.remove(armatureedit_bone_options_toggle_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_armature_parent.remove(armatureedit_armature_parent_menu_to_switcher)
     bpy.types.VIEW3D_MT_edit_armature_names.remove(armatureedit_name_roll_menu_to_switcher)
