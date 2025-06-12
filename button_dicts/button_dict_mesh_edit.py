@@ -1,286 +1,286 @@
 
 button_press_mesh_edit = {
     # ”选择“菜单
-        'button.action_mesh_select_nth':(
-        "button.action_mesh_select_nth","间隔式弃选","RADIOBUT_OFF", "MESHEDIT",
+        'action.mesh_select_nth':(
+        "action.mesh_select_nth","间隔式弃选","RADIOBUT_OFF", "MESHEDIT",
     ),
-        'button.action_mesh_edges_select_sharp':(
-        "button.action_mesh_edges_select_sharp","选择锐边","RADIOBUT_OFF", "MESHEDIT",
+        'action.mesh_edges_select_sharp':(
+        "action.mesh_edges_select_sharp","选择锐边","RADIOBUT_OFF", "MESHEDIT",
     ),
-        'button.action_mesh_call_select_by_trait':(
-        "button.action_mesh_call_select_by_trait","按特征全选","PRESET", "MESHEDIT",
+        'action.mesh_call_select_by_trait':(
+        "action.mesh_call_select_by_trait","按特征全选","PRESET", "MESHEDIT",
     ),
-        'button.action_call_mesh_select_loops':(
-        "button.action_call_mesh_select_loops","选择循环","PRESET", "MESHEDIT",
+        'action.call_mesh_select_loops':(
+        "action.call_mesh_select_loops","选择循环","PRESET", "MESHEDIT",
     ),
-        'button.action_mesh_select_axis':(
-        "button.action_mesh_select_axis","活动项的同侧","RADIOBUT_OFF", "MESHEDIT",
+        'action.mesh_select_axis':(
+        "action.mesh_select_axis","活动项的同侧","RADIOBUT_OFF", "MESHEDIT",
     ),
 
     # "网格"菜单
-        'button.action_meshedit_transform_shrink_fatten':(
-        "button.action_meshedit_transform_shrink_fatten","法向缩放","RADIOBUT_OFF",
+        'action.meshedit_transform_shrink_fatten':(
+        "action.meshedit_transform_shrink_fatten","法向缩放","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_skin_resize':(
-        "button.action_meshedit_transform_skin_resize","重置蒙皮尺寸","RADIOBUT_OFF",
+        'action.meshedit_transform_skin_resize':(
+        "action.meshedit_transform_skin_resize","重置蒙皮尺寸","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_edit_mesh_extrude_menu':(
-        "button.action_meshedit_edit_mesh_extrude_menu","挤出","PRESET",
+        'action.meshedit_edit_mesh_extrude_menu':(
+        "action.meshedit_edit_mesh_extrude_menu","挤出","PRESET",
     ),
-        'button.action_meshedit_edit_mesh_merge_menu':(
-        "button.action_meshedit_edit_mesh_merge_menu","合并","PRESET",
+        'action.meshedit_edit_mesh_merge_menu':(
+        "action.meshedit_edit_mesh_merge_menu","合并","PRESET",
     ),
-        'button.action_meshedit_edit_mesh_split_menu':(
-        "button.action_meshedit_edit_mesh_split_menu","拆分","PRESET",
+        'action.meshedit_edit_mesh_split_menu':(
+        "action.meshedit_edit_mesh_split_menu","拆分","PRESET",
     ),
-        'button.action_meshedit_mesh_separate':(
-        "button.action_meshedit_mesh_separate","分离","PRESET",
+        'action.meshedit_mesh_separate':(
+        "action.meshedit_mesh_separate","分离","PRESET",
     ),
-        'button.action_meshedit_mesh_bisect':(
-        "button.action_meshedit_mesh_bisect","切分","RADIOBUT_OFF",
+        'action.meshedit_mesh_bisect':(
+        "action.meshedit_mesh_bisect","切分","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_knife_project':(
-        "button.action_meshedit_mesh_knife_project","投影切割","RADIOBUT_OFF",
+        'action.meshedit_mesh_knife_project':(
+        "action.meshedit_mesh_knife_project","投影切割","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_knife_tool':(
-        "button.action_meshedit_mesh_knife_tool","裁刀拓扑工具","RADIOBUT_OFF",
+        'action.meshedit_mesh_knife_tool':(
+        "action.meshedit_mesh_knife_tool","裁刀拓扑工具","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_convex_hull':(
-        "button.action_meshedit_mesh_convex_hull","凸壳","RADIOBUT_OFF",
+        'action.meshedit_mesh_convex_hull':(
+        "action.meshedit_mesh_convex_hull","凸壳","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_symmetrize':(
-        "button.action_meshedit_mesh_symmetrize","对称","RADIOBUT_OFF",
+        'action.meshedit_mesh_symmetrize':(
+        "action.meshedit_mesh_symmetrize","对称","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_symmetry_snap':(
-        "button.action_meshedit_mesh_symmetry_snap","吸附到对称结构","RADIOBUT_OFF",
+        'action.meshedit_mesh_symmetry_snap':(
+        "action.meshedit_mesh_symmetry_snap","吸附到对称结构","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_edit_mesh_normals_menu':(
-        "button.action_meshedit_edit_mesh_normals_menu","法向","PRESET",
+        'action.meshedit_edit_mesh_normals_menu':(
+        "action.meshedit_edit_mesh_normals_menu","法向","PRESET",
     ),
-        'button.action_meshedit_flip_normals':(
-        "button.action_meshedit_flip_normals","翻转法向","RADIOBUT_OFF",
+        'action.meshedit_flip_normals':(
+        "action.meshedit_flip_normals","翻转法向","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_normals_make_consistent':(
-        "button.action_meshedit_normals_make_consistent","重新计算外/内侧","RADIOBUT_OFF",
+        'action.meshedit_normals_make_consistent':(
+        "action.meshedit_normals_make_consistent","重新计算外/内侧","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_set_normals_from_faces':(
-        "button.action_meshedit_set_normals_from_faces","从面设置法向","RADIOBUT_OFF",
+        'action.meshedit_set_normals_from_faces':(
+        "action.meshedit_set_normals_from_faces","从面设置法向","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_rotate_normal':(
-        "button.action_meshedit_transform_rotate_normal","旋转法向","RADIOBUT_OFF",
+        'action.meshedit_transform_rotate_normal':(
+        "action.meshedit_transform_rotate_normal","旋转法向","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_point_normals':(
-        "button.action_meshedit_point_normals","法向指向目标体","RADIOBUT_OFF",
+        'action.meshedit_point_normals':(
+        "action.meshedit_point_normals","法向指向目标体","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_merge_normals':(
-        "button.action_meshedit_merge_normals","合并法向","RADIOBUT_OFF",
+        'action.meshedit_merge_normals':(
+        "action.meshedit_merge_normals","合并法向","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_split_normals':(
-        "button.action_meshedit_split_normals","拆分法向","RADIOBUT_OFF",
+        'action.meshedit_split_normals':(
+        "action.meshedit_split_normals","拆分法向","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_edit_mesh_normals_average':(
-        "button.action_meshedit_edit_mesh_normals_average","平均法向","PRESET",
+        'action.meshedit_edit_mesh_normals_average':(
+        "action.meshedit_edit_mesh_normals_average","平均法向","PRESET",
     ),
-        'button.action_meshedit_edit_mesh_shading':(
-        "button.action_meshedit_edit_mesh_shading","着色方式","PRESET",
+        'action.meshedit_edit_mesh_shading':(
+        "action.meshedit_edit_mesh_shading","着色方式","PRESET",
     ),
-        'button.action_meshedit_edit_mesh_weights':(
-        "button.action_meshedit_edit_mesh_weights","权重","PRESET",
+        'action.meshedit_edit_mesh_weights':(
+        "action.meshedit_edit_mesh_weights","权重","PRESET",
     ),
-        'button.action_meshedit_attribute_set':(
-        "button.action_meshedit_attribute_set","设置属性","RADIOBUT_OFF",
+        'action.meshedit_attribute_set':(
+        "action.meshedit_attribute_set","设置属性","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_sort_elements':(
-        "button.action_meshedit_sort_elements","网格元素排序","PRESET",
+        'action.meshedit_sort_elements':(
+        "action.meshedit_sort_elements","网格元素排序","PRESET",
     ),
-        'button.action_meshedit_edit_mesh_clean':(
-        "button.action_meshedit_edit_mesh_clean","清理","PRESET",
+        'action.meshedit_edit_mesh_clean':(
+        "action.meshedit_edit_mesh_clean","清理","PRESET",
     ),
     # “顶点”菜单
-        'button.action_meshedit_extrude_vertices_move':(
-        "button.action_meshedit_extrude_vertices_move","挤出顶点","VERTEXSEL",
+        'action.meshedit_extrude_vertices_move':(
+        "action.meshedit_extrude_vertices_move","挤出顶点","VERTEXSEL",
     ),
-        'button.action_meshedit_bevel_vertices':(
-        "button.action_meshedit_bevel_vertices","点倒角","MOD_BEVEL",
+        'action.meshedit_bevel_vertices':(
+        "action.meshedit_bevel_vertices","点倒角","MOD_BEVEL",
     ),
-        'button.action_meshedit_bevel_edges':(
-        "button.action_meshedit_bevel_edges","边倒角","MOD_BEVEL",
+        'action.meshedit_bevel_edges':(
+        "action.meshedit_bevel_edges","边倒角","MOD_BEVEL",
     ),
-        'button.action_meshedit_edge_face_add':(
-        "button.action_meshedit_edge_face_add","填充面","RADIOBUT_OFF",
+        'action.meshedit_edge_face_add':(
+        "action.meshedit_edge_face_add","填充面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_vert_connect_path':(
-        "button.action_meshedit_vert_connect_path","连接顶点","RADIOBUT_OFF",
+        'action.meshedit_vert_connect_path':(
+        "action.meshedit_vert_connect_path","连接顶点","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_vert_connect':(
-        "button.action_meshedit_vert_connect","连接顶点对","RADIOBUT_OFF",
+        'action.meshedit_vert_connect':(
+        "action.meshedit_vert_connect","连接顶点对","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_rip_move':(
-        "button.action_meshedit_rip_move","断离顶点","RADIOBUT_OFF",
+        'action.meshedit_rip_move':(
+        "action.meshedit_rip_move","断离顶点","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_rip_move_fill':(
-        "button.action_meshedit_rip_move_fill","断离顶点并填充","RADIOBUT_OFF",
+        'action.meshedit_rip_move_fill':(
+        "action.meshedit_rip_move_fill","断离顶点并填充","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_rip_edge_move':(
-        "button.action_meshedit_rip_edge_move","断离顶点并延长","RADIOBUT_OFF",
+        'action.meshedit_rip_edge_move':(
+        "action.meshedit_rip_edge_move","断离顶点并延长","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_vert_slide':(
-        "button.action_meshedit_transform_vert_slide","滑移顶点","RADIOBUT_OFF",
+        'action.meshedit_transform_vert_slide':(
+        "action.meshedit_transform_vert_slide","滑移顶点","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_vertices_smooth':(
-        "button.action_meshedit_vertices_smooth","平滑顶点","RADIOBUT_OFF",
+        'action.meshedit_vertices_smooth':(
+        "action.meshedit_vertices_smooth","平滑顶点","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_vertices_smooth_laplacian':(
-        "button.action_meshedit_vertices_smooth_laplacian","平滑顶点(拉普拉斯)","RADIOBUT_OFF",
+        'action.meshedit_vertices_smooth_laplacian':(
+        "action.meshedit_vertices_smooth_laplacian","平滑顶点(拉普拉斯)","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_vert_crease':(
-        "button.action_meshedit_transform_vert_crease","顶点折痕","RADIOBUT_OFF",
+        'action.meshedit_transform_vert_crease':(
+        "action.meshedit_transform_vert_crease","顶点折痕","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_blend_from_shape':(
-        "button.action_meshedit_blend_from_shape","从形状混合","SHAPEKEY_DATA",
+        'action.meshedit_blend_from_shape':(
+        "action.meshedit_blend_from_shape","从形状混合","SHAPEKEY_DATA",
     ),
-        'button.action_meshedit_shape_propagate_to_all':(
-        "button.action_meshedit_shape_propagate_to_all","传递到形状","SHAPEKEY_DATA",
+        'action.meshedit_shape_propagate_to_all':(
+        "action.meshedit_shape_propagate_to_all","传递到形状","SHAPEKEY_DATA",
     ),
-        'button.action_meshedit_vertex_group_menu':(
-        "button.action_meshedit_vertex_group_menu","顶点组","GROUP_VERTEX",
+        'action.meshedit_vertex_group_menu':(
+        "action.meshedit_vertex_group_menu","顶点组","GROUP_VERTEX",
     ),
-        'button.action_meshedit_hook_menu':(
-        "button.action_meshedit_hook_menu","钩挂","PRESET",
+        'action.meshedit_hook_menu':(
+        "action.meshedit_hook_menu","钩挂","PRESET",
     ),
-        'button.action_meshedit_vertex_parent_set':(
-        "button.action_meshedit_vertex_parent_set","创建父级顶点","RADIOBUT_OFF",
+        'action.meshedit_vertex_parent_set':(
+        "action.meshedit_vertex_parent_set","创建父级顶点","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_extrude_edges_move':(
-        "button.action_meshedit_extrude_edges_move","挤出边线","EDGESEL",
+        'action.meshedit_extrude_edges_move':(
+        "action.meshedit_extrude_edges_move","挤出边线","EDGESEL",
     ),
-        'button.action_meshedit_bridge_edge_loops':(
-        "button.action_meshedit_bridge_edge_loops","桥接循环边","RADIOBUT_OFF",
+        'action.meshedit_bridge_edge_loops':(
+        "action.meshedit_bridge_edge_loops","桥接循环边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_edge_rotate':(
-        "button.action_meshedit_edge_rotate","旋转边","RADIOBUT_OFF",
+        'action.meshedit_edge_rotate':(
+        "action.meshedit_edge_rotate","旋转边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_subdivide_edgering':(
-        "button.action_meshedit_subdivide_edgering","细分并排边","RADIOBUT_OFF",
+        'action.meshedit_subdivide_edgering':(
+        "action.meshedit_subdivide_edgering","细分并排边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_screw':(
-        "button.action_meshedit_screw","螺旋","MOD_SCREW",
+        'action.meshedit_screw':(
+        "action.meshedit_screw","螺旋","MOD_SCREW",
     ),
-        'button.action_meshedit_unsubdivide':(
-        "button.action_meshedit_unsubdivide","反细分","RADIOBUT_OFF",
+        'action.meshedit_unsubdivide':(
+        "action.meshedit_unsubdivide","反细分","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_edge_slide':(
-        "button.action_meshedit_transform_edge_slide","滑移边线","RADIOBUT_OFF",
+        'action.meshedit_transform_edge_slide':(
+        "action.meshedit_transform_edge_slide","滑移边线","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_loopcut_slide':(
-        "button.action_meshedit_loopcut_slide","环切并滑移","RADIOBUT_OFF",
+        'action.meshedit_loopcut_slide':(
+        "action.meshedit_loopcut_slide","环切并滑移","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_offset_edge_loops_slide':(
-        "button.action_meshedit_offset_edge_loops_slide","偏移边线并滑移","RADIOBUT_OFF",
+        'action.meshedit_offset_edge_loops_slide':(
+        "action.meshedit_offset_edge_loops_slide","偏移边线并滑移","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_edge_crease':(
-        "button.action_meshedit_transform_edge_crease","边线折痕","RADIOBUT_OFF",
+        'action.meshedit_transform_edge_crease':(
+        "action.meshedit_transform_edge_crease","边线折痕","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_transform_edge_bevelweight':(
-        "button.action_meshedit_transform_edge_bevelweight","倒角边权重","RADIOBUT_OFF",
+        'action.meshedit_transform_edge_bevelweight':(
+        "action.meshedit_transform_edge_bevelweight","倒角边权重","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_seam_toggle':(
-        "button.action_meshedit_mesh_mark_seam_toggle","缝合边","RADIOBUT_OFF",
+        'action.meshedit_mesh_mark_seam_toggle':(
+        "action.meshedit_mesh_mark_seam_toggle","缝合边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_sharp_toggle':(
-        "button.action_meshedit_mesh_mark_sharp_toggle","锐边","RADIOBUT_OFF",
+        'action.meshedit_mesh_mark_sharp_toggle':(
+        "action.meshedit_mesh_mark_sharp_toggle","锐边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_set_sharpness_by_angle':(
-        "button.action_meshedit_mesh_set_sharpness_by_angle","按角度设置锐边","RADIOBUT_OFF",
+        'action.meshedit_mesh_set_sharpness_by_angle':(
+        "action.meshedit_mesh_set_sharpness_by_angle","按角度设置锐边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_freestyle_edge_clear_false':(
-        "button.action_meshedit_mesh_mark_freestyle_edge_clear_false","标记Freestyle边","RADIOBUT_OFF",
+        'action.meshedit_mesh_mark_freestyle_edge_clear_false':(
+        "action.meshedit_mesh_mark_freestyle_edge_clear_false","标记Freestyle边","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_mesh_mark_freestyle_edge_clear_true':(
-        "button.action_meshedit_mesh_mark_freestyle_edge_clear_true","清除Freestyle边","RADIOBUT_OFF",
+        'action.meshedit_mesh_mark_freestyle_edge_clear_true':(
+        "action.meshedit_mesh_mark_freestyle_edge_clear_true","清除Freestyle边","RADIOBUT_OFF",
     ),
     # “面”菜单
-        'button.action_meshedit_view3d_edit_mesh_extrude_move_normal':(
-        "button.action_meshedit_view3d_edit_mesh_extrude_move_normal","挤出","FACESEL",
+        'action.meshedit_view3d_edit_mesh_extrude_move_normal':(
+        "action.meshedit_view3d_edit_mesh_extrude_move_normal","挤出","FACESEL",
     ),
-        'button.action_meshedit_extrude_move_shrink_fatten':(
-        "button.action_meshedit_extrude_move_shrink_fatten","沿法向挤出","RADIOBUT_OFF",
+        'action.meshedit_extrude_move_shrink_fatten':(
+        "action.meshedit_extrude_move_shrink_fatten","沿法向挤出","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_extrude_faces_move':(
-        "button.action_meshedit_extrude_faces_move","挤出各个面","RADIOBUT_OFF",
+        'action.meshedit_extrude_faces_move':(
+        "action.meshedit_extrude_faces_move","挤出各个面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_inset':(
-        "button.action_meshedit_inset","内插面","FACESEL",
+        'action.meshedit_inset':(
+        "action.meshedit_inset","内插面","FACESEL",
     ),
-        'button.action_meshedit_poke':(
-        "button.action_meshedit_poke","尖分面","RADIOBUT_OFF",
+        'action.meshedit_poke':(
+        "action.meshedit_poke","尖分面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_quads_convert_to_tris':(
-        "button.action_meshedit_quads_convert_to_tris","面三角化","RADIOBUT_OFF",
+        'action.meshedit_quads_convert_to_tris':(
+        "action.meshedit_quads_convert_to_tris","面三角化","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_tris_convert_to_quads':(
-        "button.action_meshedit_tris_convert_to_quads","三角面->四边面","RADIOBUT_OFF",
+        'action.meshedit_tris_convert_to_quads':(
+        "action.meshedit_tris_convert_to_quads","三角面->四边面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_solidify':(
-        "button.action_meshedit_solidify","面实体化","RADIOBUT_OFF",
+        'action.meshedit_solidify':(
+        "action.meshedit_solidify","面实体化","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_wireframe':(
-        "button.action_meshedit_wireframe","线框","MOD_WIREFRAME",
+        'action.meshedit_wireframe':(
+        "action.meshedit_wireframe","线框","MOD_WIREFRAME",
     ),
-        'button.action_meshedit_fill':(
-        "button.action_meshedit_fill","填充","RADIOBUT_OFF",
+        'action.meshedit_fill':(
+        "action.meshedit_fill","填充","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_fill_grid':(
-        "button.action_meshedit_fill_grid","栅格填充","RADIOBUT_OFF",
+        'action.meshedit_fill_grid':(
+        "action.meshedit_fill_grid","栅格填充","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_beautify_fill':(
-        "button.action_meshedit_beautify_fill","完美建面","RADIOBUT_OFF",
+        'action.meshedit_beautify_fill':(
+        "action.meshedit_beautify_fill","完美建面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_intersect':(
-        "button.action_meshedit_intersect","交集(切割)","RADIOBUT_OFF",
+        'action.meshedit_intersect':(
+        "action.meshedit_intersect","交集(切割)","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_intersect_boolean':(
-        "button.action_meshedit_intersect_boolean","交集(布尔)","RADIOBUT_OFF",
+        'action.meshedit_intersect_boolean':(
+        "action.meshedit_intersect_boolean","交集(布尔)","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_face_split_by_edges':(
-        "button.action_meshedit_face_split_by_edges","焊接边线到面","RADIOBUT_OFF",
+        'action.meshedit_face_split_by_edges':(
+        "action.meshedit_face_split_by_edges","焊接边线到面","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_faces_shade_smooth':(
-        "button.action_meshedit_faces_shade_smooth","平滑着色","RADIOBUT_OFF",
+        'action.meshedit_faces_shade_smooth':(
+        "action.meshedit_faces_shade_smooth","平滑着色","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_faces_shade_flat':(
-        "button.action_meshedit_faces_shade_flat","平直着色","RADIOBUT_OFF",
+        'action.meshedit_faces_shade_flat':(
+        "action.meshedit_faces_shade_flat","平直着色","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_edit_mesh_faces_data':(
-        "button.action_meshedit_edit_mesh_faces_data","面数据","PRESET",
+        'action.meshedit_edit_mesh_faces_data':(
+        "action.meshedit_edit_mesh_faces_data","面数据","PRESET",
     ),
-        'button.action_meshedit_colors_rotate':(
-        "button.action_meshedit_colors_rotate","旋转顶点着色","RADIOBUT_OFF",
+        'action.meshedit_colors_rotate':(
+        "action.meshedit_colors_rotate","旋转顶点着色","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_colors_reverse':(
-        "button.action_meshedit_colors_reverse","反相颜色","RADIOBUT_OFF",
+        'action.meshedit_colors_reverse':(
+        "action.meshedit_colors_reverse","反相颜色","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_uvs_rotate':(
-        "button.action_meshedit_uvs_rotate","旋转UV","RADIOBUT_OFF",
+        'action.meshedit_uvs_rotate':(
+        "action.meshedit_uvs_rotate","旋转UV","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_uvs_reverse':(
-        "button.action_meshedit_uvs_reverse","翻转UV","RADIOBUT_OFF",
+        'action.meshedit_uvs_reverse':(
+        "action.meshedit_uvs_reverse","翻转UV","RADIOBUT_OFF",
     ),
-        'button.action_meshedit_flip_quad_tessellation':(
-        "button.action_meshedit_flip_quad_tessellation","翻转四边形密铺","RADIOBUT_OFF",
+        'action.meshedit_flip_quad_tessellation':(
+        "action.meshedit_flip_quad_tessellation","翻转四边形密铺","RADIOBUT_OFF",
     ),
-        'button.action_mark_freestyle_face_false':(
-        "button.action_mark_freestyle_face_false","标记Freestyle面","RADIOBUT_OFF",
+        'action.mark_freestyle_face_false':(
+        "action.mark_freestyle_face_false","标记Freestyle面","RADIOBUT_OFF",
     ),
-        'button.action_mark_freestyle_face_true':(
-        "button.action_mark_freestyle_face_true","清除Freestyle面","RADIOBUT_OFF",
+        'action.mark_freestyle_face_true':(
+        "action.mark_freestyle_face_true","清除Freestyle面","RADIOBUT_OFF",
     ),
     # UV 展开
-        'button.action_uvs_unwrap_menu':(
-        "button.action_uvs_unwrap_menu","展开UV","PRESET",
+        'action.uvs_unwrap_menu':(
+        "action.uvs_unwrap_menu","展开UV","PRESET",
     ),
-        'button.action_uv_reset':(
-        "button.action_uv_reset","重置UV","PRESET",
+        'action.uv_reset':(
+        "action.uv_reset","重置UV","PRESET",
     ),
 
 

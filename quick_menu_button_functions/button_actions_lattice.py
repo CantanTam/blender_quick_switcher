@@ -19,8 +19,8 @@ class VIEW3D_MT_latticeedit_flip_menu(bpy.types.Operator):
         col.operator("lattice.flip", text="V(Y)轴", icon="RADIOBUT_OFF").axis='V'
         col.operator("lattice.flip", text="W(Z)轴", icon="RADIOBUT_OFF").axis='W'
 
-class BUTTON_ACTION_OT_call_latticeedit_flip_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_latticeedit_flip_menu"
+class ACTION_OT_call_latticeedit_flip_menu(bpy.types.Operator):
+    bl_idname = "action.call_latticeedit_flip_menu"
     bl_label = "反转(免畸变)"
     bl_description = "快捷键 Alt F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -29,8 +29,8 @@ class BUTTON_ACTION_OT_call_latticeedit_flip_menu(bpy.types.Operator):
         bpy.ops.popup.latticeedit_flip_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_call_latticeedit_make_regular(bpy.types.Operator):
-    bl_idname = "button.action_latticeedit_make_regular"
+class ACTION_OT_call_latticeedit_make_regular(bpy.types.Operator):
+    bl_idname = "action.latticeedit_make_regular"
     bl_label = "均匀分布"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -41,8 +41,8 @@ class BUTTON_ACTION_OT_call_latticeedit_make_regular(bpy.types.Operator):
 
 classes = (
     VIEW3D_MT_latticeedit_flip_menu,
-    BUTTON_ACTION_OT_call_latticeedit_flip_menu,
-    BUTTON_ACTION_OT_call_latticeedit_make_regular,
+    ACTION_OT_call_latticeedit_flip_menu,
+    ACTION_OT_call_latticeedit_make_regular,
 
 )    
 

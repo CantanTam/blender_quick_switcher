@@ -1,8 +1,8 @@
 import bpy
 
 # “骨架”菜单
-class BUTTON_ACTION_OT_armatureedit_select_select_linked(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_select_select_linked"
+class ACTION_OT_armatureedit_select_select_linked(bpy.types.Operator):
+    bl_idname = "action.armatureedit_select_select_linked"
     bl_label = "选择相连"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -31,8 +31,8 @@ class BUTTON_ACTION_OT_armatureedit_select_select_linked(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——相似项 
-class BUTTON_ACTION_OT_armatureedit_select_similar(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_select_similar"
+class ACTION_OT_armatureedit_select_similar(bpy.types.Operator):
+    bl_idname = "action.armatureedit_select_similar"
     bl_label = "选择相似元素"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -85,8 +85,8 @@ class BUTTON_ACTION_OT_armatureedit_select_similar(bpy.types.Operator):
         bpy.ops.armature.select_similar(type=self.type, threshold=self.threshold)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_align(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_align"
+class ACTION_OT_armatureedit_align(bpy.types.Operator):
+    bl_idname = "action.armatureedit_align"
     bl_label = "对齐骨骼"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -94,8 +94,8 @@ class BUTTON_ACTION_OT_armatureedit_align(bpy.types.Operator):
         bpy.ops.armature.align()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_armature_roll_menu(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_armature_roll_menu"
+class ACTION_OT_armatureedit_armature_roll_menu(bpy.types.Operator):
+    bl_idname = "action.armatureedit_armature_roll_menu"
     bl_label = "骨骼扭转"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -103,8 +103,8 @@ class BUTTON_ACTION_OT_armatureedit_armature_roll_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_armature_roll")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_armature_calculate_roll_menu(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_armature_calculate_roll_menu"
+class ACTION_OT_armatureedit_armature_calculate_roll_menu(bpy.types.Operator):
+    bl_idname = "action.armatureedit_armature_calculate_roll_menu"
     bl_label = "重算扭转"
     bl_description = "快捷键 Shift N"
     bl_options = {'REGISTER', 'UNDO'}
@@ -113,8 +113,8 @@ class BUTTON_ACTION_OT_armatureedit_armature_calculate_roll_menu(bpy.types.Opera
         bpy.ops.armature.calculate_roll('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_transform_bone_roll(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_transform_bone_roll"
+class ACTION_OT_armatureedit_transform_bone_roll(bpy.types.Operator):
+    bl_idname = "action.armatureedit_transform_bone_roll"
     bl_label = "设置扭转"
     bl_description = "快捷键 Ctrl R"
     bl_options = {'REGISTER', 'UNDO'}
@@ -123,8 +123,8 @@ class BUTTON_ACTION_OT_armatureedit_transform_bone_roll(bpy.types.Operator):
         bpy.ops.transform.transform('INVOKE_DEFAULT',mode='BONE_ROLL')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_roll_clear(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_roll_clear"
+class ACTION_OT_armatureedit_roll_clear(bpy.types.Operator):
+    bl_idname = "action.armatureedit_roll_clear"
     bl_label = "清除扭转"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -153,8 +153,8 @@ class BUTTON_ACTION_OT_armatureedit_roll_clear(bpy.types.Operator):
         bpy.ops.armature.roll_clear(roll=self.roll)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_extrude_move(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_extrude_move"
+class ACTION_OT_armatureedit_extrude_move(bpy.types.Operator):
+    bl_idname = "action.armatureedit_extrude_move"
     bl_label = "挤出"
     bl_description = "快捷键 E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -163,8 +163,8 @@ class BUTTON_ACTION_OT_armatureedit_extrude_move(bpy.types.Operator):
         bpy.ops.armature.extrude_move('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_fill(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_fill"
+class ACTION_OT_armatureedit_fill(bpy.types.Operator):
+    bl_idname = "action.armatureedit_fill"
     bl_label = "在关节间填充骨骼"
     bl_description = "快捷键 F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -192,8 +192,8 @@ class BUTTON_ACTION_OT_armatureedit_fill(bpy.types.Operator):
         bpy.ops.armature.fill()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_armatureedit_split(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_split"
+class ACTION_OT_armatureedit_split(bpy.types.Operator):
+    bl_idname = "action.armatureedit_split"
     bl_label = "拆分"
     bl_description = "快捷键 Y"
     bl_options = {'REGISTER', 'UNDO'}
@@ -202,8 +202,8 @@ class BUTTON_ACTION_OT_armatureedit_split(bpy.types.Operator):
         bpy.ops.armature.split()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_separate(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_separate"
+class ACTION_OT_armatureedit_separate(bpy.types.Operator):
+    bl_idname = "action.armatureedit_separate"
     bl_label = "分离骨骼"
     bl_description = "快捷键 P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -212,8 +212,8 @@ class BUTTON_ACTION_OT_armatureedit_separate(bpy.types.Operator):
         bpy.ops.armature.separate('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_subdivide(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_subdivide"
+class ACTION_OT_armatureedit_subdivide(bpy.types.Operator):
+    bl_idname = "action.armatureedit_subdivide"
     bl_label = "细分"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -242,8 +242,8 @@ class BUTTON_ACTION_OT_armatureedit_subdivide(bpy.types.Operator):
         bpy.ops.armature.subdivide(number_cuts=self.number_cuts)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_switch_direction(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_switch_direction"
+class ACTION_OT_armatureedit_switch_direction(bpy.types.Operator):
+    bl_idname = "action.armatureedit_switch_direction"
     bl_label = "切换方向"
     bl_description = "快捷键 Alt F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -252,8 +252,8 @@ class BUTTON_ACTION_OT_armatureedit_switch_direction(bpy.types.Operator):
         bpy.ops.armature.switch_direction()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_symmetrize(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_symmetrize"
+class ACTION_OT_armatureedit_symmetrize(bpy.types.Operator):
+    bl_idname = "action.armatureedit_symmetrize"
     bl_label = "对称"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -283,8 +283,8 @@ class BUTTON_ACTION_OT_armatureedit_symmetrize(bpy.types.Operator):
         bpy.ops.armature.symmetrize(direction=self.direction)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_name_menu(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_name_menu"
+class ACTION_OT_armatureedit_name_menu(bpy.types.Operator):
+    bl_idname = "action.armatureedit_name_menu"
     bl_label = "名称"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -292,8 +292,8 @@ class BUTTON_ACTION_OT_armatureedit_name_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_armature_names")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_armatureedit_armature_layers(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_armature_layers"
+class ACTION_OT_armatureedit_armature_layers(bpy.types.Operator):
+    bl_idname = "action.armatureedit_armature_layers"
     bl_label = "更改骨架层"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -301,8 +301,8 @@ class BUTTON_ACTION_OT_armatureedit_armature_layers(bpy.types.Operator):
         bpy.ops.armature.armature_layers('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_bone_layers(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_bone_layers"
+class ACTION_OT_armatureedit_bone_layers(bpy.types.Operator):
+    bl_idname = "action.armatureedit_bone_layers"
     bl_label = "更改骨骼层"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -310,8 +310,8 @@ class BUTTON_ACTION_OT_armatureedit_bone_layers(bpy.types.Operator):
         bpy.ops.armature.bone_layers('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_edit_armature_parent(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_edit_armature_parent"
+class ACTION_OT_armatureedit_edit_armature_parent(bpy.types.Operator):
+    bl_idname = "action.armatureedit_edit_armature_parent"
     bl_label = "父级"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -319,8 +319,8 @@ class BUTTON_ACTION_OT_armatureedit_edit_armature_parent(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_armature_parent")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_parent_set(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_parent_set"
+class ACTION_OT_armatureedit_parent_set(bpy.types.Operator):
+    bl_idname = "action.armatureedit_parent_set"
     bl_label = "生成父级"
     bl_description = "快捷键 Ctrl P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -329,8 +329,8 @@ class BUTTON_ACTION_OT_armatureedit_parent_set(bpy.types.Operator):
         bpy.ops.armature.parent_set('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_armatureedit_parent_clear(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_parent_clear"
+class ACTION_OT_armatureedit_parent_clear(bpy.types.Operator):
+    bl_idname = "action.armatureedit_parent_clear"
     bl_label = "清空父级"
     bl_description = "快捷键 Alt P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -339,8 +339,8 @@ class BUTTON_ACTION_OT_armatureedit_parent_clear(bpy.types.Operator):
         bpy.ops.armature.parent_clear('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_armatureedit_bone_options_toggle(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_bone_options_toggle"
+class ACTION_OT_armatureedit_bone_options_toggle(bpy.types.Operator):
+    bl_idname = "action.armatureedit_bone_options_toggle"
     bl_label = "骨骼设置"
     bl_description = "快捷键 Shift W"
     bl_options = {'REGISTER', 'UNDO'}
@@ -349,8 +349,8 @@ class BUTTON_ACTION_OT_armatureedit_bone_options_toggle(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_bone_options_toggle")
         return {'FINISHED'}
 # 4.3版本以后的功能
-class BUTTON_ACTION_OT_armatureedit_bone_collections(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_bone_collections"
+class ACTION_OT_armatureedit_bone_collections(bpy.types.Operator):
+    bl_idname = "action.armatureedit_bone_collections"
     bl_label = "骨骼集合"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -358,8 +358,8 @@ class BUTTON_ACTION_OT_armatureedit_bone_collections(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_bone_collections")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_move_to_collection(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_move_to_collection"
+class ACTION_OT_armatureedit_move_to_collection(bpy.types.Operator):
+    bl_idname = "action.armatureedit_move_to_collection"
     bl_label = "移动到集合"
     bl_description = "快捷键 M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -368,8 +368,8 @@ class BUTTON_ACTION_OT_armatureedit_move_to_collection(bpy.types.Operator):
         bpy.ops.armature.move_to_collection('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_armatureedit_assign_to_collection(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_assign_to_collection"
+class ACTION_OT_armatureedit_assign_to_collection(bpy.types.Operator):
+    bl_idname = "action.armatureedit_assign_to_collection"
     bl_label = "指定到集合"
     bl_description = "快捷键 Shift M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -378,8 +378,8 @@ class BUTTON_ACTION_OT_armatureedit_assign_to_collection(bpy.types.Operator):
         bpy.ops.armature.assign_to_collection('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_collection_show_all(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_collection_show_all"
+class ACTION_OT_armatureedit_collection_show_all(bpy.types.Operator):
+    bl_idname = "action.armatureedit_collection_show_all"
     bl_label = "显示全部"
     bl_description = "快捷键 Ctrl `"
     bl_options = {'REGISTER', 'UNDO'}
@@ -388,8 +388,8 @@ class BUTTON_ACTION_OT_armatureedit_collection_show_all(bpy.types.Operator):
         bpy.ops.armature.collection_show_all()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_armatureedit_collection_create_and_assign(bpy.types.Operator):
-    bl_idname = "button.action_armatureedit_collection_create_and_assign"
+class ACTION_OT_armatureedit_collection_create_and_assign(bpy.types.Operator):
+    bl_idname = "action.armatureedit_collection_create_and_assign"
     bl_label = "添加选中的骨骼到新集合"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -420,33 +420,33 @@ class BUTTON_ACTION_OT_armatureedit_collection_create_and_assign(bpy.types.Opera
 
 
 classes = (
-    BUTTON_ACTION_OT_armatureedit_select_select_linked,
-    BUTTON_ACTION_OT_armatureedit_select_similar,
-    BUTTON_ACTION_OT_armatureedit_align,
-    BUTTON_ACTION_OT_armatureedit_armature_roll_menu,
-    BUTTON_ACTION_OT_armatureedit_armature_calculate_roll_menu,
-    BUTTON_ACTION_OT_armatureedit_transform_bone_roll,
-    BUTTON_ACTION_OT_armatureedit_roll_clear,
-    BUTTON_ACTION_OT_armatureedit_extrude_move,
-    BUTTON_ACTION_OT_armatureedit_fill,
-    BUTTON_ACTION_OT_armatureedit_split,
-    BUTTON_ACTION_OT_armatureedit_separate,
-    BUTTON_ACTION_OT_armatureedit_subdivide,
-    BUTTON_ACTION_OT_armatureedit_switch_direction,
-    BUTTON_ACTION_OT_armatureedit_symmetrize,
-    BUTTON_ACTION_OT_armatureedit_name_menu,
-    BUTTON_ACTION_OT_armatureedit_armature_layers,
-    BUTTON_ACTION_OT_armatureedit_bone_layers,
-    BUTTON_ACTION_OT_armatureedit_edit_armature_parent,
-    BUTTON_ACTION_OT_armatureedit_parent_set,
-    BUTTON_ACTION_OT_armatureedit_parent_clear,
-    BUTTON_ACTION_OT_armatureedit_bone_options_toggle,
+    ACTION_OT_armatureedit_select_select_linked,
+    ACTION_OT_armatureedit_select_similar,
+    ACTION_OT_armatureedit_align,
+    ACTION_OT_armatureedit_armature_roll_menu,
+    ACTION_OT_armatureedit_armature_calculate_roll_menu,
+    ACTION_OT_armatureedit_transform_bone_roll,
+    ACTION_OT_armatureedit_roll_clear,
+    ACTION_OT_armatureedit_extrude_move,
+    ACTION_OT_armatureedit_fill,
+    ACTION_OT_armatureedit_split,
+    ACTION_OT_armatureedit_separate,
+    ACTION_OT_armatureedit_subdivide,
+    ACTION_OT_armatureedit_switch_direction,
+    ACTION_OT_armatureedit_symmetrize,
+    ACTION_OT_armatureedit_name_menu,
+    ACTION_OT_armatureedit_armature_layers,
+    ACTION_OT_armatureedit_bone_layers,
+    ACTION_OT_armatureedit_edit_armature_parent,
+    ACTION_OT_armatureedit_parent_set,
+    ACTION_OT_armatureedit_parent_clear,
+    ACTION_OT_armatureedit_bone_options_toggle,
 
-    BUTTON_ACTION_OT_armatureedit_bone_collections,
-    BUTTON_ACTION_OT_armatureedit_move_to_collection,
-    BUTTON_ACTION_OT_armatureedit_assign_to_collection,
-    BUTTON_ACTION_OT_armatureedit_collection_show_all,
-    BUTTON_ACTION_OT_armatureedit_collection_create_and_assign,
+    ACTION_OT_armatureedit_bone_collections,
+    ACTION_OT_armatureedit_move_to_collection,
+    ACTION_OT_armatureedit_assign_to_collection,
+    ACTION_OT_armatureedit_collection_show_all,
+    ACTION_OT_armatureedit_collection_create_and_assign,
 
 )
 

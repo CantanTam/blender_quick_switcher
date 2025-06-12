@@ -11,112 +11,112 @@ def draw_add_to_switcher_curveedit(self, context):
     if op and op.bl_rna.identifier == "CURVE_OT_select_nth":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"间隔式弃选\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_select_nth'
+        layout.operator("call.add_to_switcher_menu", text="\"间隔式弃选\"⟶Switcher", icon='PLUS').action = 'action.curveedit_select_nth'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_de_select_first":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"选中/弃选首点\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_select_first'
+        layout.operator("call.add_to_switcher_menu", text="\"选中/弃选首点\"⟶Switcher", icon='PLUS').action = 'action.curveedit_select_first'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_de_select_last":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"选中/弃选末点\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_select_last'
+        layout.operator("call.add_to_switcher_menu", text="\"选中/弃选末点\"⟶Switcher", icon='PLUS').action = 'action.curveedit_select_last'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_select_row":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"控制点行\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_select_row'
+        layout.operator("call.add_to_switcher_menu", text="\"控制点行\"⟶Switcher", icon='PLUS').action = 'action.curveedit_select_row'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_spin":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"旋绕\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_spin'
+        layout.operator("call.add_to_switcher_menu", text="\"旋绕\"⟶Switcher", icon='PLUS').action = 'action.curveedit_spin'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_split":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"拆分\"⟶Switcher", icon='EVENT_Y').action = 'button.action_curveedit_split'
+        layout.operator("call.add_to_switcher_menu", text="\"拆分\"⟶Switcher", icon='EVENT_Y').action = 'action.curveedit_split'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_separate":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"分离\"⟶Switcher", icon='EVENT_P').action = 'button.action_curveedit_separate'
+        layout.operator("call.add_to_switcher_menu", text="\"分离\"⟶Switcher", icon='EVENT_P').action = 'action.curveedit_separate'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_cyclic_toggle":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"切换循环\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_cyclic_toggle'
+        layout.operator("call.add_to_switcher_menu", text="\"切换循环\"⟶Switcher", icon='PLUS').action = 'action.curveedit_cyclic_toggle'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_spline_type_set":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"设置样条类型\"⟶Switcher", icon='PRESET').action = 'button.action_curveedit_spline_type_set'
+        layout.operator("call.add_to_switcher_menu", text="\"设置样条类型\"⟶Switcher", icon='PRESET').action = 'action.curveedit_spline_type_set'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_decimate":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"精简曲线\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_decimate'
+        layout.operator("call.add_to_switcher_menu", text="\"精简曲线\"⟶Switcher", icon='PLUS').action = 'action.curveedit_decimate'
     # "点"菜单
     elif op and op.bl_rna.identifier == "CURVE_OT_extrude_move":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"挤出\"⟶Switcher", icon='EVENT_E').action = 'button.action_curveedit_extrude_move'
+        layout.operator("call.add_to_switcher_menu", text="\"挤出\"⟶Switcher", icon='EVENT_E').action = 'action.curveedit_extrude_move'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_make_segment":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"创建线段\"⟶Switcher", icon='EVENT_F').action = 'button.action_curveedit_make_segment'
+        layout.operator("call.add_to_switcher_menu", text="\"创建线段\"⟶Switcher", icon='EVENT_F').action = 'action.curveedit_make_segment'
 
     elif op and op.bl_rna.identifier == "TRANSFORM_OT_tilt":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"倾斜\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_transform_tilt'
+        layout.operator("call.add_to_switcher_menu", text="\"倾斜\"⟶Switcher", icon='PLUS').action = 'action.curveedit_transform_tilt'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_tilt_clear":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"清空倾斜量\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_tilt_clear'
+        layout.operator("call.add_to_switcher_menu", text="\"清空倾斜量\"⟶Switcher", icon='PLUS').action = 'action.curveedit_tilt_clear'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_handle_type_set":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"设置控制柄类型\"⟶Switcher", icon='PRESET').action = 'button.action_curveedit_handle_type_set'
+        layout.operator("call.add_to_switcher_menu", text="\"设置控制柄类型\"⟶Switcher", icon='PRESET').action = 'action.curveedit_handle_type_set'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_normals_make_consistent":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"重新计算控制柄\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_normals_make_consistent'
+        layout.operator("call.add_to_switcher_menu", text="\"重新计算控制柄\"⟶Switcher", icon='PLUS').action = 'action.curveedit_normals_make_consistent'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_smooth":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"光滑\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_smooth'
+        layout.operator("call.add_to_switcher_menu", text="\"光滑\"⟶Switcher", icon='PLUS').action = 'action.curveedit_smooth'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_smooth_tilt":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线倾斜\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_smooth_tilt'
+        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线倾斜\"⟶Switcher", icon='PLUS').action = 'action.curveedit_smooth_tilt'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_smooth_radius":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线半径\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_smooth_radius'
+        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线半径\"⟶Switcher", icon='PLUS').action = 'action.curveedit_smooth_radius'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_smooth_weight":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线权重\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_smooth_weight'
+        layout.operator("call.add_to_switcher_menu", text="\"平滑曲线权重\"⟶Switcher", icon='PLUS').action = 'action.curveedit_smooth_weight'
     # “段数”菜单
     elif op and op.bl_rna.identifier == "CURVE_OT_subdivide":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"细分\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_subdivide'
+        layout.operator("call.add_to_switcher_menu", text="\"细分\"⟶Switcher", icon='PLUS').action = 'action.curveedit_subdivide'
 
     elif op and op.bl_rna.identifier == "CURVE_OT_switch_direction":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"切换方向\"⟶Switcher", icon='PLUS').action = 'button.action_curveedit_switch_direction'
+        layout.operator("call.add_to_switcher_menu", text="\"切换方向\"⟶Switcher", icon='PLUS').action = 'action.curveedit_switch_direction'
 
 
 
@@ -135,14 +135,14 @@ def curveedit_transform_mode_curve_shrinkfatten_to_switcher(self, context):
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"半径\"⟶Switcher", icon='PLUS').action = 'button.action_transform_transform_mode_curve_shrinkfatten'
+    self.layout.operator("call.add_to_switcher_menu", text="\"半径\"⟶Switcher", icon='PLUS').action = 'action.transform_transform_mode_curve_shrinkfatten'
 
 def curveedit_curve_clean_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
         return
     self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"清理\"⟶Switcher", icon='PRESET').action = 'button.action_curveedit_curve_clean_menu'
+    self.layout.operator("call.add_to_switcher_menu", text="\"清理\"⟶Switcher", icon='PRESET').action = 'action.curveedit_curve_clean_menu'
 
 
 

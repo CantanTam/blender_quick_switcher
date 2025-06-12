@@ -176,6 +176,11 @@ from .quick_menu_button_functions.button_actions_armature_edit import (
     unregister as unregister_button_actions_armature_edit,
 )
 
+from .quick_menu_button_functions.button_actions_armature_pose import (
+    register as register_button_actions_armature_pose,
+    unregister as unregister_button_actions_armature_pose,
+)
+
 from .quick_menu_button_functions.button_actions_curve_edit import (
     register as register_button_actions_curve_edit,
     unregister as unregister_button_actions_curve_edit,
@@ -425,6 +430,8 @@ def register():
 
     register_button_actions_armature_edit()
 
+    register_button_actions_armature_pose()
+
     register_button_actions_curve_edit()
 
     register_button_actions_lattice()
@@ -481,6 +488,8 @@ def unregister():
     unregister_button_actions_lattice()
 
     unregister_button_actions_curve_edit()
+
+    unregister_button_actions_armature_pose()
 
     unregister_button_actions_armature_edit()
 

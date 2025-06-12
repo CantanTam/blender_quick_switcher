@@ -11,6 +11,7 @@ from ..button_dicts.button_dict_greasepencil_edit import button_press_greasepenc
 from ..button_dicts.button_dict_greasepencil_weight import button_press_greasepencil_weight
 from ..button_dicts.button_dict_greasepencil_vertex import button_press_greasepencil_vertex
 from ..button_dicts.button_dict_armature_edit import button_press_armature_edit
+from ..button_dicts.button_dict_armature_pose import button_press_armature_pose
 from ..button_dicts.button_dict_curve_edit import button_press_curve_edit
 from ..button_dicts.button_dict_lattice_edit import button_press_lattice_edit
 
@@ -27,6 +28,7 @@ button_press_function = (
     | button_press_greasepencil_weight
     | button_press_greasepencil_vertex
     | button_press_armature_edit
+    | button_press_armature_pose
     | button_press_curve_edit
     | button_press_lattice_edit
 )

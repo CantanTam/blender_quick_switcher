@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize_all(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilweight_vertex_group_normalize_all"
+class ACTION_OT_greasepencilweight_vertex_group_normalize_all(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_vertex_group_normalize_all"
     bl_label = "规格化全部顶点组"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -33,8 +33,8 @@ class BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize_all(bpy.types.O
         bpy.ops.grease_pencil.vertex_group_normalize_all(lock_active=self.lock_active)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilweight_vertex_group_normalize"
+class ACTION_OT_greasepencilweight_vertex_group_normalize(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_vertex_group_normalize"
     bl_label = "规格化"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -47,8 +47,8 @@ class BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize(bpy.types.Opera
         bpy.ops.grease_pencil.vertex_group_normalize()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilweight_vertex_group_invert(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilweight_vertex_group_invert"
+class ACTION_OT_greasepencilweight_vertex_group_invert(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_vertex_group_invert"
     bl_label = "反转"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -61,8 +61,8 @@ class BUTTON_ACTION_OT_greasepencilweight_vertex_group_invert(bpy.types.Operator
         bpy.ops.grease_pencil.weight_invert()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilweight_vertex_group_smooth(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilweight_vertex_group_smooth"
+class ACTION_OT_greasepencilweight_vertex_group_smooth(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_vertex_group_smooth"
     bl_label = "平滑顶点组"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -107,8 +107,8 @@ class BUTTON_ACTION_OT_greasepencilweight_vertex_group_smooth(bpy.types.Operator
         bpy.ops.grease_pencil.vertex_group_smooth(factor=self.factor, repeat=self.repeat)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilweight_weight_sample"
+class ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_weight_sample"
     bl_label = "采样权重"
     bl_description = "快捷键 Shift X"
     bl_options = {'REGISTER', 'UNDO'}
@@ -119,11 +119,11 @@ class BUTTON_ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
     
 
 classes = (
-    BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize_all,
-    BUTTON_ACTION_OT_greasepencilweight_vertex_group_normalize,
-    BUTTON_ACTION_OT_greasepencilweight_vertex_group_invert,
-    BUTTON_ACTION_OT_greasepencilweight_vertex_group_smooth,
-    BUTTON_ACTION_OT_greasepencilweight_weight_sample,
+    ACTION_OT_greasepencilweight_vertex_group_normalize_all,
+    ACTION_OT_greasepencilweight_vertex_group_normalize,
+    ACTION_OT_greasepencilweight_vertex_group_invert,
+    ACTION_OT_greasepencilweight_vertex_group_smooth,
+    ACTION_OT_greasepencilweight_weight_sample,
 
 
 

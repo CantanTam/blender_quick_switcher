@@ -2,8 +2,8 @@ import bpy
 import bmesh
 
 # “选择”菜单
-class BUTTON_ACTION_OT_mesh_select_nth(bpy.types.Operator):
-    bl_idname = "button.action_mesh_select_nth"
+class ACTION_OT_mesh_select_nth(bpy.types.Operator):
+    bl_idname = "action.mesh_select_nth"
     bl_label = "间隔式弃选"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -53,8 +53,8 @@ class BUTTON_ACTION_OT_mesh_select_nth(bpy.types.Operator):
         bpy.ops.mesh.select_nth(skip=self.skip, nth=self.nth, offset=self.offset)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
-    bl_idname = "button.action_mesh_edges_select_sharp"
+class ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
+    bl_idname = "action.mesh_edges_select_sharp"
     bl_label = "选择锐边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -86,7 +86,7 @@ class BUTTON_ACTION_OT_mesh_edges_select_sharp(bpy.types.Operator):
         bpy.ops.mesh.edges_select_sharp(sharpness=self.sharpness)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
+class ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
     bl_idname = "popup.mesh_select_by_trait"
     bl_label = "按特征全选"
     bl_options = {'REGISTER', 'UNDO'}
@@ -107,8 +107,8 @@ class BUTTON_ACTION_OT_mesh_select_by_trait(bpy.types.Operator):
         col.operator("mesh.select_interior_faces", text="内侧面", icon="RADIOBUT_OFF")
         col.operator("mesh.select_face_by_sides", text="按侧选面", icon="RADIOBUT_OFF")
 
-class BUTTON_ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
-    bl_idname = "button.action_mesh_call_select_by_trait"
+class ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
+    bl_idname = "action.mesh_call_select_by_trait"
     bl_label = "按特征全选"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -116,7 +116,7 @@ class BUTTON_ACTION_OT_mesh_call_select_by_trait(bpy.types.Operator):
         bpy.ops.popup.mesh_select_by_trait('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_mesh_select_loops(bpy.types.Operator):
+class ACTION_OT_mesh_select_loops(bpy.types.Operator):
     bl_idname = "popup.mesh_select_loops"
     bl_label = "选择循环"
     bl_options = {'REGISTER', 'UNDO'}
@@ -141,8 +141,8 @@ class BUTTON_ACTION_OT_mesh_select_loops(bpy.types.Operator):
         col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
         col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
 
-class BUTTON_ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
-    bl_idname = "button.action_call_mesh_select_loops"
+class ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
+    bl_idname = "action.call_mesh_select_loops"
     bl_label = "选择循环"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -150,8 +150,8 @@ class BUTTON_ACTION_OT_call_mesh_select_loops(bpy.types.Operator):
         bpy.ops.popup.mesh_select_loops('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
-    bl_idname = "button.action_mesh_select_axis"
+class ACTION_OT_mesh_select_axis(bpy.types.Operator):
+    bl_idname = "action.mesh_select_axis"
     bl_label = "活动项的同侧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -227,8 +227,8 @@ class BUTTON_ACTION_OT_mesh_select_axis(bpy.types.Operator):
         return {'FINISHED'}
 
 # “网格”菜单
-class BUTTON_ACTION_OT_meshedit_transform_shrink_fatten(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_shrink_fatten"
+class ACTION_OT_meshedit_transform_shrink_fatten(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_shrink_fatten"
     bl_label = "法向缩放"
     bl_description = "快捷键 Alt S"
     bl_options = {'REGISTER', 'UNDO'}
@@ -237,8 +237,8 @@ class BUTTON_ACTION_OT_meshedit_transform_shrink_fatten(bpy.types.Operator):
         bpy.ops.transform.shrink_fatten('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_transform_skin_resize(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_skin_resize"
+class ACTION_OT_meshedit_transform_skin_resize(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_skin_resize"
     bl_label = "重置蒙皮尺寸"
     bl_description = "快捷键 Ctrl A"
     bl_options = {'REGISTER', 'UNDO'}
@@ -247,8 +247,8 @@ class BUTTON_ACTION_OT_meshedit_transform_skin_resize(bpy.types.Operator):
         bpy.ops.transform.skin_resize('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_extrude_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_extrude_menu"
+class ACTION_OT_meshedit_edit_mesh_extrude_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_extrude_menu"
     bl_label = "挤出"
     bl_description = "快捷键 Alt E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -257,8 +257,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_extrude_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_extrude")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_edit_mesh_merge_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_merge_menu"
+class ACTION_OT_meshedit_edit_mesh_merge_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_merge_menu"
     bl_label = "合并"
     bl_description = "快捷键 M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -267,8 +267,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_merge_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_merge")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_split_menu"
+class ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_split_menu"
     bl_label = "拆分"
     bl_description = "快捷键 Alt M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -277,8 +277,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_split")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_split_menu"
+class ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_split_menu"
     bl_label = "拆分"
     bl_description = "快捷键 Alt M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -287,8 +287,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_split")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_mesh_separate(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_separate"
+class ACTION_OT_meshedit_mesh_separate(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_separate"
     bl_label = "分离"
     bl_description = "快捷键 P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -297,8 +297,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_separate(bpy.types.Operator):
         bpy.ops.mesh.separate('INVOKE_DEFAULT')
         return {'FINISHED'} 
 
-class BUTTON_ACTION_OT_meshedit_mesh_bisect(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_bisect"
+class ACTION_OT_meshedit_mesh_bisect(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_bisect"
     bl_label = "切分"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -306,8 +306,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_bisect(bpy.types.Operator):
         bpy.ops.mesh.bisect('INVOKE_DEFAULT')
         return {'FINISHED'} 
     
-class BUTTON_ACTION_OT_meshedit_mesh_knife_project(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_knife_project"
+class ACTION_OT_meshedit_mesh_knife_project(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_knife_project"
     bl_label = "投影切割"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -315,8 +315,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_knife_project(bpy.types.Operator):
         bpy.ops.mesh.knife_project()
         return {'FINISHED'} 
 
-class BUTTON_ACTION_OT_meshedit_mesh_knife_tool(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_knife_tool"
+class ACTION_OT_meshedit_mesh_knife_tool(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_knife_tool"
     bl_label = "裁刀拓扑工具"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -324,8 +324,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_knife_tool(bpy.types.Operator):
         bpy.ops.mesh.knife_tool('INVOKE_DEFAULT')
         return {'FINISHED'} 
 
-class BUTTON_ACTION_OT_meshedit_mesh_convex_hull(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_convex_hull"
+class ACTION_OT_meshedit_mesh_convex_hull(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_convex_hull"
     bl_label = "凸壳"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -450,8 +450,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_convex_hull(bpy.types.Operator):
             materials=self.materials,)
         return {'FINISHED'} 
     
-class BUTTON_ACTION_OT_meshedit_mesh_symmetrize(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_symmetrize"
+class ACTION_OT_meshedit_mesh_symmetrize(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_symmetrize"
     bl_label = "对称"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -497,8 +497,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_symmetrize(bpy.types.Operator):
         bpy.ops.mesh.symmetrize(direction=self.direction, threshold=self.threshold)
         return {'FINISHED'} 
 
-class BUTTON_ACTION_OT_meshedit_mesh_symmetry_snap(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_symmetry_snap"
+class ACTION_OT_meshedit_mesh_symmetry_snap(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_symmetry_snap"
     bl_label = "吸附到对称结构"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -564,8 +564,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_symmetry_snap(bpy.types.Operator):
             use_center=self.use_center,)
         return {'FINISHED'} 
     
-class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_normals_menu"
+class ACTION_OT_meshedit_edit_mesh_normals_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_normals_menu"
     bl_label = "法向"
     bl_description = "快捷键 Alt N"
     bl_options = {'REGISTER', 'UNDO'}
@@ -574,8 +574,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_normals")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_flip_normals(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_flip_normals"
+class ACTION_OT_meshedit_flip_normals(bpy.types.Operator):
+    bl_idname = "action.meshedit_flip_normals"
     bl_label = "翻转法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -602,8 +602,8 @@ class BUTTON_ACTION_OT_meshedit_flip_normals(bpy.types.Operator):
         bpy.ops.mesh.flip_normals(only_clnors=self.only_clnors)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_normals_make_consistent(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_normals_make_consistent"
+class ACTION_OT_meshedit_normals_make_consistent(bpy.types.Operator):
+    bl_idname = "action.meshedit_normals_make_consistent"
     bl_label = "重新计算法线"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -634,8 +634,8 @@ class BUTTON_ACTION_OT_meshedit_normals_make_consistent(bpy.types.Operator):
         bpy.ops.mesh.normals_make_consistent(inside=False if self.inside == 'OUT' else True)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_set_normals_from_faces(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_set_normals_from_faces"
+class ACTION_OT_meshedit_set_normals_from_faces(bpy.types.Operator):
+    bl_idname = "action.meshedit_set_normals_from_faces"
     bl_label = "从面设置法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -662,8 +662,8 @@ class BUTTON_ACTION_OT_meshedit_set_normals_from_faces(bpy.types.Operator):
         bpy.ops.mesh.set_normals_from_faces(keep_sharp=self.keep_sharp)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_transform_rotate_normal(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_rotate_normal"
+class ACTION_OT_meshedit_transform_rotate_normal(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_rotate_normal"
     bl_label = "旋转法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -671,8 +671,8 @@ class BUTTON_ACTION_OT_meshedit_transform_rotate_normal(bpy.types.Operator):
         bpy.ops.transform.rotate_normal('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_point_normals(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_point_normals"
+class ACTION_OT_meshedit_point_normals(bpy.types.Operator):
+    bl_idname = "action.meshedit_point_normals"
     bl_label = "法向指向目标体"
     bl_description = "快捷键 Alt L"
     bl_options = {'REGISTER', 'UNDO'}
@@ -681,8 +681,8 @@ class BUTTON_ACTION_OT_meshedit_point_normals(bpy.types.Operator):
         bpy.ops.mesh.point_normals('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_merge_normals(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_merge_normals"
+class ACTION_OT_meshedit_merge_normals(bpy.types.Operator):
+    bl_idname = "action.meshedit_merge_normals"
     bl_label = "合并法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -690,8 +690,8 @@ class BUTTON_ACTION_OT_meshedit_merge_normals(bpy.types.Operator):
         bpy.ops.mesh.merge_normals()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_split_normals(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_split_normals"
+class ACTION_OT_meshedit_split_normals(bpy.types.Operator):
+    bl_idname = "action.meshedit_split_normals"
     bl_label = "拆分法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -699,8 +699,8 @@ class BUTTON_ACTION_OT_meshedit_split_normals(bpy.types.Operator):
         bpy.ops.mesh.split_normals()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_average(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_normals_average"
+class ACTION_OT_meshedit_edit_mesh_normals_average(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_normals_average"
     bl_label = "平均法向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -708,8 +708,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_normals_average(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_normals_average")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_shading(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_shading"
+class ACTION_OT_meshedit_edit_mesh_shading(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_shading"
     bl_label = "着色方式"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -717,8 +717,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_shading(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_shading")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_weights(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_weights"
+class ACTION_OT_meshedit_edit_mesh_weights(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_weights"
     bl_label = "权重"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -726,8 +726,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_weights(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_weights")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_attribute_set(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_attribute_set"
+class ACTION_OT_meshedit_attribute_set(bpy.types.Operator):
+    bl_idname = "action.meshedit_attribute_set"
     bl_label = "设置属性"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -735,8 +735,8 @@ class BUTTON_ACTION_OT_meshedit_attribute_set(bpy.types.Operator):
         bpy.ops.mesh.attribute_set('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_sort_elements(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_sort_elements"
+class ACTION_OT_meshedit_sort_elements(bpy.types.Operator):
+    bl_idname = "action.meshedit_sort_elements"
     bl_label = "网格元素排序"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -744,8 +744,8 @@ class BUTTON_ACTION_OT_meshedit_sort_elements(bpy.types.Operator):
         bpy.ops.mesh.sort_elements('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_clean(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_clean"
+class ACTION_OT_meshedit_edit_mesh_clean(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_clean"
     bl_label = "清理"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -754,8 +754,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_clean(bpy.types.Operator):
         return {'FINISHED'}
 
 # “顶点”菜单
-class BUTTON_ACTION_OT_meshedit_extrude_vertices_move(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_extrude_vertices_move"
+class ACTION_OT_meshedit_extrude_vertices_move(bpy.types.Operator):
+    bl_idname = "action.meshedit_extrude_vertices_move"
     bl_label = "挤出顶点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -763,8 +763,8 @@ class BUTTON_ACTION_OT_meshedit_extrude_vertices_move(bpy.types.Operator):
         bpy.ops.mesh.extrude_vertices_move('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_bevel_vertices(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_bevel_vertices"
+class ACTION_OT_meshedit_bevel_vertices(bpy.types.Operator):
+    bl_idname = "action.meshedit_bevel_vertices"
     bl_label = "点倒角"
     bl_description = "快捷键 Ctrl Shift B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -773,8 +773,8 @@ class BUTTON_ACTION_OT_meshedit_bevel_vertices(bpy.types.Operator):
         bpy.ops.mesh.bevel('INVOKE_DEFAULT',affect='VERTICES')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_bevel_edges(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_bevel_edges"
+class ACTION_OT_meshedit_bevel_edges(bpy.types.Operator):
+    bl_idname = "action.meshedit_bevel_edges"
     bl_label = "边倒角"
     bl_description = "快捷键 Ctrl B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -783,8 +783,8 @@ class BUTTON_ACTION_OT_meshedit_bevel_edges(bpy.types.Operator):
         bpy.ops.mesh.bevel('INVOKE_DEFAULT',affect='EDGES')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edge_face_add(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edge_face_add"
+class ACTION_OT_meshedit_edge_face_add(bpy.types.Operator):
+    bl_idname = "action.meshedit_edge_face_add"
     bl_label = "从顶点创建边/面"
     bl_description = "快捷键 F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -793,8 +793,8 @@ class BUTTON_ACTION_OT_meshedit_edge_face_add(bpy.types.Operator):
         bpy.ops.mesh.edge_face_add()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vert_connect_path(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vert_connect_path"
+class ACTION_OT_meshedit_vert_connect_path(bpy.types.Operator):
+    bl_idname = "action.meshedit_vert_connect_path"
     bl_label = "连接顶点路径"
     bl_description = "快捷键 J"
     bl_options = {'REGISTER', 'UNDO'}
@@ -803,8 +803,8 @@ class BUTTON_ACTION_OT_meshedit_vert_connect_path(bpy.types.Operator):
         bpy.ops.mesh.vert_connect_path()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vert_connect(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vert_connect"
+class ACTION_OT_meshedit_vert_connect(bpy.types.Operator):
+    bl_idname = "action.meshedit_vert_connect"
     bl_label = "连接顶点对"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -812,8 +812,8 @@ class BUTTON_ACTION_OT_meshedit_vert_connect(bpy.types.Operator):
         bpy.ops.mesh.vert_connect()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_rip_move(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_rip_move"
+class ACTION_OT_meshedit_rip_move(bpy.types.Operator):
+    bl_idname = "action.meshedit_rip_move"
     bl_label = "断离顶点"
     bl_description = "快捷键 V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -842,8 +842,8 @@ class BUTTON_ACTION_OT_meshedit_rip_move(bpy.types.Operator):
         bpy.ops.mesh.rip_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_rip_move_fill(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_rip_move_fill"
+class ACTION_OT_meshedit_rip_move_fill(bpy.types.Operator):
+    bl_idname = "action.meshedit_rip_move_fill"
     bl_label = "断离顶点并填充"
     bl_description = "快捷键 Alt V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -872,8 +872,8 @@ class BUTTON_ACTION_OT_meshedit_rip_move_fill(bpy.types.Operator):
         bpy.ops.mesh.rip_move('INVOKE_DEFAULT', MESH_OT_rip={"use_fill":True})
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_rip_edge_move(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_rip_edge_move"
+class ACTION_OT_meshedit_rip_edge_move(bpy.types.Operator):
+    bl_idname = "action.meshedit_rip_edge_move"
     bl_label = "断离顶点并延长"
     bl_description = "快捷键 Alt D"
     bl_options = {'REGISTER', 'UNDO'}
@@ -882,8 +882,8 @@ class BUTTON_ACTION_OT_meshedit_rip_edge_move(bpy.types.Operator):
         bpy.ops.mesh.rip_edge_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_transform_vert_slide(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_vert_slide"
+class ACTION_OT_meshedit_transform_vert_slide(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_vert_slide"
     bl_label = "滑移顶点"
     bl_description = "快捷键 Shift V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -892,8 +892,8 @@ class BUTTON_ACTION_OT_meshedit_transform_vert_slide(bpy.types.Operator):
         bpy.ops.transform.vert_slide('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vertices_smooth(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vertices_smooth"
+class ACTION_OT_meshedit_vertices_smooth(bpy.types.Operator):
+    bl_idname = "action.meshedit_vertices_smooth"
     bl_label = "平滑顶点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -967,8 +967,8 @@ class BUTTON_ACTION_OT_meshedit_vertices_smooth(bpy.types.Operator):
         )
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vertices_smooth_laplacian(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vertices_smooth_laplacian"
+class ACTION_OT_meshedit_vertices_smooth_laplacian(bpy.types.Operator):
+    bl_idname = "action.meshedit_vertices_smooth_laplacian"
     bl_label = "拉普拉斯平滑顶点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1054,8 +1054,8 @@ class BUTTON_ACTION_OT_meshedit_vertices_smooth_laplacian(bpy.types.Operator):
         )
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_transform_vert_crease(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_vert_crease"
+class ACTION_OT_meshedit_transform_vert_crease(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_vert_crease"
     bl_label = "顶点折痕"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1081,8 +1081,8 @@ def shape_key_items(self, context):
 
     return items
     
-class BUTTON_ACTION_OT_meshedit_blend_from_shape(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_blend_from_shape"
+class ACTION_OT_meshedit_blend_from_shape(bpy.types.Operator):
+    bl_idname = "action.meshedit_blend_from_shape"
     bl_label = "从形状混合"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1139,8 +1139,8 @@ class BUTTON_ACTION_OT_meshedit_blend_from_shape(bpy.types.Operator):
         bpy.ops.mesh.blend_from_shape(shape=self.shape, blend=self.blend, add=self.add)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_shape_propagate_to_all(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_shape_propagate_to_all"
+class ACTION_OT_meshedit_shape_propagate_to_all(bpy.types.Operator):
+    bl_idname = "action.meshedit_shape_propagate_to_all"
     bl_label = "传递到形状"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1159,8 +1159,8 @@ class BUTTON_ACTION_OT_meshedit_shape_propagate_to_all(bpy.types.Operator):
         bpy.ops.mesh.shape_propagate_to_all()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vertex_group_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vertex_group_menu"
+class ACTION_OT_meshedit_vertex_group_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_vertex_group_menu"
     bl_label = "顶点组"
     bl_description = "快捷键 Ctrl G"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1169,8 +1169,8 @@ class BUTTON_ACTION_OT_meshedit_vertex_group_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_vertex_group")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_hook_menu(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_hook_menu"
+class ACTION_OT_meshedit_hook_menu(bpy.types.Operator):
+    bl_idname = "action.meshedit_hook_menu"
     bl_label = "钩挂"
     bl_description = "快捷键 Ctrl H"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1179,8 +1179,8 @@ class BUTTON_ACTION_OT_meshedit_hook_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_hook")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_vertex_parent_set"
+class ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
+    bl_idname = "action.meshedit_vertex_parent_set"
     bl_label = "创建父级顶点"
     bl_description = "快捷键 Ctrl P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1196,8 +1196,8 @@ class BUTTON_ACTION_OT_meshedit_vertex_parent_set(bpy.types.Operator):
         return {'FINISHED'}
 
 # “边”菜单
-class BUTTON_ACTION_OT_meshedit_extrude_edges_move(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_extrude_edges_move"
+class ACTION_OT_meshedit_extrude_edges_move(bpy.types.Operator):
+    bl_idname = "action.meshedit_extrude_edges_move"
     bl_label = "挤出边线"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1205,8 +1205,8 @@ class BUTTON_ACTION_OT_meshedit_extrude_edges_move(bpy.types.Operator):
         bpy.ops.mesh.extrude_edges_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_bridge_edge_loops(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_bridge_edge_loops"
+class ACTION_OT_meshedit_bridge_edge_loops(bpy.types.Operator):
+    bl_idname = "action.meshedit_bridge_edge_loops"
     bl_label = "桥接循环边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1334,8 +1334,8 @@ class BUTTON_ACTION_OT_meshedit_bridge_edge_loops(bpy.types.Operator):
         )
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_subdivide_edgering(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_subdivide_edgering"
+class ACTION_OT_meshedit_subdivide_edgering(bpy.types.Operator):
+    bl_idname = "action.meshedit_subdivide_edgering"
     bl_label = "细分并排边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1421,8 +1421,8 @@ class BUTTON_ACTION_OT_meshedit_subdivide_edgering(bpy.types.Operator):
         )
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_screw(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_screw"
+class ACTION_OT_meshedit_screw(bpy.types.Operator):
+    bl_idname = "action.meshedit_screw"
     bl_label = "螺旋"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1523,8 +1523,8 @@ class BUTTON_ACTION_OT_meshedit_screw(bpy.types.Operator):
             axis=self.axis,)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_unsubdivide"
+class ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
+    bl_idname = "action.meshedit_unsubdivide"
     bl_label = "反细分"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1554,8 +1554,8 @@ class BUTTON_ACTION_OT_meshedit_unsubdivide(bpy.types.Operator):
         bpy.ops.mesh.unsubdivide(iterations=self.iterations)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edge_rotate(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edge_rotate"
+class ACTION_OT_meshedit_edge_rotate(bpy.types.Operator):
+    bl_idname = "action.meshedit_edge_rotate"
     bl_label = "顺/逆时针旋转边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1619,8 +1619,8 @@ class BUTTON_ACTION_OT_meshedit_edge_rotate(bpy.types.Operator):
         bpy.ops.mesh.edge_rotate(use_ccw=False if self.use_ccw == 'FALSE' else True)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_transform_edge_slide(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_edge_slide"
+class ACTION_OT_meshedit_transform_edge_slide(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_edge_slide"
     bl_label = "滑移边线"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1628,8 +1628,8 @@ class BUTTON_ACTION_OT_meshedit_transform_edge_slide(bpy.types.Operator):
         bpy.ops.transform.edge_slide('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_loopcut_slide(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_loopcut_slide"
+class ACTION_OT_meshedit_loopcut_slide(bpy.types.Operator):
+    bl_idname = "action.meshedit_loopcut_slide"
     bl_label = "环切并滑移"
     bl_description = "快捷键 Ctrl R"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1638,8 +1638,8 @@ class BUTTON_ACTION_OT_meshedit_loopcut_slide(bpy.types.Operator):
         bpy.ops.mesh.loopcut_slide('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_offset_edge_loops_slide"
+class ACTION_OT_meshedit_offset_edge_loops_slide(bpy.types.Operator):
+    bl_idname = "action.meshedit_offset_edge_loops_slide"
     bl_label = "偏移边线并滑移"
     bl_description = "快捷键 Ctrl Shift R"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1648,8 +1648,8 @@ class BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide(bpy.types.Operator):
         bpy.ops.mesh.offset_edge_loops_slide('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_transform_edge_crease(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_edge_crease"
+class ACTION_OT_meshedit_transform_edge_crease(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_edge_crease"
     bl_label = "边线折痕"
     bl_description = "快捷键 Shift E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1658,8 +1658,8 @@ class BUTTON_ACTION_OT_meshedit_transform_edge_crease(bpy.types.Operator):
         bpy.ops.transform.edge_crease('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_transform_edge_bevelweight"
+class ACTION_OT_meshedit_transform_edge_bevelweight(bpy.types.Operator):
+    bl_idname = "action.meshedit_transform_edge_bevelweight"
     bl_label = "倒角边权重"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1667,8 +1667,8 @@ class BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight(bpy.types.Operator):
         bpy.ops.transform.edge_bevelweight('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_toggle(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_seam_toggle"
+class ACTION_OT_meshedit_mesh_mark_seam_toggle(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_mark_seam_toggle"
     bl_label = "缝合边"
     bl_description = "标记缝合边/清除缝合边二合一"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1679,8 +1679,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_seam_toggle(bpy.types.Operator):
         bpy.ops.mesh.mark_seam(clear=has_seam)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_toggle(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_sharp_toggle"
+class ACTION_OT_meshedit_mesh_mark_sharp_toggle(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_mark_sharp_toggle"
     bl_label = "标记/清除锐边"
     bl_description = "标记缝合边/清除缝合边二合一"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1713,8 +1713,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_toggle(bpy.types.Operator):
         bpy.ops.mesh.mark_sharp(clear=has_sharp, use_verts=self.use_verts)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_set_sharpness_by_angle"
+class ACTION_OT_meshedit_mesh_set_sharpness_by_angle(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_set_sharpness_by_angle"
     bl_label = "按角度设置锐边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1753,8 +1753,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle(bpy.types.Operator):
         bpy.ops.mesh.set_sharpness_by_angle(angle=self.angle, extend=self.extend)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_freestyle_edge_clear_false"
+class ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_mark_freestyle_edge_clear_false"
     bl_label = "标记Freestyle边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1762,8 +1762,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false(bpy.types.O
         bpy.ops.mesh.mark_freestyle_edge(clear=False)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_mesh_mark_freestyle_edge_clear_true"
+class ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true(bpy.types.Operator):
+    bl_idname = "action.meshedit_mesh_mark_freestyle_edge_clear_true"
     bl_label = "清除Freestyle边"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1772,8 +1772,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true(bpy.types.Op
         return {'FINISHED'}
 
 # “面”菜单
-class BUTTON_ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_view3d_edit_mesh_extrude_move_normal"
+class ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal(bpy.types.Operator):
+    bl_idname = "action.meshedit_view3d_edit_mesh_extrude_move_normal"
     bl_label = "挤出面"
     bl_description = "快捷键 E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1782,8 +1782,8 @@ class BUTTON_ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal(bpy.types.O
         bpy.ops.view3d.edit_mesh_extrude_move_normal('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_extrude_move_shrink_fatten(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_extrude_move_shrink_fatten"
+class ACTION_OT_meshedit_extrude_move_shrink_fatten(bpy.types.Operator):
+    bl_idname = "action.meshedit_extrude_move_shrink_fatten"
     bl_label = "沿法向挤出面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1791,8 +1791,8 @@ class BUTTON_ACTION_OT_meshedit_extrude_move_shrink_fatten(bpy.types.Operator):
         bpy.ops.view3d.edit_mesh_extrude_move_shrink_fatten('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_extrude_faces_move(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_extrude_faces_move"
+class ACTION_OT_meshedit_extrude_faces_move(bpy.types.Operator):
+    bl_idname = "action.meshedit_extrude_faces_move"
     bl_label = "挤出各个面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1800,8 +1800,8 @@ class BUTTON_ACTION_OT_meshedit_extrude_faces_move(bpy.types.Operator):
         bpy.ops.mesh.extrude_faces_move('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_inset(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_inset"
+class ACTION_OT_meshedit_inset(bpy.types.Operator):
+    bl_idname = "action.meshedit_inset"
     bl_label = "内插面"
     bl_description = "快捷键 I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1810,8 +1810,8 @@ class BUTTON_ACTION_OT_meshedit_inset(bpy.types.Operator):
         bpy.ops.mesh.inset('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mesh_poke(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_poke"
+class ACTION_OT_meshedit_mesh_poke(bpy.types.Operator):
+    bl_idname = "action.meshedit_poke"
     bl_label = "尖分面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1865,8 +1865,8 @@ class BUTTON_ACTION_OT_meshedit_mesh_poke(bpy.types.Operator):
             center_mode=self.center_mode,)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_quads_convert_to_tris(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_quads_convert_to_tris"
+class ACTION_OT_meshedit_quads_convert_to_tris(bpy.types.Operator):
+    bl_idname = "action.meshedit_quads_convert_to_tris"
     bl_label = "面三角化"
     bl_description = "快捷键 Ctrl T"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1912,8 +1912,8 @@ class BUTTON_ACTION_OT_meshedit_quads_convert_to_tris(bpy.types.Operator):
         bpy.ops.mesh.quads_convert_to_tris(quad_method=self.quad_method, ngon_method=self.ngon_method)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_tris_convert_to_quads(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_tris_convert_to_quads"
+class ACTION_OT_meshedit_tris_convert_to_quads(bpy.types.Operator):
+    bl_idname = "action.meshedit_tris_convert_to_quads"
     bl_label = "三角面->四边面"
     bl_description = "快捷键 Alt J"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1996,8 +1996,8 @@ class BUTTON_ACTION_OT_meshedit_tris_convert_to_quads(bpy.types.Operator):
             materials=self.materials,)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_solidify(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_solidify"
+class ACTION_OT_meshedit_solidify(bpy.types.Operator):
+    bl_idname = "action.meshedit_solidify"
     bl_label = "面实体化"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2027,8 +2027,8 @@ class BUTTON_ACTION_OT_meshedit_solidify(bpy.types.Operator):
         bpy.ops.mesh.solidify(thickness=self.thickness)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_wireframe(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_wireframe"
+class ACTION_OT_meshedit_wireframe(bpy.types.Operator):
+    bl_idname = "action.meshedit_wireframe"
     bl_label = "线框"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2124,8 +2124,8 @@ class BUTTON_ACTION_OT_meshedit_wireframe(bpy.types.Operator):
             crease_weight=self.crease_weight)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_fill(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_fill"
+class ACTION_OT_meshedit_fill(bpy.types.Operator):
+    bl_idname = "action.meshedit_fill"
     bl_label = "填充"
     bl_description = "快捷键 Alt F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2158,8 +2158,8 @@ class BUTTON_ACTION_OT_meshedit_fill(bpy.types.Operator):
         bpy.ops.mesh.fill(use_beauty=self.use_beauty)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_fill_grid(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_fill_grid"
+class ACTION_OT_meshedit_fill_grid(bpy.types.Operator):
+    bl_idname = "action.meshedit_fill_grid"
     bl_label = "栅格填充"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2212,8 +2212,8 @@ class BUTTON_ACTION_OT_meshedit_fill_grid(bpy.types.Operator):
         bpy.ops.mesh.fill_grid(span=self.span, offset=self.offset, use_interp_simple=self.use_interp_simple)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_beautify_fill(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_beautify_fill"
+class ACTION_OT_meshedit_beautify_fill(bpy.types.Operator):
+    bl_idname = "action.meshedit_beautify_fill"
     bl_label = "完美建面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2248,8 +2248,8 @@ class BUTTON_ACTION_OT_meshedit_beautify_fill(bpy.types.Operator):
         bpy.ops.mesh.beautify_fill(angle_limit=self.angle_limit)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_intersect(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_intersect"
+class ACTION_OT_meshedit_intersect(bpy.types.Operator):
+    bl_idname = "action.meshedit_intersect"
     bl_label = "交集(切割)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2308,8 +2308,8 @@ class BUTTON_ACTION_OT_meshedit_intersect(bpy.types.Operator):
         bpy.ops.mesh.intersect(mode=self.mode, separate_mode=self.separate_mode, solver=self.solver)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_intersect_boolean(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_intersect_boolean"
+class ACTION_OT_meshedit_intersect_boolean(bpy.types.Operator):
+    bl_idname = "action.meshedit_intersect_boolean"
     bl_label = "交集(布尔)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2392,8 +2392,8 @@ class BUTTON_ACTION_OT_meshedit_intersect_boolean(bpy.types.Operator):
             threshold=self.threshold,)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_face_split_by_edges(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_face_split_by_edges"
+class ACTION_OT_meshedit_face_split_by_edges(bpy.types.Operator):
+    bl_idname = "action.meshedit_face_split_by_edges"
     bl_label = "焊接边线到面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2401,8 +2401,8 @@ class BUTTON_ACTION_OT_meshedit_face_split_by_edges(bpy.types.Operator):
         bpy.ops.mesh.face_split_by_edges()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_faces_shade_smooth(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_faces_shade_smooth"
+class ACTION_OT_meshedit_faces_shade_smooth(bpy.types.Operator):
+    bl_idname = "action.meshedit_faces_shade_smooth"
     bl_label = "平滑/平直着色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2436,8 +2436,8 @@ class BUTTON_ACTION_OT_meshedit_faces_shade_smooth(bpy.types.Operator):
             bpy.ops.mesh.faces_shade_flat()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_faces_shade_flat(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_faces_shade_flat"
+class ACTION_OT_meshedit_faces_shade_flat(bpy.types.Operator):
+    bl_idname = "action.meshedit_faces_shade_flat"
     bl_label = "平滑/平直着色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2471,8 +2471,8 @@ class BUTTON_ACTION_OT_meshedit_faces_shade_flat(bpy.types.Operator):
             bpy.ops.mesh.faces_shade_flat()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_edit_mesh_faces_data(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_mesh_faces_data"
+class ACTION_OT_meshedit_edit_mesh_faces_data(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_mesh_faces_data"
     bl_label = "面数据"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2480,8 +2480,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_faces_data(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_mesh_faces_data")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_colors_rotate(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_colors_rotate"
+class ACTION_OT_meshedit_colors_rotate(bpy.types.Operator):
+    bl_idname = "action.meshedit_colors_rotate"
     bl_label = "旋转顶点着色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2508,8 +2508,8 @@ class BUTTON_ACTION_OT_meshedit_colors_rotate(bpy.types.Operator):
         bpy.ops.mesh.colors_rotate(use_ccw=self.use_ccw)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_colors_reverse(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_colors_reverse"
+class ACTION_OT_meshedit_colors_reverse(bpy.types.Operator):
+    bl_idname = "action.meshedit_colors_reverse"
     bl_label = "反相颜色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2517,8 +2517,8 @@ class BUTTON_ACTION_OT_meshedit_colors_reverse(bpy.types.Operator):
         bpy.ops.mesh.colors_reverse()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_uvs_rotate(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_uvs_rotate"
+class ACTION_OT_meshedit_uvs_rotate(bpy.types.Operator):
+    bl_idname = "action.meshedit_uvs_rotate"
     bl_label = "旋转 UV"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2545,8 +2545,8 @@ class BUTTON_ACTION_OT_meshedit_uvs_rotate(bpy.types.Operator):
         bpy.ops.mesh.uvs_rotate(use_ccw=self.use_ccw)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_uvs_reverse(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_uvs_reverse"
+class ACTION_OT_meshedit_uvs_reverse(bpy.types.Operator):
+    bl_idname = "action.meshedit_uvs_reverse"
     bl_label = "翻转 UV"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2554,8 +2554,8 @@ class BUTTON_ACTION_OT_meshedit_uvs_reverse(bpy.types.Operator):
         bpy.ops.mesh.uvs_reverse()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_flip_quad_tessellation(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_flip_quad_tessellation"
+class ACTION_OT_meshedit_flip_quad_tessellation(bpy.types.Operator):
+    bl_idname = "action.meshedit_flip_quad_tessellation"
     bl_label = "翻转四边形密铺"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2563,8 +2563,8 @@ class BUTTON_ACTION_OT_meshedit_flip_quad_tessellation(bpy.types.Operator):
         bpy.ops.mesh.flip_quad_tessellation()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_false(bpy.types.Operator):
-    bl_idname = "button.action_mark_freestyle_face_false"
+class ACTION_OT_meshedit_mark_freestyle_face_false(bpy.types.Operator):
+    bl_idname = "action.mark_freestyle_face_false"
     bl_label = "标记Freestyle面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2572,8 +2572,8 @@ class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_false(bpy.types.Operator):
         bpy.ops.mesh.mark_freestyle_face(clear=False)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_true(bpy.types.Operator):
-    bl_idname = "button.action_mark_freestyle_face_true"
+class ACTION_OT_meshedit_mark_freestyle_face_true(bpy.types.Operator):
+    bl_idname = "action.mark_freestyle_face_true"
     bl_label = "清除Freestyle面"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2582,8 +2582,8 @@ class BUTTON_ACTION_OT_meshedit_mark_freestyle_face_true(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class BUTTON_ACTION_OT_meshedit_uvs_unwrap_menu(bpy.types.Operator):
-    bl_idname = "button.action_uvs_unwrap_menu"
+class ACTION_OT_meshedit_uvs_unwrap_menu(bpy.types.Operator):
+    bl_idname = "action.uvs_unwrap_menu"
     bl_label = "展开UV"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2591,8 +2591,8 @@ class BUTTON_ACTION_OT_meshedit_uvs_unwrap_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="IMAGE_MT_uvs_unwrap")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshedit_uv_reset(bpy.types.Operator):
-    bl_idname = "button.action_uv_reset"
+class ACTION_OT_meshedit_uv_reset(bpy.types.Operator):
+    bl_idname = "action.uv_reset"
     bl_label = "重置UV"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2601,108 +2601,108 @@ class BUTTON_ACTION_OT_meshedit_uv_reset(bpy.types.Operator):
         return {'FINISHED'}
 
 classes = (
-    BUTTON_ACTION_OT_mesh_select_nth,
-    BUTTON_ACTION_OT_mesh_edges_select_sharp,
-    BUTTON_ACTION_OT_mesh_select_by_trait,
-    BUTTON_ACTION_OT_mesh_call_select_by_trait,
-    BUTTON_ACTION_OT_mesh_select_loops,
-    BUTTON_ACTION_OT_call_mesh_select_loops,
-    BUTTON_ACTION_OT_mesh_select_axis,
+    ACTION_OT_mesh_select_nth,
+    ACTION_OT_mesh_edges_select_sharp,
+    ACTION_OT_mesh_select_by_trait,
+    ACTION_OT_mesh_call_select_by_trait,
+    ACTION_OT_mesh_select_loops,
+    ACTION_OT_call_mesh_select_loops,
+    ACTION_OT_mesh_select_axis,
 
-    BUTTON_ACTION_OT_meshedit_transform_shrink_fatten,
-    BUTTON_ACTION_OT_meshedit_transform_skin_resize,
+    ACTION_OT_meshedit_transform_shrink_fatten,
+    ACTION_OT_meshedit_transform_skin_resize,
 
-    BUTTON_ACTION_OT_meshedit_edit_mesh_extrude_menu,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_merge_menu,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_split_menu,
-    BUTTON_ACTION_OT_meshedit_mesh_separate,
-    BUTTON_ACTION_OT_meshedit_mesh_bisect,
-    BUTTON_ACTION_OT_meshedit_mesh_knife_project,
-    BUTTON_ACTION_OT_meshedit_mesh_knife_tool,
-    BUTTON_ACTION_OT_meshedit_mesh_convex_hull,
-    BUTTON_ACTION_OT_meshedit_mesh_symmetrize,
-    BUTTON_ACTION_OT_meshedit_mesh_symmetry_snap,
+    ACTION_OT_meshedit_edit_mesh_extrude_menu,
+    ACTION_OT_meshedit_edit_mesh_merge_menu,
+    ACTION_OT_meshedit_edit_mesh_split_menu,
+    ACTION_OT_meshedit_mesh_separate,
+    ACTION_OT_meshedit_mesh_bisect,
+    ACTION_OT_meshedit_mesh_knife_project,
+    ACTION_OT_meshedit_mesh_knife_tool,
+    ACTION_OT_meshedit_mesh_convex_hull,
+    ACTION_OT_meshedit_mesh_symmetrize,
+    ACTION_OT_meshedit_mesh_symmetry_snap,
 
-    BUTTON_ACTION_OT_meshedit_edit_mesh_normals_menu,
-    BUTTON_ACTION_OT_meshedit_flip_normals,
-    BUTTON_ACTION_OT_meshedit_normals_make_consistent,
-    BUTTON_ACTION_OT_meshedit_set_normals_from_faces,
-    BUTTON_ACTION_OT_meshedit_transform_rotate_normal,
-    BUTTON_ACTION_OT_meshedit_point_normals,
-    BUTTON_ACTION_OT_meshedit_merge_normals,
-    BUTTON_ACTION_OT_meshedit_split_normals,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_normals_average,
+    ACTION_OT_meshedit_edit_mesh_normals_menu,
+    ACTION_OT_meshedit_flip_normals,
+    ACTION_OT_meshedit_normals_make_consistent,
+    ACTION_OT_meshedit_set_normals_from_faces,
+    ACTION_OT_meshedit_transform_rotate_normal,
+    ACTION_OT_meshedit_point_normals,
+    ACTION_OT_meshedit_merge_normals,
+    ACTION_OT_meshedit_split_normals,
+    ACTION_OT_meshedit_edit_mesh_normals_average,
 
-    BUTTON_ACTION_OT_meshedit_edit_mesh_shading,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_weights,
-    BUTTON_ACTION_OT_meshedit_attribute_set,
-    BUTTON_ACTION_OT_meshedit_sort_elements,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_clean,
+    ACTION_OT_meshedit_edit_mesh_shading,
+    ACTION_OT_meshedit_edit_mesh_weights,
+    ACTION_OT_meshedit_attribute_set,
+    ACTION_OT_meshedit_sort_elements,
+    ACTION_OT_meshedit_edit_mesh_clean,
 
-    BUTTON_ACTION_OT_meshedit_extrude_vertices_move,
-    BUTTON_ACTION_OT_meshedit_bevel_vertices,
-    BUTTON_ACTION_OT_meshedit_bevel_edges,
-    BUTTON_ACTION_OT_meshedit_edge_face_add,
-    BUTTON_ACTION_OT_meshedit_vert_connect_path,
-    BUTTON_ACTION_OT_meshedit_vert_connect,
-    BUTTON_ACTION_OT_meshedit_rip_move,
-    BUTTON_ACTION_OT_meshedit_rip_move_fill,
-    BUTTON_ACTION_OT_meshedit_rip_edge_move,
-    BUTTON_ACTION_OT_meshedit_transform_vert_slide,
-    BUTTON_ACTION_OT_meshedit_vertices_smooth,
-    BUTTON_ACTION_OT_meshedit_vertices_smooth_laplacian,
-    BUTTON_ACTION_OT_meshedit_transform_vert_crease,
-    BUTTON_ACTION_OT_meshedit_blend_from_shape,
-    BUTTON_ACTION_OT_meshedit_shape_propagate_to_all,
-    BUTTON_ACTION_OT_meshedit_vertex_group_menu,
-    BUTTON_ACTION_OT_meshedit_hook_menu,
-    BUTTON_ACTION_OT_meshedit_vertex_parent_set,
-    BUTTON_ACTION_OT_meshedit_extrude_edges_move,
-    BUTTON_ACTION_OT_meshedit_bridge_edge_loops,
+    ACTION_OT_meshedit_extrude_vertices_move,
+    ACTION_OT_meshedit_bevel_vertices,
+    ACTION_OT_meshedit_bevel_edges,
+    ACTION_OT_meshedit_edge_face_add,
+    ACTION_OT_meshedit_vert_connect_path,
+    ACTION_OT_meshedit_vert_connect,
+    ACTION_OT_meshedit_rip_move,
+    ACTION_OT_meshedit_rip_move_fill,
+    ACTION_OT_meshedit_rip_edge_move,
+    ACTION_OT_meshedit_transform_vert_slide,
+    ACTION_OT_meshedit_vertices_smooth,
+    ACTION_OT_meshedit_vertices_smooth_laplacian,
+    ACTION_OT_meshedit_transform_vert_crease,
+    ACTION_OT_meshedit_blend_from_shape,
+    ACTION_OT_meshedit_shape_propagate_to_all,
+    ACTION_OT_meshedit_vertex_group_menu,
+    ACTION_OT_meshedit_hook_menu,
+    ACTION_OT_meshedit_vertex_parent_set,
+    ACTION_OT_meshedit_extrude_edges_move,
+    ACTION_OT_meshedit_bridge_edge_loops,
 
-    BUTTON_ACTION_OT_meshedit_subdivide_edgering,
-    BUTTON_ACTION_OT_meshedit_screw,
-    BUTTON_ACTION_OT_meshedit_unsubdivide,
-    BUTTON_ACTION_OT_meshedit_edge_rotate,
-    BUTTON_ACTION_OT_meshedit_transform_edge_slide,
-    BUTTON_ACTION_OT_meshedit_loopcut_slide,
-    BUTTON_ACTION_OT_meshedit_offset_edge_loops_slide,
-    BUTTON_ACTION_OT_meshedit_transform_edge_crease,
-    BUTTON_ACTION_OT_meshedit_transform_edge_bevelweight,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_seam_toggle,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_sharp_toggle,
-    BUTTON_ACTION_OT_meshedit_mesh_set_sharpness_by_angle,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false,
-    BUTTON_ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true,
+    ACTION_OT_meshedit_subdivide_edgering,
+    ACTION_OT_meshedit_screw,
+    ACTION_OT_meshedit_unsubdivide,
+    ACTION_OT_meshedit_edge_rotate,
+    ACTION_OT_meshedit_transform_edge_slide,
+    ACTION_OT_meshedit_loopcut_slide,
+    ACTION_OT_meshedit_offset_edge_loops_slide,
+    ACTION_OT_meshedit_transform_edge_crease,
+    ACTION_OT_meshedit_transform_edge_bevelweight,
+    ACTION_OT_meshedit_mesh_mark_seam_toggle,
+    ACTION_OT_meshedit_mesh_mark_sharp_toggle,
+    ACTION_OT_meshedit_mesh_set_sharpness_by_angle,
+    ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_false,
+    ACTION_OT_meshedit_mesh_mark_freestyle_edge_clear_true,
 
-    BUTTON_ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal,
-    BUTTON_ACTION_OT_meshedit_extrude_move_shrink_fatten,
-    BUTTON_ACTION_OT_meshedit_extrude_faces_move,
-    BUTTON_ACTION_OT_meshedit_inset,
-    BUTTON_ACTION_OT_meshedit_mesh_poke,
-    BUTTON_ACTION_OT_meshedit_quads_convert_to_tris,
-    BUTTON_ACTION_OT_meshedit_tris_convert_to_quads,
-    BUTTON_ACTION_OT_meshedit_solidify,
-    BUTTON_ACTION_OT_meshedit_wireframe,
-    BUTTON_ACTION_OT_meshedit_fill,
-    BUTTON_ACTION_OT_meshedit_fill_grid,
-    BUTTON_ACTION_OT_meshedit_beautify_fill,
-    BUTTON_ACTION_OT_meshedit_intersect,
-    BUTTON_ACTION_OT_meshedit_intersect_boolean,
-    BUTTON_ACTION_OT_meshedit_face_split_by_edges,
-    BUTTON_ACTION_OT_meshedit_faces_shade_smooth,
-    BUTTON_ACTION_OT_meshedit_faces_shade_flat,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_faces_data,
-    BUTTON_ACTION_OT_meshedit_colors_rotate,
-    BUTTON_ACTION_OT_meshedit_colors_reverse,
-    BUTTON_ACTION_OT_meshedit_uvs_rotate,
-    BUTTON_ACTION_OT_meshedit_uvs_reverse,
-    BUTTON_ACTION_OT_meshedit_flip_quad_tessellation,
-    BUTTON_ACTION_OT_meshedit_mark_freestyle_face_false,
-    BUTTON_ACTION_OT_meshedit_mark_freestyle_face_true,
+    ACTION_OT_meshedit_view3d_edit_mesh_extrude_move_normal,
+    ACTION_OT_meshedit_extrude_move_shrink_fatten,
+    ACTION_OT_meshedit_extrude_faces_move,
+    ACTION_OT_meshedit_inset,
+    ACTION_OT_meshedit_mesh_poke,
+    ACTION_OT_meshedit_quads_convert_to_tris,
+    ACTION_OT_meshedit_tris_convert_to_quads,
+    ACTION_OT_meshedit_solidify,
+    ACTION_OT_meshedit_wireframe,
+    ACTION_OT_meshedit_fill,
+    ACTION_OT_meshedit_fill_grid,
+    ACTION_OT_meshedit_beautify_fill,
+    ACTION_OT_meshedit_intersect,
+    ACTION_OT_meshedit_intersect_boolean,
+    ACTION_OT_meshedit_face_split_by_edges,
+    ACTION_OT_meshedit_faces_shade_smooth,
+    ACTION_OT_meshedit_faces_shade_flat,
+    ACTION_OT_meshedit_edit_mesh_faces_data,
+    ACTION_OT_meshedit_colors_rotate,
+    ACTION_OT_meshedit_colors_reverse,
+    ACTION_OT_meshedit_uvs_rotate,
+    ACTION_OT_meshedit_uvs_reverse,
+    ACTION_OT_meshedit_flip_quad_tessellation,
+    ACTION_OT_meshedit_mark_freestyle_face_false,
+    ACTION_OT_meshedit_mark_freestyle_face_true,
     
-    BUTTON_ACTION_OT_meshedit_uvs_unwrap_menu,
-    BUTTON_ACTION_OT_meshedit_uv_reset,
+    ACTION_OT_meshedit_uvs_unwrap_menu,
+    ACTION_OT_meshedit_uv_reset,
 
 )
 

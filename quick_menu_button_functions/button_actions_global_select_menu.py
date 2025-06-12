@@ -3,8 +3,8 @@ import bpy
 
 
 # 套索选择——开始(备份用)
-class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
-    bl_idname = "button.action_global_select_lasso_set"
+class ACTION_OT_global_select_lasso_set(bpy.types.Operator):
+    bl_idname = "action.global_select_lasso_set"
     bl_label = "开始"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -48,7 +48,7 @@ class BUTTON_ACTION_OT_global_select_lasso_set(bpy.types.Operator):
 
 
 classes = (
-    BUTTON_ACTION_OT_global_select_lasso_set,   #备份用，可以删除
+    ACTION_OT_global_select_lasso_set,   #备份用，可以删除
 
 )
 

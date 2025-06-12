@@ -1,9 +1,9 @@
 import bpy
 
 # "选择"菜单——按类型全选
-class BUTTON_ACTION_OT_object_select_select_by_type_menu(bpy.types.Operator):
+class ACTION_OT_object_select_select_by_type_menu(bpy.types.Operator):
     bl_label = ""
-    bl_idname = "button.action_object_select_select_by_type_menu"
+    bl_idname = "action.object_select_select_by_type_menu"
 
     def execute(self, context):
         def draw(self, context):
@@ -38,8 +38,8 @@ class BUTTON_ACTION_OT_object_select_select_by_type_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——随机变换
-class BUTTON_ACTION_OT_object_transform_randomize_transform(bpy.types.Operator):
-    bl_idname = "button.action_object_randomize_transform"
+class ACTION_OT_object_transform_randomize_transform(bpy.types.Operator):
+    bl_idname = "action.object_randomize_transform"
     bl_label = "随机变换"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -196,8 +196,8 @@ class BUTTON_ACTION_OT_object_transform_randomize_transform(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——对齐物体
-class BUTTON_ACTION_OT_object_transform_object_align(bpy.types.Operator):
-    bl_idname = "button.action_object_transform_object_align"
+class ACTION_OT_object_transform_object_align(bpy.types.Operator):
+    bl_idname = "action.object_transform_object_align"
     bl_label = "对齐物体"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -280,8 +280,8 @@ class BUTTON_ACTION_OT_object_transform_object_align(bpy.types.Operator):
         )
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_transform_transform(bpy.types.Operator):
-    bl_idname = "button.action_object_transform_transform"
+class ACTION_OT_object_transform_transform(bpy.types.Operator):
+    bl_idname = "action.object_transform_transform"
     bl_label = "对齐到变换坐标系"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -320,8 +320,8 @@ class POPUP_MT_object_origin_set_menu(bpy.types.Operator):
         col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
         col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
 
-class BUTTON_ACTION_OT_call_object_origin_set_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_object_origin_set_menu"
+class ACTION_OT_call_object_origin_set_menu(bpy.types.Operator):
+    bl_idname = "action.call_object_origin_set_menu"
     bl_label = "设置原点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -335,8 +335,8 @@ class BUTTON_ACTION_OT_call_object_origin_set_menu(bpy.types.Operator):
         bpy.ops.popup.object_origin_set_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_origin_set_geometry_origin(bpy.types.Operator):
-    bl_idname = "button.action_object_origin_set_geometry_origin"
+class ACTION_OT_object_origin_set_geometry_origin(bpy.types.Operator):
+    bl_idname = "action.object_origin_set_geometry_origin"
     bl_label = "几何中心 -> 原点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -350,8 +350,8 @@ class BUTTON_ACTION_OT_object_origin_set_geometry_origin(bpy.types.Operator):
         bpy.ops.object.origin_set(type='GEOMETRY_ORIGIN')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_origin_set_origin_geometry(bpy.types.Operator):
-    bl_idname = "button.action_object_origin_set_origin_geometry"
+class ACTION_OT_object_origin_set_origin_geometry(bpy.types.Operator):
+    bl_idname = "action.object_origin_set_origin_geometry"
     bl_label = "原点 -> 几何中心"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -365,8 +365,8 @@ class BUTTON_ACTION_OT_object_origin_set_origin_geometry(bpy.types.Operator):
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_origin_set_origin_cursor(bpy.types.Operator):
-    bl_idname = "button.action_object_origin_set_origin_cursor"
+class ACTION_OT_object_origin_set_origin_cursor(bpy.types.Operator):
+    bl_idname = "action.object_origin_set_origin_cursor"
     bl_label = "原点 -> 3D 游标"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -380,8 +380,8 @@ class BUTTON_ACTION_OT_object_origin_set_origin_cursor(bpy.types.Operator):
         bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass(bpy.types.Operator):
-    bl_idname = "button.action_object_origin_set_origin_center_of_mass"
+class ACTION_OT_object_origin_set_origin_center_of_mass(bpy.types.Operator):
+    bl_idname = "action.object_origin_set_origin_center_of_mass"
     bl_label = "原点 -> 质心(表面)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -395,8 +395,8 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass(bpy.types.Operato
         bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Operator):
-    bl_idname = "button.action_object_origin_set_origin_center_of_volume"
+class ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Operator):
+    bl_idname = "action.object_origin_set_origin_center_of_volume"
     bl_label = "原点 -> 质心(体积)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -410,8 +410,8 @@ class BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume(bpy.types.Opera
         bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_duplicate_move_linked(bpy.types.Operator):
-    bl_idname = "button.action_object_duplicate_move_linked"
+class ACTION_OT_object_duplicate_move_linked(bpy.types.Operator):
+    bl_idname = "action.object_duplicate_move_linked"
     bl_label = "关联复制"
     bl_description = "快捷键 Alt D"
     bl_options = {'REGISTER', 'UNDO'}
@@ -426,8 +426,8 @@ class BUTTON_ACTION_OT_object_duplicate_move_linked(bpy.types.Operator):
         bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_delete_global_true(bpy.types.Operator):
-    bl_idname = "button.action_object_delete_global_true"
+class ACTION_OT_object_delete_global_true(bpy.types.Operator):
+    bl_idname = "action.object_delete_global_true"
     bl_label = "全局删除"
     bl_description = "快捷键 Shift X"
     bl_options = {'REGISTER', 'UNDO'}
@@ -442,8 +442,8 @@ class BUTTON_ACTION_OT_object_delete_global_true(bpy.types.Operator):
         bpy.ops.object.delete('INVOKE_DEFAULT', use_global=True)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_join(bpy.types.Operator):
-    bl_idname = "button.action_object_join"
+class ACTION_OT_object_join(bpy.types.Operator):
+    bl_idname = "action.object_join"
     bl_label = "合并"
     bl_description = "快捷键 Ctrl J"
     bl_options = {'REGISTER', 'UNDO'}
@@ -458,8 +458,8 @@ class BUTTON_ACTION_OT_object_join(bpy.types.Operator):
         bpy.ops.object.join()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_asset_menu(bpy.types.Operator):
-    bl_idname = "button.action_object_asset_menu"
+class ACTION_OT_object_asset_menu(bpy.types.Operator):
+    bl_idname = "action.object_asset_menu"
     bl_label = "资源"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -467,8 +467,8 @@ class BUTTON_ACTION_OT_object_asset_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_asset")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_asset_mark(bpy.types.Operator):
-    bl_idname = "button.action_object_asset_mark"
+class ACTION_OT_object_asset_mark(bpy.types.Operator):
+    bl_idname = "action.object_asset_mark"
     bl_label = "标记为资产"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -483,8 +483,8 @@ class BUTTON_ACTION_OT_object_asset_mark(bpy.types.Operator):
         self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已经是资产")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_asset_clear_fake_user_false(bpy.types.Operator):
-    bl_idname = "button.action_object_asset_clear_fake_user_false"
+class ACTION_OT_object_asset_clear_fake_user_false(bpy.types.Operator):
+    bl_idname = "action.object_asset_clear_fake_user_false"
     bl_label = "清理资产"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -499,8 +499,8 @@ class BUTTON_ACTION_OT_object_asset_clear_fake_user_false(bpy.types.Operator):
         self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已非资产")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_asset_clear_fake_user_true(bpy.types.Operator):
-    bl_idname = "button.action_object_asset_clear_fake_user_true"
+class ACTION_OT_object_asset_clear_fake_user_true(bpy.types.Operator):
+    bl_idname = "action.object_asset_clear_fake_user_true"
     bl_label = "清理资产(设置伪用户)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -515,8 +515,8 @@ class BUTTON_ACTION_OT_object_asset_clear_fake_user_true(bpy.types.Operator):
         self.report({'INFO'}, f"数据块 '{context.object.name_full}' 已非资产(设置伪用户)")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_collection_menu(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_menu"
+class ACTION_OT_object_collection_menu(bpy.types.Operator):
+    bl_idname = "action.object_collection_menu"
     bl_label = "集合"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -530,8 +530,8 @@ class BUTTON_ACTION_OT_object_collection_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_collection")
         return {'FINISHED'}
         
-class BUTTON_ACTION_OT_object_move_to_collection(bpy.types.Operator):
-    bl_idname = "button.action_object_move_to_collection"
+class ACTION_OT_object_move_to_collection(bpy.types.Operator):
+    bl_idname = "action.object_move_to_collection"
     bl_label = "移动到集合"
     bl_description = "快捷键 M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -546,8 +546,8 @@ class BUTTON_ACTION_OT_object_move_to_collection(bpy.types.Operator):
         bpy.ops.object.move_to_collection('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_link_to_collection(bpy.types.Operator):
-    bl_idname = "button.action_object_link_to_collection"
+class ACTION_OT_object_link_to_collection(bpy.types.Operator):
+    bl_idname = "action.object_link_to_collection"
     bl_label = "关联至集合"
     bl_description = "快捷键 Shift M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -562,8 +562,8 @@ class BUTTON_ACTION_OT_object_link_to_collection(bpy.types.Operator):
         bpy.ops.object.link_to_collection('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_collection_create(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_create"
+class ACTION_OT_object_collection_create(bpy.types.Operator):
+    bl_idname = "action.object_collection_create"
     bl_label = "创建新集合"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -591,8 +591,8 @@ class BUTTON_ACTION_OT_object_collection_create(bpy.types.Operator):
         bpy.ops.collection.create(name=self.name)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_collection_objects_remove(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_objects_remove"
+class ACTION_OT_object_collection_objects_remove(bpy.types.Operator):
+    bl_idname = "action.object_collection_objects_remove"
     bl_label = "从集合中移除"
     bl_description = "快捷键 Ctrl Alt G"
     bl_options = {'REGISTER', 'UNDO'}
@@ -607,8 +607,8 @@ class BUTTON_ACTION_OT_object_collection_objects_remove(bpy.types.Operator):
         bpy.ops.collection.objects_remove('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_collection_objects_remove_all(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_objects_remove_all"
+class ACTION_OT_object_collection_objects_remove_all(bpy.types.Operator):
+    bl_idname = "action.object_collection_objects_remove_all"
     bl_label = "从所有集合中移除"
     bl_description = "快捷键 Ctrl Shift Alt G"
     bl_options = {'REGISTER', 'UNDO'}
@@ -623,8 +623,8 @@ class BUTTON_ACTION_OT_object_collection_objects_remove_all(bpy.types.Operator):
         bpy.ops.collection.objects_remove_all()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_collection_objects_add_active(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_objects_add_active"
+class ACTION_OT_object_collection_objects_add_active(bpy.types.Operator):
+    bl_idname = "action.object_collection_objects_add_active"
     bl_label = "将选中项添加到活动集合中"
     bl_description = "快捷键 Ctrl Shift G"
     bl_options = {'REGISTER', 'UNDO'}
@@ -639,8 +639,8 @@ class BUTTON_ACTION_OT_object_collection_objects_add_active(bpy.types.Operator):
         bpy.ops.collection.objects_add_active('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_collection_objects_remove_active(bpy.types.Operator):
-    bl_idname = "button.action_object_collection_objects_remove_active"
+class ACTION_OT_object_collection_objects_remove_active(bpy.types.Operator):
+    bl_idname = "action.object_collection_objects_remove_active"
     bl_label = "从活动集合中移除所选"
     bl_description = "快捷键 Shift Alt G"
     bl_options = {'REGISTER', 'UNDO'}
@@ -655,8 +655,8 @@ class BUTTON_ACTION_OT_object_collection_objects_remove_active(bpy.types.Operato
         bpy.ops.collection.objects_remove_active('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_relations_menu(bpy.types.Operator):
-    bl_idname = "button.action_object_relations_menu"
+class ACTION_OT_object_relations_menu(bpy.types.Operator):
+    bl_idname = "action.object_relations_menu"
     bl_label = "关系"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -664,8 +664,8 @@ class BUTTON_ACTION_OT_object_relations_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_relations")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_liboverride(bpy.types.Operator):
-    bl_idname = "button.action_object_liboverride"
+class ACTION_OT_object_liboverride(bpy.types.Operator):
+    bl_idname = "action.object_liboverride"
     bl_label = "库重写"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -674,19 +674,19 @@ class BUTTON_ACTION_OT_object_liboverride(bpy.types.Operator):
         return {'FINISHED'}
     
 class VIEW3D_MT_object_constraints_menu(bpy.types.Menu):
-    bl_idname = "button.action_object_constraints_menu"
+    bl_idname = "action.object_constraints_menu"
     bl_label = "约束"
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout
-        layout.operator("button.action_object_constraint_add_with_targets", text="添加约束(预指定目标物体)")
-        layout.operator("button.action_object_constraint_copy", text="将约束复制到当前所选")
+        layout.operator("action.object_constraint_add_with_targets", text="添加约束(预指定目标物体)")
+        layout.operator("action.object_constraint_copy", text="将约束复制到当前所选")
         layout.separator()
-        layout.operator("button.action_object_constraint_clear", text="清除物体约束")
+        layout.operator("action.object_constraint_clear", text="清除物体约束")
 
-class BUTTON_ACTION_OT_call_object_constraints_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_object_constraints_menu"
+class ACTION_OT_call_object_constraints_menu(bpy.types.Operator):
+    bl_idname = "action.call_object_constraints_menu"
     bl_label = "约束"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -697,11 +697,11 @@ class BUTTON_ACTION_OT_call_object_constraints_menu(bpy.types.Operator):
         return True
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="button.action_object_constraints_menu")
+        bpy.ops.wm.call_menu(name="action.object_constraints_menu")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_constraint_add_with_targets(bpy.types.Operator):
-    bl_idname = "button.action_object_constraint_add_with_targets"
+class ACTION_OT_object_constraint_add_with_targets(bpy.types.Operator):
+    bl_idname = "action.object_constraint_add_with_targets"
     bl_label = "添加约束(预指定目标物体)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -715,8 +715,8 @@ class BUTTON_ACTION_OT_object_constraint_add_with_targets(bpy.types.Operator):
         bpy.ops.object.constraint_add_with_targets('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_constraint_copy(bpy.types.Operator):
-    bl_idname = "button.action_object_constraint_copy"
+class ACTION_OT_object_constraint_copy(bpy.types.Operator):
+    bl_idname = "action.object_constraint_copy"
     bl_label = "将约束复制到当前所选"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -730,8 +730,8 @@ class BUTTON_ACTION_OT_object_constraint_copy(bpy.types.Operator):
         bpy.ops.object.constraints_copy()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_constraint_clear(bpy.types.Operator):
-    bl_idname = "button.action_object_constraint_clear"
+class ACTION_OT_object_constraint_clear(bpy.types.Operator):
+    bl_idname = "action.object_constraint_clear"
     bl_label = "清除物体约束"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -745,8 +745,8 @@ class BUTTON_ACTION_OT_object_constraint_clear(bpy.types.Operator):
         bpy.ops.object.constraints_clear()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_track(bpy.types.Operator):
-    bl_idname = "button.action_object_track"
+class ACTION_OT_object_track(bpy.types.Operator):
+    bl_idname = "action.object_track"
     bl_label = "追踪(轨迹)"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -754,8 +754,8 @@ class BUTTON_ACTION_OT_object_track(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_track")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_make_links(bpy.types.Operator):
-    bl_idname = "button.action_object_make_links"
+class ACTION_OT_object_make_links(bpy.types.Operator):
+    bl_idname = "action.object_make_links"
     bl_label = "关联/传递数据"
     bl_description = "快捷键 Ctrl L"
     bl_options = {'REGISTER', 'UNDO'}
@@ -764,8 +764,8 @@ class BUTTON_ACTION_OT_object_make_links(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_make_links")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_animation(bpy.types.Operator):
-    bl_idname = "button.action_object_animation"
+class ACTION_OT_object_animation(bpy.types.Operator):
+    bl_idname = "action.object_animation"
     bl_label = "动画"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -773,8 +773,8 @@ class BUTTON_ACTION_OT_object_animation(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_animation")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_object_anim_keyframe_insert_menu(bpy.types.Operator):
-    bl_idname = "button.action_object_anim_keyframe_insert_menu"
+class ACTION_OT_object_anim_keyframe_insert_menu(bpy.types.Operator):
+    bl_idname = "action.object_anim_keyframe_insert_menu"
     bl_label = "插入关键帧"
     bl_description = "快捷键 I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -783,8 +783,8 @@ class BUTTON_ACTION_OT_object_anim_keyframe_insert_menu(bpy.types.Operator):
         bpy.ops.anim.keyframe_insert_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_anim_keyframe_insert(bpy.types.Operator):
-    bl_idname = "button.action_object_anim_keyframe_insert"
+class ACTION_OT_object_anim_keyframe_insert(bpy.types.Operator):
+    bl_idname = "action.object_anim_keyframe_insert"
     bl_label = "插入关键帧"
     bl_description = "快捷键 I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -794,8 +794,8 @@ class BUTTON_ACTION_OT_object_anim_keyframe_insert(bpy.types.Operator):
         self.report({'INFO'}, "已插入关键帧")
         return {'FINISHED'} 
     
-class BUTTON_ACTION_OT_object_anim_keyframe_delete_v3d(bpy.types.Operator):
-    bl_idname = "button.action_object_anim_keyframe_delete_v3d"
+class ACTION_OT_object_anim_keyframe_delete_v3d(bpy.types.Operator):
+    bl_idname = "action.object_anim_keyframe_delete_v3d"
     bl_label = "删除关键帧"
     bl_description = "快捷键 Alt I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -804,8 +804,8 @@ class BUTTON_ACTION_OT_object_anim_keyframe_delete_v3d(bpy.types.Operator):
         bpy.ops.anim.keyframe_delete_v3d('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_anim_keyframe_clear_v3d(bpy.types.Operator):
-    bl_idname = "button.action_object_anim_keyframe_clear_v3d"
+class ACTION_OT_object_anim_keyframe_clear_v3d(bpy.types.Operator):
+    bl_idname = "action.object_anim_keyframe_clear_v3d"
     bl_label = "清除关键帧"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -813,8 +813,8 @@ class BUTTON_ACTION_OT_object_anim_keyframe_clear_v3d(bpy.types.Operator):
         bpy.ops.anim.keyframe_clear_v3d('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_anim_keying_set_active_set(bpy.types.Operator):
-    bl_idname = "button.action_object_anim_keying_set_active_set"
+class ACTION_OT_object_anim_keying_set_active_set(bpy.types.Operator):
+    bl_idname = "action.object_anim_keying_set_active_set"
     bl_label = "更改插帧集"
     bl_description = "快捷键 Ctrl Shift Alt I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -823,8 +823,8 @@ class BUTTON_ACTION_OT_object_anim_keying_set_active_set(bpy.types.Operator):
         bpy.ops.anim.keying_set_active_set('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_nla_bake(bpy.types.Operator):
-    bl_idname = "button.action_object_nla_bake"
+class ACTION_OT_object_nla_bake(bpy.types.Operator):
+    bl_idname = "action.object_nla_bake"
     bl_label = "烘焙动作"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -832,17 +832,21 @@ class BUTTON_ACTION_OT_object_nla_bake(bpy.types.Operator):
         bpy.ops.nla.bake('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_gpencil_bake_mesh_animation(bpy.types.Operator):
-    bl_idname = "button.action_object_gpencil_bake_mesh_animation"
+class ACTION_OT_object_gpencil_bake_mesh_animation(bpy.types.Operator):
+    bl_idname = "action.object_gpencil_bake_mesh_animation"
     bl_label = "烘焙网格至蜡笔"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
-        bpy.ops.gpencil.bake_mesh_animation('INVOKE_DEFAULT')
+        try:
+            bpy.ops.gpencil.bake_mesh_animation('INVOKE_DEFAULT')
+        except RuntimeError:
+            self.report({'ERROR'}, "无法烘焙网格至蜡笔")
+            return {'CANCELLED'}
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Operator):
-    bl_idname = "button.action_object_gpencil_bake_grease_pencil_animation"
+class ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Operator):
+    bl_idname = "action.object_gpencil_bake_grease_pencil_animation"
     bl_label = "烘焙物体变换至蜡笔"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -857,8 +861,8 @@ class BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation(bpy.types.Ope
             bpy.ops.grease_pencil.bake_grease_pencil_animation('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_object_rigid_body(bpy.types.Operator):
-    bl_idname = "button.action_object_rigid_body"
+class ACTION_OT_object_object_rigid_body(bpy.types.Operator):
+    bl_idname = "action.object_rigid_body"
     bl_label = "刚体"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -866,8 +870,8 @@ class BUTTON_ACTION_OT_object_object_rigid_body(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_rigid_body")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_objectt_quick_effects(bpy.types.Operator):
-    bl_idname = "button.action_objectt_quick_effects"
+class ACTION_OT_object_objectt_quick_effects(bpy.types.Operator):
+    bl_idname = "action.objectt_quick_effects"
     bl_label = "快速效果"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -875,8 +879,8 @@ class BUTTON_ACTION_OT_object_objectt_quick_effects(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_quick_effects")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_object_objectt_cleanup(bpy.types.Operator):
-    bl_idname = "button.action_objectt_cleanup"
+class ACTION_OT_object_objectt_cleanup(bpy.types.Operator):
+    bl_idname = "action.objectt_cleanup"
     bl_label = "清理"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -885,57 +889,57 @@ class BUTTON_ACTION_OT_object_objectt_cleanup(bpy.types.Operator):
         return {'FINISHED'}
 
 classes = (
-    BUTTON_ACTION_OT_object_select_select_by_type_menu,
-    BUTTON_ACTION_OT_object_transform_randomize_transform,
-    BUTTON_ACTION_OT_object_transform_object_align,
-    BUTTON_ACTION_OT_object_transform_transform,
+    ACTION_OT_object_select_select_by_type_menu,
+    ACTION_OT_object_transform_randomize_transform,
+    ACTION_OT_object_transform_object_align,
+    ACTION_OT_object_transform_transform,
     POPUP_MT_object_origin_set_menu,
-    BUTTON_ACTION_OT_call_object_origin_set_menu,
-    BUTTON_ACTION_OT_object_origin_set_geometry_origin,
-    BUTTON_ACTION_OT_object_origin_set_origin_geometry,
-    BUTTON_ACTION_OT_object_origin_set_origin_cursor,
-    BUTTON_ACTION_OT_object_origin_set_origin_center_of_mass,
-    BUTTON_ACTION_OT_object_origin_set_origin_center_of_volume,
+    ACTION_OT_call_object_origin_set_menu,
+    ACTION_OT_object_origin_set_geometry_origin,
+    ACTION_OT_object_origin_set_origin_geometry,
+    ACTION_OT_object_origin_set_origin_cursor,
+    ACTION_OT_object_origin_set_origin_center_of_mass,
+    ACTION_OT_object_origin_set_origin_center_of_volume,
 
-    BUTTON_ACTION_OT_object_duplicate_move_linked,
-    BUTTON_ACTION_OT_object_delete_global_true,
-    BUTTON_ACTION_OT_object_join,
-    BUTTON_ACTION_OT_object_asset_menu,
-    BUTTON_ACTION_OT_object_asset_mark,
-    BUTTON_ACTION_OT_object_asset_clear_fake_user_false,
-    BUTTON_ACTION_OT_object_asset_clear_fake_user_true,
-    BUTTON_ACTION_OT_object_collection_menu,
-    BUTTON_ACTION_OT_object_collection_create,
-    BUTTON_ACTION_OT_object_move_to_collection,
-    BUTTON_ACTION_OT_object_link_to_collection,
-    BUTTON_ACTION_OT_object_collection_objects_remove,
-    BUTTON_ACTION_OT_object_collection_objects_remove_all,
-    BUTTON_ACTION_OT_object_collection_objects_add_active,
-    BUTTON_ACTION_OT_object_collection_objects_remove_active,
+    ACTION_OT_object_duplicate_move_linked,
+    ACTION_OT_object_delete_global_true,
+    ACTION_OT_object_join,
+    ACTION_OT_object_asset_menu,
+    ACTION_OT_object_asset_mark,
+    ACTION_OT_object_asset_clear_fake_user_false,
+    ACTION_OT_object_asset_clear_fake_user_true,
+    ACTION_OT_object_collection_menu,
+    ACTION_OT_object_collection_create,
+    ACTION_OT_object_move_to_collection,
+    ACTION_OT_object_link_to_collection,
+    ACTION_OT_object_collection_objects_remove,
+    ACTION_OT_object_collection_objects_remove_all,
+    ACTION_OT_object_collection_objects_add_active,
+    ACTION_OT_object_collection_objects_remove_active,
 
-    BUTTON_ACTION_OT_object_relations_menu,
-    BUTTON_ACTION_OT_object_liboverride,
+    ACTION_OT_object_relations_menu,
+    ACTION_OT_object_liboverride,
     VIEW3D_MT_object_constraints_menu,
-    BUTTON_ACTION_OT_call_object_constraints_menu,
-    BUTTON_ACTION_OT_object_constraint_add_with_targets,
-    BUTTON_ACTION_OT_object_constraint_copy,
-    BUTTON_ACTION_OT_object_constraint_clear,
-    BUTTON_ACTION_OT_object_track,
-    BUTTON_ACTION_OT_object_make_links,
+    ACTION_OT_call_object_constraints_menu,
+    ACTION_OT_object_constraint_add_with_targets,
+    ACTION_OT_object_constraint_copy,
+    ACTION_OT_object_constraint_clear,
+    ACTION_OT_object_track,
+    ACTION_OT_object_make_links,
 
-    BUTTON_ACTION_OT_object_animation,
-    BUTTON_ACTION_OT_object_anim_keyframe_insert_menu,
-    BUTTON_ACTION_OT_object_anim_keyframe_insert,
-    BUTTON_ACTION_OT_object_anim_keyframe_delete_v3d,
-    BUTTON_ACTION_OT_object_anim_keyframe_clear_v3d,
-    BUTTON_ACTION_OT_object_anim_keying_set_active_set,
-    BUTTON_ACTION_OT_object_nla_bake,
-    BUTTON_ACTION_OT_object_gpencil_bake_mesh_animation,
-    BUTTON_ACTION_OT_object_gpencil_bake_grease_pencil_animation,
+    ACTION_OT_object_animation,
+    ACTION_OT_object_anim_keyframe_insert_menu,
+    ACTION_OT_object_anim_keyframe_insert,
+    ACTION_OT_object_anim_keyframe_delete_v3d,
+    ACTION_OT_object_anim_keyframe_clear_v3d,
+    ACTION_OT_object_anim_keying_set_active_set,
+    ACTION_OT_object_nla_bake,
+    ACTION_OT_object_gpencil_bake_mesh_animation,
+    ACTION_OT_object_gpencil_bake_grease_pencil_animation,
 
-    BUTTON_ACTION_OT_object_object_rigid_body,
-    BUTTON_ACTION_OT_object_objectt_quick_effects,
-    BUTTON_ACTION_OT_object_objectt_cleanup,
+    ACTION_OT_object_object_rigid_body,
+    ACTION_OT_object_objectt_quick_effects,
+    ACTION_OT_object_objectt_cleanup,
 
 )
 

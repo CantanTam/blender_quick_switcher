@@ -1,149 +1,149 @@
 
 button_press_object = {
     # 物体模式——”选择“菜单
-        'button.action_object_select_select_by_type_menu':(
-        "button.action_object_select_select_by_type_menu","按类型全选","PRESET",
+        'action.object_select_select_by_type_menu':(
+        "action.object_select_select_by_type_menu","按类型全选","PRESET",
     ),
         'object.select_camera':(
         "object.select_camera","选择活动摄像机","OUTLINER_OB_CAMERA",
     ),
-        'button.action_object_randomize_transform':(
-        "button.action_object_randomize_transform","随机变换","RADIOBUT_OFF",
+        'action.object_randomize_transform':(
+        "action.object_randomize_transform","随机变换","RADIOBUT_OFF",
     ),
-        'button.action_object_transform_object_align':(
-        "button.action_object_transform_object_align","对齐物体","RADIOBUT_OFF",
+        'action.object_transform_object_align':(
+        "action.object_transform_object_align","对齐物体","RADIOBUT_OFF",
     ),
-        'button.action_object_transform_transform':(
-        "button.action_object_transform_transform","对齐到变换坐标系","RADIOBUT_OFF",
+        'action.object_transform_transform':(
+        "action.object_transform_transform","对齐到变换坐标系","RADIOBUT_OFF",
     ),
     # 切换原点
-        'button.action_call_object_origin_set_menu':(
-        "button.action_call_object_origin_set_menu","设置原点","PRESET",
+        'action.call_object_origin_set_menu':(
+        "action.call_object_origin_set_menu","设置原点","PRESET",
     ),
-        'button.action_object_origin_set_geometry_origin':(
-        "button.action_object_origin_set_geometry_origin","几何中心->原点","RADIOBUT_OFF",
+        'action.object_origin_set_geometry_origin':(
+        "action.object_origin_set_geometry_origin","几何中心->原点","RADIOBUT_OFF",
     ),
-        'button.action_object_origin_set_origin_geometry':(
-        "button.action_object_origin_set_origin_geometry","原点->几何中心","RADIOBUT_OFF",
+        'action.object_origin_set_origin_geometry':(
+        "action.object_origin_set_origin_geometry","原点->几何中心","RADIOBUT_OFF",
     ),
-        'button.action_object_origin_set_origin_cursor':(
-        "button.action_object_origin_set_origin_cursor","原点->3D 游标","RADIOBUT_OFF",
+        'action.object_origin_set_origin_cursor':(
+        "action.object_origin_set_origin_cursor","原点->3D 游标","RADIOBUT_OFF",
     ),
-        'button.action_object_origin_set_origin_center_of_mass':(
-        "button.action_object_origin_set_origin_center_of_mass","原点->质心(表面)","RADIOBUT_OFF",
+        'action.object_origin_set_origin_center_of_mass':(
+        "action.object_origin_set_origin_center_of_mass","原点->质心(表面)","RADIOBUT_OFF",
     ),
-        'button.action_object_origin_set_origin_center_of_volume':(
-        "button.action_object_origin_set_origin_center_of_volume","原点->质心(体积)","RADIOBUT_OFF",
+        'action.object_origin_set_origin_center_of_volume':(
+        "action.object_origin_set_origin_center_of_volume","原点->质心(体积)","RADIOBUT_OFF",
     ),
-        'button.action_object_duplicate_move_linked':(
-        "button.action_object_duplicate_move_linked","关联复制","DUPLICATE",
+        'action.object_duplicate_move_linked':(
+        "action.object_duplicate_move_linked","关联复制","DUPLICATE",
     ),
-        'button.action_object_delete_global_true':(
-        "button.action_object_delete_global_true","全局删除","RADIOBUT_OFF",
+        'action.object_delete_global_true':(
+        "action.object_delete_global_true","全局删除","RADIOBUT_OFF",
     ),
-        'button.action_object_join':(
-        "button.action_object_join","合并","RADIOBUT_OFF",
+        'action.object_join':(
+        "action.object_join","合并","RADIOBUT_OFF",
     ),
-        'button.action_object_asset_menu':(
-        "button.action_object_asset_menu","资源","ASSET_MANAGER",
+        'action.object_asset_menu':(
+        "action.object_asset_menu","资源","ASSET_MANAGER",
     ),
-        'button.action_object_asset_mark':(
-        "button.action_object_asset_mark","标记为资产","RADIOBUT_OFF",
+        'action.object_asset_mark':(
+        "action.object_asset_mark","标记为资产","RADIOBUT_OFF",
     ),
-        'button.action_object_asset_clear_fake_user_false':(
-        "button.action_object_asset_clear_fake_user_false","清理资产","RADIOBUT_OFF",
+        'action.object_asset_clear_fake_user_false':(
+        "action.object_asset_clear_fake_user_false","清理资产","RADIOBUT_OFF",
     ),
-        'button.action_object_asset_clear_fake_user_true':(
-        "button.action_object_asset_clear_fake_user_true","清理资产(设置伪用户)","RADIOBUT_OFF",
+        'action.object_asset_clear_fake_user_true':(
+        "action.object_asset_clear_fake_user_true","清理资产(设置伪用户)","RADIOBUT_OFF",
     ),
     # 集合
-        'button.action_object_collection_menu':(
-        "button.action_object_collection_menu","集合","OUTLINER_COLLECTION",
+        'action.object_collection_menu':(
+        "action.object_collection_menu","集合","OUTLINER_COLLECTION",
     ),  
-        'button.action_object_collection_create':(
-        "button.action_object_collection_create","创建新集合","COLLECTION_NEW",
+        'action.object_collection_create':(
+        "action.object_collection_create","创建新集合","COLLECTION_NEW",
     ), 
-        'button.action_object_move_to_collection':(
-        "button.action_object_move_to_collection","移动到集合","RADIOBUT_OFF",
+        'action.object_move_to_collection':(
+        "action.object_move_to_collection","移动到集合","RADIOBUT_OFF",
     ),  
-        'button.action_object_link_to_collection':(
-        "button.action_object_link_to_collection","关联至集合","RADIOBUT_OFF",
+        'action.object_link_to_collection':(
+        "action.object_link_to_collection","关联至集合","RADIOBUT_OFF",
     ),  
-        'button.action_object_collection_objects_remove':(
-        "button.action_object_collection_objects_remove","从集合中移除","RADIOBUT_OFF",
+        'action.object_collection_objects_remove':(
+        "action.object_collection_objects_remove","从集合中移除","RADIOBUT_OFF",
     ),  
-        'button.action_object_collection_objects_remove_all':(
-        "button.action_object_collection_objects_remove_all","从所有集合中移除","RADIOBUT_OFF",
+        'action.object_collection_objects_remove_all':(
+        "action.object_collection_objects_remove_all","从所有集合中移除","RADIOBUT_OFF",
     ),  
-        'button.action_object_collection_objects_add_active':(
-        "button.action_object_collection_objects_add_active","将选中项添加到活动集合中","RADIOBUT_OFF",
+        'action.object_collection_objects_add_active':(
+        "action.object_collection_objects_add_active","将选中项添加到活动集合中","RADIOBUT_OFF",
     ),  
-        'button.action_object_collection_objects_remove_active':(
-        "button.action_object_collection_objects_remove_active","从活动集合中移除所选","RADIOBUT_OFF",
+        'action.object_collection_objects_remove_active':(
+        "action.object_collection_objects_remove_active","从活动集合中移除所选","RADIOBUT_OFF",
     ),  
     # 关系
-        'button.action_object_relations_menu':(
-        "button.action_object_relations_menu","关系","PRESET",
+        'action.object_relations_menu':(
+        "action.object_relations_menu","关系","PRESET",
     ), 
     # 库重写
-        'button.action_object_liboverride':(
-        "button.action_object_liboverride","库重写","LIBRARY_DATA_OVERRIDE",
+        'action.object_liboverride':(
+        "action.object_liboverride","库重写","LIBRARY_DATA_OVERRIDE",
     ),   
     # 约束
-        'button.action_call_object_constraints_menu':(
-        "button.action_call_object_constraints_menu","约束","CONSTRAINT",
+        'action.call_object_constraints_menu':(
+        "action.call_object_constraints_menu","约束","CONSTRAINT",
     ), 
-        'button.action_object_constraint_add_with_targets':(
-        "button.action_object_constraint_add_with_targets","添加约束(预指定目标物体)","RADIOBUT_OFF",
+        'action.object_constraint_add_with_targets':(
+        "action.object_constraint_add_with_targets","添加约束(预指定目标物体)","RADIOBUT_OFF",
     ), 
-        'button.action_object_constraint_copy':(
-        "button.action_object_constraint_copy","将约束复制到当前所选","RADIOBUT_OFF",
+        'action.object_constraint_copy':(
+        "action.object_constraint_copy","将约束复制到当前所选","RADIOBUT_OFF",
     ), 
-        'button.action_object_constraint_clear':(
-        "button.action_object_constraint_clear","清除物体约束","RADIOBUT_OFF",
+        'action.object_constraint_clear':(
+        "action.object_constraint_clear","清除物体约束","RADIOBUT_OFF",
     ), 
-        'button.action_object_track':(
-        "button.action_object_track","追踪(轨迹)","PRESET",
+        'action.object_track':(
+        "action.object_track","追踪(轨迹)","PRESET",
     ), 
-        'button.action_object_make_links':(
-        "button.action_object_make_links","关联/传递数据","PRESET",
+        'action.object_make_links':(
+        "action.object_make_links","关联/传递数据","PRESET",
     ), 
     # 动画
-        'button.action_object_animation':(
-        "button.action_object_animation","动画","PRESET",
+        'action.object_animation':(
+        "action.object_animation","动画","PRESET",
     ), 
-        'button.action_object_anim_keyframe_insert_menu':(
-        "button.action_object_anim_keyframe_insert_menu","插入关键帧","KEYFRAME_HLT",
+        'action.object_anim_keyframe_insert_menu':(
+        "action.object_anim_keyframe_insert_menu","插入关键帧","KEYFRAME_HLT",
     ),
-        'button.action_object_anim_keyframe_insert':(
-        "button.action_object_anim_keyframe_insert","插入关键帧","KEYTYPE_KEYFRAME_VEC",
+        'action.object_anim_keyframe_insert':(
+        "action.object_anim_keyframe_insert","插入关键帧","KEYTYPE_KEYFRAME_VEC",
     ),
-        'button.action_object_anim_keyframe_delete_v3d':(
-        "button.action_object_anim_keyframe_delete_v3d","删除关键帧","KEYFRAME",
+        'action.object_anim_keyframe_delete_v3d':(
+        "action.object_anim_keyframe_delete_v3d","删除关键帧","KEYFRAME",
     ),
-        'button.action_object_anim_keyframe_clear_v3d':(
-        "button.action_object_anim_keyframe_clear_v3d","清除关键帧","KEYFRAME",
+        'action.object_anim_keyframe_clear_v3d':(
+        "action.object_anim_keyframe_clear_v3d","清除关键帧","KEYFRAME",
     ),
-        'button.action_object_anim_keying_set_active_set':(
-        "button.action_object_anim_keying_set_active_set","更改插帧集","KEYFRAME_HLT",
+        'action.object_anim_keying_set_active_set':(
+        "action.object_anim_keying_set_active_set","更改插帧集","KEYFRAME_HLT",
     ),
-        'button.action_object_nla_bake':(
-        "button.action_object_nla_bake","烘焙动作","RADIOBUT_OFF",
+        'action.object_nla_bake':(
+        "action.object_nla_bake","烘焙动作","RADIOBUT_OFF",
     ),
-        'button.action_object_gpencil_bake_mesh_animation':(
-        "button.action_object_gpencil_bake_mesh_animation","烘焙网格至蜡笔","RADIOBUT_OFF",
+        'action.object_gpencil_bake_mesh_animation':(
+        "action.object_gpencil_bake_mesh_animation","烘焙网格至蜡笔","RADIOBUT_OFF",
     ),
-        'button.action_object_gpencil_bake_grease_pencil_animation':(
-        "button.action_object_gpencil_bake_grease_pencil_animation","烘焙物体变换至蜡笔","RADIOBUT_OFF",
+        'action.object_gpencil_bake_grease_pencil_animation':(
+        "action.object_gpencil_bake_grease_pencil_animation","烘焙物体变换至蜡笔","RADIOBUT_OFF",
     ),
-        'button.action_object_rigid_body':(
-        "button.action_object_rigid_body","刚体","PRESET",
+        'action.object_rigid_body':(
+        "action.object_rigid_body","刚体","PRESET",
     ),
-        'button.action_objectt_quick_effects':(
-        "button.action_objectt_quick_effects","快速效果","PRESET",
+        'action.objectt_quick_effects':(
+        "action.objectt_quick_effects","快速效果","PRESET",
     ),
-        'button.action_objectt_cleanup':(
-        "button.action_objectt_cleanup","清理","PRESET",
+        'action.objectt_cleanup':(
+        "action.objectt_cleanup","清理","PRESET",
     ),
 
 }

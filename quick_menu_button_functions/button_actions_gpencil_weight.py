@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize_all(bpy.types.Operator):
-    bl_idname = "button.action_gpencilweight_vertex_group_normalize_all"
+class ACTION_OT_gpencilweight_vertex_group_normalize_all(bpy.types.Operator):
+    bl_idname = "action.gpencilweight_vertex_group_normalize_all"
     bl_label = "规格化全部顶点组"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -44,8 +44,8 @@ class BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize_all(bpy.types.Operat
         bpy.ops.gpencil.vertex_group_normalize_all(lock_active=self.lock_active)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize(bpy.types.Operator):
-    bl_idname = "button.action_gpencilweight_vertex_group_normalize"
+class ACTION_OT_gpencilweight_vertex_group_normalize(bpy.types.Operator):
+    bl_idname = "action.gpencilweight_vertex_group_normalize"
     bl_label = "规格化"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -69,8 +69,8 @@ class BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize(bpy.types.Operator):
         bpy.ops.gpencil.vertex_group_normalize()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpencilweight_vertex_group_invert(bpy.types.Operator):
-    bl_idname = "button.action_gpencilweight_vertex_group_invert"
+class ACTION_OT_gpencilweight_vertex_group_invert(bpy.types.Operator):
+    bl_idname = "action.gpencilweight_vertex_group_invert"
     bl_label = "反转"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -94,8 +94,8 @@ class BUTTON_ACTION_OT_gpencilweight_vertex_group_invert(bpy.types.Operator):
         bpy.ops.gpencil.vertex_group_invert()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpencilweight_vertex_group_smooth(bpy.types.Operator):
-    bl_idname = "button.action_gpencilweight_vertex_group_smooth"
+class ACTION_OT_gpencilweight_vertex_group_smooth(bpy.types.Operator):
+    bl_idname = "action.gpencilweight_vertex_group_smooth"
     bl_label = "平滑顶点组"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -151,8 +151,8 @@ class BUTTON_ACTION_OT_gpencilweight_vertex_group_smooth(bpy.types.Operator):
         bpy.ops.gpencil.vertex_group_smooth(factor=self.factor, repeat=self.repeat)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpencilweight_gpencil_autoweights_menu(bpy.types.Operator):
-    bl_idname = "button.action_gpencilweight_gpencil_autoweights_menu"
+class ACTION_OT_gpencilweight_gpencil_autoweights_menu(bpy.types.Operator):
+    bl_idname = "action.gpencilweight_gpencil_autoweights_menu"
     bl_label = "生成权重"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -161,11 +161,11 @@ class BUTTON_ACTION_OT_gpencilweight_gpencil_autoweights_menu(bpy.types.Operator
         return {'FINISHED'}
 
 classes = (
-    BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize_all,
-    BUTTON_ACTION_OT_gpencilweight_vertex_group_normalize,
-    BUTTON_ACTION_OT_gpencilweight_vertex_group_invert,
-    BUTTON_ACTION_OT_gpencilweight_vertex_group_smooth,
-    BUTTON_ACTION_OT_gpencilweight_gpencil_autoweights_menu,
+    ACTION_OT_gpencilweight_vertex_group_normalize_all,
+    ACTION_OT_gpencilweight_vertex_group_normalize,
+    ACTION_OT_gpencilweight_vertex_group_invert,
+    ACTION_OT_gpencilweight_vertex_group_smooth,
+    ACTION_OT_gpencilweight_gpencil_autoweights_menu,
 
 )
 

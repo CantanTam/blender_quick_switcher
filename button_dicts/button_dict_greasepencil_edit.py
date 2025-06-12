@@ -1,126 +1,126 @@
 button_press_greasepencil_edit = {
     # "蜡笔"菜单
-        'button.action_greasepenciledit_layer_active_menu':(
-        "button.action_greasepenciledit_layer_active_menu","活动层","PRESET",
+        'action.greasepenciledit_layer_active_menu':(
+        "action.greasepenciledit_layer_active_menu","活动层","PRESET",
     ),
-        'button.action_greasepenciledit_layer_add':(
-        "button.action_greasepenciledit_layer_add","新建层","ADD",
+        'action.greasepenciledit_layer_add':(
+        "action.greasepenciledit_layer_add","新建层","ADD",
     ),
-        'button.action_greasepenciledit_animation_menu':(
-        "button.action_greasepenciledit_animation_menu","动画","PRESET",
+        'action.greasepenciledit_animation_menu':(
+        "action.greasepenciledit_animation_menu","动画","PRESET",
     ),
-        'button.action_greasepenciledit_insert_blank_frame_false':(
-        "button.action_greasepenciledit_insert_blank_frame_false","在活动层插入空白帧","RADIOBUT_OFF",
+        'action.greasepenciledit_insert_blank_frame_false':(
+        "action.greasepenciledit_insert_blank_frame_false","在活动层插入空白帧","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_insert_blank_frame_true':(
-        "button.action_greasepenciledit_insert_blank_frame_true","在所有层插入空白帧","RADIOBUT_OFF",
+        'action.greasepenciledit_insert_blank_frame_true':(
+        "action.greasepenciledit_insert_blank_frame_true","在所有层插入空白帧","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_frame_duplicate_false':(
-        "button.action_greasepenciledit_frame_duplicate_false","复制活动层的活动关键帧","RADIOBUT_OFF",
+        'action.greasepenciledit_frame_duplicate_false':(
+        "action.greasepenciledit_frame_duplicate_false","复制活动层的活动关键帧","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_frame_duplicate_true':(
-        "button.action_greasepenciledit_frame_duplicate_true","复制所有层的活动关键帧","RADIOBUT_OFF",
+        'action.greasepenciledit_frame_duplicate_true':(
+        "action.greasepenciledit_frame_duplicate_true","复制所有层的活动关键帧","RADIOBUT_OFF",
     ),
-        'button.action_call_greasepenciledit_separate_menu':(
-        "button.action_call_greasepenciledit_separate_menu","分离","PRESET",
+        'action.call_greasepenciledit_separate_menu':(
+        "action.call_greasepenciledit_separate_menu","分离","PRESET",
     ),
-        'button.action_greasepenciledit_cleanup_menu':(
-        "button.action_greasepenciledit_cleanup_menu","清理","PRESET",
+        'action.greasepenciledit_cleanup_menu':(
+        "action.greasepenciledit_cleanup_menu","清理","PRESET",
     ),
-        'button.action_greasepenciledit_clean_loose':(
-        "button.action_greasepenciledit_clean_loose","清除松散点","RADIOBUT_OFF",
+        'action.greasepenciledit_clean_loose':(
+        "action.greasepenciledit_clean_loose","清除松散点","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_frame_clean_duplicate':(
-        "button.action_greasepenciledit_frame_clean_duplicate","清理重复帧","RADIOBUT_OFF",
+        'action.greasepenciledit_frame_clean_duplicate':(
+        "action.greasepenciledit_frame_clean_duplicate","清理重复帧","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_stroke_merge_by_distance':(
-        "button.action_greasepenciledit_stroke_merge_by_distance","按间距合并","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_merge_by_distance':(
+        "action.greasepenciledit_stroke_merge_by_distance","按间距合并","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_reproject_menu':(
-        "button.action_greasepenciledit_reproject_menu","重投影笔画","PRESET",
+        'action.greasepenciledit_reproject_menu':(
+        "action.greasepenciledit_reproject_menu","重投影笔画","PRESET",
     ),
     # “点”菜单
-        'button.action_greasepenciledit_extrude_move':(
-        "button.action_greasepenciledit_extrude_move","挤出","EVENT_E",
+        'action.greasepenciledit_extrude_move':(
+        "action.greasepenciledit_extrude_move","挤出","EVENT_E",
     ),
-        'button.action_greasepenciledit_stroke_smooth':(
-        "button.action_greasepenciledit_stroke_smooth","光滑","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_smooth':(
+        "action.greasepenciledit_stroke_smooth","光滑","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_vertex_group_menu':(
-        "button.action_greasepenciledit_vertex_group_menu","顶点组","PRESET",
+        'action.greasepenciledit_vertex_group_menu':(
+        "action.greasepenciledit_vertex_group_menu","顶点组","PRESET",
     ),
-        'button.action_greasepenciledit_set_handle_type':(
-        "button.action_greasepenciledit_set_handle_type","设置控制柄类型","PRESET",
+        'action.greasepenciledit_set_handle_type':(
+        "action.greasepenciledit_set_handle_type","设置控制柄类型","PRESET",
     ),
     # “笔画”菜单
-        'button.action_greasepenciledit_stroke_subdivide':(
-        "button.action_greasepenciledit_stroke_subdivide","细分笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_subdivide':(
+        "action.greasepenciledit_stroke_subdivide","细分笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_stroke_subdivide_smooth':(
-        "button.action_greasepenciledit_stroke_subdivide_smooth","细分并平滑笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_subdivide_smooth':(
+        "action.greasepenciledit_stroke_subdivide_smooth","细分并平滑笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_stroke_simplify':(
-        "button.action_greasepenciledit_stroke_simplify","简化笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_simplify':(
+        "action.greasepenciledit_stroke_simplify","简化笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_join_selection':(
-        "button.action_greasepenciledit_join_selection","合并笔画","PRESET",
+        'action.greasepenciledit_join_selection':(
+        "action.greasepenciledit_join_selection","合并笔画","PRESET",
     ),
-        'button.action_greasepenciledit_join_selection_join':(
-        "button.action_greasepenciledit_join_selection_join","合并笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_join_selection_join':(
+        "action.greasepenciledit_join_selection_join","合并笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_join_selection_joincopy':(
-        "button.action_greasepenciledit_join_selection_joincopy","合并并复制笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_join_selection_joincopy':(
+        "action.greasepenciledit_join_selection_joincopy","合并并复制笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_move_to_layer_menu':(
-        "button.action_greasepenciledit_move_to_layer_menu","移动到层","PRESET",
+        'action.greasepenciledit_move_to_layer_menu':(
+        "action.greasepenciledit_move_to_layer_menu","移动到层","PRESET",
     ),
-        'button.action_greasepenciledit_assign_material_menu':(
-        "button.action_greasepenciledit_assign_material_menu","指定材质","PRESET",
+        'action.greasepenciledit_assign_material_menu':(
+        "action.greasepenciledit_assign_material_menu","指定材质","PRESET",
     ),
-        'button.action_greasepenciledit_set_active_material':(
-        "button.action_greasepenciledit_set_active_material","设置活动的材质","RADIOBUT_OFF",
+        'action.greasepenciledit_set_active_material':(
+        "action.greasepenciledit_set_active_material","设置活动的材质","RADIOBUT_OFF",
     ),
-        'button.action_call_greasepenciledit_reorder_menu':(
-        "button.action_call_greasepenciledit_reorder_menu","排列笔画","PRESET",
+        'action.call_greasepenciledit_reorder_menu':(
+        "action.call_greasepenciledit_reorder_menu","排列笔画","PRESET",
     ),
-        'button.action_gpenciledit_reorder_top':(
-        "button.action_gpenciledit_reorder_top","笔画移到最前","RADIOBUT_OFF",
+        'action.gpenciledit_reorder_top':(
+        "action.gpenciledit_reorder_top","笔画移到最前","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_reorder_up':(
-        "button.action_gpenciledit_reorder_up","笔画前移","RADIOBUT_OFF",
+        'action.gpenciledit_reorder_up':(
+        "action.gpenciledit_reorder_up","笔画前移","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_reorder_down':(
-        "button.action_gpenciledit_reorder_down","笔画后送","RADIOBUT_OFF",
+        'action.gpenciledit_reorder_down':(
+        "action.gpenciledit_reorder_down","笔画后送","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_reorder_bottom':(
-        "button.action_gpenciledit_reorder_bottom","笔画移到最后","RADIOBUT_OFF",
+        'action.gpenciledit_reorder_bottom':(
+        "action.gpenciledit_reorder_bottom","笔画移到最后","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_cyclical_set_close':(
-        "button.action_greasepenciledit_cyclical_set_close","闭合笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_cyclical_set_close':(
+        "action.greasepenciledit_cyclical_set_close","闭合笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_cyclical_set_toggle':(
-        "button.action_greasepenciledit_cyclical_set_toggle","切换闭合笔画","RADIOBUT_OFF",
+        'action.greasepenciledit_cyclical_set_toggle':(
+        "action.greasepenciledit_cyclical_set_toggle","切换闭合笔画","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_caps_set':(
-        "button.action_greasepenciledit_caps_set","设置端点","PRESET",
+        'action.greasepenciledit_caps_set':(
+        "action.greasepenciledit_caps_set","设置端点","PRESET",
     ),
-        'button.action_greasepenciledit_stroke_switch_direction':(
-        "button.action_greasepenciledit_stroke_switch_direction","切换方向","RADIOBUT_OFF",
+        'action.greasepenciledit_stroke_switch_direction':(
+        "action.greasepenciledit_stroke_switch_direction","切换方向","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_set_uniform_thickness':(
-        "button.action_greasepenciledit_set_uniform_thickness","设置统一粗细","RADIOBUT_OFF",
+        'action.greasepenciledit_set_uniform_thickness':(
+        "action.greasepenciledit_set_uniform_thickness","设置统一粗细","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_set_uniform_opacity':(
-        "button.action_greasepenciledit_set_uniform_opacity","设置统一不透明度","RADIOBUT_OFF",
+        'action.greasepenciledit_set_uniform_opacity':(
+        "action.greasepenciledit_set_uniform_opacity","设置统一不透明度","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_set_curve_type':(
-        "button.action_greasepenciledit_set_curve_type","设置曲线类型","PRESET",
+        'action.greasepenciledit_set_curve_type':(
+        "action.greasepenciledit_set_curve_type","设置曲线类型","PRESET",
     ),
-        'button.action_greasepenciledit_set_curve_resolution':(
-        "button.action_greasepenciledit_set_curve_resolution","设置曲线分辨率","RADIOBUT_OFF",
+        'action.greasepenciledit_set_curve_resolution':(
+        "action.greasepenciledit_set_curve_resolution","设置曲线分辨率","RADIOBUT_OFF",
     ),
-        'button.action_greasepenciledit_reset_uvs':(
-        "button.action_greasepenciledit_reset_uvs","重置UV","RADIOBUT_OFF",
+        'action.greasepenciledit_reset_uvs':(
+        "action.greasepenciledit_reset_uvs","重置UV","RADIOBUT_OFF",
     ),
 
 

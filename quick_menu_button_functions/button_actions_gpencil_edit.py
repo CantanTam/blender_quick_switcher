@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_gpenciledit_transform_shrink_fatten(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_transform_shrink_fatten"
+class ACTION_OT_gpenciledit_transform_shrink_fatten(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_transform_shrink_fatten"
     bl_label = "法向缩放"
     bl_description = "快捷键 Alt S"
     bl_options = {'REGISTER', 'UNDO'}
@@ -10,8 +10,8 @@ class BUTTON_ACTION_OT_gpenciledit_transform_shrink_fatten(bpy.types.Operator):
         bpy.ops.transform.transform('INVOKE_DEFAULT',mode='GPENCIL_SHRINKFATTEN')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_layer_active_menu(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_layer_active_menu"
+class ACTION_OT_gpenciledit_layer_active_menu(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_layer_active_menu"
     bl_label = "活动层"
     bl_description = "快捷键 Y"
     bl_options = {'REGISTER', 'UNDO'}
@@ -20,8 +20,8 @@ class BUTTON_ACTION_OT_gpenciledit_layer_active_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="GPENCIL_MT_layer_active")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_layer_add(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_layer_add"
+class ACTION_OT_gpenciledit_layer_add(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_layer_add"
     bl_label = "新建层"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -29,8 +29,8 @@ class BUTTON_ACTION_OT_gpenciledit_layer_add(bpy.types.Operator):
         bpy.ops.gpencil.layer_add('INVOKE_DEFAULT', layer=-1)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_animation_menu(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_animation_menu"
+class ACTION_OT_gpenciledit_animation_menu(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_animation_menu"
     bl_label = "动画"
     bl_description = "快捷键 I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -39,8 +39,8 @@ class BUTTON_ACTION_OT_gpenciledit_animation_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_gpencil_animation")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_blank_frame_add_false(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_blank_frame_add_false"
+class ACTION_OT_gpenciledit_blank_frame_add_false(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_blank_frame_add_false"
     bl_label = "插入空白帧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -67,8 +67,8 @@ class BUTTON_ACTION_OT_gpenciledit_blank_frame_add_false(bpy.types.Operator):
         bpy.ops.gpencil.blank_frame_add(all_layers=self.all_layers)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_blank_frame_add_true(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_blank_frame_add_true"
+class ACTION_OT_gpenciledit_blank_frame_add_true(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_blank_frame_add_true"
     bl_label = "插入空白帧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -95,8 +95,8 @@ class BUTTON_ACTION_OT_gpenciledit_blank_frame_add_true(bpy.types.Operator):
         bpy.ops.gpencil.blank_frame_add(all_layers=self.all_layers)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_frame_duplicate_active(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_duplicate_active"
+class ACTION_OT_gpenciledit_frame_duplicate_active(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_duplicate_active"
     bl_label = "复制帧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -126,8 +126,8 @@ class BUTTON_ACTION_OT_gpenciledit_frame_duplicate_active(bpy.types.Operator):
         bpy.ops.gpencil.frame_duplicate(mode=self.mode)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_frame_duplicate_all(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_duplicate_all"
+class ACTION_OT_gpenciledit_frame_duplicate_all(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_duplicate_all"
     bl_label = "复制帧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -168,8 +168,8 @@ class VIEW3D_MT_gpenciledit_stroke_separate_menu(bpy.types.Menu):
         layout.operator("gpencil.stroke_separate", text="选中笔画").mode='STROKE'
         layout.operator("gpencil.stroke_separate", text="活动层").mode='LAYER'
 
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_separate_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_separate_menu"
+class ACTION_OT_call_gpenciledit_stroke_separate_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_separate_menu"
     bl_label = "分离"
     bl_description = "快捷键 P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -178,8 +178,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_separate_menu(bpy.types.Operator)
         bpy.ops.wm.call_menu(name="popup.gpenciledit_stroke_separate_menu")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_split(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_split"
+class ACTION_OT_call_gpenciledit_stroke_split(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_split"
     bl_label = "拆分"
     bl_description = "快捷键 V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -188,8 +188,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_split(bpy.types.Operator):
         bpy.ops.gpencil.stroke_split()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_cleanup_menu(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_cleanup_menu"
+class ACTION_OT_gpenciledit_cleanup_menu(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_cleanup_menu"
     bl_label = "清理"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -197,8 +197,8 @@ class BUTTON_ACTION_OT_gpenciledit_cleanup_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="GPENCIL_MT_cleanup")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_active(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_clean_fill_active"
+class ACTION_OT_gpenciledit_frame_clean_fill_active(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_clean_fill_active"
     bl_label = "清除填充边界"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -229,8 +229,8 @@ class BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_active(bpy.types.Operator):
         bpy.ops.gpencil.frame_clean_fill(mode=self.mode)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_all(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_clean_fill_all"
+class ACTION_OT_gpenciledit_frame_clean_fill_all(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_clean_fill_all"
     bl_label = "清除填充边界"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -261,8 +261,8 @@ class BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_all(bpy.types.Operator):
         bpy.ops.gpencil.frame_clean_fill(mode=self.mode)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_frame_clean_loose(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_clean_loose"
+class ACTION_OT_gpenciledit_frame_clean_loose(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_clean_loose"
     bl_label = "清除松散点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -290,8 +290,8 @@ class BUTTON_ACTION_OT_gpenciledit_frame_clean_loose(bpy.types.Operator):
         bpy.ops.gpencil.frame_clean_loose(limit=self.limit)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_stroke_merge_by_distance(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_merge_by_distance"
+class ACTION_OT_gpenciledit_stroke_merge_by_distance(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_merge_by_distance"
     bl_label = "按间距合并"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -330,8 +330,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_merge_by_distance(bpy.types.Operator):
         bpy.ops.gpencil.stroke_merge_by_distance(threshold=self.threshold, use_unselected=self.use_unselected)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_frame_clean_duplicate(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_frame_clean_duplicate"
+class ACTION_OT_gpenciledit_frame_clean_duplicate(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_frame_clean_duplicate"
     bl_label = "清理重复帧"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -362,8 +362,8 @@ class BUTTON_ACTION_OT_gpenciledit_frame_clean_duplicate(bpy.types.Operator):
         bpy.ops.gpencil.frame_clean_duplicate(type=self.type)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_recalc_geometry(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_recalc_geometry"
+class ACTION_OT_gpenciledit_recalc_geometry(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_recalc_geometry"
     bl_label = "重新计算几何"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -385,8 +385,8 @@ class VIEW3D_MT_gpenciledit_reproject_menu(bpy.types.Menu):
         layout.operator("gpencil.reproject", text="表(曲)面").type='SURFACE'
         layout.operator("gpencil.reproject", text="游标").type='CURSOR'
 
-class BUTTON_ACTION_OT_call_gpenciledit_reproject_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_reproject_menu"
+class ACTION_OT_call_gpenciledit_reproject_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_reproject_menu"
     bl_label = "重投影笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -394,8 +394,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_reproject_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="popup.gpenciledit_reproject_menu")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_subdivide(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_subdivide"
+class ACTION_OT_gpenciledit_stroke_subdivide(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_subdivide"
     bl_label = "细分笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -485,8 +485,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_subdivide(bpy.types.Operator):
         )
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_call_gpenciledit_simplify_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_simplify_menu"
+class ACTION_OT_call_gpenciledit_simplify_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_simplify_menu"
     bl_label = "简化笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -494,8 +494,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_simplify_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_gpencil_simplify")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_trim(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_trim"
+class ACTION_OT_call_gpenciledit_stroke_trim(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_trim"
     bl_label = "修剪笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -503,8 +503,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_trim(bpy.types.Operator):
         bpy.ops.gpencil.stroke_trim()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_outline(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_outline"
+class ACTION_OT_gpenciledit_stroke_outline(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_outline"
     bl_label = "将笔画转换为轮廓"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -601,8 +601,8 @@ class VIEW3D_MT_gpenciledit_stroke_join_menu(bpy.types.Menu):
         layout.operator("gpencil.stroke_join", text="合并").type='JOIN'
         layout.operator("gpencil.stroke_join", text="合并 & 复制").type='JOINCOPY'
 
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_join_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_join_menu"
+class ACTION_OT_call_gpenciledit_stroke_join_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_join_menu"
     bl_label = "合并菜单"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -610,8 +610,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_join_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="popup.gpenciledit_stroke_join_menu")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_join_join(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_join_join"
+class ACTION_OT_gpenciledit_stroke_join_join(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_join_join"
     bl_label = "合并笔画"
     bl_description = "快捷键 Ctrl J"
     bl_options = {'REGISTER', 'UNDO'}
@@ -649,8 +649,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_join_join(bpy.types.Operator):
         bpy.ops.gpencil.stroke_join(type=self.type, leave_gaps=self.leave_gaps)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_join_joincopy(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_join_joincopy"
+class ACTION_OT_gpenciledit_stroke_join_joincopy(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_join_joincopy"
     bl_label = "合并笔画"
     bl_description = "快捷键 Ctrl Shift J"
     bl_options = {'REGISTER', 'UNDO'}
@@ -688,8 +688,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_join_joincopy(bpy.types.Operator):
         bpy.ops.gpencil.stroke_join(type=self.type, leave_gaps=self.leave_gaps)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_call_gpenciledit_move_to_layer_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_move_to_layer_menu"
+class ACTION_OT_call_gpenciledit_move_to_layer_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_move_to_layer_menu"
     bl_label = "移动到层"
     bl_description = "快捷键 M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -698,8 +698,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_move_to_layer_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="GPENCIL_MT_move_to_layer")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_call_gpenciledit_assign_material_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_assign_material_menu"
+class ACTION_OT_call_gpenciledit_assign_material_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_assign_material_menu"
     bl_label = "指定材质"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -707,8 +707,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_assign_material_menu(bpy.types.Operator)
         bpy.ops.wm.call_menu(name="VIEW3D_MT_assign_material")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_set_active_material(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_set_active_material"
+class ACTION_OT_gpenciledit_set_active_material(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_set_active_material"
     bl_label = "设为活动材质"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -728,8 +728,8 @@ class VIEW3D_MT_gpenciledit_stroke_arrange_menu(bpy.types.Menu):
         layout.operator("gpencil.stroke_arrange", text="后送").direction='DOWN'
         layout.operator("gpencil.stroke_arrange", text="移到最后").direction='BOTTOM'
 
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_arrange_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_arrange_menu"
+class ACTION_OT_call_gpenciledit_stroke_arrange_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_arrange_menu"
     bl_label = "排列笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -737,8 +737,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_arrange_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="popup.gpenciledit_stroke_arrange_menu")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_top(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_arrange_top"
+class ACTION_OT_gpenciledit_stroke_arrange_top(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_arrange_top"
     bl_label = "整理笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -770,8 +770,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_top(bpy.types.Operator):
         bpy.ops.gpencil.stroke_arrange(direction=self.direction)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_up(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_arrange_up"
+class ACTION_OT_gpenciledit_stroke_arrange_up(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_arrange_up"
     bl_label = "整理笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -803,8 +803,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_up(bpy.types.Operator):
         bpy.ops.gpencil.stroke_arrange(direction=self.direction)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_down(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_arrange_down"
+class ACTION_OT_gpenciledit_stroke_arrange_down(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_arrange_down"
     bl_label = "整理笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -836,8 +836,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_down(bpy.types.Operator):
         bpy.ops.gpencil.stroke_arrange(direction=self.direction)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_bottom(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_arrange_bottom"
+class ACTION_OT_gpenciledit_stroke_arrange_bottom(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_arrange_bottom"
     bl_label = "整理笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -869,8 +869,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_arrange_bottom(bpy.types.Operator):
         bpy.ops.gpencil.stroke_arrange(direction=self.direction)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_cyclical_set(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_cyclical_set"
+class ACTION_OT_gpenciledit_stroke_cyclical_set(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_cyclical_set"
     bl_label = "设置闭合状态"
     bl_description ="快捷键 F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -909,8 +909,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_cyclical_set(bpy.types.Operator):
         bpy.ops.gpencil.stroke_cyclical_set(type=self.type, geometry=self.geometry)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_cyclical_set_toggle(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_cyclical_set_toggle"
+class ACTION_OT_gpenciledit_stroke_cyclical_set_toggle(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_cyclical_set_toggle"
     bl_label = "设置闭合状态"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -960,8 +960,8 @@ class VIEW3D_MT_gpenciledit_stroke_caps_set_menu(bpy.types.Menu):
         layout.operator("gpencil.stroke_caps_set", text="结束点").type='END'
         layout.operator("gpencil.stroke_caps_set", text="默认").type='DEFAULT'
 
-class BUTTON_ACTION_OT_call_gpenciledit_stroke_caps_set_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_gpenciledit_stroke_caps_set_menu"
+class ACTION_OT_call_gpenciledit_stroke_caps_set_menu(bpy.types.Operator):
+    bl_idname = "action.call_gpenciledit_stroke_caps_set_menu"
     bl_label = "切换封顶类型"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -969,8 +969,8 @@ class BUTTON_ACTION_OT_call_gpenciledit_stroke_caps_set_menu(bpy.types.Operator)
         bpy.ops.wm.call_menu(name="popup.gpenciledit_stroke_caps_set_menu")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_flip(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_flip"
+class ACTION_OT_gpenciledit_stroke_flip(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_flip"
     bl_label = "切换方向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -978,8 +978,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_flip(bpy.types.Operator):
         bpy.ops.gpencil.stroke_flip()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_stroke_start_set(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_start_set"
+class ACTION_OT_gpenciledit_stroke_start_set(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_start_set"
     bl_label = "设置起始点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -987,8 +987,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_start_set(bpy.types.Operator):
         bpy.ops.gpencil.stroke_start_set()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_normalize_thickness(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_normalize_thickness"
+class ACTION_OT_gpenciledit_stroke_normalize_thickness(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_normalize_thickness"
     bl_label = "规格化笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1040,8 +1040,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_normalize_thickness(bpy.types.Operator
         bpy.ops.gpencil.stroke_normalize(mode=self.mode, factor=self.factor, value=self.value)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_gpenciledit_stroke_normalize_opacity(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_normalize_opacity"
+class ACTION_OT_gpenciledit_stroke_normalize_opacity(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_normalize_opacity"
     bl_label = "规格化笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1093,8 +1093,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_normalize_opacity(bpy.types.Operator):
         bpy.ops.gpencil.stroke_normalize(mode=self.mode, factor=self.factor, value=self.value)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_reset_transform_fill(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_reset_transform_fill"
+class ACTION_OT_gpenciledit_reset_transform_fill(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_reset_transform_fill"
     bl_label = "重置填充变换"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1126,8 +1126,8 @@ class BUTTON_ACTION_OT_gpenciledit_reset_transform_fill(bpy.types.Operator):
         bpy.ops.gpencil.reset_transform_fill(mode=self.mode)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_extrude_move(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_extrude_move"
+class ACTION_OT_gpenciledit_extrude_move(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_extrude_move"
     bl_label = "挤出"
     bl_description = "快捷键 E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1136,8 +1136,8 @@ class BUTTON_ACTION_OT_gpenciledit_extrude_move(bpy.types.Operator):
         bpy.ops.gpencil.extrude_move('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_smooth(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_smooth"
+class ACTION_OT_gpenciledit_stroke_smooth(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_smooth"
     bl_label = "平滑笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1217,8 +1217,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_smooth(bpy.types.Operator):
             smooth_uv=self.smooth_uv)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_stroke_merge(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_stroke_merge"
+class ACTION_OT_gpenciledit_stroke_merge(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_stroke_merge"
     bl_label = "合并笔画"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1289,8 +1289,8 @@ class BUTTON_ACTION_OT_gpenciledit_stroke_merge(bpy.types.Operator):
             clear_stroke=self.clear_stroke)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_gpenciledit_gpencil_vertex_group_menu(bpy.types.Operator):
-    bl_idname = "button.action_gpenciledit_gpencil_vertex_group_menu"
+class ACTION_OT_gpenciledit_gpencil_vertex_group_menu(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_gpencil_vertex_group_menu"
     bl_label = "顶点组"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1299,59 +1299,59 @@ class BUTTON_ACTION_OT_gpenciledit_gpencil_vertex_group_menu(bpy.types.Operator)
         return {'FINISHED'}
 
 classes = (
-    BUTTON_ACTION_OT_gpenciledit_transform_shrink_fatten,
-    BUTTON_ACTION_OT_gpenciledit_layer_active_menu,
-    BUTTON_ACTION_OT_gpenciledit_layer_add,
-    BUTTON_ACTION_OT_gpenciledit_animation_menu,
-    BUTTON_ACTION_OT_gpenciledit_blank_frame_add_false,
-    BUTTON_ACTION_OT_gpenciledit_blank_frame_add_true,
-    BUTTON_ACTION_OT_gpenciledit_frame_duplicate_active,
-    BUTTON_ACTION_OT_gpenciledit_frame_duplicate_all,
+    ACTION_OT_gpenciledit_transform_shrink_fatten,
+    ACTION_OT_gpenciledit_layer_active_menu,
+    ACTION_OT_gpenciledit_layer_add,
+    ACTION_OT_gpenciledit_animation_menu,
+    ACTION_OT_gpenciledit_blank_frame_add_false,
+    ACTION_OT_gpenciledit_blank_frame_add_true,
+    ACTION_OT_gpenciledit_frame_duplicate_active,
+    ACTION_OT_gpenciledit_frame_duplicate_all,
     VIEW3D_MT_gpenciledit_stroke_separate_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_separate_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_split,
+    ACTION_OT_call_gpenciledit_stroke_separate_menu,
+    ACTION_OT_call_gpenciledit_stroke_split,
 
-    BUTTON_ACTION_OT_gpenciledit_cleanup_menu,
-    BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_active,
-    BUTTON_ACTION_OT_gpenciledit_frame_clean_fill_all,
-    BUTTON_ACTION_OT_gpenciledit_frame_clean_loose,
-    BUTTON_ACTION_OT_gpenciledit_stroke_merge_by_distance,
-    BUTTON_ACTION_OT_gpenciledit_frame_clean_duplicate,
-    BUTTON_ACTION_OT_gpenciledit_recalc_geometry,
+    ACTION_OT_gpenciledit_cleanup_menu,
+    ACTION_OT_gpenciledit_frame_clean_fill_active,
+    ACTION_OT_gpenciledit_frame_clean_fill_all,
+    ACTION_OT_gpenciledit_frame_clean_loose,
+    ACTION_OT_gpenciledit_stroke_merge_by_distance,
+    ACTION_OT_gpenciledit_frame_clean_duplicate,
+    ACTION_OT_gpenciledit_recalc_geometry,
     VIEW3D_MT_gpenciledit_reproject_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_reproject_menu,
+    ACTION_OT_call_gpenciledit_reproject_menu,
 
-    BUTTON_ACTION_OT_gpenciledit_stroke_subdivide,
-    BUTTON_ACTION_OT_call_gpenciledit_simplify_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_trim,
-    BUTTON_ACTION_OT_gpenciledit_stroke_outline,
+    ACTION_OT_gpenciledit_stroke_subdivide,
+    ACTION_OT_call_gpenciledit_simplify_menu,
+    ACTION_OT_call_gpenciledit_stroke_trim,
+    ACTION_OT_gpenciledit_stroke_outline,
     VIEW3D_MT_gpenciledit_stroke_join_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_join_menu,
-    BUTTON_ACTION_OT_gpenciledit_stroke_join_join,
-    BUTTON_ACTION_OT_gpenciledit_stroke_join_joincopy,
-    BUTTON_ACTION_OT_call_gpenciledit_move_to_layer_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_assign_material_menu,
-    BUTTON_ACTION_OT_gpenciledit_set_active_material,
+    ACTION_OT_call_gpenciledit_stroke_join_menu,
+    ACTION_OT_gpenciledit_stroke_join_join,
+    ACTION_OT_gpenciledit_stroke_join_joincopy,
+    ACTION_OT_call_gpenciledit_move_to_layer_menu,
+    ACTION_OT_call_gpenciledit_assign_material_menu,
+    ACTION_OT_gpenciledit_set_active_material,
     VIEW3D_MT_gpenciledit_stroke_arrange_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_arrange_menu,
-    BUTTON_ACTION_OT_gpenciledit_stroke_arrange_top,
-    BUTTON_ACTION_OT_gpenciledit_stroke_arrange_up,
-    BUTTON_ACTION_OT_gpenciledit_stroke_arrange_down,
-    BUTTON_ACTION_OT_gpenciledit_stroke_arrange_bottom,
-    BUTTON_ACTION_OT_gpenciledit_stroke_cyclical_set,
-    BUTTON_ACTION_OT_gpenciledit_stroke_cyclical_set_toggle,
+    ACTION_OT_call_gpenciledit_stroke_arrange_menu,
+    ACTION_OT_gpenciledit_stroke_arrange_top,
+    ACTION_OT_gpenciledit_stroke_arrange_up,
+    ACTION_OT_gpenciledit_stroke_arrange_down,
+    ACTION_OT_gpenciledit_stroke_arrange_bottom,
+    ACTION_OT_gpenciledit_stroke_cyclical_set,
+    ACTION_OT_gpenciledit_stroke_cyclical_set_toggle,
     VIEW3D_MT_gpenciledit_stroke_caps_set_menu,
-    BUTTON_ACTION_OT_call_gpenciledit_stroke_caps_set_menu,
-    BUTTON_ACTION_OT_gpenciledit_stroke_flip,
-    BUTTON_ACTION_OT_gpenciledit_stroke_start_set,
-    BUTTON_ACTION_OT_gpenciledit_stroke_normalize_thickness,
-    BUTTON_ACTION_OT_gpenciledit_stroke_normalize_opacity,
-    BUTTON_ACTION_OT_gpenciledit_reset_transform_fill,
+    ACTION_OT_call_gpenciledit_stroke_caps_set_menu,
+    ACTION_OT_gpenciledit_stroke_flip,
+    ACTION_OT_gpenciledit_stroke_start_set,
+    ACTION_OT_gpenciledit_stroke_normalize_thickness,
+    ACTION_OT_gpenciledit_stroke_normalize_opacity,
+    ACTION_OT_gpenciledit_reset_transform_fill,
 
-    BUTTON_ACTION_OT_gpenciledit_extrude_move,
-    BUTTON_ACTION_OT_gpenciledit_stroke_smooth,
-    BUTTON_ACTION_OT_gpenciledit_stroke_merge,
-    BUTTON_ACTION_OT_gpenciledit_gpencil_vertex_group_menu,
+    ACTION_OT_gpenciledit_extrude_move,
+    ACTION_OT_gpenciledit_stroke_smooth,
+    ACTION_OT_gpenciledit_stroke_merge,
+    ACTION_OT_gpenciledit_gpencil_vertex_group_menu,
 
 
 )

@@ -1,8 +1,8 @@
 import bpy
 from ..show_switch_notice import show_notice
 
-class BUTTON_ACTION_OT_switch_proportional_menu(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_menu"
+class ACTION_OT_switch_proportional_menu(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_menu"
     bl_label = "衰减编辑(菜单)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -10,8 +10,8 @@ class BUTTON_ACTION_OT_switch_proportional_menu(bpy.types.Operator):
         bpy.ops.wm.call_panel(name="VIEW3D_PT_proportional_edit")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_toggle(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_toggle"
+class ACTION_OT_switch_proportional_toggle(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_toggle"
     bl_label = "开/关衰减编辑"
     bl_description = "快捷键 O"
     bl_options = {'REGISTER', 'UNDO'}
@@ -31,8 +31,8 @@ class BUTTON_ACTION_OT_switch_proportional_toggle(bpy.types.Operator):
                 show_notice("PROPORTIONAL_OFF.png")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_smooth(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_smooth"
+class ACTION_OT_switch_proportional_smooth(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_smooth"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -40,8 +40,8 @@ class BUTTON_ACTION_OT_switch_proportional_smooth(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'SMOOTH'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_sphere(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_sphere"
+class ACTION_OT_switch_proportional_sphere(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_sphere"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -49,8 +49,8 @@ class BUTTON_ACTION_OT_switch_proportional_sphere(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'SPHERE'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_root(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_root"
+class ACTION_OT_switch_proportional_root(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_root"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -58,8 +58,8 @@ class BUTTON_ACTION_OT_switch_proportional_root(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'ROOT'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_inverse_square(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_inverse_square"
+class ACTION_OT_switch_proportional_inverse_square(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_inverse_square"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -67,8 +67,8 @@ class BUTTON_ACTION_OT_switch_proportional_inverse_square(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'INVERSE_SQUARE'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_sharp(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_sharp"
+class ACTION_OT_switch_proportional_sharp(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_sharp"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -76,8 +76,8 @@ class BUTTON_ACTION_OT_switch_proportional_sharp(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'SHARP'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_linear(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_linear"
+class ACTION_OT_switch_proportional_linear(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_linear"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -85,8 +85,8 @@ class BUTTON_ACTION_OT_switch_proportional_linear(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'LINEAR'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_constant(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_constant"
+class ACTION_OT_switch_proportional_constant(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_constant"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -94,8 +94,8 @@ class BUTTON_ACTION_OT_switch_proportional_constant(bpy.types.Operator):
         bpy.context.scene.tool_settings.proportional_edit_falloff = 'CONSTANT'
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_switch_proportional_random(bpy.types.Operator):
-    bl_idname = "button.action_switch_proportional_random"
+class ACTION_OT_switch_proportional_random(bpy.types.Operator):
+    bl_idname = "action.switch_proportional_random"
     bl_label = ""
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -104,16 +104,16 @@ class BUTTON_ACTION_OT_switch_proportional_random(bpy.types.Operator):
         return {'FINISHED'}
 
 classes = (
-    BUTTON_ACTION_OT_switch_proportional_menu,
-    BUTTON_ACTION_OT_switch_proportional_toggle,
-    BUTTON_ACTION_OT_switch_proportional_smooth,
-    BUTTON_ACTION_OT_switch_proportional_sphere,
-    BUTTON_ACTION_OT_switch_proportional_root,
-    BUTTON_ACTION_OT_switch_proportional_inverse_square,
-    BUTTON_ACTION_OT_switch_proportional_sharp,
-    BUTTON_ACTION_OT_switch_proportional_linear,
-    BUTTON_ACTION_OT_switch_proportional_constant,
-    BUTTON_ACTION_OT_switch_proportional_random,
+    ACTION_OT_switch_proportional_menu,
+    ACTION_OT_switch_proportional_toggle,
+    ACTION_OT_switch_proportional_smooth,
+    ACTION_OT_switch_proportional_sphere,
+    ACTION_OT_switch_proportional_root,
+    ACTION_OT_switch_proportional_inverse_square,
+    ACTION_OT_switch_proportional_sharp,
+    ACTION_OT_switch_proportional_linear,
+    ACTION_OT_switch_proportional_constant,
+    ACTION_OT_switch_proportional_random,
 )
 
 def register():

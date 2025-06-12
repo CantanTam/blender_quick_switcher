@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_transform_transform_mode_curve_shrinkfatten(bpy.types.Operator):
-    bl_idname = "button.action_transform_transform_mode_curve_shrinkfatten"
+class ACTION_OT_transform_transform_mode_curve_shrinkfatten(bpy.types.Operator):
+    bl_idname = "action.transform_transform_mode_curve_shrinkfatten"
     bl_label = "半径"
     bl_description = "快捷键 Alt S"
     bl_options = {'REGISTER', 'UNDO'}
@@ -10,8 +10,8 @@ class BUTTON_ACTION_OT_transform_transform_mode_curve_shrinkfatten(bpy.types.Ope
         bpy.ops.transform.transform('INVOKE_DEFAULT',mode='CURVE_SHRINKFATTEN')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_select_nth(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_select_nth"
+class ACTION_OT_curveedit_select_nth(bpy.types.Operator):
+    bl_idname = "action.curveedit_select_nth"
     bl_label = "间隔式弃选"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -61,8 +61,8 @@ class BUTTON_ACTION_OT_curveedit_select_nth(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_select_first(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_select_first"
+class ACTION_OT_curveedit_select_first(bpy.types.Operator):
+    bl_idname = "action.curveedit_select_first"
     bl_label = "选中/弃选首点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -70,8 +70,8 @@ class BUTTON_ACTION_OT_curveedit_select_first(bpy.types.Operator):
         bpy.ops.curve.de_select_first()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_select_last(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_select_last"
+class ACTION_OT_curveedit_select_last(bpy.types.Operator):
+    bl_idname = "action.curveedit_select_last"
     bl_label = "选中/弃选末点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -79,8 +79,8 @@ class BUTTON_ACTION_OT_curveedit_select_last(bpy.types.Operator):
         bpy.ops.curve.de_select_last()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_select_row(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_select_row"
+class ACTION_OT_curveedit_select_row(bpy.types.Operator):
+    bl_idname = "action.curveedit_select_row"
     bl_label = "控制点行"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -88,8 +88,8 @@ class BUTTON_ACTION_OT_curveedit_select_row(bpy.types.Operator):
         bpy.ops.curve.select_row()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_spin(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_spin"
+class ACTION_OT_curveedit_spin(bpy.types.Operator):
+    bl_idname = "action.curveedit_spin"
     bl_label = "旋绕"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -147,8 +147,8 @@ class BUTTON_ACTION_OT_curveedit_spin(bpy.types.Operator):
         bpy.ops.curve.spin(center=self.center, axis=self.axis)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_split(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_split"
+class ACTION_OT_curveedit_split(bpy.types.Operator):
+    bl_idname = "action.curveedit_split"
     bl_label = "拆分"
     bl_description = "快捷键 Y"
     bl_options = {'REGISTER', 'UNDO'}
@@ -157,8 +157,8 @@ class BUTTON_ACTION_OT_curveedit_split(bpy.types.Operator):
         bpy.ops.curve.split()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_separate(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_separate"
+class ACTION_OT_curveedit_separate(bpy.types.Operator):
+    bl_idname = "action.curveedit_separate"
     bl_label = "分离"
     bl_description = "快捷键 P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -167,8 +167,8 @@ class BUTTON_ACTION_OT_curveedit_separate(bpy.types.Operator):
         bpy.ops.curve.separate('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_cyclic_toggle(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_cyclic_toggle"
+class ACTION_OT_curveedit_cyclic_toggle(bpy.types.Operator):
+    bl_idname = "action.curveedit_cyclic_toggle"
     bl_label = "切换循环"
     bl_description = "快捷键 Alt C"
     bl_options = {'REGISTER', 'UNDO'}
@@ -199,8 +199,8 @@ class BUTTON_ACTION_OT_curveedit_cyclic_toggle(bpy.types.Operator):
         bpy.ops.curve.cyclic_toggle(direction=self.direction)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_spline_type_set(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_spline_type_set"
+class ACTION_OT_curveedit_spline_type_set(bpy.types.Operator):
+    bl_idname = "action.curveedit_spline_type_set"
     bl_label = "设置样条类型"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -212,8 +212,8 @@ class BUTTON_ACTION_OT_curveedit_spline_type_set(bpy.types.Operator):
         bpy.ops.curve.spline_type_set('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_curve_clean_menu(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_curve_clean_menu"
+class ACTION_OT_curveedit_curve_clean_menu(bpy.types.Operator):
+    bl_idname = "action.curveedit_curve_clean_menu"
     bl_label = "清理"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -225,8 +225,8 @@ class BUTTON_ACTION_OT_curveedit_curve_clean_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_edit_curve_clean")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_decimate(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_decimate"
+class ACTION_OT_curveedit_decimate(bpy.types.Operator):
+    bl_idname = "action.curveedit_decimate"
     bl_label = "精简曲线"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -260,8 +260,8 @@ class BUTTON_ACTION_OT_curveedit_decimate(bpy.types.Operator):
         bpy.ops.curve.decimate(ratio=self.ratio)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_extrude_move(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_extrude_move"
+class ACTION_OT_curveedit_extrude_move(bpy.types.Operator):
+    bl_idname = "action.curveedit_extrude_move"
     bl_label = "挤出"
     bl_description = "快捷键 E"
     bl_options = {'REGISTER', 'UNDO'}
@@ -270,8 +270,8 @@ class BUTTON_ACTION_OT_curveedit_extrude_move(bpy.types.Operator):
         bpy.ops.curve.extrude_move('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_make_segment(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_make_segment"
+class ACTION_OT_curveedit_make_segment(bpy.types.Operator):
+    bl_idname = "action.curveedit_make_segment"
     bl_label = "创建线段"
     bl_description = "快捷键 F"
     bl_options = {'REGISTER', 'UNDO'}
@@ -284,8 +284,8 @@ class BUTTON_ACTION_OT_curveedit_make_segment(bpy.types.Operator):
             return {'CANCELLED'}
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_transform_tilt(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_transform_tilt"
+class ACTION_OT_curveedit_transform_tilt(bpy.types.Operator):
+    bl_idname = "action.curveedit_transform_tilt"
     bl_label = "倾斜"
     bl_description = "快捷键 Ctrl T"
     bl_options = {'REGISTER', 'UNDO'}
@@ -294,8 +294,8 @@ class BUTTON_ACTION_OT_curveedit_transform_tilt(bpy.types.Operator):
         bpy.ops.transform.tilt('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_tilt_clear"
+class ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
+    bl_idname = "action.curveedit_tilt_clear"
     bl_label = "清空倾斜量"
     bl_description = "快捷键 Alt T"
     bl_options = {'REGISTER', 'UNDO'}
@@ -304,8 +304,8 @@ class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
         bpy.ops.curve.tilt_clear()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_tilt_clear"
+class ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
+    bl_idname = "action.curveedit_tilt_clear"
     bl_label = "清空倾斜量"
     bl_description = "快捷键 Alt T"
     bl_options = {'REGISTER', 'UNDO'}
@@ -314,8 +314,8 @@ class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
         bpy.ops.curve.tilt_clear()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_handle_type_set(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_handle_type_set"
+class ACTION_OT_curveedit_handle_type_set(bpy.types.Operator):
+    bl_idname = "action.curveedit_handle_type_set"
     bl_label = "设置控制柄类型"
     bl_description = "快捷键 V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -324,8 +324,8 @@ class BUTTON_ACTION_OT_curveedit_handle_type_set(bpy.types.Operator):
         bpy.ops.curve.handle_type_set('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_normals_make_consistent(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_normals_make_consistent"
+class ACTION_OT_curveedit_normals_make_consistent(bpy.types.Operator):
+    bl_idname = "action.curveedit_normals_make_consistent"
     bl_label = "重新计算控制柄"
     bl_description = "快捷键 Shift N"
     bl_options = {'REGISTER', 'UNDO'}
@@ -352,8 +352,8 @@ class BUTTON_ACTION_OT_curveedit_normals_make_consistent(bpy.types.Operator):
         bpy.ops.curve.normals_make_consistent(calc_length=self.calc_length)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_smooth(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_smooth"
+class ACTION_OT_curveedit_smooth(bpy.types.Operator):
+    bl_idname = "action.curveedit_smooth"
     bl_label = "光滑"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -361,8 +361,8 @@ class BUTTON_ACTION_OT_curveedit_smooth(bpy.types.Operator):
         bpy.ops.curve.smooth()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_smooth_tilt(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_smooth_tilt"
+class ACTION_OT_curveedit_smooth_tilt(bpy.types.Operator):
+    bl_idname = "action.curveedit_smooth_tilt"
     bl_label = "平滑曲线倾斜"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -370,8 +370,8 @@ class BUTTON_ACTION_OT_curveedit_smooth_tilt(bpy.types.Operator):
         bpy.ops.curve.smooth_tilt()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_smooth_radius(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_smooth_radius"
+class ACTION_OT_curveedit_smooth_radius(bpy.types.Operator):
+    bl_idname = "action.curveedit_smooth_radius"
     bl_label = "平滑曲线半径"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -379,8 +379,8 @@ class BUTTON_ACTION_OT_curveedit_smooth_radius(bpy.types.Operator):
         bpy.ops.curve.smooth_radius()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_smooth_weight(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_smooth_weight"
+class ACTION_OT_curveedit_smooth_weight(bpy.types.Operator):
+    bl_idname = "action.curveedit_smooth_weight"
     bl_label = "平滑曲线权重"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -388,8 +388,8 @@ class BUTTON_ACTION_OT_curveedit_smooth_weight(bpy.types.Operator):
         bpy.ops.curve.smooth_weight()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_curveedit_subdivide(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_subdivide"
+class ACTION_OT_curveedit_subdivide(bpy.types.Operator):
+    bl_idname = "action.curveedit_subdivide"
     bl_label = "细分"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -418,8 +418,8 @@ class BUTTON_ACTION_OT_curveedit_subdivide(bpy.types.Operator):
         bpy.ops.curve.subdivide(number_cuts=self.number_cuts)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_curveedit_switch_direction(bpy.types.Operator):
-    bl_idname = "button.action_curveedit_switch_direction"
+class ACTION_OT_curveedit_switch_direction(bpy.types.Operator):
+    bl_idname = "action.curveedit_switch_direction"
     bl_label = "切换方向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -430,33 +430,33 @@ class BUTTON_ACTION_OT_curveedit_switch_direction(bpy.types.Operator):
 
 
 classes = (
-    BUTTON_ACTION_OT_transform_transform_mode_curve_shrinkfatten,
-    BUTTON_ACTION_OT_curveedit_select_nth,
-    BUTTON_ACTION_OT_curveedit_select_first,
-    BUTTON_ACTION_OT_curveedit_select_last,
-    BUTTON_ACTION_OT_curveedit_select_row,
+    ACTION_OT_transform_transform_mode_curve_shrinkfatten,
+    ACTION_OT_curveedit_select_nth,
+    ACTION_OT_curveedit_select_first,
+    ACTION_OT_curveedit_select_last,
+    ACTION_OT_curveedit_select_row,
 
-    BUTTON_ACTION_OT_curveedit_spin,
-    BUTTON_ACTION_OT_curveedit_split,
-    BUTTON_ACTION_OT_curveedit_separate,
-    BUTTON_ACTION_OT_curveedit_cyclic_toggle,
-    BUTTON_ACTION_OT_curveedit_spline_type_set,
-    BUTTON_ACTION_OT_curveedit_curve_clean_menu,
-    BUTTON_ACTION_OT_curveedit_decimate,
+    ACTION_OT_curveedit_spin,
+    ACTION_OT_curveedit_split,
+    ACTION_OT_curveedit_separate,
+    ACTION_OT_curveedit_cyclic_toggle,
+    ACTION_OT_curveedit_spline_type_set,
+    ACTION_OT_curveedit_curve_clean_menu,
+    ACTION_OT_curveedit_decimate,
 
-    BUTTON_ACTION_OT_curveedit_extrude_move,
-    BUTTON_ACTION_OT_curveedit_make_segment,
-    BUTTON_ACTION_OT_curveedit_transform_tilt,
-    BUTTON_ACTION_OT_curveedit_tilt_clear,
-    BUTTON_ACTION_OT_curveedit_handle_type_set,
-    BUTTON_ACTION_OT_curveedit_normals_make_consistent,
-    BUTTON_ACTION_OT_curveedit_smooth,
-    BUTTON_ACTION_OT_curveedit_smooth_tilt,
-    BUTTON_ACTION_OT_curveedit_smooth_radius,
-    BUTTON_ACTION_OT_curveedit_smooth_weight,
+    ACTION_OT_curveedit_extrude_move,
+    ACTION_OT_curveedit_make_segment,
+    ACTION_OT_curveedit_transform_tilt,
+    ACTION_OT_curveedit_tilt_clear,
+    ACTION_OT_curveedit_handle_type_set,
+    ACTION_OT_curveedit_normals_make_consistent,
+    ACTION_OT_curveedit_smooth,
+    ACTION_OT_curveedit_smooth_tilt,
+    ACTION_OT_curveedit_smooth_radius,
+    ACTION_OT_curveedit_smooth_weight,
 
-    BUTTON_ACTION_OT_curveedit_subdivide,
-    BUTTON_ACTION_OT_curveedit_switch_direction
+    ACTION_OT_curveedit_subdivide,
+    ACTION_OT_curveedit_switch_direction
 
 
 )

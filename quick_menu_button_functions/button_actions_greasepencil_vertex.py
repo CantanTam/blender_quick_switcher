@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_set(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_vertex_color_set"
+class ACTION_OT_greasepencilvertex_vertex_color_set(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_vertex_color_set"
     bl_label = "顶点绘制设置颜色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -43,8 +43,8 @@ class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_set(bpy.types.Operator):
         bpy.ops.grease_pencil.vertex_color_set(mode=self.mode, factor=self.factor)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilvertex_stroke_reset_vertex_color(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_stroke_reset_vertex_color"
+class ACTION_OT_greasepencilvertex_stroke_reset_vertex_color(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_stroke_reset_vertex_color"
     bl_label = "重置顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -75,8 +75,8 @@ class BUTTON_ACTION_OT_greasepencilvertex_stroke_reset_vertex_color(bpy.types.Op
         bpy.ops.grease_pencil.stroke_reset_vertex_color(mode=self.mode)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_invert(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_vertex_color_invert"
+class ACTION_OT_greasepencilvertex_vertex_color_invert(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_vertex_color_invert"
     bl_label = "顶点绘制反相"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -107,8 +107,8 @@ class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_invert(bpy.types.Operator
         bpy.ops.grease_pencil.vertex_color_invert(mode=self.mode)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_levels(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_vertex_color_levels"
+class ACTION_OT_greasepencilvertex_vertex_color_levels(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_vertex_color_levels"
     bl_label = "顶点绘制层级"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -160,8 +160,8 @@ class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_levels(bpy.types.Operator
         bpy.ops.grease_pencil.vertex_color_levels(mode=self.mode, offset=self.offset, gain=self.gain)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_hsv(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_vertex_color_hsv"
+class ACTION_OT_greasepencilvertex_vertex_color_hsv(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_vertex_color_hsv"
     bl_label = "顶点绘制色相/饱和度/明度"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -229,8 +229,8 @@ class BUTTON_ACTION_OT_greasepencilvertex_vertex_color_hsv(bpy.types.Operator):
             v=self.v)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_greasepencilvertex_brightness_contrast(bpy.types.Operator):
-    bl_idname = "button.action_greasepencilvertex_brightness_contrast"
+class ACTION_OT_greasepencilvertex_brightness_contrast(bpy.types.Operator):
+    bl_idname = "action.greasepencilvertex_brightness_contrast"
     bl_label = "顶点绘制亮度/对比度"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -286,12 +286,12 @@ class BUTTON_ACTION_OT_greasepencilvertex_brightness_contrast(bpy.types.Operator
 
 
 classes = (
-    BUTTON_ACTION_OT_greasepencilvertex_vertex_color_set,
-    BUTTON_ACTION_OT_greasepencilvertex_stroke_reset_vertex_color,
-    BUTTON_ACTION_OT_greasepencilvertex_vertex_color_invert,
-    BUTTON_ACTION_OT_greasepencilvertex_vertex_color_levels,
-    BUTTON_ACTION_OT_greasepencilvertex_vertex_color_hsv,
-    BUTTON_ACTION_OT_greasepencilvertex_brightness_contrast,
+    ACTION_OT_greasepencilvertex_vertex_color_set,
+    ACTION_OT_greasepencilvertex_stroke_reset_vertex_color,
+    ACTION_OT_greasepencilvertex_vertex_color_invert,
+    ACTION_OT_greasepencilvertex_vertex_color_levels,
+    ACTION_OT_greasepencilvertex_vertex_color_hsv,
+    ACTION_OT_greasepencilvertex_brightness_contrast,
 
 
 )

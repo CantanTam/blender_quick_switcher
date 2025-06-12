@@ -1,7 +1,7 @@
 import bpy
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_set(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_set"
+class ACTION_OT_meshvertex_vertex_color_set(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_set"
     bl_label = "设置顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -9,8 +9,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_set(bpy.types.Operator):
         bpy.ops.paint.vertex_color_set()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_smooth(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_smooth"
+class ACTION_OT_meshvertex_vertex_color_smooth(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_smooth"
     bl_label = "平滑顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -18,8 +18,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_smooth(bpy.types.Operator):
         bpy.ops.paint.vertex_color_smooth()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_dirt(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_dirt"
+class ACTION_OT_meshvertex_vertex_color_dirt(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_dirt"
     bl_label = "脏旧顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -98,8 +98,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_dirt(bpy.types.Operator):
             normalize=self.normalize)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_from_weight(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_from_weight"
+class ACTION_OT_meshvertex_vertex_color_from_weight(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_from_weight"
     bl_label = "来自权重的顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -115,8 +115,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_from_weight(bpy.types.Operator):
         bpy.ops.paint.vertex_color_from_weight()
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_invert(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_invert"
+class ACTION_OT_meshvertex_vertex_color_invert(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_invert"
     bl_label = "反转"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -125,8 +125,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_invert(bpy.types.Operator):
         return {'FINISHED'}
 
 # 这个功能暂时不可用
-class BUTTON_ACTION_OT_meshvertex_vertex_color_levels(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_levels"
+class ACTION_OT_meshvertex_vertex_color_levels(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_levels"
     bl_label = "顶点绘制层级"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -166,8 +166,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_levels(bpy.types.Operator):
         bpy.ops.paint.vertex_color_levels(offset=self.offset, gain=self.gain)
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_meshvertex_vertex_color_hsv(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_hsv"
+class ACTION_OT_meshvertex_vertex_color_hsv(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_hsv"
     bl_label = "顶点绘制色相/饱和度/明度"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -219,8 +219,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_hsv(bpy.types.Operator):
         bpy.ops.paint.vertex_color_hsv(h=self.h, s=self.s, v=self.v)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Operator):
-    bl_idname = "button.action_meshvertex_vertex_color_brightness_contrast"
+class ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Operator):
+    bl_idname = "action.meshvertex_vertex_color_brightness_contrast"
     bl_label = "顶点绘制亮度/对比度"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -262,8 +262,8 @@ class BUTTON_ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Ope
         return {'FINISHED'}
 
 # 4.3 版本有效
-class BUTTON_ACTION_OT_paint_sample_color(bpy.types.Operator):
-    bl_idname = "button.action_paint_sample_color"
+class ACTION_OT_paint_sample_color(bpy.types.Operator):
+    bl_idname = "action.paint_sample_color"
     bl_label = "色彩取样"
     bl_description = "快捷键 Shift X"
     bl_options = {'REGISTER', 'UNDO'}
@@ -274,16 +274,16 @@ class BUTTON_ACTION_OT_paint_sample_color(bpy.types.Operator):
 
 
 classes = (
-    BUTTON_ACTION_OT_meshvertex_vertex_color_set,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_smooth,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_dirt,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_from_weight,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_invert,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_levels,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_hsv,
-    BUTTON_ACTION_OT_meshvertex_vertex_color_brightness_contrast,
+    ACTION_OT_meshvertex_vertex_color_set,
+    ACTION_OT_meshvertex_vertex_color_smooth,
+    ACTION_OT_meshvertex_vertex_color_dirt,
+    ACTION_OT_meshvertex_vertex_color_from_weight,
+    ACTION_OT_meshvertex_vertex_color_invert,
+    ACTION_OT_meshvertex_vertex_color_levels,
+    ACTION_OT_meshvertex_vertex_color_hsv,
+    ACTION_OT_meshvertex_vertex_color_brightness_contrast,
 
-    BUTTON_ACTION_OT_paint_sample_color,
+    ACTION_OT_paint_sample_color,
 
 )
 

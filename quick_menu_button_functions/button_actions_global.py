@@ -3,8 +3,8 @@ import bpy
 from ..show_switch_notice import show_notice
 
 # 全局“视图”菜单功能
-class BUTTON_ACTION_OT_global_view_selected(bpy.types.Operator):
-    bl_idname = "button.action_global_view_selected"
+class ACTION_OT_global_view_selected(bpy.types.Operator):
+    bl_idname = "action.global_view_selected"
     bl_label = "框选所选"
     bl_description = "快捷键 ."
     bl_options = {'REGISTER', 'UNDO'}
@@ -13,8 +13,8 @@ class BUTTON_ACTION_OT_global_view_selected(bpy.types.Operator):
         bpy.ops.view3d.view_selected('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_view_all(bpy.types.Operator):
-    bl_idname = "button.action_global_view_all"
+class ACTION_OT_global_view_all(bpy.types.Operator):
+    bl_idname = "action.global_view_all"
     bl_label = "框选全部"
     bl_description = "快捷键 Home"
     bl_options = {'REGISTER', 'UNDO'}
@@ -23,8 +23,8 @@ class BUTTON_ACTION_OT_global_view_all(bpy.types.Operator):
         bpy.ops.view3d.view_all('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_localview(bpy.types.Operator):
-    bl_idname = "button.action_global_localview"
+class ACTION_OT_global_localview(bpy.types.Operator):
+    bl_idname = "action.global_localview"
     bl_label = "切换局部视图"
     bl_description = "快捷键 /"
     bl_options = {'REGISTER', 'UNDO'}
@@ -33,8 +33,8 @@ class BUTTON_ACTION_OT_global_localview(bpy.types.Operator):
         bpy.ops.view3d.localview('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_object_as_camera(bpy.types.Operator):
-    bl_idname = "button.action_global_object_as_camera"
+class ACTION_OT_global_object_as_camera(bpy.types.Operator):
+    bl_idname = "action.global_object_as_camera"
     bl_label = "设置活动物体为摄像机"
     bl_description = "快捷键 Ctrl Num_0"
     bl_options = {'REGISTER', 'UNDO'}
@@ -43,8 +43,8 @@ class BUTTON_ACTION_OT_global_object_as_camera(bpy.types.Operator):
         bpy.ops.view3d.object_as_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_view_center_camera(bpy.types.Operator):
-    bl_idname = "button.action_global_view_center_camera"
+class ACTION_OT_global_view_center_camera(bpy.types.Operator):
+    bl_idname = "action.global_view_center_camera"
     bl_label = "摄像机边界框"
     bl_description = "快捷键 Home"
     bl_options = {'REGISTER', 'UNDO'}
@@ -53,8 +53,8 @@ class BUTTON_ACTION_OT_global_view_center_camera(bpy.types.Operator):
         bpy.ops.view3d.view_center_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_view_viewpoint_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_view_viewpoint_menu"
+class ACTION_OT_global_view_viewpoint_menu(bpy.types.Operator):
+    bl_idname = "action.global_view_viewpoint_menu"
     bl_label = "视图"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -81,17 +81,17 @@ class BUTTON_ACTION_OT_global_view_viewpoint_menu(bpy.types.Operator):
         col.operator("view3d.view_axis", text="左视图", icon="RADIOBUT_OFF").type='LEFT'
 
 # 唤出"视图“菜单类
-class BUTTON_ACTION_OT_global_call_view_viewpoint_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_view_viewpoint_menu"
+class ACTION_OT_global_call_view_viewpoint_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_view_viewpoint_menu"
     bl_label = "视图"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.button.action_global_view_viewpoint_menu('INVOKE_DEFAULT')
+        bpy.ops.action.global_view_viewpoint_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_global_view_navigation_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_view_navigation_menu"
+class ACTION_OT_global_view_navigation_menu(bpy.types.Operator):
+    bl_idname = "action.global_view_navigation_menu"
     bl_label = "视图切换"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -132,18 +132,18 @@ class BUTTON_ACTION_OT_global_view_navigation_menu(bpy.types.Operator):
         col.operator("view3d.walk", text="行走漫游", icon="RADIOBUT_OFF")
 
 # 唤出“视图切换”菜单类
-class BUTTON_ACTION_OT_global_call_view_navigation_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_view_navigation_menu"
+class ACTION_OT_global_call_view_navigation_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_view_navigation_menu"
     bl_label = "视图切换"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.button.action_global_view_navigation_menu('INVOKE_DEFAULT')
+        bpy.ops.action.global_view_navigation_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
     
 # 自定义“框选放大”操作类
-class BUTTON_ACTION_OT_global_zoom_border(bpy.types.Operator):
-    bl_idname = "button.action_global_zoom_border"
+class ACTION_OT_global_zoom_border(bpy.types.Operator):
+    bl_idname = "action.global_zoom_border"
     bl_label = "框选放大"
     bl_description = "快捷键 Shift B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -152,8 +152,8 @@ class BUTTON_ACTION_OT_global_zoom_border(bpy.types.Operator):
         bpy.ops.view3d.zoom_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_zoom_camera_1_to_1(bpy.types.Operator):
-    bl_idname = "button.action_zoom_camera_1_to_1"
+class ACTION_OT_global_zoom_camera_1_to_1(bpy.types.Operator):
+    bl_idname = "action.zoom_camera_1_to_1"
     bl_label = "1:1缩放摄像机视图"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -170,8 +170,8 @@ class BUTTON_ACTION_OT_global_zoom_camera_1_to_1(bpy.types.Operator):
         return {'FINISHED'}
 
 # 自定义“行走漫步”操作类
-class BUTTON_ACTION_OT_global_walk(bpy.types.Operator):
-    bl_idname = "button.action_global_walk"
+class ACTION_OT_global_walk(bpy.types.Operator):
+    bl_idname = "action.global_walk"
     bl_label = "行走漫步"
     bl_description = "快捷键 Shift `"
     bl_options = {'REGISTER', 'UNDO'}
@@ -181,8 +181,8 @@ class BUTTON_ACTION_OT_global_walk(bpy.types.Operator):
         bpy.ops.view3d.walk('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_fly(bpy.types.Operator):
-    bl_idname = "button.action_global_fly"
+class ACTION_OT_global_fly(bpy.types.Operator):
+    bl_idname = "action.global_fly"
     bl_label = "飞行漫游模式"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -191,8 +191,8 @@ class BUTTON_ACTION_OT_global_fly(bpy.types.Operator):
         bpy.ops.view3d.fly('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_view_align_selected_menu(bpy.types.Operator):
-    bl_idname = "button.action_view_align_selected_menu"
+class ACTION_OT_global_view_align_selected_menu(bpy.types.Operator):
+    bl_idname = "action.view_align_selected_menu"
     bl_label = "视图对齐活动项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -228,18 +228,18 @@ class BUTTON_ACTION_OT_global_view_align_selected_menu(bpy.types.Operator):
         op.type = 'LEFT'
         op.align_active=True
 
-class BUTTON_ACTION_OT_global_call_view_align_selected_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_view_align_selected_menu"
+class ACTION_OT_global_call_view_align_selected_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_view_align_selected_menu"
     bl_label = "视图对齐活动项"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.button.action_view_align_selected_menu('INVOKE_DEFAULT')
+        bpy.ops.action.view_align_selected_menu('INVOKE_DEFAULT')
         return {'FINISHED'}
 
 # 自定义“锁定/解锁视图至活动物体”按钮类
-class BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear(bpy.types.Operator):
-    bl_idname = "button.action_global_lock_to_active_or_lock_clear"
+class ACTION_OT_global_lock_to_active_or_lock_clear(bpy.types.Operator):
+    bl_idname = "action.global_lock_to_active_or_lock_clear"
     bl_label = "锁定/解锁视图"
     bl_description = "锁定视图至活动物体/消除视图锁定"
     bl_options = {'REGISTER', 'UNDO'}
@@ -253,8 +253,8 @@ class BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear(bpy.types.Operator):
             show_notice("ACTIVE_UNLOCK.png")
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_camera_to_view(bpy.types.Operator):
-    bl_idname = "button.action_global_camera_to_view"
+class ACTION_OT_global_camera_to_view(bpy.types.Operator):
+    bl_idname = "action.global_camera_to_view"
     bl_label = "活动摄像机对齐当前视角"
     bl_description = "Ctrl Alt Num_0"
     bl_options = {'REGISTER', 'UNDO'}
@@ -271,8 +271,8 @@ class BUTTON_ACTION_OT_global_camera_to_view(bpy.types.Operator):
         bpy.ops.view3d.camera_to_view('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_camera_to_view_selected(bpy.types.Operator):
-    bl_idname = "button.action_global_camera_to_view_selected"
+class ACTION_OT_global_camera_to_view_selected(bpy.types.Operator):
+    bl_idname = "action.global_camera_to_view_selected"
     bl_label = "活动摄像机对齐选中的物体"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -287,8 +287,8 @@ class BUTTON_ACTION_OT_global_camera_to_view_selected(bpy.types.Operator):
             bpy.ops.view3d.view_camera('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_global_call_view_align_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_view_align_menu"
+class ACTION_OT_global_call_view_align_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_view_align_menu"
     bl_label = "对齐视图"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -297,8 +297,8 @@ class BUTTON_ACTION_OT_global_call_view_align_menu(bpy.types.Operator):
         return {'FINISHED'}
     
 # 弹出“对齐视图”——游标居中并查看全部
-class BUTTON_ACTION_OT_global_view_all_center_true(bpy.types.Operator):
-    bl_idname = "button.action_global_view_all_center_true"
+class ACTION_OT_global_view_all_center_true(bpy.types.Operator):
+    bl_idname = "action.global_view_all_center_true"
     bl_label = "游标居中并查看全部"
     bl_description = "快捷键 Shift C"
     bl_options = {'REGISTER', 'UNDO'}
@@ -309,8 +309,8 @@ class BUTTON_ACTION_OT_global_view_all_center_true(bpy.types.Operator):
         bpy.ops.view3d.view_all('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_view_center_cursor(bpy.types.Operator):
-    bl_idname = "button.action_global_view_center_cursor"
+class ACTION_OT_global_view_center_cursor(bpy.types.Operator):
+    bl_idname = "action.global_view_center_cursor"
     bl_label = "视图中心对齐游标"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -320,30 +320,30 @@ class BUTTON_ACTION_OT_global_view_center_cursor(bpy.types.Operator):
         return {'FINISHED'}
 
 class VIEW3D_MT_view_regions_menu(bpy.types.Menu):
-    bl_idname = "button.action_global_view_regions_menu"
+    bl_idname = "action.global_view_regions_menu"
     bl_label = "视图框"
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout
-        layout.operator("button.action_global_clip_border", text="裁剪框")
-        layout.operator("button.action_global_render_border", text="渲染框")
+        layout.operator("action.global_clip_border", text="裁剪框")
+        layout.operator("action.global_render_border", text="渲染框")
         layout.separator()
         layout.operator("view3d.clear_render_border", text="清除渲染框")
 
 # 弹出“视图框”菜单
-class BUTTON_ACTION_OT_global_call_view_regions_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_view_regions_menu"
+class ACTION_OT_global_call_view_regions_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_view_regions_menu"
     bl_label = "视图框"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.wm.call_menu(name="button.action_global_view_regions_menu")
+        bpy.ops.wm.call_menu(name="action.global_view_regions_menu")
         return {'FINISHED'}
 
 # 自定义“裁剪框”操作类
-class BUTTON_ACTION_OT_global_clip_border(bpy.types.Operator):
-    bl_idname = "button.action_global_clip_border"
+class ACTION_OT_global_clip_border(bpy.types.Operator):
+    bl_idname = "action.global_clip_border"
     bl_label = "裁剪框"
     bl_description = "快捷键 Alt B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -353,8 +353,8 @@ class BUTTON_ACTION_OT_global_clip_border(bpy.types.Operator):
         return {'FINISHED'}
     
 # 自定义“渲染框”操作类
-class BUTTON_ACTION_OT_global_render_border(bpy.types.Operator):
-    bl_idname = "button.action_global_render_border"
+class ACTION_OT_global_render_border(bpy.types.Operator):
+    bl_idname = "action.global_render_border"
     bl_label = "渲染框"
     bl_description = "快捷键 Ctrl B"
     bl_options = {'REGISTER', 'UNDO'}
@@ -373,8 +373,8 @@ class BUTTON_ACTION_OT_global_render_border(bpy.types.Operator):
             bpy.ops.view3d.render_border('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_render_opengl(bpy.types.Operator):
-    bl_idname = "button.action_global_render_opengl"
+class ACTION_OT_global_render_opengl(bpy.types.Operator):
+    bl_idname = "action.global_render_opengl"
     bl_label = "视图渲染图像"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -382,8 +382,8 @@ class BUTTON_ACTION_OT_global_render_opengl(bpy.types.Operator):
         bpy.ops.render.opengl('INVOKE_DEFAULT')
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_render_opengl_animation(bpy.types.Operator):
-    bl_idname = "button.action_global_render_opengl_animation"
+class ACTION_OT_global_render_opengl_animation(bpy.types.Operator):
+    bl_idname = "action.global_render_opengl_animation"
     bl_label = "视图渲染动画"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -391,8 +391,8 @@ class BUTTON_ACTION_OT_global_render_opengl_animation(bpy.types.Operator):
         bpy.ops.render.opengl('INVOKE_DEFAULT', animation=True)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_render_opengl_keyframe(bpy.types.Operator):
-    bl_idname = "button.action_global_render_opengl_keyframe"
+class ACTION_OT_global_render_opengl_keyframe(bpy.types.Operator):
+    bl_idname = "action.global_render_opengl_keyframe"
     bl_label = "视图渲染关键帧"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -401,8 +401,8 @@ class BUTTON_ACTION_OT_global_render_opengl_keyframe(bpy.types.Operator):
         return {'FINISHED'}
 
 # 自定义“区域”菜单
-class BUTTON_ACTION_OT_global_area_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_area_menu"
+class ACTION_OT_global_area_menu(bpy.types.Operator):
+    bl_idname = "action.global_area_menu"
     bl_label = "区域"
     bl_options = {'REGISTER', 'UNDO'}
     
@@ -411,8 +411,8 @@ class BUTTON_ACTION_OT_global_area_menu(bpy.types.Operator):
         return {'FINISHED'}
     
 # 自定义“区域”——切换全屏模式
-class BUTTON_ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
-    bl_idname = "button.action_global_screen_screen_full_area"
+class ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
+    bl_idname = "action.global_screen_screen_full_area"
     bl_label = "切换全屏模式"
     bl_description = "快捷键 Ctrl Alt 空格"
     bl_options = {'REGISTER', 'UNDO'}
@@ -422,8 +422,8 @@ class BUTTON_ACTION_OT_global_screen_screen_full_area(bpy.types.Operator):
         return {'FINISHED'}
     
 #切换面朝向，是我额外添加的功能
-class BUTTON_ACTION_OT_meshedit_edit_mesh_show_face_orientation(bpy.types.Operator):
-    bl_idname = "button.action_meshedit_edit_show_face_orientation"
+class ACTION_OT_meshedit_edit_mesh_show_face_orientation(bpy.types.Operator):
+    bl_idname = "action.meshedit_edit_show_face_orientation"
     bl_label = "面朝向"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -432,8 +432,8 @@ class BUTTON_ACTION_OT_meshedit_edit_mesh_show_face_orientation(bpy.types.Operat
         return {'FINISHED'}
     
 # “选择”菜单——全选
-class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
-    bl_idname = "button.action_global_select_all"
+class ACTION_OT_global_select_all(bpy.types.Operator):
+    bl_idname = "action.global_select_all"
     bl_label = "全选"
     bl_description = "快捷键 A"
     bl_options = {'REGISTER', 'UNDO'}
@@ -477,8 +477,8 @@ class BUTTON_ACTION_OT_global_select_all(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——反选
-class BUTTON_ACTION_OT_global_select_invert(bpy.types.Operator):
-    bl_idname = "button.action_global_select_invert"
+class ACTION_OT_global_select_invert(bpy.types.Operator):
+    bl_idname = "action.global_select_invert"
     bl_label = "反选"
     bl_description = "快捷键 Ctrl I"
     bl_options = {'REGISTER', 'UNDO'}
@@ -520,8 +520,8 @@ class BUTTON_ACTION_OT_global_select_invert(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——刷选
-class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
-    bl_idname = "button.action_global_select_circle"
+class ACTION_OT_global_select_circle(bpy.types.Operator):
+    bl_idname = "action.global_select_circle"
     bl_label = "刷选"
     bl_description = "快捷键 C"
     bl_options = {'REGISTER', 'UNDO'}
@@ -572,8 +572,8 @@ class BUTTON_ACTION_OT_global_select_circle(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——选择镜像
-class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_mirror"
+class ACTION_OT_global_select_select_mirror(bpy.types.Operator):
+    bl_idname = "action.global_select_select_mirror"
     bl_label = "选择镜像"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -640,8 +640,8 @@ class BUTTON_ACTION_OT_global_select_select_mirror(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——随机选择
-class BUTTON_ACTION_OT_global_select_select_random(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_random"
+class ACTION_OT_global_select_select_random(bpy.types.Operator):
+    bl_idname = "action.global_select_select_random"
     bl_label = "随机选择"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -817,8 +817,8 @@ class VIEW3D_MT_global_select_more_or_less_menu(bpy.types.Operator):
         col.operator("ed.undo", text="撤销", icon="LOOP_BACK")
         col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
 
-class BUTTON_ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
-    bl_idname = "button.action_call_global_select_more_or_less_menu"
+class ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
+    bl_idname = "action.call_global_select_more_or_less_menu"
     bl_label = "加选/减选"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -847,8 +847,8 @@ class BUTTON_ACTION_OT_call_global_select_more_or_less_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——父级/子级
-class BUTTON_ACTION_OT_global_select_select_parent_or_child(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_parent_or_child"
+class ACTION_OT_global_select_select_parent_or_child(bpy.types.Operator):
+    bl_idname = "action.global_select_select_parent_or_child"
     bl_label = "父级/子级/扩展父级/扩展子级"
     bl_description = "父级/子级/扩展父级/扩展子级功能集合"
     bl_options = {'REGISTER', 'UNDO'}
@@ -897,8 +897,8 @@ class BUTTON_ACTION_OT_global_select_select_parent_or_child(bpy.types.Operator):
         return {'FINISHED'}
     
 # "选择"菜单——按组选择
-class BUTTON_ACTION_OT_global_select_select_grouped(bpy.types.Operator):
-    bl_idname = "button.action_select_select_grouped"
+class ACTION_OT_global_select_select_grouped(bpy.types.Operator):
+    bl_idname = "action.select_select_grouped"
     bl_label = "按组选择"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -931,8 +931,8 @@ class BUTTON_ACTION_OT_global_select_select_grouped(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——选择相连
-class BUTTON_ACTION_OT_global_select_select_linked(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_linked"
+class ACTION_OT_global_select_select_linked(bpy.types.Operator):
+    bl_idname = "action.global_select_select_linked"
     bl_label = "选择相连"
     bl_description = "选择相连元素/关联项"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1013,8 +1013,8 @@ class VIEW3D_MT_mesh_select_linked_menu(bpy.types.Operator):
         col.operator("ed.redo", text="重做", icon="LOOP_FORWARDS")
 
 # “选择”菜单——按名称
-class BUTTON_ACTION_OT_global_select_select_pattern(bpy.types.Operator):
-    bl_idname = "button.action_object_select_pattern"
+class ACTION_OT_global_select_select_pattern(bpy.types.Operator):
+    bl_idname = "action.object_select_pattern"
     bl_label = "按名称选择"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1023,8 +1023,8 @@ class BUTTON_ACTION_OT_global_select_select_pattern(bpy.types.Operator):
         return {'FINISHED'}
 
 # "选择"菜单——选择相似
-class BUTTON_ACTION_OT_global_select_select_similar(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_similar"
+class ACTION_OT_global_select_select_similar(bpy.types.Operator):
+    bl_idname = "action.global_select_select_similar"
     bl_label = "选择相似"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1054,12 +1054,12 @@ class BUTTON_ACTION_OT_global_select_select_similar(bpy.types.Operator):
             bpy.ops.mball.select_similar('INVOKE_DEFAULT')
 
         elif typeandmode in {"GREASEPENCILEDIT","GREASEPENCILSCULPT_GREASE_PENCIL","GREASEPENCILVERTEX_GREASE_PENCIL"}:
-            bpy.ops.wm.call_menu(name="button.action_global_select_select_similar_menu")
+            bpy.ops.wm.call_menu(name="action.global_select_select_similar_menu")
 
         return {'FINISHED'}
 
 class VIEW3D_MT_global_select_select_similar_menu(bpy.types.Menu):
-    bl_idname = "button.action_global_select_select_similar_menu"
+    bl_idname = "action.global_select_select_similar_menu"
     bl_label = "选择相似元素"
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
@@ -1072,8 +1072,8 @@ class VIEW3D_MT_global_select_select_similar_menu(bpy.types.Menu):
         layout.operator("grease_pencil.select_similar", text="不透明度").mode='OPACITY'
 
 # “选择”菜单——未归组顶点
-class BUTTON_ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
-    bl_idname = "button.action_global_selectt_select_ungrouped"
+class ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
+    bl_idname = "action.global_selectt_select_ungrouped"
     bl_label = "选择未归组项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1139,8 +1139,8 @@ class BUTTON_ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——选择首点
-class BUTTON_ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
-    bl_idname = "button.action_global_gpencil_select_select_first"
+class ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
+    bl_idname = "action.global_gpencil_select_select_first"
     bl_label = "选中首点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1191,8 +1191,8 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_first(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——选择末点
-class BUTTON_ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
-    bl_idname = "button.action_global_gpencil_select_select_last"
+class ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
+    bl_idname = "action.global_gpencil_select_select_last"
     bl_label = "选中末点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1243,8 +1243,8 @@ class BUTTON_ACTION_OT_global_gpencil_select_select_last(bpy.types.Operator):
         return {'FINISHED'}
 
 # “选择”菜单——起始点
-class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operator):
-    bl_idname = "button.action_global_greasepencil_select_select_first"
+class ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operator):
+    bl_idname = "action.global_greasepencil_select_select_first"
     bl_label = "选择端点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1295,8 +1295,8 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_first(bpy.types.Operato
         return {'FINISHED'}
 
 # “选择”菜单——结束点
-class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator):
-    bl_idname = "button.action_global_greasepencil_select_select_last"
+class ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator):
+    bl_idname = "action.global_greasepencil_select_select_last"
     bl_label = "选择端点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1347,8 +1347,8 @@ class BUTTON_ACTION_OT_global_greasepencil_select_select_last(bpy.types.Operator
         return {'FINISHED'}
 
 # “选择”菜单——选择交替
-class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
-    bl_idname = "button.action_global_select_select_alternate"
+class ACTION_OT_global_select_select_alternate(bpy.types.Operator):
+    bl_idname = "action.global_select_select_alternate"
     bl_label = "选择交替"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1415,8 +1415,8 @@ class BUTTON_ACTION_OT_global_select_select_alternate(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单
-class BUTTON_ACTION_OT_global_transform(bpy.types.Operator):
-    bl_idname = "button.action_global_transform"
+class ACTION_OT_global_transform(bpy.types.Operator):
+    bl_idname = "action.global_transform"
     bl_label = "变换"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1448,8 +1448,8 @@ class BUTTON_ACTION_OT_global_transform(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——球形化
-class BUTTON_ACTION_OT_global_transform_tosphere(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_tosphere"
+class ACTION_OT_global_transform_tosphere(bpy.types.Operator):
+    bl_idname = "action.global_transform_tosphere"
     bl_label = "球形化"
     bl_description = "快捷键 Shift Alt S"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1480,8 +1480,8 @@ class BUTTON_ACTION_OT_global_transform_tosphere(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——切变
-class BUTTON_ACTION_OT_global_transform_shear(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_shear"
+class ACTION_OT_global_transform_shear(bpy.types.Operator):
+    bl_idname = "action.global_transform_shear"
     bl_label = "切变"
     bl_description = "快捷键 Ctrl Shift Alt S"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1491,8 +1491,8 @@ class BUTTON_ACTION_OT_global_transform_shear(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——弯曲
-class BUTTON_ACTION_OT_global_transform_bend(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_bend"
+class ACTION_OT_global_transform_bend(bpy.types.Operator):
+    bl_idname = "action.global_transform_bend"
     bl_label = "弯曲"
     bl_description = "快捷键 Shift W"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1502,8 +1502,8 @@ class BUTTON_ACTION_OT_global_transform_bend(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——推/拉
-class BUTTON_ACTION_OT_global_transform_push_pull(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_push_pull"
+class ACTION_OT_global_transform_push_pull(bpy.types.Operator):
+    bl_idname = "action.global_transform_push_pull"
     bl_label = "推/拉"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1512,8 +1512,8 @@ class BUTTON_ACTION_OT_global_transform_push_pull(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——移动纹理空间
-class BUTTON_ACTION_OT_global_transform_translate_texturespace_true(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_translate_texturespace_true"
+class ACTION_OT_global_transform_translate_texturespace_true(bpy.types.Operator):
+    bl_idname = "action.global_transform_translate_texturespace_true"
     bl_label = "移动纹理空间"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1529,8 +1529,8 @@ class BUTTON_ACTION_OT_global_transform_translate_texturespace_true(bpy.types.Op
         return {'FINISHED'}
 
 # “变换”菜单——缩放纹理空间
-class BUTTON_ACTION_OT_global_transform_resize_texturespace_true(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_resize_texturespace_true"
+class ACTION_OT_global_transform_resize_texturespace_true(bpy.types.Operator):
+    bl_idname = "action.global_transform_resize_texturespace_true"
     bl_label = "缩放纹理空间"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1546,8 +1546,8 @@ class BUTTON_ACTION_OT_global_transform_resize_texturespace_true(bpy.types.Opera
         return {'FINISHED'}
 
 # “变换”菜单——弯绕
-class BUTTON_ACTION_OT_global_transform_vertex_warp(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_vertex_warp"
+class ACTION_OT_global_transform_vertex_warp(bpy.types.Operator):
+    bl_idname = "action.global_transform_vertex_warp"
     bl_label = "弯绕"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1606,8 +1606,8 @@ class BUTTON_ACTION_OT_global_transform_vertex_warp(bpy.types.Operator):
         return {'FINISHED'}
 
 # “变换”菜单——随机
-class BUTTON_ACTION_OT_global_transform_vertex_random(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_vertex_random"
+class ACTION_OT_global_transform_vertex_random(bpy.types.Operator):
+    bl_idname = "action.global_transform_vertex_random"
     bl_label = "随机"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1674,8 +1674,8 @@ class BUTTON_ACTION_OT_global_transform_vertex_random(bpy.types.Operator):
         return {'FINISHED'}
 
 # 交互镜像
-class BUTTON_ACTION_OT_global_transform_mirror(bpy.types.Operator):
-    bl_idname = "button.action_global_transform_mirror"
+class ACTION_OT_global_transform_mirror(bpy.types.Operator):
+    bl_idname = "action.global_transform_mirror"
     bl_label = "交互镜像"
     bl_description = "快捷键 Ctrl M"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1685,8 +1685,8 @@ class BUTTON_ACTION_OT_global_transform_mirror(bpy.types.Operator):
         return {'FINISHED'}
 
 # 全局“添加”菜单功能
-class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
-    bl_idname = "button.action_global_add"
+class ACTION_OT_global_add(bpy.types.Operator):
+    bl_idname = "action.global_add"
     bl_label = "添加"
     bl_description = "快捷键 Shift A"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1709,8 +1709,8 @@ class BUTTON_ACTION_OT_global_add(bpy.types.Operator):
         return {'FINISHED'}
 
 # 全局“复制 Shift D”按钮功能
-class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
-    bl_idname = "button.action_global_duplicate_move"
+class ACTION_OT_global_duplicate_move(bpy.types.Operator):
+    bl_idname = "action.global_duplicate_move"
     bl_label = "复制"
     bl_description = "快捷键 Shift D"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1734,8 +1734,8 @@ class BUTTON_ACTION_OT_global_duplicate_move(bpy.types.Operator):
         return {'FINISHED'}
     
 # 物体模式/蜡笔/骨架姿态“复制 Ctrl C”按钮功能
-class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
-    bl_idname = "button.action_global_copy"
+class ACTION_OT_global_copy(bpy.types.Operator):
+    bl_idname = "action.global_copy"
     bl_label = "复制"
     bl_description = "快捷键 Ctrl C"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1753,8 +1753,8 @@ class BUTTON_ACTION_OT_global_copy(bpy.types.Operator):
         return {'FINISHED'}
     
 # 物体模式/蜡笔/骨架姿态“复制 Ctrl V”按钮功能
-class BUTTON_ACTION_OT_global_paste(bpy.types.Operator):
-    bl_idname = "button.action_global_paste"
+class ACTION_OT_global_paste(bpy.types.Operator):
+    bl_idname = "action.global_paste"
     bl_label = "粘贴"
     bl_description = "快捷键 Ctrl V"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1903,8 +1903,8 @@ class VIEW3D_MT_global_delete_menu(bpy.types.Menu):
             layout.operator("grease_pencil.active_frame_delete", text="删除所有层的活动关键帧").all=True
 
 # 定义调用“删除”菜单操作
-class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_call_delete_menu"
+class ACTION_OT_call_global_delete_menu(bpy.types.Operator):
+    bl_idname = "action.global_call_delete_menu"
     bl_label = "删除"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -1928,8 +1928,8 @@ class BUTTON_ACTION_OT_call_global_delete_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # 多种编辑模式“隐藏”/"隐藏未选项"
-class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
-    bl_idname = "button.action_global_hide_view_set"
+class ACTION_OT_global_hide_view_set(bpy.types.Operator):
+    bl_idname = "action.global_hide_view_set"
     bl_label = "隐藏选中项"
     bl_description = "快捷键 H"
     bl_options = {'REGISTER', 'UNDO'}
@@ -1978,8 +1978,8 @@ class BUTTON_ACTION_OT_global_hide_view_set(bpy.types.Operator):
             bpy.ops.pose.hide(unselected=self.unselected)
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_hide_view_set_unselected(bpy.types.Operator):
-    bl_idname = "button.action_global_hide_view_set_unselected"
+class ACTION_OT_global_hide_view_set_unselected(bpy.types.Operator):
+    bl_idname = "action.global_hide_view_set_unselected"
     bl_label = "隐藏未选项"
     bl_description = "快捷键 Shift H"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2029,8 +2029,8 @@ class BUTTON_ACTION_OT_global_hide_view_set_unselected(bpy.types.Operator):
         return {'FINISHED'}
 
 # 多种编辑模式"显示隐藏项"
-class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
-    bl_idname = "button.action_global_hide_view_clear"
+class ACTION_OT_global_hide_view_clear(bpy.types.Operator):
+    bl_idname = "action.global_hide_view_clear"
     bl_label = "显示隐藏项"
     bl_description = "快捷键 Alt H"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2052,8 +2052,8 @@ class BUTTON_ACTION_OT_global_hide_view_clear(bpy.types.Operator):
             bpy.ops.grease_pencil.layer_reveal()
         return {'FINISHED'}
     
-class BUTTON_ACTION_OT_global_hide_show_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_hide_show_menu"
+class ACTION_OT_global_hide_show_menu(bpy.types.Operator):
+    bl_idname = "action.global_hide_show_menu"
     bl_label = "显示/隐藏"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2075,8 +2075,8 @@ class BUTTON_ACTION_OT_global_hide_show_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # 吸附
-class BUTTON_ACTION_OT_global_snap_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_menu"
+class ACTION_OT_global_snap_menu(bpy.types.Operator):
+    bl_idname = "action.global_snap_menu"
     bl_label = "吸附"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2092,8 +2092,8 @@ class BUTTON_ACTION_OT_global_snap_menu(bpy.types.Operator):
         return {'FINISHED'}
 
 # 选中项->栅格点
-class BUTTON_ACTION_OT_global_selected_to_grid(bpy.types.Operator):
-    bl_idname = "button.action_global_selected_to_grid"
+class ACTION_OT_global_selected_to_grid(bpy.types.Operator):
+    bl_idname = "action.global_selected_to_grid"
     bl_label = "选中项->栅格点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2109,8 +2109,8 @@ class BUTTON_ACTION_OT_global_selected_to_grid(bpy.types.Operator):
         return {'FINISHED'}
 
 # 选中项->游标
-class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_false(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_selected_to_cursor_offset_false"
+class ACTION_OT_global_snap_selected_to_cursor_offset_false(bpy.types.Operator):
+    bl_idname = "action.global_snap_selected_to_cursor_offset_false"
     bl_label = "选中项->游标"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2146,8 +2146,8 @@ class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_false(bpy.types.Ope
         return {'FINISHED'}
 
 # 选中项->游标(保持偏移)
-class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_true(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_selected_to_cursor_offset_true"
+class ACTION_OT_global_snap_selected_to_cursor_offset_true(bpy.types.Operator):
+    bl_idname = "action.global_snap_selected_to_cursor_offset_true"
     bl_label = "选中项->游标(保持偏移)"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2184,8 +2184,8 @@ class BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_true(bpy.types.Oper
         return {'FINISHED'}
 
 # 选中项->活动项
-class BUTTON_ACTION_OT_global_snap_selected_to_active(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_selected_to_active"
+class ACTION_OT_global_snap_selected_to_active(bpy.types.Operator):
+    bl_idname = "action.global_snap_selected_to_active"
     bl_label = "选中项->活动项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2194,8 +2194,8 @@ class BUTTON_ACTION_OT_global_snap_selected_to_active(bpy.types.Operator):
         return {'FINISHED'}
 
 # 游标->选中项
-class BUTTON_ACTION_OT_global_snap_cursor_to_selected(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_cursor_to_selected"
+class ACTION_OT_global_snap_cursor_to_selected(bpy.types.Operator):
+    bl_idname = "action.global_snap_cursor_to_selected"
     bl_label = "游标->选中项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2211,8 +2211,8 @@ class BUTTON_ACTION_OT_global_snap_cursor_to_selected(bpy.types.Operator):
         return {'FINISHED'}
 
 # 游标->世界原点
-class BUTTON_ACTION_OT_global_snap_cursor_to_center(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_cursor_to_center"
+class ACTION_OT_global_snap_cursor_to_center(bpy.types.Operator):
+    bl_idname = "action.global_snap_cursor_to_center"
     bl_label = "游标->世界原点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2221,8 +2221,8 @@ class BUTTON_ACTION_OT_global_snap_cursor_to_center(bpy.types.Operator):
         return {'FINISHED'}
 
 # 游标->栅格点
-class BUTTON_ACTION_OT_global_snap_cursor_to_grid(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_cursor_to_grid"
+class ACTION_OT_global_snap_cursor_to_grid(bpy.types.Operator):
+    bl_idname = "action.global_snap_cursor_to_grid"
     bl_label = "游标->栅格点"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2231,8 +2231,8 @@ class BUTTON_ACTION_OT_global_snap_cursor_to_grid(bpy.types.Operator):
         return {'FINISHED'}
 
 # 游标->活动项
-class BUTTON_ACTION_OT_global_snap_cursor_to_active(bpy.types.Operator):
-    bl_idname = "button.action_global_snap_cursor_to_active"
+class ACTION_OT_global_snap_cursor_to_active(bpy.types.Operator):
+    bl_idname = "action.global_snap_cursor_to_active"
     bl_label = "游标->活动项"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2241,8 +2241,8 @@ class BUTTON_ACTION_OT_global_snap_cursor_to_active(bpy.types.Operator):
         return {'FINISHED'}
 
 # 物体模式/骨骼姿态模式——“应用 Ctrl A”操作
-class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
-    bl_idname = "button.action_global_apply"
+class ACTION_OT_global_apply(bpy.types.Operator):
+    bl_idname = "action.global_apply"
     bl_label = "应用"
     bl_description = "快捷键 Ctrl A"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2257,8 +2257,8 @@ class BUTTON_ACTION_OT_global_apply(bpy.types.Operator):
         return {'FINISHED'}
     
 # 物体模式/骨骼姿态“清空变换(菜单)”操作
-class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
-    bl_idname = "button.action_global_object_pose_clear"
+class ACTION_OT_global_object_pose_clear(bpy.types.Operator):
+    bl_idname = "action.global_object_pose_clear"
     bl_label = "清空变换"
     bl_description = "物体模式/骨骼姿态模式“清空变换”菜单"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2272,8 +2272,8 @@ class BUTTON_ACTION_OT_global_object_pose_clear(bpy.types.Operator):
             bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_transform")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_global_parent_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_parent_menu"
+class ACTION_OT_global_parent_menu(bpy.types.Operator):
+    bl_idname = "action.global_parent_menu"
     bl_label = "父级"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -2281,8 +2281,8 @@ class BUTTON_ACTION_OT_global_parent_menu(bpy.types.Operator):
         bpy.ops.wm.call_menu(name="VIEW3D_MT_object_parent")
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_global_set_parent_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_set_parent_menu"
+class ACTION_OT_global_set_parent_menu(bpy.types.Operator):
+    bl_idname = "action.global_set_parent_menu"
     bl_label = "设置父级目标"
     bl_description = "快捷键 Ctrl P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2291,8 +2291,8 @@ class BUTTON_ACTION_OT_global_set_parent_menu(bpy.types.Operator):
         bpy.ops.object.parent_set('INVOKE_DEFAULT')
         return {'FINISHED'}
 
-class BUTTON_ACTION_OT_global_parent_clear_menu(bpy.types.Operator):
-    bl_idname = "button.action_global_parent_clear_menu"
+class ACTION_OT_global_parent_clear_menu(bpy.types.Operator):
+    bl_idname = "action.global_parent_clear_menu"
     bl_label = "清空父级"
     bl_description = "快捷键 Alt P"
     bl_options = {'REGISTER', 'UNDO'}
@@ -2357,99 +2357,99 @@ class BUTTON_ACTION_OT_global_parent_clear_menu(bpy.types.Operator):
 
 classes = (
     # "视图"菜单
-    BUTTON_ACTION_OT_global_view_align_selected_menu,
-    BUTTON_ACTION_OT_global_call_view_align_selected_menu,
-    BUTTON_ACTION_OT_global_view_selected,
-    BUTTON_ACTION_OT_global_view_all,
-    BUTTON_ACTION_OT_global_localview,
-    BUTTON_ACTION_OT_global_object_as_camera,
-    BUTTON_ACTION_OT_global_view_center_camera,
-    BUTTON_ACTION_OT_global_view_viewpoint_menu,
-    BUTTON_ACTION_OT_global_call_view_viewpoint_menu,
-    BUTTON_ACTION_OT_global_view_navigation_menu,
-    BUTTON_ACTION_OT_global_call_view_navigation_menu,
-    BUTTON_ACTION_OT_global_zoom_border,
-    BUTTON_ACTION_OT_global_zoom_camera_1_to_1,
-    BUTTON_ACTION_OT_global_walk,
-    BUTTON_ACTION_OT_global_fly,
-    BUTTON_ACTION_OT_global_camera_to_view,
-    BUTTON_ACTION_OT_global_camera_to_view_selected,
-    BUTTON_ACTION_OT_global_call_view_align_menu,
+    ACTION_OT_global_view_align_selected_menu,
+    ACTION_OT_global_call_view_align_selected_menu,
+    ACTION_OT_global_view_selected,
+    ACTION_OT_global_view_all,
+    ACTION_OT_global_localview,
+    ACTION_OT_global_object_as_camera,
+    ACTION_OT_global_view_center_camera,
+    ACTION_OT_global_view_viewpoint_menu,
+    ACTION_OT_global_call_view_viewpoint_menu,
+    ACTION_OT_global_view_navigation_menu,
+    ACTION_OT_global_call_view_navigation_menu,
+    ACTION_OT_global_zoom_border,
+    ACTION_OT_global_zoom_camera_1_to_1,
+    ACTION_OT_global_walk,
+    ACTION_OT_global_fly,
+    ACTION_OT_global_camera_to_view,
+    ACTION_OT_global_camera_to_view_selected,
+    ACTION_OT_global_call_view_align_menu,
     VIEW3D_MT_view_regions_menu,
-    BUTTON_ACTION_OT_global_call_view_regions_menu,
-    BUTTON_ACTION_OT_global_clip_border,
-    BUTTON_ACTION_OT_global_render_border,
-    BUTTON_ACTION_OT_global_lock_to_active_or_lock_clear,
-    BUTTON_ACTION_OT_global_view_all_center_true,
-    BUTTON_ACTION_OT_global_view_center_cursor,
-    BUTTON_ACTION_OT_global_render_opengl,
-    BUTTON_ACTION_OT_global_render_opengl_animation,
-    BUTTON_ACTION_OT_global_render_opengl_keyframe,
-    BUTTON_ACTION_OT_global_area_menu,
-    BUTTON_ACTION_OT_global_screen_screen_full_area,
-    BUTTON_ACTION_OT_meshedit_edit_mesh_show_face_orientation,
+    ACTION_OT_global_call_view_regions_menu,
+    ACTION_OT_global_clip_border,
+    ACTION_OT_global_render_border,
+    ACTION_OT_global_lock_to_active_or_lock_clear,
+    ACTION_OT_global_view_all_center_true,
+    ACTION_OT_global_view_center_cursor,
+    ACTION_OT_global_render_opengl,
+    ACTION_OT_global_render_opengl_animation,
+    ACTION_OT_global_render_opengl_keyframe,
+    ACTION_OT_global_area_menu,
+    ACTION_OT_global_screen_screen_full_area,
+    ACTION_OT_meshedit_edit_mesh_show_face_orientation,
 
 
     #“选择”菜单
-    BUTTON_ACTION_OT_global_select_all,
-    BUTTON_ACTION_OT_global_select_invert,
-    BUTTON_ACTION_OT_global_select_circle,
-    BUTTON_ACTION_OT_global_select_select_mirror,
-    BUTTON_ACTION_OT_global_select_select_random,
+    ACTION_OT_global_select_all,
+    ACTION_OT_global_select_invert,
+    ACTION_OT_global_select_circle,
+    ACTION_OT_global_select_select_mirror,
+    ACTION_OT_global_select_select_random,
     VIEW3D_MT_global_select_more_or_less_menu,
-    BUTTON_ACTION_OT_call_global_select_more_or_less_menu,
-    BUTTON_ACTION_OT_global_select_select_parent_or_child,
-    BUTTON_ACTION_OT_global_select_select_grouped,
+    ACTION_OT_call_global_select_more_or_less_menu,
+    ACTION_OT_global_select_select_parent_or_child,
+    ACTION_OT_global_select_select_grouped,
     VIEW3D_MT_mesh_select_linked_menu,
-    BUTTON_ACTION_OT_global_select_select_linked,
-    BUTTON_ACTION_OT_global_select_select_pattern,
-    BUTTON_ACTION_OT_global_select_select_similar,
+    ACTION_OT_global_select_select_linked,
+    ACTION_OT_global_select_select_pattern,
+    ACTION_OT_global_select_select_similar,
     VIEW3D_MT_global_select_select_similar_menu,
-    BUTTON_ACTION_OT_global_select_select_ungrouped,
-    BUTTON_ACTION_OT_global_gpencil_select_select_first,
-    BUTTON_ACTION_OT_global_gpencil_select_select_last,
-    BUTTON_ACTION_OT_global_greasepencil_select_select_first,
-    BUTTON_ACTION_OT_global_greasepencil_select_select_last,
-    BUTTON_ACTION_OT_global_select_select_alternate,
+    ACTION_OT_global_select_select_ungrouped,
+    ACTION_OT_global_gpencil_select_select_first,
+    ACTION_OT_global_gpencil_select_select_last,
+    ACTION_OT_global_greasepencil_select_select_first,
+    ACTION_OT_global_greasepencil_select_select_last,
+    ACTION_OT_global_select_select_alternate,
 
     # 物体对象相对应的操作
-    BUTTON_ACTION_OT_global_transform,
-    BUTTON_ACTION_OT_global_transform_tosphere,
-    BUTTON_ACTION_OT_global_transform_shear,
-    BUTTON_ACTION_OT_global_transform_bend,
-    BUTTON_ACTION_OT_global_transform_push_pull,
-    BUTTON_ACTION_OT_global_transform_translate_texturespace_true,
-    BUTTON_ACTION_OT_global_transform_resize_texturespace_true,
-    BUTTON_ACTION_OT_global_transform_vertex_warp,
-    BUTTON_ACTION_OT_global_transform_vertex_random,
-    BUTTON_ACTION_OT_global_transform_mirror,
+    ACTION_OT_global_transform,
+    ACTION_OT_global_transform_tosphere,
+    ACTION_OT_global_transform_shear,
+    ACTION_OT_global_transform_bend,
+    ACTION_OT_global_transform_push_pull,
+    ACTION_OT_global_transform_translate_texturespace_true,
+    ACTION_OT_global_transform_resize_texturespace_true,
+    ACTION_OT_global_transform_vertex_warp,
+    ACTION_OT_global_transform_vertex_random,
+    ACTION_OT_global_transform_mirror,
 
-    BUTTON_ACTION_OT_global_duplicate_move,
-    BUTTON_ACTION_OT_global_add,
-    BUTTON_ACTION_OT_global_copy,
-    BUTTON_ACTION_OT_global_paste,
-    BUTTON_ACTION_OT_call_global_delete_menu,
+    ACTION_OT_global_duplicate_move,
+    ACTION_OT_global_add,
+    ACTION_OT_global_copy,
+    ACTION_OT_global_paste,
+    ACTION_OT_call_global_delete_menu,
     VIEW3D_MT_global_delete_menu,
-    BUTTON_ACTION_OT_global_hide_view_set,
-    BUTTON_ACTION_OT_global_hide_view_set_unselected,
-    BUTTON_ACTION_OT_global_hide_view_clear,
-    BUTTON_ACTION_OT_global_hide_show_menu,
+    ACTION_OT_global_hide_view_set,
+    ACTION_OT_global_hide_view_set_unselected,
+    ACTION_OT_global_hide_view_clear,
+    ACTION_OT_global_hide_show_menu,
     
-    BUTTON_ACTION_OT_global_snap_menu,
-    BUTTON_ACTION_OT_global_selected_to_grid,
-    BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_false,
-    BUTTON_ACTION_OT_global_snap_selected_to_cursor_offset_true,
-    BUTTON_ACTION_OT_global_snap_selected_to_active,
-    BUTTON_ACTION_OT_global_snap_cursor_to_selected,
-    BUTTON_ACTION_OT_global_snap_cursor_to_center,
-    BUTTON_ACTION_OT_global_snap_cursor_to_grid,
-    BUTTON_ACTION_OT_global_snap_cursor_to_active,
+    ACTION_OT_global_snap_menu,
+    ACTION_OT_global_selected_to_grid,
+    ACTION_OT_global_snap_selected_to_cursor_offset_false,
+    ACTION_OT_global_snap_selected_to_cursor_offset_true,
+    ACTION_OT_global_snap_selected_to_active,
+    ACTION_OT_global_snap_cursor_to_selected,
+    ACTION_OT_global_snap_cursor_to_center,
+    ACTION_OT_global_snap_cursor_to_grid,
+    ACTION_OT_global_snap_cursor_to_active,
 
-    BUTTON_ACTION_OT_global_apply,
-    BUTTON_ACTION_OT_global_object_pose_clear,
-    BUTTON_ACTION_OT_global_parent_menu,
-    BUTTON_ACTION_OT_global_set_parent_menu,
-    BUTTON_ACTION_OT_global_parent_clear_menu,
+    ACTION_OT_global_apply,
+    ACTION_OT_global_object_pose_clear,
+    ACTION_OT_global_parent_menu,
+    ACTION_OT_global_set_parent_menu,
+    ACTION_OT_global_parent_clear_menu,
 )
 
 def register():

@@ -12,12 +12,12 @@ def draw_add_to_switcher_lattice(self, context):
     if op and op.bl_rna.identifier == "LATTICE_OT_flip":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"反转(免畸变)(菜单)\"⟶Switcher", icon='PRESET').action = 'button.action_call_latticeedit_flip_menu'
+        layout.operator("call.add_to_switcher_menu", text="\"反转(免畸变)(菜单)\"⟶Switcher", icon='PRESET').action = 'action.call_latticeedit_flip_menu'
 
     elif op and op.bl_rna.identifier == "LATTICE_OT_make_regular":
         layout = self.layout
         layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"均匀分布\"⟶Switcher", icon='PLUS').action = 'button.action_latticeedit_make_regular'
+        layout.operator("call.add_to_switcher_menu", text="\"均匀分布\"⟶Switcher", icon='PLUS').action = 'action.latticeedit_make_regular'
 
 
 

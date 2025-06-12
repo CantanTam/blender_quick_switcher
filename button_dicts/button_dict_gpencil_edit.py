@@ -1,141 +1,141 @@
 button_press_gpencil_edit = {
     # "蜡笔"菜单
-        'button.action_gpenciledit_transform_shrink_fatten':(
-        "button.action_gpenciledit_transform_shrink_fatten","法向缩放","RADIOBUT_OFF",
+        'action.gpenciledit_transform_shrink_fatten':(
+        "action.gpenciledit_transform_shrink_fatten","法向缩放","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_layer_active_menu':(
-        "button.action_gpenciledit_layer_active_menu","活动层","PRESET",
+        'action.gpenciledit_layer_active_menu':(
+        "action.gpenciledit_layer_active_menu","活动层","PRESET",
     ),
-        'button.action_gpenciledit_layer_add':(
-        "button.action_gpenciledit_layer_add","新建层","ADD",
+        'action.gpenciledit_layer_add':(
+        "action.gpenciledit_layer_add","新建层","ADD",
     ),
-        'button.action_gpenciledit_animation_menu':(
-        "button.action_gpenciledit_animation_menu","动画","PRESET",
+        'action.gpenciledit_animation_menu':(
+        "action.gpenciledit_animation_menu","动画","PRESET",
     ),
-        'button.action_gpenciledit_blank_frame_add_false':(
-        "button.action_gpenciledit_blank_frame_add_false","在活动层播入空白帧","RADIOBUT_OFF",
+        'action.gpenciledit_blank_frame_add_false':(
+        "action.gpenciledit_blank_frame_add_false","在活动层播入空白帧","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_blank_frame_add_true':(
-        "button.action_gpenciledit_blank_frame_add_true","在全部层插入空白帧","RADIOBUT_OFF",
+        'action.gpenciledit_blank_frame_add_true':(
+        "action.gpenciledit_blank_frame_add_true","在全部层插入空白帧","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_frame_duplicate_active':(
-        "button.action_gpenciledit_frame_duplicate_active","复制活动层的活动帧","RADIOBUT_OFF",
+        'action.gpenciledit_frame_duplicate_active':(
+        "action.gpenciledit_frame_duplicate_active","复制活动层的活动帧","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_frame_duplicate_all':(
-        "button.action_gpenciledit_frame_duplicate_all","复制全部层的活动帧","RADIOBUT_OFF",
+        'action.gpenciledit_frame_duplicate_all':(
+        "action.gpenciledit_frame_duplicate_all","复制全部层的活动帧","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_stroke_separate_menu':(
-        "button.action_call_gpenciledit_stroke_separate_menu","分离","PRESET",
+        'action.call_gpenciledit_stroke_separate_menu':(
+        "action.call_gpenciledit_stroke_separate_menu","分离","PRESET",
     ),
-        'button.action_call_gpenciledit_stroke_split':(
-        "button.action_call_gpenciledit_stroke_split","拆分","RADIOBUT_OFF",
+        'action.call_gpenciledit_stroke_split':(
+        "action.call_gpenciledit_stroke_split","拆分","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_cleanup_menu':(
-        "button.action_gpenciledit_cleanup_menu","清理","PRESET",
+        'action.gpenciledit_cleanup_menu':(
+        "action.gpenciledit_cleanup_menu","清理","PRESET",
     ),
-        'button.action_gpenciledit_frame_clean_fill_active':(
-        "button.action_gpenciledit_frame_clean_fill_active","清理边界笔画","RADIOBUT_OFF",
+        'action.gpenciledit_frame_clean_fill_active':(
+        "action.gpenciledit_frame_clean_fill_active","清理边界笔画","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_frame_clean_fill_all':(
-        "button.action_gpenciledit_frame_clean_fill_all","清理所有帧的边界笔画","RADIOBUT_OFF",
+        'action.gpenciledit_frame_clean_fill_all':(
+        "action.gpenciledit_frame_clean_fill_all","清理所有帧的边界笔画","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_frame_clean_loose':(
-        "button.action_gpenciledit_frame_clean_loose","删除松散点","RADIOBUT_OFF",
+        'action.gpenciledit_frame_clean_loose':(
+        "action.gpenciledit_frame_clean_loose","删除松散点","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_merge_by_distance':(
-        "button.action_gpenciledit_stroke_merge_by_distance","按间距合并","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_merge_by_distance':(
+        "action.gpenciledit_stroke_merge_by_distance","按间距合并","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_frame_clean_duplicate':(
-        "button.action_gpenciledit_frame_clean_duplicate","清理重复帧","RADIOBUT_OFF",
+        'action.gpenciledit_frame_clean_duplicate':(
+        "action.gpenciledit_frame_clean_duplicate","清理重复帧","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_recalc_geometry':(
-        "button.action_gpenciledit_recalc_geometry","重新计算几何","RADIOBUT_OFF",
+        'action.gpenciledit_recalc_geometry':(
+        "action.gpenciledit_recalc_geometry","重新计算几何","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_reproject_menu':(
-        "button.action_call_gpenciledit_reproject_menu","重投影笔画","PRESET",
+        'action.call_gpenciledit_reproject_menu':(
+        "action.call_gpenciledit_reproject_menu","重投影笔画","PRESET",
     ),
     # “笔画”菜单
-        'button.action_gpenciledit_stroke_subdivide':(
-        "button.action_gpenciledit_stroke_subdivide","细分笔画","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_subdivide':(
+        "action.gpenciledit_stroke_subdivide","细分笔画","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_simplify_menu':(
-        "button.action_call_gpenciledit_simplify_menu","简化笔画","PRESET",
+        'action.call_gpenciledit_simplify_menu':(
+        "action.call_gpenciledit_simplify_menu","简化笔画","PRESET",
     ),
-        'button.action_call_gpenciledit_stroke_trim':(
-        "button.action_call_gpenciledit_stroke_trim","修剪笔画","RADIOBUT_OFF",
+        'action.call_gpenciledit_stroke_trim':(
+        "action.call_gpenciledit_stroke_trim","修剪笔画","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_outline':(
-        "button.action_gpenciledit_stroke_outline","笔画轮廓","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_outline':(
+        "action.gpenciledit_stroke_outline","笔画轮廓","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_stroke_join_menu':(
-        "button.action_call_gpenciledit_stroke_join_menu","合并","PRESET",
+        'action.call_gpenciledit_stroke_join_menu':(
+        "action.call_gpenciledit_stroke_join_menu","合并","PRESET",
     ),
-        'button.action_gpenciledit_stroke_join_join':(
-        "button.action_gpenciledit_stroke_join_join","合并笔画","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_join_join':(
+        "action.gpenciledit_stroke_join_join","合并笔画","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_join_joincopy':(
-        "button.action_gpenciledit_stroke_join_joincopy","合并&复制笔画","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_join_joincopy':(
+        "action.gpenciledit_stroke_join_joincopy","合并&复制笔画","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_move_to_layer_menu':(
-        "button.action_call_gpenciledit_move_to_layer_menu","移动到层","PRESET",
+        'action.call_gpenciledit_move_to_layer_menu':(
+        "action.call_gpenciledit_move_to_layer_menu","移动到层","PRESET",
     ),
-        'button.action_call_gpenciledit_assign_material_menu':(
-        "button.action_call_gpenciledit_assign_material_menu","指定材质","PRESET",
+        'action.call_gpenciledit_assign_material_menu':(
+        "action.call_gpenciledit_assign_material_menu","指定材质","PRESET",
     ),
-        'button.action_gpenciledit_set_active_material':(
-        "button.action_gpenciledit_set_active_material","设为活动材质","RADIOBUT_OFF",
+        'action.gpenciledit_set_active_material':(
+        "action.gpenciledit_set_active_material","设为活动材质","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_stroke_arrange_menu':(
-        "button.action_call_gpenciledit_stroke_arrange_menu","排列笔画","PRESET",
+        'action.call_gpenciledit_stroke_arrange_menu':(
+        "action.call_gpenciledit_stroke_arrange_menu","排列笔画","PRESET",
     ),
-        'button.action_gpenciledit_stroke_arrange_top':(
-        "button.action_gpenciledit_stroke_arrange_top","笔画移到最前","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_arrange_top':(
+        "action.gpenciledit_stroke_arrange_top","笔画移到最前","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_arrange_up':(
-        "button.action_gpenciledit_stroke_arrange_up","笔画前移","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_arrange_up':(
+        "action.gpenciledit_stroke_arrange_up","笔画前移","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_arrange_down':(
-        "button.action_gpenciledit_stroke_arrange_down","笔画后送","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_arrange_down':(
+        "action.gpenciledit_stroke_arrange_down","笔画后送","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_arrange_bottom':(
-        "button.action_gpenciledit_stroke_arrange_bottom","笔画移到最后","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_arrange_bottom':(
+        "action.gpenciledit_stroke_arrange_bottom","笔画移到最后","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_cyclical_set':(
-        "button.action_gpenciledit_stroke_cyclical_set","闭合笔画","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_cyclical_set':(
+        "action.gpenciledit_stroke_cyclical_set","闭合笔画","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_cyclical_set_toggle':(
-        "button.action_gpenciledit_stroke_cyclical_set_toggle","切换笔画循环","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_cyclical_set_toggle':(
+        "action.gpenciledit_stroke_cyclical_set_toggle","切换笔画循环","RADIOBUT_OFF",
     ),
-        'button.action_call_gpenciledit_stroke_caps_set_menu':(
-        "button.action_call_gpenciledit_stroke_caps_set_menu","切换封顶类型","RADIOBUT_OFF",
+        'action.call_gpenciledit_stroke_caps_set_menu':(
+        "action.call_gpenciledit_stroke_caps_set_menu","切换封顶类型","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_flip':(
-        "button.action_gpenciledit_stroke_flip","切换笔画方向","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_flip':(
+        "action.gpenciledit_stroke_flip","切换笔画方向","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_start_set':(
-        "button.action_gpenciledit_stroke_start_set","设置笔画起始点","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_start_set':(
+        "action.gpenciledit_stroke_start_set","设置笔画起始点","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_normalize_thickness':(
-        "button.action_gpenciledit_stroke_normalize_thickness","规格化宽度","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_normalize_thickness':(
+        "action.gpenciledit_stroke_normalize_thickness","规格化宽度","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_normalize_opacity':(
-        "button.action_gpenciledit_stroke_normalize_opacity","规格化不透明度","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_normalize_opacity':(
+        "action.gpenciledit_stroke_normalize_opacity","规格化不透明度","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_reset_transform_fill':(
-        "button.action_gpenciledit_reset_transform_fill","重置填充变换","RADIOBUT_OFF",
+        'action.gpenciledit_reset_transform_fill':(
+        "action.gpenciledit_reset_transform_fill","重置填充变换","RADIOBUT_OFF",
     ),
     # "点"菜单
-        'button.action_gpenciledit_extrude_move':(
-        "button.action_gpenciledit_extrude_move","挤出","EVENT_E",
+        'action.gpenciledit_extrude_move':(
+        "action.gpenciledit_extrude_move","挤出","EVENT_E",
     ),
-        'button.action_gpenciledit_stroke_smooth':(
-        "button.action_gpenciledit_stroke_smooth","光滑","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_smooth':(
+        "action.gpenciledit_stroke_smooth","光滑","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_stroke_merge':(
-        "button.action_gpenciledit_stroke_merge","合并点","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_merge':(
+        "action.gpenciledit_stroke_merge","合并点","RADIOBUT_OFF",
     ),
-        'button.action_gpenciledit_gpencil_vertex_group_menu':(
-        "button.action_gpenciledit_gpencil_vertex_group_menu","顶点组","PRESET",
+        'action.gpenciledit_gpencil_vertex_group_menu':(
+        "action.gpenciledit_gpencil_vertex_group_menu","顶点组","PRESET",
     ),
 
 
