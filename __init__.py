@@ -19,8 +19,10 @@ from .operator_mode_transfer import MODE_OT_to_object_and_select
 from .operator_mode_switch_normal_uptodown import MODE_NORMAL_UPDOWN_OT_Switch
 from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
 from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
-from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
-from .operator_mode_switch_tab import MODE_TAB_OT_Switch
+from .operator_mode_switch_tab import (
+    MODE_TAB_OT_Switch,
+    MODE_MENU_OT_Switch,
+)
 from .operator_grab_scale_rotate_switch import (
     GRAB_SCALE_ROTATE_OT_Switch,
     GRAB_SCALE_ROTATE_OT_Switch_action,

@@ -1,8 +1,26 @@
 import bpy
 
-from .operator_mode_switch_menu_downtoup import MODE_MENU_OT_Switch
 from .operator_typeandmode_name_mode import typeandmode_name # 导入字典用于比较 typeandmode 变化
 from .show_switch_notice import show_notice
+
+class MODE_MENU_OT_Switch(bpy.types.Operator):
+    bl_idname = "mode.menu_switch"
+    bl_label = "选择编辑模式菜单"
+    bl_description = "类似系统自带的切换编辑模式菜单"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        # 防止在场景无物体对象的情况下运行报错
+        if not bpy.context.active_object:
+            return {'CANCELLED'}
+
+        elif bpy.context.active_object.type in {'CURVE','SURFACE','META','FONT'}:
+            bpy.ops.object.editmode_toggle()
+            
+        else:
+            bpy.ops.wm.call_menu(name="VIEW3D_MT_object_mode_pie")
+        
+        return {'FINISHED'}
 
 # 模拟原生 tab 切换编辑模式
 class MODE_TAB_OT_Switch(bpy.types.Operator):
