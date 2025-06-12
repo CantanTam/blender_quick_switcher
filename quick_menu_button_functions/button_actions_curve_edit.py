@@ -259,6 +259,174 @@ class BUTTON_ACTION_OT_curveedit_decimate(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.curve.decimate(ratio=self.ratio)
         return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_curveedit_extrude_move(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_extrude_move"
+    bl_label = "挤出"
+    bl_description = "快捷键 E"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.extrude_move('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_curveedit_make_segment(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_make_segment"
+    bl_label = "创建线段"
+    bl_description = "快捷键 F"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        try:
+            bpy.ops.curve.make_segment()
+        except RuntimeError:
+            self.report({'ERROR'}, "无法创建线段")
+            return {'CANCELLED'}
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_transform_tilt(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_transform_tilt"
+    bl_label = "倾斜"
+    bl_description = "快捷键 Ctrl T"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.transform.tilt('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_tilt_clear"
+    bl_label = "清空倾斜量"
+    bl_description = "快捷键 Alt T"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.tilt_clear()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_tilt_clear(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_tilt_clear"
+    bl_label = "清空倾斜量"
+    bl_description = "快捷键 Alt T"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.tilt_clear()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_curveedit_handle_type_set(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_handle_type_set"
+    bl_label = "设置控制柄类型"
+    bl_description = "快捷键 V"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.handle_type_set('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_normals_make_consistent(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_normals_make_consistent"
+    bl_label = "重新计算控制柄"
+    bl_description = "快捷键 Shift N"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    calc_length: bpy.props.BoolProperty(
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="")
+        col_right.prop(self, "calc_length", text="长度")
+
+    def execute(self, context):
+        bpy.ops.curve.normals_make_consistent(calc_length=self.calc_length)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_smooth(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_smooth"
+    bl_label = "光滑"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.smooth()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_smooth_tilt(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_smooth_tilt"
+    bl_label = "平滑曲线倾斜"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.smooth_tilt()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_smooth_radius(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_smooth_radius"
+    bl_label = "平滑曲线半径"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.smooth_radius()
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_smooth_weight(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_smooth_weight"
+    bl_label = "平滑曲线权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.smooth_weight()
+        return {'FINISHED'}
+    
+class BUTTON_ACTION_OT_curveedit_subdivide(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_subdivide"
+    bl_label = "细分"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    number_cuts: bpy.props.IntProperty(
+        default=1,
+        min=1,
+        max=1000,
+        soft_max=10,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="切割次数")
+        col_right.prop(self, "number_cuts", text="")
+
+    def execute(self, context):
+        bpy.ops.curve.subdivide(number_cuts=self.number_cuts)
+        return {'FINISHED'}
+
+class BUTTON_ACTION_OT_curveedit_switch_direction(bpy.types.Operator):
+    bl_idname = "button.action_curveedit_switch_direction"
+    bl_label = "切换方向"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.curve.switch_direction()
+        return {'FINISHED'}
+
 
 
 classes = (
@@ -276,8 +444,19 @@ classes = (
     BUTTON_ACTION_OT_curveedit_curve_clean_menu,
     BUTTON_ACTION_OT_curveedit_decimate,
 
+    BUTTON_ACTION_OT_curveedit_extrude_move,
+    BUTTON_ACTION_OT_curveedit_make_segment,
+    BUTTON_ACTION_OT_curveedit_transform_tilt,
+    BUTTON_ACTION_OT_curveedit_tilt_clear,
+    BUTTON_ACTION_OT_curveedit_handle_type_set,
+    BUTTON_ACTION_OT_curveedit_normals_make_consistent,
+    BUTTON_ACTION_OT_curveedit_smooth,
+    BUTTON_ACTION_OT_curveedit_smooth_tilt,
+    BUTTON_ACTION_OT_curveedit_smooth_radius,
+    BUTTON_ACTION_OT_curveedit_smooth_weight,
 
-
+    BUTTON_ACTION_OT_curveedit_subdivide,
+    BUTTON_ACTION_OT_curveedit_switch_direction
 
 
 )
