@@ -13,6 +13,11 @@ def draw_add_to_switcher_armaturepose(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"约束目标\"⟶Switcher", icon='PLUS').action = 'action.pose_select_constraint_target'
 
+    elif op and op.bl_rna.identifier == "POSE_OT_user_transforms_clear":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"重置非关键帧\"⟶Switcher", icon='PLUS').action = 'action.pose_user_transforms_clear'
+
     elif op and op.bl_rna.identifier == "POSE_OT_push_rest":
         layout = self.layout
         layout.separator()
@@ -83,8 +88,32 @@ def draw_add_to_switcher_armaturepose(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"清除姿态约束\"⟶Switcher", icon='PLUS').action = 'action.pose_constraints_clear'
 
+    elif op and op.bl_rna.identifier == "POSE_OT_autoside_names":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"左/右自动命名\"⟶Switcher", icon='PLUS').action = 'action.pose_autoside_names_x'
+        layout.operator("call.add_to_switcher_menu", text="\"前/后自动命名\"⟶Switcher", icon='PLUS').action = 'action.pose_autoside_names_y'
+        layout.operator("call.add_to_switcher_menu", text="\"上/下自动命名\"⟶Switcher", icon='PLUS').action = 'action.pose_autoside_names_z'
 
+    elif op and op.bl_rna.identifier == "POSE_OT_flip_names":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"翻转名称\"⟶Switcher", icon='PLUS').action = 'action.pose_flip_names'
 
+    elif op and op.bl_rna.identifier == "POSE_OT_quaternions_flip":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"翻转四元数值\"⟶Switcher", icon='PLUS').action = 'action.pose_quaternions_flip'
+
+    elif op and op.bl_rna.identifier == "POSE_OT_bone_layers":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"更改骨骼层\"⟶Switcher", icon='PLUS').action = 'action.pose_bone_layers'
+    # 4.2版本有效
+    elif op and op.bl_rna.identifier == "POSE_OT_convert_rotation":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"转换旋转模式\"⟶Switcher", icon='PLUS').action = 'action.pose_convert_rotation'
 
 
 def armaturepose_select_moreless_menu_to_switcher(self, context):
@@ -136,7 +165,12 @@ def armaturepose_constraints_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"约束(菜单)\"⟶Switcher", icon='PRESET').action = 'action.pose_constraints_menu'
 
-
+def armaturepose_names_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"名称(菜单)\"⟶Switcher", icon='PRESET').action = 'action.pose_names_menu'
 
 
 
@@ -155,12 +189,14 @@ def register():
     bpy.types.VIEW3D_MT_pose_motion.append(armaturepose_motion_menu_to_switcher)
     bpy.types.VIEW3D_MT_pose_ik.append(armaturepose_pose_ik_menu_to_switcher)
     bpy.types.VIEW3D_MT_pose_constraints.append(armaturepose_constraints_menu_to_switcher)
+    bpy.types.VIEW3D_MT_pose_names.append(armaturepose_names_menu_to_switcher)
     if bpy.app.version <= (4, 2, 0):
         bpy.types.VIEW3D_MT_pose_group.append(armaturepose_group_menu_to_switcher)
 
 def unregister():
     if bpy.app.version <= (4, 2, 0):
         bpy.types.VIEW3D_MT_pose_group.remove(armaturepose_group_menu_to_switcher)
+    bpy.types.VIEW3D_MT_pose_names.remove(armaturepose_names_menu_to_switcher)
     bpy.types.VIEW3D_MT_pose_constraints.remove(armaturepose_constraints_menu_to_switcher)
     bpy.types.VIEW3D_MT_pose_ik.remove(armaturepose_pose_ik_menu_to_switcher)
     bpy.types.VIEW3D_MT_pose_motion.remove(armaturepose_motion_menu_to_switcher)

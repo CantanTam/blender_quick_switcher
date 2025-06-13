@@ -1471,12 +1471,6 @@ class ACTION_OT_global_transform_tosphere(bpy.types.Operator):
             "LATTICEEDIT"}:
             bpy.ops.transform.tosphere('INVOKE_DEFAULT')
 
-        elif typeandmode == "MESHSCULPT":
-            current_mode_idname = bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname
-            bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = "builtin.mesh_filter"
-            bpy.ops.sculpt.mesh_filter('INVOKE_DEFAULT', type='SPHERE')
-            bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = current_mode_idname
-
         return {'FINISHED'}
 
 # “变换”菜单——切变

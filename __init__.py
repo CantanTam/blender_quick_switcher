@@ -133,6 +133,11 @@ from .quick_menu_button_functions.button_actions_mesh_edit import (
     unregister as unregister_button_actions_mesh_edit,
 )
 
+from .quick_menu_button_functions.button_actions_mesh_sculpt import (
+    register as register_button_actions_mesh_sculpt,
+    unregister as unregister_button_actions_mesh_sculpt,
+)
+
 from .quick_menu_button_functions.button_actions_mesh_vertex import (
     register as register_button_actions_mesh_vertex,
     unregister as unregister_button_actions_mesh_vertex,
@@ -206,6 +211,11 @@ from .right_click_to_switcher.right_click_add_object import (
 from .right_click_to_switcher.right_click_add_mesh_edit import (
     register as register_right_click_add_mesh_edit,
     unregister as unregister_right_click_add_mesh_edit,
+)
+
+from .right_click_to_switcher.right_click_add_mesh_sculpt import (
+    register as register_right_click_add_mesh_sculpt,
+    unregister as unregister_right_click_add_mesh_sculpt,
 )
 
 from .right_click_to_switcher.right_click_add_mesh_vertex import (
@@ -290,6 +300,8 @@ def register():
 
     # 注册“网格编辑”模式
     register_right_click_add_mesh_edit()
+
+    register_right_click_add_mesh_sculpt()
 
     register_right_click_add_mesh_vertex()
 
@@ -414,6 +426,8 @@ def register():
     # 物体模式
     register_button_actions_mesh_edit()
 
+    register_button_actions_mesh_sculpt()
+
     register_button_actions_mesh_vertex()
 
     register_button_actions_mesh_weight()
@@ -469,7 +483,9 @@ def unregister():
     unregister_right_click_add_mesh_weight()
 
     unregister_right_click_add_mesh_vertex()
-    # 注销 “网格编辑”模式
+    
+    unregister_right_click_add_mesh_sculpt()
+    
     unregister_right_click_add_mesh_edit()
 
     unregister_right_click_add_curve_edit()
@@ -511,7 +527,8 @@ def unregister():
 
     unregister_button_actions_mesh_vertex()
 
-    #网格编辑模式
+    unregister_button_actions_mesh_sculpt()
+
     unregister_button_actions_mesh_edit()
 
     # 物体模式—“物体”菜单

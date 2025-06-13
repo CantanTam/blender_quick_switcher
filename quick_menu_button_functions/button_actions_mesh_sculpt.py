@@ -1,28 +1,17 @@
 import bpy
 
-# 以下是“物体”模式当中“物体”菜单特有的一些选项
-
-# 变换——缩放纹理空间
-class ACTION_OT_object_object_transform_transform_mode_align(bpy.types.Operator):
-    bl_idname = "action.object_object_transform_transform_mode_align"
-    bl_label = "缩放纹理空间"
+class ACTION_OT_meshsculpt_mesh_filter_sphere(bpy.types.Operator):
+    bl_idname = "action.meshsculpt_mesh_filter_sphere"
+    bl_label = "球形化"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.transform.transform('INVOKE_DEFAULT', mode='ALIGN')
+        current_mode_idname = bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname
+        bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = "builtin.mesh_filter"
+        bpy.ops.sculpt.mesh_filter('INVOKE_DEFAULT', type='SPHERE')
+        bpy.context.workspace.tools.from_space_view3d_mode(mode='SCULPT', create=True).idname = current_mode_idname
         return {'FINISHED'}
-    
-# 物体模式“关联复制 Alt D”按钮功能
-class ACTION_OT_object_object_duplicate_move_linked(bpy.types.Operator):
-    bl_idname = "action.object_object_duplicate_move_linked"
-    bl_label = "关联复制"
-    bl_description = "快捷键 Alt D"
-    bl_options = {'REGISTER', 'UNDO'}
 
-    def execute(self, context):
-        bpy.ops.object.duplicate_move_linked('INVOKE_DEFAULT')
-        return {'FINISHED'}
-    
 
 
 
@@ -30,8 +19,7 @@ class ACTION_OT_object_object_duplicate_move_linked(bpy.types.Operator):
 
 
 classes = (
-    ACTION_OT_object_object_transform_transform_mode_align,
-    ACTION_OT_object_object_duplicate_move_linked,
+    ACTION_OT_meshsculpt_mesh_filter_sphere,
 
 )
 

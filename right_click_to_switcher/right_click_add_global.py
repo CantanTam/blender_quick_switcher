@@ -396,8 +396,6 @@ def global_transform_menu_to_switcher(self, context):
         return
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"变换(菜单)\"⟶Switcher", icon='PRESET').action = 'action.global_transform'
-    if bpy.context.mode == "SCULPT" and bpy.app.version >= (4, 3, 0):
-        self.layout.operator("call.add_to_switcher_menu", text="\"球形化\"⟶Switcher", icon='SPHERE').action = 'action.global_transform_tosphere'
     if context.mode == "EDIT_GPENCIL":
         self.layout.operator("call.add_to_switcher_menu", text="\"法向缩放\"⟶Switcher", icon='PLUS').action = 'action.gpenciledit_transform_shrink_fatten'
 

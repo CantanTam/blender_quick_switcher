@@ -11,6 +11,33 @@ class ACTION_OT_pose_select_constraint_target(bpy.types.Operator):
         return {'FINISHED'}
 
 # “姿态”菜单
+class ACTION_OT_pose_user_transforms_clear(bpy.types.Operator):
+    bl_idname = "action.pose_user_transforms_clear"
+    bl_label = "清空姿态变换"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    only_selected: bpy.props.BoolProperty(
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="")
+        col_right.prop(self, "only_selected", text="仅选中")
+
+    def execute(self, context):
+        bpy.ops.pose.user_transforms_clear(only_selected=self.only_selected)
+        return {'FINISHED'}
+    
 class ACTION_OT_pose_pose_slide_menu(bpy.types.Operator):
     bl_idname = "action.pose_pose_slide_menu"
     bl_label = "间帧调整"
@@ -279,13 +306,169 @@ class ACTION_OT_pose_constraints_clear(bpy.types.Operator):
         bpy.ops.pose.constraints_clear()
         return {'FINISHED'}
 
+class ACTION_OT_pose_names_menu(bpy.types.Operator):
+    bl_idname = "action.pose_names_menu"
+    bl_label = "名称"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_pose_names")
+        return {'FINISHED'}
 
+class ACTION_OT_pose_autoside_names_x(bpy.types.Operator):
+    bl_idname = "action.pose_autoside_names_x"
+    bl_label = "根据轴向自动命名"
+    bl_options = {'REGISTER', 'UNDO'}
 
+    axis: bpy.props.EnumProperty(
+        items=[
+            ('XAXIS', 'X 轴', ''),
+            ('YAXIS', 'Y 轴', ''),
+            ('ZAXIS', 'Z 轴', ''),
+        ],
+        default='XAXIS'
+    )
 
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="轴向")
+        col_right.prop(self, "axis", text="abc", expand=True)
+
+    def execute(self, context):
+        bpy.ops.pose.autoside_names(axis=self.axis)
+        return {'FINISHED'}
+
+class ACTION_OT_pose_autoside_names_y(bpy.types.Operator):
+    bl_idname = "action.pose_autoside_names_y"
+    bl_label = "根据轴向自动命名"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    axis: bpy.props.EnumProperty(
+        items=[
+            ('XAXIS', 'X 轴', ''),
+            ('YAXIS', 'Y 轴', ''),
+            ('ZAXIS', 'Z 轴', ''),
+        ],
+        default='YAXIS'
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="轴向")
+        col_right.prop(self, "axis", text="abc", expand=True)
+
+    def execute(self, context):
+        bpy.ops.pose.autoside_names(axis=self.axis)
+        return {'FINISHED'}
+
+class ACTION_OT_pose_autoside_names_z(bpy.types.Operator):
+    bl_idname = "action.pose_autoside_names_z"
+    bl_label = "根据轴向自动命名"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    axis: bpy.props.EnumProperty(
+        items=[
+            ('XAXIS', 'X 轴', ''),
+            ('YAXIS', 'Y 轴', ''),
+            ('ZAXIS', 'Z 轴', ''),
+        ],
+        default='ZAXIS'
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="轴向")
+        col_right.prop(self, "axis", text="abc", expand=True)
+
+    def execute(self, context):
+        bpy.ops.pose.autoside_names(axis=self.axis)
+        return {'FINISHED'}
+
+class ACTION_OT_pose_flip_names(bpy.types.Operator):
+    bl_idname = "action.pose_flip_names"
+    bl_label = "翻转名称"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    do_strip_numbers: bpy.props.BoolProperty(
+        default=False,
+    )
+
+    def invoke(self, context, event):
+        return self.execute(context)
+
+    def draw(self, context):
+        layout = self.layout
+        split = layout.row().split(factor=0.4)
+        
+        col_left = split.column()
+        col_left.alignment = 'RIGHT'
+        col_right = split.column()
+
+        col_left.label(text="")
+        col_right.prop(self, "do_strip_numbers", text="去掉数字编号")
+
+    def execute(self, context):
+        bpy.ops.pose.flip_names(do_strip_numbers=self.do_strip_numbers)
+        return {'FINISHED'}
+
+class ACTION_OT_pose_quaternions_flip(bpy.types.Operator):
+    bl_idname = "action.pose_quaternions_flip"
+    bl_label = "翻转四元数值"
+    bl_description = "快捷键 Alt F"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.pose.quaternions_flip()
+        return {'FINISHED'}
+
+class ACTION_OT_pose_bone_layers(bpy.types.Operator):
+    bl_idname = "action.pose_bone_layers"
+    bl_label = "更改骨骼层"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.pose.bone_layers('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
+class ACTION_OT_pose_convert_rotation(bpy.types.Operator):
+    bl_idname = "action.pose_convert_rotation"
+    bl_label = "转换旋转模式"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.pose.convert_rotation('INVOKE_DEFAULT')
+        return {'FINISHED'}
 
 classes = (
     ACTION_OT_pose_select_constraint_target,
+    ACTION_OT_pose_user_transforms_clear,
     ACTION_OT_pose_pose_slide_menu,
     ACTION_OT_pose_push_rest,
     ACTION_OT_pose_relax_rest,
@@ -306,6 +489,14 @@ classes = (
     ACTION_OT_pose_constraint_add_with_targets,
     ACTION_OT_pose_constraints_copy,
     ACTION_OT_pose_constraints_clear,
+    ACTION_OT_pose_names_menu,
+    ACTION_OT_pose_autoside_names_x,
+    ACTION_OT_pose_autoside_names_y,
+    ACTION_OT_pose_autoside_names_z,
+    ACTION_OT_pose_flip_names,
+    ACTION_OT_pose_quaternions_flip,
+    ACTION_OT_pose_bone_layers,
+    ACTION_OT_pose_convert_rotation,
 
 
 )

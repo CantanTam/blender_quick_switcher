@@ -25,20 +25,11 @@ def draw_add_to_switcher_meshweight(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"镜像\"⟶Switcher", icon='MOD_MIRROR').action = 'action.meshweight_object_vertex_group_mirror'
 
 
-def curveedit_transform_mode_curve_shrinkfatten_to_switcher(self, context):
-    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
-    if not show_switcher:
-        return
-    self.layout.separator()
-    self.layout.operator("call.add_to_switcher_menu", text="\"半径\"⟶Switcher", icon='PLUS').action = 'action.transform_transform_mode_curve_shrinkfatten'
-
 
 
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_meshweight)
-    bpy.types.VIEW3D_MT_transform.append(curveedit_transform_mode_curve_shrinkfatten_to_switcher)
-\
+
 def unregister():
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_meshweight)
-    bpy.types.VIEW3D_MT_transform.remove(curveedit_transform_mode_curve_shrinkfatten_to_switcher)
