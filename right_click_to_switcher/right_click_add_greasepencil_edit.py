@@ -26,6 +26,11 @@ def draw_add_to_switcher_greasepenciledit(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"复制活动层的活动关键帧\"⟶Switcher", icon='PLUS').action = 'action.greasepenciledit_frame_duplicate_false'
         layout.operator("call.add_to_switcher_menu", text="\"复制所有层的活动关键帧\"⟶Switcher", icon='PLUS').action = 'action.greasepenciledit_frame_duplicate_true'
 
+    elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_interpolate_sequence":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"插值顺序\"⟶Switcher", icon='PLUS').action = 'action.greasepenciledit_interpolate_sequence_modal'
+
     elif op and op.bl_rna.identifier == "GREASE_PENCIL_OT_separate":
         layout = self.layout
         layout.separator()
@@ -158,6 +163,13 @@ def greasepenciledit_animation_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"动画(菜单)\"⟶Switcher", icon='PRESET').action = 'action.greasepenciledit_animation_menu'
 
+def greasepenciledit_weight_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"权重(菜单)\"⟶Switcher", icon='PRESET').action = 'action.greasepenciledit_weight_greasepencil'
+
 def greasepenciledit_cleanup_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
@@ -186,6 +198,13 @@ def greasepenciledit_assign_material_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"指定材质(菜单)\"⟶Switcher", icon='PRESET').action = 'action.greasepenciledit_assign_material_menu'
 
+def greasepenciledit_scale_thickness_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"缩放厚度\"⟶Switcher", icon='PLUS').action = 'action.greasepenciledit_scale_thickness'
+
 
 
 
@@ -194,17 +213,21 @@ def register():
     if bpy.app.version >= (4, 3, 0):
         bpy.types.GREASE_PENCIL_MT_layer_active.append(greasepenciledit_layer_add_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_animation.append(greasepenciledit_animation_menu_to_switcher)
+        bpy.types.VIEW3D_MT_weight_grease_pencil.append(greasepenciledit_weight_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_cleanup.append(greasepenciledit_cleanup_menu_to_switcher)
         bpy.types.VIEW3D_MT_greasepencil_vertex_group.append(greasepenciledit_vertex_group_menu_to_switcher)
         bpy.types.GREASE_PENCIL_MT_move_to_layer.append(greasepenciledit_move_to_layer_menu_to_switcher)
         bpy.types.VIEW3D_MT_grease_pencil_assign_material.append(greasepenciledit_assign_material_menu_to_switcher)
+        bpy.types.VIEW3D_MT_edit_greasepencil_stroke.append(greasepenciledit_scale_thickness_to_switcher)
 
 def unregister():
     if bpy.app.version >= (4, 3, 0):
+        bpy.types.VIEW3D_MT_edit_greasepencil_stroke.remove(greasepenciledit_scale_thickness_to_switcher)
         bpy.types.VIEW3D_MT_grease_pencil_assign_material.remove(greasepenciledit_assign_material_menu_to_switcher)
         bpy.types.GREASE_PENCIL_MT_move_to_layer.remove(greasepenciledit_move_to_layer_menu_to_switcher)
         bpy.types.VIEW3D_MT_greasepencil_vertex_group.remove(greasepenciledit_vertex_group_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_cleanup.remove(greasepenciledit_cleanup_menu_to_switcher)
+        bpy.types.VIEW3D_MT_weight_grease_pencil.remove(greasepenciledit_weight_menu_to_switcher)
         bpy.types.VIEW3D_MT_edit_greasepencil_animation.remove(greasepenciledit_animation_menu_to_switcher)
         bpy.types.GREASE_PENCIL_MT_layer_active.remove(greasepenciledit_layer_add_menu_to_switcher)
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_greasepenciledit)

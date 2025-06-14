@@ -40,7 +40,9 @@ button_press_mesh_sculpt = {
         'action.meshsculpt_project_line_gesture':(
         "action.meshsculpt_project_line_gesture","划线投影","RADIOBUT_OFF",
     ),
-
+        'action.meshsculpt_face_set_edit_position_modal':(
+        "action.meshsculpt_face_set_edit_position_modal","平顺位置","RADIOBUT_OFF",
+    ),
 
 
 

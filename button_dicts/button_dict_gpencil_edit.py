@@ -24,11 +24,17 @@ button_press_gpencil_edit = {
         'action.gpenciledit_frame_duplicate_all':(
         "action.gpenciledit_frame_duplicate_all","复制全部层的活动帧","RADIOBUT_OFF",
     ),
+        'action.gpenciledit_interpolate_sequence_modal':(
+        "action.gpenciledit_interpolate_sequence_modal","插值顺序","RADIOBUT_OFF",
+    ),    
         'action.call_gpenciledit_stroke_separate_menu':(
         "action.call_gpenciledit_stroke_separate_menu","分离","PRESET",
     ),
         'action.call_gpenciledit_stroke_split':(
         "action.call_gpenciledit_stroke_split","拆分","RADIOBUT_OFF",
+    ),
+        'action.gpenciledit_weight_gpencil':(
+        "action.gpenciledit_weight_gpencil","权重","PRESET",
     ),
         'action.gpenciledit_cleanup_menu':(
         "action.gpenciledit_cleanup_menu","清理","PRESET",
@@ -121,8 +127,11 @@ button_press_gpencil_edit = {
         'action.gpenciledit_stroke_normalize_opacity':(
         "action.gpenciledit_stroke_normalize_opacity","规格化不透明度","RADIOBUT_OFF",
     ),
-        'action.gpenciledit_reset_transform_fill':(
-        "action.gpenciledit_reset_transform_fill","重置填充变换","RADIOBUT_OFF",
+        'action.gpenciledit_stroke_normalize_opacity':(
+        "action.gpenciledit_stroke_normalize_opacity","规格化不透明度","RADIOBUT_OFF",
+    ),
+        'action.gpenciledit_scale_thickness':(
+        "action.gpenciledit_scale_thickness","缩放厚度","RADIOBUT_OFF",
     ),
     # "点"菜单
         'action.gpenciledit_extrude_move':(

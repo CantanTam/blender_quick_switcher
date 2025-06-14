@@ -95,6 +95,9 @@ button_press_global = {
         'action.global_select_all':(
         "action.global_select_all","全选","EVENT_A",
     ),
+        'action.global_select_none':(
+        "action.global_select_none","不选","RADIOBUT_OFF",
+    ),
         'action.global_select_invert':(
         "action.global_select_invert","反选","RADIOBUT_OFF",
     ),

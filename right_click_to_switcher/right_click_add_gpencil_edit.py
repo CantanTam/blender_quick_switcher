@@ -26,6 +26,11 @@ def draw_add_to_switcher_gpenciledit(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"复制活动层的活动帧\"⟶Switcher", icon='PLUS').action = 'action.gpenciledit_frame_duplicate_active'
         layout.operator("call.add_to_switcher_menu", text="\"复制全部层的活动帧\"⟶Switcher", icon='PLUS').action = 'action.gpenciledit_frame_duplicate_all'
 
+    elif op and op.bl_rna.identifier == "GPENCIL_OT_interpolate_sequence":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"插值顺序\"⟶Switcher", icon='PLUS').action = 'action.gpenciledit_interpolate_sequence_modal'
+
     elif op and op.bl_rna.identifier == "GPENCIL_OT_stroke_separate":
         layout = self.layout
         layout.separator()
@@ -175,6 +180,13 @@ def gpenciledit_animation_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"动画(菜单)\"⟶Switcher", icon='PRESET').action = 'action.gpenciledit_animation_menu'
 
+def gpenciledit_weight_menu_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher or not bpy.context.mode == 'EDIT_GPENCIL':
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"权重(菜单)\"⟶Switcher", icon='PRESET').action = 'action.gpenciledit_weight_gpencil'
+
 def gpenciledit_cleanup_menu_to_switcher(self, context):
     show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
     if not show_switcher:
@@ -210,25 +222,35 @@ def gpenciledit_vertex_group_menu_to_switcher(self, context):
     self.layout.separator()
     self.layout.operator("call.add_to_switcher_menu", text="\"顶点组(菜单)\"⟶Switcher", icon='PRESET').action = 'action.gpenciledit_gpencil_vertex_group_menu'
 
+def gpenciledit_scale_thickness_to_switcher(self, context):
+    show_switcher = bpy.context.preferences.addons[ADDON_NAME].preferences.to_show_to_switcher
+    if not show_switcher:
+        return
+    self.layout.separator()
+    self.layout.operator("call.add_to_switcher_menu", text="\"缩放厚度\"⟶Switcher", icon='PLUS').action = 'action.gpenciledit_scale_thickness'
 
 def register():
     bpy.types.UI_MT_button_context_menu.append(draw_add_to_switcher_gpenciledit)
     if bpy.app.version <= (4, 2, 0):
         bpy.types.GPENCIL_MT_layer_active.append(gpenciledit_layer_add_menu_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_animation.append(gpenciledit_animation_menu_to_switcher)
+        bpy.types.VIEW3D_MT_weight_gpencil.append(gpenciledit_weight_menu_to_switcher)
         bpy.types.GPENCIL_MT_cleanup.append(gpenciledit_cleanup_menu_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_simplify.append(gpenciledit_simplify_menu_to_switcher)
         bpy.types.GPENCIL_MT_move_to_layer.append(gpenciledit_move_to_layer_menu_to_switcher)
         bpy.types.VIEW3D_MT_assign_material.append(gpenciledit_assign_material_menu_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_vertex_group.append(gpenciledit_vertex_group_menu_to_switcher)
+        bpy.types.VIEW3D_MT_edit_gpencil_stroke.append(gpenciledit_scale_thickness_to_switcher)
 
 def unregister():
     if bpy.app.version <= (4, 2, 0):
+        bpy.types.VIEW3D_MT_edit_gpencil_stroke.remove(gpenciledit_scale_thickness_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_vertex_group.remove(gpenciledit_vertex_group_menu_to_switcher)
         bpy.types.VIEW3D_MT_assign_material.remove(gpenciledit_assign_material_menu_to_switcher)
         bpy.types.GPENCIL_MT_move_to_layer.remove(gpenciledit_move_to_layer_menu_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_simplify.remove(gpenciledit_simplify_menu_to_switcher)
         bpy.types.GPENCIL_MT_cleanup.remove(gpenciledit_cleanup_menu_to_switcher)
+        bpy.types.VIEW3D_MT_weight_gpencil.remove(gpenciledit_weight_menu_to_switcher)
         bpy.types.VIEW3D_MT_gpencil_animation.remove(gpenciledit_animation_menu_to_switcher)
         bpy.types.GPENCIL_MT_layer_active.remove(gpenciledit_layer_add_menu_to_switcher)
     bpy.types.UI_MT_button_context_menu.remove(draw_add_to_switcher_gpenciledit)

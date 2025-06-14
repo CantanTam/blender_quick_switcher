@@ -455,7 +455,10 @@ class ACTION_OT_global_select_all(bpy.types.Operator):
         elif typeandmode == "MESHEDIT":
             bpy.ops.mesh.select_all(action='SELECT')    
         elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
-            bpy.ops.paint.face_select_all(action='SELECT')
+            if bpy.context.active_object.data.use_paint_mask:
+                bpy.ops.paint.face_select_all(action='SELECT')
+            elif bpy.context.active_object.data.use_paint_mask_vertex:
+                bpy.ops.paint.vert_select_all(action='SELECT')
         elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
             bpy.ops.curve.select_all(action='SELECT')
         elif typeandmode == "METAEDIT":
@@ -472,6 +475,51 @@ class ACTION_OT_global_select_all(bpy.types.Operator):
             bpy.ops.armature.select_all(action='SELECT')
         elif typeandmode == "ARMATUREPOSE":
             bpy.ops.pose.select_all(action='SELECT')
+        else:
+            return {'CANCELLED'}
+        return {'FINISHED'}
+    
+class ACTION_OT_global_select_none(bpy.types.Operator):
+    bl_idname = "action.global_select_none"
+    bl_label = "不选"
+    bl_description = "快捷键 Alt A"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    @classmethod
+    def poll(cls, context):
+        if context.mode in {"SCULPT_GPENCIL","SCULPT_GREASE_PENCIL"} and (
+            not context.scene.tool_settings.use_gpencil_select_mask_point and
+            not context.scene.tool_settings.use_gpencil_select_mask_stroke and
+            not context.scene.tool_settings.use_gpencil_select_mask_segment):
+            return False
+        return True
+
+    def execute(self, context):
+        typeandmode = context.active_object.type+context.active_object.mode
+
+        if context.mode == "OBJECT":
+            bpy.ops.object.select_all(action='DESELECT')
+        elif typeandmode == "MESHEDIT":
+            bpy.ops.mesh.select_all(action='DESELECT')    
+        elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
+            if bpy.context.active_object.data.use_paint_mask:
+                bpy.ops.paint.face_select_all(action='DESELECT')
+            elif bpy.context.active_object.data.use_paint_mask_vertex:
+                bpy.ops.paint.vert_select_all(action='DESELECT')
+        elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
+            bpy.ops.curve.select_all(action='DESELECT')
+        elif typeandmode == "METAEDIT":
+            bpy.ops.mball.select_all(action='DESELECT')
+        elif typeandmode == "LATTICEEDIT":
+            bpy.ops.lattice.select_all(action='DESELECT')
+        elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL","GPENCILSCULPT_GPENCIL"}:
+            bpy.ops.gpencil.select_all(action='DESELECT') # 4.2 版本
+        elif typeandmode in { "GREASEPENCILEDIT","GREASEPENCILVERTEX_GREASE_PENCIL","GREASEPENCILSCULPT_GREASE_PENCIL"}:
+            bpy.ops.grease_pencil.select_all(action='DESELECT') # 4.3 版本
+        elif typeandmode == "ARMATUREEDIT":
+            bpy.ops.armature.select_all(action='DESELECT')
+        elif typeandmode == "ARMATUREPOSE":
+            bpy.ops.pose.select_all(action='DESELECT')
         else:
             return {'CANCELLED'}
         return {'FINISHED'}
@@ -500,7 +548,10 @@ class ACTION_OT_global_select_invert(bpy.types.Operator):
         elif typeandmode == "MESHEDIT":
             bpy.ops.mesh.select_all(action='INVERT')    
         elif typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT","MESHTEXTURE_PAINT"}:
-            bpy.ops.paint.face_select_all(action='INVERT')
+            if bpy.context.active_object.data.use_paint_mask:
+                bpy.ops.paint.face_select_all(action='INVERT')
+            elif bpy.context.active_object.data.use_paint_mask_vertex:
+                bpy.ops.paint.vert_select_all(action='INVERT')
         elif typeandmode in {"CURVEEDIT", "SURFACEEDIT"}:
             bpy.ops.curve.select_all(action='INVERT')
         elif typeandmode == "METAEDIT":
@@ -1113,28 +1164,18 @@ class ACTION_OT_global_select_select_ungrouped(bpy.types.Operator):
         typeandmode = context.active_object.type+context.active_object.mode
 
         if typeandmode in {"MESHVERTEX_PAINT","MESHWEIGHT_PAINT"} and context.active_object.data.use_paint_mask_vertex:
-            if not context.active_object.vertex_groups:
-                self.report({'ERROR'}, "物体未包含权重/顶点组")
+            try:
+                bpy.ops.paint.vert_select_ungrouped(extend=self.extend)
+            except RuntimeError:
+                self.report({'ERROR'}, "无法选择未归组顶点")
                 return {'CANCELLED'}
-
-            if not any(v.groups for v in context.active_object.data.vertices):
-                self.report({'ERROR'}, "物体未包含权重/顶点组")
-                return {'CANCELLED'}
-            bpy.ops.paint.vert_select_ungrouped(extend=self.extend)
 
         elif typeandmode == "LATTICEEDIT":
-            if not context.active_object.vertex_groups:
-                self.report({'ERROR'}, "该 Lattice 没有顶点组")
+            try:
+                bpy.ops.lattice.select_ungrouped(extend=self.extend)
+            except RuntimeError:
+                self.report({'ERROR'}, "无法选择未归组顶点")
                 return {'CANCELLED'}
-            if not self.lattice_has_grouped_points(context.active_object):
-                self.report({'ERROR'}, "该 Lattice 没有归组的点")
-                return {'CANCELLED'}
-
-            bpy.ops.lattice.select_ungrouped(extend=self.extend)
-
-        else:
-            self.report({'ERROR'}, "不支持的物体类型或模式")
-            return {'CANCELLED'}
         
         return {'FINISHED'}
 
@@ -2386,6 +2427,7 @@ classes = (
 
     #“选择”菜单
     ACTION_OT_global_select_all,
+    ACTION_OT_global_select_none,
     ACTION_OT_global_select_invert,
     ACTION_OT_global_select_circle,
     ACTION_OT_global_select_select_mirror,

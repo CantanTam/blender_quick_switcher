@@ -158,6 +158,34 @@ class ACTION_OT_greasepenciledit_frame_duplicate_true(bpy.types.Operator):
         bpy.ops.grease_pencil.frame_duplicate(all=self.all)
         return {'FINISHED'}
 
+class ACTION_OT_greasepenciledit_interpolate_sequence(bpy.types.Menu):
+    bl_idname = "action.greasepenciledit_interpolate_sequence"
+    bl_label = "插值顺序"
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("grease_pencil.interpolate_sequence", text="插值顺序", icon="RADIOBUT_OFF")
+
+class ACTION_OT_greasepenciledit_interpolate_sequence_modal(bpy.types.Operator):
+    bl_idname = "action.greasepenciledit_interpolate_sequence_modal"
+    bl_label = "插值顺序"
+    bl_description = "快捷键 Ctrl Shift E"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="action.greasepenciledit_interpolate_sequence")
+        return {'FINISHED'}
+    
+class ACTION_OT_greasepenciledit_weight_greasepencil(bpy.types.Operator):
+    bl_idname = "action.greasepenciledit_weight_greasepencil"
+    bl_label = "权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_weight_grease_pencil")
+        return {'FINISHED'}
+
 class VIEW3D_MT_greasepenciledit_separate_menu(bpy.types.Menu):
     bl_label = "分离笔画"
     bl_idname = "popup.greasepenciledit_separate_menu"
@@ -961,6 +989,43 @@ class ACTION_OT_greasepenciledit_set_uniform_opacity(bpy.types.Operator):
         bpy.ops.grease_pencil.set_uniform_opacity(opacity=self.opacity)
         return {'FINISHED'}
 
+class ACTION_OT_greasepenciledit_scale_thickness_switch(bpy.types.Operator):
+    bl_idname = "action.greasepenciledit_scale_thickness_switch"
+    bl_label = "开/关缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        context.scene.tool_settings.gpencil_sculpt.use_scale_thickness = not context.scene.tool_settings.gpencil_sculpt.use_scale_thickness
+        return {'FINISHED'}
+
+class ACTION_OT_greasepenciledit_scale_thickness_menu(bpy.types.Operator):
+    bl_idname = "action.greasepenciledit_scale_thickness_menu"
+    bl_label = "缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator(
+            "action.greasepenciledit_scale_thickness_switch", 
+            text="缩放厚度", 
+            icon="CHECKBOX_HLT" if context.scene.tool_settings.gpencil_sculpt.use_scale_thickness else "CHECKBOX_DEHLT"
+            )
+
+class ACTION_OT_greasepenciledit_scale_thickness(bpy.types.Operator):
+    bl_idname = "action.greasepenciledit_scale_thickness"
+    bl_label = "缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.action.greasepenciledit_scale_thickness_menu('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
 class ACTION_OT_greasepenciledit_set_curve_type(bpy.types.Operator):
     bl_idname = "action.greasepenciledit_set_curve_type"
     bl_label = "设置曲线类型"
@@ -1019,6 +1084,9 @@ classes = (
     ACTION_OT_greasepenciledit_insert_blank_frame_true,
     ACTION_OT_greasepenciledit_frame_duplicate_false,
     ACTION_OT_greasepenciledit_frame_duplicate_true,
+    ACTION_OT_greasepenciledit_interpolate_sequence,
+    ACTION_OT_greasepenciledit_interpolate_sequence_modal,
+    ACTION_OT_greasepenciledit_weight_greasepencil,
     VIEW3D_MT_greasepenciledit_separate_menu,
     ACTION_OT_call_greasepenciledit_separate_menu,
     ACTION_OT_greasepenciledit_cleanup_menu,
@@ -1053,6 +1121,9 @@ classes = (
     ACTION_OT_greasepenciledit_stroke_switch_direction,
     ACTION_OT_greasepenciledit_set_uniform_thickness,
     ACTION_OT_greasepenciledit_set_uniform_opacity,
+    ACTION_OT_greasepenciledit_scale_thickness_switch,
+    ACTION_OT_greasepenciledit_scale_thickness_menu,
+    ACTION_OT_greasepenciledit_scale_thickness,
     ACTION_OT_greasepenciledit_set_curve_type,
     ACTION_OT_greasepenciledit_set_curve_resolution,
     ACTION_OT_greasepenciledit_reset_uvs,

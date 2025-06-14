@@ -1,4 +1,5 @@
 import bpy
+from ..show_switch_notice import show_notice
 
 class ACTION_OT_meshvertex_vertex_color_set(bpy.types.Operator):
     bl_idname = "action.meshvertex_vertex_color_set"
@@ -261,6 +262,24 @@ class ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Operator):
         bpy.ops.paint.vertex_color_brightness_contrast(brightness=self.brightness, contrast=self.contrast)
         return {'FINISHED'}
 
+class ACTION_OT_paint_sample_color_modal(bpy.types.Operator):
+    bl_idname = "action.paint_sample_color_modal"
+    bl_label = "色彩取样"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def modal(self, context, event):
+        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
+            bpy.ops.paint.sample_color('INVOKE_DEFAULT')
+            return {'FINISHED'}
+        
+        elif event.type in {'ESC','RIGHTMOUSE'}:
+            return {'CANCELLED'}
+
+        return {'RUNNING_MODAL'}
+
+    def invoke(self, context, event):
+        context.window_manager.modal_handler_add(self)
+        return {'RUNNING_MODAL'}
 # 4.3 版本有效
 class ACTION_OT_paint_sample_color(bpy.types.Operator):
     bl_idname = "action.paint_sample_color"
@@ -269,7 +288,8 @@ class ACTION_OT_paint_sample_color(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.paint.sample_color('INVOKE_DEFAULT')
+        show_notice("LEFT_CLICK.png")
+        bpy.ops.action.paint_sample_color_modal('INVOKE_DEFAULT')
         return {'FINISHED'}
 
 
@@ -282,7 +302,7 @@ classes = (
     ACTION_OT_meshvertex_vertex_color_levels,
     ACTION_OT_meshvertex_vertex_color_hsv,
     ACTION_OT_meshvertex_vertex_color_brightness_contrast,
-
+    ACTION_OT_paint_sample_color_modal,
     ACTION_OT_paint_sample_color,
 
 )

@@ -41,25 +41,20 @@ class ACTION_OT_meshsculpt_paint_hide_show_all(bpy.types.Operator):
         bpy.ops.paint.hide_show('INVOKE_DEFAULT',action='SHOW', area='ALL') # 4.2版本
         return {'FINISHED'}
 
-
 class ACTION_OT_meshsculpt_face_set_change_visibility_toggle(bpy.types.Operator):
     bl_idname = "action.meshsculpt_face_set_change_visibility_toggle"
     bl_label = "切换可见性"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def modal(self, context, event):
-        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
-            bpy.ops.sculpt.face_set_change_visibility('INVOKE_DEFAULT', mode='TOGGLE')
-            return {'FINISHED'}
-        
-        elif event.type in {'ESC','RIGHTMOUSE'}:
-            return {'CANCELLED'}
-
-        return {'RUNNING_MODAL'}
+    def execute(self, context):
+        return {'FINISHED'}
 
     def invoke(self, context, event):
-        context.window_manager.modal_handler_add(self)
-        return {'RUNNING_MODAL'}
+        return context.window_manager.invoke_popup(self, width=80)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("sculpt.face_set_change_visibility", text="切换可见性", icon="RADIOBUT_OFF").mode='TOGGLE'
 
 class ACTION_OT_meshsculpt_face_set_change_visibility_toggle_modal(bpy.types.Operator):
     bl_idname = "action.meshsculpt_face_set_change_visibility_toggle_modal"
@@ -76,19 +71,15 @@ class ACTION_OT_meshsculpt_face_set_change_visibility_hide(bpy.types.Operator):
     bl_label = "隐藏活动面组"
     bl_options = {'REGISTER', 'UNDO'}
 
-    def modal(self, context, event):
-        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
-            bpy.ops.sculpt.face_set_change_visibility('INVOKE_DEFAULT', mode='HIDE_ACTIVE')
-            return {'FINISHED'}
-        
-        elif event.type in {'ESC','RIGHTMOUSE'}:
-            return {'CANCELLED'}
-
-        return {'RUNNING_MODAL'}
+    def execute(self, context):
+        return {'FINISHED'}
 
     def invoke(self, context, event):
-        context.window_manager.modal_handler_add(self)
-        return {'RUNNING_MODAL'}
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("sculpt.face_set_change_visibility", text="隐藏活动面组", icon="RADIOBUT_OFF").mode='HIDE_ACTIVE'
 
 class ACTION_OT_meshsculpt_face_set_change_visibility_hide_modal(bpy.types.Operator):
     bl_idname = "action.meshsculpt_face_set_change_visibility_hide_modal"
@@ -136,11 +127,6 @@ class ACTION_OT_meshsculpt_trim_box_gesture_join(bpy.types.Operator):
         bpy.ops.sculpt.trim_box_gesture('INVOKE_DEFAULT', trim_mode='JOIN')
         return {'FINISHED'}
     
-
-
-
-
-
 class ACTION_OT_meshsculpt_trim_lasso_gesture_difference(bpy.types.Operator):
     bl_idname = "action.meshsculpt_trim_lasso_gesture_difference"
     bl_label = "套索修剪"
@@ -214,6 +200,39 @@ class ACTION_OT_meshsculpt_project_line_gesture(bpy.types.Operator):
 
 
 
+
+
+class ACTION_OT_meshsculpt_face_set_edit_position(bpy.types.Operator):
+    bl_idname = "action.meshsculpt_face_set_edit_position"
+    bl_label = "平顺位置"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=80)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("sculpt.face_set_edit", text="平顺位置", icon="RADIOBUT_OFF").mode='FAIR_POSITIONS'
+
+class ACTION_OT_meshsculpt_face_set_edit_position_modal(bpy.types.Operator):
+    bl_idname = "action.meshsculpt_face_set_edit_position_modal"
+    bl_label = "平顺位置"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        show_notice("LEFT_CLICK.png")
+        bpy.ops.action.meshsculpt_face_set_edit_position('INVOKE_DEFAULT')
+        return {'FINISHED'}
+    
+
+
+
+
+
+
 classes = (
     ACTION_OT_meshsculpt_mesh_filter_sphere,
     ACTION_OT_meshsculpt_paint_hide_show_hide,
@@ -232,6 +251,8 @@ classes = (
     ACTION_OT_meshsculpt_trim_lasso_gesture_join,
     ACTION_OT_meshsculpt_trim_lasso_gesture_join_modal,
     ACTION_OT_meshsculpt_project_line_gesture,
+    ACTION_OT_meshsculpt_face_set_edit_position,
+    ACTION_OT_meshsculpt_face_set_edit_position_modal,
 
 )
 

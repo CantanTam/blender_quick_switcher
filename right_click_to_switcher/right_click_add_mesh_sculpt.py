@@ -49,6 +49,12 @@ def draw_add_to_switcher_meshsculpt(self, context):
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"划线投影\"⟶Switcher", icon='PLUS').action = 'action.meshsculpt_project_line_gesture'
 
+    elif op and op.bl_rna.identifier == "SCULPT_OT_face_set_edit":
+        layout = self.layout
+        layout.separator()
+        layout.operator("call.add_to_switcher_menu", text="\"平顺位置\"⟶Switcher", icon='PLUS').action = 'action.meshsculpt_face_set_edit_position_modal'
+
+
 
 
 

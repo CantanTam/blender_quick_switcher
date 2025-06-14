@@ -1,4 +1,5 @@
 import bpy
+from ..show_switch_notice import show_notice
 
 class ACTION_OT_greasepencilweight_vertex_group_normalize_all(bpy.types.Operator):
     bl_idname = "action.greasepencilweight_vertex_group_normalize_all"
@@ -106,6 +107,26 @@ class ACTION_OT_greasepencilweight_vertex_group_smooth(bpy.types.Operator):
     def execute(self, context):
         bpy.ops.grease_pencil.vertex_group_smooth(factor=self.factor, repeat=self.repeat)
         return {'FINISHED'}
+    
+class ACTION_OT_greasepencilweight_weight_sample_modal(bpy.types.Operator):
+    bl_idname = "action.greasepencilweight_weight_sample_modal"
+    bl_label = "采样权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def modal(self, context, event):
+        if event.type == 'LEFTMOUSE' and event.value == 'PRESS':
+            bpy.ops.grease_pencil.weight_sample('INVOKE_DEFAULT')
+            return {'FINISHED'}
+        
+        elif event.type in {'ESC','RIGHTMOUSE'}:
+            return {'CANCELLED'}
+
+        return {'RUNNING_MODAL'}
+
+    def invoke(self, context, event):
+        context.window_manager.modal_handler_add(self)
+        return {'RUNNING_MODAL'}
+
 
 class ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
     bl_idname = "action.greasepencilweight_weight_sample"
@@ -114,7 +135,8 @@ class ACTION_OT_greasepencilweight_weight_sample(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        bpy.ops.grease_pencil.weight_sample('INVOKE_DEFAULT')
+        show_notice("LEFT_CLICK.png")
+        bpy.ops.action.greasepencilweight_weight_sample_modal('INVOKE_DEFAULT')
         return {'FINISHED'}
     
 
@@ -123,6 +145,7 @@ classes = (
     ACTION_OT_greasepencilweight_vertex_group_normalize,
     ACTION_OT_greasepencilweight_vertex_group_invert,
     ACTION_OT_greasepencilweight_vertex_group_smooth,
+    ACTION_OT_greasepencilweight_weight_sample_modal,
     ACTION_OT_greasepencilweight_weight_sample,
 
 

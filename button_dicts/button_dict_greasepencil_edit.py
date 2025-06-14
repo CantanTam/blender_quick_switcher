@@ -21,6 +21,12 @@ button_press_greasepencil_edit = {
         'action.greasepenciledit_frame_duplicate_true':(
         "action.greasepenciledit_frame_duplicate_true","复制所有层的活动关键帧","RADIOBUT_OFF",
     ),
+        'action.greasepenciledit_interpolate_sequence_modal':(
+        "action.greasepenciledit_interpolate_sequence_modal","插值顺序","RADIOBUT_OFF",
+    ),
+        'action.greasepenciledit_weight_greasepencil':(
+        "action.greasepenciledit_weight_greasepencil","权重","PRESET",
+    ),
         'action.call_greasepenciledit_separate_menu':(
         "action.call_greasepenciledit_separate_menu","分离","PRESET",
     ),
@@ -112,6 +118,9 @@ button_press_greasepencil_edit = {
     ),
         'action.greasepenciledit_set_uniform_opacity':(
         "action.greasepenciledit_set_uniform_opacity","设置统一不透明度","RADIOBUT_OFF",
+    ),
+        'action.greasepenciledit_scale_thickness':(
+        "action.greasepenciledit_scale_thickness","缩放厚度","RADIOBUT_OFF",
     ),
         'action.greasepenciledit_set_curve_type':(
         "action.greasepenciledit_set_curve_type","设置曲线类型","PRESET",

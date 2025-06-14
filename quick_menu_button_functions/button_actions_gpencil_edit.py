@@ -157,6 +157,34 @@ class ACTION_OT_gpenciledit_frame_duplicate_all(bpy.types.Operator):
         bpy.ops.gpencil.frame_duplicate(mode=self.mode)
         return {'FINISHED'}
 
+class ACTION_OT_gpenciledit_interpolate_sequence(bpy.types.Menu):
+    bl_idname = "action.gpenciledit_interpolate_sequence"
+    bl_label = "插值顺序"
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("gpencil.interpolate_sequence", text="插值顺序", icon="RADIOBUT_OFF")
+
+class ACTION_OT_gpenciledit_interpolate_sequence_modal(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_interpolate_sequence_modal"
+    bl_label = "插值顺序"
+    bl_description = "快捷键 Ctrl Shift E"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="action.gpenciledit_interpolate_sequence")
+        return {'FINISHED'}
+    
+class ACTION_OT_gpenciledit_weight_gpencil(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_weight_gpencil"
+    bl_label = "权重"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="VIEW3D_MT_weight_gpencil")
+        return {'FINISHED'}
+
 class VIEW3D_MT_gpenciledit_stroke_separate_menu(bpy.types.Menu):
     bl_label = "分离笔画"
     bl_idname = "popup.gpenciledit_stroke_separate_menu"
@@ -1093,6 +1121,43 @@ class ACTION_OT_gpenciledit_stroke_normalize_opacity(bpy.types.Operator):
         bpy.ops.gpencil.stroke_normalize(mode=self.mode, factor=self.factor, value=self.value)
         return {'FINISHED'}
 
+class ACTION_OT_gpenciledit_scale_thickness_switch(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_scale_thickness_switch"
+    bl_label = "开/关缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        context.scene.tool_settings.gpencil_sculpt.use_scale_thickness = not context.scene.tool_settings.gpencil_sculpt.use_scale_thickness
+        return {'FINISHED'}
+
+class ACTION_OT_gpenciledit_scale_thickness_menu(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_scale_thickness_menu"
+    bl_label = "缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_popup(self, width=100)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.operator(
+            "action.gpenciledit_scale_thickness_switch", 
+            text="缩放厚度", 
+            icon="CHECKBOX_HLT" if context.scene.tool_settings.gpencil_sculpt.use_scale_thickness else "CHECKBOX_DEHLT"
+            )
+
+class ACTION_OT_gpenciledit_scale_thickness(bpy.types.Operator):
+    bl_idname = "action.gpenciledit_scale_thickness"
+    bl_label = "缩放厚度"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        bpy.ops.action.gpenciledit_scale_thickness_menu('INVOKE_DEFAULT')
+        return {'FINISHED'}
+
 class ACTION_OT_gpenciledit_reset_transform_fill(bpy.types.Operator):
     bl_idname = "action.gpenciledit_reset_transform_fill"
     bl_label = "重置填充变换"
@@ -1307,6 +1372,9 @@ classes = (
     ACTION_OT_gpenciledit_blank_frame_add_true,
     ACTION_OT_gpenciledit_frame_duplicate_active,
     ACTION_OT_gpenciledit_frame_duplicate_all,
+    ACTION_OT_gpenciledit_interpolate_sequence,
+    ACTION_OT_gpenciledit_interpolate_sequence_modal,
+    ACTION_OT_gpenciledit_weight_gpencil,
     VIEW3D_MT_gpenciledit_stroke_separate_menu,
     ACTION_OT_call_gpenciledit_stroke_separate_menu,
     ACTION_OT_call_gpenciledit_stroke_split,
@@ -1346,8 +1414,11 @@ classes = (
     ACTION_OT_gpenciledit_stroke_start_set,
     ACTION_OT_gpenciledit_stroke_normalize_thickness,
     ACTION_OT_gpenciledit_stroke_normalize_opacity,
+    ACTION_OT_gpenciledit_scale_thickness_switch,
+    ACTION_OT_gpenciledit_scale_thickness_menu,
+    ACTION_OT_gpenciledit_scale_thickness,
     ACTION_OT_gpenciledit_reset_transform_fill,
-
+    
     ACTION_OT_gpenciledit_extrude_move,
     ACTION_OT_gpenciledit_stroke_smooth,
     ACTION_OT_gpenciledit_stroke_merge,

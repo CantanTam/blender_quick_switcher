@@ -16,6 +16,7 @@ def draw_add_to_switcher_global(self, context):
         "LATTICE_OT_select_all",
         "MESH_OT_select_all",
         "PAINT_OT_face_select_all",
+        "PAINT_OT_vert_select_all",
         "GPENCIL_OT_select_all",    #4.2 版本或以下
         "GREASE_PENCIL_OT_select_all", #4.3 版本或以上
         "ARMATURE_OT_select_all",
@@ -24,6 +25,7 @@ def draw_add_to_switcher_global(self, context):
         layout = self.layout
         layout.separator()
         layout.operator("call.add_to_switcher_menu", text="\"全选\"⟶Switcher", icon='EVENT_A').action = 'action.global_select_all'
+        layout.operator("call.add_to_switcher_menu", text="\"不选\"⟶Switcher", icon='PLUS').action = 'action.global_select_none'
         layout.operator("call.add_to_switcher_menu", text="\"反选\"⟶Switcher", icon='PLUS').action = 'action.global_select_invert'
 
     elif op and op.bl_rna.identifier == "FONT_OT_select_all":
