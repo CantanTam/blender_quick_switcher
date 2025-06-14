@@ -463,8 +463,6 @@ class ACTION_OT_global_select_all(bpy.types.Operator):
             bpy.ops.curve.select_all(action='SELECT')
         elif typeandmode == "METAEDIT":
             bpy.ops.mball.select_all(action='SELECT')
-        elif typeandmode ==  "FONTEDIT":
-            bpy.ops.font.select_all()
         elif typeandmode == "LATTICEEDIT":
             bpy.ops.lattice.select_all(action='SELECT')
         elif typeandmode in {"GPENCILEDIT_GPENCIL","GPENCILVERTEX_GPENCIL","GPENCILSCULPT_GPENCIL"}:

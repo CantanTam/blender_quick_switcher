@@ -28,11 +28,6 @@ def draw_add_to_switcher_global(self, context):
         layout.operator("call.add_to_switcher_menu", text="\"不选\"⟶Switcher", icon='PLUS').action = 'action.global_select_none'
         layout.operator("call.add_to_switcher_menu", text="\"反选\"⟶Switcher", icon='PLUS').action = 'action.global_select_invert'
 
-    elif op and op.bl_rna.identifier == "FONT_OT_select_all":
-        layout = self.layout
-        layout.separator()
-        layout.operator("call.add_to_switcher_menu", text="\"全选\"⟶Switcher", icon='EVENT_A').action = 'action.global_select_all'
-
     elif op and op.bl_rna.identifier in {
         "VIEW3D_OT_select_circle",
         "GPENCIL_OT_select_circle",

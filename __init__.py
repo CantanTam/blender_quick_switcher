@@ -201,6 +201,11 @@ from .quick_menu_button_functions.button_actions_lattice import (
     unregister as unregister_button_actions_lattice,
 )
 
+from .quick_menu_button_functions.button_actions_font_edit import (
+    register as register_button_actions_font_edit,
+    unregister as unregister_button_actions_font_edit,
+)
+
 from .right_click_to_switcher.right_click_add_global import (
     register as register_right_click_add_global,
     unregister as unregister_right_click_add_global,
@@ -281,6 +286,11 @@ from .right_click_to_switcher.right_click_add_lattice_edit import (
     unregister as unregister_right_click_add_lattice_edit,
 )
 
+from .right_click_to_switcher.right_click_add_font_edit import (
+    register as register_right_click_add_font_edit,
+    unregister as unregister_right_click_add_font_edit,
+)
+
 from .right_click_to_switcher.right_click_global_view_menu_actions import (
     register as register_right_click_global_view_actions,
     unregister as unregister_right_click_global_view_actions,
@@ -332,6 +342,8 @@ def register():
     register_right_click_add_armature_pose()
 
     register_right_click_add_lattice_edit()
+
+    register_right_click_add_font_edit()
 
     # 注册右键菜单功能
     register_right_click_add_global()
@@ -456,6 +468,8 @@ def register():
 
     register_button_actions_lattice()
 
+    register_button_actions_font_edit()
+
     # 注册键位映射
     keymap.register()
 
@@ -497,6 +511,8 @@ def unregister():
     # 注销“骨架编辑”
     unregister_right_click_add_armature_edit()
 
+    unregister_right_click_add_font_edit()
+
     unregister_right_click_add_lattice_edit()
 
     # 注销“骨架姿态”
@@ -506,6 +522,8 @@ def unregister():
     unregister_operator_typeandmode_name_mode()
 
     unregister_show_switch_notice()
+
+    unregister_button_actions_font_edit()
 
     unregister_button_actions_lattice()
 

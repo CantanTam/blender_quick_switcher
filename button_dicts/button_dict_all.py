@@ -15,6 +15,7 @@ from ..button_dicts.button_dict_armature_edit import button_press_armature_edit
 from ..button_dicts.button_dict_armature_pose import button_press_armature_pose
 from ..button_dicts.button_dict_curve_edit import button_press_curve_edit
 from ..button_dicts.button_dict_lattice_edit import button_press_lattice_edit
+from ..button_dicts.button_dict_font_edit import button_press_font_edit
 
 button_press_function = (
     button_press_global 
@@ -33,4 +34,5 @@ button_press_function = (
     | button_press_armature_pose
     | button_press_curve_edit
     | button_press_lattice_edit
+    | button_press_font_edit
 )

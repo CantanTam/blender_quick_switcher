@@ -104,16 +104,12 @@ class ACTION_OT_meshvertex_vertex_color_from_weight(bpy.types.Operator):
     bl_label = "来自权重的顶点色"
     bl_options = {'REGISTER', 'UNDO'}
 
-    @classmethod
-    def poll(cls, context):
-        return (
-            context.active_object.vertex_groups and
-            context.active_object.data and 
-            context.active_object.data.vertices
-        )
-
     def execute(self, context):
-        bpy.ops.paint.vertex_color_from_weight()
+        try:
+            bpy.ops.paint.vertex_color_from_weight()
+        except RuntimeError:
+            self.report({'ERROR'}, "无法来自权重的顶点色")
+            return {'CANCELLED'}
         return {'FINISHED'}
 
 class ACTION_OT_meshvertex_vertex_color_invert(bpy.types.Operator):
@@ -125,141 +121,58 @@ class ACTION_OT_meshvertex_vertex_color_invert(bpy.types.Operator):
         bpy.ops.paint.vertex_color_invert()
         return {'FINISHED'}
 
-# 这个功能暂时不可用
+class ACTION_OT_meshvertex_vertex_color_levels_menu(bpy.types.Menu):
+    bl_idname = "action.meshvertex_vertex_color_levels_menu"
+    bl_label = ""
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
+    
+    def draw(self, context):
+        layout = self.layout
+        layout.operator("paint.vertex_color_levels", text="层级", icon="RADIOBUT_OFF")
+
 class ACTION_OT_meshvertex_vertex_color_levels(bpy.types.Operator):
     bl_idname = "action.meshvertex_vertex_color_levels"
     bl_label = "顶点绘制层级"
     bl_options = {'REGISTER', 'UNDO'}
 
-    offset: bpy.props.FloatProperty(
-        default=0.0,
-        min=-1.0,
-        max=1.0,
-        precision=3,
-        subtype='FACTOR'
-    )
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="action.meshvertex_vertex_color_levels_menu")
+        return {'FINISHED'}
 
-    gain: bpy.props.FloatProperty(
-        default=1.0,
-        min=0.0,
-        soft_max=10,
-        precision=3,
-    )
-
-    def invoke(self, context, event):
-        return self.execute(context)
+class ACTION_OT_meshvertex_vertex_color_hsv_menu(bpy.types.Menu):
+    bl_idname = "action.meshvertex_vertex_color_hsv_menu"
+    bl_label = ""
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout
-        split = layout.row().split(factor=0.4)
-
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_right = split.column()
-
-        col_left.label(text="偏移量")
-        col_right.prop(self, "offset", text="")
-
-        col_left.label(text="增益")
-        col_right.prop(self, "gain", text="")
-
-    def execute(self, context):
-        bpy.ops.paint.vertex_color_levels(offset=self.offset, gain=self.gain)
-        return {'FINISHED'}
+        layout.operator("paint.vertex_color_hsv", text="色相/饱和度/明度", icon="RADIOBUT_OFF")
 
 class ACTION_OT_meshvertex_vertex_color_hsv(bpy.types.Operator):
     bl_idname = "action.meshvertex_vertex_color_hsv"
     bl_label = "顶点绘制色相/饱和度/明度"
     bl_options = {'REGISTER', 'UNDO'}
 
-    h: bpy.props.FloatProperty(
-        default=0.5,
-        min=0.0,
-        max=1.0,
-        precision=3,
-        subtype='FACTOR'
-    )
+    def execute(self, context):
+        bpy.ops.wm.call_menu(name="action.meshvertex_vertex_color_hsv_menu")
+        return {'FINISHED'}
 
-    s: bpy.props.FloatProperty(
-        default=1.0,
-        min=0.0,
-        max=2.0,
-        precision=3,
-        subtype='FACTOR'
-    )
-
-    v: bpy.props.FloatProperty(
-        default=1.0,
-        min=0.0,
-        max=2.0,
-        precision=3,
-        subtype='FACTOR'
-    )
-
-    def invoke(self, context, event):
-        return self.execute(context)
+class ACTION_OT_meshvertex_vertex_contrast_menu(bpy.types.Menu):
+    bl_idname = "action.meshvertex_brightness_contrast_menu"
+    bl_label = ""
+    bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     def draw(self, context):
         layout = self.layout
-        split = layout.row().split(factor=0.4)
+        layout.operator("paint.vertex_color_brightness_contrast", text="亮度/对比度", icon="RADIOBUT_OFF")
 
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_right = split.column()
-
-        col_left.label(text="色相")
-        col_right.prop(self, "h", text="")
-
-        col_left.label(text="饱和度")
-        col_right.prop(self, "s", text="")
-
-        col_left.label(text="值(明度)")
-        col_right.prop(self, "v", text="")
-
-    def execute(self, context):
-        bpy.ops.paint.vertex_color_hsv(h=self.h, s=self.s, v=self.v)
-        return {'FINISHED'}
-    
 class ACTION_OT_meshvertex_vertex_color_brightness_contrast(bpy.types.Operator):
     bl_idname = "action.meshvertex_vertex_color_brightness_contrast"
     bl_label = "顶点绘制亮度/对比度"
     bl_options = {'REGISTER', 'UNDO'}
 
-    brightness: bpy.props.FloatProperty(
-        default=0.0,
-        min=-100.0,
-        max=100.0,
-        precision=3,
-        subtype='FACTOR'
-    )
-
-    contrast: bpy.props.FloatProperty(
-        default=0.0,
-        min=-100.0,
-        max=100.0,
-        precision=3,
-        subtype='FACTOR'
-    )
-
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def draw(self, context):
-        layout = self.layout
-        split = layout.row().split(factor=0.4)
-
-        col_left = split.column()
-        col_left.alignment = 'RIGHT'
-        col_right = split.column()
-
-        col_left.label(text="亮度")
-        col_right.prop(self, "brightness", text="")
-
-        col_left.label(text="对比度")
-        col_right.prop(self, "contrast", text="")
-
     def execute(self, context):
-        bpy.ops.paint.vertex_color_brightness_contrast(brightness=self.brightness, contrast=self.contrast)
+        bpy.ops.wm.call_menu(name="action.meshvertex_brightness_contrast_menu")
         return {'FINISHED'}
 
 class ACTION_OT_paint_sample_color_modal(bpy.types.Operator):
@@ -299,8 +212,11 @@ classes = (
     ACTION_OT_meshvertex_vertex_color_dirt,
     ACTION_OT_meshvertex_vertex_color_from_weight,
     ACTION_OT_meshvertex_vertex_color_invert,
+    ACTION_OT_meshvertex_vertex_color_levels_menu,
     ACTION_OT_meshvertex_vertex_color_levels,
+    ACTION_OT_meshvertex_vertex_color_hsv_menu,
     ACTION_OT_meshvertex_vertex_color_hsv,
+    ACTION_OT_meshvertex_vertex_contrast_menu,
     ACTION_OT_meshvertex_vertex_color_brightness_contrast,
     ACTION_OT_paint_sample_color_modal,
     ACTION_OT_paint_sample_color,
