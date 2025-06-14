@@ -1,8 +1,8 @@
 {
     "bl_idname": "\u0006",
     "to_show_to_switcher": true,
-    "ctrl_wheel_up": "switch.vertex_edge_face()",
-    "ctrl_wheel_down": "mode.tab_switch()",
+    "ctrl_wheel_up": "select.mode_right_to_left()",
+    "ctrl_wheel_down": "select.mode_left_to_right()",
     "ctrl_alt_wheel_up": "mode.menu_switch()",
     "ctrl_alt_wheel_down": "wm.toolbar()",
     "shift_wheel_up": "call.popup_menu_one()",

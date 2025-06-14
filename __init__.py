@@ -18,7 +18,10 @@ from .operator_mode_transfer import MODE_OT_Transfer
 from .operator_mode_transfer import MODE_OT_to_object_and_select
 from .operator_mode_switch_normal_uptodown import MODE_NORMAL_UPDOWN_OT_Switch
 from .operator_mode_switch_normal_downtoup import MODE_NORMAL_DOWNUP_OT_Switch
-from .operator_vertex_edge_face_switch import VERTEX_EDGE_FACE_OT_Switch
+from .operator_select_mode import (
+    SELECT_MODE_OT_right_to_left,
+    SELECT_MODE_OT_left_to_right,
+)
 from .operator_mode_switch_tab import (
     MODE_TAB_OT_Switch,
     MODE_MENU_OT_Switch,
@@ -342,7 +345,8 @@ def register():
     bpy.utils.register_class(QuickSwitchAddonPreferences)
     bpy.utils.register_class(MODE_NORMAL_UPDOWN_OT_Switch)
     bpy.utils.register_class(MODE_NORMAL_DOWNUP_OT_Switch)
-    bpy.utils.register_class(VERTEX_EDGE_FACE_OT_Switch)
+    bpy.utils.register_class(SELECT_MODE_OT_right_to_left)
+    bpy.utils.register_class(SELECT_MODE_OT_left_to_right)
     bpy.utils.register_class(MODE_MENU_OT_Switch)
     bpy.utils.register_class(MODE_TAB_OT_Switch)
     bpy.utils.register_class(MODE_OT_Transfer)
@@ -608,7 +612,8 @@ def unregister():
     bpy.utils.unregister_class(MODE_OT_to_object_and_select)
     bpy.utils.unregister_class(MODE_OT_Transfer)
     bpy.utils.unregister_class(MODE_TAB_OT_Switch)
-    bpy.utils.unregister_class(VERTEX_EDGE_FACE_OT_Switch)
+    bpy.utils.unregister_class(SELECT_MODE_OT_left_to_right)
+    bpy.utils.unregister_class(SELECT_MODE_OT_right_to_left)
     bpy.utils.unregister_class(MODE_NORMAL_DOWNUP_OT_Switch)
     bpy.utils.unregister_class(MODE_NORMAL_UPDOWN_OT_Switch)
     bpy.utils.unregister_class(MODE_MENU_OT_Switch)

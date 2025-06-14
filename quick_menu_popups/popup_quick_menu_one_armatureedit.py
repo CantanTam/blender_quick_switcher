@@ -49,7 +49,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                     col1.operator(temp_col1_button[0], text=temp_col1_button[1], icon=temp_col1_button[2])
                     #break
 
-
         # 第二列菜单项
         if prefs.panelone_mode17_col2_title.strip() != "":
             col2.label(text=prefs.panelone_mode17_col2_title, icon='PRESET')
@@ -61,7 +60,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                     col2.separator()
                 elif temp_col2_button:
                     col2.operator(temp_col2_button[0], text=temp_col2_button[1], icon=temp_col2_button[2])
-
 
         # 第三列菜单项
         if prefs.panelone_mode17_col3_title.strip() != "":
@@ -75,7 +73,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                 elif temp_col3_button:
                     col3.operator(temp_col3_button[0], text=temp_col3_button[1], icon=temp_col3_button[2])
 
-
         # 第四列菜单项
         if prefs.panelone_mode17_col4_title.strip() != "":
             col4.label(text=prefs.panelone_mode17_col4_title, icon='PRESET')
@@ -87,7 +84,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                     col4.separator()
                 elif temp_col4_button:
                     col4.operator(temp_col4_button[0], text=temp_col4_button[1], icon=temp_col4_button[2])
-
 
         # 第五列菜单项
         if prefs.panelone_mode17_col5_title.strip() != "":
@@ -101,7 +97,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                 elif temp_col5_button:
                     col5.operator(temp_col5_button[0], text=temp_col5_button[1], icon=temp_col5_button[2])
 
-
         # 第六列菜单项
         if prefs.panelone_mode17_col6_title.strip() != "":
             col6.label(text=prefs.panelone_mode17_col6_title, icon='PRESET')
@@ -114,7 +109,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                 elif temp_col6_button:
                     col6.operator(temp_col6_button[0], text=temp_col6_button[1], icon=temp_col6_button[2])
 
-
         # 第七列菜单项
         if prefs.panelone_mode17_col7_title.strip() != "":
             col7.label(text=prefs.panelone_mode17_col7_title, icon='PRESET')
@@ -126,7 +120,6 @@ class QUICK_POPUP_MENU_OT_one_armatureedit(bpy.types.Menu):
                     col7.separator()
                 elif temp_col7_button:
                     col7.operator(temp_col7_button[0], text=temp_col7_button[1], icon=temp_col7_button[2])
-
 
         # 第八列菜单项
         if prefs.panelone_mode17_col8_title.strip() != "":
