@@ -4,7 +4,7 @@ from ..button_dicts.button_dict_all import button_press_function
 
 class QUICK_POPUP_MENU_OT_one_armaturepose(bpy.types.Menu):
     bl_idname = "popup.quick_menu_one_armaturepose"
-    bl_label = "骨架姿态模式"
+    bl_label = ""
     bl_options = {'SEARCH_ON_KEY_PRESS'}
 
     # 通用的插件名称引用

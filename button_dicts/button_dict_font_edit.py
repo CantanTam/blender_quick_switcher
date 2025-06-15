@@ -1,44 +1,77 @@
 button_press_font_edit = {
+    # "选择"菜单
         'action.font_select_all':(
         "action.font_select_all","全选","RADIOBUT_OFF",
     ),
         'action.font_select_multi':(
         "action.font_select_multi","选择文字","WORDWRAP_ON",
     ),
-
         'action.font_select_text_begin':(
         "action.font_select_text_begin","光标至文本头","RADIOBUT_OFF",
     ),
         'action.font_select_text_end':(
         "action.font_select_text_end","光标至文本末","RADIOBUT_OFF",
     ),
-
         'action.font_select_previous_page':(
         "action.font_select_previous_page","光标前十行","RADIOBUT_OFF",
     ),
         'action.font_select_next_page':(
         "action.font_select_next_page","光标后十行","RADIOBUT_OFF",
     ),
-
         'action.font_select_line_begin':(
         "action.font_select_line_begin","光标至行首","RADIOBUT_OFF",
     ),
         'action.font_select_line_end':(
         "action.font_select_line_end","光标至行末","RADIOBUT_OFF",
     ),
-
         'action.font_select_previous_line':(
         "action.font_select_previous_line","选择上一行","RADIOBUT_OFF",
     ),
         'action.font_select_next_line':(
         "action.font_select_next_line","选择下一行","RADIOBUT_OFF",
     ),
-
         'action.font_select_previous_word':(
         "action.font_select_previous_word","前一个单词","RADIOBUT_OFF",
     ),
         'action.font_select_next_word':(
         "action.font_select_next_word","后一个单词","RADIOBUT_OFF",
+    ),
+    # "文字"菜单
+        'action.font_text_cut':(
+        "action.font_text_cut","剪切","RADIOBUT_OFF",
+    ),
+        'action.font_text_copy':(
+        "action.font_text_copy","复制","COPYDOWN",
+    ),
+        'action.font_text_paste':(
+        "action.font_text_paste","粘贴","PASTEDOWN",
+    ),
+        'action.font_text_paste_from_file':(
+        "action.font_text_paste_from_file","粘贴文件","RADIOBUT_OFF",
+    ),
+        'action.font_case_set':(
+        "action.font_case_set","切换大小写","OUTLINER_OB_FONT",
+    ),
+        'action.font_edit_font_chars_menu':(
+        "action.font_edit_font_chars_menu","特殊字符","PRESET",
+    ),
+        'action.font_style_toggle_bold':(
+        "action.font_style_toggle_bold","粗体","BOLD",
+    ),
+        'action.font_style_toggle_italic':(
+        "action.font_style_toggle_italic","斜体","ITALIC",
+    ),
+        'action.font_style_toggle_underline':(
+        "action.font_style_toggle_underline","下划线","UNDERLINE",
+    ),
+        'action.font_style_toggle_smallcaps':(
+        "action.font_style_toggle_smallcaps","小型大写","SMALL_CAPS",
+    ),
+        'action.font_call_change_spacing_menu':(
+        "action.font_call_change_spacing_menu","调整字距","PRESET",
+    ),
+        'action.font_delete':(
+        "action.font_delete","删除文本","PRESET",
     ),
 
 }
